@@ -1,0 +1,1152 @@
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccdoxt1v.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 1
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"reset.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.reset_SetDriveMode,"ax",%progbits
+  18              		.align	2
+  19              		.global	reset_SetDriveMode
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	reset_SetDriveMode, %function
+  23              	reset_SetDriveMode:
+  24              	.LFB0:
+  25              		.file 1 ".\\Generated_Source\\PSoC4\\reset.c"
+   1:.\Generated_Source\PSoC4/reset.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC4/reset.c **** * File Name: reset.c  
+   3:.\Generated_Source\PSoC4/reset.c **** * Version 2.20
+   4:.\Generated_Source\PSoC4/reset.c **** *
+   5:.\Generated_Source\PSoC4/reset.c **** * Description:
+   6:.\Generated_Source\PSoC4/reset.c **** *  This file contains API to enable firmware control of a Pins component.
+   7:.\Generated_Source\PSoC4/reset.c **** *
+   8:.\Generated_Source\PSoC4/reset.c **** ********************************************************************************
+   9:.\Generated_Source\PSoC4/reset.c **** * Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
+  10:.\Generated_Source\PSoC4/reset.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  11:.\Generated_Source\PSoC4/reset.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  12:.\Generated_Source\PSoC4/reset.c **** * the software package with which this file was provided.
+  13:.\Generated_Source\PSoC4/reset.c **** *******************************************************************************/
+  14:.\Generated_Source\PSoC4/reset.c **** 
+  15:.\Generated_Source\PSoC4/reset.c **** #include "cytypes.h"
+  16:.\Generated_Source\PSoC4/reset.c **** #include "reset.h"
+  17:.\Generated_Source\PSoC4/reset.c **** 
+  18:.\Generated_Source\PSoC4/reset.c **** 
+  19:.\Generated_Source\PSoC4/reset.c **** #if defined(reset__PC)
+  20:.\Generated_Source\PSoC4/reset.c ****     #define reset_SetP4PinDriveMode(shift, mode)  \
+  21:.\Generated_Source\PSoC4/reset.c ****     do { \
+  22:.\Generated_Source\PSoC4/reset.c ****         reset_PC =   (reset_PC & \
+  23:.\Generated_Source\PSoC4/reset.c ****                                 (uint32)(~(uint32)(reset_DRIVE_MODE_IND_MASK << \
+  24:.\Generated_Source\PSoC4/reset.c ****                                 (reset_DRIVE_MODE_BITS * (shift))))) | \
+  25:.\Generated_Source\PSoC4/reset.c ****                                 (uint32)((uint32)(mode) << \
+  26:.\Generated_Source\PSoC4/reset.c ****                                 (reset_DRIVE_MODE_BITS * (shift))); \
+  27:.\Generated_Source\PSoC4/reset.c ****     } while (0)
+  28:.\Generated_Source\PSoC4/reset.c **** #else
+  29:.\Generated_Source\PSoC4/reset.c ****     #if (CY_PSOC4_4200L)
+  30:.\Generated_Source\PSoC4/reset.c ****         #define reset_SetP4PinDriveMode(shift, mode)  \
+  31:.\Generated_Source\PSoC4/reset.c ****         do { \
+  32:.\Generated_Source\PSoC4/reset.c ****             reset_USBIO_CTRL_REG = (reset_USBIO_CTRL_REG & \
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccdoxt1v.s 			page 2
+
+
+  33:.\Generated_Source\PSoC4/reset.c ****                                     (uint32)(~(uint32)(reset_DRIVE_MODE_IND_MASK << \
+  34:.\Generated_Source\PSoC4/reset.c ****                                     (reset_DRIVE_MODE_BITS * (shift))))) | \
+  35:.\Generated_Source\PSoC4/reset.c ****                                     (uint32)((uint32)(mode) << \
+  36:.\Generated_Source\PSoC4/reset.c ****                                     (reset_DRIVE_MODE_BITS * (shift))); \
+  37:.\Generated_Source\PSoC4/reset.c ****         } while (0)
+  38:.\Generated_Source\PSoC4/reset.c ****     #endif
+  39:.\Generated_Source\PSoC4/reset.c **** #endif
+  40:.\Generated_Source\PSoC4/reset.c ****   
+  41:.\Generated_Source\PSoC4/reset.c **** 
+  42:.\Generated_Source\PSoC4/reset.c **** #if defined(reset__PC) || (CY_PSOC4_4200L) 
+  43:.\Generated_Source\PSoC4/reset.c ****     /*******************************************************************************
+  44:.\Generated_Source\PSoC4/reset.c ****     * Function Name: reset_SetDriveMode
+  45:.\Generated_Source\PSoC4/reset.c ****     ****************************************************************************//**
+  46:.\Generated_Source\PSoC4/reset.c ****     *
+  47:.\Generated_Source\PSoC4/reset.c ****     * \brief Sets the drive mode for each of the Pins component's pins.
+  48:.\Generated_Source\PSoC4/reset.c ****     * 
+  49:.\Generated_Source\PSoC4/reset.c ****     * <b>Note</b> This affects all pins in the Pins component instance. Use the
+  50:.\Generated_Source\PSoC4/reset.c ****     * Per-Pin APIs if you wish to control individual pin's drive modes.
+  51:.\Generated_Source\PSoC4/reset.c ****     *
+  52:.\Generated_Source\PSoC4/reset.c ****     * <b>Note</b> USBIOs have limited drive functionality. Refer to the Drive Mode
+  53:.\Generated_Source\PSoC4/reset.c ****     * parameter for more information.
+  54:.\Generated_Source\PSoC4/reset.c ****     *
+  55:.\Generated_Source\PSoC4/reset.c ****     * \param mode
+  56:.\Generated_Source\PSoC4/reset.c ****     *  Mode for the selected signals. Valid options are documented in 
+  57:.\Generated_Source\PSoC4/reset.c ****     *  \ref driveMode.
+  58:.\Generated_Source\PSoC4/reset.c ****     *
+  59:.\Generated_Source\PSoC4/reset.c ****     * \return
+  60:.\Generated_Source\PSoC4/reset.c ****     *  None
+  61:.\Generated_Source\PSoC4/reset.c ****     *
+  62:.\Generated_Source\PSoC4/reset.c ****     * \sideeffect
+  63:.\Generated_Source\PSoC4/reset.c ****     *  If you use read-modify-write operations that are not atomic, the ISR can
+  64:.\Generated_Source\PSoC4/reset.c ****     *  cause corruption of this function. An ISR that interrupts this function 
+  65:.\Generated_Source\PSoC4/reset.c ****     *  and performs writes to the Pins component Drive Mode registers can cause 
+  66:.\Generated_Source\PSoC4/reset.c ****     *  corrupted port data. To avoid this issue, you should either use the Per-Pin
+  67:.\Generated_Source\PSoC4/reset.c ****     *  APIs (primary method) or disable interrupts around this function.
+  68:.\Generated_Source\PSoC4/reset.c ****     *
+  69:.\Generated_Source\PSoC4/reset.c ****     * \funcusage
+  70:.\Generated_Source\PSoC4/reset.c ****     *  \snippet reset_SUT.c usage_reset_SetDriveMode
+  71:.\Generated_Source\PSoC4/reset.c ****     *******************************************************************************/
+  72:.\Generated_Source\PSoC4/reset.c ****     void reset_SetDriveMode(uint8 mode)
+  73:.\Generated_Source\PSoC4/reset.c ****     {
+  26              		.loc 1 73 0
+  27              		.cfi_startproc
+  28              	.LVL0:
+  74:.\Generated_Source\PSoC4/reset.c **** 		reset_SetP4PinDriveMode(reset__0__SHIFT, mode);
+  29              		.loc 1 74 0
+  30 0000 034A     		ldr	r2, .L2
+  31 0002 1368     		ldr	r3, [r2]
+  32 0004 3821     		mov	r1, #56
+  33 0006 8B43     		bic	r3, r1
+  34 0008 C000     		lsl	r0, r0, #3
+  35              	.LVL1:
+  36 000a 1843     		orr	r0, r3
+  37 000c 1060     		str	r0, [r2]
+  75:.\Generated_Source\PSoC4/reset.c ****     }
+  38              		.loc 1 75 0
+  39              		@ sp needed
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccdoxt1v.s 			page 3
+
+
+  40 000e 7047     		bx	lr
+  41              	.L3:
+  42              		.align	2
+  43              	.L2:
+  44 0010 08040440 		.word	1074005000
+  45              		.cfi_endproc
+  46              	.LFE0:
+  47              		.size	reset_SetDriveMode, .-reset_SetDriveMode
+  48              		.section	.text.reset_Write,"ax",%progbits
+  49              		.align	2
+  50              		.global	reset_Write
+  51              		.code	16
+  52              		.thumb_func
+  53              		.type	reset_Write, %function
+  54              	reset_Write:
+  55              	.LFB1:
+  76:.\Generated_Source\PSoC4/reset.c **** #endif
+  77:.\Generated_Source\PSoC4/reset.c **** 
+  78:.\Generated_Source\PSoC4/reset.c **** 
+  79:.\Generated_Source\PSoC4/reset.c **** /*******************************************************************************
+  80:.\Generated_Source\PSoC4/reset.c **** * Function Name: reset_Write
+  81:.\Generated_Source\PSoC4/reset.c **** ****************************************************************************//**
+  82:.\Generated_Source\PSoC4/reset.c **** *
+  83:.\Generated_Source\PSoC4/reset.c **** * \brief Writes the value to the physical port (data output register), masking
+  84:.\Generated_Source\PSoC4/reset.c **** *  and shifting the bits appropriately. 
+  85:.\Generated_Source\PSoC4/reset.c **** *
+  86:.\Generated_Source\PSoC4/reset.c **** * The data output register controls the signal applied to the physical pin in 
+  87:.\Generated_Source\PSoC4/reset.c **** * conjunction with the drive mode parameter. This function avoids changing 
+  88:.\Generated_Source\PSoC4/reset.c **** * other bits in the port by using the appropriate method (read-modify-write or
+  89:.\Generated_Source\PSoC4/reset.c **** * bit banding).
+  90:.\Generated_Source\PSoC4/reset.c **** *
+  91:.\Generated_Source\PSoC4/reset.c **** * <b>Note</b> This function should not be used on a hardware digital output pin 
+  92:.\Generated_Source\PSoC4/reset.c **** * as it is driven by the hardware signal attached to it.
+  93:.\Generated_Source\PSoC4/reset.c **** *
+  94:.\Generated_Source\PSoC4/reset.c **** * \param value
+  95:.\Generated_Source\PSoC4/reset.c **** *  Value to write to the component instance.
+  96:.\Generated_Source\PSoC4/reset.c **** *
+  97:.\Generated_Source\PSoC4/reset.c **** * \return 
+  98:.\Generated_Source\PSoC4/reset.c **** *  None 
+  99:.\Generated_Source\PSoC4/reset.c **** *
+ 100:.\Generated_Source\PSoC4/reset.c **** * \sideeffect
+ 101:.\Generated_Source\PSoC4/reset.c **** *  If you use read-modify-write operations that are not atomic; the Interrupt 
+ 102:.\Generated_Source\PSoC4/reset.c **** *  Service Routines (ISR) can cause corruption of this function. An ISR that 
+ 103:.\Generated_Source\PSoC4/reset.c **** *  interrupts this function and performs writes to the Pins component data 
+ 104:.\Generated_Source\PSoC4/reset.c **** *  register can cause corrupted port data. To avoid this issue, you should 
+ 105:.\Generated_Source\PSoC4/reset.c **** *  either use the Per-Pin APIs (primary method) or disable interrupts around 
+ 106:.\Generated_Source\PSoC4/reset.c **** *  this function.
+ 107:.\Generated_Source\PSoC4/reset.c **** *
+ 108:.\Generated_Source\PSoC4/reset.c **** * \funcusage
+ 109:.\Generated_Source\PSoC4/reset.c **** *  \snippet reset_SUT.c usage_reset_Write
+ 110:.\Generated_Source\PSoC4/reset.c **** *******************************************************************************/
+ 111:.\Generated_Source\PSoC4/reset.c **** void reset_Write(uint8 value)
+ 112:.\Generated_Source\PSoC4/reset.c **** {
+  56              		.loc 1 112 0
+  57              		.cfi_startproc
+  58              	.LVL2:
+ 113:.\Generated_Source\PSoC4/reset.c ****     uint8 drVal = (uint8)(reset_DR & (uint8)(~reset_MASK));
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccdoxt1v.s 			page 4
+
+
+  59              		.loc 1 113 0
+  60 0000 0449     		ldr	r1, .L5
+  61 0002 0A68     		ldr	r2, [r1]
+  62 0004 FD23     		mov	r3, #253
+  63 0006 1A40     		and	r2, r3
+  64              	.LVL3:
+ 114:.\Generated_Source\PSoC4/reset.c ****     drVal = (drVal | ((uint8)(value << reset_SHIFT) & reset_MASK));
+  65              		.loc 1 114 0
+  66 0008 4000     		lsl	r0, r0, #1
+  67              	.LVL4:
+  68 000a FB3B     		sub	r3, r3, #251
+  69 000c 1840     		and	r0, r3
+  70 000e 1043     		orr	r0, r2
+  71              	.LVL5:
+ 115:.\Generated_Source\PSoC4/reset.c ****     reset_DR = (uint32)drVal;
+  72              		.loc 1 115 0
+  73 0010 0860     		str	r0, [r1]
+ 116:.\Generated_Source\PSoC4/reset.c **** }
+  74              		.loc 1 116 0
+  75              		@ sp needed
+  76 0012 7047     		bx	lr
+  77              	.L6:
+  78              		.align	2
+  79              	.L5:
+  80 0014 00040440 		.word	1074004992
+  81              		.cfi_endproc
+  82              	.LFE1:
+  83              		.size	reset_Write, .-reset_Write
+  84              		.section	.text.reset_Read,"ax",%progbits
+  85              		.align	2
+  86              		.global	reset_Read
+  87              		.code	16
+  88              		.thumb_func
+  89              		.type	reset_Read, %function
+  90              	reset_Read:
+  91              	.LFB2:
+ 117:.\Generated_Source\PSoC4/reset.c **** 
+ 118:.\Generated_Source\PSoC4/reset.c **** 
+ 119:.\Generated_Source\PSoC4/reset.c **** /*******************************************************************************
+ 120:.\Generated_Source\PSoC4/reset.c **** * Function Name: reset_Read
+ 121:.\Generated_Source\PSoC4/reset.c **** ****************************************************************************//**
+ 122:.\Generated_Source\PSoC4/reset.c **** *
+ 123:.\Generated_Source\PSoC4/reset.c **** * \brief Reads the associated physical port (pin status register) and masks 
+ 124:.\Generated_Source\PSoC4/reset.c **** *  the required bits according to the width and bit position of the component
+ 125:.\Generated_Source\PSoC4/reset.c **** *  instance. 
+ 126:.\Generated_Source\PSoC4/reset.c **** *
+ 127:.\Generated_Source\PSoC4/reset.c **** * The pin's status register returns the current logic level present on the 
+ 128:.\Generated_Source\PSoC4/reset.c **** * physical pin.
+ 129:.\Generated_Source\PSoC4/reset.c **** *
+ 130:.\Generated_Source\PSoC4/reset.c **** * \return 
+ 131:.\Generated_Source\PSoC4/reset.c **** *  The current value for the pins in the component as a right justified number.
+ 132:.\Generated_Source\PSoC4/reset.c **** *
+ 133:.\Generated_Source\PSoC4/reset.c **** * \funcusage
+ 134:.\Generated_Source\PSoC4/reset.c **** *  \snippet reset_SUT.c usage_reset_Read  
+ 135:.\Generated_Source\PSoC4/reset.c **** *******************************************************************************/
+ 136:.\Generated_Source\PSoC4/reset.c **** uint8 reset_Read(void)
+ 137:.\Generated_Source\PSoC4/reset.c **** {
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccdoxt1v.s 			page 5
+
+
+  92              		.loc 1 137 0
+  93              		.cfi_startproc
+ 138:.\Generated_Source\PSoC4/reset.c ****     return (uint8)((reset_PS & reset_MASK) >> reset_SHIFT);
+  94              		.loc 1 138 0
+  95 0000 024B     		ldr	r3, .L8
+  96 0002 1868     		ldr	r0, [r3]
+  97 0004 8007     		lsl	r0, r0, #30
+  98 0006 C00F     		lsr	r0, r0, #31
+ 139:.\Generated_Source\PSoC4/reset.c **** }
+  99              		.loc 1 139 0
+ 100              		@ sp needed
+ 101 0008 7047     		bx	lr
+ 102              	.L9:
+ 103 000a C046     		.align	2
+ 104              	.L8:
+ 105 000c 04040440 		.word	1074004996
+ 106              		.cfi_endproc
+ 107              	.LFE2:
+ 108              		.size	reset_Read, .-reset_Read
+ 109              		.section	.text.reset_ReadDataReg,"ax",%progbits
+ 110              		.align	2
+ 111              		.global	reset_ReadDataReg
+ 112              		.code	16
+ 113              		.thumb_func
+ 114              		.type	reset_ReadDataReg, %function
+ 115              	reset_ReadDataReg:
+ 116              	.LFB3:
+ 140:.\Generated_Source\PSoC4/reset.c **** 
+ 141:.\Generated_Source\PSoC4/reset.c **** 
+ 142:.\Generated_Source\PSoC4/reset.c **** /*******************************************************************************
+ 143:.\Generated_Source\PSoC4/reset.c **** * Function Name: reset_ReadDataReg
+ 144:.\Generated_Source\PSoC4/reset.c **** ****************************************************************************//**
+ 145:.\Generated_Source\PSoC4/reset.c **** *
+ 146:.\Generated_Source\PSoC4/reset.c **** * \brief Reads the associated physical port's data output register and masks 
+ 147:.\Generated_Source\PSoC4/reset.c **** *  the correct bits according to the width and bit position of the component 
+ 148:.\Generated_Source\PSoC4/reset.c **** *  instance. 
+ 149:.\Generated_Source\PSoC4/reset.c **** *
+ 150:.\Generated_Source\PSoC4/reset.c **** * The data output register controls the signal applied to the physical pin in 
+ 151:.\Generated_Source\PSoC4/reset.c **** * conjunction with the drive mode parameter. This is not the same as the 
+ 152:.\Generated_Source\PSoC4/reset.c **** * preferred reset_Read() API because the 
+ 153:.\Generated_Source\PSoC4/reset.c **** * reset_ReadDataReg() reads the data register instead of the status 
+ 154:.\Generated_Source\PSoC4/reset.c **** * register. For output pins this is a useful function to determine the value 
+ 155:.\Generated_Source\PSoC4/reset.c **** * just written to the pin.
+ 156:.\Generated_Source\PSoC4/reset.c **** *
+ 157:.\Generated_Source\PSoC4/reset.c **** * \return 
+ 158:.\Generated_Source\PSoC4/reset.c **** *  The current value of the data register masked and shifted into a right 
+ 159:.\Generated_Source\PSoC4/reset.c **** *  justified number for the component instance.
+ 160:.\Generated_Source\PSoC4/reset.c **** *
+ 161:.\Generated_Source\PSoC4/reset.c **** * \funcusage
+ 162:.\Generated_Source\PSoC4/reset.c **** *  \snippet reset_SUT.c usage_reset_ReadDataReg 
+ 163:.\Generated_Source\PSoC4/reset.c **** *******************************************************************************/
+ 164:.\Generated_Source\PSoC4/reset.c **** uint8 reset_ReadDataReg(void)
+ 165:.\Generated_Source\PSoC4/reset.c **** {
+ 117              		.loc 1 165 0
+ 118              		.cfi_startproc
+ 166:.\Generated_Source\PSoC4/reset.c ****     return (uint8)((reset_DR & reset_MASK) >> reset_SHIFT);
+ 119              		.loc 1 166 0
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccdoxt1v.s 			page 6
+
+
+ 120 0000 024B     		ldr	r3, .L11
+ 121 0002 1868     		ldr	r0, [r3]
+ 122 0004 8007     		lsl	r0, r0, #30
+ 123 0006 C00F     		lsr	r0, r0, #31
+ 167:.\Generated_Source\PSoC4/reset.c **** }
+ 124              		.loc 1 167 0
+ 125              		@ sp needed
+ 126 0008 7047     		bx	lr
+ 127              	.L12:
+ 128 000a C046     		.align	2
+ 129              	.L11:
+ 130 000c 00040440 		.word	1074004992
+ 131              		.cfi_endproc
+ 132              	.LFE3:
+ 133              		.size	reset_ReadDataReg, .-reset_ReadDataReg
+ 134              		.section	.text.reset_SetInterruptMode,"ax",%progbits
+ 135              		.align	2
+ 136              		.global	reset_SetInterruptMode
+ 137              		.code	16
+ 138              		.thumb_func
+ 139              		.type	reset_SetInterruptMode, %function
+ 140              	reset_SetInterruptMode:
+ 141              	.LFB4:
+ 168:.\Generated_Source\PSoC4/reset.c **** 
+ 169:.\Generated_Source\PSoC4/reset.c **** 
+ 170:.\Generated_Source\PSoC4/reset.c **** /*******************************************************************************
+ 171:.\Generated_Source\PSoC4/reset.c **** * Function Name: reset_SetInterruptMode
+ 172:.\Generated_Source\PSoC4/reset.c **** ****************************************************************************//**
+ 173:.\Generated_Source\PSoC4/reset.c **** *
+ 174:.\Generated_Source\PSoC4/reset.c **** * \brief Configures the interrupt mode for each of the Pins component's
+ 175:.\Generated_Source\PSoC4/reset.c **** *  pins. Alternatively you may set the interrupt mode for all the pins
+ 176:.\Generated_Source\PSoC4/reset.c **** *  specified in the Pins component.
+ 177:.\Generated_Source\PSoC4/reset.c **** *
+ 178:.\Generated_Source\PSoC4/reset.c **** *  <b>Note</b> The interrupt is port-wide and therefore any enabled pin
+ 179:.\Generated_Source\PSoC4/reset.c **** *  interrupt may trigger it.
+ 180:.\Generated_Source\PSoC4/reset.c **** *
+ 181:.\Generated_Source\PSoC4/reset.c **** * \param position
+ 182:.\Generated_Source\PSoC4/reset.c **** *  The pin position as listed in the Pins component. You may OR these to be 
+ 183:.\Generated_Source\PSoC4/reset.c **** *  able to configure the interrupt mode of multiple pins within a Pins 
+ 184:.\Generated_Source\PSoC4/reset.c **** *  component. Or you may use reset_INTR_ALL to configure the
+ 185:.\Generated_Source\PSoC4/reset.c **** *  interrupt mode of all the pins in the Pins component.       
+ 186:.\Generated_Source\PSoC4/reset.c **** *  - reset_0_INTR       (First pin in the list)
+ 187:.\Generated_Source\PSoC4/reset.c **** *  - reset_1_INTR       (Second pin in the list)
+ 188:.\Generated_Source\PSoC4/reset.c **** *  - ...
+ 189:.\Generated_Source\PSoC4/reset.c **** *  - reset_INTR_ALL     (All pins in Pins component)
+ 190:.\Generated_Source\PSoC4/reset.c **** *
+ 191:.\Generated_Source\PSoC4/reset.c **** * \param mode
+ 192:.\Generated_Source\PSoC4/reset.c **** *  Interrupt mode for the selected pins. Valid options are documented in
+ 193:.\Generated_Source\PSoC4/reset.c **** *  \ref intrMode.
+ 194:.\Generated_Source\PSoC4/reset.c **** *
+ 195:.\Generated_Source\PSoC4/reset.c **** * \return 
+ 196:.\Generated_Source\PSoC4/reset.c **** *  None
+ 197:.\Generated_Source\PSoC4/reset.c **** *  
+ 198:.\Generated_Source\PSoC4/reset.c **** * \sideeffect
+ 199:.\Generated_Source\PSoC4/reset.c **** *  It is recommended that the interrupt be disabled before calling this 
+ 200:.\Generated_Source\PSoC4/reset.c **** *  function to avoid unintended interrupt requests. Note that the interrupt
+ 201:.\Generated_Source\PSoC4/reset.c **** *  type is port wide, and therefore will trigger for any enabled pin on the 
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccdoxt1v.s 			page 7
+
+
+ 202:.\Generated_Source\PSoC4/reset.c **** *  port.
+ 203:.\Generated_Source\PSoC4/reset.c **** *
+ 204:.\Generated_Source\PSoC4/reset.c **** * \funcusage
+ 205:.\Generated_Source\PSoC4/reset.c **** *  \snippet reset_SUT.c usage_reset_SetInterruptMode
+ 206:.\Generated_Source\PSoC4/reset.c **** *******************************************************************************/
+ 207:.\Generated_Source\PSoC4/reset.c **** void reset_SetInterruptMode(uint16 position, uint16 mode)
+ 208:.\Generated_Source\PSoC4/reset.c **** {
+ 142              		.loc 1 208 0
+ 143              		.cfi_startproc
+ 144              	.LVL6:
+ 209:.\Generated_Source\PSoC4/reset.c ****     uint32 intrCfg;
+ 210:.\Generated_Source\PSoC4/reset.c ****     
+ 211:.\Generated_Source\PSoC4/reset.c ****     intrCfg =  reset_INTCFG & (uint32)(~(uint32)position);
+ 145              		.loc 1 211 0
+ 146 0000 034A     		ldr	r2, .L14
+ 147 0002 1368     		ldr	r3, [r2]
+ 148 0004 8343     		bic	r3, r0
+ 149              	.LVL7:
+ 212:.\Generated_Source\PSoC4/reset.c ****     reset_INTCFG = intrCfg | ((uint32)position & (uint32)mode);
+ 150              		.loc 1 212 0
+ 151 0006 0140     		and	r1, r0
+ 152              	.LVL8:
+ 153 0008 1943     		orr	r1, r3
+ 154 000a 1160     		str	r1, [r2]
+ 213:.\Generated_Source\PSoC4/reset.c **** }
+ 155              		.loc 1 213 0
+ 156              		@ sp needed
+ 157 000c 7047     		bx	lr
+ 158              	.L15:
+ 159 000e C046     		.align	2
+ 160              	.L14:
+ 161 0010 0C040440 		.word	1074005004
+ 162              		.cfi_endproc
+ 163              	.LFE4:
+ 164              		.size	reset_SetInterruptMode, .-reset_SetInterruptMode
+ 165              		.section	.text.reset_ClearInterrupt,"ax",%progbits
+ 166              		.align	2
+ 167              		.global	reset_ClearInterrupt
+ 168              		.code	16
+ 169              		.thumb_func
+ 170              		.type	reset_ClearInterrupt, %function
+ 171              	reset_ClearInterrupt:
+ 172              	.LFB5:
+ 214:.\Generated_Source\PSoC4/reset.c **** 
+ 215:.\Generated_Source\PSoC4/reset.c **** 
+ 216:.\Generated_Source\PSoC4/reset.c **** /*******************************************************************************
+ 217:.\Generated_Source\PSoC4/reset.c **** * Function Name: reset_ClearInterrupt
+ 218:.\Generated_Source\PSoC4/reset.c **** ****************************************************************************//**
+ 219:.\Generated_Source\PSoC4/reset.c **** *
+ 220:.\Generated_Source\PSoC4/reset.c **** * \brief Clears any active interrupts attached with the component and returns 
+ 221:.\Generated_Source\PSoC4/reset.c **** *  the value of the interrupt status register allowing determination of which
+ 222:.\Generated_Source\PSoC4/reset.c **** *  pins generated an interrupt event.
+ 223:.\Generated_Source\PSoC4/reset.c **** *
+ 224:.\Generated_Source\PSoC4/reset.c **** * \return 
+ 225:.\Generated_Source\PSoC4/reset.c **** *  The right-shifted current value of the interrupt status register. Each pin 
+ 226:.\Generated_Source\PSoC4/reset.c **** *  has one bit set if it generated an interrupt event. For example, bit 0 is 
+ 227:.\Generated_Source\PSoC4/reset.c **** *  for pin 0 and bit 1 is for pin 1 of the Pins component.
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccdoxt1v.s 			page 8
+
+
+ 228:.\Generated_Source\PSoC4/reset.c **** *  
+ 229:.\Generated_Source\PSoC4/reset.c **** * \sideeffect
+ 230:.\Generated_Source\PSoC4/reset.c **** *  Clears all bits of the physical port's interrupt status register, not just
+ 231:.\Generated_Source\PSoC4/reset.c **** *  those associated with the Pins component.
+ 232:.\Generated_Source\PSoC4/reset.c **** *
+ 233:.\Generated_Source\PSoC4/reset.c **** * \funcusage
+ 234:.\Generated_Source\PSoC4/reset.c **** *  \snippet reset_SUT.c usage_reset_ClearInterrupt
+ 235:.\Generated_Source\PSoC4/reset.c **** *******************************************************************************/
+ 236:.\Generated_Source\PSoC4/reset.c **** uint8 reset_ClearInterrupt(void)
+ 237:.\Generated_Source\PSoC4/reset.c **** {
+ 173              		.loc 1 237 0
+ 174              		.cfi_startproc
+ 238:.\Generated_Source\PSoC4/reset.c **** 	uint8 maskedStatus = (uint8)(reset_INTSTAT & reset_MASK);
+ 175              		.loc 1 238 0
+ 176 0000 034A     		ldr	r2, .L17
+ 177 0002 1068     		ldr	r0, [r2]
+ 178 0004 0223     		mov	r3, #2
+ 179 0006 1840     		and	r0, r3
+ 180              	.LVL9:
+ 239:.\Generated_Source\PSoC4/reset.c **** 	reset_INTSTAT = maskedStatus;
+ 181              		.loc 1 239 0
+ 182 0008 1060     		str	r0, [r2]
+ 240:.\Generated_Source\PSoC4/reset.c ****     return maskedStatus >> reset_SHIFT;
+ 183              		.loc 1 240 0
+ 184 000a 4008     		lsr	r0, r0, #1
+ 185              	.LVL10:
+ 186 000c C0B2     		uxtb	r0, r0
+ 241:.\Generated_Source\PSoC4/reset.c **** }
+ 187              		.loc 1 241 0
+ 188              		@ sp needed
+ 189 000e 7047     		bx	lr
+ 190              	.L18:
+ 191              		.align	2
+ 192              	.L17:
+ 193 0010 10040440 		.word	1074005008
+ 194              		.cfi_endproc
+ 195              	.LFE5:
+ 196              		.size	reset_ClearInterrupt, .-reset_ClearInterrupt
+ 197              		.text
+ 198              	.Letext0:
+ 199              		.file 2 ".\\Generated_Source\\PSoC4\\cytypes.h"
+ 200              		.section	.debug_info,"",%progbits
+ 201              	.Ldebug_info0:
+ 202 0000 99010000 		.4byte	0x199
+ 203 0004 0400     		.2byte	0x4
+ 204 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 205 000a 04       		.byte	0x4
+ 206 000b 01       		.uleb128 0x1
+ 207 000c 4F010000 		.4byte	.LASF28
+ 208 0010 01       		.byte	0x1
+ 209 0011 F0010000 		.4byte	.LASF29
+ 210 0015 9F000000 		.4byte	.LASF30
+ 211 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 212 001d 00000000 		.4byte	0
+ 213 0021 00000000 		.4byte	.Ldebug_line0
+ 214 0025 02       		.uleb128 0x2
+ 215 0026 01       		.byte	0x1
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccdoxt1v.s 			page 9
+
+
+ 216 0027 06       		.byte	0x6
+ 217 0028 1A020000 		.4byte	.LASF0
+ 218 002c 02       		.uleb128 0x2
+ 219 002d 01       		.byte	0x1
+ 220 002e 08       		.byte	0x8
+ 221 002f 53000000 		.4byte	.LASF1
+ 222 0033 02       		.uleb128 0x2
+ 223 0034 02       		.byte	0x2
+ 224 0035 05       		.byte	0x5
+ 225 0036 E6010000 		.4byte	.LASF2
+ 226 003a 02       		.uleb128 0x2
+ 227 003b 02       		.byte	0x2
+ 228 003c 07       		.byte	0x7
+ 229 003d 8C000000 		.4byte	.LASF3
+ 230 0041 02       		.uleb128 0x2
+ 231 0042 04       		.byte	0x4
+ 232 0043 05       		.byte	0x5
+ 233 0044 11020000 		.4byte	.LASF4
+ 234 0048 02       		.uleb128 0x2
+ 235 0049 04       		.byte	0x4
+ 236 004a 07       		.byte	0x7
+ 237 004b 7A000000 		.4byte	.LASF5
+ 238 004f 02       		.uleb128 0x2
+ 239 0050 08       		.byte	0x8
+ 240 0051 05       		.byte	0x5
+ 241 0052 2F010000 		.4byte	.LASF6
+ 242 0056 02       		.uleb128 0x2
+ 243 0057 08       		.byte	0x8
+ 244 0058 07       		.byte	0x7
+ 245 0059 F2000000 		.4byte	.LASF7
+ 246 005d 03       		.uleb128 0x3
+ 247 005e 04       		.byte	0x4
+ 248 005f 05       		.byte	0x5
+ 249 0060 696E7400 		.ascii	"int\000"
+ 250 0064 02       		.uleb128 0x2
+ 251 0065 04       		.byte	0x4
+ 252 0066 07       		.byte	0x7
+ 253 0067 E5000000 		.4byte	.LASF8
+ 254 006b 04       		.uleb128 0x4
+ 255 006c 4D000000 		.4byte	.LASF9
+ 256 0070 02       		.byte	0x2
+ 257 0071 9801     		.2byte	0x198
+ 258 0073 2C000000 		.4byte	0x2c
+ 259 0077 04       		.uleb128 0x4
+ 260 0078 C6000000 		.4byte	.LASF10
+ 261 007c 02       		.byte	0x2
+ 262 007d 9901     		.2byte	0x199
+ 263 007f 3A000000 		.4byte	0x3a
+ 264 0083 04       		.uleb128 0x4
+ 265 0084 D6000000 		.4byte	.LASF11
+ 266 0088 02       		.byte	0x2
+ 267 0089 9A01     		.2byte	0x19a
+ 268 008b 48000000 		.4byte	0x48
+ 269 008f 02       		.uleb128 0x2
+ 270 0090 04       		.byte	0x4
+ 271 0091 04       		.byte	0x4
+ 272 0092 47000000 		.4byte	.LASF12
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccdoxt1v.s 			page 10
+
+
+ 273 0096 02       		.uleb128 0x2
+ 274 0097 08       		.byte	0x8
+ 275 0098 04       		.byte	0x4
+ 276 0099 17000000 		.4byte	.LASF13
+ 277 009d 02       		.uleb128 0x2
+ 278 009e 01       		.byte	0x1
+ 279 009f 08       		.byte	0x8
+ 280 00a0 4A010000 		.4byte	.LASF14
+ 281 00a4 04       		.uleb128 0x4
+ 282 00a5 00000000 		.4byte	.LASF15
+ 283 00a9 02       		.byte	0x2
+ 284 00aa 4402     		.2byte	0x244
+ 285 00ac B0000000 		.4byte	0xb0
+ 286 00b0 05       		.uleb128 0x5
+ 287 00b1 83000000 		.4byte	0x83
+ 288 00b5 06       		.uleb128 0x6
+ 289 00b6 67000000 		.4byte	.LASF16
+ 290 00ba 01       		.byte	0x1
+ 291 00bb 48       		.byte	0x48
+ 292 00bc 00000000 		.4byte	.LFB0
+ 293 00c0 14000000 		.4byte	.LFE0-.LFB0
+ 294 00c4 01       		.uleb128 0x1
+ 295 00c5 9C       		.byte	0x9c
+ 296 00c6 DA000000 		.4byte	0xda
+ 297 00ca 07       		.uleb128 0x7
+ 298 00cb 2A010000 		.4byte	.LASF18
+ 299 00cf 01       		.byte	0x1
+ 300 00d0 48       		.byte	0x48
+ 301 00d1 6B000000 		.4byte	0x6b
+ 302 00d5 00000000 		.4byte	.LLST0
+ 303 00d9 00       		.byte	0
+ 304 00da 06       		.uleb128 0x6
+ 305 00db 1E010000 		.4byte	.LASF17
+ 306 00df 01       		.byte	0x1
+ 307 00e0 6F       		.byte	0x6f
+ 308 00e1 00000000 		.4byte	.LFB1
+ 309 00e5 18000000 		.4byte	.LFE1-.LFB1
+ 310 00e9 01       		.uleb128 0x1
+ 311 00ea 9C       		.byte	0x9c
+ 312 00eb 0E010000 		.4byte	0x10e
+ 313 00ef 07       		.uleb128 0x7
+ 314 00f0 06000000 		.4byte	.LASF19
+ 315 00f4 01       		.byte	0x1
+ 316 00f5 6F       		.byte	0x6f
+ 317 00f6 6B000000 		.4byte	0x6b
+ 318 00fa 21000000 		.4byte	.LLST1
+ 319 00fe 08       		.uleb128 0x8
+ 320 00ff 61000000 		.4byte	.LASF24
+ 321 0103 01       		.byte	0x1
+ 322 0104 71       		.byte	0x71
+ 323 0105 6B000000 		.4byte	0x6b
+ 324 0109 42000000 		.4byte	.LLST2
+ 325 010d 00       		.byte	0
+ 326 010e 09       		.uleb128 0x9
+ 327 010f 0C000000 		.4byte	.LASF20
+ 328 0113 01       		.byte	0x1
+ 329 0114 88       		.byte	0x88
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccdoxt1v.s 			page 11
+
+
+ 330 0115 6B000000 		.4byte	0x6b
+ 331 0119 00000000 		.4byte	.LFB2
+ 332 011d 10000000 		.4byte	.LFE2-.LFB2
+ 333 0121 01       		.uleb128 0x1
+ 334 0122 9C       		.byte	0x9c
+ 335 0123 09       		.uleb128 0x9
+ 336 0124 1E000000 		.4byte	.LASF21
+ 337 0128 01       		.byte	0x1
+ 338 0129 A4       		.byte	0xa4
+ 339 012a 6B000000 		.4byte	0x6b
+ 340 012e 00000000 		.4byte	.LFB3
+ 341 0132 10000000 		.4byte	.LFE3-.LFB3
+ 342 0136 01       		.uleb128 0x1
+ 343 0137 9C       		.byte	0x9c
+ 344 0138 06       		.uleb128 0x6
+ 345 0139 30000000 		.4byte	.LASF22
+ 346 013d 01       		.byte	0x1
+ 347 013e CF       		.byte	0xcf
+ 348 013f 00000000 		.4byte	.LFB4
+ 349 0143 14000000 		.4byte	.LFE4-.LFB4
+ 350 0147 01       		.uleb128 0x1
+ 351 0148 9C       		.byte	0x9c
+ 352 0149 77010000 		.4byte	0x177
+ 353 014d 0A       		.uleb128 0xa
+ 354 014e CD000000 		.4byte	.LASF23
+ 355 0152 01       		.byte	0x1
+ 356 0153 CF       		.byte	0xcf
+ 357 0154 77000000 		.4byte	0x77
+ 358 0158 01       		.uleb128 0x1
+ 359 0159 50       		.byte	0x50
+ 360 015a 07       		.uleb128 0x7
+ 361 015b 2A010000 		.4byte	.LASF18
+ 362 015f 01       		.byte	0x1
+ 363 0160 CF       		.byte	0xcf
+ 364 0161 77000000 		.4byte	0x77
+ 365 0165 60000000 		.4byte	.LLST3
+ 366 0169 0B       		.uleb128 0xb
+ 367 016a DD000000 		.4byte	.LASF25
+ 368 016e 01       		.byte	0x1
+ 369 016f D1       		.byte	0xd1
+ 370 0170 83000000 		.4byte	0x83
+ 371 0174 01       		.uleb128 0x1
+ 372 0175 53       		.byte	0x53
+ 373 0176 00       		.byte	0
+ 374 0177 0C       		.uleb128 0xc
+ 375 0178 09010000 		.4byte	.LASF26
+ 376 017c 01       		.byte	0x1
+ 377 017d EC       		.byte	0xec
+ 378 017e 6B000000 		.4byte	0x6b
+ 379 0182 00000000 		.4byte	.LFB5
+ 380 0186 14000000 		.4byte	.LFE5-.LFB5
+ 381 018a 01       		.uleb128 0x1
+ 382 018b 9C       		.byte	0x9c
+ 383 018c 08       		.uleb128 0x8
+ 384 018d 3D010000 		.4byte	.LASF27
+ 385 0191 01       		.byte	0x1
+ 386 0192 EE       		.byte	0xee
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccdoxt1v.s 			page 12
+
+
+ 387 0193 6B000000 		.4byte	0x6b
+ 388 0197 81000000 		.4byte	.LLST4
+ 389 019b 00       		.byte	0
+ 390 019c 00       		.byte	0
+ 391              		.section	.debug_abbrev,"",%progbits
+ 392              	.Ldebug_abbrev0:
+ 393 0000 01       		.uleb128 0x1
+ 394 0001 11       		.uleb128 0x11
+ 395 0002 01       		.byte	0x1
+ 396 0003 25       		.uleb128 0x25
+ 397 0004 0E       		.uleb128 0xe
+ 398 0005 13       		.uleb128 0x13
+ 399 0006 0B       		.uleb128 0xb
+ 400 0007 03       		.uleb128 0x3
+ 401 0008 0E       		.uleb128 0xe
+ 402 0009 1B       		.uleb128 0x1b
+ 403 000a 0E       		.uleb128 0xe
+ 404 000b 55       		.uleb128 0x55
+ 405 000c 17       		.uleb128 0x17
+ 406 000d 11       		.uleb128 0x11
+ 407 000e 01       		.uleb128 0x1
+ 408 000f 10       		.uleb128 0x10
+ 409 0010 17       		.uleb128 0x17
+ 410 0011 00       		.byte	0
+ 411 0012 00       		.byte	0
+ 412 0013 02       		.uleb128 0x2
+ 413 0014 24       		.uleb128 0x24
+ 414 0015 00       		.byte	0
+ 415 0016 0B       		.uleb128 0xb
+ 416 0017 0B       		.uleb128 0xb
+ 417 0018 3E       		.uleb128 0x3e
+ 418 0019 0B       		.uleb128 0xb
+ 419 001a 03       		.uleb128 0x3
+ 420 001b 0E       		.uleb128 0xe
+ 421 001c 00       		.byte	0
+ 422 001d 00       		.byte	0
+ 423 001e 03       		.uleb128 0x3
+ 424 001f 24       		.uleb128 0x24
+ 425 0020 00       		.byte	0
+ 426 0021 0B       		.uleb128 0xb
+ 427 0022 0B       		.uleb128 0xb
+ 428 0023 3E       		.uleb128 0x3e
+ 429 0024 0B       		.uleb128 0xb
+ 430 0025 03       		.uleb128 0x3
+ 431 0026 08       		.uleb128 0x8
+ 432 0027 00       		.byte	0
+ 433 0028 00       		.byte	0
+ 434 0029 04       		.uleb128 0x4
+ 435 002a 16       		.uleb128 0x16
+ 436 002b 00       		.byte	0
+ 437 002c 03       		.uleb128 0x3
+ 438 002d 0E       		.uleb128 0xe
+ 439 002e 3A       		.uleb128 0x3a
+ 440 002f 0B       		.uleb128 0xb
+ 441 0030 3B       		.uleb128 0x3b
+ 442 0031 05       		.uleb128 0x5
+ 443 0032 49       		.uleb128 0x49
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccdoxt1v.s 			page 13
+
+
+ 444 0033 13       		.uleb128 0x13
+ 445 0034 00       		.byte	0
+ 446 0035 00       		.byte	0
+ 447 0036 05       		.uleb128 0x5
+ 448 0037 35       		.uleb128 0x35
+ 449 0038 00       		.byte	0
+ 450 0039 49       		.uleb128 0x49
+ 451 003a 13       		.uleb128 0x13
+ 452 003b 00       		.byte	0
+ 453 003c 00       		.byte	0
+ 454 003d 06       		.uleb128 0x6
+ 455 003e 2E       		.uleb128 0x2e
+ 456 003f 01       		.byte	0x1
+ 457 0040 3F       		.uleb128 0x3f
+ 458 0041 19       		.uleb128 0x19
+ 459 0042 03       		.uleb128 0x3
+ 460 0043 0E       		.uleb128 0xe
+ 461 0044 3A       		.uleb128 0x3a
+ 462 0045 0B       		.uleb128 0xb
+ 463 0046 3B       		.uleb128 0x3b
+ 464 0047 0B       		.uleb128 0xb
+ 465 0048 27       		.uleb128 0x27
+ 466 0049 19       		.uleb128 0x19
+ 467 004a 11       		.uleb128 0x11
+ 468 004b 01       		.uleb128 0x1
+ 469 004c 12       		.uleb128 0x12
+ 470 004d 06       		.uleb128 0x6
+ 471 004e 40       		.uleb128 0x40
+ 472 004f 18       		.uleb128 0x18
+ 473 0050 9742     		.uleb128 0x2117
+ 474 0052 19       		.uleb128 0x19
+ 475 0053 01       		.uleb128 0x1
+ 476 0054 13       		.uleb128 0x13
+ 477 0055 00       		.byte	0
+ 478 0056 00       		.byte	0
+ 479 0057 07       		.uleb128 0x7
+ 480 0058 05       		.uleb128 0x5
+ 481 0059 00       		.byte	0
+ 482 005a 03       		.uleb128 0x3
+ 483 005b 0E       		.uleb128 0xe
+ 484 005c 3A       		.uleb128 0x3a
+ 485 005d 0B       		.uleb128 0xb
+ 486 005e 3B       		.uleb128 0x3b
+ 487 005f 0B       		.uleb128 0xb
+ 488 0060 49       		.uleb128 0x49
+ 489 0061 13       		.uleb128 0x13
+ 490 0062 02       		.uleb128 0x2
+ 491 0063 17       		.uleb128 0x17
+ 492 0064 00       		.byte	0
+ 493 0065 00       		.byte	0
+ 494 0066 08       		.uleb128 0x8
+ 495 0067 34       		.uleb128 0x34
+ 496 0068 00       		.byte	0
+ 497 0069 03       		.uleb128 0x3
+ 498 006a 0E       		.uleb128 0xe
+ 499 006b 3A       		.uleb128 0x3a
+ 500 006c 0B       		.uleb128 0xb
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccdoxt1v.s 			page 14
+
+
+ 501 006d 3B       		.uleb128 0x3b
+ 502 006e 0B       		.uleb128 0xb
+ 503 006f 49       		.uleb128 0x49
+ 504 0070 13       		.uleb128 0x13
+ 505 0071 02       		.uleb128 0x2
+ 506 0072 17       		.uleb128 0x17
+ 507 0073 00       		.byte	0
+ 508 0074 00       		.byte	0
+ 509 0075 09       		.uleb128 0x9
+ 510 0076 2E       		.uleb128 0x2e
+ 511 0077 00       		.byte	0
+ 512 0078 3F       		.uleb128 0x3f
+ 513 0079 19       		.uleb128 0x19
+ 514 007a 03       		.uleb128 0x3
+ 515 007b 0E       		.uleb128 0xe
+ 516 007c 3A       		.uleb128 0x3a
+ 517 007d 0B       		.uleb128 0xb
+ 518 007e 3B       		.uleb128 0x3b
+ 519 007f 0B       		.uleb128 0xb
+ 520 0080 27       		.uleb128 0x27
+ 521 0081 19       		.uleb128 0x19
+ 522 0082 49       		.uleb128 0x49
+ 523 0083 13       		.uleb128 0x13
+ 524 0084 11       		.uleb128 0x11
+ 525 0085 01       		.uleb128 0x1
+ 526 0086 12       		.uleb128 0x12
+ 527 0087 06       		.uleb128 0x6
+ 528 0088 40       		.uleb128 0x40
+ 529 0089 18       		.uleb128 0x18
+ 530 008a 9742     		.uleb128 0x2117
+ 531 008c 19       		.uleb128 0x19
+ 532 008d 00       		.byte	0
+ 533 008e 00       		.byte	0
+ 534 008f 0A       		.uleb128 0xa
+ 535 0090 05       		.uleb128 0x5
+ 536 0091 00       		.byte	0
+ 537 0092 03       		.uleb128 0x3
+ 538 0093 0E       		.uleb128 0xe
+ 539 0094 3A       		.uleb128 0x3a
+ 540 0095 0B       		.uleb128 0xb
+ 541 0096 3B       		.uleb128 0x3b
+ 542 0097 0B       		.uleb128 0xb
+ 543 0098 49       		.uleb128 0x49
+ 544 0099 13       		.uleb128 0x13
+ 545 009a 02       		.uleb128 0x2
+ 546 009b 18       		.uleb128 0x18
+ 547 009c 00       		.byte	0
+ 548 009d 00       		.byte	0
+ 549 009e 0B       		.uleb128 0xb
+ 550 009f 34       		.uleb128 0x34
+ 551 00a0 00       		.byte	0
+ 552 00a1 03       		.uleb128 0x3
+ 553 00a2 0E       		.uleb128 0xe
+ 554 00a3 3A       		.uleb128 0x3a
+ 555 00a4 0B       		.uleb128 0xb
+ 556 00a5 3B       		.uleb128 0x3b
+ 557 00a6 0B       		.uleb128 0xb
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccdoxt1v.s 			page 15
+
+
+ 558 00a7 49       		.uleb128 0x49
+ 559 00a8 13       		.uleb128 0x13
+ 560 00a9 02       		.uleb128 0x2
+ 561 00aa 18       		.uleb128 0x18
+ 562 00ab 00       		.byte	0
+ 563 00ac 00       		.byte	0
+ 564 00ad 0C       		.uleb128 0xc
+ 565 00ae 2E       		.uleb128 0x2e
+ 566 00af 01       		.byte	0x1
+ 567 00b0 3F       		.uleb128 0x3f
+ 568 00b1 19       		.uleb128 0x19
+ 569 00b2 03       		.uleb128 0x3
+ 570 00b3 0E       		.uleb128 0xe
+ 571 00b4 3A       		.uleb128 0x3a
+ 572 00b5 0B       		.uleb128 0xb
+ 573 00b6 3B       		.uleb128 0x3b
+ 574 00b7 0B       		.uleb128 0xb
+ 575 00b8 27       		.uleb128 0x27
+ 576 00b9 19       		.uleb128 0x19
+ 577 00ba 49       		.uleb128 0x49
+ 578 00bb 13       		.uleb128 0x13
+ 579 00bc 11       		.uleb128 0x11
+ 580 00bd 01       		.uleb128 0x1
+ 581 00be 12       		.uleb128 0x12
+ 582 00bf 06       		.uleb128 0x6
+ 583 00c0 40       		.uleb128 0x40
+ 584 00c1 18       		.uleb128 0x18
+ 585 00c2 9742     		.uleb128 0x2117
+ 586 00c4 19       		.uleb128 0x19
+ 587 00c5 00       		.byte	0
+ 588 00c6 00       		.byte	0
+ 589 00c7 00       		.byte	0
+ 590              		.section	.debug_loc,"",%progbits
+ 591              	.Ldebug_loc0:
+ 592              	.LLST0:
+ 593 0000 00000000 		.4byte	.LVL0
+ 594 0004 0A000000 		.4byte	.LVL1
+ 595 0008 0100     		.2byte	0x1
+ 596 000a 50       		.byte	0x50
+ 597 000b 0A000000 		.4byte	.LVL1
+ 598 000f 14000000 		.4byte	.LFE0
+ 599 0013 0400     		.2byte	0x4
+ 600 0015 F3       		.byte	0xf3
+ 601 0016 01       		.uleb128 0x1
+ 602 0017 50       		.byte	0x50
+ 603 0018 9F       		.byte	0x9f
+ 604 0019 00000000 		.4byte	0
+ 605 001d 00000000 		.4byte	0
+ 606              	.LLST1:
+ 607 0021 00000000 		.4byte	.LVL2
+ 608 0025 0A000000 		.4byte	.LVL4
+ 609 0029 0100     		.2byte	0x1
+ 610 002b 50       		.byte	0x50
+ 611 002c 0A000000 		.4byte	.LVL4
+ 612 0030 18000000 		.4byte	.LFE1
+ 613 0034 0400     		.2byte	0x4
+ 614 0036 F3       		.byte	0xf3
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccdoxt1v.s 			page 16
+
+
+ 615 0037 01       		.uleb128 0x1
+ 616 0038 50       		.byte	0x50
+ 617 0039 9F       		.byte	0x9f
+ 618 003a 00000000 		.4byte	0
+ 619 003e 00000000 		.4byte	0
+ 620              	.LLST2:
+ 621 0042 08000000 		.4byte	.LVL3
+ 622 0046 10000000 		.4byte	.LVL5
+ 623 004a 0100     		.2byte	0x1
+ 624 004c 52       		.byte	0x52
+ 625 004d 10000000 		.4byte	.LVL5
+ 626 0051 18000000 		.4byte	.LFE1
+ 627 0055 0100     		.2byte	0x1
+ 628 0057 50       		.byte	0x50
+ 629 0058 00000000 		.4byte	0
+ 630 005c 00000000 		.4byte	0
+ 631              	.LLST3:
+ 632 0060 00000000 		.4byte	.LVL6
+ 633 0064 08000000 		.4byte	.LVL8
+ 634 0068 0100     		.2byte	0x1
+ 635 006a 51       		.byte	0x51
+ 636 006b 08000000 		.4byte	.LVL8
+ 637 006f 14000000 		.4byte	.LFE4
+ 638 0073 0400     		.2byte	0x4
+ 639 0075 F3       		.byte	0xf3
+ 640 0076 01       		.uleb128 0x1
+ 641 0077 51       		.byte	0x51
+ 642 0078 9F       		.byte	0x9f
+ 643 0079 00000000 		.4byte	0
+ 644 007d 00000000 		.4byte	0
+ 645              	.LLST4:
+ 646 0081 08000000 		.4byte	.LVL9
+ 647 0085 0C000000 		.4byte	.LVL10
+ 648 0089 0100     		.2byte	0x1
+ 649 008b 50       		.byte	0x50
+ 650 008c 0C000000 		.4byte	.LVL10
+ 651 0090 14000000 		.4byte	.LFE5
+ 652 0094 0400     		.2byte	0x4
+ 653 0096 72       		.byte	0x72
+ 654 0097 00       		.sleb128 0
+ 655 0098 06       		.byte	0x6
+ 656 0099 9F       		.byte	0x9f
+ 657 009a 00000000 		.4byte	0
+ 658 009e 00000000 		.4byte	0
+ 659              		.section	.debug_aranges,"",%progbits
+ 660 0000 44000000 		.4byte	0x44
+ 661 0004 0200     		.2byte	0x2
+ 662 0006 00000000 		.4byte	.Ldebug_info0
+ 663 000a 04       		.byte	0x4
+ 664 000b 00       		.byte	0
+ 665 000c 0000     		.2byte	0
+ 666 000e 0000     		.2byte	0
+ 667 0010 00000000 		.4byte	.LFB0
+ 668 0014 14000000 		.4byte	.LFE0-.LFB0
+ 669 0018 00000000 		.4byte	.LFB1
+ 670 001c 18000000 		.4byte	.LFE1-.LFB1
+ 671 0020 00000000 		.4byte	.LFB2
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccdoxt1v.s 			page 17
+
+
+ 672 0024 10000000 		.4byte	.LFE2-.LFB2
+ 673 0028 00000000 		.4byte	.LFB3
+ 674 002c 10000000 		.4byte	.LFE3-.LFB3
+ 675 0030 00000000 		.4byte	.LFB4
+ 676 0034 14000000 		.4byte	.LFE4-.LFB4
+ 677 0038 00000000 		.4byte	.LFB5
+ 678 003c 14000000 		.4byte	.LFE5-.LFB5
+ 679 0040 00000000 		.4byte	0
+ 680 0044 00000000 		.4byte	0
+ 681              		.section	.debug_ranges,"",%progbits
+ 682              	.Ldebug_ranges0:
+ 683 0000 00000000 		.4byte	.LFB0
+ 684 0004 14000000 		.4byte	.LFE0
+ 685 0008 00000000 		.4byte	.LFB1
+ 686 000c 18000000 		.4byte	.LFE1
+ 687 0010 00000000 		.4byte	.LFB2
+ 688 0014 10000000 		.4byte	.LFE2
+ 689 0018 00000000 		.4byte	.LFB3
+ 690 001c 10000000 		.4byte	.LFE3
+ 691 0020 00000000 		.4byte	.LFB4
+ 692 0024 14000000 		.4byte	.LFE4
+ 693 0028 00000000 		.4byte	.LFB5
+ 694 002c 14000000 		.4byte	.LFE5
+ 695 0030 00000000 		.4byte	0
+ 696 0034 00000000 		.4byte	0
+ 697              		.section	.debug_line,"",%progbits
+ 698              	.Ldebug_line0:
+ 699 0000 BB000000 		.section	.debug_str,"MS",%progbits,1
+ 699      02004400 
+ 699      00000201 
+ 699      FB0E0D00 
+ 699      01010101 
+ 700              	.LASF15:
+ 701 0000 72656733 		.ascii	"reg32\000"
+ 701      3200
+ 702              	.LASF19:
+ 703 0006 76616C75 		.ascii	"value\000"
+ 703      6500
+ 704              	.LASF20:
+ 705 000c 72657365 		.ascii	"reset_Read\000"
+ 705      745F5265 
+ 705      616400
+ 706              	.LASF13:
+ 707 0017 646F7562 		.ascii	"double\000"
+ 707      6C6500
+ 708              	.LASF21:
+ 709 001e 72657365 		.ascii	"reset_ReadDataReg\000"
+ 709      745F5265 
+ 709      61644461 
+ 709      74615265 
+ 709      6700
+ 710              	.LASF22:
+ 711 0030 72657365 		.ascii	"reset_SetInterruptMode\000"
+ 711      745F5365 
+ 711      74496E74 
+ 711      65727275 
+ 711      70744D6F 
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccdoxt1v.s 			page 18
+
+
+ 712              	.LASF12:
+ 713 0047 666C6F61 		.ascii	"float\000"
+ 713      7400
+ 714              	.LASF9:
+ 715 004d 75696E74 		.ascii	"uint8\000"
+ 715      3800
+ 716              	.LASF1:
+ 717 0053 756E7369 		.ascii	"unsigned char\000"
+ 717      676E6564 
+ 717      20636861 
+ 717      7200
+ 718              	.LASF24:
+ 719 0061 64725661 		.ascii	"drVal\000"
+ 719      6C00
+ 720              	.LASF16:
+ 721 0067 72657365 		.ascii	"reset_SetDriveMode\000"
+ 721      745F5365 
+ 721      74447269 
+ 721      76654D6F 
+ 721      646500
+ 722              	.LASF5:
+ 723 007a 6C6F6E67 		.ascii	"long unsigned int\000"
+ 723      20756E73 
+ 723      69676E65 
+ 723      6420696E 
+ 723      7400
+ 724              	.LASF3:
+ 725 008c 73686F72 		.ascii	"short unsigned int\000"
+ 725      7420756E 
+ 725      7369676E 
+ 725      65642069 
+ 725      6E7400
+ 726              	.LASF30:
+ 727 009f 443A5C63 		.ascii	"D:\\code\\cypress\\controllers\\dcsd.cydsn\000"
+ 727      6F64655C 
+ 727      63797072 
+ 727      6573735C 
+ 727      636F6E74 
+ 728              	.LASF10:
+ 729 00c6 75696E74 		.ascii	"uint16\000"
+ 729      313600
+ 730              	.LASF23:
+ 731 00cd 706F7369 		.ascii	"position\000"
+ 731      74696F6E 
+ 731      00
+ 732              	.LASF11:
+ 733 00d6 75696E74 		.ascii	"uint32\000"
+ 733      333200
+ 734              	.LASF25:
+ 735 00dd 696E7472 		.ascii	"intrCfg\000"
+ 735      43666700 
+ 736              	.LASF8:
+ 737 00e5 756E7369 		.ascii	"unsigned int\000"
+ 737      676E6564 
+ 737      20696E74 
+ 737      00
+ 738              	.LASF7:
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccdoxt1v.s 			page 19
+
+
+ 739 00f2 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 739      206C6F6E 
+ 739      6720756E 
+ 739      7369676E 
+ 739      65642069 
+ 740              	.LASF26:
+ 741 0109 72657365 		.ascii	"reset_ClearInterrupt\000"
+ 741      745F436C 
+ 741      65617249 
+ 741      6E746572 
+ 741      72757074 
+ 742              	.LASF17:
+ 743 011e 72657365 		.ascii	"reset_Write\000"
+ 743      745F5772 
+ 743      69746500 
+ 744              	.LASF18:
+ 745 012a 6D6F6465 		.ascii	"mode\000"
+ 745      00
+ 746              	.LASF6:
+ 747 012f 6C6F6E67 		.ascii	"long long int\000"
+ 747      206C6F6E 
+ 747      6720696E 
+ 747      7400
+ 748              	.LASF27:
+ 749 013d 6D61736B 		.ascii	"maskedStatus\000"
+ 749      65645374 
+ 749      61747573 
+ 749      00
+ 750              	.LASF14:
+ 751 014a 63686172 		.ascii	"char\000"
+ 751      00
+ 752              	.LASF28:
+ 753 014f 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 753      4320342E 
+ 753      392E3320 
+ 753      32303135 
+ 753      30333033 
+ 754 0182 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 754      20726576 
+ 754      6973696F 
+ 754      6E203232 
+ 754      31323230 
+ 755 01b5 67202D73 		.ascii	"g -std=c99 -ffunction-sections -ffat-lto-objects\000"
+ 755      74643D63 
+ 755      3939202D 
+ 755      6666756E 
+ 755      6374696F 
+ 756              	.LASF2:
+ 757 01e6 73686F72 		.ascii	"short int\000"
+ 757      7420696E 
+ 757      7400
+ 758              	.LASF29:
+ 759 01f0 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\reset.c\000"
+ 759      6E657261 
+ 759      7465645F 
+ 759      536F7572 
+ 759      63655C50 
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccdoxt1v.s 			page 20
+
+
+ 760              	.LASF4:
+ 761 0211 6C6F6E67 		.ascii	"long int\000"
+ 761      20696E74 
+ 761      00
+ 762              	.LASF0:
+ 763 021a 7369676E 		.ascii	"signed char\000"
+ 763      65642063 
+ 763      68617200 
+ 764              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

@@ -1,0 +1,655 @@
+##################################################################### 
+                    Table of Contents
+===================================================================== 
+	1::Clock Frequency Summary
+	2::Clock Relationship Summary
+	3::Datasheet Report
+		3.1::Setup to Clock
+		3.2::Clock to Out
+		3.3::Pad to Pad
+	4::Path Details for Clock Frequency Summary
+		4.1::Critical Path Report for CyHFCLK
+		4.2::Critical Path Report for qdecClk
+	5::Path Details for Clock Relationship Summary
+		5.1::Critical Path Report for (CyHFCLK:R vs. qdecClk:R)
+		5.2::Critical Path Report for (qdecClk:R vs. qdecClk:R)
+===================================================================== 
+                    End of Table of Contents
+##################################################################### 
+
+##################################################################### 
+                    1::Clock Frequency Summary
+===================================================================== 
+Number of clocks: 16
+Clock: ADC_intClock         | N/A                    | Target: 4.80 MHz    | 
+Clock: ADC_intClock(FFB)    | N/A                    | Target: 4.80 MHz    | 
+Clock: ClockBlock/ff_div_3  | N/A                    | Target: 100.00 MHz  | 
+Clock: CyHFCLK              | Frequency: 205.03 MHz  | Target: 48.00 MHz   | 
+Clock: CyILO                | N/A                    | Target: 0.03 MHz    | 
+Clock: CyIMO                | N/A                    | Target: 48.00 MHz   | 
+Clock: CyLFCLK              | N/A                    | Target: 0.03 MHz    | 
+Clock: CyRouted1            | N/A                    | Target: 48.00 MHz   | 
+Clock: CySYSCLK             | N/A                    | Target: 48.00 MHz   | 
+Clock: Cyclk12              | N/A                    | Target: 12.00 MHz   | 
+Clock: Cyclk12(FFB)         | N/A                    | Target: 12.00 MHz   | 
+Clock: UART_SCBCLK          | N/A                    | Target: 1.37 MHz    | 
+Clock: UART_SCBCLK(FFB)     | N/A                    | Target: 1.37 MHz    | 
+Clock: pwmClk               | N/A                    | Target: 48.00 MHz   | 
+Clock: pwmClk(FFB)          | N/A                    | Target: 48.00 MHz   | 
+Clock: qdecClk              | Frequency: 135.83 MHz  | Target: 0.87 MHz    | 
+
+ =====================================================================
+                    End of Clock Frequency Summary
+ #####################################################################
+
+
+ #####################################################################
+                    2::Clock Relationship Summary
+ =====================================================================
+
+Launch Clock  Capture Clock  Constraint(R-R)  Slack(R-R)  Constraint(R-F)  Slack(R-F)  Constraint(F-F)  Slack(F-F)  Constraint(F-R)  Slack(F-R)  
+------------  -------------  ---------------  ----------  ---------------  ----------  ---------------  ----------  ---------------  ----------  
+CyHFCLK       qdecClk        20833.3          15956       N/A              N/A         N/A              N/A         N/A              N/A         
+qdecClk       qdecClk        1.14583e+006     1138471     N/A              N/A         N/A              N/A         N/A              N/A         
+
+ =====================================================================
+                    End of Clock Relationship Summary
+ #####################################################################
+
+
+ #####################################################################
+                    3::Datasheet Report
+
+All values are in Picoseconds
+ =====================================================================
+
+3.1::Setup to Clock                     
+-------------------                     
+
+Port Name  Setup to Clk  Clock Name:Phase  
+---------  ------------  ----------------  
+A(0)_PAD   21612         qdecClk:R         
+B(0)_PAD   22336         qdecClk:R         
+
+
+                       3.2::Clock to Out
+                       -----------------
+
+Port Name      Clock to Out  Clock Name:Phase  
+-------------  ------------  ----------------  
+enable(0)_PAD  21400         pwmClk(FFB):R     
+
+
+                         3.3::Pad to Pad
+                         ---------------
+
+Port Name (Source)  Port Name (Destination)  Delay  
+------------------  -----------------------  -----  
+
+===================================================================== 
+                    End of Datasheet Report
+##################################################################### 
+##################################################################### 
+                    4::Path Details for Clock Frequency Summary
+===================================================================== 
+4.1::Critical Path Report for CyHFCLK
+*************************************
+Clock: CyHFCLK
+Frequency: 205.03 MHz | Target: 48.00 MHz
+
+++++ Path 1 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin     : \RESET_FAULT:Sync:ctrl_reg\/control_0
+Path End       : Net_7566/ar_0
+Capture Clock  : Net_7566/clock_0
+Path slack     : 15956p
+
+Capture Clock Arrival Time                          0
++ Clock path delay                                  0
++ Cycle adjust (CyHFCLK:R#55 vs. qdecClk:R#2)   20833
+- Recovery time                                     0
+---------------------------------------------   ----- 
+End-of-path required time (ps)                  20833
+
+Launch Clock Arrival Time                      0
++ Clock path delay                         0
++ Data path delay                       4877
+-------------------------------------   ---- 
+End-of-path arrival time (ps)           4877
+ 
+Launch Clock Path
+pin name                                              model name          delay     AT  edge  Fanout
+----------------------------------------------------  ------------------  -----  -----  ----  ------
+ClockBlock/hfclk                                      m0s8clockblockcell      0      0  RISE       1
+\RESET_FAULT:Sync:ctrl_reg\/busclk                    controlcell1            0      0  RISE       1
+
+Data path
+pin name                               model name    delay     AT  slack  edge  Fanout
+-------------------------------------  ------------  -----  -----  -----  ----  ------
+\RESET_FAULT:Sync:ctrl_reg\/control_0  controlcell1   2580   2580  15956  RISE       1
+Net_7566/ar_0                          macrocell6     2297   4877  15956  RISE       1
+
+Capture Clock Path
+pin name                                                  model name             delay     AT  edge  Fanout
+--------------------------------------------------------  ---------------------  -----  -----  ----  ------
+ClockBlock/udb_div_0                                      m0s8clockblockcell         0      0  RISE       1
+ClockGenBlock/gen_clk_in_0                                m0s8clockgenblockcell      0      0  RISE       1
+ClockGenBlock/gen_clk_out_0                               m0s8clockgenblockcell      0      0  RISE       1
+Net_7566/clock_0                                          macrocell6                 0      0  RISE       1
+
+
+===================================================================== 
+4.2::Critical Path Report for qdecClk
+*************************************
+Clock: qdecClk
+Frequency: 135.83 MHz | Target: 0.87 MHz
+
+++++ Path 1 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin     : Net_1008/q
+Path End       : pulse/main_2
+Capture Clock  : pulse/clock_0
+Path slack     : 1138471p
+
+Capture Clock Arrival Time                           0
++ Clock path delay                                   0
++ Cycle adjust (qdecClk:R#1 vs. qdecClk:R#2)   1145833
+- Setup time                                     -3510
+--------------------------------------------   ------- 
+End-of-path required time (ps)                 1142323
+
+Launch Clock Arrival Time                      0
++ Clock path delay                         0
++ Data path delay                       3852
+-------------------------------------   ---- 
+End-of-path arrival time (ps)           3852
+ 
+Launch Clock Path
+pin name                                                  model name             delay     AT  edge  Fanout
+--------------------------------------------------------  ---------------------  -----  -----  ----  ------
+ClockBlock/udb_div_0                                      m0s8clockblockcell         0      0  RISE       1
+ClockGenBlock/gen_clk_in_0                                m0s8clockgenblockcell      0      0  RISE       1
+ClockGenBlock/gen_clk_out_0                               m0s8clockgenblockcell      0      0  RISE       1
+Net_1008/clock_0                                          macrocell2                 0      0  RISE       1
+
+Data path
+pin name      model name   delay     AT    slack  edge  Fanout
+------------  -----------  -----  -----  -------  ----  ------
+Net_1008/q    macrocell2    1250   1250  1138471  RISE       1
+pulse/main_2  macrocell4    2602   3852  1138471  RISE       1
+
+Capture Clock Path
+pin name                                                  model name             delay     AT  edge  Fanout
+--------------------------------------------------------  ---------------------  -----  -----  ----  ------
+ClockBlock/udb_div_0                                      m0s8clockblockcell         0      0  RISE       1
+ClockGenBlock/gen_clk_in_0                                m0s8clockgenblockcell      0      0  RISE       1
+ClockGenBlock/gen_clk_out_0                               m0s8clockgenblockcell      0      0  RISE       1
+pulse/clock_0                                             macrocell4                 0      0  RISE       1
+
+
+
+===================================================================== 
+                    End of Path Details for Clock Frequency Summary
+##################################################################### 
+
+
+##################################################################### 
+                    5::Path Details for Clock Relationship Summary
+===================================================================== 
+
+5.1::Critical Path Report for (CyHFCLK:R vs. qdecClk:R)
+*******************************************************
+
+++++ Path 1 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin     : \RESET_FAULT:Sync:ctrl_reg\/control_0
+Path End       : Net_7566/ar_0
+Capture Clock  : Net_7566/clock_0
+Path slack     : 15956p
+
+Capture Clock Arrival Time                          0
++ Clock path delay                                  0
++ Cycle adjust (CyHFCLK:R#55 vs. qdecClk:R#2)   20833
+- Recovery time                                     0
+---------------------------------------------   ----- 
+End-of-path required time (ps)                  20833
+
+Launch Clock Arrival Time                      0
++ Clock path delay                         0
++ Data path delay                       4877
+-------------------------------------   ---- 
+End-of-path arrival time (ps)           4877
+ 
+Launch Clock Path
+pin name                                              model name          delay     AT  edge  Fanout
+----------------------------------------------------  ------------------  -----  -----  ----  ------
+ClockBlock/hfclk                                      m0s8clockblockcell      0      0  RISE       1
+\RESET_FAULT:Sync:ctrl_reg\/busclk                    controlcell1            0      0  RISE       1
+
+Data path
+pin name                               model name    delay     AT  slack  edge  Fanout
+-------------------------------------  ------------  -----  -----  -----  ----  ------
+\RESET_FAULT:Sync:ctrl_reg\/control_0  controlcell1   2580   2580  15956  RISE       1
+Net_7566/ar_0                          macrocell6     2297   4877  15956  RISE       1
+
+Capture Clock Path
+pin name                                                  model name             delay     AT  edge  Fanout
+--------------------------------------------------------  ---------------------  -----  -----  ----  ------
+ClockBlock/udb_div_0                                      m0s8clockblockcell         0      0  RISE       1
+ClockGenBlock/gen_clk_in_0                                m0s8clockgenblockcell      0      0  RISE       1
+ClockGenBlock/gen_clk_out_0                               m0s8clockgenblockcell      0      0  RISE       1
+Net_7566/clock_0                                          macrocell6                 0      0  RISE       1
+
+
+5.2::Critical Path Report for (qdecClk:R vs. qdecClk:R)
+*******************************************************
+
+++++ Path 2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin     : Net_1008/q
+Path End       : pulse/main_2
+Capture Clock  : pulse/clock_0
+Path slack     : 1138471p
+
+Capture Clock Arrival Time                           0
++ Clock path delay                                   0
++ Cycle adjust (qdecClk:R#1 vs. qdecClk:R#2)   1145833
+- Setup time                                     -3510
+--------------------------------------------   ------- 
+End-of-path required time (ps)                 1142323
+
+Launch Clock Arrival Time                      0
++ Clock path delay                         0
++ Data path delay                       3852
+-------------------------------------   ---- 
+End-of-path arrival time (ps)           3852
+ 
+Launch Clock Path
+pin name                                                  model name             delay     AT  edge  Fanout
+--------------------------------------------------------  ---------------------  -----  -----  ----  ------
+ClockBlock/udb_div_0                                      m0s8clockblockcell         0      0  RISE       1
+ClockGenBlock/gen_clk_in_0                                m0s8clockgenblockcell      0      0  RISE       1
+ClockGenBlock/gen_clk_out_0                               m0s8clockgenblockcell      0      0  RISE       1
+Net_1008/clock_0                                          macrocell2                 0      0  RISE       1
+
+Data path
+pin name      model name   delay     AT    slack  edge  Fanout
+------------  -----------  -----  -----  -------  ----  ------
+Net_1008/q    macrocell2    1250   1250  1138471  RISE       1
+pulse/main_2  macrocell4    2602   3852  1138471  RISE       1
+
+Capture Clock Path
+pin name                                                  model name             delay     AT  edge  Fanout
+--------------------------------------------------------  ---------------------  -----  -----  ----  ------
+ClockBlock/udb_div_0                                      m0s8clockblockcell         0      0  RISE       1
+ClockGenBlock/gen_clk_in_0                                m0s8clockgenblockcell      0      0  RISE       1
+ClockGenBlock/gen_clk_out_0                               m0s8clockgenblockcell      0      0  RISE       1
+pulse/clock_0                                             macrocell4                 0      0  RISE       1
+
+
+
+===================================================================== 
+                    End of Path Details for Clock Relationship Summary
+##################################################################### 
+
+##################################################################### 
+                    Detailed Report for all timing paths 
+===================================================================== 
+
+++++ Path 1 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin     : \RESET_FAULT:Sync:ctrl_reg\/control_0
+Path End       : Net_7566/ar_0
+Capture Clock  : Net_7566/clock_0
+Path slack     : 15956p
+
+Capture Clock Arrival Time                          0
++ Clock path delay                                  0
++ Cycle adjust (CyHFCLK:R#55 vs. qdecClk:R#2)   20833
+- Recovery time                                     0
+---------------------------------------------   ----- 
+End-of-path required time (ps)                  20833
+
+Launch Clock Arrival Time                      0
++ Clock path delay                         0
++ Data path delay                       4877
+-------------------------------------   ---- 
+End-of-path arrival time (ps)           4877
+ 
+Launch Clock Path
+pin name                                              model name          delay     AT  edge  Fanout
+----------------------------------------------------  ------------------  -----  -----  ----  ------
+ClockBlock/hfclk                                      m0s8clockblockcell      0      0  RISE       1
+\RESET_FAULT:Sync:ctrl_reg\/busclk                    controlcell1            0      0  RISE       1
+
+Data path
+pin name                               model name    delay     AT  slack  edge  Fanout
+-------------------------------------  ------------  -----  -----  -----  ----  ------
+\RESET_FAULT:Sync:ctrl_reg\/control_0  controlcell1   2580   2580  15956  RISE       1
+Net_7566/ar_0                          macrocell6     2297   4877  15956  RISE       1
+
+Capture Clock Path
+pin name                                                  model name             delay     AT  edge  Fanout
+--------------------------------------------------------  ---------------------  -----  -----  ----  ------
+ClockBlock/udb_div_0                                      m0s8clockblockcell         0      0  RISE       1
+ClockGenBlock/gen_clk_in_0                                m0s8clockgenblockcell      0      0  RISE       1
+ClockGenBlock/gen_clk_out_0                               m0s8clockgenblockcell      0      0  RISE       1
+Net_7566/clock_0                                          macrocell6                 0      0  RISE       1
+
+
+
+++++ Path 2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin     : Net_1008/q
+Path End       : pulse/main_2
+Capture Clock  : pulse/clock_0
+Path slack     : 1138471p
+
+Capture Clock Arrival Time                           0
++ Clock path delay                                   0
++ Cycle adjust (qdecClk:R#1 vs. qdecClk:R#2)   1145833
+- Setup time                                     -3510
+--------------------------------------------   ------- 
+End-of-path required time (ps)                 1142323
+
+Launch Clock Arrival Time                      0
++ Clock path delay                         0
++ Data path delay                       3852
+-------------------------------------   ---- 
+End-of-path arrival time (ps)           3852
+ 
+Launch Clock Path
+pin name                                                  model name             delay     AT  edge  Fanout
+--------------------------------------------------------  ---------------------  -----  -----  ----  ------
+ClockBlock/udb_div_0                                      m0s8clockblockcell         0      0  RISE       1
+ClockGenBlock/gen_clk_in_0                                m0s8clockgenblockcell      0      0  RISE       1
+ClockGenBlock/gen_clk_out_0                               m0s8clockgenblockcell      0      0  RISE       1
+Net_1008/clock_0                                          macrocell2                 0      0  RISE       1
+
+Data path
+pin name      model name   delay     AT    slack  edge  Fanout
+------------  -----------  -----  -----  -------  ----  ------
+Net_1008/q    macrocell2    1250   1250  1138471  RISE       1
+pulse/main_2  macrocell4    2602   3852  1138471  RISE       1
+
+Capture Clock Path
+pin name                                                  model name             delay     AT  edge  Fanout
+--------------------------------------------------------  ---------------------  -----  -----  ----  ------
+ClockBlock/udb_div_0                                      m0s8clockblockcell         0      0  RISE       1
+ClockGenBlock/gen_clk_in_0                                m0s8clockgenblockcell      0      0  RISE       1
+ClockGenBlock/gen_clk_out_0                               m0s8clockgenblockcell      0      0  RISE       1
+pulse/clock_0                                             macrocell4                 0      0  RISE       1
+
+
+
+++++ Path 3 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin     : Net_1008/q
+Path End       : Net_4507/main_2
+Capture Clock  : Net_4507/clock_0
+Path slack     : 1138471p
+
+Capture Clock Arrival Time                           0
++ Clock path delay                                   0
++ Cycle adjust (qdecClk:R#1 vs. qdecClk:R#2)   1145833
+- Setup time                                     -3510
+--------------------------------------------   ------- 
+End-of-path required time (ps)                 1142323
+
+Launch Clock Arrival Time                      0
++ Clock path delay                         0
++ Data path delay                       3852
+-------------------------------------   ---- 
+End-of-path arrival time (ps)           3852
+ 
+Launch Clock Path
+pin name                                                  model name             delay     AT  edge  Fanout
+--------------------------------------------------------  ---------------------  -----  -----  ----  ------
+ClockBlock/udb_div_0                                      m0s8clockblockcell         0      0  RISE       1
+ClockGenBlock/gen_clk_in_0                                m0s8clockgenblockcell      0      0  RISE       1
+ClockGenBlock/gen_clk_out_0                               m0s8clockgenblockcell      0      0  RISE       1
+Net_1008/clock_0                                          macrocell2                 0      0  RISE       1
+
+Data path
+pin name         model name   delay     AT    slack  edge  Fanout
+---------------  -----------  -----  -----  -------  ----  ------
+Net_1008/q       macrocell2    1250   1250  1138471  RISE       1
+Net_4507/main_2  macrocell5    2602   3852  1138471  RISE       1
+
+Capture Clock Path
+pin name                                                  model name             delay     AT  edge  Fanout
+--------------------------------------------------------  ---------------------  -----  -----  ----  ------
+ClockBlock/udb_div_0                                      m0s8clockblockcell         0      0  RISE       1
+ClockGenBlock/gen_clk_in_0                                m0s8clockgenblockcell      0      0  RISE       1
+ClockGenBlock/gen_clk_out_0                               m0s8clockgenblockcell      0      0  RISE       1
+Net_4507/clock_0                                          macrocell5                 0      0  RISE       1
+
+
+
+++++ Path 4 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin     : Net_1006/q
+Path End       : pulse/main_3
+Capture Clock  : pulse/clock_0
+Path slack     : 1138478p
+
+Capture Clock Arrival Time                           0
++ Clock path delay                                   0
++ Cycle adjust (qdecClk:R#1 vs. qdecClk:R#2)   1145833
+- Setup time                                     -3510
+--------------------------------------------   ------- 
+End-of-path required time (ps)                 1142323
+
+Launch Clock Arrival Time                      0
++ Clock path delay                         0
++ Data path delay                       3846
+-------------------------------------   ---- 
+End-of-path arrival time (ps)           3846
+ 
+Launch Clock Path
+pin name                                                  model name             delay     AT  edge  Fanout
+--------------------------------------------------------  ---------------------  -----  -----  ----  ------
+ClockBlock/udb_div_0                                      m0s8clockblockcell         0      0  RISE       1
+ClockGenBlock/gen_clk_in_0                                m0s8clockgenblockcell      0      0  RISE       1
+ClockGenBlock/gen_clk_out_0                               m0s8clockgenblockcell      0      0  RISE       1
+Net_1006/clock_0                                          macrocell3                 0      0  RISE       1
+
+Data path
+pin name      model name   delay     AT    slack  edge  Fanout
+------------  -----------  -----  -----  -------  ----  ------
+Net_1006/q    macrocell3    1250   1250  1138478  RISE       1
+pulse/main_3  macrocell4    2596   3846  1138478  RISE       1
+
+Capture Clock Path
+pin name                                                  model name             delay     AT  edge  Fanout
+--------------------------------------------------------  ---------------------  -----  -----  ----  ------
+ClockBlock/udb_div_0                                      m0s8clockblockcell         0      0  RISE       1
+ClockGenBlock/gen_clk_in_0                                m0s8clockgenblockcell      0      0  RISE       1
+ClockGenBlock/gen_clk_out_0                               m0s8clockgenblockcell      0      0  RISE       1
+pulse/clock_0                                             macrocell4                 0      0  RISE       1
+
+
+
+++++ Path 5 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin     : Net_1006/q
+Path End       : Net_4507/main_3
+Capture Clock  : Net_4507/clock_0
+Path slack     : 1138478p
+
+Capture Clock Arrival Time                           0
++ Clock path delay                                   0
++ Cycle adjust (qdecClk:R#1 vs. qdecClk:R#2)   1145833
+- Setup time                                     -3510
+--------------------------------------------   ------- 
+End-of-path required time (ps)                 1142323
+
+Launch Clock Arrival Time                      0
++ Clock path delay                         0
++ Data path delay                       3846
+-------------------------------------   ---- 
+End-of-path arrival time (ps)           3846
+ 
+Launch Clock Path
+pin name                                                  model name             delay     AT  edge  Fanout
+--------------------------------------------------------  ---------------------  -----  -----  ----  ------
+ClockBlock/udb_div_0                                      m0s8clockblockcell         0      0  RISE       1
+ClockGenBlock/gen_clk_in_0                                m0s8clockgenblockcell      0      0  RISE       1
+ClockGenBlock/gen_clk_out_0                               m0s8clockgenblockcell      0      0  RISE       1
+Net_1006/clock_0                                          macrocell3                 0      0  RISE       1
+
+Data path
+pin name         model name   delay     AT    slack  edge  Fanout
+---------------  -----------  -----  -----  -------  ----  ------
+Net_1006/q       macrocell3    1250   1250  1138478  RISE       1
+Net_4507/main_3  macrocell5    2596   3846  1138478  RISE       1
+
+Capture Clock Path
+pin name                                                  model name             delay     AT  edge  Fanout
+--------------------------------------------------------  ---------------------  -----  -----  ----  ------
+ClockBlock/udb_div_0                                      m0s8clockblockcell         0      0  RISE       1
+ClockGenBlock/gen_clk_in_0                                m0s8clockgenblockcell      0      0  RISE       1
+ClockGenBlock/gen_clk_out_0                               m0s8clockgenblockcell      0      0  RISE       1
+Net_4507/clock_0                                          macrocell5                 0      0  RISE       1
+
+
+
+++++ Path 6 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin     : Net_1008/q
+Path End       : Net_1014/main_2
+Capture Clock  : Net_1014/clock_0
+Path slack     : 1138479p
+
+Capture Clock Arrival Time                           0
++ Clock path delay                                   0
++ Cycle adjust (qdecClk:R#1 vs. qdecClk:R#2)   1145833
+- Setup time                                     -3510
+--------------------------------------------   ------- 
+End-of-path required time (ps)                 1142323
+
+Launch Clock Arrival Time                      0
++ Clock path delay                         0
++ Data path delay                       3844
+-------------------------------------   ---- 
+End-of-path arrival time (ps)           3844
+ 
+Launch Clock Path
+pin name                                                  model name             delay     AT  edge  Fanout
+--------------------------------------------------------  ---------------------  -----  -----  ----  ------
+ClockBlock/udb_div_0                                      m0s8clockblockcell         0      0  RISE       1
+ClockGenBlock/gen_clk_in_0                                m0s8clockgenblockcell      0      0  RISE       1
+ClockGenBlock/gen_clk_out_0                               m0s8clockgenblockcell      0      0  RISE       1
+Net_1008/clock_0                                          macrocell2                 0      0  RISE       1
+
+Data path
+pin name         model name   delay     AT    slack  edge  Fanout
+---------------  -----------  -----  -----  -------  ----  ------
+Net_1008/q       macrocell2    1250   1250  1138471  RISE       1
+Net_1014/main_2  macrocell1    2594   3844  1138479  RISE       1
+
+Capture Clock Path
+pin name                                                  model name             delay     AT  edge  Fanout
+--------------------------------------------------------  ---------------------  -----  -----  ----  ------
+ClockBlock/udb_div_0                                      m0s8clockblockcell         0      0  RISE       1
+ClockGenBlock/gen_clk_in_0                                m0s8clockgenblockcell      0      0  RISE       1
+ClockGenBlock/gen_clk_out_0                               m0s8clockgenblockcell      0      0  RISE       1
+Net_1014/clock_0                                          macrocell1                 0      0  RISE       1
+
+
+
+++++ Path 7 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin     : Net_1006/q
+Path End       : Net_1014/main_3
+Capture Clock  : Net_1014/clock_0
+Path slack     : 1138483p
+
+Capture Clock Arrival Time                           0
++ Clock path delay                                   0
++ Cycle adjust (qdecClk:R#1 vs. qdecClk:R#2)   1145833
+- Setup time                                     -3510
+--------------------------------------------   ------- 
+End-of-path required time (ps)                 1142323
+
+Launch Clock Arrival Time                      0
++ Clock path delay                         0
++ Data path delay                       3840
+-------------------------------------   ---- 
+End-of-path arrival time (ps)           3840
+ 
+Launch Clock Path
+pin name                                                  model name             delay     AT  edge  Fanout
+--------------------------------------------------------  ---------------------  -----  -----  ----  ------
+ClockBlock/udb_div_0                                      m0s8clockblockcell         0      0  RISE       1
+ClockGenBlock/gen_clk_in_0                                m0s8clockgenblockcell      0      0  RISE       1
+ClockGenBlock/gen_clk_out_0                               m0s8clockgenblockcell      0      0  RISE       1
+Net_1006/clock_0                                          macrocell3                 0      0  RISE       1
+
+Data path
+pin name         model name   delay     AT    slack  edge  Fanout
+---------------  -----------  -----  -----  -------  ----  ------
+Net_1006/q       macrocell3    1250   1250  1138478  RISE       1
+Net_1014/main_3  macrocell1    2590   3840  1138483  RISE       1
+
+Capture Clock Path
+pin name                                                  model name             delay     AT  edge  Fanout
+--------------------------------------------------------  ---------------------  -----  -----  ----  ------
+ClockBlock/udb_div_0                                      m0s8clockblockcell         0      0  RISE       1
+ClockGenBlock/gen_clk_in_0                                m0s8clockgenblockcell      0      0  RISE       1
+ClockGenBlock/gen_clk_out_0                               m0s8clockgenblockcell      0      0  RISE       1
+Net_1014/clock_0                                          macrocell1                 0      0  RISE       1
+
+
+
+++++ Path 8 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin     : Net_1014/q
+Path End       : Net_7566/clk_en
+Capture Clock  : Net_7566/clock_0
+Path slack     : 1140171p
+
+Capture Clock Arrival Time                           0
++ Clock path delay                                   0
++ Cycle adjust (qdecClk:R#1 vs. qdecClk:R#2)   1145833
+- Setup time                                     -2100
+--------------------------------------------   ------- 
+End-of-path required time (ps)                 1143733
+
+Launch Clock Arrival Time                      0
++ Clock path delay                         0
++ Data path delay                       3562
+-------------------------------------   ---- 
+End-of-path arrival time (ps)           3562
+ 
+Launch Clock Path
+pin name                                                  model name             delay     AT  edge  Fanout
+--------------------------------------------------------  ---------------------  -----  -----  ----  ------
+ClockBlock/udb_div_0                                      m0s8clockblockcell         0      0  RISE       1
+ClockGenBlock/gen_clk_in_0                                m0s8clockgenblockcell      0      0  RISE       1
+ClockGenBlock/gen_clk_out_0                               m0s8clockgenblockcell      0      0  RISE       1
+Net_1014/clock_0                                          macrocell1                 0      0  RISE       1
+
+Data path
+pin name         model name   delay     AT    slack  edge  Fanout
+---------------  -----------  -----  -----  -------  ----  ------
+Net_1014/q       macrocell1    1250   1250  1140171  RISE       1
+Net_7566/clk_en  macrocell6    2312   3562  1140171  RISE       1
+
+Capture Clock Path
+pin name                                                  model name             delay     AT  edge  Fanout
+--------------------------------------------------------  ---------------------  -----  -----  ----  ------
+ClockBlock/udb_div_0                                      m0s8clockblockcell         0      0  RISE       1
+ClockGenBlock/gen_clk_in_0                                m0s8clockgenblockcell      0      0  RISE       1
+ClockGenBlock/gen_clk_out_0                               m0s8clockgenblockcell      0      0  RISE       1
+Net_7566/clock_0                                          macrocell6                 0      0  RISE       1
+
+
+===================================================================== 
+                    End of Detailed Report for all timing paths 
+##################################################################### 
+
+##################################################################### 
+                    End of Timing Report 
+##################################################################### 
+
