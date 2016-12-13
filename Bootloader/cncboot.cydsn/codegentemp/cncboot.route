@@ -1,0 +1,48 @@
+net ClockBlock_HFCLK
+	term   ":m0s8clockblockcell.hfclk"
+	switch ":m0s8clockblockcell.hfclk==>:interrupt_11.clock"
+	term   ":interrupt_11.clock"
+end ClockBlock_HFCLK
+net Net_133
+	term   ":m0s8scbcell_1.interrupt"
+	switch ":m0s8scbcell_1.interrupt==>:interrupt_idmux_11.in_0"
+	switch ":interrupt_idmux_11.interrupt_idmux_11__out==>:interrupt_11.interrupt"
+	term   ":interrupt_11.interrupt"
+end Net_133
+net Net_202
+	term   ":m0s8tcpwmcell_0.line_out"
+	switch ":m0s8tcpwmcell_0.line_out==>Stub-:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v24+:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v26"
+	switch "OStub-:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v24+:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v26"
+	switch ":dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:26,15"
+	switch ":dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:82,15_f"
+	switch "IStub-:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v80+:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v82+:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v84"
+	switch "Stub-:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v80+:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v82+:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v84==>:ioport3:inputs1_mux.in_0"
+	switch ":ioport3:inputs1_mux.pin2__pin_input==>:ioport3:hsiom_out2.dsi"
+	switch ":ioport3:hsiom_out2.hsiom2_out==>:ioport3:pin2.pin_input"
+	term   ":ioport3:pin2.pin_input"
+end Net_202
+net Net_240
+	term   ":m0s8tcpwmcell_0.line_out_compl"
+	switch ":m0s8tcpwmcell_0.line_out_compl==>Stub-:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v32+:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v34"
+	switch "OStub-:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v32+:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v34"
+	switch ":dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:34,8"
+	switch ":dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:85,8_f"
+	switch "IStub-:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v81+:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v83+:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v85"
+	switch "Stub-:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v81+:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v83+:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v85==>:ioport3:inputs1_mux.in_1"
+	switch ":ioport3:inputs1_mux.pin3__pin_input==>:ioport3:hsiom_out3.dsi"
+	switch ":ioport3:hsiom_out3.hsiom3_out==>:ioport3:pin3.pin_input"
+	term   ":ioport3:pin3.pin_input"
+end Net_240
+net \UART:rx_wire\
+	term   ":ioport3:pin0.fb"
+	switch ":ioport3:pin0.fb==>:ioport3:hsiom_in0.hsiom0_in"
+	switch ":ioport3:hsiom_in0.fixed_ACT_1==>:m0s8scbcell_1__rx__hsiom_permute.ioport3__fixed_out_p0_ACT_1"
+	switch ":m0s8scbcell_1__rx__hsiom_permute.m0s8scbcell_1__rx==>:m0s8scbcell_1.rx"
+	term   ":m0s8scbcell_1.rx"
+end \UART:rx_wire\
+net \UART:tx_wire\
+	term   ":m0s8scbcell_1.tx"
+	switch ":m0s8scbcell_1.tx==>:ioport3:hsiom_out1.fixed_ACT_1"
+	switch ":ioport3:hsiom_out1.hsiom1_out==>:ioport3:pin1.pin_input"
+	term   ":ioport3:pin1.pin_input"
+end \UART:tx_wire\
