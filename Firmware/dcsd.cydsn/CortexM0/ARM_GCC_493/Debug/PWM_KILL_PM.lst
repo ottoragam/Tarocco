@@ -1,0 +1,756 @@
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccd8Jf5T.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 1
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"PWM_KILL_PM.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.PWM_KILL_SaveConfig,"ax",%progbits
+  18              		.align	2
+  19              		.global	PWM_KILL_SaveConfig
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	PWM_KILL_SaveConfig, %function
+  23              	PWM_KILL_SaveConfig:
+  24              	.LFB0:
+  25              		.file 1 ".\\Generated_Source\\PSoC4\\PWM_KILL_PM.c"
+   1:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** * File Name: PWM_KILL_PM.c
+   3:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** * Version 1.80
+   4:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *
+   5:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** * Description:
+   6:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *  This file contains the setup, control, and status commands to support 
+   7:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *  the component operation in the low power mode. 
+   8:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *
+   9:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** * Note:
+  10:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *
+  11:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** ********************************************************************************
+  12:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** * Copyright 2015, Cypress Semiconductor Corporation.  All rights reserved.
+  13:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  14:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  15:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** * the software package with which this file was provided.
+  16:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *******************************************************************************/
+  17:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** 
+  18:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** #include "PWM_KILL.h"
+  19:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** 
+  20:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** /* Check for removal by optimization */
+  21:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** #if !defined(PWM_KILL_Sync_ctrl_reg__REMOVED)
+  22:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** 
+  23:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** static PWM_KILL_BACKUP_STRUCT  PWM_KILL_backup = {0u};
+  24:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** 
+  25:.\Generated_Source\PSoC4/PWM_KILL_PM.c ****     
+  26:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** /*******************************************************************************
+  27:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** * Function Name: PWM_KILL_SaveConfig
+  28:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** ********************************************************************************
+  29:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *
+  30:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** * Summary:
+  31:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *  Saves the control register value.
+  32:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccd8Jf5T.s 			page 2
+
+
+  33:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** * Parameters:
+  34:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *  None
+  35:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *
+  36:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** * Return:
+  37:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *  None
+  38:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *
+  39:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *******************************************************************************/
+  40:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** void PWM_KILL_SaveConfig(void) 
+  41:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** {
+  26              		.loc 1 41 0
+  27              		.cfi_startproc
+  42:.\Generated_Source\PSoC4/PWM_KILL_PM.c ****     PWM_KILL_backup.controlState = PWM_KILL_Control;
+  28              		.loc 1 42 0
+  29 0000 024B     		ldr	r3, .L2
+  30 0002 1A78     		ldrb	r2, [r3]
+  31 0004 024B     		ldr	r3, .L2+4
+  32 0006 1A70     		strb	r2, [r3]
+  43:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** }
+  33              		.loc 1 43 0
+  34              		@ sp needed
+  35 0008 7047     		bx	lr
+  36              	.L3:
+  37 000a C046     		.align	2
+  38              	.L2:
+  39 000c 71000F40 		.word	1074724977
+  40 0010 00000000 		.word	.LANCHOR0
+  41              		.cfi_endproc
+  42              	.LFE0:
+  43              		.size	PWM_KILL_SaveConfig, .-PWM_KILL_SaveConfig
+  44              		.section	.text.PWM_KILL_RestoreConfig,"ax",%progbits
+  45              		.align	2
+  46              		.global	PWM_KILL_RestoreConfig
+  47              		.code	16
+  48              		.thumb_func
+  49              		.type	PWM_KILL_RestoreConfig, %function
+  50              	PWM_KILL_RestoreConfig:
+  51              	.LFB1:
+  44:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** 
+  45:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** 
+  46:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** /*******************************************************************************
+  47:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** * Function Name: PWM_KILL_RestoreConfig
+  48:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** ********************************************************************************
+  49:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *
+  50:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** * Summary:
+  51:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *  Restores the control register value.
+  52:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *
+  53:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** * Parameters:
+  54:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *  None
+  55:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *
+  56:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** * Return:
+  57:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *  None
+  58:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *
+  59:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *
+  60:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *******************************************************************************/
+  61:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** void PWM_KILL_RestoreConfig(void) 
+  62:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** {
+  52              		.loc 1 62 0
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccd8Jf5T.s 			page 3
+
+
+  53              		.cfi_startproc
+  63:.\Generated_Source\PSoC4/PWM_KILL_PM.c ****      PWM_KILL_Control = PWM_KILL_backup.controlState;
+  54              		.loc 1 63 0
+  55 0000 024B     		ldr	r3, .L5
+  56 0002 1A78     		ldrb	r2, [r3]
+  57 0004 024B     		ldr	r3, .L5+4
+  58 0006 1A70     		strb	r2, [r3]
+  64:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** }
+  59              		.loc 1 64 0
+  60              		@ sp needed
+  61 0008 7047     		bx	lr
+  62              	.L6:
+  63 000a C046     		.align	2
+  64              	.L5:
+  65 000c 00000000 		.word	.LANCHOR0
+  66 0010 71000F40 		.word	1074724977
+  67              		.cfi_endproc
+  68              	.LFE1:
+  69              		.size	PWM_KILL_RestoreConfig, .-PWM_KILL_RestoreConfig
+  70              		.section	.text.PWM_KILL_Sleep,"ax",%progbits
+  71              		.align	2
+  72              		.global	PWM_KILL_Sleep
+  73              		.code	16
+  74              		.thumb_func
+  75              		.type	PWM_KILL_Sleep, %function
+  76              	PWM_KILL_Sleep:
+  77              	.LFB2:
+  65:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** 
+  66:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** 
+  67:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** /*******************************************************************************
+  68:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** * Function Name: PWM_KILL_Sleep
+  69:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** ********************************************************************************
+  70:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *
+  71:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** * Summary:
+  72:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *  Prepares the component for entering the low power mode.
+  73:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *
+  74:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** * Parameters:
+  75:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *  None
+  76:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *
+  77:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** * Return:
+  78:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *  None
+  79:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *
+  80:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *******************************************************************************/
+  81:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** void PWM_KILL_Sleep(void) 
+  82:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** {
+  78              		.loc 1 82 0
+  79              		.cfi_startproc
+  80 0000 08B5     		push	{r3, lr}
+  81              		.cfi_def_cfa_offset 8
+  82              		.cfi_offset 3, -8
+  83              		.cfi_offset 14, -4
+  83:.\Generated_Source\PSoC4/PWM_KILL_PM.c ****     PWM_KILL_SaveConfig();
+  84              		.loc 1 83 0
+  85 0002 FFF7FEFF 		bl	PWM_KILL_SaveConfig
+  86              	.LVL0:
+  84:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** }
+  87              		.loc 1 84 0
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccd8Jf5T.s 			page 4
+
+
+  88              		@ sp needed
+  89 0006 08BD     		pop	{r3, pc}
+  90              		.cfi_endproc
+  91              	.LFE2:
+  92              		.size	PWM_KILL_Sleep, .-PWM_KILL_Sleep
+  93              		.section	.text.PWM_KILL_Wakeup,"ax",%progbits
+  94              		.align	2
+  95              		.global	PWM_KILL_Wakeup
+  96              		.code	16
+  97              		.thumb_func
+  98              		.type	PWM_KILL_Wakeup, %function
+  99              	PWM_KILL_Wakeup:
+ 100              	.LFB3:
+  85:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** 
+  86:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** 
+  87:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** /*******************************************************************************
+  88:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** * Function Name: PWM_KILL_Wakeup
+  89:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** ********************************************************************************
+  90:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *
+  91:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** * Summary:
+  92:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *  Restores the component after waking up from the low power mode.
+  93:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *
+  94:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** * Parameters:
+  95:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *  None
+  96:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *
+  97:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** * Return:
+  98:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *  None
+  99:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *
+ 100:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** *******************************************************************************/
+ 101:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** void PWM_KILL_Wakeup(void)  
+ 102:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** {
+ 101              		.loc 1 102 0
+ 102              		.cfi_startproc
+ 103 0000 08B5     		push	{r3, lr}
+ 104              		.cfi_def_cfa_offset 8
+ 105              		.cfi_offset 3, -8
+ 106              		.cfi_offset 14, -4
+ 103:.\Generated_Source\PSoC4/PWM_KILL_PM.c ****     PWM_KILL_RestoreConfig();
+ 107              		.loc 1 103 0
+ 108 0002 FFF7FEFF 		bl	PWM_KILL_RestoreConfig
+ 109              	.LVL1:
+ 104:.\Generated_Source\PSoC4/PWM_KILL_PM.c **** }
+ 110              		.loc 1 104 0
+ 111              		@ sp needed
+ 112 0006 08BD     		pop	{r3, pc}
+ 113              		.cfi_endproc
+ 114              	.LFE3:
+ 115              		.size	PWM_KILL_Wakeup, .-PWM_KILL_Wakeup
+ 116              		.bss
+ 117              		.align	2
+ 118              		.set	.LANCHOR0,. + 0
+ 119              		.type	PWM_KILL_backup, %object
+ 120              		.size	PWM_KILL_backup, 1
+ 121              	PWM_KILL_backup:
+ 122 0000 00       		.space	1
+ 123 0001 000000   		.text
+ 124              	.Letext0:
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccd8Jf5T.s 			page 5
+
+
+ 125              		.file 2 ".\\Generated_Source\\PSoC4\\cytypes.h"
+ 126              		.file 3 ".\\Generated_Source\\PSoC4\\PWM_KILL.h"
+ 127              		.section	.debug_info,"",%progbits
+ 128              	.Ldebug_info0:
+ 129 0000 2B010000 		.4byte	0x12b
+ 130 0004 0400     		.2byte	0x4
+ 131 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 132 000a 04       		.byte	0x4
+ 133 000b 01       		.uleb128 0x1
+ 134 000c 48010000 		.4byte	.LASF19
+ 135 0010 01       		.byte	0x1
+ 136 0011 0E010000 		.4byte	.LASF20
+ 137 0015 B3000000 		.4byte	.LASF21
+ 138 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 139 001d 00000000 		.4byte	0
+ 140 0021 00000000 		.4byte	.Ldebug_line0
+ 141 0025 02       		.uleb128 0x2
+ 142 0026 01       		.byte	0x1
+ 143 0027 06       		.byte	0x6
+ 144 0028 EF010000 		.4byte	.LASF0
+ 145 002c 02       		.uleb128 0x2
+ 146 002d 01       		.byte	0x1
+ 147 002e 08       		.byte	0x8
+ 148 002f 3B000000 		.4byte	.LASF1
+ 149 0033 02       		.uleb128 0x2
+ 150 0034 02       		.byte	0x2
+ 151 0035 05       		.byte	0x5
+ 152 0036 D6010000 		.4byte	.LASF2
+ 153 003a 02       		.uleb128 0x2
+ 154 003b 02       		.byte	0x2
+ 155 003c 07       		.byte	0x7
+ 156 003d 7F000000 		.4byte	.LASF3
+ 157 0041 02       		.uleb128 0x2
+ 158 0042 04       		.byte	0x4
+ 159 0043 05       		.byte	0x5
+ 160 0044 E6010000 		.4byte	.LASF4
+ 161 0048 02       		.uleb128 0x2
+ 162 0049 04       		.byte	0x4
+ 163 004a 07       		.byte	0x7
+ 164 004b 5E000000 		.4byte	.LASF5
+ 165 004f 02       		.uleb128 0x2
+ 166 0050 08       		.byte	0x8
+ 167 0051 05       		.byte	0x5
+ 168 0052 35010000 		.4byte	.LASF6
+ 169 0056 02       		.uleb128 0x2
+ 170 0057 08       		.byte	0x8
+ 171 0058 07       		.byte	0x7
+ 172 0059 F7000000 		.4byte	.LASF7
+ 173 005d 03       		.uleb128 0x3
+ 174 005e 04       		.byte	0x4
+ 175 005f 05       		.byte	0x5
+ 176 0060 696E7400 		.ascii	"int\000"
+ 177 0064 02       		.uleb128 0x2
+ 178 0065 04       		.byte	0x4
+ 179 0066 07       		.byte	0x7
+ 180 0067 EA000000 		.4byte	.LASF8
+ 181 006b 04       		.uleb128 0x4
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccd8Jf5T.s 			page 6
+
+
+ 182 006c E0010000 		.4byte	.LASF12
+ 183 0070 02       		.byte	0x2
+ 184 0071 9801     		.2byte	0x198
+ 185 0073 2C000000 		.4byte	0x2c
+ 186 0077 02       		.uleb128 0x2
+ 187 0078 04       		.byte	0x4
+ 188 0079 04       		.byte	0x4
+ 189 007a 35000000 		.4byte	.LASF9
+ 190 007e 02       		.uleb128 0x2
+ 191 007f 08       		.byte	0x8
+ 192 0080 04       		.byte	0x4
+ 193 0081 17000000 		.4byte	.LASF10
+ 194 0085 02       		.uleb128 0x2
+ 195 0086 01       		.byte	0x1
+ 196 0087 08       		.byte	0x8
+ 197 0088 43010000 		.4byte	.LASF11
+ 198 008c 04       		.uleb128 0x4
+ 199 008d 59000000 		.4byte	.LASF13
+ 200 0091 02       		.byte	0x2
+ 201 0092 4202     		.2byte	0x242
+ 202 0094 98000000 		.4byte	0x98
+ 203 0098 05       		.uleb128 0x5
+ 204 0099 6B000000 		.4byte	0x6b
+ 205 009d 06       		.uleb128 0x6
+ 206 009e 01       		.byte	0x1
+ 207 009f 03       		.byte	0x3
+ 208 00a0 1C       		.byte	0x1c
+ 209 00a1 B2000000 		.4byte	0xb2
+ 210 00a5 07       		.uleb128 0x7
+ 211 00a6 92000000 		.4byte	.LASF22
+ 212 00aa 03       		.byte	0x3
+ 213 00ab 1E       		.byte	0x1e
+ 214 00ac 6B000000 		.4byte	0x6b
+ 215 00b0 00       		.byte	0
+ 216 00b1 00       		.byte	0
+ 217 00b2 08       		.uleb128 0x8
+ 218 00b3 00000000 		.4byte	.LASF14
+ 219 00b7 03       		.byte	0x3
+ 220 00b8 20       		.byte	0x20
+ 221 00b9 9D000000 		.4byte	0x9d
+ 222 00bd 09       		.uleb128 0x9
+ 223 00be 9F000000 		.4byte	.LASF15
+ 224 00c2 01       		.byte	0x1
+ 225 00c3 28       		.byte	0x28
+ 226 00c4 00000000 		.4byte	.LFB0
+ 227 00c8 14000000 		.4byte	.LFE0-.LFB0
+ 228 00cc 01       		.uleb128 0x1
+ 229 00cd 9C       		.byte	0x9c
+ 230 00ce 09       		.uleb128 0x9
+ 231 00cf 1E000000 		.4byte	.LASF16
+ 232 00d3 01       		.byte	0x1
+ 233 00d4 3D       		.byte	0x3d
+ 234 00d5 00000000 		.4byte	.LFB1
+ 235 00d9 14000000 		.4byte	.LFE1-.LFB1
+ 236 00dd 01       		.uleb128 0x1
+ 237 00de 9C       		.byte	0x9c
+ 238 00df 0A       		.uleb128 0xa
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccd8Jf5T.s 			page 7
+
+
+ 239 00e0 70000000 		.4byte	.LASF17
+ 240 00e4 01       		.byte	0x1
+ 241 00e5 51       		.byte	0x51
+ 242 00e6 00000000 		.4byte	.LFB2
+ 243 00ea 08000000 		.4byte	.LFE2-.LFB2
+ 244 00ee 01       		.uleb128 0x1
+ 245 00ef 9C       		.byte	0x9c
+ 246 00f0 FE000000 		.4byte	0xfe
+ 247 00f4 0B       		.uleb128 0xb
+ 248 00f5 06000000 		.4byte	.LVL0
+ 249 00f9 BD000000 		.4byte	0xbd
+ 250 00fd 00       		.byte	0
+ 251 00fe 0A       		.uleb128 0xa
+ 252 00ff DA000000 		.4byte	.LASF18
+ 253 0103 01       		.byte	0x1
+ 254 0104 65       		.byte	0x65
+ 255 0105 00000000 		.4byte	.LFB3
+ 256 0109 08000000 		.4byte	.LFE3-.LFB3
+ 257 010d 01       		.uleb128 0x1
+ 258 010e 9C       		.byte	0x9c
+ 259 010f 1D010000 		.4byte	0x11d
+ 260 0113 0B       		.uleb128 0xb
+ 261 0114 06000000 		.4byte	.LVL1
+ 262 0118 CE000000 		.4byte	0xce
+ 263 011c 00       		.byte	0
+ 264 011d 0C       		.uleb128 0xc
+ 265 011e 49000000 		.4byte	.LASF23
+ 266 0122 01       		.byte	0x1
+ 267 0123 17       		.byte	0x17
+ 268 0124 B2000000 		.4byte	0xb2
+ 269 0128 05       		.uleb128 0x5
+ 270 0129 03       		.byte	0x3
+ 271 012a 00000000 		.4byte	PWM_KILL_backup
+ 272 012e 00       		.byte	0
+ 273              		.section	.debug_abbrev,"",%progbits
+ 274              	.Ldebug_abbrev0:
+ 275 0000 01       		.uleb128 0x1
+ 276 0001 11       		.uleb128 0x11
+ 277 0002 01       		.byte	0x1
+ 278 0003 25       		.uleb128 0x25
+ 279 0004 0E       		.uleb128 0xe
+ 280 0005 13       		.uleb128 0x13
+ 281 0006 0B       		.uleb128 0xb
+ 282 0007 03       		.uleb128 0x3
+ 283 0008 0E       		.uleb128 0xe
+ 284 0009 1B       		.uleb128 0x1b
+ 285 000a 0E       		.uleb128 0xe
+ 286 000b 55       		.uleb128 0x55
+ 287 000c 17       		.uleb128 0x17
+ 288 000d 11       		.uleb128 0x11
+ 289 000e 01       		.uleb128 0x1
+ 290 000f 10       		.uleb128 0x10
+ 291 0010 17       		.uleb128 0x17
+ 292 0011 00       		.byte	0
+ 293 0012 00       		.byte	0
+ 294 0013 02       		.uleb128 0x2
+ 295 0014 24       		.uleb128 0x24
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccd8Jf5T.s 			page 8
+
+
+ 296 0015 00       		.byte	0
+ 297 0016 0B       		.uleb128 0xb
+ 298 0017 0B       		.uleb128 0xb
+ 299 0018 3E       		.uleb128 0x3e
+ 300 0019 0B       		.uleb128 0xb
+ 301 001a 03       		.uleb128 0x3
+ 302 001b 0E       		.uleb128 0xe
+ 303 001c 00       		.byte	0
+ 304 001d 00       		.byte	0
+ 305 001e 03       		.uleb128 0x3
+ 306 001f 24       		.uleb128 0x24
+ 307 0020 00       		.byte	0
+ 308 0021 0B       		.uleb128 0xb
+ 309 0022 0B       		.uleb128 0xb
+ 310 0023 3E       		.uleb128 0x3e
+ 311 0024 0B       		.uleb128 0xb
+ 312 0025 03       		.uleb128 0x3
+ 313 0026 08       		.uleb128 0x8
+ 314 0027 00       		.byte	0
+ 315 0028 00       		.byte	0
+ 316 0029 04       		.uleb128 0x4
+ 317 002a 16       		.uleb128 0x16
+ 318 002b 00       		.byte	0
+ 319 002c 03       		.uleb128 0x3
+ 320 002d 0E       		.uleb128 0xe
+ 321 002e 3A       		.uleb128 0x3a
+ 322 002f 0B       		.uleb128 0xb
+ 323 0030 3B       		.uleb128 0x3b
+ 324 0031 05       		.uleb128 0x5
+ 325 0032 49       		.uleb128 0x49
+ 326 0033 13       		.uleb128 0x13
+ 327 0034 00       		.byte	0
+ 328 0035 00       		.byte	0
+ 329 0036 05       		.uleb128 0x5
+ 330 0037 35       		.uleb128 0x35
+ 331 0038 00       		.byte	0
+ 332 0039 49       		.uleb128 0x49
+ 333 003a 13       		.uleb128 0x13
+ 334 003b 00       		.byte	0
+ 335 003c 00       		.byte	0
+ 336 003d 06       		.uleb128 0x6
+ 337 003e 13       		.uleb128 0x13
+ 338 003f 01       		.byte	0x1
+ 339 0040 0B       		.uleb128 0xb
+ 340 0041 0B       		.uleb128 0xb
+ 341 0042 3A       		.uleb128 0x3a
+ 342 0043 0B       		.uleb128 0xb
+ 343 0044 3B       		.uleb128 0x3b
+ 344 0045 0B       		.uleb128 0xb
+ 345 0046 01       		.uleb128 0x1
+ 346 0047 13       		.uleb128 0x13
+ 347 0048 00       		.byte	0
+ 348 0049 00       		.byte	0
+ 349 004a 07       		.uleb128 0x7
+ 350 004b 0D       		.uleb128 0xd
+ 351 004c 00       		.byte	0
+ 352 004d 03       		.uleb128 0x3
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccd8Jf5T.s 			page 9
+
+
+ 353 004e 0E       		.uleb128 0xe
+ 354 004f 3A       		.uleb128 0x3a
+ 355 0050 0B       		.uleb128 0xb
+ 356 0051 3B       		.uleb128 0x3b
+ 357 0052 0B       		.uleb128 0xb
+ 358 0053 49       		.uleb128 0x49
+ 359 0054 13       		.uleb128 0x13
+ 360 0055 38       		.uleb128 0x38
+ 361 0056 0B       		.uleb128 0xb
+ 362 0057 00       		.byte	0
+ 363 0058 00       		.byte	0
+ 364 0059 08       		.uleb128 0x8
+ 365 005a 16       		.uleb128 0x16
+ 366 005b 00       		.byte	0
+ 367 005c 03       		.uleb128 0x3
+ 368 005d 0E       		.uleb128 0xe
+ 369 005e 3A       		.uleb128 0x3a
+ 370 005f 0B       		.uleb128 0xb
+ 371 0060 3B       		.uleb128 0x3b
+ 372 0061 0B       		.uleb128 0xb
+ 373 0062 49       		.uleb128 0x49
+ 374 0063 13       		.uleb128 0x13
+ 375 0064 00       		.byte	0
+ 376 0065 00       		.byte	0
+ 377 0066 09       		.uleb128 0x9
+ 378 0067 2E       		.uleb128 0x2e
+ 379 0068 00       		.byte	0
+ 380 0069 3F       		.uleb128 0x3f
+ 381 006a 19       		.uleb128 0x19
+ 382 006b 03       		.uleb128 0x3
+ 383 006c 0E       		.uleb128 0xe
+ 384 006d 3A       		.uleb128 0x3a
+ 385 006e 0B       		.uleb128 0xb
+ 386 006f 3B       		.uleb128 0x3b
+ 387 0070 0B       		.uleb128 0xb
+ 388 0071 27       		.uleb128 0x27
+ 389 0072 19       		.uleb128 0x19
+ 390 0073 11       		.uleb128 0x11
+ 391 0074 01       		.uleb128 0x1
+ 392 0075 12       		.uleb128 0x12
+ 393 0076 06       		.uleb128 0x6
+ 394 0077 40       		.uleb128 0x40
+ 395 0078 18       		.uleb128 0x18
+ 396 0079 9742     		.uleb128 0x2117
+ 397 007b 19       		.uleb128 0x19
+ 398 007c 00       		.byte	0
+ 399 007d 00       		.byte	0
+ 400 007e 0A       		.uleb128 0xa
+ 401 007f 2E       		.uleb128 0x2e
+ 402 0080 01       		.byte	0x1
+ 403 0081 3F       		.uleb128 0x3f
+ 404 0082 19       		.uleb128 0x19
+ 405 0083 03       		.uleb128 0x3
+ 406 0084 0E       		.uleb128 0xe
+ 407 0085 3A       		.uleb128 0x3a
+ 408 0086 0B       		.uleb128 0xb
+ 409 0087 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccd8Jf5T.s 			page 10
+
+
+ 410 0088 0B       		.uleb128 0xb
+ 411 0089 27       		.uleb128 0x27
+ 412 008a 19       		.uleb128 0x19
+ 413 008b 11       		.uleb128 0x11
+ 414 008c 01       		.uleb128 0x1
+ 415 008d 12       		.uleb128 0x12
+ 416 008e 06       		.uleb128 0x6
+ 417 008f 40       		.uleb128 0x40
+ 418 0090 18       		.uleb128 0x18
+ 419 0091 9742     		.uleb128 0x2117
+ 420 0093 19       		.uleb128 0x19
+ 421 0094 01       		.uleb128 0x1
+ 422 0095 13       		.uleb128 0x13
+ 423 0096 00       		.byte	0
+ 424 0097 00       		.byte	0
+ 425 0098 0B       		.uleb128 0xb
+ 426 0099 898201   		.uleb128 0x4109
+ 427 009c 00       		.byte	0
+ 428 009d 11       		.uleb128 0x11
+ 429 009e 01       		.uleb128 0x1
+ 430 009f 31       		.uleb128 0x31
+ 431 00a0 13       		.uleb128 0x13
+ 432 00a1 00       		.byte	0
+ 433 00a2 00       		.byte	0
+ 434 00a3 0C       		.uleb128 0xc
+ 435 00a4 34       		.uleb128 0x34
+ 436 00a5 00       		.byte	0
+ 437 00a6 03       		.uleb128 0x3
+ 438 00a7 0E       		.uleb128 0xe
+ 439 00a8 3A       		.uleb128 0x3a
+ 440 00a9 0B       		.uleb128 0xb
+ 441 00aa 3B       		.uleb128 0x3b
+ 442 00ab 0B       		.uleb128 0xb
+ 443 00ac 49       		.uleb128 0x49
+ 444 00ad 13       		.uleb128 0x13
+ 445 00ae 02       		.uleb128 0x2
+ 446 00af 18       		.uleb128 0x18
+ 447 00b0 00       		.byte	0
+ 448 00b1 00       		.byte	0
+ 449 00b2 00       		.byte	0
+ 450              		.section	.debug_aranges,"",%progbits
+ 451 0000 34000000 		.4byte	0x34
+ 452 0004 0200     		.2byte	0x2
+ 453 0006 00000000 		.4byte	.Ldebug_info0
+ 454 000a 04       		.byte	0x4
+ 455 000b 00       		.byte	0
+ 456 000c 0000     		.2byte	0
+ 457 000e 0000     		.2byte	0
+ 458 0010 00000000 		.4byte	.LFB0
+ 459 0014 14000000 		.4byte	.LFE0-.LFB0
+ 460 0018 00000000 		.4byte	.LFB1
+ 461 001c 14000000 		.4byte	.LFE1-.LFB1
+ 462 0020 00000000 		.4byte	.LFB2
+ 463 0024 08000000 		.4byte	.LFE2-.LFB2
+ 464 0028 00000000 		.4byte	.LFB3
+ 465 002c 08000000 		.4byte	.LFE3-.LFB3
+ 466 0030 00000000 		.4byte	0
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccd8Jf5T.s 			page 11
+
+
+ 467 0034 00000000 		.4byte	0
+ 468              		.section	.debug_ranges,"",%progbits
+ 469              	.Ldebug_ranges0:
+ 470 0000 00000000 		.4byte	.LFB0
+ 471 0004 14000000 		.4byte	.LFE0
+ 472 0008 00000000 		.4byte	.LFB1
+ 473 000c 14000000 		.4byte	.LFE1
+ 474 0010 00000000 		.4byte	.LFB2
+ 475 0014 08000000 		.4byte	.LFE2
+ 476 0018 00000000 		.4byte	.LFB3
+ 477 001c 08000000 		.4byte	.LFE3
+ 478 0020 00000000 		.4byte	0
+ 479 0024 00000000 		.4byte	0
+ 480              		.section	.debug_line,"",%progbits
+ 481              	.Ldebug_line0:
+ 482 0000 A4000000 		.section	.debug_str,"MS",%progbits,1
+ 482      02005800 
+ 482      00000201 
+ 482      FB0E0D00 
+ 482      01010101 
+ 483              	.LASF14:
+ 484 0000 50574D5F 		.ascii	"PWM_KILL_BACKUP_STRUCT\000"
+ 484      4B494C4C 
+ 484      5F424143 
+ 484      4B55505F 
+ 484      53545255 
+ 485              	.LASF10:
+ 486 0017 646F7562 		.ascii	"double\000"
+ 486      6C6500
+ 487              	.LASF16:
+ 488 001e 50574D5F 		.ascii	"PWM_KILL_RestoreConfig\000"
+ 488      4B494C4C 
+ 488      5F526573 
+ 488      746F7265 
+ 488      436F6E66 
+ 489              	.LASF9:
+ 490 0035 666C6F61 		.ascii	"float\000"
+ 490      7400
+ 491              	.LASF1:
+ 492 003b 756E7369 		.ascii	"unsigned char\000"
+ 492      676E6564 
+ 492      20636861 
+ 492      7200
+ 493              	.LASF23:
+ 494 0049 50574D5F 		.ascii	"PWM_KILL_backup\000"
+ 494      4B494C4C 
+ 494      5F626163 
+ 494      6B757000 
+ 495              	.LASF13:
+ 496 0059 72656738 		.ascii	"reg8\000"
+ 496      00
+ 497              	.LASF5:
+ 498 005e 6C6F6E67 		.ascii	"long unsigned int\000"
+ 498      20756E73 
+ 498      69676E65 
+ 498      6420696E 
+ 498      7400
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccd8Jf5T.s 			page 12
+
+
+ 499              	.LASF17:
+ 500 0070 50574D5F 		.ascii	"PWM_KILL_Sleep\000"
+ 500      4B494C4C 
+ 500      5F536C65 
+ 500      657000
+ 501              	.LASF3:
+ 502 007f 73686F72 		.ascii	"short unsigned int\000"
+ 502      7420756E 
+ 502      7369676E 
+ 502      65642069 
+ 502      6E7400
+ 503              	.LASF22:
+ 504 0092 636F6E74 		.ascii	"controlState\000"
+ 504      726F6C53 
+ 504      74617465 
+ 504      00
+ 505              	.LASF15:
+ 506 009f 50574D5F 		.ascii	"PWM_KILL_SaveConfig\000"
+ 506      4B494C4C 
+ 506      5F536176 
+ 506      65436F6E 
+ 506      66696700 
+ 507              	.LASF21:
+ 508 00b3 443A5C63 		.ascii	"D:\\code\\cypress\\controllers\\dcsd.cydsn\000"
+ 508      6F64655C 
+ 508      63797072 
+ 508      6573735C 
+ 508      636F6E74 
+ 509              	.LASF18:
+ 510 00da 50574D5F 		.ascii	"PWM_KILL_Wakeup\000"
+ 510      4B494C4C 
+ 510      5F57616B 
+ 510      65757000 
+ 511              	.LASF8:
+ 512 00ea 756E7369 		.ascii	"unsigned int\000"
+ 512      676E6564 
+ 512      20696E74 
+ 512      00
+ 513              	.LASF7:
+ 514 00f7 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 514      206C6F6E 
+ 514      6720756E 
+ 514      7369676E 
+ 514      65642069 
+ 515              	.LASF20:
+ 516 010e 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\PWM_KILL_PM.c\000"
+ 516      6E657261 
+ 516      7465645F 
+ 516      536F7572 
+ 516      63655C50 
+ 517              	.LASF6:
+ 518 0135 6C6F6E67 		.ascii	"long long int\000"
+ 518      206C6F6E 
+ 518      6720696E 
+ 518      7400
+ 519              	.LASF11:
+ 520 0143 63686172 		.ascii	"char\000"
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccd8Jf5T.s 			page 13
+
+
+ 520      00
+ 521              	.LASF19:
+ 522 0148 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 522      4320342E 
+ 522      392E3320 
+ 522      32303135 
+ 522      30333033 
+ 523 017b 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 523      20726576 
+ 523      6973696F 
+ 523      6E203232 
+ 523      31323230 
+ 524 01ae 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 524      66756E63 
+ 524      74696F6E 
+ 524      2D736563 
+ 524      74696F6E 
+ 525              	.LASF2:
+ 526 01d6 73686F72 		.ascii	"short int\000"
+ 526      7420696E 
+ 526      7400
+ 527              	.LASF12:
+ 528 01e0 75696E74 		.ascii	"uint8\000"
+ 528      3800
+ 529              	.LASF4:
+ 530 01e6 6C6F6E67 		.ascii	"long int\000"
+ 530      20696E74 
+ 530      00
+ 531              	.LASF0:
+ 532 01ef 7369676E 		.ascii	"signed char\000"
+ 532      65642063 
+ 532      68617200 
+ 533              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

@@ -1,0 +1,2806 @@
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 2
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"QDEC_Cnt16.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.QDEC_Cnt16_Init,"ax",%progbits
+  18              		.align	2
+  19              		.global	QDEC_Cnt16_Init
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	QDEC_Cnt16_Init, %function
+  23              	QDEC_Cnt16_Init:
+  24              	.LFB0:
+  25              		.file 1 ".\\Generated_Source\\PSoC4\\QDEC_Cnt16.c"
+   1:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * File Name: QDEC_Cnt16.c  
+   3:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Version 3.0
+   4:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+   5:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  Description:
+   6:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *     The Counter component consists of a 8, 16, 24 or 32-bit counter with
+   7:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *     a selectable period between 2 and 2^Width - 1.  
+   8:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+   9:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *   Note:
+  10:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *     None
+  11:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+  12:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** ********************************************************************************
+  13:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  14:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  15:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  16:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * the software package with which this file was provided.
+  17:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *******************************************************************************/
+  18:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+  19:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** #include "QDEC_Cnt16.h"
+  20:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+  21:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** uint8 QDEC_Cnt16_initVar = 0u;
+  22:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+  23:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+  24:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** /*******************************************************************************
+  25:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Function Name: QDEC_Cnt16_Init
+  26:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** ********************************************************************************
+  27:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Summary:
+  28:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *     Initialize to the schematic state
+  29:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * 
+  30:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Parameters:  
+  31:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  void  
+  32:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 2
+
+
+  33:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Return: 
+  34:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  void
+  35:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+  36:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *******************************************************************************/
+  37:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** void QDEC_Cnt16_Init(void) 
+  38:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** {
+  26              		.loc 1 38 0
+  27              		.cfi_startproc
+  39:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         #if (!QDEC_Cnt16_UsingFixedFunction && !QDEC_Cnt16_ControlRegRemoved)
+  40:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             uint8 ctrl;
+  41:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         #endif /* (!QDEC_Cnt16_UsingFixedFunction && !QDEC_Cnt16_ControlRegRemoved) */
+  42:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         
+  43:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         #if(!QDEC_Cnt16_UsingFixedFunction) 
+  44:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             /* Interrupt State Backup for Critical Region*/
+  45:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             uint8 QDEC_Cnt16_interruptState;
+  46:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         #endif /* (!QDEC_Cnt16_UsingFixedFunction) */
+  47:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         
+  48:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         #if (QDEC_Cnt16_UsingFixedFunction)
+  49:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             /* Clear all bits but the enable bit (if it's already set for Timer operation */
+  50:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             QDEC_Cnt16_CONTROL &= QDEC_Cnt16_CTRL_ENABLE;
+  51:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             
+  52:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             /* Clear the mode bits for continuous run mode */
+  53:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             #if (CY_PSOC5A)
+  54:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****                 QDEC_Cnt16_CONTROL2 &= ((uint8)(~QDEC_Cnt16_CTRL_MODE_MASK));
+  55:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             #endif /* (CY_PSOC5A) */
+  56:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             #if (CY_PSOC3 || CY_PSOC5LP)
+  57:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****                 QDEC_Cnt16_CONTROL3 &= ((uint8)(~QDEC_Cnt16_CTRL_MODE_MASK));                
+  58:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             #endif /* (CY_PSOC3 || CY_PSOC5LP) */
+  59:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             /* Check if One Shot mode is enabled i.e. RunMode !=0*/
+  60:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             #if (QDEC_Cnt16_RunModeUsed != 0x0u)
+  61:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****                 /* Set 3rd bit of Control register to enable one shot mode */
+  62:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****                 QDEC_Cnt16_CONTROL |= QDEC_Cnt16_ONESHOT;
+  63:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             #endif /* (QDEC_Cnt16_RunModeUsed != 0x0u) */
+  64:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             
+  65:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             /* Set the IRQ to use the status register interrupts */
+  66:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             QDEC_Cnt16_CONTROL2 |= QDEC_Cnt16_CTRL2_IRQ_SEL;
+  67:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             
+  68:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             /* Clear and Set SYNCTC and SYNCCMP bits of RT1 register */
+  69:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             QDEC_Cnt16_RT1 &= ((uint8)(~QDEC_Cnt16_RT1_MASK));
+  70:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             QDEC_Cnt16_RT1 |= QDEC_Cnt16_SYNC;     
+  71:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****                     
+  72:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             /*Enable DSI Sync all all inputs of the Timer*/
+  73:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             QDEC_Cnt16_RT1 &= ((uint8)(~QDEC_Cnt16_SYNCDSI_MASK));
+  74:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             QDEC_Cnt16_RT1 |= QDEC_Cnt16_SYNCDSI_EN;
+  75:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+  76:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         #else
+  77:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             #if(!QDEC_Cnt16_ControlRegRemoved)
+  78:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             /* Set the default compare mode defined in the parameter */
+  79:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             ctrl = QDEC_Cnt16_CONTROL & ((uint8)(~QDEC_Cnt16_CTRL_CMPMODE_MASK));
+  28              		.loc 1 79 0
+  29 0000 0721     		mov	r1, #7
+  38:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         #if (!QDEC_Cnt16_UsingFixedFunction && !QDEC_Cnt16_ControlRegRemoved)
+  30              		.loc 1 38 0
+  31 0002 08B5     		push	{r3, lr}
+  32              		.cfi_def_cfa_offset 8
+  33              		.cfi_offset 3, -8
+  34              		.cfi_offset 14, -4
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 3
+
+
+  35              		.loc 1 79 0
+  36 0004 134B     		ldr	r3, .L10
+  37 0006 1A78     		ldrb	r2, [r3]
+  38 0008 8A43     		bic	r2, r1
+  39              	.LVL0:
+  80:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             QDEC_Cnt16_CONTROL = ctrl | QDEC_Cnt16_DEFAULT_COMPARE_MODE;
+  40              		.loc 1 80 0
+  41 000a 1A70     		strb	r2, [r3]
+  81:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             
+  82:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             /* Set the default capture mode defined in the parameter */
+  83:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             ctrl = QDEC_Cnt16_CONTROL & ((uint8)(~QDEC_Cnt16_CTRL_CAPMODE_MASK));
+  42              		.loc 1 83 0
+  43 000c 1A78     		ldrb	r2, [r3]
+  44              	.LVL1:
+  45 000e 0439     		sub	r1, r1, #4
+  46 0010 8A43     		bic	r2, r1
+  47              	.LVL2:
+  84:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             
+  85:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             #if( 0 != QDEC_Cnt16_CAPTURE_MODE_CONF)
+  86:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****                 QDEC_Cnt16_CONTROL = ctrl | QDEC_Cnt16_DEFAULT_CAPTURE_MODE;
+  87:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             #else
+  88:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****                 QDEC_Cnt16_CONTROL = ctrl;
+  48              		.loc 1 88 0
+  49 0012 1A70     		strb	r2, [r3]
+  50              	.LBB24:
+  51              	.LBB25:
+  52              	.LBB26:
+  53              	.LBB27:
+  89:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             #endif /* 0 != QDEC_Cnt16_CAPTURE_MODE */ 
+  90:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             
+  91:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             #endif /* (!QDEC_Cnt16_ControlRegRemoved) */
+  92:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         #endif /* (QDEC_Cnt16_UsingFixedFunction) */
+  93:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         
+  94:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         /* Clear all data in the FIFO's */
+  95:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         #if (!QDEC_Cnt16_UsingFixedFunction)
+  96:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             QDEC_Cnt16_ClearFIFO();
+  97:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         #endif /* (!QDEC_Cnt16_UsingFixedFunction) */
+  98:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         
+  99:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         /* Set Initial values from Configuration */
+ 100:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         QDEC_Cnt16_WritePeriod(QDEC_Cnt16_INIT_PERIOD_VALUE);
+ 101:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         #if (!(QDEC_Cnt16_UsingFixedFunction && (CY_PSOC5A)))
+ 102:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             QDEC_Cnt16_WriteCounter(QDEC_Cnt16_INIT_COUNTER_VALUE);
+ 103:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         #endif /* (!(QDEC_Cnt16_UsingFixedFunction && (CY_PSOC5A))) */
+ 104:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         QDEC_Cnt16_SetInterruptMode(QDEC_Cnt16_INIT_INTERRUPTS_MASK);
+ 105:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         
+ 106:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         #if (!QDEC_Cnt16_UsingFixedFunction)
+ 107:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             /* Read the status register to clear the unwanted interrupts */
+ 108:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             (void)QDEC_Cnt16_ReadStatusRegister();
+ 109:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             /* Set the compare value (only available to non-fixed function implementation */
+ 110:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             QDEC_Cnt16_WriteCompare(QDEC_Cnt16_INIT_COMPARE_VALUE);
+ 111:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             /* Use the interrupt output of the status register for IRQ output */
+ 112:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             
+ 113:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             /* CyEnterCriticalRegion and CyExitCriticalRegion are used to mark following region cri
+ 114:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             /* Enter Critical Region*/
+ 115:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             QDEC_Cnt16_interruptState = CyEnterCriticalSection();
+ 116:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             
+ 117:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             QDEC_Cnt16_STATUS_AUX_CTRL |= QDEC_Cnt16_STATUS_ACTL_INT_EN_MASK;
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 4
+
+
+ 118:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             
+ 119:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             /* Exit Critical Region*/
+ 120:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             CyExitCriticalSection(QDEC_Cnt16_interruptState);
+ 121:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             
+ 122:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         #endif /* (!QDEC_Cnt16_UsingFixedFunction) */
+ 123:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** }
+ 124:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 125:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 126:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** /*******************************************************************************
+ 127:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Function Name: QDEC_Cnt16_Enable
+ 128:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** ********************************************************************************
+ 129:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Summary:
+ 130:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *     Enable the Counter
+ 131:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * 
+ 132:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Parameters:  
+ 133:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  void  
+ 134:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 135:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Return: 
+ 136:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  void
+ 137:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 138:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Side Effects: 
+ 139:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *   If the Enable mode is set to Hardware only then this function has no effect 
+ 140:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *   on the operation of the counter.
+ 141:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 142:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *******************************************************************************/
+ 143:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** void QDEC_Cnt16_Enable(void) 
+ 144:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** {
+ 145:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     /* Globally Enable the Fixed Function Block chosen */
+ 146:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #if (QDEC_Cnt16_UsingFixedFunction)
+ 147:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         QDEC_Cnt16_GLOBAL_ENABLE |= QDEC_Cnt16_BLOCK_EN_MASK;
+ 148:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         QDEC_Cnt16_GLOBAL_STBY_ENABLE |= QDEC_Cnt16_BLOCK_STBY_EN_MASK;
+ 149:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #endif /* (QDEC_Cnt16_UsingFixedFunction) */  
+ 150:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         
+ 151:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     /* Enable the counter from the control register  */
+ 152:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     /* If Fixed Function then make sure Mode is set correctly */
+ 153:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     /* else make sure reset is clear */
+ 154:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #if(!QDEC_Cnt16_ControlRegRemoved || QDEC_Cnt16_UsingFixedFunction)
+ 155:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         QDEC_Cnt16_CONTROL |= QDEC_Cnt16_CTRL_ENABLE;                
+ 156:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #endif /* (!QDEC_Cnt16_ControlRegRemoved || QDEC_Cnt16_UsingFixedFunction) */
+ 157:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     
+ 158:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** }
+ 159:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 160:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 161:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** /*******************************************************************************
+ 162:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Function Name: QDEC_Cnt16_Start
+ 163:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** ********************************************************************************
+ 164:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Summary:
+ 165:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  Enables the counter for operation 
+ 166:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 167:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Parameters:  
+ 168:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  void  
+ 169:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 170:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Return: 
+ 171:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  void
+ 172:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 173:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Global variables:
+ 174:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  QDEC_Cnt16_initVar: Is modified when this function is called for the  
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 5
+
+
+ 175:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *   first time. Is used to ensure that initialization happens only once.
+ 176:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 177:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *******************************************************************************/
+ 178:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** void QDEC_Cnt16_Start(void) 
+ 179:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** {
+ 180:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     if(QDEC_Cnt16_initVar == 0u)
+ 181:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     {
+ 182:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         QDEC_Cnt16_Init();
+ 183:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         
+ 184:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         QDEC_Cnt16_initVar = 1u; /* Clear this bit for Initialization */        
+ 185:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     }
+ 186:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     
+ 187:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     /* Enable the Counter */
+ 188:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     QDEC_Cnt16_Enable();        
+ 189:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** }
+ 190:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 191:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 192:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** /*******************************************************************************
+ 193:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Function Name: QDEC_Cnt16_Stop
+ 194:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** ********************************************************************************
+ 195:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Summary:
+ 196:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Halts the counter, but does not change any modes or disable interrupts.
+ 197:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 198:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Parameters:  
+ 199:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  void  
+ 200:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 201:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Return: 
+ 202:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  void
+ 203:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 204:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Side Effects: If the Enable mode is set to Hardware only then this function
+ 205:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *               has no effect on the operation of the counter.
+ 206:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 207:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *******************************************************************************/
+ 208:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** void QDEC_Cnt16_Stop(void) 
+ 209:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** {
+ 210:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     /* Disable Counter */
+ 211:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #if(!QDEC_Cnt16_ControlRegRemoved || QDEC_Cnt16_UsingFixedFunction)
+ 212:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         QDEC_Cnt16_CONTROL &= ((uint8)(~QDEC_Cnt16_CTRL_ENABLE));        
+ 213:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #endif /* (!QDEC_Cnt16_ControlRegRemoved || QDEC_Cnt16_UsingFixedFunction) */
+ 214:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     
+ 215:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     /* Globally disable the Fixed Function Block chosen */
+ 216:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #if (QDEC_Cnt16_UsingFixedFunction)
+ 217:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         QDEC_Cnt16_GLOBAL_ENABLE &= ((uint8)(~QDEC_Cnt16_BLOCK_EN_MASK));
+ 218:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         QDEC_Cnt16_GLOBAL_STBY_ENABLE &= ((uint8)(~QDEC_Cnt16_BLOCK_STBY_EN_MASK));
+ 219:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #endif /* (QDEC_Cnt16_UsingFixedFunction) */
+ 220:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** }
+ 221:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 222:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 223:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** /*******************************************************************************
+ 224:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Function Name: QDEC_Cnt16_SetInterruptMode
+ 225:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** ********************************************************************************
+ 226:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Summary:
+ 227:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Configures which interrupt sources are enabled to generate the final interrupt
+ 228:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 229:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Parameters:  
+ 230:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  InterruptsMask: This parameter is an or'd collection of the status bits
+ 231:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *                   which will be allowed to generate the counters interrupt.   
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 6
+
+
+ 232:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 233:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Return: 
+ 234:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  void
+ 235:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 236:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *******************************************************************************/
+ 237:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** void QDEC_Cnt16_SetInterruptMode(uint8 interruptsMask) 
+ 238:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** {
+ 239:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     QDEC_Cnt16_STATUS_MASK = interruptsMask;
+ 240:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** }
+ 241:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 242:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 243:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** /*******************************************************************************
+ 244:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Function Name: QDEC_Cnt16_ReadStatusRegister
+ 245:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** ********************************************************************************
+ 246:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Summary:
+ 247:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *   Reads the status register and returns it's state. This function should use
+ 248:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *       defined types for the bit-field information as the bits in this
+ 249:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *       register may be permuteable.
+ 250:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 251:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Parameters:  
+ 252:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  void
+ 253:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 254:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Return: 
+ 255:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  (uint8) The contents of the status register
+ 256:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 257:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Side Effects:
+ 258:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *   Status register bits may be clear on read. 
+ 259:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 260:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *******************************************************************************/
+ 261:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** uint8   QDEC_Cnt16_ReadStatusRegister(void) 
+ 262:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** {
+ 263:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     return QDEC_Cnt16_STATUS;
+  54              		.loc 1 263 0
+  55 0014 104A     		ldr	r2, .L10+4
+  56              	.LVL3:
+  57 0016 1378     		ldrb	r3, [r2]
+  58              	.LVL4:
+  59              	.LBE27:
+  60              	.LBE26:
+ 264:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** }
+ 265:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 266:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 267:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** #if(!QDEC_Cnt16_ControlRegRemoved)
+ 268:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** /*******************************************************************************
+ 269:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Function Name: QDEC_Cnt16_ReadControlRegister
+ 270:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** ********************************************************************************
+ 271:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Summary:
+ 272:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *   Reads the control register and returns it's state. This function should use
+ 273:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *       defined types for the bit-field information as the bits in this
+ 274:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *       register may be permuteable.
+ 275:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 276:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Parameters:  
+ 277:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  void
+ 278:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 279:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Return: 
+ 280:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  (uint8) The contents of the control register
+ 281:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 7
+
+
+ 282:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *******************************************************************************/
+ 283:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** uint8   QDEC_Cnt16_ReadControlRegister(void) 
+ 284:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** {
+ 285:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     return QDEC_Cnt16_CONTROL;
+ 286:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** }
+ 287:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 288:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 289:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** /*******************************************************************************
+ 290:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Function Name: QDEC_Cnt16_WriteControlRegister
+ 291:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** ********************************************************************************
+ 292:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Summary:
+ 293:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *   Sets the bit-field of the control register.  This function should use
+ 294:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *       defined types for the bit-field information as the bits in this
+ 295:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *       register may be permuteable.
+ 296:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 297:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Parameters:  
+ 298:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  void
+ 299:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 300:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Return: 
+ 301:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  (uint8) The contents of the control register
+ 302:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 303:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *******************************************************************************/
+ 304:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** void    QDEC_Cnt16_WriteControlRegister(uint8 control) 
+ 305:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** {
+ 306:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     QDEC_Cnt16_CONTROL = control;
+ 307:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** }
+ 308:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 309:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** #endif  /* (!QDEC_Cnt16_ControlRegRemoved) */
+ 310:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 311:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 312:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** #if (!(QDEC_Cnt16_UsingFixedFunction && (CY_PSOC5A)))
+ 313:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** /*******************************************************************************
+ 314:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Function Name: QDEC_Cnt16_WriteCounter
+ 315:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** ********************************************************************************
+ 316:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Summary:
+ 317:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *   This funtion is used to set the counter to a specific value
+ 318:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 319:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Parameters:  
+ 320:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  counter:  New counter value. 
+ 321:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 322:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Return: 
+ 323:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  void 
+ 324:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 325:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *******************************************************************************/
+ 326:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** void QDEC_Cnt16_WriteCounter(uint16 counter) \
+ 327:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****                                    
+ 328:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** {
+ 329:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #if(QDEC_Cnt16_UsingFixedFunction)
+ 330:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         /* assert if block is already enabled */
+ 331:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         CYASSERT (0u == (QDEC_Cnt16_GLOBAL_ENABLE & QDEC_Cnt16_BLOCK_EN_MASK));
+ 332:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         /* If block is disabled, enable it and then write the counter */
+ 333:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         QDEC_Cnt16_GLOBAL_ENABLE |= QDEC_Cnt16_BLOCK_EN_MASK;
+ 334:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         CY_SET_REG16(QDEC_Cnt16_COUNTER_LSB_PTR, (uint16)counter);
+ 335:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         QDEC_Cnt16_GLOBAL_ENABLE &= ((uint8)(~QDEC_Cnt16_BLOCK_EN_MASK));
+ 336:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #else
+ 337:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         CY_SET_REG16(QDEC_Cnt16_COUNTER_LSB_PTR, counter);
+ 338:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #endif /* (QDEC_Cnt16_UsingFixedFunction) */
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 8
+
+
+ 339:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** }
+ 340:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** #endif /* (!(QDEC_Cnt16_UsingFixedFunction && (CY_PSOC5A))) */
+ 341:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 342:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 343:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** /*******************************************************************************
+ 344:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Function Name: QDEC_Cnt16_ReadCounter
+ 345:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** ********************************************************************************
+ 346:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Summary:
+ 347:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Returns the current value of the counter.  It doesn't matter
+ 348:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * if the counter is enabled or running.
+ 349:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 350:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Parameters:  
+ 351:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  void:  
+ 352:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 353:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Return: 
+ 354:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  (uint16) The present value of the counter.
+ 355:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 356:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *******************************************************************************/
+ 357:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** uint16 QDEC_Cnt16_ReadCounter(void) 
+ 358:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** {
+ 359:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     /* Force capture by reading Accumulator */
+ 360:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     /* Must first do a software capture to be able to read the counter */
+ 361:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     /* It is up to the user code to make sure there isn't already captured data in the FIFO */
+ 362:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #if(QDEC_Cnt16_UsingFixedFunction)
+ 363:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 		(void)CY_GET_REG16(QDEC_Cnt16_COUNTER_LSB_PTR);
+ 364:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 	#else
+ 365:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 		(void)CY_GET_REG8(QDEC_Cnt16_COUNTER_LSB_PTR_8BIT);
+ 366:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 	#endif/* (QDEC_Cnt16_UsingFixedFunction) */
+ 367:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     
+ 368:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     /* Read the data from the FIFO (or capture register for Fixed Function)*/
+ 369:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #if(QDEC_Cnt16_UsingFixedFunction)
+ 370:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         return ((uint16)CY_GET_REG16(QDEC_Cnt16_STATICCOUNT_LSB_PTR));
+ 371:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #else
+ 372:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         return (CY_GET_REG16(QDEC_Cnt16_STATICCOUNT_LSB_PTR));
+ 373:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #endif /* (QDEC_Cnt16_UsingFixedFunction) */
+ 374:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** }
+ 375:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 376:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 377:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** /*******************************************************************************
+ 378:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Function Name: QDEC_Cnt16_ReadCapture
+ 379:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** ********************************************************************************
+ 380:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Summary:
+ 381:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *   This function returns the last value captured.
+ 382:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 383:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Parameters:  
+ 384:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  void
+ 385:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 386:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Return: 
+ 387:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  (uint16) Present Capture value.
+ 388:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 389:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *******************************************************************************/
+ 390:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** uint16 QDEC_Cnt16_ReadCapture(void) 
+ 391:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** {
+ 392:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #if(QDEC_Cnt16_UsingFixedFunction)
+ 393:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         return ((uint16)CY_GET_REG16(QDEC_Cnt16_STATICCOUNT_LSB_PTR));
+ 394:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #else
+ 395:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         return (CY_GET_REG16(QDEC_Cnt16_STATICCOUNT_LSB_PTR));
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 9
+
+
+ 396:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #endif /* (QDEC_Cnt16_UsingFixedFunction) */
+ 397:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** }
+ 398:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 399:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 400:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** /*******************************************************************************
+ 401:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Function Name: QDEC_Cnt16_WritePeriod
+ 402:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** ********************************************************************************
+ 403:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Summary:
+ 404:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Changes the period of the counter.  The new period 
+ 405:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * will be loaded the next time terminal count is detected.
+ 406:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 407:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Parameters:  
+ 408:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  period: (uint16) A value of 0 will result in
+ 409:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *         the counter remaining at zero.  
+ 410:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 411:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Return: 
+ 412:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  void
+ 413:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 414:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *******************************************************************************/
+ 415:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** void QDEC_Cnt16_WritePeriod(uint16 period) 
+ 416:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** {
+ 417:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #if(QDEC_Cnt16_UsingFixedFunction)
+ 418:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         CY_SET_REG16(QDEC_Cnt16_PERIOD_LSB_PTR,(uint16)period);
+ 419:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #else
+ 420:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         CY_SET_REG16(QDEC_Cnt16_PERIOD_LSB_PTR, period);
+ 421:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #endif /* (QDEC_Cnt16_UsingFixedFunction) */
+ 422:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** }
+ 423:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 424:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 425:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** /*******************************************************************************
+ 426:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Function Name: QDEC_Cnt16_ReadPeriod
+ 427:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** ********************************************************************************
+ 428:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Summary:
+ 429:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Reads the current period value without affecting counter operation.
+ 430:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 431:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Parameters:  
+ 432:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  void:  
+ 433:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 434:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Return: 
+ 435:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  (uint16) Present period value.
+ 436:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 437:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *******************************************************************************/
+ 438:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** uint16 QDEC_Cnt16_ReadPeriod(void) 
+ 439:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** {
+ 440:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #if(QDEC_Cnt16_UsingFixedFunction)
+ 441:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         return ((uint16)CY_GET_REG16(QDEC_Cnt16_PERIOD_LSB_PTR));
+ 442:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #else
+ 443:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         return (CY_GET_REG16(QDEC_Cnt16_PERIOD_LSB_PTR));
+ 444:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #endif /* (QDEC_Cnt16_UsingFixedFunction) */
+ 445:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** }
+ 446:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 447:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 448:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** #if (!QDEC_Cnt16_UsingFixedFunction)
+ 449:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** /*******************************************************************************
+ 450:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Function Name: QDEC_Cnt16_WriteCompare
+ 451:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** ********************************************************************************
+ 452:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Summary:
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 10
+
+
+ 453:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Changes the compare value.  The compare output will 
+ 454:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * reflect the new value on the next UDB clock.  The compare output will be 
+ 455:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * driven high when the present counter value compares true based on the 
+ 456:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * configured compare mode setting. 
+ 457:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 458:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Parameters:  
+ 459:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  Compare:  New compare value. 
+ 460:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 461:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Return: 
+ 462:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  void
+ 463:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 464:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *******************************************************************************/
+ 465:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** void QDEC_Cnt16_WriteCompare(uint16 compare) \
+ 466:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****                                    
+ 467:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** {
+ 468:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #if(QDEC_Cnt16_UsingFixedFunction)
+ 469:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         CY_SET_REG16(QDEC_Cnt16_COMPARE_LSB_PTR, (uint16)compare);
+ 470:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #else
+ 471:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         CY_SET_REG16(QDEC_Cnt16_COMPARE_LSB_PTR, compare);
+ 472:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #endif /* (QDEC_Cnt16_UsingFixedFunction) */
+ 473:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** }
+ 474:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 475:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 476:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** /*******************************************************************************
+ 477:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Function Name: QDEC_Cnt16_ReadCompare
+ 478:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** ********************************************************************************
+ 479:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Summary:
+ 480:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Returns the compare value.
+ 481:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 482:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Parameters:  
+ 483:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  void:
+ 484:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 485:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Return: 
+ 486:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  (uint16) Present compare value.
+ 487:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 488:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *******************************************************************************/
+ 489:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** uint16 QDEC_Cnt16_ReadCompare(void) 
+ 490:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** {
+ 491:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     return (CY_GET_REG16(QDEC_Cnt16_COMPARE_LSB_PTR));
+ 492:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** }
+ 493:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 494:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 495:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** #if (QDEC_Cnt16_COMPARE_MODE_SOFTWARE)
+ 496:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** /*******************************************************************************
+ 497:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Function Name: QDEC_Cnt16_SetCompareMode
+ 498:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** ********************************************************************************
+ 499:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Summary:
+ 500:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  Sets the software controlled Compare Mode.
+ 501:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 502:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Parameters:
+ 503:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  compareMode:  Compare Mode Enumerated Type.
+ 504:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 505:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Return:
+ 506:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  void
+ 507:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 508:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *******************************************************************************/
+ 509:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** void QDEC_Cnt16_SetCompareMode(uint8 compareMode) 
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 11
+
+
+ 510:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** {
+ 511:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     /* Clear the compare mode bits in the control register */
+ 512:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     QDEC_Cnt16_CONTROL &= ((uint8)(~QDEC_Cnt16_CTRL_CMPMODE_MASK));
+ 513:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     
+ 514:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     /* Write the new setting */
+ 515:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     QDEC_Cnt16_CONTROL |= compareMode;
+ 516:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** }
+ 517:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** #endif  /* (QDEC_Cnt16_COMPARE_MODE_SOFTWARE) */
+ 518:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 519:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 520:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** #if (QDEC_Cnt16_CAPTURE_MODE_SOFTWARE)
+ 521:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** /*******************************************************************************
+ 522:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Function Name: QDEC_Cnt16_SetCaptureMode
+ 523:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** ********************************************************************************
+ 524:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Summary:
+ 525:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  Sets the software controlled Capture Mode.
+ 526:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 527:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Parameters:
+ 528:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  captureMode:  Capture Mode Enumerated Type.
+ 529:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 530:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Return:
+ 531:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  void
+ 532:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 533:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *******************************************************************************/
+ 534:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** void QDEC_Cnt16_SetCaptureMode(uint8 captureMode) 
+ 535:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** {
+ 536:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     /* Clear the capture mode bits in the control register */
+ 537:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     QDEC_Cnt16_CONTROL &= ((uint8)(~QDEC_Cnt16_CTRL_CAPMODE_MASK));
+ 538:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     
+ 539:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     /* Write the new setting */
+ 540:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     QDEC_Cnt16_CONTROL |= ((uint8)((uint8)captureMode << QDEC_Cnt16_CTRL_CAPMODE0_SHIFT));
+ 541:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** }
+ 542:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** #endif  /* (QDEC_Cnt16_CAPTURE_MODE_SOFTWARE) */
+ 543:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 544:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 545:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** /*******************************************************************************
+ 546:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Function Name: QDEC_Cnt16_ClearFIFO
+ 547:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** ********************************************************************************
+ 548:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Summary:
+ 549:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *   This function clears all capture data from the capture FIFO
+ 550:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 551:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Parameters:  
+ 552:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  void:
+ 553:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 554:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** * Return: 
+ 555:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *  None
+ 556:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *
+ 557:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** *******************************************************************************/
+ 558:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** void QDEC_Cnt16_ClearFIFO(void) 
+ 559:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** {
+ 560:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 561:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     while(0u != (QDEC_Cnt16_ReadStatusRegister() & QDEC_Cnt16_STATUS_FIFONEMP))
+  61              		.loc 1 561 0
+  62 0018 5B06     		lsl	r3, r3, #25
+  63 001a 05D5     		bpl	.L2
+  64              	.LBB29:
+  65              	.LBB30:
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 12
+
+
+ 395:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #endif /* (QDEC_Cnt16_UsingFixedFunction) */
+  66              		.loc 1 395 0
+  67 001c 0F48     		ldr	r0, .L10+8
+  68              	.LBE30:
+  69              	.LBE29:
+  70              		.loc 1 561 0
+  71 001e 3D31     		add	r1, r1, #61
+  72              	.L6:
+  73              	.LBB32:
+  74              	.LBB31:
+ 395:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #endif /* (QDEC_Cnt16_UsingFixedFunction) */
+  75              		.loc 1 395 0
+  76 0020 0388     		ldrh	r3, [r0]
+  77              	.LBE31:
+  78              	.LBE32:
+  79              	.LBB33:
+  80              	.LBB28:
+ 263:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** }
+  81              		.loc 1 263 0
+  82 0022 1378     		ldrb	r3, [r2]
+  83              	.LBE28:
+  84              	.LBE33:
+  85              		.loc 1 561 0
+  86 0024 1942     		tst	r1, r3
+  87 0026 FBD1     		bne	.L6
+  88              	.L2:
+  89              	.LVL5:
+  90              	.LBE25:
+  91              	.LBE24:
+  92              	.LBB34:
+  93              	.LBB35:
+ 239:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** }
+  94              		.loc 1 239 0
+  95 0028 0021     		mov	r1, #0
+  96              	.LBE35:
+  97              	.LBE34:
+  98              	.LBB37:
+  99              	.LBB38:
+ 420:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #endif /* (QDEC_Cnt16_UsingFixedFunction) */
+ 100              		.loc 1 420 0
+ 101 002a 0D4B     		ldr	r3, .L10+12
+ 102 002c 0D4A     		ldr	r2, .L10+16
+ 103              	.LBE38:
+ 104              	.LBE37:
+ 123:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 105              		.loc 1 123 0
+ 106              		@ sp needed
+ 107              	.LBB40:
+ 108              	.LBB39:
+ 420:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #endif /* (QDEC_Cnt16_UsingFixedFunction) */
+ 109              		.loc 1 420 0
+ 110 002e 1380     		strh	r3, [r2]
+ 111              	.LVL6:
+ 112              	.LBE39:
+ 113              	.LBE40:
+ 114              	.LBB41:
+ 115              	.LBB42:
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 13
+
+
+ 337:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #endif /* (QDEC_Cnt16_UsingFixedFunction) */
+ 116              		.loc 1 337 0
+ 117 0030 0D4A     		ldr	r2, .L10+20
+ 118 0032 1380     		strh	r3, [r2]
+ 119              	.LVL7:
+ 120              	.LBE42:
+ 121              	.LBE41:
+ 122              	.LBB43:
+ 123              	.LBB36:
+ 239:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** }
+ 124              		.loc 1 239 0
+ 125 0034 0D4A     		ldr	r2, .L10+24
+ 126 0036 1170     		strb	r1, [r2]
+ 127              	.LBE36:
+ 128              	.LBE43:
+ 129              	.LBB44:
+ 130              	.LBB45:
+ 263:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** }
+ 131              		.loc 1 263 0
+ 132 0038 074A     		ldr	r2, .L10+4
+ 133 003a 1278     		ldrb	r2, [r2]
+ 134              	.LVL8:
+ 135              	.LBE45:
+ 136              	.LBE44:
+ 137              	.LBB46:
+ 138              	.LBB47:
+ 471:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #endif /* (QDEC_Cnt16_UsingFixedFunction) */
+ 139              		.loc 1 471 0
+ 140 003c 0C4A     		ldr	r2, .L10+28
+ 141 003e 1380     		strh	r3, [r2]
+ 142              	.LBE47:
+ 143              	.LBE46:
+ 115:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             
+ 144              		.loc 1 115 0
+ 145 0040 FFF7FEFF 		bl	CyEnterCriticalSection
+ 146              	.LVL9:
+ 117:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             
+ 147              		.loc 1 117 0
+ 148 0044 1023     		mov	r3, #16
+ 149 0046 0B4A     		ldr	r2, .L10+32
+ 150 0048 1178     		ldrb	r1, [r2]
+ 151 004a 0B43     		orr	r3, r1
+ 152 004c 1370     		strb	r3, [r2]
+ 120:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****             
+ 153              		.loc 1 120 0
+ 154 004e FFF7FEFF 		bl	CyExitCriticalSection
+ 155              	.LVL10:
+ 123:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 156              		.loc 1 123 0
+ 157 0052 08BD     		pop	{r3, pc}
+ 158              	.L11:
+ 159              		.align	2
+ 160              	.L10:
+ 161 0054 72000F40 		.word	1074724978
+ 162 0058 62000F40 		.word	1074724962
+ 163 005c 80100F40 		.word	1074729088
+ 164 0060 0080FFFF 		.word	-32768
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 14
+
+
+ 165 0064 40100F40 		.word	1074729024
+ 166 0068 00100F40 		.word	1074728960
+ 167 006c 82000F40 		.word	1074724994
+ 168 0070 60100F40 		.word	1074729056
+ 169 0074 92000F40 		.word	1074725010
+ 170              		.cfi_endproc
+ 171              	.LFE0:
+ 172              		.size	QDEC_Cnt16_Init, .-QDEC_Cnt16_Init
+ 173              		.section	.text.QDEC_Cnt16_Enable,"ax",%progbits
+ 174              		.align	2
+ 175              		.global	QDEC_Cnt16_Enable
+ 176              		.code	16
+ 177              		.thumb_func
+ 178              		.type	QDEC_Cnt16_Enable, %function
+ 179              	QDEC_Cnt16_Enable:
+ 180              	.LFB1:
+ 144:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     /* Globally Enable the Fixed Function Block chosen */
+ 181              		.loc 1 144 0
+ 182              		.cfi_startproc
+ 155:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #endif /* (!QDEC_Cnt16_ControlRegRemoved || QDEC_Cnt16_UsingFixedFunction) */
+ 183              		.loc 1 155 0
+ 184 0000 8023     		mov	r3, #128
+ 185 0002 024A     		ldr	r2, .L13
+ 158:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 186              		.loc 1 158 0
+ 187              		@ sp needed
+ 155:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #endif /* (!QDEC_Cnt16_ControlRegRemoved || QDEC_Cnt16_UsingFixedFunction) */
+ 188              		.loc 1 155 0
+ 189 0004 1178     		ldrb	r1, [r2]
+ 190 0006 0B43     		orr	r3, r1
+ 191 0008 1370     		strb	r3, [r2]
+ 158:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 192              		.loc 1 158 0
+ 193 000a 7047     		bx	lr
+ 194              	.L14:
+ 195              		.align	2
+ 196              	.L13:
+ 197 000c 72000F40 		.word	1074724978
+ 198              		.cfi_endproc
+ 199              	.LFE1:
+ 200              		.size	QDEC_Cnt16_Enable, .-QDEC_Cnt16_Enable
+ 201              		.section	.text.QDEC_Cnt16_Start,"ax",%progbits
+ 202              		.align	2
+ 203              		.global	QDEC_Cnt16_Start
+ 204              		.code	16
+ 205              		.thumb_func
+ 206              		.type	QDEC_Cnt16_Start, %function
+ 207              	QDEC_Cnt16_Start:
+ 208              	.LFB2:
+ 179:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     if(QDEC_Cnt16_initVar == 0u)
+ 209              		.loc 1 179 0
+ 210              		.cfi_startproc
+ 211 0000 10B5     		push	{r4, lr}
+ 212              		.cfi_def_cfa_offset 8
+ 213              		.cfi_offset 4, -8
+ 214              		.cfi_offset 14, -4
+ 180:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     {
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 15
+
+
+ 215              		.loc 1 180 0
+ 216 0002 074C     		ldr	r4, .L17
+ 217 0004 2378     		ldrb	r3, [r4]
+ 218 0006 002B     		cmp	r3, #0
+ 219 0008 03D1     		bne	.L16
+ 182:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         
+ 220              		.loc 1 182 0
+ 221 000a FFF7FEFF 		bl	QDEC_Cnt16_Init
+ 222              	.LVL11:
+ 184:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     }
+ 223              		.loc 1 184 0
+ 224 000e 0123     		mov	r3, #1
+ 225 0010 2370     		strb	r3, [r4]
+ 226              	.L16:
+ 227              	.LBB48:
+ 228              	.LBB49:
+ 155:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #endif /* (!QDEC_Cnt16_ControlRegRemoved || QDEC_Cnt16_UsingFixedFunction) */
+ 229              		.loc 1 155 0
+ 230 0012 8023     		mov	r3, #128
+ 231 0014 034A     		ldr	r2, .L17+4
+ 232              	.LBE49:
+ 233              	.LBE48:
+ 189:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 234              		.loc 1 189 0
+ 235              		@ sp needed
+ 236              	.LBB51:
+ 237              	.LBB50:
+ 155:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #endif /* (!QDEC_Cnt16_ControlRegRemoved || QDEC_Cnt16_UsingFixedFunction) */
+ 238              		.loc 1 155 0
+ 239 0016 1178     		ldrb	r1, [r2]
+ 240 0018 0B43     		orr	r3, r1
+ 241 001a 1370     		strb	r3, [r2]
+ 242              	.LBE50:
+ 243              	.LBE51:
+ 189:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 244              		.loc 1 189 0
+ 245 001c 10BD     		pop	{r4, pc}
+ 246              	.L18:
+ 247 001e C046     		.align	2
+ 248              	.L17:
+ 249 0020 00000000 		.word	.LANCHOR0
+ 250 0024 72000F40 		.word	1074724978
+ 251              		.cfi_endproc
+ 252              	.LFE2:
+ 253              		.size	QDEC_Cnt16_Start, .-QDEC_Cnt16_Start
+ 254              		.section	.text.QDEC_Cnt16_Stop,"ax",%progbits
+ 255              		.align	2
+ 256              		.global	QDEC_Cnt16_Stop
+ 257              		.code	16
+ 258              		.thumb_func
+ 259              		.type	QDEC_Cnt16_Stop, %function
+ 260              	QDEC_Cnt16_Stop:
+ 261              	.LFB3:
+ 209:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     /* Disable Counter */
+ 262              		.loc 1 209 0
+ 263              		.cfi_startproc
+ 212:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #endif /* (!QDEC_Cnt16_ControlRegRemoved || QDEC_Cnt16_UsingFixedFunction) */
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 16
+
+
+ 264              		.loc 1 212 0
+ 265 0000 7F21     		mov	r1, #127
+ 266 0002 024A     		ldr	r2, .L20
+ 220:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 267              		.loc 1 220 0
+ 268              		@ sp needed
+ 212:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #endif /* (!QDEC_Cnt16_ControlRegRemoved || QDEC_Cnt16_UsingFixedFunction) */
+ 269              		.loc 1 212 0
+ 270 0004 1378     		ldrb	r3, [r2]
+ 271 0006 0B40     		and	r3, r1
+ 272 0008 1370     		strb	r3, [r2]
+ 220:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 273              		.loc 1 220 0
+ 274 000a 7047     		bx	lr
+ 275              	.L21:
+ 276              		.align	2
+ 277              	.L20:
+ 278 000c 72000F40 		.word	1074724978
+ 279              		.cfi_endproc
+ 280              	.LFE3:
+ 281              		.size	QDEC_Cnt16_Stop, .-QDEC_Cnt16_Stop
+ 282              		.section	.text.QDEC_Cnt16_SetInterruptMode,"ax",%progbits
+ 283              		.align	2
+ 284              		.global	QDEC_Cnt16_SetInterruptMode
+ 285              		.code	16
+ 286              		.thumb_func
+ 287              		.type	QDEC_Cnt16_SetInterruptMode, %function
+ 288              	QDEC_Cnt16_SetInterruptMode:
+ 289              	.LFB4:
+ 238:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     QDEC_Cnt16_STATUS_MASK = interruptsMask;
+ 290              		.loc 1 238 0
+ 291              		.cfi_startproc
+ 292              	.LVL12:
+ 239:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** }
+ 293              		.loc 1 239 0
+ 294 0000 014B     		ldr	r3, .L23
+ 240:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 295              		.loc 1 240 0
+ 296              		@ sp needed
+ 239:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** }
+ 297              		.loc 1 239 0
+ 298 0002 1870     		strb	r0, [r3]
+ 240:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 299              		.loc 1 240 0
+ 300 0004 7047     		bx	lr
+ 301              	.L24:
+ 302 0006 C046     		.align	2
+ 303              	.L23:
+ 304 0008 82000F40 		.word	1074724994
+ 305              		.cfi_endproc
+ 306              	.LFE4:
+ 307              		.size	QDEC_Cnt16_SetInterruptMode, .-QDEC_Cnt16_SetInterruptMode
+ 308              		.section	.text.QDEC_Cnt16_ReadStatusRegister,"ax",%progbits
+ 309              		.align	2
+ 310              		.global	QDEC_Cnt16_ReadStatusRegister
+ 311              		.code	16
+ 312              		.thumb_func
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 17
+
+
+ 313              		.type	QDEC_Cnt16_ReadStatusRegister, %function
+ 314              	QDEC_Cnt16_ReadStatusRegister:
+ 315              	.LFB5:
+ 262:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     return QDEC_Cnt16_STATUS;
+ 316              		.loc 1 262 0
+ 317              		.cfi_startproc
+ 263:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** }
+ 318              		.loc 1 263 0
+ 319 0000 014B     		ldr	r3, .L26
+ 264:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 320              		.loc 1 264 0
+ 321              		@ sp needed
+ 263:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** }
+ 322              		.loc 1 263 0
+ 323 0002 1878     		ldrb	r0, [r3]
+ 324 0004 C0B2     		uxtb	r0, r0
+ 264:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 325              		.loc 1 264 0
+ 326 0006 7047     		bx	lr
+ 327              	.L27:
+ 328              		.align	2
+ 329              	.L26:
+ 330 0008 62000F40 		.word	1074724962
+ 331              		.cfi_endproc
+ 332              	.LFE5:
+ 333              		.size	QDEC_Cnt16_ReadStatusRegister, .-QDEC_Cnt16_ReadStatusRegister
+ 334              		.section	.text.QDEC_Cnt16_ReadControlRegister,"ax",%progbits
+ 335              		.align	2
+ 336              		.global	QDEC_Cnt16_ReadControlRegister
+ 337              		.code	16
+ 338              		.thumb_func
+ 339              		.type	QDEC_Cnt16_ReadControlRegister, %function
+ 340              	QDEC_Cnt16_ReadControlRegister:
+ 341              	.LFB6:
+ 284:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     return QDEC_Cnt16_CONTROL;
+ 342              		.loc 1 284 0
+ 343              		.cfi_startproc
+ 285:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** }
+ 344              		.loc 1 285 0
+ 345 0000 014B     		ldr	r3, .L29
+ 286:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 346              		.loc 1 286 0
+ 347              		@ sp needed
+ 285:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** }
+ 348              		.loc 1 285 0
+ 349 0002 1878     		ldrb	r0, [r3]
+ 350 0004 C0B2     		uxtb	r0, r0
+ 286:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 351              		.loc 1 286 0
+ 352 0006 7047     		bx	lr
+ 353              	.L30:
+ 354              		.align	2
+ 355              	.L29:
+ 356 0008 72000F40 		.word	1074724978
+ 357              		.cfi_endproc
+ 358              	.LFE6:
+ 359              		.size	QDEC_Cnt16_ReadControlRegister, .-QDEC_Cnt16_ReadControlRegister
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 18
+
+
+ 360              		.section	.text.QDEC_Cnt16_WriteControlRegister,"ax",%progbits
+ 361              		.align	2
+ 362              		.global	QDEC_Cnt16_WriteControlRegister
+ 363              		.code	16
+ 364              		.thumb_func
+ 365              		.type	QDEC_Cnt16_WriteControlRegister, %function
+ 366              	QDEC_Cnt16_WriteControlRegister:
+ 367              	.LFB7:
+ 305:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     QDEC_Cnt16_CONTROL = control;
+ 368              		.loc 1 305 0
+ 369              		.cfi_startproc
+ 370              	.LVL13:
+ 306:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** }
+ 371              		.loc 1 306 0
+ 372 0000 014B     		ldr	r3, .L32
+ 307:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 373              		.loc 1 307 0
+ 374              		@ sp needed
+ 306:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** }
+ 375              		.loc 1 306 0
+ 376 0002 1870     		strb	r0, [r3]
+ 307:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 377              		.loc 1 307 0
+ 378 0004 7047     		bx	lr
+ 379              	.L33:
+ 380 0006 C046     		.align	2
+ 381              	.L32:
+ 382 0008 72000F40 		.word	1074724978
+ 383              		.cfi_endproc
+ 384              	.LFE7:
+ 385              		.size	QDEC_Cnt16_WriteControlRegister, .-QDEC_Cnt16_WriteControlRegister
+ 386              		.section	.text.QDEC_Cnt16_WriteCounter,"ax",%progbits
+ 387              		.align	2
+ 388              		.global	QDEC_Cnt16_WriteCounter
+ 389              		.code	16
+ 390              		.thumb_func
+ 391              		.type	QDEC_Cnt16_WriteCounter, %function
+ 392              	QDEC_Cnt16_WriteCounter:
+ 393              	.LFB8:
+ 328:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #if(QDEC_Cnt16_UsingFixedFunction)
+ 394              		.loc 1 328 0
+ 395              		.cfi_startproc
+ 396              	.LVL14:
+ 337:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #endif /* (QDEC_Cnt16_UsingFixedFunction) */
+ 397              		.loc 1 337 0
+ 398 0000 014B     		ldr	r3, .L35
+ 339:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** #endif /* (!(QDEC_Cnt16_UsingFixedFunction && (CY_PSOC5A))) */
+ 399              		.loc 1 339 0
+ 400              		@ sp needed
+ 337:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #endif /* (QDEC_Cnt16_UsingFixedFunction) */
+ 401              		.loc 1 337 0
+ 402 0002 1880     		strh	r0, [r3]
+ 339:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** #endif /* (!(QDEC_Cnt16_UsingFixedFunction && (CY_PSOC5A))) */
+ 403              		.loc 1 339 0
+ 404 0004 7047     		bx	lr
+ 405              	.L36:
+ 406 0006 C046     		.align	2
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 19
+
+
+ 407              	.L35:
+ 408 0008 00100F40 		.word	1074728960
+ 409              		.cfi_endproc
+ 410              	.LFE8:
+ 411              		.size	QDEC_Cnt16_WriteCounter, .-QDEC_Cnt16_WriteCounter
+ 412              		.section	.text.QDEC_Cnt16_ReadCounter,"ax",%progbits
+ 413              		.align	2
+ 414              		.global	QDEC_Cnt16_ReadCounter
+ 415              		.code	16
+ 416              		.thumb_func
+ 417              		.type	QDEC_Cnt16_ReadCounter, %function
+ 418              	QDEC_Cnt16_ReadCounter:
+ 419              	.LFB9:
+ 358:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     /* Force capture by reading Accumulator */
+ 420              		.loc 1 358 0
+ 421              		.cfi_startproc
+ 365:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 	#endif/* (QDEC_Cnt16_UsingFixedFunction) */
+ 422              		.loc 1 365 0
+ 423 0000 024B     		ldr	r3, .L38
+ 374:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 424              		.loc 1 374 0
+ 425              		@ sp needed
+ 365:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 	#endif/* (QDEC_Cnt16_UsingFixedFunction) */
+ 426              		.loc 1 365 0
+ 427 0002 1B78     		ldrb	r3, [r3]
+ 372:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #endif /* (QDEC_Cnt16_UsingFixedFunction) */
+ 428              		.loc 1 372 0
+ 429 0004 024B     		ldr	r3, .L38+4
+ 430 0006 1888     		ldrh	r0, [r3]
+ 431 0008 80B2     		uxth	r0, r0
+ 374:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 432              		.loc 1 374 0
+ 433 000a 7047     		bx	lr
+ 434              	.L39:
+ 435              		.align	2
+ 436              	.L38:
+ 437 000c 00000F40 		.word	1074724864
+ 438 0010 80100F40 		.word	1074729088
+ 439              		.cfi_endproc
+ 440              	.LFE9:
+ 441              		.size	QDEC_Cnt16_ReadCounter, .-QDEC_Cnt16_ReadCounter
+ 442              		.section	.text.QDEC_Cnt16_ReadCapture,"ax",%progbits
+ 443              		.align	2
+ 444              		.global	QDEC_Cnt16_ReadCapture
+ 445              		.code	16
+ 446              		.thumb_func
+ 447              		.type	QDEC_Cnt16_ReadCapture, %function
+ 448              	QDEC_Cnt16_ReadCapture:
+ 449              	.LFB10:
+ 391:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #if(QDEC_Cnt16_UsingFixedFunction)
+ 450              		.loc 1 391 0
+ 451              		.cfi_startproc
+ 395:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #endif /* (QDEC_Cnt16_UsingFixedFunction) */
+ 452              		.loc 1 395 0
+ 453 0000 014B     		ldr	r3, .L41
+ 397:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 454              		.loc 1 397 0
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 20
+
+
+ 455              		@ sp needed
+ 395:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #endif /* (QDEC_Cnt16_UsingFixedFunction) */
+ 456              		.loc 1 395 0
+ 457 0002 1888     		ldrh	r0, [r3]
+ 458 0004 80B2     		uxth	r0, r0
+ 397:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 459              		.loc 1 397 0
+ 460 0006 7047     		bx	lr
+ 461              	.L42:
+ 462              		.align	2
+ 463              	.L41:
+ 464 0008 80100F40 		.word	1074729088
+ 465              		.cfi_endproc
+ 466              	.LFE10:
+ 467              		.size	QDEC_Cnt16_ReadCapture, .-QDEC_Cnt16_ReadCapture
+ 468              		.section	.text.QDEC_Cnt16_WritePeriod,"ax",%progbits
+ 469              		.align	2
+ 470              		.global	QDEC_Cnt16_WritePeriod
+ 471              		.code	16
+ 472              		.thumb_func
+ 473              		.type	QDEC_Cnt16_WritePeriod, %function
+ 474              	QDEC_Cnt16_WritePeriod:
+ 475              	.LFB11:
+ 416:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #if(QDEC_Cnt16_UsingFixedFunction)
+ 476              		.loc 1 416 0
+ 477              		.cfi_startproc
+ 478              	.LVL15:
+ 420:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #endif /* (QDEC_Cnt16_UsingFixedFunction) */
+ 479              		.loc 1 420 0
+ 480 0000 014B     		ldr	r3, .L44
+ 422:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 481              		.loc 1 422 0
+ 482              		@ sp needed
+ 420:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #endif /* (QDEC_Cnt16_UsingFixedFunction) */
+ 483              		.loc 1 420 0
+ 484 0002 1880     		strh	r0, [r3]
+ 422:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 485              		.loc 1 422 0
+ 486 0004 7047     		bx	lr
+ 487              	.L45:
+ 488 0006 C046     		.align	2
+ 489              	.L44:
+ 490 0008 40100F40 		.word	1074729024
+ 491              		.cfi_endproc
+ 492              	.LFE11:
+ 493              		.size	QDEC_Cnt16_WritePeriod, .-QDEC_Cnt16_WritePeriod
+ 494              		.section	.text.QDEC_Cnt16_ReadPeriod,"ax",%progbits
+ 495              		.align	2
+ 496              		.global	QDEC_Cnt16_ReadPeriod
+ 497              		.code	16
+ 498              		.thumb_func
+ 499              		.type	QDEC_Cnt16_ReadPeriod, %function
+ 500              	QDEC_Cnt16_ReadPeriod:
+ 501              	.LFB12:
+ 439:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #if(QDEC_Cnt16_UsingFixedFunction)
+ 502              		.loc 1 439 0
+ 503              		.cfi_startproc
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 21
+
+
+ 443:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #endif /* (QDEC_Cnt16_UsingFixedFunction) */
+ 504              		.loc 1 443 0
+ 505 0000 014B     		ldr	r3, .L47
+ 445:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 506              		.loc 1 445 0
+ 507              		@ sp needed
+ 443:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #endif /* (QDEC_Cnt16_UsingFixedFunction) */
+ 508              		.loc 1 443 0
+ 509 0002 1888     		ldrh	r0, [r3]
+ 510 0004 80B2     		uxth	r0, r0
+ 445:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 511              		.loc 1 445 0
+ 512 0006 7047     		bx	lr
+ 513              	.L48:
+ 514              		.align	2
+ 515              	.L47:
+ 516 0008 40100F40 		.word	1074729024
+ 517              		.cfi_endproc
+ 518              	.LFE12:
+ 519              		.size	QDEC_Cnt16_ReadPeriod, .-QDEC_Cnt16_ReadPeriod
+ 520              		.section	.text.QDEC_Cnt16_WriteCompare,"ax",%progbits
+ 521              		.align	2
+ 522              		.global	QDEC_Cnt16_WriteCompare
+ 523              		.code	16
+ 524              		.thumb_func
+ 525              		.type	QDEC_Cnt16_WriteCompare, %function
+ 526              	QDEC_Cnt16_WriteCompare:
+ 527              	.LFB13:
+ 467:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #if(QDEC_Cnt16_UsingFixedFunction)
+ 528              		.loc 1 467 0
+ 529              		.cfi_startproc
+ 530              	.LVL16:
+ 471:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #endif /* (QDEC_Cnt16_UsingFixedFunction) */
+ 531              		.loc 1 471 0
+ 532 0000 014B     		ldr	r3, .L50
+ 473:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 533              		.loc 1 473 0
+ 534              		@ sp needed
+ 471:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #endif /* (QDEC_Cnt16_UsingFixedFunction) */
+ 535              		.loc 1 471 0
+ 536 0002 1880     		strh	r0, [r3]
+ 473:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 537              		.loc 1 473 0
+ 538 0004 7047     		bx	lr
+ 539              	.L51:
+ 540 0006 C046     		.align	2
+ 541              	.L50:
+ 542 0008 60100F40 		.word	1074729056
+ 543              		.cfi_endproc
+ 544              	.LFE13:
+ 545              		.size	QDEC_Cnt16_WriteCompare, .-QDEC_Cnt16_WriteCompare
+ 546              		.section	.text.QDEC_Cnt16_ReadCompare,"ax",%progbits
+ 547              		.align	2
+ 548              		.global	QDEC_Cnt16_ReadCompare
+ 549              		.code	16
+ 550              		.thumb_func
+ 551              		.type	QDEC_Cnt16_ReadCompare, %function
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 22
+
+
+ 552              	QDEC_Cnt16_ReadCompare:
+ 553              	.LFB14:
+ 490:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     return (CY_GET_REG16(QDEC_Cnt16_COMPARE_LSB_PTR));
+ 554              		.loc 1 490 0
+ 555              		.cfi_startproc
+ 491:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** }
+ 556              		.loc 1 491 0
+ 557 0000 014B     		ldr	r3, .L53
+ 492:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 558              		.loc 1 492 0
+ 559              		@ sp needed
+ 491:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** }
+ 560              		.loc 1 491 0
+ 561 0002 1888     		ldrh	r0, [r3]
+ 562 0004 80B2     		uxth	r0, r0
+ 492:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 563              		.loc 1 492 0
+ 564 0006 7047     		bx	lr
+ 565              	.L54:
+ 566              		.align	2
+ 567              	.L53:
+ 568 0008 60100F40 		.word	1074729056
+ 569              		.cfi_endproc
+ 570              	.LFE14:
+ 571              		.size	QDEC_Cnt16_ReadCompare, .-QDEC_Cnt16_ReadCompare
+ 572              		.section	.text.QDEC_Cnt16_ClearFIFO,"ax",%progbits
+ 573              		.align	2
+ 574              		.global	QDEC_Cnt16_ClearFIFO
+ 575              		.code	16
+ 576              		.thumb_func
+ 577              		.type	QDEC_Cnt16_ClearFIFO, %function
+ 578              	QDEC_Cnt16_ClearFIFO:
+ 579              	.LFB15:
+ 559:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 580              		.loc 1 559 0
+ 581              		.cfi_startproc
+ 582              	.LBB52:
+ 583              	.LBB53:
+ 263:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** }
+ 584              		.loc 1 263 0
+ 585 0000 054A     		ldr	r2, .L63
+ 586 0002 1378     		ldrb	r3, [r2]
+ 587              	.LBE53:
+ 588              	.LBE52:
+ 589              		.loc 1 561 0
+ 590 0004 5B06     		lsl	r3, r3, #25
+ 591 0006 05D5     		bpl	.L55
+ 592 0008 4021     		mov	r1, #64
+ 593              	.LBB55:
+ 594              	.LBB56:
+ 395:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     #endif /* (QDEC_Cnt16_UsingFixedFunction) */
+ 595              		.loc 1 395 0
+ 596 000a 0448     		ldr	r0, .L63+4
+ 597              	.L60:
+ 598 000c 0388     		ldrh	r3, [r0]
+ 599              	.LBE56:
+ 600              	.LBE55:
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 23
+
+
+ 601              	.LBB57:
+ 602              	.LBB54:
+ 263:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** }
+ 603              		.loc 1 263 0
+ 604 000e 1378     		ldrb	r3, [r2]
+ 605              	.LBE54:
+ 606              	.LBE57:
+ 607              		.loc 1 561 0
+ 608 0010 1942     		tst	r1, r3
+ 609 0012 FBD1     		bne	.L60
+ 610              	.L55:
+ 562:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     {
+ 563:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****         (void)QDEC_Cnt16_ReadCapture();
+ 564:.\Generated_Source\PSoC4/QDEC_Cnt16.c ****     }
+ 565:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** 
+ 566:.\Generated_Source\PSoC4/QDEC_Cnt16.c **** }
+ 611              		.loc 1 566 0
+ 612              		@ sp needed
+ 613 0014 7047     		bx	lr
+ 614              	.L64:
+ 615 0016 C046     		.align	2
+ 616              	.L63:
+ 617 0018 62000F40 		.word	1074724962
+ 618 001c 80100F40 		.word	1074729088
+ 619              		.cfi_endproc
+ 620              	.LFE15:
+ 621              		.size	QDEC_Cnt16_ClearFIFO, .-QDEC_Cnt16_ClearFIFO
+ 622              		.global	QDEC_Cnt16_initVar
+ 623              		.bss
+ 624              		.set	.LANCHOR0,. + 0
+ 625              		.type	QDEC_Cnt16_initVar, %object
+ 626              		.size	QDEC_Cnt16_initVar, 1
+ 627              	QDEC_Cnt16_initVar:
+ 628 0000 00       		.space	1
+ 629              		.text
+ 630              	.Letext0:
+ 631              		.file 2 ".\\Generated_Source\\PSoC4\\cytypes.h"
+ 632              		.file 3 ".\\Generated_Source\\PSoC4\\CyLib.h"
+ 633              		.section	.debug_info,"",%progbits
+ 634              	.Ldebug_info0:
+ 635 0000 F8030000 		.4byte	0x3f8
+ 636 0004 0400     		.2byte	0x4
+ 637 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 638 000a 04       		.byte	0x4
+ 639 000b 01       		.uleb128 0x1
+ 640 000c 99020000 		.4byte	.LASF39
+ 641 0010 01       		.byte	0x1
+ 642 0011 AD000000 		.4byte	.LASF40
+ 643 0015 38000000 		.4byte	.LASF41
+ 644 0019 90000000 		.4byte	.Ldebug_ranges0+0x90
+ 645 001d 00000000 		.4byte	0
+ 646 0021 00000000 		.4byte	.Ldebug_line0
+ 647 0025 02       		.uleb128 0x2
+ 648 0026 01       		.byte	0x1
+ 649 0027 06       		.byte	0x6
+ 650 0028 50030000 		.4byte	.LASF0
+ 651 002c 02       		.uleb128 0x2
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 24
+
+
+ 652 002d 01       		.byte	0x1
+ 653 002e 08       		.byte	0x8
+ 654 002f D3000000 		.4byte	.LASF1
+ 655 0033 02       		.uleb128 0x2
+ 656 0034 02       		.byte	0x2
+ 657 0035 05       		.byte	0x5
+ 658 0036 2D020000 		.4byte	.LASF2
+ 659 003a 02       		.uleb128 0x2
+ 660 003b 02       		.byte	0x2
+ 661 003c 07       		.byte	0x7
+ 662 003d 0D000000 		.4byte	.LASF3
+ 663 0041 02       		.uleb128 0x2
+ 664 0042 04       		.byte	0x4
+ 665 0043 05       		.byte	0x5
+ 666 0044 8B020000 		.4byte	.LASF4
+ 667 0048 02       		.uleb128 0x2
+ 668 0049 04       		.byte	0x4
+ 669 004a 07       		.byte	0x7
+ 670 004b F8000000 		.4byte	.LASF5
+ 671 004f 02       		.uleb128 0x2
+ 672 0050 08       		.byte	0x8
+ 673 0051 05       		.byte	0x5
+ 674 0052 F7010000 		.4byte	.LASF6
+ 675 0056 02       		.uleb128 0x2
+ 676 0057 08       		.byte	0x8
+ 677 0058 07       		.byte	0x7
+ 678 0059 96000000 		.4byte	.LASF7
+ 679 005d 03       		.uleb128 0x3
+ 680 005e 04       		.byte	0x4
+ 681 005f 05       		.byte	0x5
+ 682 0060 696E7400 		.ascii	"int\000"
+ 683 0064 02       		.uleb128 0x2
+ 684 0065 04       		.byte	0x4
+ 685 0066 07       		.byte	0x7
+ 686 0067 82010000 		.4byte	.LASF8
+ 687 006b 04       		.uleb128 0x4
+ 688 006c 0A010000 		.4byte	.LASF9
+ 689 0070 02       		.byte	0x2
+ 690 0071 9801     		.2byte	0x198
+ 691 0073 2C000000 		.4byte	0x2c
+ 692 0077 04       		.uleb128 0x4
+ 693 0078 46010000 		.4byte	.LASF10
+ 694 007c 02       		.byte	0x2
+ 695 007d 9901     		.2byte	0x199
+ 696 007f 3A000000 		.4byte	0x3a
+ 697 0083 02       		.uleb128 0x2
+ 698 0084 04       		.byte	0x4
+ 699 0085 04       		.byte	0x4
+ 700 0086 76000000 		.4byte	.LASF11
+ 701 008a 02       		.uleb128 0x2
+ 702 008b 08       		.byte	0x8
+ 703 008c 04       		.byte	0x4
+ 704 008d 2F010000 		.4byte	.LASF12
+ 705 0091 02       		.uleb128 0x2
+ 706 0092 01       		.byte	0x1
+ 707 0093 08       		.byte	0x8
+ 708 0094 94020000 		.4byte	.LASF13
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 25
+
+
+ 709 0098 04       		.uleb128 0x4
+ 710 0099 E1000000 		.4byte	.LASF14
+ 711 009d 02       		.byte	0x2
+ 712 009e 4202     		.2byte	0x242
+ 713 00a0 A4000000 		.4byte	0xa4
+ 714 00a4 05       		.uleb128 0x5
+ 715 00a5 6B000000 		.4byte	0x6b
+ 716 00a9 04       		.uleb128 0x4
+ 717 00aa 00000000 		.4byte	.LASF15
+ 718 00ae 02       		.byte	0x2
+ 719 00af 4302     		.2byte	0x243
+ 720 00b1 B5000000 		.4byte	0xb5
+ 721 00b5 05       		.uleb128 0x5
+ 722 00b6 77000000 		.4byte	0x77
+ 723 00ba 02       		.uleb128 0x2
+ 724 00bb 04       		.byte	0x4
+ 725 00bc 07       		.byte	0x7
+ 726 00bd D7010000 		.4byte	.LASF16
+ 727 00c1 06       		.uleb128 0x6
+ 728 00c2 E0010000 		.4byte	.LASF17
+ 729 00c6 01       		.byte	0x1
+ 730 00c7 8601     		.2byte	0x186
+ 731 00c9 77000000 		.4byte	0x77
+ 732 00cd 01       		.byte	0x1
+ 733 00ce 06       		.uleb128 0x6
+ 734 00cf 4D010000 		.4byte	.LASF18
+ 735 00d3 01       		.byte	0x1
+ 736 00d4 0501     		.2byte	0x105
+ 737 00d6 6B000000 		.4byte	0x6b
+ 738 00da 01       		.byte	0x1
+ 739 00db 07       		.uleb128 0x7
+ 740 00dc 63020000 		.4byte	.LASF27
+ 741 00e0 01       		.byte	0x1
+ 742 00e1 2E02     		.2byte	0x22e
+ 743 00e3 01       		.byte	0x1
+ 744 00e4 08       		.uleb128 0x8
+ 745 00e5 5F000000 		.4byte	.LASF19
+ 746 00e9 01       		.byte	0x1
+ 747 00ea 9F01     		.2byte	0x19f
+ 748 00ec 01       		.byte	0x1
+ 749 00ed FE000000 		.4byte	0xfe
+ 750 00f1 09       		.uleb128 0x9
+ 751 00f2 06000000 		.4byte	.LASF21
+ 752 00f6 01       		.byte	0x1
+ 753 00f7 9F01     		.2byte	0x19f
+ 754 00f9 77000000 		.4byte	0x77
+ 755 00fd 00       		.byte	0
+ 756 00fe 08       		.uleb128 0x8
+ 757 00ff 64030000 		.4byte	.LASF20
+ 758 0103 01       		.byte	0x1
+ 759 0104 4601     		.2byte	0x146
+ 760 0106 01       		.byte	0x1
+ 761 0107 18010000 		.4byte	0x118
+ 762 010b 09       		.uleb128 0x9
+ 763 010c 27010000 		.4byte	.LASF22
+ 764 0110 01       		.byte	0x1
+ 765 0111 4601     		.2byte	0x146
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 26
+
+
+ 766 0113 77000000 		.4byte	0x77
+ 767 0117 00       		.byte	0
+ 768 0118 0A       		.uleb128 0xa
+ 769 0119 8F010000 		.4byte	.LASF23
+ 770 011d 01       		.byte	0x1
+ 771 011e ED       		.byte	0xed
+ 772 011f 01       		.byte	0x1
+ 773 0120 30010000 		.4byte	0x130
+ 774 0124 0B       		.uleb128 0xb
+ 775 0125 18010000 		.4byte	.LASF24
+ 776 0129 01       		.byte	0x1
+ 777 012a ED       		.byte	0xed
+ 778 012b 6B000000 		.4byte	0x6b
+ 779 012f 00       		.byte	0
+ 780 0130 08       		.uleb128 0x8
+ 781 0131 20000000 		.4byte	.LASF25
+ 782 0135 01       		.byte	0x1
+ 783 0136 D101     		.2byte	0x1d1
+ 784 0138 01       		.byte	0x1
+ 785 0139 4A010000 		.4byte	0x14a
+ 786 013d 09       		.uleb128 0x9
+ 787 013e 5C030000 		.4byte	.LASF26
+ 788 0142 01       		.byte	0x1
+ 789 0143 D101     		.2byte	0x1d1
+ 790 0145 77000000 		.4byte	0x77
+ 791 0149 00       		.byte	0
+ 792 014a 0C       		.uleb128 0xc
+ 793 014b E6000000 		.4byte	.LASF28
+ 794 014f 01       		.byte	0x1
+ 795 0150 8F       		.byte	0x8f
+ 796 0151 01       		.byte	0x1
+ 797 0152 0D       		.uleb128 0xd
+ 798 0153 36010000 		.4byte	.LASF31
+ 799 0157 01       		.byte	0x1
+ 800 0158 25       		.byte	0x25
+ 801 0159 00000000 		.4byte	.LFB0
+ 802 015d 78000000 		.4byte	.LFE0-.LFB0
+ 803 0161 01       		.uleb128 0x1
+ 804 0162 9C       		.byte	0x9c
+ 805 0163 49020000 		.4byte	0x249
+ 806 0167 0E       		.uleb128 0xe
+ 807 0168 5E020000 		.4byte	.LASF29
+ 808 016c 01       		.byte	0x1
+ 809 016d 28       		.byte	0x28
+ 810 016e 6B000000 		.4byte	0x6b
+ 811 0172 00000000 		.4byte	.LLST0
+ 812 0176 0E       		.uleb128 0xe
+ 813 0177 7C000000 		.4byte	.LASF30
+ 814 017b 01       		.byte	0x1
+ 815 017c 2D       		.byte	0x2d
+ 816 017d 6B000000 		.4byte	0x6b
+ 817 0181 45000000 		.4byte	.LLST1
+ 818 0185 0F       		.uleb128 0xf
+ 819 0186 DB000000 		.4byte	0xdb
+ 820 018a 14000000 		.4byte	.LBB24
+ 821 018e 14000000 		.4byte	.LBE24-.LBB24
+ 822 0192 01       		.byte	0x1
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 27
+
+
+ 823 0193 60       		.byte	0x60
+ 824 0194 B9010000 		.4byte	0x1b9
+ 825 0198 10       		.uleb128 0x10
+ 826 0199 CE000000 		.4byte	0xce
+ 827 019d 14000000 		.4byte	.LBB26
+ 828 01a1 00000000 		.4byte	.Ldebug_ranges0+0
+ 829 01a5 01       		.byte	0x1
+ 830 01a6 3102     		.2byte	0x231
+ 831 01a8 10       		.uleb128 0x10
+ 832 01a9 C1000000 		.4byte	0xc1
+ 833 01ad 1C000000 		.4byte	.LBB29
+ 834 01b1 18000000 		.4byte	.Ldebug_ranges0+0x18
+ 835 01b5 01       		.byte	0x1
+ 836 01b6 3302     		.2byte	0x233
+ 837 01b8 00       		.byte	0
+ 838 01b9 11       		.uleb128 0x11
+ 839 01ba 18010000 		.4byte	0x118
+ 840 01be 28000000 		.4byte	.LBB34
+ 841 01c2 30000000 		.4byte	.Ldebug_ranges0+0x30
+ 842 01c6 01       		.byte	0x1
+ 843 01c7 68       		.byte	0x68
+ 844 01c8 D3010000 		.4byte	0x1d3
+ 845 01cc 12       		.uleb128 0x12
+ 846 01cd 24010000 		.4byte	0x124
+ 847 01d1 00       		.byte	0
+ 848 01d2 00       		.byte	0
+ 849 01d3 11       		.uleb128 0x11
+ 850 01d4 E4000000 		.4byte	0xe4
+ 851 01d8 2A000000 		.4byte	.LBB37
+ 852 01dc 48000000 		.4byte	.Ldebug_ranges0+0x48
+ 853 01e0 01       		.byte	0x1
+ 854 01e1 64       		.byte	0x64
+ 855 01e2 EF010000 		.4byte	0x1ef
+ 856 01e6 13       		.uleb128 0x13
+ 857 01e7 F1000000 		.4byte	0xf1
+ 858 01eb 80807E   		.sleb128 -32768
+ 859 01ee 00       		.byte	0
+ 860 01ef 0F       		.uleb128 0xf
+ 861 01f0 FE000000 		.4byte	0xfe
+ 862 01f4 30000000 		.4byte	.LBB41
+ 863 01f8 04000000 		.4byte	.LBE41-.LBB41
+ 864 01fc 01       		.byte	0x1
+ 865 01fd 66       		.byte	0x66
+ 866 01fe 0B020000 		.4byte	0x20b
+ 867 0202 13       		.uleb128 0x13
+ 868 0203 0B010000 		.4byte	0x10b
+ 869 0207 80807E   		.sleb128 -32768
+ 870 020a 00       		.byte	0
+ 871 020b 14       		.uleb128 0x14
+ 872 020c CE000000 		.4byte	0xce
+ 873 0210 38000000 		.4byte	.LBB44
+ 874 0214 04000000 		.4byte	.LBE44-.LBB44
+ 875 0218 01       		.byte	0x1
+ 876 0219 6C       		.byte	0x6c
+ 877 021a 0F       		.uleb128 0xf
+ 878 021b 30010000 		.4byte	0x130
+ 879 021f 3C000000 		.4byte	.LBB46
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 28
+
+
+ 880 0223 04000000 		.4byte	.LBE46-.LBB46
+ 881 0227 01       		.byte	0x1
+ 882 0228 6E       		.byte	0x6e
+ 883 0229 36020000 		.4byte	0x236
+ 884 022d 13       		.uleb128 0x13
+ 885 022e 3D010000 		.4byte	0x13d
+ 886 0232 80807E   		.sleb128 -32768
+ 887 0235 00       		.byte	0
+ 888 0236 15       		.uleb128 0x15
+ 889 0237 44000000 		.4byte	.LVL9
+ 890 023b E3030000 		.4byte	0x3e3
+ 891 023f 15       		.uleb128 0x15
+ 892 0240 52000000 		.4byte	.LVL10
+ 893 0244 EE030000 		.4byte	0x3ee
+ 894 0248 00       		.byte	0
+ 895 0249 16       		.uleb128 0x16
+ 896 024a 4A010000 		.4byte	0x14a
+ 897 024e 00000000 		.4byte	.LFB1
+ 898 0252 10000000 		.4byte	.LFE1-.LFB1
+ 899 0256 01       		.uleb128 0x1
+ 900 0257 9C       		.byte	0x9c
+ 901 0258 0D       		.uleb128 0xd
+ 902 0259 1C020000 		.4byte	.LASF32
+ 903 025d 01       		.byte	0x1
+ 904 025e B2       		.byte	0xb2
+ 905 025f 00000000 		.4byte	.LFB2
+ 906 0263 28000000 		.4byte	.LFE2-.LFB2
+ 907 0267 01       		.uleb128 0x1
+ 908 0268 9C       		.byte	0x9c
+ 909 0269 86020000 		.4byte	0x286
+ 910 026d 17       		.uleb128 0x17
+ 911 026e 4A010000 		.4byte	0x14a
+ 912 0272 12000000 		.4byte	.LBB48
+ 913 0276 60000000 		.4byte	.Ldebug_ranges0+0x60
+ 914 027a 01       		.byte	0x1
+ 915 027b BC       		.byte	0xbc
+ 916 027c 15       		.uleb128 0x15
+ 917 027d 0E000000 		.4byte	.LVL11
+ 918 0281 52010000 		.4byte	0x152
+ 919 0285 00       		.byte	0
+ 920 0286 18       		.uleb128 0x18
+ 921 0287 4E020000 		.4byte	.LASF42
+ 922 028b 01       		.byte	0x1
+ 923 028c D0       		.byte	0xd0
+ 924 028d 00000000 		.4byte	.LFB3
+ 925 0291 10000000 		.4byte	.LFE3-.LFB3
+ 926 0295 01       		.uleb128 0x1
+ 927 0296 9C       		.byte	0x9c
+ 928 0297 19       		.uleb128 0x19
+ 929 0298 18010000 		.4byte	0x118
+ 930 029c 00000000 		.4byte	.LFB4
+ 931 02a0 0C000000 		.4byte	.LFE4-.LFB4
+ 932 02a4 01       		.uleb128 0x1
+ 933 02a5 9C       		.byte	0x9c
+ 934 02a6 B2020000 		.4byte	0x2b2
+ 935 02aa 1A       		.uleb128 0x1a
+ 936 02ab 24010000 		.4byte	0x124
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 29
+
+
+ 937 02af 01       		.uleb128 0x1
+ 938 02b0 50       		.byte	0x50
+ 939 02b1 00       		.byte	0
+ 940 02b2 16       		.uleb128 0x16
+ 941 02b3 CE000000 		.4byte	0xce
+ 942 02b7 00000000 		.4byte	.LFB5
+ 943 02bb 0C000000 		.4byte	.LFE5-.LFB5
+ 944 02bf 01       		.uleb128 0x1
+ 945 02c0 9C       		.byte	0x9c
+ 946 02c1 1B       		.uleb128 0x1b
+ 947 02c2 7C030000 		.4byte	.LASF34
+ 948 02c6 01       		.byte	0x1
+ 949 02c7 1B01     		.2byte	0x11b
+ 950 02c9 6B000000 		.4byte	0x6b
+ 951 02cd 00000000 		.4byte	.LFB6
+ 952 02d1 0C000000 		.4byte	.LFE6-.LFB6
+ 953 02d5 01       		.uleb128 0x1
+ 954 02d6 9C       		.byte	0x9c
+ 955 02d7 1C       		.uleb128 0x1c
+ 956 02d8 30030000 		.4byte	.LASF33
+ 957 02dc 01       		.byte	0x1
+ 958 02dd 3001     		.2byte	0x130
+ 959 02df 00000000 		.4byte	.LFB7
+ 960 02e3 0C000000 		.4byte	.LFE7-.LFB7
+ 961 02e7 01       		.uleb128 0x1
+ 962 02e8 9C       		.byte	0x9c
+ 963 02e9 FC020000 		.4byte	0x2fc
+ 964 02ed 1D       		.uleb128 0x1d
+ 965 02ee 10010000 		.4byte	.LASF43
+ 966 02f2 01       		.byte	0x1
+ 967 02f3 3001     		.2byte	0x130
+ 968 02f5 6B000000 		.4byte	0x6b
+ 969 02f9 01       		.uleb128 0x1
+ 970 02fa 50       		.byte	0x50
+ 971 02fb 00       		.byte	0
+ 972 02fc 19       		.uleb128 0x19
+ 973 02fd FE000000 		.4byte	0xfe
+ 974 0301 00000000 		.4byte	.LFB8
+ 975 0305 0C000000 		.4byte	.LFE8-.LFB8
+ 976 0309 01       		.uleb128 0x1
+ 977 030a 9C       		.byte	0x9c
+ 978 030b 17030000 		.4byte	0x317
+ 979 030f 1A       		.uleb128 0x1a
+ 980 0310 0B010000 		.4byte	0x10b
+ 981 0314 01       		.uleb128 0x1
+ 982 0315 50       		.byte	0x50
+ 983 0316 00       		.byte	0
+ 984 0317 1B       		.uleb128 0x1b
+ 985 0318 37020000 		.4byte	.LASF35
+ 986 031c 01       		.byte	0x1
+ 987 031d 6501     		.2byte	0x165
+ 988 031f 77000000 		.4byte	0x77
+ 989 0323 00000000 		.4byte	.LFB9
+ 990 0327 14000000 		.4byte	.LFE9-.LFB9
+ 991 032b 01       		.uleb128 0x1
+ 992 032c 9C       		.byte	0x9c
+ 993 032d 16       		.uleb128 0x16
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 30
+
+
+ 994 032e C1000000 		.4byte	0xc1
+ 995 0332 00000000 		.4byte	.LFB10
+ 996 0336 0C000000 		.4byte	.LFE10-.LFB10
+ 997 033a 01       		.uleb128 0x1
+ 998 033b 9C       		.byte	0x9c
+ 999 033c 19       		.uleb128 0x19
+ 1000 033d E4000000 		.4byte	0xe4
+ 1001 0341 00000000 		.4byte	.LFB11
+ 1002 0345 0C000000 		.4byte	.LFE11-.LFB11
+ 1003 0349 01       		.uleb128 0x1
+ 1004 034a 9C       		.byte	0x9c
+ 1005 034b 57030000 		.4byte	0x357
+ 1006 034f 1A       		.uleb128 0x1a
+ 1007 0350 F1000000 		.4byte	0xf1
+ 1008 0354 01       		.uleb128 0x1
+ 1009 0355 50       		.byte	0x50
+ 1010 0356 00       		.byte	0
+ 1011 0357 1B       		.uleb128 0x1b
+ 1012 0358 C1010000 		.4byte	.LASF36
+ 1013 035c 01       		.byte	0x1
+ 1014 035d B601     		.2byte	0x1b6
+ 1015 035f 77000000 		.4byte	0x77
+ 1016 0363 00000000 		.4byte	.LFB12
+ 1017 0367 0C000000 		.4byte	.LFE12-.LFB12
+ 1018 036b 01       		.uleb128 0x1
+ 1019 036c 9C       		.byte	0x9c
+ 1020 036d 19       		.uleb128 0x19
+ 1021 036e 30010000 		.4byte	0x130
+ 1022 0372 00000000 		.4byte	.LFB13
+ 1023 0376 0C000000 		.4byte	.LFE13-.LFB13
+ 1024 037a 01       		.uleb128 0x1
+ 1025 037b 9C       		.byte	0x9c
+ 1026 037c 88030000 		.4byte	0x388
+ 1027 0380 1A       		.uleb128 0x1a
+ 1028 0381 3D010000 		.4byte	0x13d
+ 1029 0385 01       		.uleb128 0x1
+ 1030 0386 50       		.byte	0x50
+ 1031 0387 00       		.byte	0
+ 1032 0388 1B       		.uleb128 0x1b
+ 1033 0389 05020000 		.4byte	.LASF37
+ 1034 038d 01       		.byte	0x1
+ 1035 038e E901     		.2byte	0x1e9
+ 1036 0390 77000000 		.4byte	0x77
+ 1037 0394 00000000 		.4byte	.LFB14
+ 1038 0398 0C000000 		.4byte	.LFE14-.LFB14
+ 1039 039c 01       		.uleb128 0x1
+ 1040 039d 9C       		.byte	0x9c
+ 1041 039e 19       		.uleb128 0x19
+ 1042 039f DB000000 		.4byte	0xdb
+ 1043 03a3 00000000 		.4byte	.LFB15
+ 1044 03a7 20000000 		.4byte	.LFE15-.LFB15
+ 1045 03ab 01       		.uleb128 0x1
+ 1046 03ac 9C       		.byte	0x9c
+ 1047 03ad D2030000 		.4byte	0x3d2
+ 1048 03b1 10       		.uleb128 0x10
+ 1049 03b2 CE000000 		.4byte	0xce
+ 1050 03b6 00000000 		.4byte	.LBB52
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 31
+
+
+ 1051 03ba 78000000 		.4byte	.Ldebug_ranges0+0x78
+ 1052 03be 01       		.byte	0x1
+ 1053 03bf 3102     		.2byte	0x231
+ 1054 03c1 1E       		.uleb128 0x1e
+ 1055 03c2 C1000000 		.4byte	0xc1
+ 1056 03c6 0A000000 		.4byte	.LBB55
+ 1057 03ca 04000000 		.4byte	.LBE55-.LBB55
+ 1058 03ce 01       		.byte	0x1
+ 1059 03cf 3302     		.2byte	0x233
+ 1060 03d1 00       		.byte	0
+ 1061 03d2 1F       		.uleb128 0x1f
+ 1062 03d3 78020000 		.4byte	.LASF44
+ 1063 03d7 01       		.byte	0x1
+ 1064 03d8 15       		.byte	0x15
+ 1065 03d9 6B000000 		.4byte	0x6b
+ 1066 03dd 05       		.uleb128 0x5
+ 1067 03de 03       		.byte	0x3
+ 1068 03df 00000000 		.4byte	QDEC_Cnt16_initVar
+ 1069 03e3 20       		.uleb128 0x20
+ 1070 03e4 6B010000 		.4byte	.LASF38
+ 1071 03e8 03       		.byte	0x3
+ 1072 03e9 E3       		.byte	0xe3
+ 1073 03ea 6B000000 		.4byte	0x6b
+ 1074 03ee 21       		.uleb128 0x21
+ 1075 03ef AB010000 		.4byte	.LASF45
+ 1076 03f3 03       		.byte	0x3
+ 1077 03f4 E4       		.byte	0xe4
+ 1078 03f5 22       		.uleb128 0x22
+ 1079 03f6 6B000000 		.4byte	0x6b
+ 1080 03fa 00       		.byte	0
+ 1081 03fb 00       		.byte	0
+ 1082              		.section	.debug_abbrev,"",%progbits
+ 1083              	.Ldebug_abbrev0:
+ 1084 0000 01       		.uleb128 0x1
+ 1085 0001 11       		.uleb128 0x11
+ 1086 0002 01       		.byte	0x1
+ 1087 0003 25       		.uleb128 0x25
+ 1088 0004 0E       		.uleb128 0xe
+ 1089 0005 13       		.uleb128 0x13
+ 1090 0006 0B       		.uleb128 0xb
+ 1091 0007 03       		.uleb128 0x3
+ 1092 0008 0E       		.uleb128 0xe
+ 1093 0009 1B       		.uleb128 0x1b
+ 1094 000a 0E       		.uleb128 0xe
+ 1095 000b 55       		.uleb128 0x55
+ 1096 000c 17       		.uleb128 0x17
+ 1097 000d 11       		.uleb128 0x11
+ 1098 000e 01       		.uleb128 0x1
+ 1099 000f 10       		.uleb128 0x10
+ 1100 0010 17       		.uleb128 0x17
+ 1101 0011 00       		.byte	0
+ 1102 0012 00       		.byte	0
+ 1103 0013 02       		.uleb128 0x2
+ 1104 0014 24       		.uleb128 0x24
+ 1105 0015 00       		.byte	0
+ 1106 0016 0B       		.uleb128 0xb
+ 1107 0017 0B       		.uleb128 0xb
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 32
+
+
+ 1108 0018 3E       		.uleb128 0x3e
+ 1109 0019 0B       		.uleb128 0xb
+ 1110 001a 03       		.uleb128 0x3
+ 1111 001b 0E       		.uleb128 0xe
+ 1112 001c 00       		.byte	0
+ 1113 001d 00       		.byte	0
+ 1114 001e 03       		.uleb128 0x3
+ 1115 001f 24       		.uleb128 0x24
+ 1116 0020 00       		.byte	0
+ 1117 0021 0B       		.uleb128 0xb
+ 1118 0022 0B       		.uleb128 0xb
+ 1119 0023 3E       		.uleb128 0x3e
+ 1120 0024 0B       		.uleb128 0xb
+ 1121 0025 03       		.uleb128 0x3
+ 1122 0026 08       		.uleb128 0x8
+ 1123 0027 00       		.byte	0
+ 1124 0028 00       		.byte	0
+ 1125 0029 04       		.uleb128 0x4
+ 1126 002a 16       		.uleb128 0x16
+ 1127 002b 00       		.byte	0
+ 1128 002c 03       		.uleb128 0x3
+ 1129 002d 0E       		.uleb128 0xe
+ 1130 002e 3A       		.uleb128 0x3a
+ 1131 002f 0B       		.uleb128 0xb
+ 1132 0030 3B       		.uleb128 0x3b
+ 1133 0031 05       		.uleb128 0x5
+ 1134 0032 49       		.uleb128 0x49
+ 1135 0033 13       		.uleb128 0x13
+ 1136 0034 00       		.byte	0
+ 1137 0035 00       		.byte	0
+ 1138 0036 05       		.uleb128 0x5
+ 1139 0037 35       		.uleb128 0x35
+ 1140 0038 00       		.byte	0
+ 1141 0039 49       		.uleb128 0x49
+ 1142 003a 13       		.uleb128 0x13
+ 1143 003b 00       		.byte	0
+ 1144 003c 00       		.byte	0
+ 1145 003d 06       		.uleb128 0x6
+ 1146 003e 2E       		.uleb128 0x2e
+ 1147 003f 00       		.byte	0
+ 1148 0040 3F       		.uleb128 0x3f
+ 1149 0041 19       		.uleb128 0x19
+ 1150 0042 03       		.uleb128 0x3
+ 1151 0043 0E       		.uleb128 0xe
+ 1152 0044 3A       		.uleb128 0x3a
+ 1153 0045 0B       		.uleb128 0xb
+ 1154 0046 3B       		.uleb128 0x3b
+ 1155 0047 05       		.uleb128 0x5
+ 1156 0048 27       		.uleb128 0x27
+ 1157 0049 19       		.uleb128 0x19
+ 1158 004a 49       		.uleb128 0x49
+ 1159 004b 13       		.uleb128 0x13
+ 1160 004c 20       		.uleb128 0x20
+ 1161 004d 0B       		.uleb128 0xb
+ 1162 004e 00       		.byte	0
+ 1163 004f 00       		.byte	0
+ 1164 0050 07       		.uleb128 0x7
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 33
+
+
+ 1165 0051 2E       		.uleb128 0x2e
+ 1166 0052 00       		.byte	0
+ 1167 0053 3F       		.uleb128 0x3f
+ 1168 0054 19       		.uleb128 0x19
+ 1169 0055 03       		.uleb128 0x3
+ 1170 0056 0E       		.uleb128 0xe
+ 1171 0057 3A       		.uleb128 0x3a
+ 1172 0058 0B       		.uleb128 0xb
+ 1173 0059 3B       		.uleb128 0x3b
+ 1174 005a 05       		.uleb128 0x5
+ 1175 005b 27       		.uleb128 0x27
+ 1176 005c 19       		.uleb128 0x19
+ 1177 005d 20       		.uleb128 0x20
+ 1178 005e 0B       		.uleb128 0xb
+ 1179 005f 00       		.byte	0
+ 1180 0060 00       		.byte	0
+ 1181 0061 08       		.uleb128 0x8
+ 1182 0062 2E       		.uleb128 0x2e
+ 1183 0063 01       		.byte	0x1
+ 1184 0064 3F       		.uleb128 0x3f
+ 1185 0065 19       		.uleb128 0x19
+ 1186 0066 03       		.uleb128 0x3
+ 1187 0067 0E       		.uleb128 0xe
+ 1188 0068 3A       		.uleb128 0x3a
+ 1189 0069 0B       		.uleb128 0xb
+ 1190 006a 3B       		.uleb128 0x3b
+ 1191 006b 05       		.uleb128 0x5
+ 1192 006c 27       		.uleb128 0x27
+ 1193 006d 19       		.uleb128 0x19
+ 1194 006e 20       		.uleb128 0x20
+ 1195 006f 0B       		.uleb128 0xb
+ 1196 0070 01       		.uleb128 0x1
+ 1197 0071 13       		.uleb128 0x13
+ 1198 0072 00       		.byte	0
+ 1199 0073 00       		.byte	0
+ 1200 0074 09       		.uleb128 0x9
+ 1201 0075 05       		.uleb128 0x5
+ 1202 0076 00       		.byte	0
+ 1203 0077 03       		.uleb128 0x3
+ 1204 0078 0E       		.uleb128 0xe
+ 1205 0079 3A       		.uleb128 0x3a
+ 1206 007a 0B       		.uleb128 0xb
+ 1207 007b 3B       		.uleb128 0x3b
+ 1208 007c 05       		.uleb128 0x5
+ 1209 007d 49       		.uleb128 0x49
+ 1210 007e 13       		.uleb128 0x13
+ 1211 007f 00       		.byte	0
+ 1212 0080 00       		.byte	0
+ 1213 0081 0A       		.uleb128 0xa
+ 1214 0082 2E       		.uleb128 0x2e
+ 1215 0083 01       		.byte	0x1
+ 1216 0084 3F       		.uleb128 0x3f
+ 1217 0085 19       		.uleb128 0x19
+ 1218 0086 03       		.uleb128 0x3
+ 1219 0087 0E       		.uleb128 0xe
+ 1220 0088 3A       		.uleb128 0x3a
+ 1221 0089 0B       		.uleb128 0xb
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 34
+
+
+ 1222 008a 3B       		.uleb128 0x3b
+ 1223 008b 0B       		.uleb128 0xb
+ 1224 008c 27       		.uleb128 0x27
+ 1225 008d 19       		.uleb128 0x19
+ 1226 008e 20       		.uleb128 0x20
+ 1227 008f 0B       		.uleb128 0xb
+ 1228 0090 01       		.uleb128 0x1
+ 1229 0091 13       		.uleb128 0x13
+ 1230 0092 00       		.byte	0
+ 1231 0093 00       		.byte	0
+ 1232 0094 0B       		.uleb128 0xb
+ 1233 0095 05       		.uleb128 0x5
+ 1234 0096 00       		.byte	0
+ 1235 0097 03       		.uleb128 0x3
+ 1236 0098 0E       		.uleb128 0xe
+ 1237 0099 3A       		.uleb128 0x3a
+ 1238 009a 0B       		.uleb128 0xb
+ 1239 009b 3B       		.uleb128 0x3b
+ 1240 009c 0B       		.uleb128 0xb
+ 1241 009d 49       		.uleb128 0x49
+ 1242 009e 13       		.uleb128 0x13
+ 1243 009f 00       		.byte	0
+ 1244 00a0 00       		.byte	0
+ 1245 00a1 0C       		.uleb128 0xc
+ 1246 00a2 2E       		.uleb128 0x2e
+ 1247 00a3 00       		.byte	0
+ 1248 00a4 3F       		.uleb128 0x3f
+ 1249 00a5 19       		.uleb128 0x19
+ 1250 00a6 03       		.uleb128 0x3
+ 1251 00a7 0E       		.uleb128 0xe
+ 1252 00a8 3A       		.uleb128 0x3a
+ 1253 00a9 0B       		.uleb128 0xb
+ 1254 00aa 3B       		.uleb128 0x3b
+ 1255 00ab 0B       		.uleb128 0xb
+ 1256 00ac 27       		.uleb128 0x27
+ 1257 00ad 19       		.uleb128 0x19
+ 1258 00ae 20       		.uleb128 0x20
+ 1259 00af 0B       		.uleb128 0xb
+ 1260 00b0 00       		.byte	0
+ 1261 00b1 00       		.byte	0
+ 1262 00b2 0D       		.uleb128 0xd
+ 1263 00b3 2E       		.uleb128 0x2e
+ 1264 00b4 01       		.byte	0x1
+ 1265 00b5 3F       		.uleb128 0x3f
+ 1266 00b6 19       		.uleb128 0x19
+ 1267 00b7 03       		.uleb128 0x3
+ 1268 00b8 0E       		.uleb128 0xe
+ 1269 00b9 3A       		.uleb128 0x3a
+ 1270 00ba 0B       		.uleb128 0xb
+ 1271 00bb 3B       		.uleb128 0x3b
+ 1272 00bc 0B       		.uleb128 0xb
+ 1273 00bd 27       		.uleb128 0x27
+ 1274 00be 19       		.uleb128 0x19
+ 1275 00bf 11       		.uleb128 0x11
+ 1276 00c0 01       		.uleb128 0x1
+ 1277 00c1 12       		.uleb128 0x12
+ 1278 00c2 06       		.uleb128 0x6
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 35
+
+
+ 1279 00c3 40       		.uleb128 0x40
+ 1280 00c4 18       		.uleb128 0x18
+ 1281 00c5 9742     		.uleb128 0x2117
+ 1282 00c7 19       		.uleb128 0x19
+ 1283 00c8 01       		.uleb128 0x1
+ 1284 00c9 13       		.uleb128 0x13
+ 1285 00ca 00       		.byte	0
+ 1286 00cb 00       		.byte	0
+ 1287 00cc 0E       		.uleb128 0xe
+ 1288 00cd 34       		.uleb128 0x34
+ 1289 00ce 00       		.byte	0
+ 1290 00cf 03       		.uleb128 0x3
+ 1291 00d0 0E       		.uleb128 0xe
+ 1292 00d1 3A       		.uleb128 0x3a
+ 1293 00d2 0B       		.uleb128 0xb
+ 1294 00d3 3B       		.uleb128 0x3b
+ 1295 00d4 0B       		.uleb128 0xb
+ 1296 00d5 49       		.uleb128 0x49
+ 1297 00d6 13       		.uleb128 0x13
+ 1298 00d7 02       		.uleb128 0x2
+ 1299 00d8 17       		.uleb128 0x17
+ 1300 00d9 00       		.byte	0
+ 1301 00da 00       		.byte	0
+ 1302 00db 0F       		.uleb128 0xf
+ 1303 00dc 1D       		.uleb128 0x1d
+ 1304 00dd 01       		.byte	0x1
+ 1305 00de 31       		.uleb128 0x31
+ 1306 00df 13       		.uleb128 0x13
+ 1307 00e0 11       		.uleb128 0x11
+ 1308 00e1 01       		.uleb128 0x1
+ 1309 00e2 12       		.uleb128 0x12
+ 1310 00e3 06       		.uleb128 0x6
+ 1311 00e4 58       		.uleb128 0x58
+ 1312 00e5 0B       		.uleb128 0xb
+ 1313 00e6 59       		.uleb128 0x59
+ 1314 00e7 0B       		.uleb128 0xb
+ 1315 00e8 01       		.uleb128 0x1
+ 1316 00e9 13       		.uleb128 0x13
+ 1317 00ea 00       		.byte	0
+ 1318 00eb 00       		.byte	0
+ 1319 00ec 10       		.uleb128 0x10
+ 1320 00ed 1D       		.uleb128 0x1d
+ 1321 00ee 00       		.byte	0
+ 1322 00ef 31       		.uleb128 0x31
+ 1323 00f0 13       		.uleb128 0x13
+ 1324 00f1 52       		.uleb128 0x52
+ 1325 00f2 01       		.uleb128 0x1
+ 1326 00f3 55       		.uleb128 0x55
+ 1327 00f4 17       		.uleb128 0x17
+ 1328 00f5 58       		.uleb128 0x58
+ 1329 00f6 0B       		.uleb128 0xb
+ 1330 00f7 59       		.uleb128 0x59
+ 1331 00f8 05       		.uleb128 0x5
+ 1332 00f9 00       		.byte	0
+ 1333 00fa 00       		.byte	0
+ 1334 00fb 11       		.uleb128 0x11
+ 1335 00fc 1D       		.uleb128 0x1d
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 36
+
+
+ 1336 00fd 01       		.byte	0x1
+ 1337 00fe 31       		.uleb128 0x31
+ 1338 00ff 13       		.uleb128 0x13
+ 1339 0100 52       		.uleb128 0x52
+ 1340 0101 01       		.uleb128 0x1
+ 1341 0102 55       		.uleb128 0x55
+ 1342 0103 17       		.uleb128 0x17
+ 1343 0104 58       		.uleb128 0x58
+ 1344 0105 0B       		.uleb128 0xb
+ 1345 0106 59       		.uleb128 0x59
+ 1346 0107 0B       		.uleb128 0xb
+ 1347 0108 01       		.uleb128 0x1
+ 1348 0109 13       		.uleb128 0x13
+ 1349 010a 00       		.byte	0
+ 1350 010b 00       		.byte	0
+ 1351 010c 12       		.uleb128 0x12
+ 1352 010d 05       		.uleb128 0x5
+ 1353 010e 00       		.byte	0
+ 1354 010f 31       		.uleb128 0x31
+ 1355 0110 13       		.uleb128 0x13
+ 1356 0111 1C       		.uleb128 0x1c
+ 1357 0112 0B       		.uleb128 0xb
+ 1358 0113 00       		.byte	0
+ 1359 0114 00       		.byte	0
+ 1360 0115 13       		.uleb128 0x13
+ 1361 0116 05       		.uleb128 0x5
+ 1362 0117 00       		.byte	0
+ 1363 0118 31       		.uleb128 0x31
+ 1364 0119 13       		.uleb128 0x13
+ 1365 011a 1C       		.uleb128 0x1c
+ 1366 011b 0D       		.uleb128 0xd
+ 1367 011c 00       		.byte	0
+ 1368 011d 00       		.byte	0
+ 1369 011e 14       		.uleb128 0x14
+ 1370 011f 1D       		.uleb128 0x1d
+ 1371 0120 00       		.byte	0
+ 1372 0121 31       		.uleb128 0x31
+ 1373 0122 13       		.uleb128 0x13
+ 1374 0123 11       		.uleb128 0x11
+ 1375 0124 01       		.uleb128 0x1
+ 1376 0125 12       		.uleb128 0x12
+ 1377 0126 06       		.uleb128 0x6
+ 1378 0127 58       		.uleb128 0x58
+ 1379 0128 0B       		.uleb128 0xb
+ 1380 0129 59       		.uleb128 0x59
+ 1381 012a 0B       		.uleb128 0xb
+ 1382 012b 00       		.byte	0
+ 1383 012c 00       		.byte	0
+ 1384 012d 15       		.uleb128 0x15
+ 1385 012e 898201   		.uleb128 0x4109
+ 1386 0131 00       		.byte	0
+ 1387 0132 11       		.uleb128 0x11
+ 1388 0133 01       		.uleb128 0x1
+ 1389 0134 31       		.uleb128 0x31
+ 1390 0135 13       		.uleb128 0x13
+ 1391 0136 00       		.byte	0
+ 1392 0137 00       		.byte	0
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 37
+
+
+ 1393 0138 16       		.uleb128 0x16
+ 1394 0139 2E       		.uleb128 0x2e
+ 1395 013a 00       		.byte	0
+ 1396 013b 31       		.uleb128 0x31
+ 1397 013c 13       		.uleb128 0x13
+ 1398 013d 11       		.uleb128 0x11
+ 1399 013e 01       		.uleb128 0x1
+ 1400 013f 12       		.uleb128 0x12
+ 1401 0140 06       		.uleb128 0x6
+ 1402 0141 40       		.uleb128 0x40
+ 1403 0142 18       		.uleb128 0x18
+ 1404 0143 9742     		.uleb128 0x2117
+ 1405 0145 19       		.uleb128 0x19
+ 1406 0146 00       		.byte	0
+ 1407 0147 00       		.byte	0
+ 1408 0148 17       		.uleb128 0x17
+ 1409 0149 1D       		.uleb128 0x1d
+ 1410 014a 00       		.byte	0
+ 1411 014b 31       		.uleb128 0x31
+ 1412 014c 13       		.uleb128 0x13
+ 1413 014d 52       		.uleb128 0x52
+ 1414 014e 01       		.uleb128 0x1
+ 1415 014f 55       		.uleb128 0x55
+ 1416 0150 17       		.uleb128 0x17
+ 1417 0151 58       		.uleb128 0x58
+ 1418 0152 0B       		.uleb128 0xb
+ 1419 0153 59       		.uleb128 0x59
+ 1420 0154 0B       		.uleb128 0xb
+ 1421 0155 00       		.byte	0
+ 1422 0156 00       		.byte	0
+ 1423 0157 18       		.uleb128 0x18
+ 1424 0158 2E       		.uleb128 0x2e
+ 1425 0159 00       		.byte	0
+ 1426 015a 3F       		.uleb128 0x3f
+ 1427 015b 19       		.uleb128 0x19
+ 1428 015c 03       		.uleb128 0x3
+ 1429 015d 0E       		.uleb128 0xe
+ 1430 015e 3A       		.uleb128 0x3a
+ 1431 015f 0B       		.uleb128 0xb
+ 1432 0160 3B       		.uleb128 0x3b
+ 1433 0161 0B       		.uleb128 0xb
+ 1434 0162 27       		.uleb128 0x27
+ 1435 0163 19       		.uleb128 0x19
+ 1436 0164 11       		.uleb128 0x11
+ 1437 0165 01       		.uleb128 0x1
+ 1438 0166 12       		.uleb128 0x12
+ 1439 0167 06       		.uleb128 0x6
+ 1440 0168 40       		.uleb128 0x40
+ 1441 0169 18       		.uleb128 0x18
+ 1442 016a 9742     		.uleb128 0x2117
+ 1443 016c 19       		.uleb128 0x19
+ 1444 016d 00       		.byte	0
+ 1445 016e 00       		.byte	0
+ 1446 016f 19       		.uleb128 0x19
+ 1447 0170 2E       		.uleb128 0x2e
+ 1448 0171 01       		.byte	0x1
+ 1449 0172 31       		.uleb128 0x31
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 38
+
+
+ 1450 0173 13       		.uleb128 0x13
+ 1451 0174 11       		.uleb128 0x11
+ 1452 0175 01       		.uleb128 0x1
+ 1453 0176 12       		.uleb128 0x12
+ 1454 0177 06       		.uleb128 0x6
+ 1455 0178 40       		.uleb128 0x40
+ 1456 0179 18       		.uleb128 0x18
+ 1457 017a 9742     		.uleb128 0x2117
+ 1458 017c 19       		.uleb128 0x19
+ 1459 017d 01       		.uleb128 0x1
+ 1460 017e 13       		.uleb128 0x13
+ 1461 017f 00       		.byte	0
+ 1462 0180 00       		.byte	0
+ 1463 0181 1A       		.uleb128 0x1a
+ 1464 0182 05       		.uleb128 0x5
+ 1465 0183 00       		.byte	0
+ 1466 0184 31       		.uleb128 0x31
+ 1467 0185 13       		.uleb128 0x13
+ 1468 0186 02       		.uleb128 0x2
+ 1469 0187 18       		.uleb128 0x18
+ 1470 0188 00       		.byte	0
+ 1471 0189 00       		.byte	0
+ 1472 018a 1B       		.uleb128 0x1b
+ 1473 018b 2E       		.uleb128 0x2e
+ 1474 018c 00       		.byte	0
+ 1475 018d 3F       		.uleb128 0x3f
+ 1476 018e 19       		.uleb128 0x19
+ 1477 018f 03       		.uleb128 0x3
+ 1478 0190 0E       		.uleb128 0xe
+ 1479 0191 3A       		.uleb128 0x3a
+ 1480 0192 0B       		.uleb128 0xb
+ 1481 0193 3B       		.uleb128 0x3b
+ 1482 0194 05       		.uleb128 0x5
+ 1483 0195 27       		.uleb128 0x27
+ 1484 0196 19       		.uleb128 0x19
+ 1485 0197 49       		.uleb128 0x49
+ 1486 0198 13       		.uleb128 0x13
+ 1487 0199 11       		.uleb128 0x11
+ 1488 019a 01       		.uleb128 0x1
+ 1489 019b 12       		.uleb128 0x12
+ 1490 019c 06       		.uleb128 0x6
+ 1491 019d 40       		.uleb128 0x40
+ 1492 019e 18       		.uleb128 0x18
+ 1493 019f 9742     		.uleb128 0x2117
+ 1494 01a1 19       		.uleb128 0x19
+ 1495 01a2 00       		.byte	0
+ 1496 01a3 00       		.byte	0
+ 1497 01a4 1C       		.uleb128 0x1c
+ 1498 01a5 2E       		.uleb128 0x2e
+ 1499 01a6 01       		.byte	0x1
+ 1500 01a7 3F       		.uleb128 0x3f
+ 1501 01a8 19       		.uleb128 0x19
+ 1502 01a9 03       		.uleb128 0x3
+ 1503 01aa 0E       		.uleb128 0xe
+ 1504 01ab 3A       		.uleb128 0x3a
+ 1505 01ac 0B       		.uleb128 0xb
+ 1506 01ad 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 39
+
+
+ 1507 01ae 05       		.uleb128 0x5
+ 1508 01af 27       		.uleb128 0x27
+ 1509 01b0 19       		.uleb128 0x19
+ 1510 01b1 11       		.uleb128 0x11
+ 1511 01b2 01       		.uleb128 0x1
+ 1512 01b3 12       		.uleb128 0x12
+ 1513 01b4 06       		.uleb128 0x6
+ 1514 01b5 40       		.uleb128 0x40
+ 1515 01b6 18       		.uleb128 0x18
+ 1516 01b7 9742     		.uleb128 0x2117
+ 1517 01b9 19       		.uleb128 0x19
+ 1518 01ba 01       		.uleb128 0x1
+ 1519 01bb 13       		.uleb128 0x13
+ 1520 01bc 00       		.byte	0
+ 1521 01bd 00       		.byte	0
+ 1522 01be 1D       		.uleb128 0x1d
+ 1523 01bf 05       		.uleb128 0x5
+ 1524 01c0 00       		.byte	0
+ 1525 01c1 03       		.uleb128 0x3
+ 1526 01c2 0E       		.uleb128 0xe
+ 1527 01c3 3A       		.uleb128 0x3a
+ 1528 01c4 0B       		.uleb128 0xb
+ 1529 01c5 3B       		.uleb128 0x3b
+ 1530 01c6 05       		.uleb128 0x5
+ 1531 01c7 49       		.uleb128 0x49
+ 1532 01c8 13       		.uleb128 0x13
+ 1533 01c9 02       		.uleb128 0x2
+ 1534 01ca 18       		.uleb128 0x18
+ 1535 01cb 00       		.byte	0
+ 1536 01cc 00       		.byte	0
+ 1537 01cd 1E       		.uleb128 0x1e
+ 1538 01ce 1D       		.uleb128 0x1d
+ 1539 01cf 00       		.byte	0
+ 1540 01d0 31       		.uleb128 0x31
+ 1541 01d1 13       		.uleb128 0x13
+ 1542 01d2 11       		.uleb128 0x11
+ 1543 01d3 01       		.uleb128 0x1
+ 1544 01d4 12       		.uleb128 0x12
+ 1545 01d5 06       		.uleb128 0x6
+ 1546 01d6 58       		.uleb128 0x58
+ 1547 01d7 0B       		.uleb128 0xb
+ 1548 01d8 59       		.uleb128 0x59
+ 1549 01d9 05       		.uleb128 0x5
+ 1550 01da 00       		.byte	0
+ 1551 01db 00       		.byte	0
+ 1552 01dc 1F       		.uleb128 0x1f
+ 1553 01dd 34       		.uleb128 0x34
+ 1554 01de 00       		.byte	0
+ 1555 01df 03       		.uleb128 0x3
+ 1556 01e0 0E       		.uleb128 0xe
+ 1557 01e1 3A       		.uleb128 0x3a
+ 1558 01e2 0B       		.uleb128 0xb
+ 1559 01e3 3B       		.uleb128 0x3b
+ 1560 01e4 0B       		.uleb128 0xb
+ 1561 01e5 49       		.uleb128 0x49
+ 1562 01e6 13       		.uleb128 0x13
+ 1563 01e7 3F       		.uleb128 0x3f
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 40
+
+
+ 1564 01e8 19       		.uleb128 0x19
+ 1565 01e9 02       		.uleb128 0x2
+ 1566 01ea 18       		.uleb128 0x18
+ 1567 01eb 00       		.byte	0
+ 1568 01ec 00       		.byte	0
+ 1569 01ed 20       		.uleb128 0x20
+ 1570 01ee 2E       		.uleb128 0x2e
+ 1571 01ef 00       		.byte	0
+ 1572 01f0 3F       		.uleb128 0x3f
+ 1573 01f1 19       		.uleb128 0x19
+ 1574 01f2 03       		.uleb128 0x3
+ 1575 01f3 0E       		.uleb128 0xe
+ 1576 01f4 3A       		.uleb128 0x3a
+ 1577 01f5 0B       		.uleb128 0xb
+ 1578 01f6 3B       		.uleb128 0x3b
+ 1579 01f7 0B       		.uleb128 0xb
+ 1580 01f8 27       		.uleb128 0x27
+ 1581 01f9 19       		.uleb128 0x19
+ 1582 01fa 49       		.uleb128 0x49
+ 1583 01fb 13       		.uleb128 0x13
+ 1584 01fc 3C       		.uleb128 0x3c
+ 1585 01fd 19       		.uleb128 0x19
+ 1586 01fe 00       		.byte	0
+ 1587 01ff 00       		.byte	0
+ 1588 0200 21       		.uleb128 0x21
+ 1589 0201 2E       		.uleb128 0x2e
+ 1590 0202 01       		.byte	0x1
+ 1591 0203 3F       		.uleb128 0x3f
+ 1592 0204 19       		.uleb128 0x19
+ 1593 0205 03       		.uleb128 0x3
+ 1594 0206 0E       		.uleb128 0xe
+ 1595 0207 3A       		.uleb128 0x3a
+ 1596 0208 0B       		.uleb128 0xb
+ 1597 0209 3B       		.uleb128 0x3b
+ 1598 020a 0B       		.uleb128 0xb
+ 1599 020b 27       		.uleb128 0x27
+ 1600 020c 19       		.uleb128 0x19
+ 1601 020d 3C       		.uleb128 0x3c
+ 1602 020e 19       		.uleb128 0x19
+ 1603 020f 00       		.byte	0
+ 1604 0210 00       		.byte	0
+ 1605 0211 22       		.uleb128 0x22
+ 1606 0212 05       		.uleb128 0x5
+ 1607 0213 00       		.byte	0
+ 1608 0214 49       		.uleb128 0x49
+ 1609 0215 13       		.uleb128 0x13
+ 1610 0216 00       		.byte	0
+ 1611 0217 00       		.byte	0
+ 1612 0218 00       		.byte	0
+ 1613              		.section	.debug_loc,"",%progbits
+ 1614              	.Ldebug_loc0:
+ 1615              	.LLST0:
+ 1616 0000 0A000000 		.4byte	.LVL0
+ 1617 0004 0E000000 		.4byte	.LVL1
+ 1618 0008 0100     		.2byte	0x1
+ 1619 000a 52       		.byte	0x52
+ 1620 000b 0E000000 		.4byte	.LVL1
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 41
+
+
+ 1621 000f 12000000 		.4byte	.LVL2
+ 1622 0013 0200     		.2byte	0x2
+ 1623 0015 73       		.byte	0x73
+ 1624 0016 00       		.sleb128 0
+ 1625 0017 12000000 		.4byte	.LVL2
+ 1626 001b 16000000 		.4byte	.LVL3
+ 1627 001f 0100     		.2byte	0x1
+ 1628 0021 52       		.byte	0x52
+ 1629 0022 16000000 		.4byte	.LVL3
+ 1630 0026 18000000 		.4byte	.LVL4
+ 1631 002a 0200     		.2byte	0x2
+ 1632 002c 73       		.byte	0x73
+ 1633 002d 00       		.sleb128 0
+ 1634 002e 18000000 		.4byte	.LVL4
+ 1635 0032 30000000 		.4byte	.LVL6
+ 1636 0036 0500     		.2byte	0x5
+ 1637 0038 0C       		.byte	0xc
+ 1638 0039 72000F40 		.4byte	0x400f0072
+ 1639 003d 00000000 		.4byte	0
+ 1640 0041 00000000 		.4byte	0
+ 1641              	.LLST1:
+ 1642 0045 44000000 		.4byte	.LVL9
+ 1643 0049 51000000 		.4byte	.LVL10-1
+ 1644 004d 0100     		.2byte	0x1
+ 1645 004f 50       		.byte	0x50
+ 1646 0050 00000000 		.4byte	0
+ 1647 0054 00000000 		.4byte	0
+ 1648              		.section	.debug_aranges,"",%progbits
+ 1649 0000 94000000 		.4byte	0x94
+ 1650 0004 0200     		.2byte	0x2
+ 1651 0006 00000000 		.4byte	.Ldebug_info0
+ 1652 000a 04       		.byte	0x4
+ 1653 000b 00       		.byte	0
+ 1654 000c 0000     		.2byte	0
+ 1655 000e 0000     		.2byte	0
+ 1656 0010 00000000 		.4byte	.LFB0
+ 1657 0014 78000000 		.4byte	.LFE0-.LFB0
+ 1658 0018 00000000 		.4byte	.LFB1
+ 1659 001c 10000000 		.4byte	.LFE1-.LFB1
+ 1660 0020 00000000 		.4byte	.LFB2
+ 1661 0024 28000000 		.4byte	.LFE2-.LFB2
+ 1662 0028 00000000 		.4byte	.LFB3
+ 1663 002c 10000000 		.4byte	.LFE3-.LFB3
+ 1664 0030 00000000 		.4byte	.LFB4
+ 1665 0034 0C000000 		.4byte	.LFE4-.LFB4
+ 1666 0038 00000000 		.4byte	.LFB5
+ 1667 003c 0C000000 		.4byte	.LFE5-.LFB5
+ 1668 0040 00000000 		.4byte	.LFB6
+ 1669 0044 0C000000 		.4byte	.LFE6-.LFB6
+ 1670 0048 00000000 		.4byte	.LFB7
+ 1671 004c 0C000000 		.4byte	.LFE7-.LFB7
+ 1672 0050 00000000 		.4byte	.LFB8
+ 1673 0054 0C000000 		.4byte	.LFE8-.LFB8
+ 1674 0058 00000000 		.4byte	.LFB9
+ 1675 005c 14000000 		.4byte	.LFE9-.LFB9
+ 1676 0060 00000000 		.4byte	.LFB10
+ 1677 0064 0C000000 		.4byte	.LFE10-.LFB10
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 42
+
+
+ 1678 0068 00000000 		.4byte	.LFB11
+ 1679 006c 0C000000 		.4byte	.LFE11-.LFB11
+ 1680 0070 00000000 		.4byte	.LFB12
+ 1681 0074 0C000000 		.4byte	.LFE12-.LFB12
+ 1682 0078 00000000 		.4byte	.LFB13
+ 1683 007c 0C000000 		.4byte	.LFE13-.LFB13
+ 1684 0080 00000000 		.4byte	.LFB14
+ 1685 0084 0C000000 		.4byte	.LFE14-.LFB14
+ 1686 0088 00000000 		.4byte	.LFB15
+ 1687 008c 20000000 		.4byte	.LFE15-.LFB15
+ 1688 0090 00000000 		.4byte	0
+ 1689 0094 00000000 		.4byte	0
+ 1690              		.section	.debug_ranges,"",%progbits
+ 1691              	.Ldebug_ranges0:
+ 1692 0000 14000000 		.4byte	.LBB26
+ 1693 0004 18000000 		.4byte	.LBE26
+ 1694 0008 22000000 		.4byte	.LBB33
+ 1695 000c 24000000 		.4byte	.LBE33
+ 1696 0010 00000000 		.4byte	0
+ 1697 0014 00000000 		.4byte	0
+ 1698 0018 1C000000 		.4byte	.LBB29
+ 1699 001c 1E000000 		.4byte	.LBE29
+ 1700 0020 20000000 		.4byte	.LBB32
+ 1701 0024 22000000 		.4byte	.LBE32
+ 1702 0028 00000000 		.4byte	0
+ 1703 002c 00000000 		.4byte	0
+ 1704 0030 28000000 		.4byte	.LBB34
+ 1705 0034 2A000000 		.4byte	.LBE34
+ 1706 0038 34000000 		.4byte	.LBB43
+ 1707 003c 38000000 		.4byte	.LBE43
+ 1708 0040 00000000 		.4byte	0
+ 1709 0044 00000000 		.4byte	0
+ 1710 0048 2A000000 		.4byte	.LBB37
+ 1711 004c 2E000000 		.4byte	.LBE37
+ 1712 0050 2E000000 		.4byte	.LBB40
+ 1713 0054 30000000 		.4byte	.LBE40
+ 1714 0058 00000000 		.4byte	0
+ 1715 005c 00000000 		.4byte	0
+ 1716 0060 12000000 		.4byte	.LBB48
+ 1717 0064 16000000 		.4byte	.LBE48
+ 1718 0068 16000000 		.4byte	.LBB51
+ 1719 006c 1C000000 		.4byte	.LBE51
+ 1720 0070 00000000 		.4byte	0
+ 1721 0074 00000000 		.4byte	0
+ 1722 0078 00000000 		.4byte	.LBB52
+ 1723 007c 04000000 		.4byte	.LBE52
+ 1724 0080 0E000000 		.4byte	.LBB57
+ 1725 0084 10000000 		.4byte	.LBE57
+ 1726 0088 00000000 		.4byte	0
+ 1727 008c 00000000 		.4byte	0
+ 1728 0090 00000000 		.4byte	.LFB0
+ 1729 0094 78000000 		.4byte	.LFE0
+ 1730 0098 00000000 		.4byte	.LFB1
+ 1731 009c 10000000 		.4byte	.LFE1
+ 1732 00a0 00000000 		.4byte	.LFB2
+ 1733 00a4 28000000 		.4byte	.LFE2
+ 1734 00a8 00000000 		.4byte	.LFB3
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 43
+
+
+ 1735 00ac 10000000 		.4byte	.LFE3
+ 1736 00b0 00000000 		.4byte	.LFB4
+ 1737 00b4 0C000000 		.4byte	.LFE4
+ 1738 00b8 00000000 		.4byte	.LFB5
+ 1739 00bc 0C000000 		.4byte	.LFE5
+ 1740 00c0 00000000 		.4byte	.LFB6
+ 1741 00c4 0C000000 		.4byte	.LFE6
+ 1742 00c8 00000000 		.4byte	.LFB7
+ 1743 00cc 0C000000 		.4byte	.LFE7
+ 1744 00d0 00000000 		.4byte	.LFB8
+ 1745 00d4 0C000000 		.4byte	.LFE8
+ 1746 00d8 00000000 		.4byte	.LFB9
+ 1747 00dc 14000000 		.4byte	.LFE9
+ 1748 00e0 00000000 		.4byte	.LFB10
+ 1749 00e4 0C000000 		.4byte	.LFE10
+ 1750 00e8 00000000 		.4byte	.LFB11
+ 1751 00ec 0C000000 		.4byte	.LFE11
+ 1752 00f0 00000000 		.4byte	.LFB12
+ 1753 00f4 0C000000 		.4byte	.LFE12
+ 1754 00f8 00000000 		.4byte	.LFB13
+ 1755 00fc 0C000000 		.4byte	.LFE13
+ 1756 0100 00000000 		.4byte	.LFB14
+ 1757 0104 0C000000 		.4byte	.LFE14
+ 1758 0108 00000000 		.4byte	.LFB15
+ 1759 010c 20000000 		.4byte	.LFE15
+ 1760 0110 00000000 		.4byte	0
+ 1761 0114 00000000 		.4byte	0
+ 1762              		.section	.debug_line,"",%progbits
+ 1763              	.Ldebug_line0:
+ 1764 0000 0A020000 		.section	.debug_str,"MS",%progbits,1
+ 1764      02005400 
+ 1764      00000201 
+ 1764      FB0E0D00 
+ 1764      01010101 
+ 1765              	.LASF15:
+ 1766 0000 72656731 		.ascii	"reg16\000"
+ 1766      3600
+ 1767              	.LASF21:
+ 1768 0006 70657269 		.ascii	"period\000"
+ 1768      6F6400
+ 1769              	.LASF3:
+ 1770 000d 73686F72 		.ascii	"short unsigned int\000"
+ 1770      7420756E 
+ 1770      7369676E 
+ 1770      65642069 
+ 1770      6E7400
+ 1771              	.LASF25:
+ 1772 0020 51444543 		.ascii	"QDEC_Cnt16_WriteCompare\000"
+ 1772      5F436E74 
+ 1772      31365F57 
+ 1772      72697465 
+ 1772      436F6D70 
+ 1773              	.LASF41:
+ 1774 0038 443A5C63 		.ascii	"D:\\code\\cypress\\controllers\\dcsd.cydsn\000"
+ 1774      6F64655C 
+ 1774      63797072 
+ 1774      6573735C 
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 44
+
+
+ 1774      636F6E74 
+ 1775              	.LASF19:
+ 1776 005f 51444543 		.ascii	"QDEC_Cnt16_WritePeriod\000"
+ 1776      5F436E74 
+ 1776      31365F57 
+ 1776      72697465 
+ 1776      50657269 
+ 1777              	.LASF11:
+ 1778 0076 666C6F61 		.ascii	"float\000"
+ 1778      7400
+ 1779              	.LASF30:
+ 1780 007c 51444543 		.ascii	"QDEC_Cnt16_interruptState\000"
+ 1780      5F436E74 
+ 1780      31365F69 
+ 1780      6E746572 
+ 1780      72757074 
+ 1781              	.LASF7:
+ 1782 0096 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1782      206C6F6E 
+ 1782      6720756E 
+ 1782      7369676E 
+ 1782      65642069 
+ 1783              	.LASF40:
+ 1784 00ad 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\QDEC_Cnt16.c\000"
+ 1784      6E657261 
+ 1784      7465645F 
+ 1784      536F7572 
+ 1784      63655C50 
+ 1785              	.LASF1:
+ 1786 00d3 756E7369 		.ascii	"unsigned char\000"
+ 1786      676E6564 
+ 1786      20636861 
+ 1786      7200
+ 1787              	.LASF14:
+ 1788 00e1 72656738 		.ascii	"reg8\000"
+ 1788      00
+ 1789              	.LASF28:
+ 1790 00e6 51444543 		.ascii	"QDEC_Cnt16_Enable\000"
+ 1790      5F436E74 
+ 1790      31365F45 
+ 1790      6E61626C 
+ 1790      6500
+ 1791              	.LASF5:
+ 1792 00f8 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1792      20756E73 
+ 1792      69676E65 
+ 1792      6420696E 
+ 1792      7400
+ 1793              	.LASF9:
+ 1794 010a 75696E74 		.ascii	"uint8\000"
+ 1794      3800
+ 1795              	.LASF43:
+ 1796 0110 636F6E74 		.ascii	"control\000"
+ 1796      726F6C00 
+ 1797              	.LASF24:
+ 1798 0118 696E7465 		.ascii	"interruptsMask\000"
+ 1798      72727570 
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 45
+
+
+ 1798      74734D61 
+ 1798      736B00
+ 1799              	.LASF22:
+ 1800 0127 636F756E 		.ascii	"counter\000"
+ 1800      74657200 
+ 1801              	.LASF12:
+ 1802 012f 646F7562 		.ascii	"double\000"
+ 1802      6C6500
+ 1803              	.LASF31:
+ 1804 0136 51444543 		.ascii	"QDEC_Cnt16_Init\000"
+ 1804      5F436E74 
+ 1804      31365F49 
+ 1804      6E697400 
+ 1805              	.LASF10:
+ 1806 0146 75696E74 		.ascii	"uint16\000"
+ 1806      313600
+ 1807              	.LASF18:
+ 1808 014d 51444543 		.ascii	"QDEC_Cnt16_ReadStatusRegister\000"
+ 1808      5F436E74 
+ 1808      31365F52 
+ 1808      65616453 
+ 1808      74617475 
+ 1809              	.LASF38:
+ 1810 016b 4379456E 		.ascii	"CyEnterCriticalSection\000"
+ 1810      74657243 
+ 1810      72697469 
+ 1810      63616C53 
+ 1810      65637469 
+ 1811              	.LASF8:
+ 1812 0182 756E7369 		.ascii	"unsigned int\000"
+ 1812      676E6564 
+ 1812      20696E74 
+ 1812      00
+ 1813              	.LASF23:
+ 1814 018f 51444543 		.ascii	"QDEC_Cnt16_SetInterruptMode\000"
+ 1814      5F436E74 
+ 1814      31365F53 
+ 1814      6574496E 
+ 1814      74657272 
+ 1815              	.LASF45:
+ 1816 01ab 43794578 		.ascii	"CyExitCriticalSection\000"
+ 1816      69744372 
+ 1816      69746963 
+ 1816      616C5365 
+ 1816      6374696F 
+ 1817              	.LASF36:
+ 1818 01c1 51444543 		.ascii	"QDEC_Cnt16_ReadPeriod\000"
+ 1818      5F436E74 
+ 1818      31365F52 
+ 1818      65616450 
+ 1818      6572696F 
+ 1819              	.LASF16:
+ 1820 01d7 73697A65 		.ascii	"sizetype\000"
+ 1820      74797065 
+ 1820      00
+ 1821              	.LASF17:
+ 1822 01e0 51444543 		.ascii	"QDEC_Cnt16_ReadCapture\000"
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 46
+
+
+ 1822      5F436E74 
+ 1822      31365F52 
+ 1822      65616443 
+ 1822      61707475 
+ 1823              	.LASF6:
+ 1824 01f7 6C6F6E67 		.ascii	"long long int\000"
+ 1824      206C6F6E 
+ 1824      6720696E 
+ 1824      7400
+ 1825              	.LASF37:
+ 1826 0205 51444543 		.ascii	"QDEC_Cnt16_ReadCompare\000"
+ 1826      5F436E74 
+ 1826      31365F52 
+ 1826      65616443 
+ 1826      6F6D7061 
+ 1827              	.LASF32:
+ 1828 021c 51444543 		.ascii	"QDEC_Cnt16_Start\000"
+ 1828      5F436E74 
+ 1828      31365F53 
+ 1828      74617274 
+ 1828      00
+ 1829              	.LASF2:
+ 1830 022d 73686F72 		.ascii	"short int\000"
+ 1830      7420696E 
+ 1830      7400
+ 1831              	.LASF35:
+ 1832 0237 51444543 		.ascii	"QDEC_Cnt16_ReadCounter\000"
+ 1832      5F436E74 
+ 1832      31365F52 
+ 1832      65616443 
+ 1832      6F756E74 
+ 1833              	.LASF42:
+ 1834 024e 51444543 		.ascii	"QDEC_Cnt16_Stop\000"
+ 1834      5F436E74 
+ 1834      31365F53 
+ 1834      746F7000 
+ 1835              	.LASF29:
+ 1836 025e 6374726C 		.ascii	"ctrl\000"
+ 1836      00
+ 1837              	.LASF27:
+ 1838 0263 51444543 		.ascii	"QDEC_Cnt16_ClearFIFO\000"
+ 1838      5F436E74 
+ 1838      31365F43 
+ 1838      6C656172 
+ 1838      4649464F 
+ 1839              	.LASF44:
+ 1840 0278 51444543 		.ascii	"QDEC_Cnt16_initVar\000"
+ 1840      5F436E74 
+ 1840      31365F69 
+ 1840      6E697456 
+ 1840      617200
+ 1841              	.LASF4:
+ 1842 028b 6C6F6E67 		.ascii	"long int\000"
+ 1842      20696E74 
+ 1842      00
+ 1843              	.LASF13:
+ 1844 0294 63686172 		.ascii	"char\000"
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbSkvbx.s 			page 47
+
+
+ 1844      00
+ 1845              	.LASF39:
+ 1846 0299 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1846      4320342E 
+ 1846      392E3320 
+ 1846      32303135 
+ 1846      30333033 
+ 1847 02cc 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 1847      20726576 
+ 1847      6973696F 
+ 1847      6E203232 
+ 1847      31323230 
+ 1848 02ff 32202D73 		.ascii	"2 -std=c99 -ffunction-sections -ffat-lto-objects\000"
+ 1848      74643D63 
+ 1848      3939202D 
+ 1848      6666756E 
+ 1848      6374696F 
+ 1849              	.LASF33:
+ 1850 0330 51444543 		.ascii	"QDEC_Cnt16_WriteControlRegister\000"
+ 1850      5F436E74 
+ 1850      31365F57 
+ 1850      72697465 
+ 1850      436F6E74 
+ 1851              	.LASF0:
+ 1852 0350 7369676E 		.ascii	"signed char\000"
+ 1852      65642063 
+ 1852      68617200 
+ 1853              	.LASF26:
+ 1854 035c 636F6D70 		.ascii	"compare\000"
+ 1854      61726500 
+ 1855              	.LASF20:
+ 1856 0364 51444543 		.ascii	"QDEC_Cnt16_WriteCounter\000"
+ 1856      5F436E74 
+ 1856      31365F57 
+ 1856      72697465 
+ 1856      436F756E 
+ 1857              	.LASF34:
+ 1858 037c 51444543 		.ascii	"QDEC_Cnt16_ReadControlRegister\000"
+ 1858      5F436E74 
+ 1858      31365F52 
+ 1858      65616443 
+ 1858      6F6E7472 
+ 1859              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

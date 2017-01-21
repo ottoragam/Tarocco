@@ -1,0 +1,592 @@
+ARM GAS  C:\Users\g\AppData\Local\Temp\cc0whUSZ.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 2
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"QDEC_INT.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.QDEC_ISR,"ax",%progbits
+  18              		.align	2
+  19              		.global	QDEC_ISR
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	QDEC_ISR, %function
+  23              	QDEC_ISR:
+  24              	.LFB0:
+  25              		.file 1 ".\\Generated_Source\\PSoC4\\QDEC_INT.c"
+   1:.\Generated_Source\PSoC4/QDEC_INT.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC4/QDEC_INT.c **** * File Name: QDEC_INT.c
+   3:.\Generated_Source\PSoC4/QDEC_INT.c **** * Version 3.0
+   4:.\Generated_Source\PSoC4/QDEC_INT.c **** *
+   5:.\Generated_Source\PSoC4/QDEC_INT.c **** * Description:
+   6:.\Generated_Source\PSoC4/QDEC_INT.c **** *  This file contains the Interrupt Service Routine (ISR) for the Quadrature
+   7:.\Generated_Source\PSoC4/QDEC_INT.c **** *  Decoder component.
+   8:.\Generated_Source\PSoC4/QDEC_INT.c **** *
+   9:.\Generated_Source\PSoC4/QDEC_INT.c **** * Note:
+  10:.\Generated_Source\PSoC4/QDEC_INT.c **** *  None.
+  11:.\Generated_Source\PSoC4/QDEC_INT.c **** *
+  12:.\Generated_Source\PSoC4/QDEC_INT.c **** ********************************************************************************
+  13:.\Generated_Source\PSoC4/QDEC_INT.c **** * Copyright 2008-2014, Cypress Semiconductor Corporation.  All rights reserved.
+  14:.\Generated_Source\PSoC4/QDEC_INT.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  15:.\Generated_Source\PSoC4/QDEC_INT.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  16:.\Generated_Source\PSoC4/QDEC_INT.c **** * the software package with which this file was provided.
+  17:.\Generated_Source\PSoC4/QDEC_INT.c **** *******************************************************************************/
+  18:.\Generated_Source\PSoC4/QDEC_INT.c **** 
+  19:.\Generated_Source\PSoC4/QDEC_INT.c **** #include "QDEC.h"
+  20:.\Generated_Source\PSoC4/QDEC_INT.c **** #include "QDEC_PVT.h"
+  21:.\Generated_Source\PSoC4/QDEC_INT.c **** #include "cyapicallbacks.h"
+  22:.\Generated_Source\PSoC4/QDEC_INT.c **** 
+  23:.\Generated_Source\PSoC4/QDEC_INT.c **** volatile int32 QDEC_count32SoftPart = 0;
+  24:.\Generated_Source\PSoC4/QDEC_INT.c **** 
+  25:.\Generated_Source\PSoC4/QDEC_INT.c **** 
+  26:.\Generated_Source\PSoC4/QDEC_INT.c **** /*******************************************************************************
+  27:.\Generated_Source\PSoC4/QDEC_INT.c **** * FUNCTION NAME: void QDEC_ISR
+  28:.\Generated_Source\PSoC4/QDEC_INT.c **** ********************************************************************************
+  29:.\Generated_Source\PSoC4/QDEC_INT.c **** *
+  30:.\Generated_Source\PSoC4/QDEC_INT.c **** * Summary:
+  31:.\Generated_Source\PSoC4/QDEC_INT.c **** *  Interrupt Service Routine for Quadrature Decoder Component.
+  32:.\Generated_Source\PSoC4/QDEC_INT.c **** *
+ARM GAS  C:\Users\g\AppData\Local\Temp\cc0whUSZ.s 			page 2
+
+
+  33:.\Generated_Source\PSoC4/QDEC_INT.c **** * Parameters:
+  34:.\Generated_Source\PSoC4/QDEC_INT.c **** *  None.
+  35:.\Generated_Source\PSoC4/QDEC_INT.c **** *
+  36:.\Generated_Source\PSoC4/QDEC_INT.c **** * Return:
+  37:.\Generated_Source\PSoC4/QDEC_INT.c **** *  None.
+  38:.\Generated_Source\PSoC4/QDEC_INT.c **** *
+  39:.\Generated_Source\PSoC4/QDEC_INT.c **** * Global variables:
+  40:.\Generated_Source\PSoC4/QDEC_INT.c **** *  QDEC_count32SoftPart - modified to update hi 16 bit for current
+  41:.\Generated_Source\PSoC4/QDEC_INT.c **** *  value of the 32-bit counter, when Counter size equal 32-bit.
+  42:.\Generated_Source\PSoC4/QDEC_INT.c **** *  QDEC_swStatus - modified with the updated values of STATUS
+  43:.\Generated_Source\PSoC4/QDEC_INT.c **** *  register.
+  44:.\Generated_Source\PSoC4/QDEC_INT.c **** *
+  45:.\Generated_Source\PSoC4/QDEC_INT.c **** *******************************************************************************/
+  46:.\Generated_Source\PSoC4/QDEC_INT.c **** CY_ISR( QDEC_ISR )
+  47:.\Generated_Source\PSoC4/QDEC_INT.c **** {
+  26              		.loc 1 47 0
+  27              		.cfi_startproc
+  48:.\Generated_Source\PSoC4/QDEC_INT.c ****    uint8 QDEC_swStatus;
+  49:.\Generated_Source\PSoC4/QDEC_INT.c **** 
+  50:.\Generated_Source\PSoC4/QDEC_INT.c ****    QDEC_swStatus = QDEC_STATUS_REG;
+  28              		.loc 1 50 0
+  29 0000 0C4B     		ldr	r3, .L12
+  30 0002 1B78     		ldrb	r3, [r3]
+  31 0004 DBB2     		uxtb	r3, r3
+  32              	.LVL0:
+  51:.\Generated_Source\PSoC4/QDEC_INT.c **** 
+  52:.\Generated_Source\PSoC4/QDEC_INT.c ****     #ifdef QDEC_ISR_ENTRY_CALLBACK
+  53:.\Generated_Source\PSoC4/QDEC_INT.c ****         QDEC_ISR_EntryCallback();
+  54:.\Generated_Source\PSoC4/QDEC_INT.c ****     #endif /* QDEC_ISR_ENTRY_CALLBACK */
+  55:.\Generated_Source\PSoC4/QDEC_INT.c **** 
+  56:.\Generated_Source\PSoC4/QDEC_INT.c ****     /* User code required at start of ISR */
+  57:.\Generated_Source\PSoC4/QDEC_INT.c ****     /* `#START QDEC_ISR_START` */
+  58:.\Generated_Source\PSoC4/QDEC_INT.c **** 
+  59:.\Generated_Source\PSoC4/QDEC_INT.c ****     /* `#END` */
+  60:.\Generated_Source\PSoC4/QDEC_INT.c **** 
+  61:.\Generated_Source\PSoC4/QDEC_INT.c ****     if (0u != (QDEC_swStatus & QDEC_COUNTER_OVERFLOW))
+  33              		.loc 1 61 0
+  34 0006 DA07     		lsl	r2, r3, #31
+  35 0008 0BD5     		bpl	.L2
+  62:.\Generated_Source\PSoC4/QDEC_INT.c ****     {
+  63:.\Generated_Source\PSoC4/QDEC_INT.c ****         QDEC_count32SoftPart += (int32) QDEC_COUNTER_MAX_VALUE;
+  36              		.loc 1 63 0
+  37 000a 0B48     		ldr	r0, .L12+4
+  38 000c 0B49     		ldr	r1, .L12+8
+  39 000e 8446     		mov	ip, r0
+  40 0010 0A68     		ldr	r2, [r1]
+  41 0012 6244     		add	r2, r2, ip
+  42 0014 0A60     		str	r2, [r1]
+  43              	.L3:
+  64:.\Generated_Source\PSoC4/QDEC_INT.c ****     }
+  65:.\Generated_Source\PSoC4/QDEC_INT.c ****     else if (0u != (QDEC_swStatus & QDEC_COUNTER_UNDERFLOW))
+  66:.\Generated_Source\PSoC4/QDEC_INT.c ****     {
+  67:.\Generated_Source\PSoC4/QDEC_INT.c ****         QDEC_count32SoftPart -= (int32) QDEC_COUNTER_INIT_VALUE;
+  68:.\Generated_Source\PSoC4/QDEC_INT.c ****     }
+  69:.\Generated_Source\PSoC4/QDEC_INT.c ****     else
+  70:.\Generated_Source\PSoC4/QDEC_INT.c ****     {
+  71:.\Generated_Source\PSoC4/QDEC_INT.c ****         /* Nothing to do here */
+ARM GAS  C:\Users\g\AppData\Local\Temp\cc0whUSZ.s 			page 3
+
+
+  72:.\Generated_Source\PSoC4/QDEC_INT.c ****     }
+  73:.\Generated_Source\PSoC4/QDEC_INT.c ****     
+  74:.\Generated_Source\PSoC4/QDEC_INT.c ****     if (0u != (QDEC_swStatus & QDEC_COUNTER_RESET))
+  44              		.loc 1 74 0
+  45 0016 5B07     		lsl	r3, r3, #29
+  46 0018 02D5     		bpl	.L1
+  47              	.LVL1:
+  75:.\Generated_Source\PSoC4/QDEC_INT.c ****     {
+  76:.\Generated_Source\PSoC4/QDEC_INT.c ****         QDEC_count32SoftPart = 0;
+  48              		.loc 1 76 0
+  49 001a 0022     		mov	r2, #0
+  50 001c 074B     		ldr	r3, .L12+8
+  51 001e 1A60     		str	r2, [r3]
+  52              	.L1:
+  77:.\Generated_Source\PSoC4/QDEC_INT.c ****     }
+  78:.\Generated_Source\PSoC4/QDEC_INT.c ****     
+  79:.\Generated_Source\PSoC4/QDEC_INT.c ****     /* User code required at end of ISR */
+  80:.\Generated_Source\PSoC4/QDEC_INT.c ****     /* `#START QDEC_ISR_END` */
+  81:.\Generated_Source\PSoC4/QDEC_INT.c **** 
+  82:.\Generated_Source\PSoC4/QDEC_INT.c ****     /* `#END` */
+  83:.\Generated_Source\PSoC4/QDEC_INT.c **** 
+  84:.\Generated_Source\PSoC4/QDEC_INT.c ****     #ifdef QDEC_ISR_EXIT_CALLBACK
+  85:.\Generated_Source\PSoC4/QDEC_INT.c ****         QDEC_ISR_ExitCallback();
+  86:.\Generated_Source\PSoC4/QDEC_INT.c ****     #endif /* QDEC_ISR_EXIT_CALLBACK */
+  87:.\Generated_Source\PSoC4/QDEC_INT.c **** }
+  53              		.loc 1 87 0
+  54              		@ sp needed
+  55 0020 7047     		bx	lr
+  56              	.LVL2:
+  57              	.L2:
+  65:.\Generated_Source\PSoC4/QDEC_INT.c ****     {
+  58              		.loc 1 65 0
+  59 0022 9A07     		lsl	r2, r3, #30
+  60 0024 F7D5     		bpl	.L3
+  67:.\Generated_Source\PSoC4/QDEC_INT.c ****     }
+  61              		.loc 1 67 0
+  62 0026 0648     		ldr	r0, .L12+12
+  63 0028 0449     		ldr	r1, .L12+8
+  64 002a 8446     		mov	ip, r0
+  65 002c 0A68     		ldr	r2, [r1]
+  66 002e 6244     		add	r2, r2, ip
+  67 0030 0A60     		str	r2, [r1]
+  68 0032 F0E7     		b	.L3
+  69              	.L13:
+  70              		.align	2
+  71              	.L12:
+  72 0034 60000F40 		.word	1074724960
+  73 0038 FF7F0000 		.word	32767
+  74 003c 00000000 		.word	.LANCHOR0
+  75 0040 0080FFFF 		.word	-32768
+  76              		.cfi_endproc
+  77              	.LFE0:
+  78              		.size	QDEC_ISR, .-QDEC_ISR
+  79              		.global	QDEC_count32SoftPart
+  80              		.bss
+  81              		.align	2
+  82              		.set	.LANCHOR0,. + 0
+ARM GAS  C:\Users\g\AppData\Local\Temp\cc0whUSZ.s 			page 4
+
+
+  83              		.type	QDEC_count32SoftPart, %object
+  84              		.size	QDEC_count32SoftPart, 4
+  85              	QDEC_count32SoftPart:
+  86 0000 00000000 		.space	4
+  87              		.text
+  88              	.Letext0:
+  89              		.file 2 ".\\Generated_Source\\PSoC4\\cytypes.h"
+  90              		.section	.debug_info,"",%progbits
+  91              	.Ldebug_info0:
+  92 0000 E8000000 		.4byte	0xe8
+  93 0004 0400     		.2byte	0x4
+  94 0006 00000000 		.4byte	.Ldebug_abbrev0
+  95 000a 04       		.byte	0x4
+  96 000b 01       		.uleb128 0x1
+  97 000c 91000000 		.4byte	.LASF16
+  98 0010 01       		.byte	0x1
+  99 0011 6D000000 		.4byte	.LASF17
+ 100 0015 6A010000 		.4byte	.LASF18
+ 101 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 102 001d 00000000 		.4byte	0
+ 103 0021 00000000 		.4byte	.Ldebug_line0
+ 104 0025 02       		.uleb128 0x2
+ 105 0026 01       		.byte	0x1
+ 106 0027 06       		.byte	0x6
+ 107 0028 5E010000 		.4byte	.LASF0
+ 108 002c 02       		.uleb128 0x2
+ 109 002d 01       		.byte	0x1
+ 110 002e 08       		.byte	0x8
+ 111 002f 28010000 		.4byte	.LASF1
+ 112 0033 02       		.uleb128 0x2
+ 113 0034 02       		.byte	0x2
+ 114 0035 05       		.byte	0x5
+ 115 0036 A0010000 		.4byte	.LASF2
+ 116 003a 02       		.uleb128 0x2
+ 117 003b 02       		.byte	0x2
+ 118 003c 07       		.byte	0x7
+ 119 003d 4B010000 		.4byte	.LASF3
+ 120 0041 02       		.uleb128 0x2
+ 121 0042 04       		.byte	0x4
+ 122 0043 05       		.byte	0x5
+ 123 0044 3B010000 		.4byte	.LASF4
+ 124 0048 02       		.uleb128 0x2
+ 125 0049 04       		.byte	0x4
+ 126 004a 07       		.byte	0x7
+ 127 004b 44000000 		.4byte	.LASF5
+ 128 004f 02       		.uleb128 0x2
+ 129 0050 08       		.byte	0x8
+ 130 0051 05       		.byte	0x5
+ 131 0052 00000000 		.4byte	.LASF6
+ 132 0056 02       		.uleb128 0x2
+ 133 0057 08       		.byte	0x8
+ 134 0058 07       		.byte	0x7
+ 135 0059 56000000 		.4byte	.LASF7
+ 136 005d 03       		.uleb128 0x3
+ 137 005e 04       		.byte	0x4
+ 138 005f 05       		.byte	0x5
+ 139 0060 696E7400 		.ascii	"int\000"
+ARM GAS  C:\Users\g\AppData\Local\Temp\cc0whUSZ.s 			page 5
+
+
+ 140 0064 02       		.uleb128 0x2
+ 141 0065 04       		.byte	0x4
+ 142 0066 07       		.byte	0x7
+ 143 0067 0E000000 		.4byte	.LASF8
+ 144 006b 04       		.uleb128 0x4
+ 145 006c 3E000000 		.4byte	.LASF9
+ 146 0070 02       		.byte	0x2
+ 147 0071 9801     		.2byte	0x198
+ 148 0073 2C000000 		.4byte	0x2c
+ 149 0077 04       		.uleb128 0x4
+ 150 0078 B8010000 		.4byte	.LASF10
+ 151 007c 02       		.byte	0x2
+ 152 007d 9D01     		.2byte	0x19d
+ 153 007f 41000000 		.4byte	0x41
+ 154 0083 02       		.uleb128 0x2
+ 155 0084 04       		.byte	0x4
+ 156 0085 04       		.byte	0x4
+ 157 0086 9A010000 		.4byte	.LASF11
+ 158 008a 02       		.uleb128 0x2
+ 159 008b 08       		.byte	0x8
+ 160 008c 04       		.byte	0x4
+ 161 008d 44010000 		.4byte	.LASF12
+ 162 0091 02       		.uleb128 0x2
+ 163 0092 01       		.byte	0x1
+ 164 0093 08       		.byte	0x8
+ 165 0094 36010000 		.4byte	.LASF13
+ 166 0098 04       		.uleb128 0x4
+ 167 0099 AA010000 		.4byte	.LASF14
+ 168 009d 02       		.byte	0x2
+ 169 009e 4202     		.2byte	0x242
+ 170 00a0 A4000000 		.4byte	0xa4
+ 171 00a4 05       		.uleb128 0x5
+ 172 00a5 6B000000 		.4byte	0x6b
+ 173 00a9 02       		.uleb128 0x2
+ 174 00aa 04       		.byte	0x4
+ 175 00ab 07       		.byte	0x7
+ 176 00ac AF010000 		.4byte	.LASF15
+ 177 00b0 06       		.uleb128 0x6
+ 178 00b1 91010000 		.4byte	.LASF19
+ 179 00b5 01       		.byte	0x1
+ 180 00b6 2E       		.byte	0x2e
+ 181 00b7 00000000 		.4byte	.LFB0
+ 182 00bb 44000000 		.4byte	.LFE0-.LFB0
+ 183 00bf 01       		.uleb128 0x1
+ 184 00c0 9C       		.byte	0x9c
+ 185 00c1 D5000000 		.4byte	0xd5
+ 186 00c5 07       		.uleb128 0x7
+ 187 00c6 1B000000 		.4byte	.LASF20
+ 188 00ca 01       		.byte	0x1
+ 189 00cb 30       		.byte	0x30
+ 190 00cc 6B000000 		.4byte	0x6b
+ 191 00d0 00000000 		.4byte	.LLST0
+ 192 00d4 00       		.byte	0
+ 193 00d5 08       		.uleb128 0x8
+ 194 00d6 29000000 		.4byte	.LASF21
+ 195 00da 01       		.byte	0x1
+ 196 00db 17       		.byte	0x17
+ARM GAS  C:\Users\g\AppData\Local\Temp\cc0whUSZ.s 			page 6
+
+
+ 197 00dc E6000000 		.4byte	0xe6
+ 198 00e0 05       		.uleb128 0x5
+ 199 00e1 03       		.byte	0x3
+ 200 00e2 00000000 		.4byte	QDEC_count32SoftPart
+ 201 00e6 05       		.uleb128 0x5
+ 202 00e7 77000000 		.4byte	0x77
+ 203 00eb 00       		.byte	0
+ 204              		.section	.debug_abbrev,"",%progbits
+ 205              	.Ldebug_abbrev0:
+ 206 0000 01       		.uleb128 0x1
+ 207 0001 11       		.uleb128 0x11
+ 208 0002 01       		.byte	0x1
+ 209 0003 25       		.uleb128 0x25
+ 210 0004 0E       		.uleb128 0xe
+ 211 0005 13       		.uleb128 0x13
+ 212 0006 0B       		.uleb128 0xb
+ 213 0007 03       		.uleb128 0x3
+ 214 0008 0E       		.uleb128 0xe
+ 215 0009 1B       		.uleb128 0x1b
+ 216 000a 0E       		.uleb128 0xe
+ 217 000b 55       		.uleb128 0x55
+ 218 000c 17       		.uleb128 0x17
+ 219 000d 11       		.uleb128 0x11
+ 220 000e 01       		.uleb128 0x1
+ 221 000f 10       		.uleb128 0x10
+ 222 0010 17       		.uleb128 0x17
+ 223 0011 00       		.byte	0
+ 224 0012 00       		.byte	0
+ 225 0013 02       		.uleb128 0x2
+ 226 0014 24       		.uleb128 0x24
+ 227 0015 00       		.byte	0
+ 228 0016 0B       		.uleb128 0xb
+ 229 0017 0B       		.uleb128 0xb
+ 230 0018 3E       		.uleb128 0x3e
+ 231 0019 0B       		.uleb128 0xb
+ 232 001a 03       		.uleb128 0x3
+ 233 001b 0E       		.uleb128 0xe
+ 234 001c 00       		.byte	0
+ 235 001d 00       		.byte	0
+ 236 001e 03       		.uleb128 0x3
+ 237 001f 24       		.uleb128 0x24
+ 238 0020 00       		.byte	0
+ 239 0021 0B       		.uleb128 0xb
+ 240 0022 0B       		.uleb128 0xb
+ 241 0023 3E       		.uleb128 0x3e
+ 242 0024 0B       		.uleb128 0xb
+ 243 0025 03       		.uleb128 0x3
+ 244 0026 08       		.uleb128 0x8
+ 245 0027 00       		.byte	0
+ 246 0028 00       		.byte	0
+ 247 0029 04       		.uleb128 0x4
+ 248 002a 16       		.uleb128 0x16
+ 249 002b 00       		.byte	0
+ 250 002c 03       		.uleb128 0x3
+ 251 002d 0E       		.uleb128 0xe
+ 252 002e 3A       		.uleb128 0x3a
+ 253 002f 0B       		.uleb128 0xb
+ARM GAS  C:\Users\g\AppData\Local\Temp\cc0whUSZ.s 			page 7
+
+
+ 254 0030 3B       		.uleb128 0x3b
+ 255 0031 05       		.uleb128 0x5
+ 256 0032 49       		.uleb128 0x49
+ 257 0033 13       		.uleb128 0x13
+ 258 0034 00       		.byte	0
+ 259 0035 00       		.byte	0
+ 260 0036 05       		.uleb128 0x5
+ 261 0037 35       		.uleb128 0x35
+ 262 0038 00       		.byte	0
+ 263 0039 49       		.uleb128 0x49
+ 264 003a 13       		.uleb128 0x13
+ 265 003b 00       		.byte	0
+ 266 003c 00       		.byte	0
+ 267 003d 06       		.uleb128 0x6
+ 268 003e 2E       		.uleb128 0x2e
+ 269 003f 01       		.byte	0x1
+ 270 0040 3F       		.uleb128 0x3f
+ 271 0041 19       		.uleb128 0x19
+ 272 0042 03       		.uleb128 0x3
+ 273 0043 0E       		.uleb128 0xe
+ 274 0044 3A       		.uleb128 0x3a
+ 275 0045 0B       		.uleb128 0xb
+ 276 0046 3B       		.uleb128 0x3b
+ 277 0047 0B       		.uleb128 0xb
+ 278 0048 27       		.uleb128 0x27
+ 279 0049 19       		.uleb128 0x19
+ 280 004a 11       		.uleb128 0x11
+ 281 004b 01       		.uleb128 0x1
+ 282 004c 12       		.uleb128 0x12
+ 283 004d 06       		.uleb128 0x6
+ 284 004e 40       		.uleb128 0x40
+ 285 004f 18       		.uleb128 0x18
+ 286 0050 9742     		.uleb128 0x2117
+ 287 0052 19       		.uleb128 0x19
+ 288 0053 01       		.uleb128 0x1
+ 289 0054 13       		.uleb128 0x13
+ 290 0055 00       		.byte	0
+ 291 0056 00       		.byte	0
+ 292 0057 07       		.uleb128 0x7
+ 293 0058 34       		.uleb128 0x34
+ 294 0059 00       		.byte	0
+ 295 005a 03       		.uleb128 0x3
+ 296 005b 0E       		.uleb128 0xe
+ 297 005c 3A       		.uleb128 0x3a
+ 298 005d 0B       		.uleb128 0xb
+ 299 005e 3B       		.uleb128 0x3b
+ 300 005f 0B       		.uleb128 0xb
+ 301 0060 49       		.uleb128 0x49
+ 302 0061 13       		.uleb128 0x13
+ 303 0062 02       		.uleb128 0x2
+ 304 0063 17       		.uleb128 0x17
+ 305 0064 00       		.byte	0
+ 306 0065 00       		.byte	0
+ 307 0066 08       		.uleb128 0x8
+ 308 0067 34       		.uleb128 0x34
+ 309 0068 00       		.byte	0
+ 310 0069 03       		.uleb128 0x3
+ARM GAS  C:\Users\g\AppData\Local\Temp\cc0whUSZ.s 			page 8
+
+
+ 311 006a 0E       		.uleb128 0xe
+ 312 006b 3A       		.uleb128 0x3a
+ 313 006c 0B       		.uleb128 0xb
+ 314 006d 3B       		.uleb128 0x3b
+ 315 006e 0B       		.uleb128 0xb
+ 316 006f 49       		.uleb128 0x49
+ 317 0070 13       		.uleb128 0x13
+ 318 0071 3F       		.uleb128 0x3f
+ 319 0072 19       		.uleb128 0x19
+ 320 0073 02       		.uleb128 0x2
+ 321 0074 18       		.uleb128 0x18
+ 322 0075 00       		.byte	0
+ 323 0076 00       		.byte	0
+ 324 0077 00       		.byte	0
+ 325              		.section	.debug_loc,"",%progbits
+ 326              	.Ldebug_loc0:
+ 327              	.LLST0:
+ 328 0000 06000000 		.4byte	.LVL0
+ 329 0004 1A000000 		.4byte	.LVL1
+ 330 0008 0100     		.2byte	0x1
+ 331 000a 53       		.byte	0x53
+ 332 000b 22000000 		.4byte	.LVL2
+ 333 000f 44000000 		.4byte	.LFE0
+ 334 0013 0100     		.2byte	0x1
+ 335 0015 53       		.byte	0x53
+ 336 0016 00000000 		.4byte	0
+ 337 001a 00000000 		.4byte	0
+ 338              		.section	.debug_aranges,"",%progbits
+ 339 0000 1C000000 		.4byte	0x1c
+ 340 0004 0200     		.2byte	0x2
+ 341 0006 00000000 		.4byte	.Ldebug_info0
+ 342 000a 04       		.byte	0x4
+ 343 000b 00       		.byte	0
+ 344 000c 0000     		.2byte	0
+ 345 000e 0000     		.2byte	0
+ 346 0010 00000000 		.4byte	.LFB0
+ 347 0014 44000000 		.4byte	.LFE0-.LFB0
+ 348 0018 00000000 		.4byte	0
+ 349 001c 00000000 		.4byte	0
+ 350              		.section	.debug_ranges,"",%progbits
+ 351              	.Ldebug_ranges0:
+ 352 0000 00000000 		.4byte	.LFB0
+ 353 0004 44000000 		.4byte	.LFE0
+ 354 0008 00000000 		.4byte	0
+ 355 000c 00000000 		.4byte	0
+ 356              		.section	.debug_line,"",%progbits
+ 357              	.Ldebug_line0:
+ 358 0000 6C000000 		.section	.debug_str,"MS",%progbits,1
+ 358      02004700 
+ 358      00000201 
+ 358      FB0E0D00 
+ 358      01010101 
+ 359              	.LASF6:
+ 360 0000 6C6F6E67 		.ascii	"long long int\000"
+ 360      206C6F6E 
+ 360      6720696E 
+ 360      7400
+ARM GAS  C:\Users\g\AppData\Local\Temp\cc0whUSZ.s 			page 9
+
+
+ 361              	.LASF8:
+ 362 000e 756E7369 		.ascii	"unsigned int\000"
+ 362      676E6564 
+ 362      20696E74 
+ 362      00
+ 363              	.LASF20:
+ 364 001b 51444543 		.ascii	"QDEC_swStatus\000"
+ 364      5F737753 
+ 364      74617475 
+ 364      7300
+ 365              	.LASF21:
+ 366 0029 51444543 		.ascii	"QDEC_count32SoftPart\000"
+ 366      5F636F75 
+ 366      6E743332 
+ 366      536F6674 
+ 366      50617274 
+ 367              	.LASF9:
+ 368 003e 75696E74 		.ascii	"uint8\000"
+ 368      3800
+ 369              	.LASF5:
+ 370 0044 6C6F6E67 		.ascii	"long unsigned int\000"
+ 370      20756E73 
+ 370      69676E65 
+ 370      6420696E 
+ 370      7400
+ 371              	.LASF7:
+ 372 0056 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 372      206C6F6E 
+ 372      6720756E 
+ 372      7369676E 
+ 372      65642069 
+ 373              	.LASF17:
+ 374 006d 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\QDEC_INT.c\000"
+ 374      6E657261 
+ 374      7465645F 
+ 374      536F7572 
+ 374      63655C50 
+ 375              	.LASF16:
+ 376 0091 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 376      4320342E 
+ 376      392E3320 
+ 376      32303135 
+ 376      30333033 
+ 377 00c4 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 377      20726576 
+ 377      6973696F 
+ 377      6E203232 
+ 377      31323230 
+ 378 00f7 32202D73 		.ascii	"2 -std=c99 -ffunction-sections -ffat-lto-objects\000"
+ 378      74643D63 
+ 378      3939202D 
+ 378      6666756E 
+ 378      6374696F 
+ 379              	.LASF1:
+ 380 0128 756E7369 		.ascii	"unsigned char\000"
+ 380      676E6564 
+ 380      20636861 
+ARM GAS  C:\Users\g\AppData\Local\Temp\cc0whUSZ.s 			page 10
+
+
+ 380      7200
+ 381              	.LASF13:
+ 382 0136 63686172 		.ascii	"char\000"
+ 382      00
+ 383              	.LASF4:
+ 384 013b 6C6F6E67 		.ascii	"long int\000"
+ 384      20696E74 
+ 384      00
+ 385              	.LASF12:
+ 386 0144 646F7562 		.ascii	"double\000"
+ 386      6C6500
+ 387              	.LASF3:
+ 388 014b 73686F72 		.ascii	"short unsigned int\000"
+ 388      7420756E 
+ 388      7369676E 
+ 388      65642069 
+ 388      6E7400
+ 389              	.LASF0:
+ 390 015e 7369676E 		.ascii	"signed char\000"
+ 390      65642063 
+ 390      68617200 
+ 391              	.LASF18:
+ 392 016a 443A5C63 		.ascii	"D:\\code\\cypress\\controllers\\dcsd.cydsn\000"
+ 392      6F64655C 
+ 392      63797072 
+ 392      6573735C 
+ 392      636F6E74 
+ 393              	.LASF19:
+ 394 0191 51444543 		.ascii	"QDEC_ISR\000"
+ 394      5F495352 
+ 394      00
+ 395              	.LASF11:
+ 396 019a 666C6F61 		.ascii	"float\000"
+ 396      7400
+ 397              	.LASF2:
+ 398 01a0 73686F72 		.ascii	"short int\000"
+ 398      7420696E 
+ 398      7400
+ 399              	.LASF14:
+ 400 01aa 72656738 		.ascii	"reg8\000"
+ 400      00
+ 401              	.LASF15:
+ 402 01af 73697A65 		.ascii	"sizetype\000"
+ 402      74797065 
+ 402      00
+ 403              	.LASF10:
+ 404 01b8 696E7433 		.ascii	"int32\000"
+ 404      3200
+ 405              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
