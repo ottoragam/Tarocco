@@ -139,6 +139,12 @@
     cell (carrycell) {
     }
 
+    cell (armcell) {
+        pin (nmi) {
+            direction : input;
+        }
+    }
+
     cell (interrupt) {
         pin (clock) {
             direction : input;
@@ -1403,6 +1409,8 @@
         pin (clk2) { direction : input; clock : true; }
         pin (sense_in) { direction : input; }
         pin (sample_in) { direction : input; }
+        pin (cap_hi_en) { direction : output; }
+        pin (cap_lo_en) { direction : output; }
         pin (sense_out) {
             direction : output; 
             timing() {

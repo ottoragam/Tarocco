@@ -1,7 +1,7 @@
 /*******************************************************************************
 * File Name: project.h
 * 
-* PSoC Creator  3.3 CP3
+* PSoC Creator  4.0 Update 1
 *
 * Description:
 * It contains references to all generated header files and should not be modified.
@@ -16,6 +16,7 @@
 
 #include "cyfitter_cfg.h"
 #include "cydevice_trm.h"
+#include "Cyclk12.h"
 #include "cyfitter.h"
 #include "cydisabledsheets.h"
 #include "PWM_MOT.h"
@@ -72,7 +73,6 @@
 #include "UART_rx_aliases.h"
 #include "QDEC_isr.h"
 #include "QDEC_Cnt16.h"
-#include "Cyclk12.h"
 #include "core_cm0_psoc4.h"
 #include "CyFlash.h"
 #include "CyLib.h"

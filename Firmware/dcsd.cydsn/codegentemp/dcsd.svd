@@ -335,63 +335,6 @@
         <register>
           <name>COUNTER</name>
           <description>Current counter value</description>
-          <addressOffset>0x40050108</addressOffset>
-          <size>32</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-        </register>
-        <register>
-          <name>CC</name>
-          <description>Compare / capture value</description>
-          <addressOffset>0x4005010C</addressOffset>
-          <size>32</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-        </register>
-        <register>
-          <name>CC_BUF</name>
-          <description>Compare / capture buffer value</description>
-          <addressOffset>0x40050110</addressOffset>
-          <size>32</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-        </register>
-        <register>
-          <name>PERIOD</name>
-          <description>Period value</description>
-          <addressOffset>0x40050114</addressOffset>
-          <size>32</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-        </register>
-        <register>
-          <name>PERIOD_BUF</name>
-          <description>Period buffer value</description>
-          <addressOffset>0x40050118</addressOffset>
-          <size>32</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-        </register>
-      </registers>
-    </peripheral>
-    <peripheral>
-      <name>PWM_MOT</name>
-      <description>No description available</description>
-      <baseAddress>0x0</baseAddress>
-      <addressBlock>
-        <offset>0</offset>
-        <size>0x0</size>
-        <usage>registers</usage>
-      </addressBlock>
-      <registers>
-        <register>
-          <name>COUNTER</name>
-          <description>Current counter value</description>
           <addressOffset>0x40050148</addressOffset>
           <size>32</size>
           <access>read-write</access>
@@ -429,6 +372,63 @@
           <name>PERIOD_BUF</name>
           <description>Period buffer value</description>
           <addressOffset>0x40050158</addressOffset>
+          <size>32</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>PWM_MOT</name>
+      <description>No description available</description>
+      <baseAddress>0x0</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x0</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>COUNTER</name>
+          <description>Current counter value</description>
+          <addressOffset>0x40050108</addressOffset>
+          <size>32</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+        </register>
+        <register>
+          <name>CC</name>
+          <description>Compare / capture value</description>
+          <addressOffset>0x4005010C</addressOffset>
+          <size>32</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+        </register>
+        <register>
+          <name>CC_BUF</name>
+          <description>Compare / capture buffer value</description>
+          <addressOffset>0x40050110</addressOffset>
+          <size>32</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+        </register>
+        <register>
+          <name>PERIOD</name>
+          <description>Period value</description>
+          <addressOffset>0x40050114</addressOffset>
+          <size>32</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+        </register>
+        <register>
+          <name>PERIOD_BUF</name>
+          <description>Period buffer value</description>
+          <addressOffset>0x40050118</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -2443,7 +2443,7 @@
       </addressBlock>
       <registers>
         <register>
-          <name>_CTRL</name>
+          <name>Cy_CTRL</name>
           <description>Generic control register</description>
           <addressOffset>0x40070000</addressOffset>
           <size>32</size>
@@ -2510,7 +2510,7 @@
           </fields>
         </register>
         <register>
-          <name>_SPI_CTRL</name>
+          <name>Cy_SPI_CTRL</name>
           <description>SPI control register</description>
           <addressOffset>0x40070020</addressOffset>
           <size>32</size>
@@ -2584,7 +2584,7 @@
           </fields>
         </register>
         <register>
-          <name>_SPI_STATUS</name>
+          <name>Cy_SPI_STATUS</name>
           <description>SPI status register</description>
           <addressOffset>0x40070024</addressOffset>
           <size>32</size>
@@ -2602,7 +2602,7 @@
           </fields>
         </register>
         <register>
-          <name>_UART_CTRL</name>
+          <name>Cy_UART_CTRL</name>
           <description>Extended Configuration Register</description>
           <addressOffset>0x40070040</addressOffset>
           <size>32</size>
@@ -2627,7 +2627,7 @@
           </fields>
         </register>
         <register>
-          <name>_UART_TX_CTRL</name>
+          <name>Cy_UART_TX_CTRL</name>
           <description>Extended Configuration Register</description>
           <addressOffset>0x40070044</addressOffset>
           <size>32</size>
@@ -2666,7 +2666,7 @@
           </fields>
         </register>
         <register>
-          <name>_UART_RX_CTRL</name>
+          <name>Cy_UART_RX_CTRL</name>
           <description>Extended Configuration Register</description>
           <addressOffset>0x40070048</addressOffset>
           <size>32</size>
@@ -2747,7 +2747,7 @@
           </fields>
         </register>
         <register>
-          <name>_I2C_CTRL</name>
+          <name>Cy_I2C_CTRL</name>
           <description>Slave address and mask register</description>
           <addressOffset>0x40070060</addressOffset>
           <size>32</size>
@@ -2842,7 +2842,7 @@
           </fields>
         </register>
         <register>
-          <name>_I2C_STATUS</name>
+          <name>Cy_I2C_STATUS</name>
           <description>Slave address and mask register</description>
           <addressOffset>0x40070064</addressOffset>
           <size>32</size>
@@ -2874,7 +2874,7 @@
           </fields>
         </register>
         <register>
-          <name>_I2C_M_CMD</name>
+          <name>Cy_I2C_M_CMD</name>
           <description>Slave address and mask register</description>
           <addressOffset>0x40070068</addressOffset>
           <size>32</size>
@@ -2920,7 +2920,7 @@
           </fields>
         </register>
         <register>
-          <name>_I2C_S_CMD</name>
+          <name>Cy_I2C_S_CMD</name>
           <description>I2C slave command register</description>
           <addressOffset>0x4007006C</addressOffset>
           <size>32</size>
@@ -2945,7 +2945,7 @@
           </fields>
         </register>
         <register>
-          <name>_I2C_CFG</name>
+          <name>Cy_I2C_CFG</name>
           <description>I2C control register</description>
           <addressOffset>0x40070070</addressOffset>
           <size>32</size>
@@ -3040,7 +3040,7 @@
           </fields>
         </register>
         <register>
-          <name>_TX_CTRL</name>
+          <name>Cy_TX_CTRL</name>
           <description>Transmitter control register</description>
           <addressOffset>0x40070200</addressOffset>
           <size>32</size>
@@ -3072,7 +3072,7 @@
           </fields>
         </register>
         <register>
-          <name>_TX_FIFO_CTRL</name>
+          <name>Cy_TX_FIFO_CTRL</name>
           <description>Transmitter FIFO control register</description>
           <addressOffset>0x40070204</addressOffset>
           <size>32</size>
@@ -3104,7 +3104,7 @@
           </fields>
         </register>
         <register>
-          <name>_TX_FIFO_STATUS</name>
+          <name>Cy_TX_FIFO_STATUS</name>
           <description>Transmitter FIFO status register</description>
           <addressOffset>0x40070208</addressOffset>
           <size>32</size>
@@ -3143,7 +3143,7 @@
           </fields>
         </register>
         <register>
-          <name>_TX_FIFO_WR</name>
+          <name>Cy_TX_FIFO_WR</name>
           <description>Transmitter FIFO write register</description>
           <addressOffset>0x40070240</addressOffset>
           <size>32</size>
@@ -3161,7 +3161,7 @@
           </fields>
         </register>
         <register>
-          <name>_RX_CTRL</name>
+          <name>Cy_RX_CTRL</name>
           <description>Receiver control register</description>
           <addressOffset>0x40070300</addressOffset>
           <size>32</size>
@@ -3200,7 +3200,7 @@
           </fields>
         </register>
         <register>
-          <name>_RX_FIFO_CTRL</name>
+          <name>Cy_RX_FIFO_CTRL</name>
           <description>Receiver FIFO control register</description>
           <addressOffset>0x40070304</addressOffset>
           <size>32</size>
@@ -3232,7 +3232,7 @@
           </fields>
         </register>
         <register>
-          <name>_RX_FIFO_STATUS</name>
+          <name>Cy_RX_FIFO_STATUS</name>
           <description>Receiver FIFO status registerS</description>
           <addressOffset>0x40070308</addressOffset>
           <size>32</size>
@@ -3271,7 +3271,7 @@
           </fields>
         </register>
         <register>
-          <name>_RX_MATCH</name>
+          <name>Cy_RX_MATCH</name>
           <description>Slave address and mask register</description>
           <addressOffset>0x40070310</addressOffset>
           <size>32</size>
@@ -3296,7 +3296,7 @@
           </fields>
         </register>
         <register>
-          <name>_RX_FIFO_RD</name>
+          <name>Cy_RX_FIFO_RD</name>
           <description>Receiver FIFO read register</description>
           <addressOffset>0x40070340</addressOffset>
           <size>32</size>
@@ -3314,7 +3314,7 @@
           </fields>
         </register>
         <register>
-          <name>_INTR_CAUSE</name>
+          <name>Cy_INTR_CAUSE</name>
           <description>Interrupt cause register</description>
           <addressOffset>0x40070E00</addressOffset>
           <size>32</size>
@@ -3367,7 +3367,7 @@
           </fields>
         </register>
         <register>
-          <name>_INTR_I2C_EC</name>
+          <name>Cy_INTR_I2C_EC</name>
           <description>Externally clocked I2C interrupt request register</description>
           <addressOffset>0x40070E80</addressOffset>
           <size>32</size>
@@ -3385,7 +3385,7 @@
           </fields>
         </register>
         <register>
-          <name>_INTR_I2C_EC_MASK</name>
+          <name>Cy_INTR_I2C_EC_MASK</name>
           <description>Externally clocked I2C interrupt mask register</description>
           <addressOffset>0x40070E88</addressOffset>
           <size>32</size>
@@ -3403,7 +3403,7 @@
           </fields>
         </register>
         <register>
-          <name>_INTR_I2C_EC_MASKED</name>
+          <name>Cy_INTR_I2C_EC_MASKED</name>
           <description>Externally clocked SPI interrupt masked register</description>
           <addressOffset>0x40070E8C</addressOffset>
           <size>32</size>
@@ -3421,7 +3421,7 @@
           </fields>
         </register>
         <register>
-          <name>_INTR_INTR_SPI_EC</name>
+          <name>Cy_INTR_INTR_SPI_EC</name>
           <description>Externally clocked SPI interrupt request register</description>
           <addressOffset>0x40070EC0</addressOffset>
           <size>32</size>
@@ -3439,7 +3439,7 @@
           </fields>
         </register>
         <register>
-          <name>_INTR_INTR_SPI_EC_MASK</name>
+          <name>Cy_INTR_INTR_SPI_EC_MASK</name>
           <description>Externally clocked SPI interrupt mask register</description>
           <addressOffset>0x40070EC8</addressOffset>
           <size>32</size>
@@ -3457,7 +3457,7 @@
           </fields>
         </register>
         <register>
-          <name>_INTR_INTR_SPI_EC_MASKED</name>
+          <name>Cy_INTR_INTR_SPI_EC_MASKED</name>
           <description>Externally clocked SPI interrupt masked register</description>
           <addressOffset>0x40070ECC</addressOffset>
           <size>32</size>
@@ -3475,7 +3475,7 @@
           </fields>
         </register>
         <register>
-          <name>_INTR_M</name>
+          <name>Cy_INTR_M</name>
           <description>Master interrupt request register.</description>
           <addressOffset>0x40070F00</addressOffset>
           <size>32</size>
@@ -3528,7 +3528,7 @@
           </fields>
         </register>
         <register>
-          <name>_INTR_M_SET</name>
+          <name>Cy_INTR_M_SET</name>
           <description>Master interrupt set request register</description>
           <addressOffset>0x40070F04</addressOffset>
           <size>32</size>
@@ -3581,7 +3581,7 @@
           </fields>
         </register>
         <register>
-          <name>_INTR_M_MASK</name>
+          <name>Cy_INTR_M_MASK</name>
           <description>Master interrupt mask register</description>
           <addressOffset>0x40070F08</addressOffset>
           <size>32</size>
@@ -3634,7 +3634,7 @@
           </fields>
         </register>
         <register>
-          <name>_INTR_M_MASKED</name>
+          <name>Cy_INTR_M_MASKED</name>
           <description>Master interrupt masked request register</description>
           <addressOffset>0x40070F0C</addressOffset>
           <size>32</size>
@@ -3687,7 +3687,7 @@
           </fields>
         </register>
         <register>
-          <name>_INTR_S</name>
+          <name>Cy_INTR_S</name>
           <description>Slave interrupt request register</description>
           <addressOffset>0x40070F40</addressOffset>
           <size>32</size>
@@ -3768,7 +3768,7 @@
           </fields>
         </register>
         <register>
-          <name>_INTR_S_SET</name>
+          <name>Cy_INTR_S_SET</name>
           <description>Slave interrupt set request register</description>
           <addressOffset>0x40070F44</addressOffset>
           <size>32</size>
@@ -3849,7 +3849,7 @@
           </fields>
         </register>
         <register>
-          <name>_INTR_S_MASK</name>
+          <name>Cy_INTR_S_MASK</name>
           <description>Slave interrupt mask register</description>
           <addressOffset>0x40070F48</addressOffset>
           <size>32</size>
@@ -3930,7 +3930,7 @@
           </fields>
         </register>
         <register>
-          <name>_INTR_S_MASKED</name>
+          <name>Cy_INTR_S_MASKED</name>
           <description>Slave interrupt masked register</description>
           <addressOffset>0x40070F4C</addressOffset>
           <size>32</size>
@@ -4004,7 +4004,7 @@
           </fields>
         </register>
         <register>
-          <name>_INTR_TX</name>
+          <name>Cy_INTR_TX</name>
           <description>Transmitter interrupt request register</description>
           <addressOffset>0x40070F80</addressOffset>
           <size>32</size>
@@ -4071,7 +4071,7 @@
           </fields>
         </register>
         <register>
-          <name>_INTR_TX_SET</name>
+          <name>Cy_INTR_TX_SET</name>
           <description>Transmitter interrupt set request register</description>
           <addressOffset>0x40070F84</addressOffset>
           <size>32</size>
@@ -4138,7 +4138,7 @@
           </fields>
         </register>
         <register>
-          <name>_INTR_TX_MASK</name>
+          <name>Cy_INTR_TX_MASK</name>
           <description>Transmitter interrupt mask request register</description>
           <addressOffset>0x40070F88</addressOffset>
           <size>32</size>
@@ -4205,7 +4205,7 @@
           </fields>
         </register>
         <register>
-          <name>_INTR_TX_MASKED</name>
+          <name>Cy_INTR_TX_MASKED</name>
           <description>Transmitter interrupt masked request register</description>
           <addressOffset>0x40070F8C</addressOffset>
           <size>32</size>
@@ -4272,7 +4272,7 @@
           </fields>
         </register>
         <register>
-          <name>_INTR_RX</name>
+          <name>Cy_INTR_RX</name>
           <description>Receiver interrupt request register</description>
           <addressOffset>0x40070FC0</addressOffset>
           <size>32</size>
@@ -4346,7 +4346,7 @@
           </fields>
         </register>
         <register>
-          <name>_INTR_RX_SET</name>
+          <name>Cy_INTR_RX_SET</name>
           <description>Receiver interrupt set request register</description>
           <addressOffset>0x40070FC4</addressOffset>
           <size>32</size>
@@ -4420,7 +4420,7 @@
           </fields>
         </register>
         <register>
-          <name>_INTR_RX_MASK</name>
+          <name>Cy_INTR_RX_MASK</name>
           <description>Receiver interrupt mask register</description>
           <addressOffset>0x40070FC8</addressOffset>
           <size>32</size>
@@ -4494,7 +4494,7 @@
           </fields>
         </register>
         <register>
-          <name>_INTR_RX_MASKED</name>
+          <name>Cy_INTR_RX_MASKED</name>
           <description>Receiver interrupt masked register</description>
           <addressOffset>0x40070FCC</addressOffset>
           <size>32</size>

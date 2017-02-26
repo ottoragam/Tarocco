@@ -2,7 +2,7 @@
 --	Conversion of dcsd.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Sun Jan 15 20:34:38 2017
+--	Mon Feb 20 19:35:16 2017
 --
 
 USE cypress.cypress.all;
@@ -233,6 +233,8 @@ SIGNAL \UART:sda_wire\ : bit;
 SIGNAL Net_12392 : bit;
 SIGNAL Net_12391 : bit;
 SIGNAL \UART:Net_1028\ : bit;
+SIGNAL Net_12388 : bit;
+SIGNAL Net_12389 : bit;
 SIGNAL Net_12397 : bit;
 SIGNAL Net_12398 : bit;
 SIGNAL Net_12399 : bit;
@@ -240,8 +242,6 @@ SIGNAL Net_12400 : bit;
 SIGNAL Net_12401 : bit;
 SIGNAL Net_12402 : bit;
 SIGNAL Net_12403 : bit;
-SIGNAL Net_12388 : bit;
-SIGNAL Net_12389 : bit;
 SIGNAL tmpOE__reset_net_0 : bit;
 SIGNAL tmpFB_0__reset_net_0 : bit;
 SIGNAL tmpIO_0__reset_net_0 : bit;
@@ -1107,7 +1107,8 @@ ovc:cy_psoc3_pins_v1_10
 		out_reset=>zero,
 		interrupt=>tmpINTERRUPT_0__ovc_net_0);
 \ADC:IRQ\:cy_isr_v1_0
-	GENERIC MAP(int_type=>"10")
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
 	PORT MAP(int_signal=>\ADC:Net_3112\);
 \ADC:cy_analog_noconnect_44\:cy_analog_noconnect_v1_0
 	PORT MAP(noconnect=>\ADC:Net_3123\);
@@ -1596,7 +1597,7 @@ isense:cy_psoc3_pins_v1_10
 		id=>"43ec2fa1-bf22-4b71-9477-b6ca7b97f0b0/2dc2d7a8-ce2b-43c7-af4a-821c8cd73ccf",
 		source_clock_id=>"",
 		divisor=>0,
-		period=>"4340277777.77778",
+		period=>"5208333333.33333",
 		is_direct=>'0',
 		is_digital=>'0')
 	PORT MAP(clock_out=>\UART:Net_847\,
@@ -2183,7 +2184,8 @@ step:cy_psoc3_pins_v1_10
 		out_reset=>zero,
 		interrupt=>Net_10216);
 \QDEC:isr\:cy_isr_v1_0
-	GENERIC MAP(int_type=>"10")
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
 	PORT MAP(int_signal=>Net_13932);
 \QDEC:Cnt16:CounterUDB:clock_enable_block\:cy_psoc3_udb_clock_enable_v1_0
 	GENERIC MAP(sync_mode=>'1')
@@ -2419,7 +2421,8 @@ txClk:cy_clock_v1_0
 	PORT MAP(clock_out=>Net_12208,
 		dig_domain_out=>open);
 rxISR:cy_isr_v1_0
-	GENERIC MAP(int_type=>"10")
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
 	PORT MAP(int_signal=>Net_12386);
 \TX_SEND:cy_m0s8_tcpwm_1\:cy_m0s8_tcpwm_v1_0
 	GENERIC MAP(cy_registers=>"")
@@ -2446,10 +2449,12 @@ pwmClk:cy_clock_v1_0
 	PORT MAP(clock_out=>Net_5879,
 		dig_domain_out=>open);
 stepISR:cy_isr_v1_0
-	GENERIC MAP(int_type=>"10")
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
 	PORT MAP(int_signal=>Net_10216);
 txISR:cy_isr_v1_0
-	GENERIC MAP(int_type=>"10")
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
 	PORT MAP(int_signal=>Net_12203);
 \QDEC:Net_1251\:cy_dff
 	PORT MAP(d=>\QDEC:Net_1251\\D\,

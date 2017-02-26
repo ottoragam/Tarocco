@@ -1,6 +1,6 @@
 -- Project:   dcsd
--- Generated: 01/15/2017 20:34:39
--- PSoC Creator  3.3 CP3
+-- Generated: 02/20/2017 19:35:17
+-- PSoC Creator  4.0 Update 1
 
 ENTITY dcsd IS
     PORT(
@@ -655,6 +655,7 @@ BEGIN
     \QDEC:Net_1203_split\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * main_1 * main_4 * !main_5 * !main_6) + (!main_0 * !main_2 * !main_3 * !main_4 * !main_5 * main_6) + (!main_0 * !main_2 * !main_3 * !main_4 * main_5 * !main_6) + (!main_0 * !main_2 * main_3 * !main_4 * main_5 * main_6) + (!main_0 * main_2 * !main_3 * !main_4 * main_5 * main_6) + (!main_0 * main_2 * main_3 * !main_4 * !main_5 * main_6) + (!main_0 * main_2 * main_3 * !main_4 * main_5 * !main_6) + (main_2 * !main_3 * !main_4 * !main_5 * !main_6)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => \QDEC:Net_1203_split\,
@@ -1396,7 +1397,7 @@ BEGIN
             oe_sync_mode => 0,
             logicalport => "\ADC:Bypass\",
             logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000010")
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000000")
         PORT MAP(
             pa_out => \\\ADC:Bypass(0)\\__PA\,
             oe => open,
@@ -2225,6 +2226,7 @@ BEGIN
     \QDEC:Cnt16:CounterUDB:reload\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * !main_2)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => \QDEC:Cnt16:CounterUDB:reload\,
@@ -2235,6 +2237,7 @@ BEGIN
     \QDEC:Cnt16:CounterUDB:status_0\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => \QDEC:Cnt16:CounterUDB:status_0\,
@@ -2244,6 +2247,7 @@ BEGIN
     \QDEC:Cnt16:CounterUDB:status_2\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => \QDEC:Cnt16:CounterUDB:status_2\,
@@ -2253,6 +2257,7 @@ BEGIN
     \QDEC:Cnt16:CounterUDB:status_3\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => \QDEC:Cnt16:CounterUDB:status_3\,
@@ -2262,6 +2267,7 @@ BEGIN
     \QDEC:Cnt16:CounterUDB:count_enable\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * main_2)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => \QDEC:Cnt16:CounterUDB:count_enable\,
@@ -2272,6 +2278,7 @@ BEGIN
     \QDEC:Net_530\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * !main_2)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => \QDEC:Net_530\,
@@ -2282,6 +2289,7 @@ BEGIN
     \QDEC:Net_611\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * main_1 * !main_2)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => \QDEC:Net_611\,
@@ -2308,7 +2316,8 @@ BEGIN
 
     \ADC:IRQ\:interrupt
         GENERIC MAP(
-            int_type => "10")
+            int_type => "10",
+            is_nmi => 0)
         PORT MAP(
             interrupt => \ADC:Net_3112\,
             clock => ClockBlock_HFCLK);
@@ -2375,7 +2384,8 @@ BEGIN
 
     \QDEC:isr\:interrupt
         GENERIC MAP(
-            int_type => "10")
+            int_type => "10",
+            is_nmi => 0)
         PORT MAP(
             interrupt => Net_13932,
             clock => ClockBlock_HFCLK);
@@ -2522,6 +2532,7 @@ BEGIN
     \QDEC:bQuadDec:quad_A_filt\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -2532,6 +2543,7 @@ BEGIN
     \QDEC:bQuadDec:quad_B_filt\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -2559,7 +2571,8 @@ BEGIN
 
     rxISR:interrupt
         GENERIC MAP(
-            int_type => "10")
+            int_type => "10",
+            is_nmi => 0)
         PORT MAP(
             interrupt => Net_12386,
             clock => ClockBlock_HFCLK);
@@ -2583,14 +2596,16 @@ BEGIN
 
     stepISR:interrupt
         GENERIC MAP(
-            int_type => "10")
+            int_type => "10",
+            is_nmi => 0)
         PORT MAP(
             interrupt => Net_10216,
             clock => ClockBlock_HFCLK);
 
     txISR:interrupt
         GENERIC MAP(
-            int_type => "10")
+            int_type => "10",
+            is_nmi => 0)
         PORT MAP(
             interrupt => Net_12203,
             clock => ClockBlock_HFCLK);
@@ -2598,6 +2613,7 @@ BEGIN
     \QDEC:Net_1251\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * !main_2 * !main_4 * !main_6) + (main_0 * !main_1 * main_2 * !main_4 * main_6) + (main_0 * !main_1 * !main_3 * !main_4 * main_5) + (main_7)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -2615,6 +2631,7 @@ BEGIN
     \QDEC:Cnt16:CounterUDB:overflow_reg_i\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -2625,6 +2642,7 @@ BEGIN
     \QDEC:Cnt16:CounterUDB:underflow_reg_i\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -2635,6 +2653,7 @@ BEGIN
     \QDEC:Net_1275\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -2646,6 +2665,7 @@ BEGIN
     \QDEC:Cnt16:CounterUDB:prevCompare\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -2656,6 +2676,7 @@ BEGIN
     \QDEC:Net_1251_split\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * main_3 * !main_4 * !main_5) + (main_0 * !main_1 * main_4 * !main_5 * !main_6) + (main_0 * !main_2 * !main_4 * !main_5 * !main_6) + (main_0 * main_3 * !main_4 * !main_5 * !main_6) + (!main_1 * !main_2 * !main_3 * !main_4 * main_5 * !main_6) + (!main_1 * main_2 * !main_3 * !main_4 * main_5 * main_6) + (!main_1 * main_2 * main_3 * !main_4 * !main_5 * main_6) + (!main_2 * main_3 * !main_4 * !main_5 * !main_6)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => \QDEC:Net_1251_split\,
@@ -2670,6 +2691,7 @@ BEGIN
     \QDEC:Cnt16:CounterUDB:count_stored_i\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -2680,6 +2702,7 @@ BEGIN
     \QDEC:Net_1203\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * main_1 * !main_2 * !main_3 * !main_4) + (main_5)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -2695,6 +2718,7 @@ BEGIN
     \QDEC:Net_1260\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1) + (!main_0 * !main_2 * !main_3) + (!main_1 * !main_2 * !main_3)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -2708,6 +2732,7 @@ BEGIN
     \QDEC:bQuadDec:error\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * !main_2 * !main_3 * main_4 * main_5) + (!main_0 * !main_1 * main_2 * !main_3 * main_4 * !main_5) + (!main_0 * main_1 * !main_2 * !main_3 * !main_4 * main_5) + (main_1 * main_2 * !main_3 * !main_4 * !main_5)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -2723,6 +2748,7 @@ BEGIN
     \QDEC:bQuadDec:state_1\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * main_1 * main_2 * !main_3 * main_5) + (!main_0 * main_1 * !main_3 * main_4) + (!main_0 * main_1 * main_3 * !main_4 * !main_5) + (main_1 * !main_2 * !main_3 * !main_4 * !main_5)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -2738,6 +2764,7 @@ BEGIN
     \QDEC:bQuadDec:state_0\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * main_1 * main_2 * !main_3 * main_4) + (!main_0 * main_2 * !main_3 * main_5) + (!main_0 * main_2 * main_3 * !main_4 * !main_5) + (!main_1 * main_2 * !main_3 * !main_4 * !main_5)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(

@@ -1,6 +1,6 @@
 /* ========================================
 
-    current[mA]=1000*millivolts/(20*Rsense[ohm])=5*millivolts
+    current[mA]=1000*millivolts/(20*Rsense[mOhm])=10*millivolts for a 5 mOhm sense resistor
     current_limit[mA]=40*current_setting
     
    ======================================== */
@@ -17,7 +17,7 @@
 //how many encoder counts per step pulse
 #define SET_POINT_MULTIPLIER    1
 //number of cpu cycles the motor has to reach the desired position afeter each step pulse
-#define TIMEOUT                 20000
+#define TIMEOUT                 2000
 
 int fast_itoa(char a_string[7], int16_t a_number) {
     if(a_number<0) {
@@ -71,10 +71,10 @@ int main() {
 
     int16_t error=0, error_integral=0, error_derivative=0, error_at_timeout=0, millivolts=0, duty_reduce=0;
     int32_t output=0, process_variable=0, process_variable_prev=0;
-    uint8_t motor_shutdown=0, timeout_flag=0;
+    uint8_t fault_detected=0, motor_shutdown=0, timeout_flag=0;
     
     //emulated EEPROM 
-    static const CYCODE uint8_t kp=50, ki=10, kd=00, current_setting=60, invert_motor=0, ferror=50, uart_data=0;
+    static const CYCODE uint8_t kp=10, ki=0, kd=00, current_setting=255, invert_motor=0, ferror=255, uart_data=0;
     //pointers to respective EEPROM addresses
     volatile const uint8_t *eeprom_kp, *eeprom_ki, *eeprom_kd, *eeprom_current_setting, *eeprom_invert_motor, *eeprom_ferror, *eeprom_uart_data;
 
@@ -83,9 +83,8 @@ int main() {
     char command_type='z';
     char command_local[5], current_tx[7], error_tx[7];
     
-    //"board powered" signal
-    vin_Write(1);
-    //
+    error_Write(1);
+    //Initialize quadrature decoding hardware
     QDEC_Start();
     //192008N1
     UART_Start();
@@ -113,6 +112,10 @@ int main() {
     eeprom_ferror=&ferror;
     eeprom_uart_data=&uart_data;
     
+    CyDelay(1000);
+    //"board powered" signal
+    vin_Write(1);
+    
     // Enable global interrupts
     CyGlobalIntEnable;
     
@@ -123,6 +126,7 @@ int main() {
         if(error>*eeprom_ferror || error<-*eeprom_ferror) {
             error_Write(0);
             err_Write(1);
+            fault_detected=1;
         }
         //if no new step pulse is received for a number of cycles, shut down the motor, until a new step pulse is received or the motor gets out of position
         else {
@@ -137,23 +141,36 @@ int main() {
                     timeout_flag=1;
                     motor_shutdown=1;
                 }
-                if(error_at_timeout-error>2 || error_at_timeout-error<-2) timeout_counter=0;
+                if(error_at_timeout-error>3 || error_at_timeout-error<-3) timeout_counter=0;
             }
         }
         
         //gate driver error
         //undervoltage, undercurrent or overtemperature
-        if(fault_Read()==0) {}
-        if(ovc_Read()==0) {}
+        if(fault_Read()==0) {
+            error_Write(0);
+            vin_Write(0);
+            err_Write(1);
+            fault_detected=1;
+        }
+        if(ovc_Read()==0) {
+            error_Write(0);
+            vin_Write(0);
+            err_Write(1);
+            fault_detected=1;
+        }
         
         //reset pin
         if(reset_Read()==0) {
-            motor_shutdown=1;
+            error_Write(0);
+            err_Write(1);
+            fault_detected=1;
         }
         
-         //current limiting PI control loop
+        //current limiting PI control. Calculate error and add it to the previous sum of errors
         millivolts=(ADC_GetResult16(0)>>1);
-        duty_reduce+=((millivolts-(*eeprom_current_setting<<3))>>3);
+        //convert the current limit magnitude to voltage so the error can be computed using the ADC reading
+        duty_reduce+=((millivolts-(*eeprom_current_setting<<2))>>3);
         if(duty_reduce>DUTY_REDUCE_MAX) duty_reduce=DUTY_REDUCE_MAX;
         else if(duty_reduce<0) duty_reduce=0;
         
@@ -171,25 +188,30 @@ int main() {
         
         //output value calculation and constraining
         output=(*eeprom_kp*error)+((*eeprom_ki*error_integral)>>10)-(*eeprom_kd*error_derivative);
-        if(*eeprom_invert_motor) {
-            if(output>=0) phase_Write(1);
-            else {
-                output=-output;
-                phase_Write(0);
-            }
+        if(fault_detected) {
+            PWM_MOT_WriteCompare(1);
         }
         else {
-            if(output>=0) phase_Write(0);
-            else {
-                output=-output;
-                phase_Write(1);
+            if(*eeprom_invert_motor) {
+                if(output>=0) phase_Write(1);
+                else {
+                    output=-output;
+                    phase_Write(0);
+                }
             }
+            else {
+                if(output>=0) phase_Write(0);
+                else {
+                    output=-output;
+                    phase_Write(1);
+                }
+            }
+            if(output>4095) output=4095;
+            output-=duty_reduce;
+            if(output<1) output=1;
+            if(motor_shutdown) PWM_MOT_WriteCompare(1);
+            else PWM_MOT_WriteCompare(output);
         }
-        if(output>4095) output=4095;
-        output-=duty_reduce;
-        if(output<1) output=1;
-        if(motor_shutdown) PWM_MOT_WriteCompare(1);
-        else PWM_MOT_WriteCompare(output);
         
         
         //parse UART data. Do not use numbers as condition for the switch
@@ -236,8 +258,8 @@ int main() {
         }
         
         //prepare UART strings
-        //fast_itoa(current_tx, 5*millivolts);
-        fast_itoa(error_tx, error+4000);
+        fast_itoa(error_tx, error+500);
+        fast_itoa(current_tx, 10*millivolts);
         
         //string transmission begins with '$' and ends with ';'
         //insert a ' ' between each string
