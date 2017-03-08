@@ -15,4 +15,4 @@ Low cost servo drive for small CNC machinery
 
 Get yours on https://www.crowdsupply.com/citrus-cnc/tarocco
 
-![drive](/Images/tarocco_p.jpg)
+![drive](/Images/tarocco-extras.jpg)
