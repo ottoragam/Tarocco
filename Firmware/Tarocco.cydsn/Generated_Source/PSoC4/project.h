@@ -64,6 +64,7 @@
 #include "Clock_2.h"
 #include "Counter_1.h"
 #include "pwmISR.h"
+#include "step_register.h"
 #include "ADC_IRQ.h"
 #include "ADC_intClock.h"
 #include "UART_SCBCLK.h"

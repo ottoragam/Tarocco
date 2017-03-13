@@ -2,7 +2,7 @@
 --	Conversion of Tarocco.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Wed Mar 08 01:02:23 2017
+--	Mon Mar 13 07:09:24 2017
 --
 
 USE cypress.cypress.all;
@@ -694,6 +694,15 @@ SIGNAL \Counter_1:CounterUDB:sC16:counterdp:f1_blk_stat_reg_1\ : bit;
 ATTRIBUTE port_state_att of \Counter_1:CounterUDB:sC16:counterdp:f1_blk_stat_reg_1\:SIGNAL IS 2;
 SIGNAL dir_sync_ff : bit;
 SIGNAL step_syn_ff : bit;
+SIGNAL \step_register:status_0\ : bit;
+SIGNAL \step_register:status_1\ : bit;
+SIGNAL \step_register:status_2\ : bit;
+SIGNAL \step_register:status_3\ : bit;
+SIGNAL \step_register:status_4\ : bit;
+SIGNAL \step_register:status_5\ : bit;
+SIGNAL \step_register:status_6\ : bit;
+SIGNAL \step_register:status_7\ : bit;
+SIGNAL Net_14402 : bit;
 SIGNAL cydff_1D : bit;
 SIGNAL cydff_2D : bit;
 SIGNAL Net_14123_1D : bit;
@@ -732,6 +741,8 @@ Net_14216 <= ((not \EdgeDetect_1:last\ and Net_14013_3 and Net_14123_1 and Net_1
 	OR (not cydff_2 and not Net_14123_1 and cydff_1 and Net_14013_1 and Net_14013_0 and Net_14123_0)
 	OR (not Net_14013_1 and not Net_14123_1 and cydff_1 and cydff_2 and Net_14013_0 and Net_14123_0)
 	OR (not cydff_1 and not Net_14123_1 and Net_14013_1 and cydff_2 and Net_14013_0 and Net_14123_0));
+
+Net_14016 <= ((not \EdgeDetect_1:last\ and Net_14013_3));
 
 \Counter_1:CounterUDB:status_0\ <= ((not \Counter_1:CounterUDB:ctrl_cmod_2\ and not \Counter_1:CounterUDB:ctrl_cmod_0\ and not \Counter_1:CounterUDB:prevCompare\ and \Counter_1:CounterUDB:cmp_equal\)
 	OR (not \Counter_1:CounterUDB:cmp_less\ and not \Counter_1:CounterUDB:cmp_equal\ and not \Counter_1:CounterUDB:prevCompare\ and \Counter_1:CounterUDB:ctrl_cmod_1\ and \Counter_1:CounterUDB:ctrl_cmod_0\)
@@ -1764,7 +1775,7 @@ isense:cy_psoc3_pins_v1_10
 		id=>"43ec2fa1-bf22-4b71-9477-b6ca7b97f0b0/2dc2d7a8-ce2b-43c7-af4a-821c8cd73ccf",
 		source_clock_id=>"",
 		divisor=>0,
-		period=>"4340277777.77778",
+		period=>"5208333333.33333",
 		is_direct=>'0',
 		is_digital=>'0')
 	PORT MAP(clock_out=>\UART:Net_847\,
@@ -2652,6 +2663,23 @@ pwmISR:cy_isr_v1_0
 	GENERIC MAP(int_type=>"10",
 		is_nmi=>'0')
 	PORT MAP(int_signal=>Net_14374);
+\step_register:sts:sts_reg\:cy_psoc3_status
+	GENERIC MAP(cy_force_order=>'1',
+		cy_md_select=>"00000000")
+	PORT MAP(reset=>zero,
+		clock=>Net_14402,
+		status=>(zero, zero, zero, zero,
+			zero, zero, zero, Net_14016));
+Clock_4:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"9f88f270-8e16-4847-94ac-d0afad3998ef",
+		source_clock_id=>"ccced5a2-6965-48d4-b176-1577322fcb4e",
+		divisor=>0,
+		period=>"0",
+		is_direct=>'1',
+		is_digital=>'0')
+	PORT MAP(clock_out=>Net_14402,
+		dig_domain_out=>open);
 cydff_1:cy_dff
 	PORT MAP(d=>Net_14013_1,
 		clk=>Net_14035,

@@ -66,7 +66,7 @@
 #define UART_UART_DATA_BITS_NUM         (8u)
 #define UART_UART_PARITY_TYPE           (2u)
 #define UART_UART_STOP_BITS_NUM         (2u)
-#define UART_UART_OVS_FACTOR            (12u)
+#define UART_UART_OVS_FACTOR            (10u)
 #define UART_UART_IRDA_LOW_POWER        (0u)
 #define UART_UART_MEDIAN_FILTER_ENABLE  (0u)
 #define UART_UART_RETRY_ON_NACK         (0u)

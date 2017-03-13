@@ -1,5 +1,5 @@
 -- Project:   D:\code\cypress\Tarocco\Tarocco.cydsn\Tarocco.cyprj
--- Generated: 03/08/2017 01:02:26
+-- Generated: 03/13/2017 07:09:25
 -- PSoC Creator  4.0 Update 1
 
 ENTITY Tarocco IS
@@ -57,18 +57,20 @@ ARCHITECTURE __DEFAULT__ OF Tarocco IS
     SIGNAL Net_14013_1 : bit;
     SIGNAL Net_14013_2 : bit;
     SIGNAL Net_14013_3 : bit;
+    SIGNAL Net_14016 : bit;
+    ATTRIBUTE placement_force OF Net_14016 : SIGNAL IS "U(0,1,B)2";
     SIGNAL Net_14035_digital : bit;
     ATTRIBUTE global_signal OF Net_14035_digital : SIGNAL IS true;
     SIGNAL Net_14123_0 : bit;
-    ATTRIBUTE placement_force OF Net_14123_0 : SIGNAL IS "U(0,1,B)1";
+    ATTRIBUTE placement_force OF Net_14123_0 : SIGNAL IS "U(0,1,A)3";
     SIGNAL Net_14123_1 : bit;
-    ATTRIBUTE placement_force OF Net_14123_1 : SIGNAL IS "U(1,1,B)0";
+    ATTRIBUTE placement_force OF Net_14123_1 : SIGNAL IS "U(0,1,A)0";
     SIGNAL Net_14279 : bit;
-    ATTRIBUTE placement_force OF Net_14279 : SIGNAL IS "U(0,1,A)3";
+    ATTRIBUTE placement_force OF Net_14279 : SIGNAL IS "U(1,0,B)0";
     SIGNAL Net_14338 : bit;
-    ATTRIBUTE placement_force OF Net_14338 : SIGNAL IS "U(0,1,A)2";
+    ATTRIBUTE placement_force OF Net_14338 : SIGNAL IS "U(1,1,A)2";
     SIGNAL Net_14338_split : bit;
-    ATTRIBUTE placement_force OF Net_14338_split : SIGNAL IS "U(0,1,B)0";
+    ATTRIBUTE placement_force OF Net_14338_split : SIGNAL IS "U(1,1,B)0";
     SIGNAL Net_14372 : bit;
     SIGNAL Net_14374 : bit;
     SIGNAL Net_14379 : bit;
@@ -108,7 +110,7 @@ ARCHITECTURE __DEFAULT__ OF Tarocco IS
     SIGNAL \Counter_1:CounterUDB:control_6\ : bit;
     SIGNAL \Counter_1:CounterUDB:control_7\ : bit;
     SIGNAL \Counter_1:CounterUDB:count_enable\ : bit;
-    ATTRIBUTE placement_force OF \Counter_1:CounterUDB:count_enable\ : SIGNAL IS "U(0,0,A)1";
+    ATTRIBUTE placement_force OF \Counter_1:CounterUDB:count_enable\ : SIGNAL IS "U(0,1,B)3";
     SIGNAL \Counter_1:CounterUDB:count_stored_i\ : bit;
     ATTRIBUTE placement_force OF \Counter_1:CounterUDB:count_stored_i\ : SIGNAL IS "U(0,1,A)1";
     SIGNAL \Counter_1:CounterUDB:ctrl_cmod_0\ : bit;
@@ -116,22 +118,22 @@ ARCHITECTURE __DEFAULT__ OF Tarocco IS
     SIGNAL \Counter_1:CounterUDB:ctrl_cmod_2\ : bit;
     SIGNAL \Counter_1:CounterUDB:overflow\ : bit;
     SIGNAL \Counter_1:CounterUDB:overflow_reg_i\ : bit;
-    ATTRIBUTE placement_force OF \Counter_1:CounterUDB:overflow_reg_i\ : SIGNAL IS "U(0,0,A)2";
+    ATTRIBUTE placement_force OF \Counter_1:CounterUDB:overflow_reg_i\ : SIGNAL IS "U(0,0,B)1";
     SIGNAL \Counter_1:CounterUDB:prevCompare\ : bit;
     ATTRIBUTE placement_force OF \Counter_1:CounterUDB:prevCompare\ : SIGNAL IS "U(0,0,B)0";
     SIGNAL \Counter_1:CounterUDB:status_0\ : bit;
     ATTRIBUTE placement_force OF \Counter_1:CounterUDB:status_0\ : SIGNAL IS "U(0,0,A)0";
     SIGNAL \Counter_1:CounterUDB:status_1\ : bit;
     SIGNAL \Counter_1:CounterUDB:status_2\ : bit;
-    ATTRIBUTE placement_force OF \Counter_1:CounterUDB:status_2\ : SIGNAL IS "U(0,1,A)0";
+    ATTRIBUTE placement_force OF \Counter_1:CounterUDB:status_2\ : SIGNAL IS "U(0,0,A)1";
     SIGNAL \Counter_1:CounterUDB:status_3\ : bit;
     ATTRIBUTE placement_force OF \Counter_1:CounterUDB:status_3\ : SIGNAL IS "U(0,0,A)3";
     SIGNAL \Counter_1:CounterUDB:status_5\ : bit;
     SIGNAL \Counter_1:CounterUDB:status_6\ : bit;
     SIGNAL \Counter_1:CounterUDB:underflow_reg_i\ : bit;
-    ATTRIBUTE placement_force OF \Counter_1:CounterUDB:underflow_reg_i\ : SIGNAL IS "U(0,0,B)1";
+    ATTRIBUTE placement_force OF \Counter_1:CounterUDB:underflow_reg_i\ : SIGNAL IS "U(0,0,B)2";
     SIGNAL \EdgeDetect_1:last\ : bit;
-    ATTRIBUTE placement_force OF \EdgeDetect_1:last\ : SIGNAL IS "U(1,1,A)2";
+    ATTRIBUTE placement_force OF \EdgeDetect_1:last\ : SIGNAL IS "U(0,1,B)0";
     SIGNAL \UART:Net_847_ff2\ : bit;
     ATTRIBUTE global_signal OF \UART:Net_847_ff2\ : SIGNAL IS true;
     SIGNAL \UART:miso_s_wire\ : bit;
@@ -151,9 +153,9 @@ ARCHITECTURE __DEFAULT__ OF Tarocco IS
     SIGNAL __ZERO__ : bit;
     ATTRIBUTE GROUND OF __ZERO__ : SIGNAL IS true;
     SIGNAL cydff_1 : bit;
-    ATTRIBUTE placement_force OF cydff_1 : SIGNAL IS "U(1,1,A)0";
+    ATTRIBUTE placement_force OF cydff_1 : SIGNAL IS "U(0,1,B)1";
     SIGNAL cydff_2 : bit;
-    ATTRIBUTE placement_force OF cydff_2 : SIGNAL IS "U(1,1,A)1";
+    ATTRIBUTE placement_force OF cydff_2 : SIGNAL IS "U(1,0,A)2";
     SIGNAL dclk_to_genclk : bit;
     SIGNAL dclk_to_genclk_1 : bit;
     SIGNAL direction(0)__PA : bit;
@@ -186,7 +188,7 @@ ARCHITECTURE __DEFAULT__ OF Tarocco IS
     SIGNAL \Counter_1:CounterUDB:sC16:counterdp:u1.sor__sig\ : bit;
     SIGNAL \Counter_1:CounterUDB:sC16:counterdp:u1.cmsbo__sig\ : bit;
     ATTRIBUTE lib_model OF Net_14338_split : LABEL IS "macrocell1";
-    ATTRIBUTE Location OF Net_14338_split : LABEL IS "U(0,1)";
+    ATTRIBUTE Location OF Net_14338_split : LABEL IS "U(1,1)";
     ATTRIBUTE Location OF ClockGenBlock : LABEL IS "F(CLK_GEN,0)";
     ATTRIBUTE Location OF ClockBlock : LABEL IS "F(Clock,0)";
     ATTRIBUTE lib_model OF vin(0) : LABEL IS "iocell1";
@@ -223,14 +225,16 @@ ARCHITECTURE __DEFAULT__ OF Tarocco IS
     ATTRIBUTE Location OF direction(0) : LABEL IS "P0[7]";
     ATTRIBUTE lib_model OF step(0) : LABEL IS "iocell17";
     ATTRIBUTE Location OF step(0) : LABEL IS "P0[6]";
-    ATTRIBUTE lib_model OF \Counter_1:CounterUDB:status_0\ : LABEL IS "macrocell2";
+    ATTRIBUTE lib_model OF Net_14016 : LABEL IS "macrocell2";
+    ATTRIBUTE Location OF Net_14016 : LABEL IS "U(0,1)";
+    ATTRIBUTE lib_model OF \Counter_1:CounterUDB:status_0\ : LABEL IS "macrocell3";
     ATTRIBUTE Location OF \Counter_1:CounterUDB:status_0\ : LABEL IS "U(0,0)";
-    ATTRIBUTE lib_model OF \Counter_1:CounterUDB:status_2\ : LABEL IS "macrocell3";
-    ATTRIBUTE Location OF \Counter_1:CounterUDB:status_2\ : LABEL IS "U(0,1)";
-    ATTRIBUTE lib_model OF \Counter_1:CounterUDB:status_3\ : LABEL IS "macrocell4";
+    ATTRIBUTE lib_model OF \Counter_1:CounterUDB:status_2\ : LABEL IS "macrocell4";
+    ATTRIBUTE Location OF \Counter_1:CounterUDB:status_2\ : LABEL IS "U(0,0)";
+    ATTRIBUTE lib_model OF \Counter_1:CounterUDB:status_3\ : LABEL IS "macrocell5";
     ATTRIBUTE Location OF \Counter_1:CounterUDB:status_3\ : LABEL IS "U(0,0)";
-    ATTRIBUTE lib_model OF \Counter_1:CounterUDB:count_enable\ : LABEL IS "macrocell5";
-    ATTRIBUTE Location OF \Counter_1:CounterUDB:count_enable\ : LABEL IS "U(0,0)";
+    ATTRIBUTE lib_model OF \Counter_1:CounterUDB:count_enable\ : LABEL IS "macrocell6";
+    ATTRIBUTE Location OF \Counter_1:CounterUDB:count_enable\ : LABEL IS "U(0,1)";
     ATTRIBUTE Location OF \PWM_MOT:cy_m0s8_tcpwm_1\ : LABEL IS "F(TCPWM,0)";
     ATTRIBUTE Location OF \ADC:IRQ\ : LABEL IS "[IntrContainer=(0)][IntrId=(14)]";
     ATTRIBUTE Location OF \ADC:cy_psoc4_sar\ : LABEL IS "F(SARADC,0)";
@@ -240,10 +244,10 @@ ARCHITECTURE __DEFAULT__ OF Tarocco IS
     ATTRIBUTE Location OF txISR : LABEL IS "[IntrContainer=(0)][IntrId=(0)]";
     ATTRIBUTE Location OF \Sync_3:genblk1[0]:INST\ : LABEL IS "U(1,1)";
     ATTRIBUTE Location OF \Sync_3:genblk1[1]:INST\ : LABEL IS "U(1,1)";
-    ATTRIBUTE Location OF \Sync_3:genblk1[2]:INST\ : LABEL IS "U(1,0)";
+    ATTRIBUTE Location OF \Sync_3:genblk1[2]:INST\ : LABEL IS "U(1,1)";
     ATTRIBUTE Location OF \Sync_3:genblk1[3]:INST\ : LABEL IS "U(1,1)";
     ATTRIBUTE lib_model OF \Counter_1:CounterUDB:sCTRLReg:ctrlreg\ : LABEL IS "controlcell1";
-    ATTRIBUTE Location OF \Counter_1:CounterUDB:sCTRLReg:ctrlreg\ : LABEL IS "U(0,0)";
+    ATTRIBUTE Location OF \Counter_1:CounterUDB:sCTRLReg:ctrlreg\ : LABEL IS "U(0,1)";
     ATTRIBUTE lib_model OF \Counter_1:CounterUDB:sSTSReg:stsreg\ : LABEL IS "statusicell1";
     ATTRIBUTE Location OF \Counter_1:CounterUDB:sSTSReg:stsreg\ : LABEL IS "U(0,0)";
     ATTRIBUTE lib_model OF \Counter_1:CounterUDB:sC16:counterdp:u0\ : LABEL IS "datapathcell1";
@@ -251,28 +255,30 @@ ARCHITECTURE __DEFAULT__ OF Tarocco IS
     ATTRIBUTE lib_model OF \Counter_1:CounterUDB:sC16:counterdp:u1\ : LABEL IS "datapathcell2";
     ATTRIBUTE Location OF \Counter_1:CounterUDB:sC16:counterdp:u1\ : LABEL IS "U(0,0)";
     ATTRIBUTE Location OF pwmISR : LABEL IS "[IntrContainer=(0)][IntrId=(16)]";
-    ATTRIBUTE lib_model OF cydff_1 : LABEL IS "macrocell6";
-    ATTRIBUTE Location OF cydff_1 : LABEL IS "U(1,1)";
-    ATTRIBUTE lib_model OF cydff_2 : LABEL IS "macrocell7";
-    ATTRIBUTE Location OF cydff_2 : LABEL IS "U(1,1)";
-    ATTRIBUTE lib_model OF Net_14123_1 : LABEL IS "macrocell8";
-    ATTRIBUTE Location OF Net_14123_1 : LABEL IS "U(1,1)";
-    ATTRIBUTE lib_model OF Net_14123_0 : LABEL IS "macrocell9";
+    ATTRIBUTE lib_model OF \step_register:sts:sts_reg\ : LABEL IS "statuscell1";
+    ATTRIBUTE Location OF \step_register:sts:sts_reg\ : LABEL IS "U(1,0)";
+    ATTRIBUTE lib_model OF cydff_1 : LABEL IS "macrocell7";
+    ATTRIBUTE Location OF cydff_1 : LABEL IS "U(0,1)";
+    ATTRIBUTE lib_model OF cydff_2 : LABEL IS "macrocell8";
+    ATTRIBUTE Location OF cydff_2 : LABEL IS "U(1,0)";
+    ATTRIBUTE lib_model OF Net_14123_1 : LABEL IS "macrocell9";
+    ATTRIBUTE Location OF Net_14123_1 : LABEL IS "U(0,1)";
+    ATTRIBUTE lib_model OF Net_14123_0 : LABEL IS "macrocell10";
     ATTRIBUTE Location OF Net_14123_0 : LABEL IS "U(0,1)";
-    ATTRIBUTE lib_model OF \EdgeDetect_1:last\ : LABEL IS "macrocell10";
-    ATTRIBUTE Location OF \EdgeDetect_1:last\ : LABEL IS "U(1,1)";
-    ATTRIBUTE lib_model OF \Counter_1:CounterUDB:overflow_reg_i\ : LABEL IS "macrocell11";
+    ATTRIBUTE lib_model OF \EdgeDetect_1:last\ : LABEL IS "macrocell11";
+    ATTRIBUTE Location OF \EdgeDetect_1:last\ : LABEL IS "U(0,1)";
+    ATTRIBUTE lib_model OF \Counter_1:CounterUDB:overflow_reg_i\ : LABEL IS "macrocell12";
     ATTRIBUTE Location OF \Counter_1:CounterUDB:overflow_reg_i\ : LABEL IS "U(0,0)";
-    ATTRIBUTE lib_model OF \Counter_1:CounterUDB:underflow_reg_i\ : LABEL IS "macrocell12";
+    ATTRIBUTE lib_model OF \Counter_1:CounterUDB:underflow_reg_i\ : LABEL IS "macrocell13";
     ATTRIBUTE Location OF \Counter_1:CounterUDB:underflow_reg_i\ : LABEL IS "U(0,0)";
-    ATTRIBUTE lib_model OF \Counter_1:CounterUDB:prevCompare\ : LABEL IS "macrocell13";
+    ATTRIBUTE lib_model OF \Counter_1:CounterUDB:prevCompare\ : LABEL IS "macrocell14";
     ATTRIBUTE Location OF \Counter_1:CounterUDB:prevCompare\ : LABEL IS "U(0,0)";
-    ATTRIBUTE lib_model OF \Counter_1:CounterUDB:count_stored_i\ : LABEL IS "macrocell14";
+    ATTRIBUTE lib_model OF \Counter_1:CounterUDB:count_stored_i\ : LABEL IS "macrocell15";
     ATTRIBUTE Location OF \Counter_1:CounterUDB:count_stored_i\ : LABEL IS "U(0,1)";
-    ATTRIBUTE lib_model OF Net_14279 : LABEL IS "macrocell15";
-    ATTRIBUTE Location OF Net_14279 : LABEL IS "U(0,1)";
-    ATTRIBUTE lib_model OF Net_14338 : LABEL IS "macrocell16";
-    ATTRIBUTE Location OF Net_14338 : LABEL IS "U(0,1)";
+    ATTRIBUTE lib_model OF Net_14279 : LABEL IS "macrocell16";
+    ATTRIBUTE Location OF Net_14279 : LABEL IS "U(1,0)";
+    ATTRIBUTE lib_model OF Net_14338 : LABEL IS "macrocell17";
+    ATTRIBUTE Location OF Net_14338 : LABEL IS "U(1,1)";
     COMPONENT controlcell
         PORT (
             control_0 : OUT std_ulogic;
@@ -674,6 +680,20 @@ ARCHITECTURE __DEFAULT__ OF Tarocco IS
             data_oe_1 : IN std_ulogic;
             data_oe_2 : IN std_ulogic;
             data_oe_3 : IN std_ulogic);
+    END COMPONENT;
+    COMPONENT statuscell
+        PORT (
+            status_0 : IN std_ulogic;
+            status_1 : IN std_ulogic;
+            status_2 : IN std_ulogic;
+            status_3 : IN std_ulogic;
+            status_4 : IN std_ulogic;
+            status_5 : IN std_ulogic;
+            status_6 : IN std_ulogic;
+            status_7 : IN std_ulogic;
+            clock : IN std_ulogic;
+            reset : IN std_ulogic;
+            clk_en : IN std_ulogic);
     END COMPONENT;
     COMPONENT statusicell
         PORT (
@@ -2291,6 +2311,16 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
+    Net_14016:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0 * !main_1)",
+            regmode => 0,
+            clken_mode => 1)
+        PORT MAP(
+            q => Net_14016,
+            main_0 => Net_14013_3,
+            main_1 => \EdgeDetect_1:last\);
+
     \Counter_1:CounterUDB:status_0\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * main_2 * main_3 * !main_5) + (!main_0 * main_1 * !main_2 * main_3 * !main_5) + (!main_0 * !main_2 * main_4 * !main_5) + (main_0 * !main_3 * !main_5) + (main_1 * main_2 * !main_3 * !main_4 * !main_5)",
@@ -2633,6 +2663,22 @@ BEGIN
         PORT MAP(
             interrupt => Net_14374,
             clock => ClockBlock_HFCLK);
+
+    \step_register:sts:sts_reg\:statuscell
+        GENERIC MAP(
+            cy_force_order => 1,
+            cy_md_select => "00000000",
+            clken_mode => 1)
+        PORT MAP(
+            clock => open,
+            status_7 => open,
+            status_6 => open,
+            status_5 => open,
+            status_4 => open,
+            status_3 => open,
+            status_2 => open,
+            status_1 => open,
+            status_0 => Net_14016);
 
     cydff_1:macrocell
         GENERIC MAP(
