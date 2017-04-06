@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 1
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -9,7 +9,7 @@ ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 1
    6              		.eabi_attribute 24, 1
    7              		.eabi_attribute 25, 1
    8              		.eabi_attribute 26, 1
-   9              		.eabi_attribute 30, 1
+   9              		.eabi_attribute 30, 2
   10              		.eabi_attribute 34, 0
   11              		.eabi_attribute 18, 4
   12              		.code	16
@@ -17,14 +17,14 @@ ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 1
   14              		.text
   15              	.Ltext0:
   16              		.cfi_sections	.debug_frame
-  17              		.section	.text.Counter_1_Enable,"ax",%progbits
+  17              		.section	.text.Counter_1_Init,"ax",%progbits
   18              		.align	2
-  19              		.global	Counter_1_Enable
+  19              		.global	Counter_1_Init
   20              		.code	16
   21              		.thumb_func
-  22              		.type	Counter_1_Enable, %function
-  23              	Counter_1_Enable:
-  24              	.LFB1:
+  22              		.type	Counter_1_Init, %function
+  23              	Counter_1_Init:
+  24              	.LFB0:
   25              		.file 1 "Generated_Source\\PSoC4\\Counter_1.c"
    1:Generated_Source\PSoC4/Counter_1.c **** /*******************************************************************************
    2:Generated_Source\PSoC4/Counter_1.c **** * File Name: Counter_1.c  
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 1
   30:Generated_Source\PSoC4/Counter_1.c **** * Parameters:  
   31:Generated_Source\PSoC4/Counter_1.c **** *  void  
   32:Generated_Source\PSoC4/Counter_1.c **** *
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 2
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 2
 
 
   33:Generated_Source\PSoC4/Counter_1.c **** * Return: 
@@ -67,6 +67,8 @@ ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 1
   36:Generated_Source\PSoC4/Counter_1.c **** *******************************************************************************/
   37:Generated_Source\PSoC4/Counter_1.c **** void Counter_1_Init(void) 
   38:Generated_Source\PSoC4/Counter_1.c **** {
+  26              		.loc 1 38 0
+  27              		.cfi_startproc
   39:Generated_Source\PSoC4/Counter_1.c ****         #if (!Counter_1_UsingFixedFunction && !Counter_1_ControlRegRemoved)
   40:Generated_Source\PSoC4/Counter_1.c ****             uint8 ctrl;
   41:Generated_Source\PSoC4/Counter_1.c ****         #endif /* (!Counter_1_UsingFixedFunction && !Counter_1_ControlRegRemoved) */
@@ -108,19 +110,48 @@ ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 1
   77:Generated_Source\PSoC4/Counter_1.c ****             #if(!Counter_1_ControlRegRemoved)
   78:Generated_Source\PSoC4/Counter_1.c ****             /* Set the default compare mode defined in the parameter */
   79:Generated_Source\PSoC4/Counter_1.c ****             ctrl = Counter_1_CONTROL & ((uint8)(~Counter_1_CTRL_CMPMODE_MASK));
+  28              		.loc 1 79 0
+  29 0000 0721     		mov	r1, #7
+  38:Generated_Source\PSoC4/Counter_1.c ****         #if (!Counter_1_UsingFixedFunction && !Counter_1_ControlRegRemoved)
+  30              		.loc 1 38 0
+  31 0002 08B5     		push	{r3, lr}
+  32              		.cfi_def_cfa_offset 8
+  33              		.cfi_offset 3, -8
+  34              		.cfi_offset 14, -4
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 3
+
+
+  35              		.loc 1 79 0
+  36 0004 154B     		ldr	r3, .L10
+  37 0006 1A78     		ldrb	r2, [r3]
+  38              	.LVL0:
+  39 0008 8A43     		bic	r2, r1
+  40              	.LVL1:
   80:Generated_Source\PSoC4/Counter_1.c ****             Counter_1_CONTROL = ctrl | Counter_1_DEFAULT_COMPARE_MODE;
+  41              		.loc 1 80 0
+  42 000a 0239     		sub	r1, r1, #2
+  43 000c 0A43     		orr	r2, r1
+  44 000e 1A70     		strb	r2, [r3]
   81:Generated_Source\PSoC4/Counter_1.c ****             
   82:Generated_Source\PSoC4/Counter_1.c ****             /* Set the default capture mode defined in the parameter */
   83:Generated_Source\PSoC4/Counter_1.c ****             ctrl = Counter_1_CONTROL & ((uint8)(~Counter_1_CTRL_CAPMODE_MASK));
+  45              		.loc 1 83 0
+  46 0010 1A78     		ldrb	r2, [r3]
+  47 0012 0239     		sub	r1, r1, #2
+  48 0014 8A43     		bic	r2, r1
+  49              	.LVL2:
   84:Generated_Source\PSoC4/Counter_1.c ****             
   85:Generated_Source\PSoC4/Counter_1.c ****             #if( 0 != Counter_1_CAPTURE_MODE_CONF)
   86:Generated_Source\PSoC4/Counter_1.c ****                 Counter_1_CONTROL = ctrl | Counter_1_DEFAULT_CAPTURE_MODE;
   87:Generated_Source\PSoC4/Counter_1.c ****             #else
   88:Generated_Source\PSoC4/Counter_1.c ****                 Counter_1_CONTROL = ctrl;
+  50              		.loc 1 88 0
+  51 0016 1A70     		strb	r2, [r3]
+  52              	.LBB24:
+  53              	.LBB25:
+  54              	.LBB26:
+  55              	.LBB27:
   89:Generated_Source\PSoC4/Counter_1.c ****             #endif /* 0 != Counter_1_CAPTURE_MODE */ 
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 3
-
-
   90:Generated_Source\PSoC4/Counter_1.c ****             
   91:Generated_Source\PSoC4/Counter_1.c ****             #endif /* (!Counter_1_ControlRegRemoved) */
   92:Generated_Source\PSoC4/Counter_1.c ****         #endif /* (Counter_1_UsingFixedFunction) */
@@ -147,6 +178,9 @@ ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 1
  113:Generated_Source\PSoC4/Counter_1.c ****             /* CyEnterCriticalRegion and CyExitCriticalRegion are used to mark following region cri
  114:Generated_Source\PSoC4/Counter_1.c ****             /* Enter Critical Region*/
  115:Generated_Source\PSoC4/Counter_1.c ****             Counter_1_interruptState = CyEnterCriticalSection();
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 4
+
+
  116:Generated_Source\PSoC4/Counter_1.c ****             
  117:Generated_Source\PSoC4/Counter_1.c ****             Counter_1_STATUS_AUX_CTRL |= Counter_1_STATUS_ACTL_INT_EN_MASK;
  118:Generated_Source\PSoC4/Counter_1.c ****             
@@ -176,11 +210,6 @@ ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 1
  142:Generated_Source\PSoC4/Counter_1.c **** *******************************************************************************/
  143:Generated_Source\PSoC4/Counter_1.c **** void Counter_1_Enable(void) 
  144:Generated_Source\PSoC4/Counter_1.c **** {
-  26              		.loc 1 144 0
-  27              		.cfi_startproc
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 4
-
-
  145:Generated_Source\PSoC4/Counter_1.c ****     /* Globally Enable the Fixed Function Block chosen */
  146:Generated_Source\PSoC4/Counter_1.c ****     #if (Counter_1_UsingFixedFunction)
  147:Generated_Source\PSoC4/Counter_1.c ****         Counter_1_GLOBAL_ENABLE |= Counter_1_BLOCK_EN_MASK;
@@ -192,33 +221,9 @@ ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 1
  153:Generated_Source\PSoC4/Counter_1.c ****     /* else make sure reset is clear */
  154:Generated_Source\PSoC4/Counter_1.c ****     #if(!Counter_1_ControlRegRemoved || Counter_1_UsingFixedFunction)
  155:Generated_Source\PSoC4/Counter_1.c ****         Counter_1_CONTROL |= Counter_1_CTRL_ENABLE;                
-  28              		.loc 1 155 0
-  29 0000 024A     		ldr	r2, .L2
-  30 0002 1178     		ldrb	r1, [r2]
-  31 0004 8023     		mov	r3, #128
-  32 0006 0B43     		orr	r3, r1
-  33 0008 1370     		strb	r3, [r2]
  156:Generated_Source\PSoC4/Counter_1.c ****     #endif /* (!Counter_1_ControlRegRemoved || Counter_1_UsingFixedFunction) */
  157:Generated_Source\PSoC4/Counter_1.c ****     
  158:Generated_Source\PSoC4/Counter_1.c **** }
-  34              		.loc 1 158 0
-  35              		@ sp needed
-  36 000a 7047     		bx	lr
-  37              	.L3:
-  38              		.align	2
-  39              	.L2:
-  40 000c 70000F40 		.word	1074724976
-  41              		.cfi_endproc
-  42              	.LFE1:
-  43              		.size	Counter_1_Enable, .-Counter_1_Enable
-  44              		.section	.text.Counter_1_Stop,"ax",%progbits
-  45              		.align	2
-  46              		.global	Counter_1_Stop
-  47              		.code	16
-  48              		.thumb_func
-  49              		.type	Counter_1_Stop, %function
-  50              	Counter_1_Stop:
-  51              	.LFB3:
  159:Generated_Source\PSoC4/Counter_1.c **** 
  160:Generated_Source\PSoC4/Counter_1.c **** 
  161:Generated_Source\PSoC4/Counter_1.c **** /*******************************************************************************
@@ -233,14 +238,14 @@ ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 1
  170:Generated_Source\PSoC4/Counter_1.c **** * Return: 
  171:Generated_Source\PSoC4/Counter_1.c **** *  void
  172:Generated_Source\PSoC4/Counter_1.c **** *
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 5
+
+
  173:Generated_Source\PSoC4/Counter_1.c **** * Global variables:
  174:Generated_Source\PSoC4/Counter_1.c **** *  Counter_1_initVar: Is modified when this function is called for the  
  175:Generated_Source\PSoC4/Counter_1.c **** *   first time. Is used to ensure that initialization happens only once.
  176:Generated_Source\PSoC4/Counter_1.c **** *
  177:Generated_Source\PSoC4/Counter_1.c **** *******************************************************************************/
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 5
-
-
  178:Generated_Source\PSoC4/Counter_1.c **** void Counter_1_Start(void) 
  179:Generated_Source\PSoC4/Counter_1.c **** {
  180:Generated_Source\PSoC4/Counter_1.c ****     if(Counter_1_initVar == 0u)
@@ -273,17 +278,9 @@ ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 1
  207:Generated_Source\PSoC4/Counter_1.c **** *******************************************************************************/
  208:Generated_Source\PSoC4/Counter_1.c **** void Counter_1_Stop(void) 
  209:Generated_Source\PSoC4/Counter_1.c **** {
-  52              		.loc 1 209 0
-  53              		.cfi_startproc
  210:Generated_Source\PSoC4/Counter_1.c ****     /* Disable Counter */
  211:Generated_Source\PSoC4/Counter_1.c ****     #if(!Counter_1_ControlRegRemoved || Counter_1_UsingFixedFunction)
  212:Generated_Source\PSoC4/Counter_1.c ****         Counter_1_CONTROL &= ((uint8)(~Counter_1_CTRL_ENABLE));        
-  54              		.loc 1 212 0
-  55 0000 024A     		ldr	r2, .L5
-  56 0002 1178     		ldrb	r1, [r2]
-  57 0004 7F23     		mov	r3, #127
-  58 0006 0B40     		and	r3, r1
-  59 0008 1370     		strb	r3, [r2]
  213:Generated_Source\PSoC4/Counter_1.c ****     #endif /* (!Counter_1_ControlRegRemoved || Counter_1_UsingFixedFunction) */
  214:Generated_Source\PSoC4/Counter_1.c ****     
  215:Generated_Source\PSoC4/Counter_1.c ****     /* Globally disable the Fixed Function Block chosen */
@@ -292,27 +289,6 @@ ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 1
  218:Generated_Source\PSoC4/Counter_1.c ****         Counter_1_GLOBAL_STBY_ENABLE &= ((uint8)(~Counter_1_BLOCK_STBY_EN_MASK));
  219:Generated_Source\PSoC4/Counter_1.c ****     #endif /* (Counter_1_UsingFixedFunction) */
  220:Generated_Source\PSoC4/Counter_1.c **** }
-  60              		.loc 1 220 0
-  61              		@ sp needed
-  62 000a 7047     		bx	lr
-  63              	.L6:
-  64              		.align	2
-  65              	.L5:
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 6
-
-
-  66 000c 70000F40 		.word	1074724976
-  67              		.cfi_endproc
-  68              	.LFE3:
-  69              		.size	Counter_1_Stop, .-Counter_1_Stop
-  70              		.section	.text.Counter_1_SetInterruptMode,"ax",%progbits
-  71              		.align	2
-  72              		.global	Counter_1_SetInterruptMode
-  73              		.code	16
-  74              		.thumb_func
-  75              		.type	Counter_1_SetInterruptMode, %function
-  76              	Counter_1_SetInterruptMode:
-  77              	.LFB4:
  221:Generated_Source\PSoC4/Counter_1.c **** 
  222:Generated_Source\PSoC4/Counter_1.c **** 
  223:Generated_Source\PSoC4/Counter_1.c **** /*******************************************************************************
@@ -322,6 +298,9 @@ ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 1
  227:Generated_Source\PSoC4/Counter_1.c **** * Configures which interrupt sources are enabled to generate the final interrupt
  228:Generated_Source\PSoC4/Counter_1.c **** *
  229:Generated_Source\PSoC4/Counter_1.c **** * Parameters:  
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 6
+
+
  230:Generated_Source\PSoC4/Counter_1.c **** *  InterruptsMask: This parameter is an or'd collection of the status bits
  231:Generated_Source\PSoC4/Counter_1.c **** *                   which will be allowed to generate the counters interrupt.   
  232:Generated_Source\PSoC4/Counter_1.c **** *
@@ -331,36 +310,9 @@ ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 1
  236:Generated_Source\PSoC4/Counter_1.c **** *******************************************************************************/
  237:Generated_Source\PSoC4/Counter_1.c **** void Counter_1_SetInterruptMode(uint8 interruptsMask) 
  238:Generated_Source\PSoC4/Counter_1.c **** {
-  78              		.loc 1 238 0
-  79              		.cfi_startproc
-  80              	.LVL0:
  239:Generated_Source\PSoC4/Counter_1.c ****     Counter_1_STATUS_MASK = interruptsMask;
-  81              		.loc 1 239 0
-  82 0000 014B     		ldr	r3, .L8
-  83 0002 1870     		strb	r0, [r3]
  240:Generated_Source\PSoC4/Counter_1.c **** }
-  84              		.loc 1 240 0
-  85              		@ sp needed
-  86 0004 7047     		bx	lr
-  87              	.L9:
-  88 0006 C046     		.align	2
-  89              	.L8:
-  90 0008 83000F40 		.word	1074724995
-  91              		.cfi_endproc
-  92              	.LFE4:
-  93              		.size	Counter_1_SetInterruptMode, .-Counter_1_SetInterruptMode
-  94              		.section	.text.Counter_1_ReadStatusRegister,"ax",%progbits
-  95              		.align	2
-  96              		.global	Counter_1_ReadStatusRegister
-  97              		.code	16
-  98              		.thumb_func
-  99              		.type	Counter_1_ReadStatusRegister, %function
- 100              	Counter_1_ReadStatusRegister:
- 101              	.LFB5:
  241:Generated_Source\PSoC4/Counter_1.c **** 
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 7
-
-
  242:Generated_Source\PSoC4/Counter_1.c **** 
  243:Generated_Source\PSoC4/Counter_1.c **** /*******************************************************************************
  244:Generated_Source\PSoC4/Counter_1.c **** * Function Name: Counter_1_ReadStatusRegister
@@ -382,32 +334,15 @@ ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 1
  260:Generated_Source\PSoC4/Counter_1.c **** *******************************************************************************/
  261:Generated_Source\PSoC4/Counter_1.c **** uint8   Counter_1_ReadStatusRegister(void) 
  262:Generated_Source\PSoC4/Counter_1.c **** {
- 102              		.loc 1 262 0
- 103              		.cfi_startproc
  263:Generated_Source\PSoC4/Counter_1.c ****     return Counter_1_STATUS;
- 104              		.loc 1 263 0
- 105 0000 014B     		ldr	r3, .L11
- 106 0002 1878     		ldrb	r0, [r3]
- 107 0004 C0B2     		uxtb	r0, r0
+  56              		.loc 1 263 0
+  57 0018 114A     		ldr	r2, .L10+4
+  58              	.LVL3:
+  59 001a 1378     		ldrb	r3, [r2]
+  60              	.LVL4:
+  61              	.LBE27:
+  62              	.LBE26:
  264:Generated_Source\PSoC4/Counter_1.c **** }
- 108              		.loc 1 264 0
- 109              		@ sp needed
- 110 0006 7047     		bx	lr
- 111              	.L12:
- 112              		.align	2
- 113              	.L11:
- 114 0008 63000F40 		.word	1074724963
- 115              		.cfi_endproc
- 116              	.LFE5:
- 117              		.size	Counter_1_ReadStatusRegister, .-Counter_1_ReadStatusRegister
- 118              		.section	.text.Counter_1_ReadControlRegister,"ax",%progbits
- 119              		.align	2
- 120              		.global	Counter_1_ReadControlRegister
- 121              		.code	16
- 122              		.thumb_func
- 123              		.type	Counter_1_ReadControlRegister, %function
- 124              	Counter_1_ReadControlRegister:
- 125              	.LFB6:
  265:Generated_Source\PSoC4/Counter_1.c **** 
  266:Generated_Source\PSoC4/Counter_1.c **** 
  267:Generated_Source\PSoC4/Counter_1.c **** #if(!Counter_1_ControlRegRemoved)
@@ -418,45 +353,21 @@ ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 1
  272:Generated_Source\PSoC4/Counter_1.c **** *   Reads the control register and returns it's state. This function should use
  273:Generated_Source\PSoC4/Counter_1.c **** *       defined types for the bit-field information as the bits in this
  274:Generated_Source\PSoC4/Counter_1.c **** *       register may be permuteable.
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 8
-
-
  275:Generated_Source\PSoC4/Counter_1.c **** *
  276:Generated_Source\PSoC4/Counter_1.c **** * Parameters:  
  277:Generated_Source\PSoC4/Counter_1.c **** *  void
  278:Generated_Source\PSoC4/Counter_1.c **** *
  279:Generated_Source\PSoC4/Counter_1.c **** * Return: 
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 7
+
+
  280:Generated_Source\PSoC4/Counter_1.c **** *  (uint8) The contents of the control register
  281:Generated_Source\PSoC4/Counter_1.c **** *
  282:Generated_Source\PSoC4/Counter_1.c **** *******************************************************************************/
  283:Generated_Source\PSoC4/Counter_1.c **** uint8   Counter_1_ReadControlRegister(void) 
  284:Generated_Source\PSoC4/Counter_1.c **** {
- 126              		.loc 1 284 0
- 127              		.cfi_startproc
  285:Generated_Source\PSoC4/Counter_1.c ****     return Counter_1_CONTROL;
- 128              		.loc 1 285 0
- 129 0000 014B     		ldr	r3, .L14
- 130 0002 1878     		ldrb	r0, [r3]
- 131 0004 C0B2     		uxtb	r0, r0
  286:Generated_Source\PSoC4/Counter_1.c **** }
- 132              		.loc 1 286 0
- 133              		@ sp needed
- 134 0006 7047     		bx	lr
- 135              	.L15:
- 136              		.align	2
- 137              	.L14:
- 138 0008 70000F40 		.word	1074724976
- 139              		.cfi_endproc
- 140              	.LFE6:
- 141              		.size	Counter_1_ReadControlRegister, .-Counter_1_ReadControlRegister
- 142              		.section	.text.Counter_1_WriteControlRegister,"ax",%progbits
- 143              		.align	2
- 144              		.global	Counter_1_WriteControlRegister
- 145              		.code	16
- 146              		.thumb_func
- 147              		.type	Counter_1_WriteControlRegister, %function
- 148              	Counter_1_WriteControlRegister:
- 149              	.LFB7:
  287:Generated_Source\PSoC4/Counter_1.c **** 
  288:Generated_Source\PSoC4/Counter_1.c **** 
  289:Generated_Source\PSoC4/Counter_1.c **** /*******************************************************************************
@@ -476,35 +387,8 @@ ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 1
  303:Generated_Source\PSoC4/Counter_1.c **** *******************************************************************************/
  304:Generated_Source\PSoC4/Counter_1.c **** void    Counter_1_WriteControlRegister(uint8 control) 
  305:Generated_Source\PSoC4/Counter_1.c **** {
- 150              		.loc 1 305 0
- 151              		.cfi_startproc
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 9
-
-
- 152              	.LVL1:
  306:Generated_Source\PSoC4/Counter_1.c ****     Counter_1_CONTROL = control;
- 153              		.loc 1 306 0
- 154 0000 014B     		ldr	r3, .L17
- 155 0002 1870     		strb	r0, [r3]
  307:Generated_Source\PSoC4/Counter_1.c **** }
- 156              		.loc 1 307 0
- 157              		@ sp needed
- 158 0004 7047     		bx	lr
- 159              	.L18:
- 160 0006 C046     		.align	2
- 161              	.L17:
- 162 0008 70000F40 		.word	1074724976
- 163              		.cfi_endproc
- 164              	.LFE7:
- 165              		.size	Counter_1_WriteControlRegister, .-Counter_1_WriteControlRegister
- 166              		.section	.text.Counter_1_WriteCounter,"ax",%progbits
- 167              		.align	2
- 168              		.global	Counter_1_WriteCounter
- 169              		.code	16
- 170              		.thumb_func
- 171              		.type	Counter_1_WriteCounter, %function
- 172              	Counter_1_WriteCounter:
- 173              	.LFB8:
  308:Generated_Source\PSoC4/Counter_1.c **** 
  309:Generated_Source\PSoC4/Counter_1.c **** #endif  /* (!Counter_1_ControlRegRemoved) */
  310:Generated_Source\PSoC4/Counter_1.c **** 
@@ -526,9 +410,6 @@ ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 1
  326:Generated_Source\PSoC4/Counter_1.c **** void Counter_1_WriteCounter(uint16 counter) \
  327:Generated_Source\PSoC4/Counter_1.c ****                                    
  328:Generated_Source\PSoC4/Counter_1.c **** {
- 174              		.loc 1 328 0
- 175              		.cfi_startproc
- 176              	.LVL2:
  329:Generated_Source\PSoC4/Counter_1.c ****     #if(Counter_1_UsingFixedFunction)
  330:Generated_Source\PSoC4/Counter_1.c ****         /* assert if block is already enabled */
  331:Generated_Source\PSoC4/Counter_1.c ****         CYASSERT (0u == (Counter_1_GLOBAL_ENABLE & Counter_1_BLOCK_EN_MASK));
@@ -537,33 +418,12 @@ ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 1
  334:Generated_Source\PSoC4/Counter_1.c ****         CY_SET_REG16(Counter_1_COUNTER_LSB_PTR, (uint16)counter);
  335:Generated_Source\PSoC4/Counter_1.c ****         Counter_1_GLOBAL_ENABLE &= ((uint8)(~Counter_1_BLOCK_EN_MASK));
  336:Generated_Source\PSoC4/Counter_1.c ****     #else
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 8
+
+
  337:Generated_Source\PSoC4/Counter_1.c ****         CY_SET_REG16(Counter_1_COUNTER_LSB_PTR, counter);
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 10
-
-
- 177              		.loc 1 337 0
- 178 0000 014B     		ldr	r3, .L20
- 179 0002 1880     		strh	r0, [r3]
  338:Generated_Source\PSoC4/Counter_1.c ****     #endif /* (Counter_1_UsingFixedFunction) */
  339:Generated_Source\PSoC4/Counter_1.c **** }
- 180              		.loc 1 339 0
- 181              		@ sp needed
- 182 0004 7047     		bx	lr
- 183              	.L21:
- 184 0006 C046     		.align	2
- 185              	.L20:
- 186 0008 04100F40 		.word	1074728964
- 187              		.cfi_endproc
- 188              	.LFE8:
- 189              		.size	Counter_1_WriteCounter, .-Counter_1_WriteCounter
- 190              		.section	.text.Counter_1_ReadCounter,"ax",%progbits
- 191              		.align	2
- 192              		.global	Counter_1_ReadCounter
- 193              		.code	16
- 194              		.thumb_func
- 195              		.type	Counter_1_ReadCounter, %function
- 196              	Counter_1_ReadCounter:
- 197              	.LFB9:
  340:Generated_Source\PSoC4/Counter_1.c **** #endif /* (!(Counter_1_UsingFixedFunction && (CY_PSOC5A))) */
  341:Generated_Source\PSoC4/Counter_1.c **** 
  342:Generated_Source\PSoC4/Counter_1.c **** 
@@ -583,8 +443,6 @@ ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 1
  356:Generated_Source\PSoC4/Counter_1.c **** *******************************************************************************/
  357:Generated_Source\PSoC4/Counter_1.c **** uint16 Counter_1_ReadCounter(void) 
  358:Generated_Source\PSoC4/Counter_1.c **** {
- 198              		.loc 1 358 0
- 199              		.cfi_startproc
  359:Generated_Source\PSoC4/Counter_1.c ****     /* Force capture by reading Accumulator */
  360:Generated_Source\PSoC4/Counter_1.c ****     /* Must first do a software capture to be able to read the counter */
  361:Generated_Source\PSoC4/Counter_1.c ****     /* It is up to the user code to make sure there isn't already captured data in the FIFO */
@@ -592,44 +450,15 @@ ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 1
  363:Generated_Source\PSoC4/Counter_1.c **** 		(void)CY_GET_REG16(Counter_1_COUNTER_LSB_PTR);
  364:Generated_Source\PSoC4/Counter_1.c **** 	#else
  365:Generated_Source\PSoC4/Counter_1.c **** 		(void)CY_GET_REG8(Counter_1_COUNTER_LSB_PTR_8BIT);
- 200              		.loc 1 365 0
- 201 0000 024B     		ldr	r3, .L23
- 202 0002 1B78     		ldrb	r3, [r3]
  366:Generated_Source\PSoC4/Counter_1.c **** 	#endif/* (Counter_1_UsingFixedFunction) */
  367:Generated_Source\PSoC4/Counter_1.c ****     
  368:Generated_Source\PSoC4/Counter_1.c ****     /* Read the data from the FIFO (or capture register for Fixed Function)*/
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 11
-
-
  369:Generated_Source\PSoC4/Counter_1.c ****     #if(Counter_1_UsingFixedFunction)
  370:Generated_Source\PSoC4/Counter_1.c ****         return ((uint16)CY_GET_REG16(Counter_1_STATICCOUNT_LSB_PTR));
  371:Generated_Source\PSoC4/Counter_1.c ****     #else
  372:Generated_Source\PSoC4/Counter_1.c ****         return (CY_GET_REG16(Counter_1_STATICCOUNT_LSB_PTR));
- 203              		.loc 1 372 0
- 204 0004 024B     		ldr	r3, .L23+4
- 205 0006 1888     		ldrh	r0, [r3]
- 206 0008 80B2     		uxth	r0, r0
  373:Generated_Source\PSoC4/Counter_1.c ****     #endif /* (Counter_1_UsingFixedFunction) */
  374:Generated_Source\PSoC4/Counter_1.c **** }
- 207              		.loc 1 374 0
- 208              		@ sp needed
- 209 000a 7047     		bx	lr
- 210              	.L24:
- 211              		.align	2
- 212              	.L23:
- 213 000c 02000F40 		.word	1074724866
- 214 0010 84100F40 		.word	1074729092
- 215              		.cfi_endproc
- 216              	.LFE9:
- 217              		.size	Counter_1_ReadCounter, .-Counter_1_ReadCounter
- 218              		.section	.text.Counter_1_ReadCapture,"ax",%progbits
- 219              		.align	2
- 220              		.global	Counter_1_ReadCapture
- 221              		.code	16
- 222              		.thumb_func
- 223              		.type	Counter_1_ReadCapture, %function
- 224              	Counter_1_ReadCapture:
- 225              	.LFB10:
  375:Generated_Source\PSoC4/Counter_1.c **** 
  376:Generated_Source\PSoC4/Counter_1.c **** 
  377:Generated_Source\PSoC4/Counter_1.c **** /*******************************************************************************
@@ -647,39 +476,15 @@ ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 1
  389:Generated_Source\PSoC4/Counter_1.c **** *******************************************************************************/
  390:Generated_Source\PSoC4/Counter_1.c **** uint16 Counter_1_ReadCapture(void) 
  391:Generated_Source\PSoC4/Counter_1.c **** {
- 226              		.loc 1 391 0
- 227              		.cfi_startproc
  392:Generated_Source\PSoC4/Counter_1.c ****     #if(Counter_1_UsingFixedFunction)
  393:Generated_Source\PSoC4/Counter_1.c ****         return ((uint16)CY_GET_REG16(Counter_1_STATICCOUNT_LSB_PTR));
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 9
+
+
  394:Generated_Source\PSoC4/Counter_1.c ****     #else
  395:Generated_Source\PSoC4/Counter_1.c ****         return (CY_GET_REG16(Counter_1_STATICCOUNT_LSB_PTR));
- 228              		.loc 1 395 0
- 229 0000 014B     		ldr	r3, .L26
- 230 0002 1888     		ldrh	r0, [r3]
- 231 0004 80B2     		uxth	r0, r0
  396:Generated_Source\PSoC4/Counter_1.c ****     #endif /* (Counter_1_UsingFixedFunction) */
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 12
-
-
  397:Generated_Source\PSoC4/Counter_1.c **** }
- 232              		.loc 1 397 0
- 233              		@ sp needed
- 234 0006 7047     		bx	lr
- 235              	.L27:
- 236              		.align	2
- 237              	.L26:
- 238 0008 84100F40 		.word	1074729092
- 239              		.cfi_endproc
- 240              	.LFE10:
- 241              		.size	Counter_1_ReadCapture, .-Counter_1_ReadCapture
- 242              		.section	.text.Counter_1_WritePeriod,"ax",%progbits
- 243              		.align	2
- 244              		.global	Counter_1_WritePeriod
- 245              		.code	16
- 246              		.thumb_func
- 247              		.type	Counter_1_WritePeriod, %function
- 248              	Counter_1_WritePeriod:
- 249              	.LFB11:
  398:Generated_Source\PSoC4/Counter_1.c **** 
  399:Generated_Source\PSoC4/Counter_1.c **** 
  400:Generated_Source\PSoC4/Counter_1.c **** /*******************************************************************************
@@ -699,39 +504,12 @@ ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 1
  414:Generated_Source\PSoC4/Counter_1.c **** *******************************************************************************/
  415:Generated_Source\PSoC4/Counter_1.c **** void Counter_1_WritePeriod(uint16 period) 
  416:Generated_Source\PSoC4/Counter_1.c **** {
- 250              		.loc 1 416 0
- 251              		.cfi_startproc
- 252              	.LVL3:
  417:Generated_Source\PSoC4/Counter_1.c ****     #if(Counter_1_UsingFixedFunction)
  418:Generated_Source\PSoC4/Counter_1.c ****         CY_SET_REG16(Counter_1_PERIOD_LSB_PTR,(uint16)period);
  419:Generated_Source\PSoC4/Counter_1.c ****     #else
  420:Generated_Source\PSoC4/Counter_1.c ****         CY_SET_REG16(Counter_1_PERIOD_LSB_PTR, period);
- 253              		.loc 1 420 0
- 254 0000 014B     		ldr	r3, .L29
- 255 0002 1880     		strh	r0, [r3]
  421:Generated_Source\PSoC4/Counter_1.c ****     #endif /* (Counter_1_UsingFixedFunction) */
  422:Generated_Source\PSoC4/Counter_1.c **** }
- 256              		.loc 1 422 0
- 257              		@ sp needed
- 258 0004 7047     		bx	lr
- 259              	.L30:
- 260 0006 C046     		.align	2
- 261              	.L29:
- 262 0008 44100F40 		.word	1074729028
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 13
-
-
- 263              		.cfi_endproc
- 264              	.LFE11:
- 265              		.size	Counter_1_WritePeriod, .-Counter_1_WritePeriod
- 266              		.section	.text.Counter_1_ReadPeriod,"ax",%progbits
- 267              		.align	2
- 268              		.global	Counter_1_ReadPeriod
- 269              		.code	16
- 270              		.thumb_func
- 271              		.type	Counter_1_ReadPeriod, %function
- 272              	Counter_1_ReadPeriod:
- 273              	.LFB12:
  423:Generated_Source\PSoC4/Counter_1.c **** 
  424:Generated_Source\PSoC4/Counter_1.c **** 
  425:Generated_Source\PSoC4/Counter_1.c **** /*******************************************************************************
@@ -749,44 +527,20 @@ ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 1
  437:Generated_Source\PSoC4/Counter_1.c **** *******************************************************************************/
  438:Generated_Source\PSoC4/Counter_1.c **** uint16 Counter_1_ReadPeriod(void) 
  439:Generated_Source\PSoC4/Counter_1.c **** {
- 274              		.loc 1 439 0
- 275              		.cfi_startproc
  440:Generated_Source\PSoC4/Counter_1.c ****     #if(Counter_1_UsingFixedFunction)
  441:Generated_Source\PSoC4/Counter_1.c ****         return ((uint16)CY_GET_REG16(Counter_1_PERIOD_LSB_PTR));
  442:Generated_Source\PSoC4/Counter_1.c ****     #else
  443:Generated_Source\PSoC4/Counter_1.c ****         return (CY_GET_REG16(Counter_1_PERIOD_LSB_PTR));
- 276              		.loc 1 443 0
- 277 0000 014B     		ldr	r3, .L32
- 278 0002 1888     		ldrh	r0, [r3]
- 279 0004 80B2     		uxth	r0, r0
  444:Generated_Source\PSoC4/Counter_1.c ****     #endif /* (Counter_1_UsingFixedFunction) */
  445:Generated_Source\PSoC4/Counter_1.c **** }
- 280              		.loc 1 445 0
- 281              		@ sp needed
- 282 0006 7047     		bx	lr
- 283              	.L33:
- 284              		.align	2
- 285              	.L32:
- 286 0008 44100F40 		.word	1074729028
- 287              		.cfi_endproc
- 288              	.LFE12:
- 289              		.size	Counter_1_ReadPeriod, .-Counter_1_ReadPeriod
- 290              		.section	.text.Counter_1_WriteCompare,"ax",%progbits
- 291              		.align	2
- 292              		.global	Counter_1_WriteCompare
- 293              		.code	16
- 294              		.thumb_func
- 295              		.type	Counter_1_WriteCompare, %function
- 296              	Counter_1_WriteCompare:
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 14
-
-
- 297              	.LFB13:
  446:Generated_Source\PSoC4/Counter_1.c **** 
  447:Generated_Source\PSoC4/Counter_1.c **** 
  448:Generated_Source\PSoC4/Counter_1.c **** #if (!Counter_1_UsingFixedFunction)
  449:Generated_Source\PSoC4/Counter_1.c **** /*******************************************************************************
  450:Generated_Source\PSoC4/Counter_1.c **** * Function Name: Counter_1_WriteCompare
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 10
+
+
  451:Generated_Source\PSoC4/Counter_1.c **** ********************************************************************************
  452:Generated_Source\PSoC4/Counter_1.c **** * Summary:
  453:Generated_Source\PSoC4/Counter_1.c **** * Changes the compare value.  The compare output will 
@@ -804,43 +558,16 @@ ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 1
  465:Generated_Source\PSoC4/Counter_1.c **** void Counter_1_WriteCompare(uint16 compare) \
  466:Generated_Source\PSoC4/Counter_1.c ****                                    
  467:Generated_Source\PSoC4/Counter_1.c **** {
- 298              		.loc 1 467 0
- 299              		.cfi_startproc
- 300              	.LVL4:
  468:Generated_Source\PSoC4/Counter_1.c ****     #if(Counter_1_UsingFixedFunction)
  469:Generated_Source\PSoC4/Counter_1.c ****         CY_SET_REG16(Counter_1_COMPARE_LSB_PTR, (uint16)compare);
  470:Generated_Source\PSoC4/Counter_1.c ****     #else
  471:Generated_Source\PSoC4/Counter_1.c ****         CY_SET_REG16(Counter_1_COMPARE_LSB_PTR, compare);
- 301              		.loc 1 471 0
- 302 0000 014B     		ldr	r3, .L35
- 303 0002 1880     		strh	r0, [r3]
  472:Generated_Source\PSoC4/Counter_1.c ****     #endif /* (Counter_1_UsingFixedFunction) */
  473:Generated_Source\PSoC4/Counter_1.c **** }
- 304              		.loc 1 473 0
- 305              		@ sp needed
- 306 0004 7047     		bx	lr
- 307              	.L36:
- 308 0006 C046     		.align	2
- 309              	.L35:
- 310 0008 64100F40 		.word	1074729060
- 311              		.cfi_endproc
- 312              	.LFE13:
- 313              		.size	Counter_1_WriteCompare, .-Counter_1_WriteCompare
- 314              		.section	.text.Counter_1_ReadCompare,"ax",%progbits
- 315              		.align	2
- 316              		.global	Counter_1_ReadCompare
- 317              		.code	16
- 318              		.thumb_func
- 319              		.type	Counter_1_ReadCompare, %function
- 320              	Counter_1_ReadCompare:
- 321              	.LFB14:
  474:Generated_Source\PSoC4/Counter_1.c **** 
  475:Generated_Source\PSoC4/Counter_1.c **** 
  476:Generated_Source\PSoC4/Counter_1.c **** /*******************************************************************************
  477:Generated_Source\PSoC4/Counter_1.c **** * Function Name: Counter_1_ReadCompare
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 15
-
-
  478:Generated_Source\PSoC4/Counter_1.c **** ********************************************************************************
  479:Generated_Source\PSoC4/Counter_1.c **** * Summary:
  480:Generated_Source\PSoC4/Counter_1.c **** * Returns the compare value.
@@ -854,32 +581,8 @@ ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 1
  488:Generated_Source\PSoC4/Counter_1.c **** *******************************************************************************/
  489:Generated_Source\PSoC4/Counter_1.c **** uint16 Counter_1_ReadCompare(void) 
  490:Generated_Source\PSoC4/Counter_1.c **** {
- 322              		.loc 1 490 0
- 323              		.cfi_startproc
  491:Generated_Source\PSoC4/Counter_1.c ****     return (CY_GET_REG16(Counter_1_COMPARE_LSB_PTR));
- 324              		.loc 1 491 0
- 325 0000 014B     		ldr	r3, .L38
- 326 0002 1888     		ldrh	r0, [r3]
- 327 0004 80B2     		uxth	r0, r0
  492:Generated_Source\PSoC4/Counter_1.c **** }
- 328              		.loc 1 492 0
- 329              		@ sp needed
- 330 0006 7047     		bx	lr
- 331              	.L39:
- 332              		.align	2
- 333              	.L38:
- 334 0008 64100F40 		.word	1074729060
- 335              		.cfi_endproc
- 336              	.LFE14:
- 337              		.size	Counter_1_ReadCompare, .-Counter_1_ReadCompare
- 338              		.section	.text.Counter_1_SetCompareMode,"ax",%progbits
- 339              		.align	2
- 340              		.global	Counter_1_SetCompareMode
- 341              		.code	16
- 342              		.thumb_func
- 343              		.type	Counter_1_SetCompareMode, %function
- 344              	Counter_1_SetCompareMode:
- 345              	.LFB15:
  493:Generated_Source\PSoC4/Counter_1.c **** 
  494:Generated_Source\PSoC4/Counter_1.c **** 
  495:Generated_Source\PSoC4/Counter_1.c **** #if (Counter_1_COMPARE_MODE_SOFTWARE)
@@ -895,50 +598,18 @@ ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 1
  505:Generated_Source\PSoC4/Counter_1.c **** * Return:
  506:Generated_Source\PSoC4/Counter_1.c **** *  void
  507:Generated_Source\PSoC4/Counter_1.c **** *
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 11
+
+
  508:Generated_Source\PSoC4/Counter_1.c **** *******************************************************************************/
  509:Generated_Source\PSoC4/Counter_1.c **** void Counter_1_SetCompareMode(uint8 compareMode) 
  510:Generated_Source\PSoC4/Counter_1.c **** {
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 16
-
-
- 346              		.loc 1 510 0
- 347              		.cfi_startproc
- 348              	.LVL5:
  511:Generated_Source\PSoC4/Counter_1.c ****     /* Clear the compare mode bits in the control register */
  512:Generated_Source\PSoC4/Counter_1.c ****     Counter_1_CONTROL &= ((uint8)(~Counter_1_CTRL_CMPMODE_MASK));
- 349              		.loc 1 512 0
- 350 0000 044B     		ldr	r3, .L41
- 351 0002 1A78     		ldrb	r2, [r3]
- 352 0004 0721     		mov	r1, #7
- 353 0006 8A43     		bic	r2, r1
- 354 0008 1A70     		strb	r2, [r3]
  513:Generated_Source\PSoC4/Counter_1.c ****     
  514:Generated_Source\PSoC4/Counter_1.c ****     /* Write the new setting */
  515:Generated_Source\PSoC4/Counter_1.c ****     Counter_1_CONTROL |= compareMode;
- 355              		.loc 1 515 0
- 356 000a 1A78     		ldrb	r2, [r3]
- 357 000c 1043     		orr	r0, r2
- 358              	.LVL6:
- 359 000e 1870     		strb	r0, [r3]
  516:Generated_Source\PSoC4/Counter_1.c **** }
- 360              		.loc 1 516 0
- 361              		@ sp needed
- 362 0010 7047     		bx	lr
- 363              	.L42:
- 364 0012 C046     		.align	2
- 365              	.L41:
- 366 0014 70000F40 		.word	1074724976
- 367              		.cfi_endproc
- 368              	.LFE15:
- 369              		.size	Counter_1_SetCompareMode, .-Counter_1_SetCompareMode
- 370              		.section	.text.Counter_1_ClearFIFO,"ax",%progbits
- 371              		.align	2
- 372              		.global	Counter_1_ClearFIFO
- 373              		.code	16
- 374              		.thumb_func
- 375              		.type	Counter_1_ClearFIFO, %function
- 376              	Counter_1_ClearFIFO:
- 377              	.LFB16:
  517:Generated_Source\PSoC4/Counter_1.c **** #endif  /* (Counter_1_COMPARE_MODE_SOFTWARE) */
  518:Generated_Source\PSoC4/Counter_1.c **** 
  519:Generated_Source\PSoC4/Counter_1.c **** 
@@ -958,9 +629,6 @@ ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 1
  533:Generated_Source\PSoC4/Counter_1.c **** *******************************************************************************/
  534:Generated_Source\PSoC4/Counter_1.c **** void Counter_1_SetCaptureMode(uint8 captureMode) 
  535:Generated_Source\PSoC4/Counter_1.c **** {
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 17
-
-
  536:Generated_Source\PSoC4/Counter_1.c ****     /* Clear the capture mode bits in the control register */
  537:Generated_Source\PSoC4/Counter_1.c ****     Counter_1_CONTROL &= ((uint8)(~Counter_1_CTRL_CAPMODE_MASK));
  538:Generated_Source\PSoC4/Counter_1.c ****     
@@ -985,1328 +653,2258 @@ ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 1
  557:Generated_Source\PSoC4/Counter_1.c **** *******************************************************************************/
  558:Generated_Source\PSoC4/Counter_1.c **** void Counter_1_ClearFIFO(void) 
  559:Generated_Source\PSoC4/Counter_1.c **** {
- 378              		.loc 1 559 0
- 379              		.cfi_startproc
- 380 0000 08B5     		push	{r3, lr}
- 381              		.cfi_def_cfa_offset 8
- 382              		.cfi_offset 3, -8
- 383              		.cfi_offset 14, -4
  560:Generated_Source\PSoC4/Counter_1.c **** 
  561:Generated_Source\PSoC4/Counter_1.c ****     while(0u != (Counter_1_ReadStatusRegister() & Counter_1_STATUS_FIFONEMP))
- 384              		.loc 1 561 0
- 385 0002 01E0     		b	.L44
- 386              	.L45:
+  63              		.loc 1 561 0
+  64 001c 5B06     		lsl	r3, r3, #25
+  65 001e 05D5     		bpl	.L2
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 12
+
+
+  66              	.LBB29:
+  67              	.LBB30:
+ 395:Generated_Source\PSoC4/Counter_1.c ****     #endif /* (Counter_1_UsingFixedFunction) */
+  68              		.loc 1 395 0
+  69 0020 1048     		ldr	r0, .L10+8
+  70              	.LBE30:
+  71              	.LBE29:
+  72              		.loc 1 561 0
+  73 0022 3D31     		add	r1, r1, #61
+  74              	.L6:
+  75              	.LBB32:
+  76              	.LBB31:
+ 395:Generated_Source\PSoC4/Counter_1.c ****     #endif /* (Counter_1_UsingFixedFunction) */
+  77              		.loc 1 395 0
+  78 0024 0388     		ldrh	r3, [r0]
+  79              	.LBE31:
+  80              	.LBE32:
+  81              	.LBB33:
+  82              	.LBB28:
+ 263:Generated_Source\PSoC4/Counter_1.c **** }
+  83              		.loc 1 263 0
+  84 0026 1378     		ldrb	r3, [r2]
+  85              	.LBE28:
+  86              	.LBE33:
+  87              		.loc 1 561 0
+  88 0028 1942     		tst	r1, r3
+  89 002a FBD1     		bne	.L6
+  90              	.L2:
+  91              	.LVL5:
+  92              	.LBE25:
+  93              	.LBE24:
+  94              	.LBB34:
+  95              	.LBB35:
+ 420:Generated_Source\PSoC4/Counter_1.c ****     #endif /* (Counter_1_UsingFixedFunction) */
+  96              		.loc 1 420 0
+  97 002c 0223     		mov	r3, #2
+  98 002e 0E4A     		ldr	r2, .L10+12
+  99 0030 5B42     		neg	r3, r3
+ 100 0032 1380     		strh	r3, [r2]
+ 101              	.LVL6:
+ 102              	.LBE35:
+ 103              	.LBE34:
+ 104              	.LBB36:
+ 105              	.LBB37:
+ 337:Generated_Source\PSoC4/Counter_1.c ****     #endif /* (Counter_1_UsingFixedFunction) */
+ 106              		.loc 1 337 0
+ 107 0034 0D4A     		ldr	r2, .L10+16
+ 108              	.LBE37:
+ 109              	.LBE36:
+ 123:Generated_Source\PSoC4/Counter_1.c **** 
+ 110              		.loc 1 123 0
+ 111              		@ sp needed
+ 112              	.LBB39:
+ 113              	.LBB38:
+ 337:Generated_Source\PSoC4/Counter_1.c ****     #endif /* (Counter_1_UsingFixedFunction) */
+ 114              		.loc 1 337 0
+ 115 0036 1380     		strh	r3, [r2]
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 13
+
+
+ 116              	.LVL7:
+ 117              	.LBE38:
+ 118              	.LBE39:
+ 119              	.LBB40:
+ 120              	.LBB41:
+ 239:Generated_Source\PSoC4/Counter_1.c **** }
+ 121              		.loc 1 239 0
+ 122 0038 0022     		mov	r2, #0
+ 123 003a 0D4B     		ldr	r3, .L10+20
+ 124 003c 1A70     		strb	r2, [r3]
+ 125              	.LBE41:
+ 126              	.LBE40:
+ 127              	.LBB42:
+ 128              	.LBB43:
+ 263:Generated_Source\PSoC4/Counter_1.c **** }
+ 129              		.loc 1 263 0
+ 130 003e 084B     		ldr	r3, .L10+4
+ 131              	.LBE43:
+ 132              	.LBE42:
+ 133              	.LBB45:
+ 134              	.LBB46:
+ 471:Generated_Source\PSoC4/Counter_1.c ****     #endif /* (Counter_1_UsingFixedFunction) */
+ 135              		.loc 1 471 0
+ 136 0040 013A     		sub	r2, r2, #1
+ 137              	.LBE46:
+ 138              	.LBE45:
+ 139              	.LBB48:
+ 140              	.LBB44:
+ 263:Generated_Source\PSoC4/Counter_1.c **** }
+ 141              		.loc 1 263 0
+ 142 0042 1B78     		ldrb	r3, [r3]
+ 143              	.LVL8:
+ 144              	.LBE44:
+ 145              	.LBE48:
+ 146              	.LBB49:
+ 147              	.LBB47:
+ 471:Generated_Source\PSoC4/Counter_1.c ****     #endif /* (Counter_1_UsingFixedFunction) */
+ 148              		.loc 1 471 0
+ 149 0044 0B4B     		ldr	r3, .L10+24
+ 150 0046 1A80     		strh	r2, [r3]
+ 151              	.LBE47:
+ 152              	.LBE49:
+ 115:Generated_Source\PSoC4/Counter_1.c ****             
+ 153              		.loc 1 115 0
+ 154 0048 FFF7FEFF 		bl	CyEnterCriticalSection
+ 155              	.LVL9:
+ 117:Generated_Source\PSoC4/Counter_1.c ****             
+ 156              		.loc 1 117 0
+ 157 004c 1023     		mov	r3, #16
+ 158 004e 0A4A     		ldr	r2, .L10+28
+ 159 0050 1178     		ldrb	r1, [r2]
+ 160 0052 0B43     		orr	r3, r1
+ 161 0054 1370     		strb	r3, [r2]
+ 120:Generated_Source\PSoC4/Counter_1.c ****             
+ 162              		.loc 1 120 0
+ 163 0056 FFF7FEFF 		bl	CyExitCriticalSection
+ 164              	.LVL10:
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 14
+
+
+ 123:Generated_Source\PSoC4/Counter_1.c **** 
+ 165              		.loc 1 123 0
+ 166 005a 08BD     		pop	{r3, pc}
+ 167              	.L11:
+ 168              		.align	2
+ 169              	.L10:
+ 170 005c 70000F40 		.word	1074724976
+ 171 0060 63000F40 		.word	1074724963
+ 172 0064 84100F40 		.word	1074729092
+ 173 0068 44100F40 		.word	1074729028
+ 174 006c 04100F40 		.word	1074728964
+ 175 0070 83000F40 		.word	1074724995
+ 176 0074 64100F40 		.word	1074729060
+ 177 0078 93000F40 		.word	1074725011
+ 178              		.cfi_endproc
+ 179              	.LFE0:
+ 180              		.size	Counter_1_Init, .-Counter_1_Init
+ 181              		.section	.text.Counter_1_Enable,"ax",%progbits
+ 182              		.align	2
+ 183              		.global	Counter_1_Enable
+ 184              		.code	16
+ 185              		.thumb_func
+ 186              		.type	Counter_1_Enable, %function
+ 187              	Counter_1_Enable:
+ 188              	.LFB1:
+ 144:Generated_Source\PSoC4/Counter_1.c ****     /* Globally Enable the Fixed Function Block chosen */
+ 189              		.loc 1 144 0
+ 190              		.cfi_startproc
+ 155:Generated_Source\PSoC4/Counter_1.c ****     #endif /* (!Counter_1_ControlRegRemoved || Counter_1_UsingFixedFunction) */
+ 191              		.loc 1 155 0
+ 192 0000 8023     		mov	r3, #128
+ 193 0002 024A     		ldr	r2, .L13
+ 158:Generated_Source\PSoC4/Counter_1.c **** 
+ 194              		.loc 1 158 0
+ 195              		@ sp needed
+ 155:Generated_Source\PSoC4/Counter_1.c ****     #endif /* (!Counter_1_ControlRegRemoved || Counter_1_UsingFixedFunction) */
+ 196              		.loc 1 155 0
+ 197 0004 1178     		ldrb	r1, [r2]
+ 198 0006 0B43     		orr	r3, r1
+ 199 0008 1370     		strb	r3, [r2]
+ 158:Generated_Source\PSoC4/Counter_1.c **** 
+ 200              		.loc 1 158 0
+ 201 000a 7047     		bx	lr
+ 202              	.L14:
+ 203              		.align	2
+ 204              	.L13:
+ 205 000c 70000F40 		.word	1074724976
+ 206              		.cfi_endproc
+ 207              	.LFE1:
+ 208              		.size	Counter_1_Enable, .-Counter_1_Enable
+ 209              		.section	.text.Counter_1_Start,"ax",%progbits
+ 210              		.align	2
+ 211              		.global	Counter_1_Start
+ 212              		.code	16
+ 213              		.thumb_func
+ 214              		.type	Counter_1_Start, %function
+ 215              	Counter_1_Start:
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 15
+
+
+ 216              	.LFB2:
+ 179:Generated_Source\PSoC4/Counter_1.c ****     if(Counter_1_initVar == 0u)
+ 217              		.loc 1 179 0
+ 218              		.cfi_startproc
+ 219 0000 10B5     		push	{r4, lr}
+ 220              		.cfi_def_cfa_offset 8
+ 221              		.cfi_offset 4, -8
+ 222              		.cfi_offset 14, -4
+ 180:Generated_Source\PSoC4/Counter_1.c ****     {
+ 223              		.loc 1 180 0
+ 224 0002 074C     		ldr	r4, .L17
+ 225 0004 2378     		ldrb	r3, [r4]
+ 226 0006 002B     		cmp	r3, #0
+ 227 0008 03D1     		bne	.L16
+ 182:Generated_Source\PSoC4/Counter_1.c ****         
+ 228              		.loc 1 182 0
+ 229 000a FFF7FEFF 		bl	Counter_1_Init
+ 230              	.LVL11:
+ 184:Generated_Source\PSoC4/Counter_1.c ****     }
+ 231              		.loc 1 184 0
+ 232 000e 0123     		mov	r3, #1
+ 233 0010 2370     		strb	r3, [r4]
+ 234              	.L16:
+ 235              	.LBB50:
+ 236              	.LBB51:
+ 155:Generated_Source\PSoC4/Counter_1.c ****     #endif /* (!Counter_1_ControlRegRemoved || Counter_1_UsingFixedFunction) */
+ 237              		.loc 1 155 0
+ 238 0012 8023     		mov	r3, #128
+ 239 0014 034A     		ldr	r2, .L17+4
+ 240              	.LBE51:
+ 241              	.LBE50:
+ 189:Generated_Source\PSoC4/Counter_1.c **** 
+ 242              		.loc 1 189 0
+ 243              		@ sp needed
+ 244              	.LBB53:
+ 245              	.LBB52:
+ 155:Generated_Source\PSoC4/Counter_1.c ****     #endif /* (!Counter_1_ControlRegRemoved || Counter_1_UsingFixedFunction) */
+ 246              		.loc 1 155 0
+ 247 0016 1178     		ldrb	r1, [r2]
+ 248 0018 0B43     		orr	r3, r1
+ 249 001a 1370     		strb	r3, [r2]
+ 250              	.LBE52:
+ 251              	.LBE53:
+ 189:Generated_Source\PSoC4/Counter_1.c **** 
+ 252              		.loc 1 189 0
+ 253 001c 10BD     		pop	{r4, pc}
+ 254              	.L18:
+ 255 001e C046     		.align	2
+ 256              	.L17:
+ 257 0020 00000000 		.word	.LANCHOR0
+ 258 0024 70000F40 		.word	1074724976
+ 259              		.cfi_endproc
+ 260              	.LFE2:
+ 261              		.size	Counter_1_Start, .-Counter_1_Start
+ 262              		.section	.text.Counter_1_Stop,"ax",%progbits
+ 263              		.align	2
+ 264              		.global	Counter_1_Stop
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 16
+
+
+ 265              		.code	16
+ 266              		.thumb_func
+ 267              		.type	Counter_1_Stop, %function
+ 268              	Counter_1_Stop:
+ 269              	.LFB3:
+ 209:Generated_Source\PSoC4/Counter_1.c ****     /* Disable Counter */
+ 270              		.loc 1 209 0
+ 271              		.cfi_startproc
+ 212:Generated_Source\PSoC4/Counter_1.c ****     #endif /* (!Counter_1_ControlRegRemoved || Counter_1_UsingFixedFunction) */
+ 272              		.loc 1 212 0
+ 273 0000 7F21     		mov	r1, #127
+ 274 0002 024A     		ldr	r2, .L20
+ 220:Generated_Source\PSoC4/Counter_1.c **** 
+ 275              		.loc 1 220 0
+ 276              		@ sp needed
+ 212:Generated_Source\PSoC4/Counter_1.c ****     #endif /* (!Counter_1_ControlRegRemoved || Counter_1_UsingFixedFunction) */
+ 277              		.loc 1 212 0
+ 278 0004 1378     		ldrb	r3, [r2]
+ 279 0006 0B40     		and	r3, r1
+ 280 0008 1370     		strb	r3, [r2]
+ 220:Generated_Source\PSoC4/Counter_1.c **** 
+ 281              		.loc 1 220 0
+ 282 000a 7047     		bx	lr
+ 283              	.L21:
+ 284              		.align	2
+ 285              	.L20:
+ 286 000c 70000F40 		.word	1074724976
+ 287              		.cfi_endproc
+ 288              	.LFE3:
+ 289              		.size	Counter_1_Stop, .-Counter_1_Stop
+ 290              		.section	.text.Counter_1_SetInterruptMode,"ax",%progbits
+ 291              		.align	2
+ 292              		.global	Counter_1_SetInterruptMode
+ 293              		.code	16
+ 294              		.thumb_func
+ 295              		.type	Counter_1_SetInterruptMode, %function
+ 296              	Counter_1_SetInterruptMode:
+ 297              	.LFB4:
+ 238:Generated_Source\PSoC4/Counter_1.c ****     Counter_1_STATUS_MASK = interruptsMask;
+ 298              		.loc 1 238 0
+ 299              		.cfi_startproc
+ 300              	.LVL12:
+ 239:Generated_Source\PSoC4/Counter_1.c **** }
+ 301              		.loc 1 239 0
+ 302 0000 014B     		ldr	r3, .L23
+ 240:Generated_Source\PSoC4/Counter_1.c **** 
+ 303              		.loc 1 240 0
+ 304              		@ sp needed
+ 239:Generated_Source\PSoC4/Counter_1.c **** }
+ 305              		.loc 1 239 0
+ 306 0002 1870     		strb	r0, [r3]
+ 240:Generated_Source\PSoC4/Counter_1.c **** 
+ 307              		.loc 1 240 0
+ 308 0004 7047     		bx	lr
+ 309              	.L24:
+ 310 0006 C046     		.align	2
+ 311              	.L23:
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 17
+
+
+ 312 0008 83000F40 		.word	1074724995
+ 313              		.cfi_endproc
+ 314              	.LFE4:
+ 315              		.size	Counter_1_SetInterruptMode, .-Counter_1_SetInterruptMode
+ 316              		.section	.text.Counter_1_ReadStatusRegister,"ax",%progbits
+ 317              		.align	2
+ 318              		.global	Counter_1_ReadStatusRegister
+ 319              		.code	16
+ 320              		.thumb_func
+ 321              		.type	Counter_1_ReadStatusRegister, %function
+ 322              	Counter_1_ReadStatusRegister:
+ 323              	.LFB5:
+ 262:Generated_Source\PSoC4/Counter_1.c ****     return Counter_1_STATUS;
+ 324              		.loc 1 262 0
+ 325              		.cfi_startproc
+ 263:Generated_Source\PSoC4/Counter_1.c **** }
+ 326              		.loc 1 263 0
+ 327 0000 014B     		ldr	r3, .L26
+ 264:Generated_Source\PSoC4/Counter_1.c **** 
+ 328              		.loc 1 264 0
+ 329              		@ sp needed
+ 263:Generated_Source\PSoC4/Counter_1.c **** }
+ 330              		.loc 1 263 0
+ 331 0002 1878     		ldrb	r0, [r3]
+ 332 0004 C0B2     		uxtb	r0, r0
+ 264:Generated_Source\PSoC4/Counter_1.c **** 
+ 333              		.loc 1 264 0
+ 334 0006 7047     		bx	lr
+ 335              	.L27:
+ 336              		.align	2
+ 337              	.L26:
+ 338 0008 63000F40 		.word	1074724963
+ 339              		.cfi_endproc
+ 340              	.LFE5:
+ 341              		.size	Counter_1_ReadStatusRegister, .-Counter_1_ReadStatusRegister
+ 342              		.section	.text.Counter_1_ReadControlRegister,"ax",%progbits
+ 343              		.align	2
+ 344              		.global	Counter_1_ReadControlRegister
+ 345              		.code	16
+ 346              		.thumb_func
+ 347              		.type	Counter_1_ReadControlRegister, %function
+ 348              	Counter_1_ReadControlRegister:
+ 349              	.LFB6:
+ 284:Generated_Source\PSoC4/Counter_1.c ****     return Counter_1_CONTROL;
+ 350              		.loc 1 284 0
+ 351              		.cfi_startproc
+ 285:Generated_Source\PSoC4/Counter_1.c **** }
+ 352              		.loc 1 285 0
+ 353 0000 014B     		ldr	r3, .L29
+ 286:Generated_Source\PSoC4/Counter_1.c **** 
+ 354              		.loc 1 286 0
+ 355              		@ sp needed
+ 285:Generated_Source\PSoC4/Counter_1.c **** }
+ 356              		.loc 1 285 0
+ 357 0002 1878     		ldrb	r0, [r3]
+ 358 0004 C0B2     		uxtb	r0, r0
+ 286:Generated_Source\PSoC4/Counter_1.c **** 
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 18
+
+
+ 359              		.loc 1 286 0
+ 360 0006 7047     		bx	lr
+ 361              	.L30:
+ 362              		.align	2
+ 363              	.L29:
+ 364 0008 70000F40 		.word	1074724976
+ 365              		.cfi_endproc
+ 366              	.LFE6:
+ 367              		.size	Counter_1_ReadControlRegister, .-Counter_1_ReadControlRegister
+ 368              		.section	.text.Counter_1_WriteControlRegister,"ax",%progbits
+ 369              		.align	2
+ 370              		.global	Counter_1_WriteControlRegister
+ 371              		.code	16
+ 372              		.thumb_func
+ 373              		.type	Counter_1_WriteControlRegister, %function
+ 374              	Counter_1_WriteControlRegister:
+ 375              	.LFB7:
+ 305:Generated_Source\PSoC4/Counter_1.c ****     Counter_1_CONTROL = control;
+ 376              		.loc 1 305 0
+ 377              		.cfi_startproc
+ 378              	.LVL13:
+ 306:Generated_Source\PSoC4/Counter_1.c **** }
+ 379              		.loc 1 306 0
+ 380 0000 014B     		ldr	r3, .L32
+ 307:Generated_Source\PSoC4/Counter_1.c **** 
+ 381              		.loc 1 307 0
+ 382              		@ sp needed
+ 306:Generated_Source\PSoC4/Counter_1.c **** }
+ 383              		.loc 1 306 0
+ 384 0002 1870     		strb	r0, [r3]
+ 307:Generated_Source\PSoC4/Counter_1.c **** 
+ 385              		.loc 1 307 0
+ 386 0004 7047     		bx	lr
+ 387              	.L33:
+ 388 0006 C046     		.align	2
+ 389              	.L32:
+ 390 0008 70000F40 		.word	1074724976
+ 391              		.cfi_endproc
+ 392              	.LFE7:
+ 393              		.size	Counter_1_WriteControlRegister, .-Counter_1_WriteControlRegister
+ 394              		.section	.text.Counter_1_WriteCounter,"ax",%progbits
+ 395              		.align	2
+ 396              		.global	Counter_1_WriteCounter
+ 397              		.code	16
+ 398              		.thumb_func
+ 399              		.type	Counter_1_WriteCounter, %function
+ 400              	Counter_1_WriteCounter:
+ 401              	.LFB8:
+ 328:Generated_Source\PSoC4/Counter_1.c ****     #if(Counter_1_UsingFixedFunction)
+ 402              		.loc 1 328 0
+ 403              		.cfi_startproc
+ 404              	.LVL14:
+ 337:Generated_Source\PSoC4/Counter_1.c ****     #endif /* (Counter_1_UsingFixedFunction) */
+ 405              		.loc 1 337 0
+ 406 0000 014B     		ldr	r3, .L35
+ 339:Generated_Source\PSoC4/Counter_1.c **** #endif /* (!(Counter_1_UsingFixedFunction && (CY_PSOC5A))) */
+ 407              		.loc 1 339 0
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 19
+
+
+ 408              		@ sp needed
+ 337:Generated_Source\PSoC4/Counter_1.c ****     #endif /* (Counter_1_UsingFixedFunction) */
+ 409              		.loc 1 337 0
+ 410 0002 1880     		strh	r0, [r3]
+ 339:Generated_Source\PSoC4/Counter_1.c **** #endif /* (!(Counter_1_UsingFixedFunction && (CY_PSOC5A))) */
+ 411              		.loc 1 339 0
+ 412 0004 7047     		bx	lr
+ 413              	.L36:
+ 414 0006 C046     		.align	2
+ 415              	.L35:
+ 416 0008 04100F40 		.word	1074728964
+ 417              		.cfi_endproc
+ 418              	.LFE8:
+ 419              		.size	Counter_1_WriteCounter, .-Counter_1_WriteCounter
+ 420              		.section	.text.Counter_1_ReadCounter,"ax",%progbits
+ 421              		.align	2
+ 422              		.global	Counter_1_ReadCounter
+ 423              		.code	16
+ 424              		.thumb_func
+ 425              		.type	Counter_1_ReadCounter, %function
+ 426              	Counter_1_ReadCounter:
+ 427              	.LFB9:
+ 358:Generated_Source\PSoC4/Counter_1.c ****     /* Force capture by reading Accumulator */
+ 428              		.loc 1 358 0
+ 429              		.cfi_startproc
+ 365:Generated_Source\PSoC4/Counter_1.c **** 	#endif/* (Counter_1_UsingFixedFunction) */
+ 430              		.loc 1 365 0
+ 431 0000 024B     		ldr	r3, .L38
+ 374:Generated_Source\PSoC4/Counter_1.c **** 
+ 432              		.loc 1 374 0
+ 433              		@ sp needed
+ 365:Generated_Source\PSoC4/Counter_1.c **** 	#endif/* (Counter_1_UsingFixedFunction) */
+ 434              		.loc 1 365 0
+ 435 0002 1B78     		ldrb	r3, [r3]
+ 372:Generated_Source\PSoC4/Counter_1.c ****     #endif /* (Counter_1_UsingFixedFunction) */
+ 436              		.loc 1 372 0
+ 437 0004 024B     		ldr	r3, .L38+4
+ 438 0006 1888     		ldrh	r0, [r3]
+ 439 0008 80B2     		uxth	r0, r0
+ 374:Generated_Source\PSoC4/Counter_1.c **** 
+ 440              		.loc 1 374 0
+ 441 000a 7047     		bx	lr
+ 442              	.L39:
+ 443              		.align	2
+ 444              	.L38:
+ 445 000c 02000F40 		.word	1074724866
+ 446 0010 84100F40 		.word	1074729092
+ 447              		.cfi_endproc
+ 448              	.LFE9:
+ 449              		.size	Counter_1_ReadCounter, .-Counter_1_ReadCounter
+ 450              		.section	.text.Counter_1_ReadCapture,"ax",%progbits
+ 451              		.align	2
+ 452              		.global	Counter_1_ReadCapture
+ 453              		.code	16
+ 454              		.thumb_func
+ 455              		.type	Counter_1_ReadCapture, %function
+ 456              	Counter_1_ReadCapture:
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 20
+
+
+ 457              	.LFB10:
+ 391:Generated_Source\PSoC4/Counter_1.c ****     #if(Counter_1_UsingFixedFunction)
+ 458              		.loc 1 391 0
+ 459              		.cfi_startproc
+ 395:Generated_Source\PSoC4/Counter_1.c ****     #endif /* (Counter_1_UsingFixedFunction) */
+ 460              		.loc 1 395 0
+ 461 0000 014B     		ldr	r3, .L41
+ 397:Generated_Source\PSoC4/Counter_1.c **** 
+ 462              		.loc 1 397 0
+ 463              		@ sp needed
+ 395:Generated_Source\PSoC4/Counter_1.c ****     #endif /* (Counter_1_UsingFixedFunction) */
+ 464              		.loc 1 395 0
+ 465 0002 1888     		ldrh	r0, [r3]
+ 466 0004 80B2     		uxth	r0, r0
+ 397:Generated_Source\PSoC4/Counter_1.c **** 
+ 467              		.loc 1 397 0
+ 468 0006 7047     		bx	lr
+ 469              	.L42:
+ 470              		.align	2
+ 471              	.L41:
+ 472 0008 84100F40 		.word	1074729092
+ 473              		.cfi_endproc
+ 474              	.LFE10:
+ 475              		.size	Counter_1_ReadCapture, .-Counter_1_ReadCapture
+ 476              		.section	.text.Counter_1_WritePeriod,"ax",%progbits
+ 477              		.align	2
+ 478              		.global	Counter_1_WritePeriod
+ 479              		.code	16
+ 480              		.thumb_func
+ 481              		.type	Counter_1_WritePeriod, %function
+ 482              	Counter_1_WritePeriod:
+ 483              	.LFB11:
+ 416:Generated_Source\PSoC4/Counter_1.c ****     #if(Counter_1_UsingFixedFunction)
+ 484              		.loc 1 416 0
+ 485              		.cfi_startproc
+ 486              	.LVL15:
+ 420:Generated_Source\PSoC4/Counter_1.c ****     #endif /* (Counter_1_UsingFixedFunction) */
+ 487              		.loc 1 420 0
+ 488 0000 014B     		ldr	r3, .L44
+ 422:Generated_Source\PSoC4/Counter_1.c **** 
+ 489              		.loc 1 422 0
+ 490              		@ sp needed
+ 420:Generated_Source\PSoC4/Counter_1.c ****     #endif /* (Counter_1_UsingFixedFunction) */
+ 491              		.loc 1 420 0
+ 492 0002 1880     		strh	r0, [r3]
+ 422:Generated_Source\PSoC4/Counter_1.c **** 
+ 493              		.loc 1 422 0
+ 494 0004 7047     		bx	lr
+ 495              	.L45:
+ 496 0006 C046     		.align	2
+ 497              	.L44:
+ 498 0008 44100F40 		.word	1074729028
+ 499              		.cfi_endproc
+ 500              	.LFE11:
+ 501              		.size	Counter_1_WritePeriod, .-Counter_1_WritePeriod
+ 502              		.section	.text.Counter_1_ReadPeriod,"ax",%progbits
+ 503              		.align	2
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 21
+
+
+ 504              		.global	Counter_1_ReadPeriod
+ 505              		.code	16
+ 506              		.thumb_func
+ 507              		.type	Counter_1_ReadPeriod, %function
+ 508              	Counter_1_ReadPeriod:
+ 509              	.LFB12:
+ 439:Generated_Source\PSoC4/Counter_1.c ****     #if(Counter_1_UsingFixedFunction)
+ 510              		.loc 1 439 0
+ 511              		.cfi_startproc
+ 443:Generated_Source\PSoC4/Counter_1.c ****     #endif /* (Counter_1_UsingFixedFunction) */
+ 512              		.loc 1 443 0
+ 513 0000 014B     		ldr	r3, .L47
+ 445:Generated_Source\PSoC4/Counter_1.c **** 
+ 514              		.loc 1 445 0
+ 515              		@ sp needed
+ 443:Generated_Source\PSoC4/Counter_1.c ****     #endif /* (Counter_1_UsingFixedFunction) */
+ 516              		.loc 1 443 0
+ 517 0002 1888     		ldrh	r0, [r3]
+ 518 0004 80B2     		uxth	r0, r0
+ 445:Generated_Source\PSoC4/Counter_1.c **** 
+ 519              		.loc 1 445 0
+ 520 0006 7047     		bx	lr
+ 521              	.L48:
+ 522              		.align	2
+ 523              	.L47:
+ 524 0008 44100F40 		.word	1074729028
+ 525              		.cfi_endproc
+ 526              	.LFE12:
+ 527              		.size	Counter_1_ReadPeriod, .-Counter_1_ReadPeriod
+ 528              		.section	.text.Counter_1_WriteCompare,"ax",%progbits
+ 529              		.align	2
+ 530              		.global	Counter_1_WriteCompare
+ 531              		.code	16
+ 532              		.thumb_func
+ 533              		.type	Counter_1_WriteCompare, %function
+ 534              	Counter_1_WriteCompare:
+ 535              	.LFB13:
+ 467:Generated_Source\PSoC4/Counter_1.c ****     #if(Counter_1_UsingFixedFunction)
+ 536              		.loc 1 467 0
+ 537              		.cfi_startproc
+ 538              	.LVL16:
+ 471:Generated_Source\PSoC4/Counter_1.c ****     #endif /* (Counter_1_UsingFixedFunction) */
+ 539              		.loc 1 471 0
+ 540 0000 014B     		ldr	r3, .L50
+ 473:Generated_Source\PSoC4/Counter_1.c **** 
+ 541              		.loc 1 473 0
+ 542              		@ sp needed
+ 471:Generated_Source\PSoC4/Counter_1.c ****     #endif /* (Counter_1_UsingFixedFunction) */
+ 543              		.loc 1 471 0
+ 544 0002 1880     		strh	r0, [r3]
+ 473:Generated_Source\PSoC4/Counter_1.c **** 
+ 545              		.loc 1 473 0
+ 546 0004 7047     		bx	lr
+ 547              	.L51:
+ 548 0006 C046     		.align	2
+ 549              	.L50:
+ 550 0008 64100F40 		.word	1074729060
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 22
+
+
+ 551              		.cfi_endproc
+ 552              	.LFE13:
+ 553              		.size	Counter_1_WriteCompare, .-Counter_1_WriteCompare
+ 554              		.section	.text.Counter_1_ReadCompare,"ax",%progbits
+ 555              		.align	2
+ 556              		.global	Counter_1_ReadCompare
+ 557              		.code	16
+ 558              		.thumb_func
+ 559              		.type	Counter_1_ReadCompare, %function
+ 560              	Counter_1_ReadCompare:
+ 561              	.LFB14:
+ 490:Generated_Source\PSoC4/Counter_1.c ****     return (CY_GET_REG16(Counter_1_COMPARE_LSB_PTR));
+ 562              		.loc 1 490 0
+ 563              		.cfi_startproc
+ 491:Generated_Source\PSoC4/Counter_1.c **** }
+ 564              		.loc 1 491 0
+ 565 0000 014B     		ldr	r3, .L53
+ 492:Generated_Source\PSoC4/Counter_1.c **** 
+ 566              		.loc 1 492 0
+ 567              		@ sp needed
+ 491:Generated_Source\PSoC4/Counter_1.c **** }
+ 568              		.loc 1 491 0
+ 569 0002 1888     		ldrh	r0, [r3]
+ 570 0004 80B2     		uxth	r0, r0
+ 492:Generated_Source\PSoC4/Counter_1.c **** 
+ 571              		.loc 1 492 0
+ 572 0006 7047     		bx	lr
+ 573              	.L54:
+ 574              		.align	2
+ 575              	.L53:
+ 576 0008 64100F40 		.word	1074729060
+ 577              		.cfi_endproc
+ 578              	.LFE14:
+ 579              		.size	Counter_1_ReadCompare, .-Counter_1_ReadCompare
+ 580              		.section	.text.Counter_1_SetCompareMode,"ax",%progbits
+ 581              		.align	2
+ 582              		.global	Counter_1_SetCompareMode
+ 583              		.code	16
+ 584              		.thumb_func
+ 585              		.type	Counter_1_SetCompareMode, %function
+ 586              	Counter_1_SetCompareMode:
+ 587              	.LFB15:
+ 510:Generated_Source\PSoC4/Counter_1.c ****     /* Clear the compare mode bits in the control register */
+ 588              		.loc 1 510 0
+ 589              		.cfi_startproc
+ 590              	.LVL17:
+ 512:Generated_Source\PSoC4/Counter_1.c ****     
+ 591              		.loc 1 512 0
+ 592 0000 0721     		mov	r1, #7
+ 593 0002 044B     		ldr	r3, .L56
+ 516:Generated_Source\PSoC4/Counter_1.c **** #endif  /* (Counter_1_COMPARE_MODE_SOFTWARE) */
+ 594              		.loc 1 516 0
+ 595              		@ sp needed
+ 512:Generated_Source\PSoC4/Counter_1.c ****     
+ 596              		.loc 1 512 0
+ 597 0004 1A78     		ldrb	r2, [r3]
+ 598 0006 8A43     		bic	r2, r1
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 23
+
+
+ 599 0008 1A70     		strb	r2, [r3]
+ 515:Generated_Source\PSoC4/Counter_1.c **** }
+ 600              		.loc 1 515 0
+ 601 000a 1A78     		ldrb	r2, [r3]
+ 602 000c 1043     		orr	r0, r2
+ 603              	.LVL18:
+ 604 000e 1870     		strb	r0, [r3]
+ 516:Generated_Source\PSoC4/Counter_1.c **** #endif  /* (Counter_1_COMPARE_MODE_SOFTWARE) */
+ 605              		.loc 1 516 0
+ 606 0010 7047     		bx	lr
+ 607              	.L57:
+ 608 0012 C046     		.align	2
+ 609              	.L56:
+ 610 0014 70000F40 		.word	1074724976
+ 611              		.cfi_endproc
+ 612              	.LFE15:
+ 613              		.size	Counter_1_SetCompareMode, .-Counter_1_SetCompareMode
+ 614              		.section	.text.Counter_1_ClearFIFO,"ax",%progbits
+ 615              		.align	2
+ 616              		.global	Counter_1_ClearFIFO
+ 617              		.code	16
+ 618              		.thumb_func
+ 619              		.type	Counter_1_ClearFIFO, %function
+ 620              	Counter_1_ClearFIFO:
+ 621              	.LFB16:
+ 559:Generated_Source\PSoC4/Counter_1.c **** 
+ 622              		.loc 1 559 0
+ 623              		.cfi_startproc
+ 624              	.LBB54:
+ 625              	.LBB55:
+ 263:Generated_Source\PSoC4/Counter_1.c **** }
+ 626              		.loc 1 263 0
+ 627 0000 054A     		ldr	r2, .L66
+ 628 0002 1378     		ldrb	r3, [r2]
+ 629              	.LBE55:
+ 630              	.LBE54:
+ 631              		.loc 1 561 0
+ 632 0004 5B06     		lsl	r3, r3, #25
+ 633 0006 05D5     		bpl	.L58
+ 634 0008 4021     		mov	r1, #64
+ 635              	.LBB57:
+ 636              	.LBB58:
+ 395:Generated_Source\PSoC4/Counter_1.c ****     #endif /* (Counter_1_UsingFixedFunction) */
+ 637              		.loc 1 395 0
+ 638 000a 0448     		ldr	r0, .L66+4
+ 639              	.L63:
+ 640 000c 0388     		ldrh	r3, [r0]
+ 641              	.LBE58:
+ 642              	.LBE57:
+ 643              	.LBB59:
+ 644              	.LBB56:
+ 263:Generated_Source\PSoC4/Counter_1.c **** }
+ 645              		.loc 1 263 0
+ 646 000e 1378     		ldrb	r3, [r2]
+ 647              	.LBE56:
+ 648              	.LBE59:
+ 649              		.loc 1 561 0
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 24
+
+
+ 650 0010 1942     		tst	r1, r3
+ 651 0012 FBD1     		bne	.L63
+ 652              	.L58:
  562:Generated_Source\PSoC4/Counter_1.c ****     {
  563:Generated_Source\PSoC4/Counter_1.c ****         (void)Counter_1_ReadCapture();
- 387              		.loc 1 563 0
- 388 0004 FFF7FEFF 		bl	Counter_1_ReadCapture
- 389              	.LVL7:
- 390              	.L44:
- 561:Generated_Source\PSoC4/Counter_1.c ****     {
- 391              		.loc 1 561 0
- 392 0008 FFF7FEFF 		bl	Counter_1_ReadStatusRegister
- 393              	.LVL8:
- 394 000c 4306     		lsl	r3, r0, #25
- 395 000e F9D4     		bmi	.L45
  564:Generated_Source\PSoC4/Counter_1.c ****     }
  565:Generated_Source\PSoC4/Counter_1.c **** 
  566:Generated_Source\PSoC4/Counter_1.c **** }
- 396              		.loc 1 566 0
- 397              		@ sp needed
- 398 0010 08BD     		pop	{r3, pc}
- 399              		.cfi_endproc
- 400              	.LFE16:
- 401              		.size	Counter_1_ClearFIFO, .-Counter_1_ClearFIFO
- 402 0012 C046     		.section	.text.Counter_1_Init,"ax",%progbits
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 18
+ 653              		.loc 1 566 0
+ 654              		@ sp needed
+ 655 0014 7047     		bx	lr
+ 656              	.L67:
+ 657 0016 C046     		.align	2
+ 658              	.L66:
+ 659 0018 63000F40 		.word	1074724963
+ 660 001c 84100F40 		.word	1074729092
+ 661              		.cfi_endproc
+ 662              	.LFE16:
+ 663              		.size	Counter_1_ClearFIFO, .-Counter_1_ClearFIFO
+ 664              		.global	Counter_1_initVar
+ 665              		.bss
+ 666              		.set	.LANCHOR0,. + 0
+ 667              		.type	Counter_1_initVar, %object
+ 668              		.size	Counter_1_initVar, 1
+ 669              	Counter_1_initVar:
+ 670 0000 00       		.space	1
+ 671              		.text
+ 672              	.Letext0:
+ 673              		.file 2 "Generated_Source\\PSoC4\\cytypes.h"
+ 674              		.file 3 "Generated_Source\\PSoC4\\CyLib.h"
+ 675              		.section	.debug_info,"",%progbits
+ 676              	.Ldebug_info0:
+ 677 0000 19040000 		.4byte	0x419
+ 678 0004 0400     		.2byte	0x4
+ 679 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 680 000a 04       		.byte	0x4
+ 681 000b 01       		.uleb128 0x1
+ 682 000c D7000000 		.4byte	.LASF42
+ 683 0010 01       		.byte	0x1
+ 684 0011 4E000000 		.4byte	.LASF43
+ 685 0015 06000000 		.4byte	.LASF44
+ 686 0019 A8000000 		.4byte	.Ldebug_ranges0+0xa8
+ 687 001d 00000000 		.4byte	0
+ 688 0021 00000000 		.4byte	.Ldebug_line0
+ 689 0025 02       		.uleb128 0x2
+ 690 0026 01       		.byte	0x1
+ 691 0027 06       		.byte	0x6
+ 692 0028 6B030000 		.4byte	.LASF0
+ 693 002c 02       		.uleb128 0x2
+ 694 002d 01       		.byte	0x1
+ 695 002e 08       		.byte	0x8
+ 696 002f AB010000 		.4byte	.LASF1
+ 697 0033 02       		.uleb128 0x2
+ 698 0034 02       		.byte	0x2
+ 699 0035 05       		.byte	0x5
+ 700 0036 21030000 		.4byte	.LASF2
+ 701 003a 02       		.uleb128 0x2
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 25
 
 
- 403              		.align	2
- 404              		.global	Counter_1_Init
- 405              		.code	16
- 406              		.thumb_func
- 407              		.type	Counter_1_Init, %function
- 408              	Counter_1_Init:
- 409              	.LFB0:
-  38:Generated_Source\PSoC4/Counter_1.c ****         #if (!Counter_1_UsingFixedFunction && !Counter_1_ControlRegRemoved)
- 410              		.loc 1 38 0
- 411              		.cfi_startproc
- 412 0000 10B5     		push	{r4, lr}
- 413              		.cfi_def_cfa_offset 8
- 414              		.cfi_offset 4, -8
- 415              		.cfi_offset 14, -4
-  79:Generated_Source\PSoC4/Counter_1.c ****             Counter_1_CONTROL = ctrl | Counter_1_DEFAULT_COMPARE_MODE;
- 416              		.loc 1 79 0
- 417 0002 134B     		ldr	r3, .L47
- 418 0004 1A78     		ldrb	r2, [r3]
- 419 0006 0721     		mov	r1, #7
- 420 0008 8A43     		bic	r2, r1
- 421              	.LVL9:
-  80:Generated_Source\PSoC4/Counter_1.c ****             
- 422              		.loc 1 80 0
- 423 000a 0239     		sub	r1, r1, #2
- 424 000c 0A43     		orr	r2, r1
- 425              	.LVL10:
- 426 000e 1A70     		strb	r2, [r3]
-  83:Generated_Source\PSoC4/Counter_1.c ****             
- 427              		.loc 1 83 0
- 428 0010 1A78     		ldrb	r2, [r3]
- 429 0012 0239     		sub	r1, r1, #2
- 430 0014 8A43     		bic	r2, r1
- 431              	.LVL11:
-  88:Generated_Source\PSoC4/Counter_1.c ****             #endif /* 0 != Counter_1_CAPTURE_MODE */ 
- 432              		.loc 1 88 0
- 433 0016 1A70     		strb	r2, [r3]
-  96:Generated_Source\PSoC4/Counter_1.c ****         #endif /* (!Counter_1_UsingFixedFunction) */
- 434              		.loc 1 96 0
- 435 0018 FFF7FEFF 		bl	Counter_1_ClearFIFO
- 436              	.LVL12:
- 100:Generated_Source\PSoC4/Counter_1.c ****         #if (!(Counter_1_UsingFixedFunction && (CY_PSOC5A)))
- 437              		.loc 1 100 0
- 438 001c 0D4C     		ldr	r4, .L47+4
- 439 001e 201C     		mov	r0, r4
- 440 0020 FFF7FEFF 		bl	Counter_1_WritePeriod
- 441              	.LVL13:
- 102:Generated_Source\PSoC4/Counter_1.c ****         #endif /* (!(Counter_1_UsingFixedFunction && (CY_PSOC5A))) */
- 442              		.loc 1 102 0
- 443 0024 201C     		mov	r0, r4
- 444 0026 FFF7FEFF 		bl	Counter_1_WriteCounter
- 445              	.LVL14:
- 104:Generated_Source\PSoC4/Counter_1.c ****         
- 446              		.loc 1 104 0
- 447 002a 0020     		mov	r0, #0
- 448 002c FFF7FEFF 		bl	Counter_1_SetInterruptMode
- 449              	.LVL15:
- 108:Generated_Source\PSoC4/Counter_1.c ****             /* Set the compare value (only available to non-fixed function implementation */
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 19
+ 702 003b 02       		.byte	0x2
+ 703 003c 07       		.byte	0x7
+ 704 003d 78000000 		.4byte	.LASF3
+ 705 0041 02       		.uleb128 0x2
+ 706 0042 04       		.byte	0x4
+ 707 0043 05       		.byte	0x5
+ 708 0044 41030000 		.4byte	.LASF4
+ 709 0048 02       		.uleb128 0x2
+ 710 0049 04       		.byte	0x4
+ 711 004a 07       		.byte	0x7
+ 712 004b D5010000 		.4byte	.LASF5
+ 713 004f 02       		.uleb128 0x2
+ 714 0050 08       		.byte	0x8
+ 715 0051 05       		.byte	0x5
+ 716 0052 E6020000 		.4byte	.LASF6
+ 717 0056 02       		.uleb128 0x2
+ 718 0057 08       		.byte	0x8
+ 719 0058 07       		.byte	0x7
+ 720 0059 94010000 		.4byte	.LASF7
+ 721 005d 03       		.uleb128 0x3
+ 722 005e 04       		.byte	0x4
+ 723 005f 05       		.byte	0x5
+ 724 0060 696E7400 		.ascii	"int\000"
+ 725 0064 02       		.uleb128 0x2
+ 726 0065 04       		.byte	0x4
+ 727 0066 07       		.byte	0x7
+ 728 0067 14030000 		.4byte	.LASF8
+ 729 006b 04       		.uleb128 0x4
+ 730 006c E7010000 		.4byte	.LASF9
+ 731 0070 02       		.byte	0x2
+ 732 0071 9801     		.2byte	0x198
+ 733 0073 2C000000 		.4byte	0x2c
+ 734 0077 04       		.uleb128 0x4
+ 735 0078 3A020000 		.4byte	.LASF10
+ 736 007c 02       		.byte	0x2
+ 737 007d 9901     		.2byte	0x199
+ 738 007f 3A000000 		.4byte	0x3a
+ 739 0083 02       		.uleb128 0x2
+ 740 0084 04       		.byte	0x4
+ 741 0085 04       		.byte	0x4
+ 742 0086 86010000 		.4byte	.LASF11
+ 743 008a 02       		.uleb128 0x2
+ 744 008b 08       		.byte	0x8
+ 745 008c 04       		.byte	0x4
+ 746 008d 33020000 		.4byte	.LASF12
+ 747 0091 02       		.uleb128 0x2
+ 748 0092 01       		.byte	0x1
+ 749 0093 08       		.byte	0x8
+ 750 0094 F4020000 		.4byte	.LASF13
+ 751 0098 04       		.uleb128 0x4
+ 752 0099 B9010000 		.4byte	.LASF14
+ 753 009d 02       		.byte	0x2
+ 754 009e 4202     		.2byte	0x242
+ 755 00a0 A4000000 		.4byte	0xa4
+ 756 00a4 05       		.uleb128 0x5
+ 757 00a5 6B000000 		.4byte	0x6b
+ 758 00a9 04       		.uleb128 0x4
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 26
 
 
- 450              		.loc 1 108 0
- 451 0030 FFF7FEFF 		bl	Counter_1_ReadStatusRegister
- 452              	.LVL16:
- 110:Generated_Source\PSoC4/Counter_1.c ****             /* Use the interrupt output of the status register for IRQ output */
- 453              		.loc 1 110 0
- 454 0034 0848     		ldr	r0, .L47+8
- 455 0036 FFF7FEFF 		bl	Counter_1_WriteCompare
- 456              	.LVL17:
- 115:Generated_Source\PSoC4/Counter_1.c ****             
- 457              		.loc 1 115 0
- 458 003a FFF7FEFF 		bl	CyEnterCriticalSection
- 459              	.LVL18:
- 117:Generated_Source\PSoC4/Counter_1.c ****             
- 460              		.loc 1 117 0
- 461 003e 074A     		ldr	r2, .L47+12
- 462 0040 1178     		ldrb	r1, [r2]
- 463 0042 1023     		mov	r3, #16
- 464 0044 0B43     		orr	r3, r1
- 465 0046 1370     		strb	r3, [r2]
- 120:Generated_Source\PSoC4/Counter_1.c ****             
- 466              		.loc 1 120 0
- 467 0048 FFF7FEFF 		bl	CyExitCriticalSection
- 468              	.LVL19:
- 123:Generated_Source\PSoC4/Counter_1.c **** 
- 469              		.loc 1 123 0
- 470              		@ sp needed
- 471 004c 10BD     		pop	{r4, pc}
- 472              	.L48:
- 473 004e C046     		.align	2
- 474              	.L47:
- 475 0050 70000F40 		.word	1074724976
- 476 0054 FEFF0000 		.word	65534
- 477 0058 FFFF0000 		.word	65535
- 478 005c 93000F40 		.word	1074725011
- 479              		.cfi_endproc
- 480              	.LFE0:
- 481              		.size	Counter_1_Init, .-Counter_1_Init
- 482              		.section	.text.Counter_1_Start,"ax",%progbits
- 483              		.align	2
- 484              		.global	Counter_1_Start
- 485              		.code	16
- 486              		.thumb_func
- 487              		.type	Counter_1_Start, %function
- 488              	Counter_1_Start:
- 489              	.LFB2:
- 179:Generated_Source\PSoC4/Counter_1.c ****     if(Counter_1_initVar == 0u)
- 490              		.loc 1 179 0
- 491              		.cfi_startproc
- 492 0000 08B5     		push	{r3, lr}
- 493              		.cfi_def_cfa_offset 8
- 494              		.cfi_offset 3, -8
- 495              		.cfi_offset 14, -4
- 180:Generated_Source\PSoC4/Counter_1.c ****     {
- 496              		.loc 1 180 0
- 497 0002 064B     		ldr	r3, .L51
- 498 0004 1B78     		ldrb	r3, [r3]
- 499 0006 002B     		cmp	r3, #0
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 20
+ 759 00aa 00000000 		.4byte	.LASF15
+ 760 00ae 02       		.byte	0x2
+ 761 00af 4302     		.2byte	0x243
+ 762 00b1 B5000000 		.4byte	0xb5
+ 763 00b5 05       		.uleb128 0x5
+ 764 00b6 77000000 		.4byte	0x77
+ 765 00ba 02       		.uleb128 0x2
+ 766 00bb 04       		.byte	0x4
+ 767 00bc 07       		.byte	0x7
+ 768 00bd AD020000 		.4byte	.LASF16
+ 769 00c1 06       		.uleb128 0x6
+ 770 00c2 2C000000 		.4byte	.LASF17
+ 771 00c6 01       		.byte	0x1
+ 772 00c7 8601     		.2byte	0x186
+ 773 00c9 77000000 		.4byte	0x77
+ 774 00cd 01       		.byte	0x1
+ 775 00ce 06       		.uleb128 0x6
+ 776 00cf 16020000 		.4byte	.LASF18
+ 777 00d3 01       		.byte	0x1
+ 778 00d4 0501     		.2byte	0x105
+ 779 00d6 6B000000 		.4byte	0x6b
+ 780 00da 01       		.byte	0x1
+ 781 00db 07       		.uleb128 0x7
+ 782 00dc AA000000 		.4byte	.LASF27
+ 783 00e0 01       		.byte	0x1
+ 784 00e1 2E02     		.2byte	0x22e
+ 785 00e3 01       		.byte	0x1
+ 786 00e4 08       		.uleb128 0x8
+ 787 00e5 41020000 		.4byte	.LASF19
+ 788 00e9 01       		.byte	0x1
+ 789 00ea 9F01     		.2byte	0x19f
+ 790 00ec 01       		.byte	0x1
+ 791 00ed FE000000 		.4byte	0xfe
+ 792 00f1 09       		.uleb128 0x9
+ 793 00f2 71000000 		.4byte	.LASF21
+ 794 00f6 01       		.byte	0x1
+ 795 00f7 9F01     		.2byte	0x19f
+ 796 00f9 77000000 		.4byte	0x77
+ 797 00fd 00       		.byte	0
+ 798 00fe 08       		.uleb128 0x8
+ 799 00ff B6020000 		.4byte	.LASF20
+ 800 0103 01       		.byte	0x1
+ 801 0104 4601     		.2byte	0x146
+ 802 0106 01       		.byte	0x1
+ 803 0107 18010000 		.4byte	0x118
+ 804 010b 09       		.uleb128 0x9
+ 805 010c 8C010000 		.4byte	.LASF22
+ 806 0110 01       		.byte	0x1
+ 807 0111 4601     		.2byte	0x146
+ 808 0113 77000000 		.4byte	0x77
+ 809 0117 00       		.byte	0
+ 810 0118 0A       		.uleb128 0xa
+ 811 0119 F9020000 		.4byte	.LASF23
+ 812 011d 01       		.byte	0x1
+ 813 011e ED       		.byte	0xed
+ 814 011f 01       		.byte	0x1
+ 815 0120 30010000 		.4byte	0x130
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 27
 
 
- 500 0008 04D1     		bne	.L50
- 182:Generated_Source\PSoC4/Counter_1.c ****         
- 501              		.loc 1 182 0
- 502 000a FFF7FEFF 		bl	Counter_1_Init
- 503              	.LVL20:
- 184:Generated_Source\PSoC4/Counter_1.c ****     }
- 504              		.loc 1 184 0
- 505 000e 0122     		mov	r2, #1
- 506 0010 024B     		ldr	r3, .L51
- 507 0012 1A70     		strb	r2, [r3]
- 508              	.L50:
- 188:Generated_Source\PSoC4/Counter_1.c **** }
- 509              		.loc 1 188 0
- 510 0014 FFF7FEFF 		bl	Counter_1_Enable
- 511              	.LVL21:
- 189:Generated_Source\PSoC4/Counter_1.c **** 
- 512              		.loc 1 189 0
- 513              		@ sp needed
- 514 0018 08BD     		pop	{r3, pc}
- 515              	.L52:
- 516 001a C046     		.align	2
- 517              	.L51:
- 518 001c 00000000 		.word	.LANCHOR0
- 519              		.cfi_endproc
- 520              	.LFE2:
- 521              		.size	Counter_1_Start, .-Counter_1_Start
- 522              		.global	Counter_1_initVar
- 523              		.bss
- 524              		.set	.LANCHOR0,. + 0
- 525              		.type	Counter_1_initVar, %object
- 526              		.size	Counter_1_initVar, 1
- 527              	Counter_1_initVar:
- 528 0000 00       		.space	1
- 529              		.text
- 530              	.Letext0:
- 531              		.file 2 "Generated_Source\\PSoC4\\cytypes.h"
- 532              		.file 3 "Generated_Source\\PSoC4\\CyLib.h"
- 533              		.section	.debug_info,"",%progbits
- 534              	.Ldebug_info0:
- 535 0000 63030000 		.4byte	0x363
- 536 0004 0400     		.2byte	0x4
- 537 0006 00000000 		.4byte	.Ldebug_abbrev0
- 538 000a 04       		.byte	0x4
- 539 000b 01       		.uleb128 0x1
- 540 000c 12010000 		.4byte	.LASF42
- 541 0010 01       		.byte	0x1
- 542 0011 4E000000 		.4byte	.LASF43
- 543 0015 06000000 		.4byte	.LASF44
- 544 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 545 001d 00000000 		.4byte	0
- 546 0021 00000000 		.4byte	.Ldebug_line0
- 547 0025 02       		.uleb128 0x2
- 548 0026 01       		.byte	0x1
- 549 0027 06       		.byte	0x6
- 550 0028 6B030000 		.4byte	.LASF0
- 551 002c 02       		.uleb128 0x2
- 552 002d 01       		.byte	0x1
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 21
+ 816 0124 0B       		.uleb128 0xb
+ 817 0125 F5010000 		.4byte	.LASF24
+ 818 0129 01       		.byte	0x1
+ 819 012a ED       		.byte	0xed
+ 820 012b 6B000000 		.4byte	0x6b
+ 821 012f 00       		.byte	0
+ 822 0130 08       		.uleb128 0x8
+ 823 0131 BE010000 		.4byte	.LASF25
+ 824 0135 01       		.byte	0x1
+ 825 0136 D101     		.2byte	0x1d1
+ 826 0138 01       		.byte	0x1
+ 827 0139 4A010000 		.4byte	0x14a
+ 828 013d 09       		.uleb128 0x9
+ 829 013e 77030000 		.4byte	.LASF26
+ 830 0142 01       		.byte	0x1
+ 831 0143 D101     		.2byte	0x1d1
+ 832 0145 77000000 		.4byte	0x77
+ 833 0149 00       		.byte	0
+ 834 014a 0C       		.uleb128 0xc
+ 835 014b 5A030000 		.4byte	.LASF28
+ 836 014f 01       		.byte	0x1
+ 837 0150 8F       		.byte	0x8f
+ 838 0151 01       		.byte	0x1
+ 839 0152 0D       		.uleb128 0xd
+ 840 0153 99020000 		.4byte	.LASF31
+ 841 0157 01       		.byte	0x1
+ 842 0158 25       		.byte	0x25
+ 843 0159 00000000 		.4byte	.LFB0
+ 844 015d 7C000000 		.4byte	.LFE0-.LFB0
+ 845 0161 01       		.uleb128 0x1
+ 846 0162 9C       		.byte	0x9c
+ 847 0163 43020000 		.4byte	0x243
+ 848 0167 0E       		.uleb128 0xe
+ 849 0168 A8020000 		.4byte	.LASF29
+ 850 016c 01       		.byte	0x1
+ 851 016d 28       		.byte	0x28
+ 852 016e 6B000000 		.4byte	0x6b
+ 853 0172 00000000 		.4byte	.LLST0
+ 854 0176 0E       		.uleb128 0xe
+ 855 0177 CD020000 		.4byte	.LASF30
+ 856 017b 01       		.byte	0x1
+ 857 017c 2D       		.byte	0x2d
+ 858 017d 6B000000 		.4byte	0x6b
+ 859 0181 3E000000 		.4byte	.LLST1
+ 860 0185 0F       		.uleb128 0xf
+ 861 0186 DB000000 		.4byte	0xdb
+ 862 018a 18000000 		.4byte	.LBB24
+ 863 018e 14000000 		.4byte	.LBE24-.LBB24
+ 864 0192 01       		.byte	0x1
+ 865 0193 60       		.byte	0x60
+ 866 0194 B9010000 		.4byte	0x1b9
+ 867 0198 10       		.uleb128 0x10
+ 868 0199 CE000000 		.4byte	0xce
+ 869 019d 18000000 		.4byte	.LBB26
+ 870 01a1 00000000 		.4byte	.Ldebug_ranges0+0
+ 871 01a5 01       		.byte	0x1
+ 872 01a6 3102     		.2byte	0x231
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 28
 
 
- 553 002e 08       		.byte	0x8
- 554 002f AB010000 		.4byte	.LASF1
- 555 0033 02       		.uleb128 0x2
- 556 0034 02       		.byte	0x2
- 557 0035 05       		.byte	0x5
- 558 0036 21030000 		.4byte	.LASF2
- 559 003a 02       		.uleb128 0x2
- 560 003b 02       		.byte	0x2
- 561 003c 07       		.byte	0x7
- 562 003d 78000000 		.4byte	.LASF3
- 563 0041 02       		.uleb128 0x2
- 564 0042 04       		.byte	0x4
- 565 0043 05       		.byte	0x5
- 566 0044 41030000 		.4byte	.LASF4
- 567 0048 02       		.uleb128 0x2
- 568 0049 04       		.byte	0x4
- 569 004a 07       		.byte	0x7
- 570 004b D5010000 		.4byte	.LASF5
- 571 004f 02       		.uleb128 0x2
- 572 0050 08       		.byte	0x8
- 573 0051 05       		.byte	0x5
- 574 0052 E6020000 		.4byte	.LASF6
- 575 0056 02       		.uleb128 0x2
- 576 0057 08       		.byte	0x8
- 577 0058 07       		.byte	0x7
- 578 0059 FB000000 		.4byte	.LASF7
- 579 005d 03       		.uleb128 0x3
- 580 005e 04       		.byte	0x4
- 581 005f 05       		.byte	0x5
- 582 0060 696E7400 		.ascii	"int\000"
- 583 0064 02       		.uleb128 0x2
- 584 0065 04       		.byte	0x4
- 585 0066 07       		.byte	0x7
- 586 0067 14030000 		.4byte	.LASF8
- 587 006b 04       		.uleb128 0x4
- 588 006c E7010000 		.4byte	.LASF9
- 589 0070 02       		.byte	0x2
- 590 0071 9801     		.2byte	0x198
- 591 0073 2C000000 		.4byte	0x2c
- 592 0077 04       		.uleb128 0x4
- 593 0078 3A020000 		.4byte	.LASF10
- 594 007c 02       		.byte	0x2
- 595 007d 9901     		.2byte	0x199
- 596 007f 3A000000 		.4byte	0x3a
- 597 0083 02       		.uleb128 0x2
- 598 0084 04       		.byte	0x4
- 599 0085 04       		.byte	0x4
- 600 0086 ED000000 		.4byte	.LASF11
- 601 008a 02       		.uleb128 0x2
- 602 008b 08       		.byte	0x8
- 603 008c 04       		.byte	0x4
- 604 008d 33020000 		.4byte	.LASF12
- 605 0091 02       		.uleb128 0x2
- 606 0092 01       		.byte	0x1
- 607 0093 08       		.byte	0x8
- 608 0094 F4020000 		.4byte	.LASF13
- 609 0098 04       		.uleb128 0x4
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 22
+ 873 01a8 10       		.uleb128 0x10
+ 874 01a9 C1000000 		.4byte	0xc1
+ 875 01ad 20000000 		.4byte	.LBB29
+ 876 01b1 18000000 		.4byte	.Ldebug_ranges0+0x18
+ 877 01b5 01       		.byte	0x1
+ 878 01b6 3302     		.2byte	0x233
+ 879 01b8 00       		.byte	0
+ 880 01b9 0F       		.uleb128 0xf
+ 881 01ba E4000000 		.4byte	0xe4
+ 882 01be 2C000000 		.4byte	.LBB34
+ 883 01c2 08000000 		.4byte	.LBE34-.LBB34
+ 884 01c6 01       		.byte	0x1
+ 885 01c7 64       		.byte	0x64
+ 886 01c8 D3010000 		.4byte	0x1d3
+ 887 01cc 11       		.uleb128 0x11
+ 888 01cd F1000000 		.4byte	0xf1
+ 889 01d1 7E       		.sleb128 -2
+ 890 01d2 00       		.byte	0
+ 891 01d3 12       		.uleb128 0x12
+ 892 01d4 FE000000 		.4byte	0xfe
+ 893 01d8 34000000 		.4byte	.LBB36
+ 894 01dc 30000000 		.4byte	.Ldebug_ranges0+0x30
+ 895 01e0 01       		.byte	0x1
+ 896 01e1 66       		.byte	0x66
+ 897 01e2 ED010000 		.4byte	0x1ed
+ 898 01e6 11       		.uleb128 0x11
+ 899 01e7 0B010000 		.4byte	0x10b
+ 900 01eb 7E       		.sleb128 -2
+ 901 01ec 00       		.byte	0
+ 902 01ed 0F       		.uleb128 0xf
+ 903 01ee 18010000 		.4byte	0x118
+ 904 01f2 38000000 		.4byte	.LBB40
+ 905 01f6 06000000 		.4byte	.LBE40-.LBB40
+ 906 01fa 01       		.byte	0x1
+ 907 01fb 68       		.byte	0x68
+ 908 01fc 07020000 		.4byte	0x207
+ 909 0200 13       		.uleb128 0x13
+ 910 0201 24010000 		.4byte	0x124
+ 911 0205 00       		.byte	0
+ 912 0206 00       		.byte	0
+ 913 0207 14       		.uleb128 0x14
+ 914 0208 CE000000 		.4byte	0xce
+ 915 020c 3E000000 		.4byte	.LBB42
+ 916 0210 48000000 		.4byte	.Ldebug_ranges0+0x48
+ 917 0214 01       		.byte	0x1
+ 918 0215 6C       		.byte	0x6c
+ 919 0216 12       		.uleb128 0x12
+ 920 0217 30010000 		.4byte	0x130
+ 921 021b 40000000 		.4byte	.LBB45
+ 922 021f 60000000 		.4byte	.Ldebug_ranges0+0x60
+ 923 0223 01       		.byte	0x1
+ 924 0224 6E       		.byte	0x6e
+ 925 0225 30020000 		.4byte	0x230
+ 926 0229 11       		.uleb128 0x11
+ 927 022a 3D010000 		.4byte	0x13d
+ 928 022e 7F       		.sleb128 -1
+ 929 022f 00       		.byte	0
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 29
 
 
- 610 0099 B9010000 		.4byte	.LASF14
- 611 009d 02       		.byte	0x2
- 612 009e 4202     		.2byte	0x242
- 613 00a0 A4000000 		.4byte	0xa4
- 614 00a4 05       		.uleb128 0x5
- 615 00a5 6B000000 		.4byte	0x6b
- 616 00a9 04       		.uleb128 0x4
- 617 00aa 00000000 		.4byte	.LASF15
- 618 00ae 02       		.byte	0x2
- 619 00af 4302     		.2byte	0x243
- 620 00b1 B5000000 		.4byte	0xb5
- 621 00b5 05       		.uleb128 0x5
- 622 00b6 77000000 		.4byte	0x77
- 623 00ba 02       		.uleb128 0x2
- 624 00bb 04       		.byte	0x4
- 625 00bc 07       		.byte	0x7
- 626 00bd AD020000 		.4byte	.LASF16
- 627 00c1 06       		.uleb128 0x6
- 628 00c2 5A030000 		.4byte	.LASF17
- 629 00c6 01       		.byte	0x1
- 630 00c7 8F       		.byte	0x8f
- 631 00c8 00000000 		.4byte	.LFB1
- 632 00cc 10000000 		.4byte	.LFE1-.LFB1
- 633 00d0 01       		.uleb128 0x1
- 634 00d1 9C       		.byte	0x9c
- 635 00d2 06       		.uleb128 0x6
- 636 00d3 7F030000 		.4byte	.LASF18
- 637 00d7 01       		.byte	0x1
- 638 00d8 D0       		.byte	0xd0
- 639 00d9 00000000 		.4byte	.LFB3
- 640 00dd 10000000 		.4byte	.LFE3-.LFB3
- 641 00e1 01       		.uleb128 0x1
- 642 00e2 9C       		.byte	0x9c
- 643 00e3 07       		.uleb128 0x7
- 644 00e4 F9020000 		.4byte	.LASF21
- 645 00e8 01       		.byte	0x1
- 646 00e9 ED       		.byte	0xed
- 647 00ea 00000000 		.4byte	.LFB4
- 648 00ee 0C000000 		.4byte	.LFE4-.LFB4
- 649 00f2 01       		.uleb128 0x1
- 650 00f3 9C       		.byte	0x9c
- 651 00f4 06010000 		.4byte	0x106
- 652 00f8 08       		.uleb128 0x8
- 653 00f9 F5010000 		.4byte	.LASF23
- 654 00fd 01       		.byte	0x1
- 655 00fe ED       		.byte	0xed
- 656 00ff 6B000000 		.4byte	0x6b
- 657 0103 01       		.uleb128 0x1
- 658 0104 50       		.byte	0x50
- 659 0105 00       		.byte	0
- 660 0106 09       		.uleb128 0x9
- 661 0107 16020000 		.4byte	.LASF19
- 662 010b 01       		.byte	0x1
- 663 010c 0501     		.2byte	0x105
- 664 010e 6B000000 		.4byte	0x6b
- 665 0112 00000000 		.4byte	.LFB5
- 666 0116 0C000000 		.4byte	.LFE5-.LFB5
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 23
+ 930 0230 15       		.uleb128 0x15
+ 931 0231 4C000000 		.4byte	.LVL9
+ 932 0235 04040000 		.4byte	0x404
+ 933 0239 15       		.uleb128 0x15
+ 934 023a 5A000000 		.4byte	.LVL10
+ 935 023e 0F040000 		.4byte	0x40f
+ 936 0242 00       		.byte	0
+ 937 0243 16       		.uleb128 0x16
+ 938 0244 4A010000 		.4byte	0x14a
+ 939 0248 00000000 		.4byte	.LFB1
+ 940 024c 10000000 		.4byte	.LFE1-.LFB1
+ 941 0250 01       		.uleb128 0x1
+ 942 0251 9C       		.byte	0x9c
+ 943 0252 0D       		.uleb128 0xd
+ 944 0253 4A030000 		.4byte	.LASF32
+ 945 0257 01       		.byte	0x1
+ 946 0258 B2       		.byte	0xb2
+ 947 0259 00000000 		.4byte	.LFB2
+ 948 025d 28000000 		.4byte	.LFE2-.LFB2
+ 949 0261 01       		.uleb128 0x1
+ 950 0262 9C       		.byte	0x9c
+ 951 0263 80020000 		.4byte	0x280
+ 952 0267 14       		.uleb128 0x14
+ 953 0268 4A010000 		.4byte	0x14a
+ 954 026c 12000000 		.4byte	.LBB50
+ 955 0270 78000000 		.4byte	.Ldebug_ranges0+0x78
+ 956 0274 01       		.byte	0x1
+ 957 0275 BC       		.byte	0xbc
+ 958 0276 15       		.uleb128 0x15
+ 959 0277 0E000000 		.4byte	.LVL11
+ 960 027b 52010000 		.4byte	0x152
+ 961 027f 00       		.byte	0
+ 962 0280 17       		.uleb128 0x17
+ 963 0281 7F030000 		.4byte	.LASF45
+ 964 0285 01       		.byte	0x1
+ 965 0286 D0       		.byte	0xd0
+ 966 0287 00000000 		.4byte	.LFB3
+ 967 028b 10000000 		.4byte	.LFE3-.LFB3
+ 968 028f 01       		.uleb128 0x1
+ 969 0290 9C       		.byte	0x9c
+ 970 0291 18       		.uleb128 0x18
+ 971 0292 18010000 		.4byte	0x118
+ 972 0296 00000000 		.4byte	.LFB4
+ 973 029a 0C000000 		.4byte	.LFE4-.LFB4
+ 974 029e 01       		.uleb128 0x1
+ 975 029f 9C       		.byte	0x9c
+ 976 02a0 AC020000 		.4byte	0x2ac
+ 977 02a4 19       		.uleb128 0x19
+ 978 02a5 24010000 		.4byte	0x124
+ 979 02a9 01       		.uleb128 0x1
+ 980 02aa 50       		.byte	0x50
+ 981 02ab 00       		.byte	0
+ 982 02ac 16       		.uleb128 0x16
+ 983 02ad CE000000 		.4byte	0xce
+ 984 02b1 00000000 		.4byte	.LFB5
+ 985 02b5 0C000000 		.4byte	.LFE5-.LFB5
+ 986 02b9 01       		.uleb128 0x1
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 30
 
 
- 667 011a 01       		.uleb128 0x1
- 668 011b 9C       		.byte	0x9c
- 669 011c 09       		.uleb128 0x9
- 670 011d 8E030000 		.4byte	.LASF20
- 671 0121 01       		.byte	0x1
- 672 0122 1B01     		.2byte	0x11b
- 673 0124 6B000000 		.4byte	0x6b
- 674 0128 00000000 		.4byte	.LFB6
- 675 012c 0C000000 		.4byte	.LFE6-.LFB6
- 676 0130 01       		.uleb128 0x1
- 677 0131 9C       		.byte	0x9c
- 678 0132 0A       		.uleb128 0xa
- 679 0133 8B000000 		.4byte	.LASF22
- 680 0137 01       		.byte	0x1
- 681 0138 3001     		.2byte	0x130
- 682 013a 00000000 		.4byte	.LFB7
- 683 013e 0C000000 		.4byte	.LFE7-.LFB7
- 684 0142 01       		.uleb128 0x1
- 685 0143 9C       		.byte	0x9c
- 686 0144 57010000 		.4byte	0x157
- 687 0148 0B       		.uleb128 0xb
- 688 0149 ED010000 		.4byte	.LASF24
- 689 014d 01       		.byte	0x1
- 690 014e 3001     		.2byte	0x130
- 691 0150 6B000000 		.4byte	0x6b
- 692 0154 01       		.uleb128 0x1
- 693 0155 50       		.byte	0x50
- 694 0156 00       		.byte	0
- 695 0157 0A       		.uleb128 0xa
- 696 0158 B6020000 		.4byte	.LASF25
- 697 015c 01       		.byte	0x1
- 698 015d 4601     		.2byte	0x146
- 699 015f 00000000 		.4byte	.LFB8
- 700 0163 0C000000 		.4byte	.LFE8-.LFB8
- 701 0167 01       		.uleb128 0x1
- 702 0168 9C       		.byte	0x9c
- 703 0169 7C010000 		.4byte	0x17c
- 704 016d 0B       		.uleb128 0xb
- 705 016e F3000000 		.4byte	.LASF26
- 706 0172 01       		.byte	0x1
- 707 0173 4601     		.2byte	0x146
- 708 0175 77000000 		.4byte	0x77
- 709 0179 01       		.uleb128 0x1
- 710 017a 50       		.byte	0x50
- 711 017b 00       		.byte	0
- 712 017c 09       		.uleb128 0x9
- 713 017d D7000000 		.4byte	.LASF27
- 714 0181 01       		.byte	0x1
- 715 0182 6501     		.2byte	0x165
- 716 0184 77000000 		.4byte	0x77
- 717 0188 00000000 		.4byte	.LFB9
- 718 018c 14000000 		.4byte	.LFE9-.LFB9
- 719 0190 01       		.uleb128 0x1
- 720 0191 9C       		.byte	0x9c
- 721 0192 09       		.uleb128 0x9
- 722 0193 2C000000 		.4byte	.LASF28
- 723 0197 01       		.byte	0x1
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 24
+ 987 02ba 9C       		.byte	0x9c
+ 988 02bb 1A       		.uleb128 0x1a
+ 989 02bc 8E030000 		.4byte	.LASF34
+ 990 02c0 01       		.byte	0x1
+ 991 02c1 1B01     		.2byte	0x11b
+ 992 02c3 6B000000 		.4byte	0x6b
+ 993 02c7 00000000 		.4byte	.LFB6
+ 994 02cb 0C000000 		.4byte	.LFE6-.LFB6
+ 995 02cf 01       		.uleb128 0x1
+ 996 02d0 9C       		.byte	0x9c
+ 997 02d1 1B       		.uleb128 0x1b
+ 998 02d2 8B000000 		.4byte	.LASF33
+ 999 02d6 01       		.byte	0x1
+ 1000 02d7 3001     		.2byte	0x130
+ 1001 02d9 00000000 		.4byte	.LFB7
+ 1002 02dd 0C000000 		.4byte	.LFE7-.LFB7
+ 1003 02e1 01       		.uleb128 0x1
+ 1004 02e2 9C       		.byte	0x9c
+ 1005 02e3 F6020000 		.4byte	0x2f6
+ 1006 02e7 1C       		.uleb128 0x1c
+ 1007 02e8 ED010000 		.4byte	.LASF39
+ 1008 02ec 01       		.byte	0x1
+ 1009 02ed 3001     		.2byte	0x130
+ 1010 02ef 6B000000 		.4byte	0x6b
+ 1011 02f3 01       		.uleb128 0x1
+ 1012 02f4 50       		.byte	0x50
+ 1013 02f5 00       		.byte	0
+ 1014 02f6 18       		.uleb128 0x18
+ 1015 02f7 FE000000 		.4byte	0xfe
+ 1016 02fb 00000000 		.4byte	.LFB8
+ 1017 02ff 0C000000 		.4byte	.LFE8-.LFB8
+ 1018 0303 01       		.uleb128 0x1
+ 1019 0304 9C       		.byte	0x9c
+ 1020 0305 11030000 		.4byte	0x311
+ 1021 0309 19       		.uleb128 0x19
+ 1022 030a 0B010000 		.4byte	0x10b
+ 1023 030e 01       		.uleb128 0x1
+ 1024 030f 50       		.byte	0x50
+ 1025 0310 00       		.byte	0
+ 1026 0311 1A       		.uleb128 0x1a
+ 1027 0312 70010000 		.4byte	.LASF35
+ 1028 0316 01       		.byte	0x1
+ 1029 0317 6501     		.2byte	0x165
+ 1030 0319 77000000 		.4byte	0x77
+ 1031 031d 00000000 		.4byte	.LFB9
+ 1032 0321 14000000 		.4byte	.LFE9-.LFB9
+ 1033 0325 01       		.uleb128 0x1
+ 1034 0326 9C       		.byte	0x9c
+ 1035 0327 16       		.uleb128 0x16
+ 1036 0328 C1000000 		.4byte	0xc1
+ 1037 032c 00000000 		.4byte	.LFB10
+ 1038 0330 0C000000 		.4byte	.LFE10-.LFB10
+ 1039 0334 01       		.uleb128 0x1
+ 1040 0335 9C       		.byte	0x9c
+ 1041 0336 18       		.uleb128 0x18
+ 1042 0337 E4000000 		.4byte	0xe4
+ 1043 033b 00000000 		.4byte	.LFB11
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 31
 
 
- 724 0198 8601     		.2byte	0x186
- 725 019a 77000000 		.4byte	0x77
- 726 019e 00000000 		.4byte	.LFB10
- 727 01a2 0C000000 		.4byte	.LFE10-.LFB10
- 728 01a6 01       		.uleb128 0x1
- 729 01a7 9C       		.byte	0x9c
- 730 01a8 0A       		.uleb128 0xa
- 731 01a9 41020000 		.4byte	.LASF29
- 732 01ad 01       		.byte	0x1
- 733 01ae 9F01     		.2byte	0x19f
- 734 01b0 00000000 		.4byte	.LFB11
- 735 01b4 0C000000 		.4byte	.LFE11-.LFB11
- 736 01b8 01       		.uleb128 0x1
- 737 01b9 9C       		.byte	0x9c
- 738 01ba CD010000 		.4byte	0x1cd
- 739 01be 0B       		.uleb128 0xb
- 740 01bf 71000000 		.4byte	.LASF30
- 741 01c3 01       		.byte	0x1
- 742 01c4 9F01     		.2byte	0x19f
- 743 01c6 77000000 		.4byte	0x77
- 744 01ca 01       		.uleb128 0x1
- 745 01cb 50       		.byte	0x50
- 746 01cc 00       		.byte	0
- 747 01cd 09       		.uleb128 0x9
- 748 01ce 6E020000 		.4byte	.LASF31
- 749 01d2 01       		.byte	0x1
- 750 01d3 B601     		.2byte	0x1b6
- 751 01d5 77000000 		.4byte	0x77
- 752 01d9 00000000 		.4byte	.LFB12
- 753 01dd 0C000000 		.4byte	.LFE12-.LFB12
- 754 01e1 01       		.uleb128 0x1
- 755 01e2 9C       		.byte	0x9c
- 756 01e3 0A       		.uleb128 0xa
- 757 01e4 BE010000 		.4byte	.LASF32
- 758 01e8 01       		.byte	0x1
- 759 01e9 D101     		.2byte	0x1d1
- 760 01eb 00000000 		.4byte	.LFB13
- 761 01ef 0C000000 		.4byte	.LFE13-.LFB13
- 762 01f3 01       		.uleb128 0x1
- 763 01f4 9C       		.byte	0x9c
- 764 01f5 08020000 		.4byte	0x208
- 765 01f9 0B       		.uleb128 0xb
- 766 01fa 77030000 		.4byte	.LASF33
- 767 01fe 01       		.byte	0x1
- 768 01ff D101     		.2byte	0x1d1
- 769 0201 77000000 		.4byte	0x77
- 770 0205 01       		.uleb128 0x1
- 771 0206 50       		.byte	0x50
- 772 0207 00       		.byte	0
- 773 0208 09       		.uleb128 0x9
- 774 0209 2B030000 		.4byte	.LASF34
- 775 020d 01       		.byte	0x1
- 776 020e E901     		.2byte	0x1e9
- 777 0210 77000000 		.4byte	0x77
- 778 0214 00000000 		.4byte	.LFB14
- 779 0218 0C000000 		.4byte	.LFE14-.LFB14
- 780 021c 01       		.uleb128 0x1
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 25
+ 1044 033f 0C000000 		.4byte	.LFE11-.LFB11
+ 1045 0343 01       		.uleb128 0x1
+ 1046 0344 9C       		.byte	0x9c
+ 1047 0345 51030000 		.4byte	0x351
+ 1048 0349 19       		.uleb128 0x19
+ 1049 034a F1000000 		.4byte	0xf1
+ 1050 034e 01       		.uleb128 0x1
+ 1051 034f 50       		.byte	0x50
+ 1052 0350 00       		.byte	0
+ 1053 0351 1A       		.uleb128 0x1a
+ 1054 0352 6E020000 		.4byte	.LASF36
+ 1055 0356 01       		.byte	0x1
+ 1056 0357 B601     		.2byte	0x1b6
+ 1057 0359 77000000 		.4byte	0x77
+ 1058 035d 00000000 		.4byte	.LFB12
+ 1059 0361 0C000000 		.4byte	.LFE12-.LFB12
+ 1060 0365 01       		.uleb128 0x1
+ 1061 0366 9C       		.byte	0x9c
+ 1062 0367 18       		.uleb128 0x18
+ 1063 0368 30010000 		.4byte	0x130
+ 1064 036c 00000000 		.4byte	.LFB13
+ 1065 0370 0C000000 		.4byte	.LFE13-.LFB13
+ 1066 0374 01       		.uleb128 0x1
+ 1067 0375 9C       		.byte	0x9c
+ 1068 0376 82030000 		.4byte	0x382
+ 1069 037a 19       		.uleb128 0x19
+ 1070 037b 3D010000 		.4byte	0x13d
+ 1071 037f 01       		.uleb128 0x1
+ 1072 0380 50       		.byte	0x50
+ 1073 0381 00       		.byte	0
+ 1074 0382 1A       		.uleb128 0x1a
+ 1075 0383 2B030000 		.4byte	.LASF37
+ 1076 0387 01       		.byte	0x1
+ 1077 0388 E901     		.2byte	0x1e9
+ 1078 038a 77000000 		.4byte	0x77
+ 1079 038e 00000000 		.4byte	.LFB14
+ 1080 0392 0C000000 		.4byte	.LFE14-.LFB14
+ 1081 0396 01       		.uleb128 0x1
+ 1082 0397 9C       		.byte	0x9c
+ 1083 0398 1B       		.uleb128 0x1b
+ 1084 0399 BE000000 		.4byte	.LASF38
+ 1085 039d 01       		.byte	0x1
+ 1086 039e FD01     		.2byte	0x1fd
+ 1087 03a0 00000000 		.4byte	.LFB15
+ 1088 03a4 18000000 		.4byte	.LFE15-.LFB15
+ 1089 03a8 01       		.uleb128 0x1
+ 1090 03a9 9C       		.byte	0x9c
+ 1091 03aa BF030000 		.4byte	0x3bf
+ 1092 03ae 1D       		.uleb128 0x1d
+ 1093 03af 42000000 		.4byte	.LASF40
+ 1094 03b3 01       		.byte	0x1
+ 1095 03b4 FD01     		.2byte	0x1fd
+ 1096 03b6 6B000000 		.4byte	0x6b
+ 1097 03ba 51000000 		.4byte	.LLST2
+ 1098 03be 00       		.byte	0
+ 1099 03bf 18       		.uleb128 0x18
+ 1100 03c0 DB000000 		.4byte	0xdb
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 32
 
 
- 781 021d 9C       		.byte	0x9c
- 782 021e 0A       		.uleb128 0xa
- 783 021f BE000000 		.4byte	.LASF35
- 784 0223 01       		.byte	0x1
- 785 0224 FD01     		.2byte	0x1fd
- 786 0226 00000000 		.4byte	.LFB15
- 787 022a 18000000 		.4byte	.LFE15-.LFB15
- 788 022e 01       		.uleb128 0x1
- 789 022f 9C       		.byte	0x9c
- 790 0230 45020000 		.4byte	0x245
- 791 0234 0C       		.uleb128 0xc
- 792 0235 42000000 		.4byte	.LASF36
- 793 0239 01       		.byte	0x1
- 794 023a FD01     		.2byte	0x1fd
- 795 023c 6B000000 		.4byte	0x6b
- 796 0240 00000000 		.4byte	.LLST0
- 797 0244 00       		.byte	0
- 798 0245 0A       		.uleb128 0xa
- 799 0246 AA000000 		.4byte	.LASF37
- 800 024a 01       		.byte	0x1
- 801 024b 2E02     		.2byte	0x22e
- 802 024d 00000000 		.4byte	.LFB16
- 803 0251 12000000 		.4byte	.LFE16-.LFB16
- 804 0255 01       		.uleb128 0x1
- 805 0256 9C       		.byte	0x9c
- 806 0257 6E020000 		.4byte	0x26e
- 807 025b 0D       		.uleb128 0xd
- 808 025c 08000000 		.4byte	.LVL7
- 809 0260 92010000 		.4byte	0x192
- 810 0264 0D       		.uleb128 0xd
- 811 0265 0C000000 		.4byte	.LVL8
- 812 0269 06010000 		.4byte	0x106
- 813 026d 00       		.byte	0
- 814 026e 07       		.uleb128 0x7
- 815 026f 99020000 		.4byte	.LASF38
- 816 0273 01       		.byte	0x1
- 817 0274 25       		.byte	0x25
- 818 0275 00000000 		.4byte	.LFB0
- 819 0279 60000000 		.4byte	.LFE0-.LFB0
- 820 027d 01       		.uleb128 0x1
- 821 027e 9C       		.byte	0x9c
- 822 027f 15030000 		.4byte	0x315
- 823 0283 0E       		.uleb128 0xe
- 824 0284 A8020000 		.4byte	.LASF39
- 825 0288 01       		.byte	0x1
- 826 0289 28       		.byte	0x28
- 827 028a 6B000000 		.4byte	0x6b
- 828 028e 21000000 		.4byte	.LLST1
- 829 0292 0E       		.uleb128 0xe
- 830 0293 CD020000 		.4byte	.LASF40
- 831 0297 01       		.byte	0x1
- 832 0298 2D       		.byte	0x2d
- 833 0299 6B000000 		.4byte	0x6b
- 834 029d 3F000000 		.4byte	.LLST2
- 835 02a1 0D       		.uleb128 0xd
- 836 02a2 1C000000 		.4byte	.LVL12
- 837 02a6 45020000 		.4byte	0x245
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 26
+ 1101 03c4 00000000 		.4byte	.LFB16
+ 1102 03c8 20000000 		.4byte	.LFE16-.LFB16
+ 1103 03cc 01       		.uleb128 0x1
+ 1104 03cd 9C       		.byte	0x9c
+ 1105 03ce F3030000 		.4byte	0x3f3
+ 1106 03d2 10       		.uleb128 0x10
+ 1107 03d3 CE000000 		.4byte	0xce
+ 1108 03d7 00000000 		.4byte	.LBB54
+ 1109 03db 90000000 		.4byte	.Ldebug_ranges0+0x90
+ 1110 03df 01       		.byte	0x1
+ 1111 03e0 3102     		.2byte	0x231
+ 1112 03e2 1E       		.uleb128 0x1e
+ 1113 03e3 C1000000 		.4byte	0xc1
+ 1114 03e7 0A000000 		.4byte	.LBB57
+ 1115 03eb 04000000 		.4byte	.LBE57-.LBB57
+ 1116 03ef 01       		.byte	0x1
+ 1117 03f0 3302     		.2byte	0x233
+ 1118 03f2 00       		.byte	0
+ 1119 03f3 1F       		.uleb128 0x1f
+ 1120 03f4 04020000 		.4byte	.LASF46
+ 1121 03f8 01       		.byte	0x1
+ 1122 03f9 15       		.byte	0x15
+ 1123 03fa 6B000000 		.4byte	0x6b
+ 1124 03fe 05       		.uleb128 0x5
+ 1125 03ff 03       		.byte	0x3
+ 1126 0400 00000000 		.4byte	Counter_1_initVar
+ 1127 0404 20       		.uleb128 0x20
+ 1128 0405 57020000 		.4byte	.LASF41
+ 1129 0409 03       		.byte	0x3
+ 1130 040a E3       		.byte	0xe3
+ 1131 040b 6B000000 		.4byte	0x6b
+ 1132 040f 21       		.uleb128 0x21
+ 1133 0410 83020000 		.4byte	.LASF47
+ 1134 0414 03       		.byte	0x3
+ 1135 0415 E4       		.byte	0xe4
+ 1136 0416 22       		.uleb128 0x22
+ 1137 0417 6B000000 		.4byte	0x6b
+ 1138 041b 00       		.byte	0
+ 1139 041c 00       		.byte	0
+ 1140              		.section	.debug_abbrev,"",%progbits
+ 1141              	.Ldebug_abbrev0:
+ 1142 0000 01       		.uleb128 0x1
+ 1143 0001 11       		.uleb128 0x11
+ 1144 0002 01       		.byte	0x1
+ 1145 0003 25       		.uleb128 0x25
+ 1146 0004 0E       		.uleb128 0xe
+ 1147 0005 13       		.uleb128 0x13
+ 1148 0006 0B       		.uleb128 0xb
+ 1149 0007 03       		.uleb128 0x3
+ 1150 0008 0E       		.uleb128 0xe
+ 1151 0009 1B       		.uleb128 0x1b
+ 1152 000a 0E       		.uleb128 0xe
+ 1153 000b 55       		.uleb128 0x55
+ 1154 000c 17       		.uleb128 0x17
+ 1155 000d 11       		.uleb128 0x11
+ 1156 000e 01       		.uleb128 0x1
+ 1157 000f 10       		.uleb128 0x10
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 33
 
 
- 838 02aa 0F       		.uleb128 0xf
- 839 02ab 24000000 		.4byte	.LVL13
- 840 02af A8010000 		.4byte	0x1a8
- 841 02b3 BE020000 		.4byte	0x2be
- 842 02b7 10       		.uleb128 0x10
- 843 02b8 01       		.uleb128 0x1
- 844 02b9 50       		.byte	0x50
- 845 02ba 02       		.uleb128 0x2
- 846 02bb 74       		.byte	0x74
- 847 02bc 00       		.sleb128 0
- 848 02bd 00       		.byte	0
- 849 02be 0F       		.uleb128 0xf
- 850 02bf 2A000000 		.4byte	.LVL14
- 851 02c3 57010000 		.4byte	0x157
- 852 02c7 D2020000 		.4byte	0x2d2
- 853 02cb 10       		.uleb128 0x10
- 854 02cc 01       		.uleb128 0x1
- 855 02cd 50       		.byte	0x50
- 856 02ce 02       		.uleb128 0x2
- 857 02cf 74       		.byte	0x74
- 858 02d0 00       		.sleb128 0
- 859 02d1 00       		.byte	0
- 860 02d2 0F       		.uleb128 0xf
- 861 02d3 30000000 		.4byte	.LVL15
- 862 02d7 E3000000 		.4byte	0xe3
- 863 02db E5020000 		.4byte	0x2e5
- 864 02df 10       		.uleb128 0x10
- 865 02e0 01       		.uleb128 0x1
- 866 02e1 50       		.byte	0x50
- 867 02e2 01       		.uleb128 0x1
- 868 02e3 30       		.byte	0x30
- 869 02e4 00       		.byte	0
- 870 02e5 0D       		.uleb128 0xd
- 871 02e6 34000000 		.4byte	.LVL16
- 872 02ea 06010000 		.4byte	0x106
- 873 02ee 0F       		.uleb128 0xf
- 874 02ef 3A000000 		.4byte	.LVL17
- 875 02f3 E3010000 		.4byte	0x1e3
- 876 02f7 02030000 		.4byte	0x302
- 877 02fb 10       		.uleb128 0x10
- 878 02fc 01       		.uleb128 0x1
- 879 02fd 50       		.byte	0x50
- 880 02fe 02       		.uleb128 0x2
- 881 02ff 09       		.byte	0x9
- 882 0300 FF       		.byte	0xff
- 883 0301 00       		.byte	0
- 884 0302 0D       		.uleb128 0xd
- 885 0303 3E000000 		.4byte	.LVL18
- 886 0307 4E030000 		.4byte	0x34e
- 887 030b 0D       		.uleb128 0xd
- 888 030c 4C000000 		.4byte	.LVL19
- 889 0310 59030000 		.4byte	0x359
- 890 0314 00       		.byte	0
- 891 0315 07       		.uleb128 0x7
- 892 0316 4A030000 		.4byte	.LASF41
- 893 031a 01       		.byte	0x1
- 894 031b B2       		.byte	0xb2
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 27
+ 1158 0010 17       		.uleb128 0x17
+ 1159 0011 00       		.byte	0
+ 1160 0012 00       		.byte	0
+ 1161 0013 02       		.uleb128 0x2
+ 1162 0014 24       		.uleb128 0x24
+ 1163 0015 00       		.byte	0
+ 1164 0016 0B       		.uleb128 0xb
+ 1165 0017 0B       		.uleb128 0xb
+ 1166 0018 3E       		.uleb128 0x3e
+ 1167 0019 0B       		.uleb128 0xb
+ 1168 001a 03       		.uleb128 0x3
+ 1169 001b 0E       		.uleb128 0xe
+ 1170 001c 00       		.byte	0
+ 1171 001d 00       		.byte	0
+ 1172 001e 03       		.uleb128 0x3
+ 1173 001f 24       		.uleb128 0x24
+ 1174 0020 00       		.byte	0
+ 1175 0021 0B       		.uleb128 0xb
+ 1176 0022 0B       		.uleb128 0xb
+ 1177 0023 3E       		.uleb128 0x3e
+ 1178 0024 0B       		.uleb128 0xb
+ 1179 0025 03       		.uleb128 0x3
+ 1180 0026 08       		.uleb128 0x8
+ 1181 0027 00       		.byte	0
+ 1182 0028 00       		.byte	0
+ 1183 0029 04       		.uleb128 0x4
+ 1184 002a 16       		.uleb128 0x16
+ 1185 002b 00       		.byte	0
+ 1186 002c 03       		.uleb128 0x3
+ 1187 002d 0E       		.uleb128 0xe
+ 1188 002e 3A       		.uleb128 0x3a
+ 1189 002f 0B       		.uleb128 0xb
+ 1190 0030 3B       		.uleb128 0x3b
+ 1191 0031 05       		.uleb128 0x5
+ 1192 0032 49       		.uleb128 0x49
+ 1193 0033 13       		.uleb128 0x13
+ 1194 0034 00       		.byte	0
+ 1195 0035 00       		.byte	0
+ 1196 0036 05       		.uleb128 0x5
+ 1197 0037 35       		.uleb128 0x35
+ 1198 0038 00       		.byte	0
+ 1199 0039 49       		.uleb128 0x49
+ 1200 003a 13       		.uleb128 0x13
+ 1201 003b 00       		.byte	0
+ 1202 003c 00       		.byte	0
+ 1203 003d 06       		.uleb128 0x6
+ 1204 003e 2E       		.uleb128 0x2e
+ 1205 003f 00       		.byte	0
+ 1206 0040 3F       		.uleb128 0x3f
+ 1207 0041 19       		.uleb128 0x19
+ 1208 0042 03       		.uleb128 0x3
+ 1209 0043 0E       		.uleb128 0xe
+ 1210 0044 3A       		.uleb128 0x3a
+ 1211 0045 0B       		.uleb128 0xb
+ 1212 0046 3B       		.uleb128 0x3b
+ 1213 0047 05       		.uleb128 0x5
+ 1214 0048 27       		.uleb128 0x27
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 34
 
 
- 895 031c 00000000 		.4byte	.LFB2
- 896 0320 20000000 		.4byte	.LFE2-.LFB2
- 897 0324 01       		.uleb128 0x1
- 898 0325 9C       		.byte	0x9c
- 899 0326 3D030000 		.4byte	0x33d
- 900 032a 0D       		.uleb128 0xd
- 901 032b 0E000000 		.4byte	.LVL20
- 902 032f 6E020000 		.4byte	0x26e
- 903 0333 0D       		.uleb128 0xd
- 904 0334 18000000 		.4byte	.LVL21
- 905 0338 C1000000 		.4byte	0xc1
- 906 033c 00       		.byte	0
- 907 033d 11       		.uleb128 0x11
- 908 033e 04020000 		.4byte	.LASF45
- 909 0342 01       		.byte	0x1
- 910 0343 15       		.byte	0x15
- 911 0344 6B000000 		.4byte	0x6b
- 912 0348 05       		.uleb128 0x5
- 913 0349 03       		.byte	0x3
- 914 034a 00000000 		.4byte	Counter_1_initVar
- 915 034e 12       		.uleb128 0x12
- 916 034f 57020000 		.4byte	.LASF46
- 917 0353 03       		.byte	0x3
- 918 0354 E3       		.byte	0xe3
- 919 0355 6B000000 		.4byte	0x6b
- 920 0359 13       		.uleb128 0x13
- 921 035a 83020000 		.4byte	.LASF47
- 922 035e 03       		.byte	0x3
- 923 035f E4       		.byte	0xe4
- 924 0360 14       		.uleb128 0x14
- 925 0361 6B000000 		.4byte	0x6b
- 926 0365 00       		.byte	0
- 927 0366 00       		.byte	0
- 928              		.section	.debug_abbrev,"",%progbits
- 929              	.Ldebug_abbrev0:
- 930 0000 01       		.uleb128 0x1
- 931 0001 11       		.uleb128 0x11
- 932 0002 01       		.byte	0x1
- 933 0003 25       		.uleb128 0x25
- 934 0004 0E       		.uleb128 0xe
- 935 0005 13       		.uleb128 0x13
- 936 0006 0B       		.uleb128 0xb
- 937 0007 03       		.uleb128 0x3
- 938 0008 0E       		.uleb128 0xe
- 939 0009 1B       		.uleb128 0x1b
- 940 000a 0E       		.uleb128 0xe
- 941 000b 55       		.uleb128 0x55
- 942 000c 17       		.uleb128 0x17
- 943 000d 11       		.uleb128 0x11
- 944 000e 01       		.uleb128 0x1
- 945 000f 10       		.uleb128 0x10
- 946 0010 17       		.uleb128 0x17
- 947 0011 00       		.byte	0
- 948 0012 00       		.byte	0
- 949 0013 02       		.uleb128 0x2
- 950 0014 24       		.uleb128 0x24
- 951 0015 00       		.byte	0
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 28
+ 1215 0049 19       		.uleb128 0x19
+ 1216 004a 49       		.uleb128 0x49
+ 1217 004b 13       		.uleb128 0x13
+ 1218 004c 20       		.uleb128 0x20
+ 1219 004d 0B       		.uleb128 0xb
+ 1220 004e 00       		.byte	0
+ 1221 004f 00       		.byte	0
+ 1222 0050 07       		.uleb128 0x7
+ 1223 0051 2E       		.uleb128 0x2e
+ 1224 0052 00       		.byte	0
+ 1225 0053 3F       		.uleb128 0x3f
+ 1226 0054 19       		.uleb128 0x19
+ 1227 0055 03       		.uleb128 0x3
+ 1228 0056 0E       		.uleb128 0xe
+ 1229 0057 3A       		.uleb128 0x3a
+ 1230 0058 0B       		.uleb128 0xb
+ 1231 0059 3B       		.uleb128 0x3b
+ 1232 005a 05       		.uleb128 0x5
+ 1233 005b 27       		.uleb128 0x27
+ 1234 005c 19       		.uleb128 0x19
+ 1235 005d 20       		.uleb128 0x20
+ 1236 005e 0B       		.uleb128 0xb
+ 1237 005f 00       		.byte	0
+ 1238 0060 00       		.byte	0
+ 1239 0061 08       		.uleb128 0x8
+ 1240 0062 2E       		.uleb128 0x2e
+ 1241 0063 01       		.byte	0x1
+ 1242 0064 3F       		.uleb128 0x3f
+ 1243 0065 19       		.uleb128 0x19
+ 1244 0066 03       		.uleb128 0x3
+ 1245 0067 0E       		.uleb128 0xe
+ 1246 0068 3A       		.uleb128 0x3a
+ 1247 0069 0B       		.uleb128 0xb
+ 1248 006a 3B       		.uleb128 0x3b
+ 1249 006b 05       		.uleb128 0x5
+ 1250 006c 27       		.uleb128 0x27
+ 1251 006d 19       		.uleb128 0x19
+ 1252 006e 20       		.uleb128 0x20
+ 1253 006f 0B       		.uleb128 0xb
+ 1254 0070 01       		.uleb128 0x1
+ 1255 0071 13       		.uleb128 0x13
+ 1256 0072 00       		.byte	0
+ 1257 0073 00       		.byte	0
+ 1258 0074 09       		.uleb128 0x9
+ 1259 0075 05       		.uleb128 0x5
+ 1260 0076 00       		.byte	0
+ 1261 0077 03       		.uleb128 0x3
+ 1262 0078 0E       		.uleb128 0xe
+ 1263 0079 3A       		.uleb128 0x3a
+ 1264 007a 0B       		.uleb128 0xb
+ 1265 007b 3B       		.uleb128 0x3b
+ 1266 007c 05       		.uleb128 0x5
+ 1267 007d 49       		.uleb128 0x49
+ 1268 007e 13       		.uleb128 0x13
+ 1269 007f 00       		.byte	0
+ 1270 0080 00       		.byte	0
+ 1271 0081 0A       		.uleb128 0xa
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 35
 
 
- 952 0016 0B       		.uleb128 0xb
- 953 0017 0B       		.uleb128 0xb
- 954 0018 3E       		.uleb128 0x3e
- 955 0019 0B       		.uleb128 0xb
- 956 001a 03       		.uleb128 0x3
- 957 001b 0E       		.uleb128 0xe
- 958 001c 00       		.byte	0
- 959 001d 00       		.byte	0
- 960 001e 03       		.uleb128 0x3
- 961 001f 24       		.uleb128 0x24
- 962 0020 00       		.byte	0
- 963 0021 0B       		.uleb128 0xb
- 964 0022 0B       		.uleb128 0xb
- 965 0023 3E       		.uleb128 0x3e
- 966 0024 0B       		.uleb128 0xb
- 967 0025 03       		.uleb128 0x3
- 968 0026 08       		.uleb128 0x8
- 969 0027 00       		.byte	0
- 970 0028 00       		.byte	0
- 971 0029 04       		.uleb128 0x4
- 972 002a 16       		.uleb128 0x16
- 973 002b 00       		.byte	0
- 974 002c 03       		.uleb128 0x3
- 975 002d 0E       		.uleb128 0xe
- 976 002e 3A       		.uleb128 0x3a
- 977 002f 0B       		.uleb128 0xb
- 978 0030 3B       		.uleb128 0x3b
- 979 0031 05       		.uleb128 0x5
- 980 0032 49       		.uleb128 0x49
- 981 0033 13       		.uleb128 0x13
- 982 0034 00       		.byte	0
- 983 0035 00       		.byte	0
- 984 0036 05       		.uleb128 0x5
- 985 0037 35       		.uleb128 0x35
- 986 0038 00       		.byte	0
- 987 0039 49       		.uleb128 0x49
- 988 003a 13       		.uleb128 0x13
- 989 003b 00       		.byte	0
- 990 003c 00       		.byte	0
- 991 003d 06       		.uleb128 0x6
- 992 003e 2E       		.uleb128 0x2e
- 993 003f 00       		.byte	0
- 994 0040 3F       		.uleb128 0x3f
- 995 0041 19       		.uleb128 0x19
- 996 0042 03       		.uleb128 0x3
- 997 0043 0E       		.uleb128 0xe
- 998 0044 3A       		.uleb128 0x3a
- 999 0045 0B       		.uleb128 0xb
- 1000 0046 3B       		.uleb128 0x3b
- 1001 0047 0B       		.uleb128 0xb
- 1002 0048 27       		.uleb128 0x27
- 1003 0049 19       		.uleb128 0x19
- 1004 004a 11       		.uleb128 0x11
- 1005 004b 01       		.uleb128 0x1
- 1006 004c 12       		.uleb128 0x12
- 1007 004d 06       		.uleb128 0x6
- 1008 004e 40       		.uleb128 0x40
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 29
+ 1272 0082 2E       		.uleb128 0x2e
+ 1273 0083 01       		.byte	0x1
+ 1274 0084 3F       		.uleb128 0x3f
+ 1275 0085 19       		.uleb128 0x19
+ 1276 0086 03       		.uleb128 0x3
+ 1277 0087 0E       		.uleb128 0xe
+ 1278 0088 3A       		.uleb128 0x3a
+ 1279 0089 0B       		.uleb128 0xb
+ 1280 008a 3B       		.uleb128 0x3b
+ 1281 008b 0B       		.uleb128 0xb
+ 1282 008c 27       		.uleb128 0x27
+ 1283 008d 19       		.uleb128 0x19
+ 1284 008e 20       		.uleb128 0x20
+ 1285 008f 0B       		.uleb128 0xb
+ 1286 0090 01       		.uleb128 0x1
+ 1287 0091 13       		.uleb128 0x13
+ 1288 0092 00       		.byte	0
+ 1289 0093 00       		.byte	0
+ 1290 0094 0B       		.uleb128 0xb
+ 1291 0095 05       		.uleb128 0x5
+ 1292 0096 00       		.byte	0
+ 1293 0097 03       		.uleb128 0x3
+ 1294 0098 0E       		.uleb128 0xe
+ 1295 0099 3A       		.uleb128 0x3a
+ 1296 009a 0B       		.uleb128 0xb
+ 1297 009b 3B       		.uleb128 0x3b
+ 1298 009c 0B       		.uleb128 0xb
+ 1299 009d 49       		.uleb128 0x49
+ 1300 009e 13       		.uleb128 0x13
+ 1301 009f 00       		.byte	0
+ 1302 00a0 00       		.byte	0
+ 1303 00a1 0C       		.uleb128 0xc
+ 1304 00a2 2E       		.uleb128 0x2e
+ 1305 00a3 00       		.byte	0
+ 1306 00a4 3F       		.uleb128 0x3f
+ 1307 00a5 19       		.uleb128 0x19
+ 1308 00a6 03       		.uleb128 0x3
+ 1309 00a7 0E       		.uleb128 0xe
+ 1310 00a8 3A       		.uleb128 0x3a
+ 1311 00a9 0B       		.uleb128 0xb
+ 1312 00aa 3B       		.uleb128 0x3b
+ 1313 00ab 0B       		.uleb128 0xb
+ 1314 00ac 27       		.uleb128 0x27
+ 1315 00ad 19       		.uleb128 0x19
+ 1316 00ae 20       		.uleb128 0x20
+ 1317 00af 0B       		.uleb128 0xb
+ 1318 00b0 00       		.byte	0
+ 1319 00b1 00       		.byte	0
+ 1320 00b2 0D       		.uleb128 0xd
+ 1321 00b3 2E       		.uleb128 0x2e
+ 1322 00b4 01       		.byte	0x1
+ 1323 00b5 3F       		.uleb128 0x3f
+ 1324 00b6 19       		.uleb128 0x19
+ 1325 00b7 03       		.uleb128 0x3
+ 1326 00b8 0E       		.uleb128 0xe
+ 1327 00b9 3A       		.uleb128 0x3a
+ 1328 00ba 0B       		.uleb128 0xb
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 36
 
 
- 1009 004f 18       		.uleb128 0x18
- 1010 0050 9742     		.uleb128 0x2117
- 1011 0052 19       		.uleb128 0x19
- 1012 0053 00       		.byte	0
- 1013 0054 00       		.byte	0
- 1014 0055 07       		.uleb128 0x7
- 1015 0056 2E       		.uleb128 0x2e
- 1016 0057 01       		.byte	0x1
- 1017 0058 3F       		.uleb128 0x3f
- 1018 0059 19       		.uleb128 0x19
- 1019 005a 03       		.uleb128 0x3
- 1020 005b 0E       		.uleb128 0xe
- 1021 005c 3A       		.uleb128 0x3a
- 1022 005d 0B       		.uleb128 0xb
- 1023 005e 3B       		.uleb128 0x3b
- 1024 005f 0B       		.uleb128 0xb
- 1025 0060 27       		.uleb128 0x27
- 1026 0061 19       		.uleb128 0x19
- 1027 0062 11       		.uleb128 0x11
- 1028 0063 01       		.uleb128 0x1
- 1029 0064 12       		.uleb128 0x12
- 1030 0065 06       		.uleb128 0x6
- 1031 0066 40       		.uleb128 0x40
- 1032 0067 18       		.uleb128 0x18
- 1033 0068 9742     		.uleb128 0x2117
- 1034 006a 19       		.uleb128 0x19
- 1035 006b 01       		.uleb128 0x1
- 1036 006c 13       		.uleb128 0x13
- 1037 006d 00       		.byte	0
- 1038 006e 00       		.byte	0
- 1039 006f 08       		.uleb128 0x8
- 1040 0070 05       		.uleb128 0x5
- 1041 0071 00       		.byte	0
- 1042 0072 03       		.uleb128 0x3
- 1043 0073 0E       		.uleb128 0xe
- 1044 0074 3A       		.uleb128 0x3a
- 1045 0075 0B       		.uleb128 0xb
- 1046 0076 3B       		.uleb128 0x3b
- 1047 0077 0B       		.uleb128 0xb
- 1048 0078 49       		.uleb128 0x49
- 1049 0079 13       		.uleb128 0x13
- 1050 007a 02       		.uleb128 0x2
- 1051 007b 18       		.uleb128 0x18
- 1052 007c 00       		.byte	0
- 1053 007d 00       		.byte	0
- 1054 007e 09       		.uleb128 0x9
- 1055 007f 2E       		.uleb128 0x2e
- 1056 0080 00       		.byte	0
- 1057 0081 3F       		.uleb128 0x3f
- 1058 0082 19       		.uleb128 0x19
- 1059 0083 03       		.uleb128 0x3
- 1060 0084 0E       		.uleb128 0xe
- 1061 0085 3A       		.uleb128 0x3a
- 1062 0086 0B       		.uleb128 0xb
- 1063 0087 3B       		.uleb128 0x3b
- 1064 0088 05       		.uleb128 0x5
- 1065 0089 27       		.uleb128 0x27
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 30
+ 1329 00bb 3B       		.uleb128 0x3b
+ 1330 00bc 0B       		.uleb128 0xb
+ 1331 00bd 27       		.uleb128 0x27
+ 1332 00be 19       		.uleb128 0x19
+ 1333 00bf 11       		.uleb128 0x11
+ 1334 00c0 01       		.uleb128 0x1
+ 1335 00c1 12       		.uleb128 0x12
+ 1336 00c2 06       		.uleb128 0x6
+ 1337 00c3 40       		.uleb128 0x40
+ 1338 00c4 18       		.uleb128 0x18
+ 1339 00c5 9742     		.uleb128 0x2117
+ 1340 00c7 19       		.uleb128 0x19
+ 1341 00c8 01       		.uleb128 0x1
+ 1342 00c9 13       		.uleb128 0x13
+ 1343 00ca 00       		.byte	0
+ 1344 00cb 00       		.byte	0
+ 1345 00cc 0E       		.uleb128 0xe
+ 1346 00cd 34       		.uleb128 0x34
+ 1347 00ce 00       		.byte	0
+ 1348 00cf 03       		.uleb128 0x3
+ 1349 00d0 0E       		.uleb128 0xe
+ 1350 00d1 3A       		.uleb128 0x3a
+ 1351 00d2 0B       		.uleb128 0xb
+ 1352 00d3 3B       		.uleb128 0x3b
+ 1353 00d4 0B       		.uleb128 0xb
+ 1354 00d5 49       		.uleb128 0x49
+ 1355 00d6 13       		.uleb128 0x13
+ 1356 00d7 02       		.uleb128 0x2
+ 1357 00d8 17       		.uleb128 0x17
+ 1358 00d9 00       		.byte	0
+ 1359 00da 00       		.byte	0
+ 1360 00db 0F       		.uleb128 0xf
+ 1361 00dc 1D       		.uleb128 0x1d
+ 1362 00dd 01       		.byte	0x1
+ 1363 00de 31       		.uleb128 0x31
+ 1364 00df 13       		.uleb128 0x13
+ 1365 00e0 11       		.uleb128 0x11
+ 1366 00e1 01       		.uleb128 0x1
+ 1367 00e2 12       		.uleb128 0x12
+ 1368 00e3 06       		.uleb128 0x6
+ 1369 00e4 58       		.uleb128 0x58
+ 1370 00e5 0B       		.uleb128 0xb
+ 1371 00e6 59       		.uleb128 0x59
+ 1372 00e7 0B       		.uleb128 0xb
+ 1373 00e8 01       		.uleb128 0x1
+ 1374 00e9 13       		.uleb128 0x13
+ 1375 00ea 00       		.byte	0
+ 1376 00eb 00       		.byte	0
+ 1377 00ec 10       		.uleb128 0x10
+ 1378 00ed 1D       		.uleb128 0x1d
+ 1379 00ee 00       		.byte	0
+ 1380 00ef 31       		.uleb128 0x31
+ 1381 00f0 13       		.uleb128 0x13
+ 1382 00f1 52       		.uleb128 0x52
+ 1383 00f2 01       		.uleb128 0x1
+ 1384 00f3 55       		.uleb128 0x55
+ 1385 00f4 17       		.uleb128 0x17
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 37
 
 
- 1066 008a 19       		.uleb128 0x19
- 1067 008b 49       		.uleb128 0x49
- 1068 008c 13       		.uleb128 0x13
- 1069 008d 11       		.uleb128 0x11
- 1070 008e 01       		.uleb128 0x1
- 1071 008f 12       		.uleb128 0x12
- 1072 0090 06       		.uleb128 0x6
- 1073 0091 40       		.uleb128 0x40
- 1074 0092 18       		.uleb128 0x18
- 1075 0093 9742     		.uleb128 0x2117
- 1076 0095 19       		.uleb128 0x19
- 1077 0096 00       		.byte	0
- 1078 0097 00       		.byte	0
- 1079 0098 0A       		.uleb128 0xa
- 1080 0099 2E       		.uleb128 0x2e
- 1081 009a 01       		.byte	0x1
- 1082 009b 3F       		.uleb128 0x3f
- 1083 009c 19       		.uleb128 0x19
- 1084 009d 03       		.uleb128 0x3
- 1085 009e 0E       		.uleb128 0xe
- 1086 009f 3A       		.uleb128 0x3a
- 1087 00a0 0B       		.uleb128 0xb
- 1088 00a1 3B       		.uleb128 0x3b
- 1089 00a2 05       		.uleb128 0x5
- 1090 00a3 27       		.uleb128 0x27
- 1091 00a4 19       		.uleb128 0x19
- 1092 00a5 11       		.uleb128 0x11
- 1093 00a6 01       		.uleb128 0x1
- 1094 00a7 12       		.uleb128 0x12
- 1095 00a8 06       		.uleb128 0x6
- 1096 00a9 40       		.uleb128 0x40
- 1097 00aa 18       		.uleb128 0x18
- 1098 00ab 9742     		.uleb128 0x2117
- 1099 00ad 19       		.uleb128 0x19
- 1100 00ae 01       		.uleb128 0x1
- 1101 00af 13       		.uleb128 0x13
- 1102 00b0 00       		.byte	0
- 1103 00b1 00       		.byte	0
- 1104 00b2 0B       		.uleb128 0xb
- 1105 00b3 05       		.uleb128 0x5
- 1106 00b4 00       		.byte	0
- 1107 00b5 03       		.uleb128 0x3
- 1108 00b6 0E       		.uleb128 0xe
- 1109 00b7 3A       		.uleb128 0x3a
- 1110 00b8 0B       		.uleb128 0xb
- 1111 00b9 3B       		.uleb128 0x3b
- 1112 00ba 05       		.uleb128 0x5
- 1113 00bb 49       		.uleb128 0x49
- 1114 00bc 13       		.uleb128 0x13
- 1115 00bd 02       		.uleb128 0x2
- 1116 00be 18       		.uleb128 0x18
- 1117 00bf 00       		.byte	0
- 1118 00c0 00       		.byte	0
- 1119 00c1 0C       		.uleb128 0xc
- 1120 00c2 05       		.uleb128 0x5
- 1121 00c3 00       		.byte	0
- 1122 00c4 03       		.uleb128 0x3
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 31
+ 1386 00f5 58       		.uleb128 0x58
+ 1387 00f6 0B       		.uleb128 0xb
+ 1388 00f7 59       		.uleb128 0x59
+ 1389 00f8 05       		.uleb128 0x5
+ 1390 00f9 00       		.byte	0
+ 1391 00fa 00       		.byte	0
+ 1392 00fb 11       		.uleb128 0x11
+ 1393 00fc 05       		.uleb128 0x5
+ 1394 00fd 00       		.byte	0
+ 1395 00fe 31       		.uleb128 0x31
+ 1396 00ff 13       		.uleb128 0x13
+ 1397 0100 1C       		.uleb128 0x1c
+ 1398 0101 0D       		.uleb128 0xd
+ 1399 0102 00       		.byte	0
+ 1400 0103 00       		.byte	0
+ 1401 0104 12       		.uleb128 0x12
+ 1402 0105 1D       		.uleb128 0x1d
+ 1403 0106 01       		.byte	0x1
+ 1404 0107 31       		.uleb128 0x31
+ 1405 0108 13       		.uleb128 0x13
+ 1406 0109 52       		.uleb128 0x52
+ 1407 010a 01       		.uleb128 0x1
+ 1408 010b 55       		.uleb128 0x55
+ 1409 010c 17       		.uleb128 0x17
+ 1410 010d 58       		.uleb128 0x58
+ 1411 010e 0B       		.uleb128 0xb
+ 1412 010f 59       		.uleb128 0x59
+ 1413 0110 0B       		.uleb128 0xb
+ 1414 0111 01       		.uleb128 0x1
+ 1415 0112 13       		.uleb128 0x13
+ 1416 0113 00       		.byte	0
+ 1417 0114 00       		.byte	0
+ 1418 0115 13       		.uleb128 0x13
+ 1419 0116 05       		.uleb128 0x5
+ 1420 0117 00       		.byte	0
+ 1421 0118 31       		.uleb128 0x31
+ 1422 0119 13       		.uleb128 0x13
+ 1423 011a 1C       		.uleb128 0x1c
+ 1424 011b 0B       		.uleb128 0xb
+ 1425 011c 00       		.byte	0
+ 1426 011d 00       		.byte	0
+ 1427 011e 14       		.uleb128 0x14
+ 1428 011f 1D       		.uleb128 0x1d
+ 1429 0120 00       		.byte	0
+ 1430 0121 31       		.uleb128 0x31
+ 1431 0122 13       		.uleb128 0x13
+ 1432 0123 52       		.uleb128 0x52
+ 1433 0124 01       		.uleb128 0x1
+ 1434 0125 55       		.uleb128 0x55
+ 1435 0126 17       		.uleb128 0x17
+ 1436 0127 58       		.uleb128 0x58
+ 1437 0128 0B       		.uleb128 0xb
+ 1438 0129 59       		.uleb128 0x59
+ 1439 012a 0B       		.uleb128 0xb
+ 1440 012b 00       		.byte	0
+ 1441 012c 00       		.byte	0
+ 1442 012d 15       		.uleb128 0x15
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 38
 
 
- 1123 00c5 0E       		.uleb128 0xe
- 1124 00c6 3A       		.uleb128 0x3a
- 1125 00c7 0B       		.uleb128 0xb
- 1126 00c8 3B       		.uleb128 0x3b
- 1127 00c9 05       		.uleb128 0x5
- 1128 00ca 49       		.uleb128 0x49
- 1129 00cb 13       		.uleb128 0x13
- 1130 00cc 02       		.uleb128 0x2
- 1131 00cd 17       		.uleb128 0x17
- 1132 00ce 00       		.byte	0
- 1133 00cf 00       		.byte	0
- 1134 00d0 0D       		.uleb128 0xd
- 1135 00d1 898201   		.uleb128 0x4109
- 1136 00d4 00       		.byte	0
- 1137 00d5 11       		.uleb128 0x11
- 1138 00d6 01       		.uleb128 0x1
- 1139 00d7 31       		.uleb128 0x31
- 1140 00d8 13       		.uleb128 0x13
- 1141 00d9 00       		.byte	0
- 1142 00da 00       		.byte	0
- 1143 00db 0E       		.uleb128 0xe
- 1144 00dc 34       		.uleb128 0x34
- 1145 00dd 00       		.byte	0
- 1146 00de 03       		.uleb128 0x3
- 1147 00df 0E       		.uleb128 0xe
- 1148 00e0 3A       		.uleb128 0x3a
- 1149 00e1 0B       		.uleb128 0xb
- 1150 00e2 3B       		.uleb128 0x3b
- 1151 00e3 0B       		.uleb128 0xb
- 1152 00e4 49       		.uleb128 0x49
- 1153 00e5 13       		.uleb128 0x13
- 1154 00e6 02       		.uleb128 0x2
- 1155 00e7 17       		.uleb128 0x17
- 1156 00e8 00       		.byte	0
- 1157 00e9 00       		.byte	0
- 1158 00ea 0F       		.uleb128 0xf
- 1159 00eb 898201   		.uleb128 0x4109
- 1160 00ee 01       		.byte	0x1
- 1161 00ef 11       		.uleb128 0x11
- 1162 00f0 01       		.uleb128 0x1
- 1163 00f1 31       		.uleb128 0x31
- 1164 00f2 13       		.uleb128 0x13
- 1165 00f3 01       		.uleb128 0x1
- 1166 00f4 13       		.uleb128 0x13
- 1167 00f5 00       		.byte	0
- 1168 00f6 00       		.byte	0
- 1169 00f7 10       		.uleb128 0x10
- 1170 00f8 8A8201   		.uleb128 0x410a
- 1171 00fb 00       		.byte	0
- 1172 00fc 02       		.uleb128 0x2
- 1173 00fd 18       		.uleb128 0x18
- 1174 00fe 9142     		.uleb128 0x2111
- 1175 0100 18       		.uleb128 0x18
- 1176 0101 00       		.byte	0
- 1177 0102 00       		.byte	0
- 1178 0103 11       		.uleb128 0x11
- 1179 0104 34       		.uleb128 0x34
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 32
+ 1443 012e 898201   		.uleb128 0x4109
+ 1444 0131 00       		.byte	0
+ 1445 0132 11       		.uleb128 0x11
+ 1446 0133 01       		.uleb128 0x1
+ 1447 0134 31       		.uleb128 0x31
+ 1448 0135 13       		.uleb128 0x13
+ 1449 0136 00       		.byte	0
+ 1450 0137 00       		.byte	0
+ 1451 0138 16       		.uleb128 0x16
+ 1452 0139 2E       		.uleb128 0x2e
+ 1453 013a 00       		.byte	0
+ 1454 013b 31       		.uleb128 0x31
+ 1455 013c 13       		.uleb128 0x13
+ 1456 013d 11       		.uleb128 0x11
+ 1457 013e 01       		.uleb128 0x1
+ 1458 013f 12       		.uleb128 0x12
+ 1459 0140 06       		.uleb128 0x6
+ 1460 0141 40       		.uleb128 0x40
+ 1461 0142 18       		.uleb128 0x18
+ 1462 0143 9742     		.uleb128 0x2117
+ 1463 0145 19       		.uleb128 0x19
+ 1464 0146 00       		.byte	0
+ 1465 0147 00       		.byte	0
+ 1466 0148 17       		.uleb128 0x17
+ 1467 0149 2E       		.uleb128 0x2e
+ 1468 014a 00       		.byte	0
+ 1469 014b 3F       		.uleb128 0x3f
+ 1470 014c 19       		.uleb128 0x19
+ 1471 014d 03       		.uleb128 0x3
+ 1472 014e 0E       		.uleb128 0xe
+ 1473 014f 3A       		.uleb128 0x3a
+ 1474 0150 0B       		.uleb128 0xb
+ 1475 0151 3B       		.uleb128 0x3b
+ 1476 0152 0B       		.uleb128 0xb
+ 1477 0153 27       		.uleb128 0x27
+ 1478 0154 19       		.uleb128 0x19
+ 1479 0155 11       		.uleb128 0x11
+ 1480 0156 01       		.uleb128 0x1
+ 1481 0157 12       		.uleb128 0x12
+ 1482 0158 06       		.uleb128 0x6
+ 1483 0159 40       		.uleb128 0x40
+ 1484 015a 18       		.uleb128 0x18
+ 1485 015b 9742     		.uleb128 0x2117
+ 1486 015d 19       		.uleb128 0x19
+ 1487 015e 00       		.byte	0
+ 1488 015f 00       		.byte	0
+ 1489 0160 18       		.uleb128 0x18
+ 1490 0161 2E       		.uleb128 0x2e
+ 1491 0162 01       		.byte	0x1
+ 1492 0163 31       		.uleb128 0x31
+ 1493 0164 13       		.uleb128 0x13
+ 1494 0165 11       		.uleb128 0x11
+ 1495 0166 01       		.uleb128 0x1
+ 1496 0167 12       		.uleb128 0x12
+ 1497 0168 06       		.uleb128 0x6
+ 1498 0169 40       		.uleb128 0x40
+ 1499 016a 18       		.uleb128 0x18
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 39
 
 
- 1180 0105 00       		.byte	0
- 1181 0106 03       		.uleb128 0x3
- 1182 0107 0E       		.uleb128 0xe
- 1183 0108 3A       		.uleb128 0x3a
- 1184 0109 0B       		.uleb128 0xb
- 1185 010a 3B       		.uleb128 0x3b
- 1186 010b 0B       		.uleb128 0xb
- 1187 010c 49       		.uleb128 0x49
- 1188 010d 13       		.uleb128 0x13
- 1189 010e 3F       		.uleb128 0x3f
- 1190 010f 19       		.uleb128 0x19
- 1191 0110 02       		.uleb128 0x2
- 1192 0111 18       		.uleb128 0x18
- 1193 0112 00       		.byte	0
- 1194 0113 00       		.byte	0
- 1195 0114 12       		.uleb128 0x12
- 1196 0115 2E       		.uleb128 0x2e
- 1197 0116 00       		.byte	0
- 1198 0117 3F       		.uleb128 0x3f
- 1199 0118 19       		.uleb128 0x19
- 1200 0119 03       		.uleb128 0x3
- 1201 011a 0E       		.uleb128 0xe
- 1202 011b 3A       		.uleb128 0x3a
- 1203 011c 0B       		.uleb128 0xb
- 1204 011d 3B       		.uleb128 0x3b
- 1205 011e 0B       		.uleb128 0xb
- 1206 011f 27       		.uleb128 0x27
- 1207 0120 19       		.uleb128 0x19
- 1208 0121 49       		.uleb128 0x49
- 1209 0122 13       		.uleb128 0x13
- 1210 0123 3C       		.uleb128 0x3c
- 1211 0124 19       		.uleb128 0x19
- 1212 0125 00       		.byte	0
- 1213 0126 00       		.byte	0
- 1214 0127 13       		.uleb128 0x13
- 1215 0128 2E       		.uleb128 0x2e
- 1216 0129 01       		.byte	0x1
- 1217 012a 3F       		.uleb128 0x3f
- 1218 012b 19       		.uleb128 0x19
- 1219 012c 03       		.uleb128 0x3
- 1220 012d 0E       		.uleb128 0xe
- 1221 012e 3A       		.uleb128 0x3a
- 1222 012f 0B       		.uleb128 0xb
- 1223 0130 3B       		.uleb128 0x3b
- 1224 0131 0B       		.uleb128 0xb
- 1225 0132 27       		.uleb128 0x27
- 1226 0133 19       		.uleb128 0x19
- 1227 0134 3C       		.uleb128 0x3c
- 1228 0135 19       		.uleb128 0x19
- 1229 0136 00       		.byte	0
- 1230 0137 00       		.byte	0
- 1231 0138 14       		.uleb128 0x14
- 1232 0139 05       		.uleb128 0x5
- 1233 013a 00       		.byte	0
- 1234 013b 49       		.uleb128 0x49
- 1235 013c 13       		.uleb128 0x13
- 1236 013d 00       		.byte	0
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 33
+ 1500 016b 9742     		.uleb128 0x2117
+ 1501 016d 19       		.uleb128 0x19
+ 1502 016e 01       		.uleb128 0x1
+ 1503 016f 13       		.uleb128 0x13
+ 1504 0170 00       		.byte	0
+ 1505 0171 00       		.byte	0
+ 1506 0172 19       		.uleb128 0x19
+ 1507 0173 05       		.uleb128 0x5
+ 1508 0174 00       		.byte	0
+ 1509 0175 31       		.uleb128 0x31
+ 1510 0176 13       		.uleb128 0x13
+ 1511 0177 02       		.uleb128 0x2
+ 1512 0178 18       		.uleb128 0x18
+ 1513 0179 00       		.byte	0
+ 1514 017a 00       		.byte	0
+ 1515 017b 1A       		.uleb128 0x1a
+ 1516 017c 2E       		.uleb128 0x2e
+ 1517 017d 00       		.byte	0
+ 1518 017e 3F       		.uleb128 0x3f
+ 1519 017f 19       		.uleb128 0x19
+ 1520 0180 03       		.uleb128 0x3
+ 1521 0181 0E       		.uleb128 0xe
+ 1522 0182 3A       		.uleb128 0x3a
+ 1523 0183 0B       		.uleb128 0xb
+ 1524 0184 3B       		.uleb128 0x3b
+ 1525 0185 05       		.uleb128 0x5
+ 1526 0186 27       		.uleb128 0x27
+ 1527 0187 19       		.uleb128 0x19
+ 1528 0188 49       		.uleb128 0x49
+ 1529 0189 13       		.uleb128 0x13
+ 1530 018a 11       		.uleb128 0x11
+ 1531 018b 01       		.uleb128 0x1
+ 1532 018c 12       		.uleb128 0x12
+ 1533 018d 06       		.uleb128 0x6
+ 1534 018e 40       		.uleb128 0x40
+ 1535 018f 18       		.uleb128 0x18
+ 1536 0190 9742     		.uleb128 0x2117
+ 1537 0192 19       		.uleb128 0x19
+ 1538 0193 00       		.byte	0
+ 1539 0194 00       		.byte	0
+ 1540 0195 1B       		.uleb128 0x1b
+ 1541 0196 2E       		.uleb128 0x2e
+ 1542 0197 01       		.byte	0x1
+ 1543 0198 3F       		.uleb128 0x3f
+ 1544 0199 19       		.uleb128 0x19
+ 1545 019a 03       		.uleb128 0x3
+ 1546 019b 0E       		.uleb128 0xe
+ 1547 019c 3A       		.uleb128 0x3a
+ 1548 019d 0B       		.uleb128 0xb
+ 1549 019e 3B       		.uleb128 0x3b
+ 1550 019f 05       		.uleb128 0x5
+ 1551 01a0 27       		.uleb128 0x27
+ 1552 01a1 19       		.uleb128 0x19
+ 1553 01a2 11       		.uleb128 0x11
+ 1554 01a3 01       		.uleb128 0x1
+ 1555 01a4 12       		.uleb128 0x12
+ 1556 01a5 06       		.uleb128 0x6
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 40
 
 
- 1237 013e 00       		.byte	0
- 1238 013f 00       		.byte	0
- 1239              		.section	.debug_loc,"",%progbits
- 1240              	.Ldebug_loc0:
- 1241              	.LLST0:
- 1242 0000 00000000 		.4byte	.LVL5
- 1243 0004 0E000000 		.4byte	.LVL6
- 1244 0008 0100     		.2byte	0x1
- 1245 000a 50       		.byte	0x50
- 1246 000b 0E000000 		.4byte	.LVL6
- 1247 000f 18000000 		.4byte	.LFE15
- 1248 0013 0400     		.2byte	0x4
- 1249 0015 F3       		.byte	0xf3
- 1250 0016 01       		.uleb128 0x1
- 1251 0017 50       		.byte	0x50
- 1252 0018 9F       		.byte	0x9f
- 1253 0019 00000000 		.4byte	0
- 1254 001d 00000000 		.4byte	0
- 1255              	.LLST1:
- 1256 0021 0A000000 		.4byte	.LVL9
- 1257 0025 0E000000 		.4byte	.LVL10
- 1258 0029 0100     		.2byte	0x1
- 1259 002b 52       		.byte	0x52
- 1260 002c 16000000 		.4byte	.LVL11
- 1261 0030 1B000000 		.4byte	.LVL12-1
- 1262 0034 0100     		.2byte	0x1
- 1263 0036 52       		.byte	0x52
- 1264 0037 00000000 		.4byte	0
- 1265 003b 00000000 		.4byte	0
- 1266              	.LLST2:
- 1267 003f 3E000000 		.4byte	.LVL18
- 1268 0043 4B000000 		.4byte	.LVL19-1
- 1269 0047 0100     		.2byte	0x1
- 1270 0049 50       		.byte	0x50
- 1271 004a 00000000 		.4byte	0
- 1272 004e 00000000 		.4byte	0
- 1273              		.section	.debug_aranges,"",%progbits
- 1274 0000 9C000000 		.4byte	0x9c
- 1275 0004 0200     		.2byte	0x2
- 1276 0006 00000000 		.4byte	.Ldebug_info0
- 1277 000a 04       		.byte	0x4
- 1278 000b 00       		.byte	0
- 1279 000c 0000     		.2byte	0
- 1280 000e 0000     		.2byte	0
- 1281 0010 00000000 		.4byte	.LFB1
- 1282 0014 10000000 		.4byte	.LFE1-.LFB1
- 1283 0018 00000000 		.4byte	.LFB3
- 1284 001c 10000000 		.4byte	.LFE3-.LFB3
- 1285 0020 00000000 		.4byte	.LFB4
- 1286 0024 0C000000 		.4byte	.LFE4-.LFB4
- 1287 0028 00000000 		.4byte	.LFB5
- 1288 002c 0C000000 		.4byte	.LFE5-.LFB5
- 1289 0030 00000000 		.4byte	.LFB6
- 1290 0034 0C000000 		.4byte	.LFE6-.LFB6
- 1291 0038 00000000 		.4byte	.LFB7
- 1292 003c 0C000000 		.4byte	.LFE7-.LFB7
- 1293 0040 00000000 		.4byte	.LFB8
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 34
+ 1557 01a6 40       		.uleb128 0x40
+ 1558 01a7 18       		.uleb128 0x18
+ 1559 01a8 9742     		.uleb128 0x2117
+ 1560 01aa 19       		.uleb128 0x19
+ 1561 01ab 01       		.uleb128 0x1
+ 1562 01ac 13       		.uleb128 0x13
+ 1563 01ad 00       		.byte	0
+ 1564 01ae 00       		.byte	0
+ 1565 01af 1C       		.uleb128 0x1c
+ 1566 01b0 05       		.uleb128 0x5
+ 1567 01b1 00       		.byte	0
+ 1568 01b2 03       		.uleb128 0x3
+ 1569 01b3 0E       		.uleb128 0xe
+ 1570 01b4 3A       		.uleb128 0x3a
+ 1571 01b5 0B       		.uleb128 0xb
+ 1572 01b6 3B       		.uleb128 0x3b
+ 1573 01b7 05       		.uleb128 0x5
+ 1574 01b8 49       		.uleb128 0x49
+ 1575 01b9 13       		.uleb128 0x13
+ 1576 01ba 02       		.uleb128 0x2
+ 1577 01bb 18       		.uleb128 0x18
+ 1578 01bc 00       		.byte	0
+ 1579 01bd 00       		.byte	0
+ 1580 01be 1D       		.uleb128 0x1d
+ 1581 01bf 05       		.uleb128 0x5
+ 1582 01c0 00       		.byte	0
+ 1583 01c1 03       		.uleb128 0x3
+ 1584 01c2 0E       		.uleb128 0xe
+ 1585 01c3 3A       		.uleb128 0x3a
+ 1586 01c4 0B       		.uleb128 0xb
+ 1587 01c5 3B       		.uleb128 0x3b
+ 1588 01c6 05       		.uleb128 0x5
+ 1589 01c7 49       		.uleb128 0x49
+ 1590 01c8 13       		.uleb128 0x13
+ 1591 01c9 02       		.uleb128 0x2
+ 1592 01ca 17       		.uleb128 0x17
+ 1593 01cb 00       		.byte	0
+ 1594 01cc 00       		.byte	0
+ 1595 01cd 1E       		.uleb128 0x1e
+ 1596 01ce 1D       		.uleb128 0x1d
+ 1597 01cf 00       		.byte	0
+ 1598 01d0 31       		.uleb128 0x31
+ 1599 01d1 13       		.uleb128 0x13
+ 1600 01d2 11       		.uleb128 0x11
+ 1601 01d3 01       		.uleb128 0x1
+ 1602 01d4 12       		.uleb128 0x12
+ 1603 01d5 06       		.uleb128 0x6
+ 1604 01d6 58       		.uleb128 0x58
+ 1605 01d7 0B       		.uleb128 0xb
+ 1606 01d8 59       		.uleb128 0x59
+ 1607 01d9 05       		.uleb128 0x5
+ 1608 01da 00       		.byte	0
+ 1609 01db 00       		.byte	0
+ 1610 01dc 1F       		.uleb128 0x1f
+ 1611 01dd 34       		.uleb128 0x34
+ 1612 01de 00       		.byte	0
+ 1613 01df 03       		.uleb128 0x3
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 41
 
 
- 1294 0044 0C000000 		.4byte	.LFE8-.LFB8
- 1295 0048 00000000 		.4byte	.LFB9
- 1296 004c 14000000 		.4byte	.LFE9-.LFB9
- 1297 0050 00000000 		.4byte	.LFB10
- 1298 0054 0C000000 		.4byte	.LFE10-.LFB10
- 1299 0058 00000000 		.4byte	.LFB11
- 1300 005c 0C000000 		.4byte	.LFE11-.LFB11
- 1301 0060 00000000 		.4byte	.LFB12
- 1302 0064 0C000000 		.4byte	.LFE12-.LFB12
- 1303 0068 00000000 		.4byte	.LFB13
- 1304 006c 0C000000 		.4byte	.LFE13-.LFB13
- 1305 0070 00000000 		.4byte	.LFB14
- 1306 0074 0C000000 		.4byte	.LFE14-.LFB14
- 1307 0078 00000000 		.4byte	.LFB15
- 1308 007c 18000000 		.4byte	.LFE15-.LFB15
- 1309 0080 00000000 		.4byte	.LFB16
- 1310 0084 12000000 		.4byte	.LFE16-.LFB16
- 1311 0088 00000000 		.4byte	.LFB0
- 1312 008c 60000000 		.4byte	.LFE0-.LFB0
- 1313 0090 00000000 		.4byte	.LFB2
- 1314 0094 20000000 		.4byte	.LFE2-.LFB2
- 1315 0098 00000000 		.4byte	0
- 1316 009c 00000000 		.4byte	0
- 1317              		.section	.debug_ranges,"",%progbits
- 1318              	.Ldebug_ranges0:
- 1319 0000 00000000 		.4byte	.LFB1
- 1320 0004 10000000 		.4byte	.LFE1
- 1321 0008 00000000 		.4byte	.LFB3
- 1322 000c 10000000 		.4byte	.LFE3
- 1323 0010 00000000 		.4byte	.LFB4
- 1324 0014 0C000000 		.4byte	.LFE4
- 1325 0018 00000000 		.4byte	.LFB5
- 1326 001c 0C000000 		.4byte	.LFE5
- 1327 0020 00000000 		.4byte	.LFB6
- 1328 0024 0C000000 		.4byte	.LFE6
- 1329 0028 00000000 		.4byte	.LFB7
- 1330 002c 0C000000 		.4byte	.LFE7
- 1331 0030 00000000 		.4byte	.LFB8
- 1332 0034 0C000000 		.4byte	.LFE8
- 1333 0038 00000000 		.4byte	.LFB9
- 1334 003c 14000000 		.4byte	.LFE9
- 1335 0040 00000000 		.4byte	.LFB10
- 1336 0044 0C000000 		.4byte	.LFE10
- 1337 0048 00000000 		.4byte	.LFB11
- 1338 004c 0C000000 		.4byte	.LFE11
- 1339 0050 00000000 		.4byte	.LFB12
- 1340 0054 0C000000 		.4byte	.LFE12
- 1341 0058 00000000 		.4byte	.LFB13
- 1342 005c 0C000000 		.4byte	.LFE13
- 1343 0060 00000000 		.4byte	.LFB14
- 1344 0064 0C000000 		.4byte	.LFE14
- 1345 0068 00000000 		.4byte	.LFB15
- 1346 006c 18000000 		.4byte	.LFE15
- 1347 0070 00000000 		.4byte	.LFB16
- 1348 0074 12000000 		.4byte	.LFE16
- 1349 0078 00000000 		.4byte	.LFB0
- 1350 007c 60000000 		.4byte	.LFE0
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 35
+ 1614 01e0 0E       		.uleb128 0xe
+ 1615 01e1 3A       		.uleb128 0x3a
+ 1616 01e2 0B       		.uleb128 0xb
+ 1617 01e3 3B       		.uleb128 0x3b
+ 1618 01e4 0B       		.uleb128 0xb
+ 1619 01e5 49       		.uleb128 0x49
+ 1620 01e6 13       		.uleb128 0x13
+ 1621 01e7 3F       		.uleb128 0x3f
+ 1622 01e8 19       		.uleb128 0x19
+ 1623 01e9 02       		.uleb128 0x2
+ 1624 01ea 18       		.uleb128 0x18
+ 1625 01eb 00       		.byte	0
+ 1626 01ec 00       		.byte	0
+ 1627 01ed 20       		.uleb128 0x20
+ 1628 01ee 2E       		.uleb128 0x2e
+ 1629 01ef 00       		.byte	0
+ 1630 01f0 3F       		.uleb128 0x3f
+ 1631 01f1 19       		.uleb128 0x19
+ 1632 01f2 03       		.uleb128 0x3
+ 1633 01f3 0E       		.uleb128 0xe
+ 1634 01f4 3A       		.uleb128 0x3a
+ 1635 01f5 0B       		.uleb128 0xb
+ 1636 01f6 3B       		.uleb128 0x3b
+ 1637 01f7 0B       		.uleb128 0xb
+ 1638 01f8 27       		.uleb128 0x27
+ 1639 01f9 19       		.uleb128 0x19
+ 1640 01fa 49       		.uleb128 0x49
+ 1641 01fb 13       		.uleb128 0x13
+ 1642 01fc 3C       		.uleb128 0x3c
+ 1643 01fd 19       		.uleb128 0x19
+ 1644 01fe 00       		.byte	0
+ 1645 01ff 00       		.byte	0
+ 1646 0200 21       		.uleb128 0x21
+ 1647 0201 2E       		.uleb128 0x2e
+ 1648 0202 01       		.byte	0x1
+ 1649 0203 3F       		.uleb128 0x3f
+ 1650 0204 19       		.uleb128 0x19
+ 1651 0205 03       		.uleb128 0x3
+ 1652 0206 0E       		.uleb128 0xe
+ 1653 0207 3A       		.uleb128 0x3a
+ 1654 0208 0B       		.uleb128 0xb
+ 1655 0209 3B       		.uleb128 0x3b
+ 1656 020a 0B       		.uleb128 0xb
+ 1657 020b 27       		.uleb128 0x27
+ 1658 020c 19       		.uleb128 0x19
+ 1659 020d 3C       		.uleb128 0x3c
+ 1660 020e 19       		.uleb128 0x19
+ 1661 020f 00       		.byte	0
+ 1662 0210 00       		.byte	0
+ 1663 0211 22       		.uleb128 0x22
+ 1664 0212 05       		.uleb128 0x5
+ 1665 0213 00       		.byte	0
+ 1666 0214 49       		.uleb128 0x49
+ 1667 0215 13       		.uleb128 0x13
+ 1668 0216 00       		.byte	0
+ 1669 0217 00       		.byte	0
+ 1670 0218 00       		.byte	0
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 42
 
 
- 1351 0080 00000000 		.4byte	.LFB2
- 1352 0084 20000000 		.4byte	.LFE2
- 1353 0088 00000000 		.4byte	0
- 1354 008c 00000000 		.4byte	0
- 1355              		.section	.debug_line,"",%progbits
- 1356              	.Ldebug_line0:
- 1357 0000 A1010000 		.section	.debug_str,"MS",%progbits,1
- 1357      02005100 
- 1357      00000201 
- 1357      FB0E0D00 
- 1357      01010101 
- 1358              	.LASF15:
- 1359 0000 72656731 		.ascii	"reg16\000"
- 1359      3600
- 1360              	.LASF44:
- 1361 0006 443A5C63 		.ascii	"D:\\code\\cypress\\Tarocco\\Tarocco.cydsn\000"
- 1361      6F64655C 
- 1361      63797072 
- 1361      6573735C 
- 1361      5461726F 
- 1362              	.LASF28:
- 1363 002c 436F756E 		.ascii	"Counter_1_ReadCapture\000"
- 1363      7465725F 
- 1363      315F5265 
- 1363      61644361 
- 1363      70747572 
- 1364              	.LASF36:
- 1365 0042 636F6D70 		.ascii	"compareMode\000"
- 1365      6172654D 
- 1365      6F646500 
- 1366              	.LASF43:
- 1367 004e 47656E65 		.ascii	"Generated_Source\\PSoC4\\Counter_1.c\000"
- 1367      72617465 
- 1367      645F536F 
- 1367      75726365 
- 1367      5C50536F 
- 1368              	.LASF30:
- 1369 0071 70657269 		.ascii	"period\000"
- 1369      6F6400
- 1370              	.LASF3:
- 1371 0078 73686F72 		.ascii	"short unsigned int\000"
- 1371      7420756E 
- 1371      7369676E 
- 1371      65642069 
- 1371      6E7400
- 1372              	.LASF22:
- 1373 008b 436F756E 		.ascii	"Counter_1_WriteControlRegister\000"
- 1373      7465725F 
- 1373      315F5772 
- 1373      69746543 
- 1373      6F6E7472 
- 1374              	.LASF37:
- 1375 00aa 436F756E 		.ascii	"Counter_1_ClearFIFO\000"
- 1375      7465725F 
- 1375      315F436C 
- 1375      65617246 
- 1375      49464F00 
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 36
+ 1671              		.section	.debug_loc,"",%progbits
+ 1672              	.Ldebug_loc0:
+ 1673              	.LLST0:
+ 1674 0000 08000000 		.4byte	.LVL0
+ 1675 0004 0A000000 		.4byte	.LVL1
+ 1676 0008 0600     		.2byte	0x6
+ 1677 000a 72       		.byte	0x72
+ 1678 000b 00       		.sleb128 0
+ 1679 000c 09       		.byte	0x9
+ 1680 000d F8       		.byte	0xf8
+ 1681 000e 1A       		.byte	0x1a
+ 1682 000f 9F       		.byte	0x9f
+ 1683 0010 16000000 		.4byte	.LVL2
+ 1684 0014 1A000000 		.4byte	.LVL3
+ 1685 0018 0100     		.2byte	0x1
+ 1686 001a 52       		.byte	0x52
+ 1687 001b 1A000000 		.4byte	.LVL3
+ 1688 001f 1C000000 		.4byte	.LVL4
+ 1689 0023 0200     		.2byte	0x2
+ 1690 0025 73       		.byte	0x73
+ 1691 0026 00       		.sleb128 0
+ 1692 0027 1C000000 		.4byte	.LVL4
+ 1693 002b 34000000 		.4byte	.LVL6
+ 1694 002f 0500     		.2byte	0x5
+ 1695 0031 0C       		.byte	0xc
+ 1696 0032 70000F40 		.4byte	0x400f0070
+ 1697 0036 00000000 		.4byte	0
+ 1698 003a 00000000 		.4byte	0
+ 1699              	.LLST1:
+ 1700 003e 4C000000 		.4byte	.LVL9
+ 1701 0042 59000000 		.4byte	.LVL10-1
+ 1702 0046 0100     		.2byte	0x1
+ 1703 0048 50       		.byte	0x50
+ 1704 0049 00000000 		.4byte	0
+ 1705 004d 00000000 		.4byte	0
+ 1706              	.LLST2:
+ 1707 0051 00000000 		.4byte	.LVL17
+ 1708 0055 0E000000 		.4byte	.LVL18
+ 1709 0059 0100     		.2byte	0x1
+ 1710 005b 50       		.byte	0x50
+ 1711 005c 0E000000 		.4byte	.LVL18
+ 1712 0060 18000000 		.4byte	.LFE15
+ 1713 0064 0400     		.2byte	0x4
+ 1714 0066 F3       		.byte	0xf3
+ 1715 0067 01       		.uleb128 0x1
+ 1716 0068 50       		.byte	0x50
+ 1717 0069 9F       		.byte	0x9f
+ 1718 006a 00000000 		.4byte	0
+ 1719 006e 00000000 		.4byte	0
+ 1720              		.section	.debug_aranges,"",%progbits
+ 1721 0000 9C000000 		.4byte	0x9c
+ 1722 0004 0200     		.2byte	0x2
+ 1723 0006 00000000 		.4byte	.Ldebug_info0
+ 1724 000a 04       		.byte	0x4
+ 1725 000b 00       		.byte	0
+ 1726 000c 0000     		.2byte	0
+ 1727 000e 0000     		.2byte	0
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 43
 
 
- 1376              	.LASF35:
- 1377 00be 436F756E 		.ascii	"Counter_1_SetCompareMode\000"
- 1377      7465725F 
- 1377      315F5365 
- 1377      74436F6D 
- 1377      70617265 
- 1378              	.LASF27:
- 1379 00d7 436F756E 		.ascii	"Counter_1_ReadCounter\000"
- 1379      7465725F 
- 1379      315F5265 
- 1379      6164436F 
- 1379      756E7465 
- 1380              	.LASF11:
- 1381 00ed 666C6F61 		.ascii	"float\000"
- 1381      7400
- 1382              	.LASF26:
- 1383 00f3 636F756E 		.ascii	"counter\000"
- 1383      74657200 
- 1384              	.LASF7:
- 1385 00fb 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1385      206C6F6E 
- 1385      6720756E 
- 1385      7369676E 
- 1385      65642069 
- 1386              	.LASF42:
- 1387 0112 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
- 1387      4320342E 
- 1387      392E3320 
- 1387      32303135 
- 1387      30333033 
- 1388 0145 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
- 1388      20726576 
- 1388      6973696F 
- 1388      6E203232 
- 1388      31323230 
- 1389 0178 67202D73 		.ascii	"g -std=gnu99 -ffunction-sections -ffat-lto-objects\000"
- 1389      74643D67 
- 1389      6E753939 
- 1389      202D6666 
- 1389      756E6374 
- 1390              	.LASF1:
- 1391 01ab 756E7369 		.ascii	"unsigned char\000"
- 1391      676E6564 
- 1391      20636861 
- 1391      7200
- 1392              	.LASF14:
- 1393 01b9 72656738 		.ascii	"reg8\000"
- 1393      00
- 1394              	.LASF32:
- 1395 01be 436F756E 		.ascii	"Counter_1_WriteCompare\000"
- 1395      7465725F 
- 1395      315F5772 
- 1395      69746543 
- 1395      6F6D7061 
- 1396              	.LASF5:
- 1397 01d5 6C6F6E67 		.ascii	"long unsigned int\000"
- 1397      20756E73 
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 37
+ 1728 0010 00000000 		.4byte	.LFB0
+ 1729 0014 7C000000 		.4byte	.LFE0-.LFB0
+ 1730 0018 00000000 		.4byte	.LFB1
+ 1731 001c 10000000 		.4byte	.LFE1-.LFB1
+ 1732 0020 00000000 		.4byte	.LFB2
+ 1733 0024 28000000 		.4byte	.LFE2-.LFB2
+ 1734 0028 00000000 		.4byte	.LFB3
+ 1735 002c 10000000 		.4byte	.LFE3-.LFB3
+ 1736 0030 00000000 		.4byte	.LFB4
+ 1737 0034 0C000000 		.4byte	.LFE4-.LFB4
+ 1738 0038 00000000 		.4byte	.LFB5
+ 1739 003c 0C000000 		.4byte	.LFE5-.LFB5
+ 1740 0040 00000000 		.4byte	.LFB6
+ 1741 0044 0C000000 		.4byte	.LFE6-.LFB6
+ 1742 0048 00000000 		.4byte	.LFB7
+ 1743 004c 0C000000 		.4byte	.LFE7-.LFB7
+ 1744 0050 00000000 		.4byte	.LFB8
+ 1745 0054 0C000000 		.4byte	.LFE8-.LFB8
+ 1746 0058 00000000 		.4byte	.LFB9
+ 1747 005c 14000000 		.4byte	.LFE9-.LFB9
+ 1748 0060 00000000 		.4byte	.LFB10
+ 1749 0064 0C000000 		.4byte	.LFE10-.LFB10
+ 1750 0068 00000000 		.4byte	.LFB11
+ 1751 006c 0C000000 		.4byte	.LFE11-.LFB11
+ 1752 0070 00000000 		.4byte	.LFB12
+ 1753 0074 0C000000 		.4byte	.LFE12-.LFB12
+ 1754 0078 00000000 		.4byte	.LFB13
+ 1755 007c 0C000000 		.4byte	.LFE13-.LFB13
+ 1756 0080 00000000 		.4byte	.LFB14
+ 1757 0084 0C000000 		.4byte	.LFE14-.LFB14
+ 1758 0088 00000000 		.4byte	.LFB15
+ 1759 008c 18000000 		.4byte	.LFE15-.LFB15
+ 1760 0090 00000000 		.4byte	.LFB16
+ 1761 0094 20000000 		.4byte	.LFE16-.LFB16
+ 1762 0098 00000000 		.4byte	0
+ 1763 009c 00000000 		.4byte	0
+ 1764              		.section	.debug_ranges,"",%progbits
+ 1765              	.Ldebug_ranges0:
+ 1766 0000 18000000 		.4byte	.LBB26
+ 1767 0004 1C000000 		.4byte	.LBE26
+ 1768 0008 26000000 		.4byte	.LBB33
+ 1769 000c 28000000 		.4byte	.LBE33
+ 1770 0010 00000000 		.4byte	0
+ 1771 0014 00000000 		.4byte	0
+ 1772 0018 20000000 		.4byte	.LBB29
+ 1773 001c 22000000 		.4byte	.LBE29
+ 1774 0020 24000000 		.4byte	.LBB32
+ 1775 0024 26000000 		.4byte	.LBE32
+ 1776 0028 00000000 		.4byte	0
+ 1777 002c 00000000 		.4byte	0
+ 1778 0030 34000000 		.4byte	.LBB36
+ 1779 0034 36000000 		.4byte	.LBE36
+ 1780 0038 36000000 		.4byte	.LBB39
+ 1781 003c 38000000 		.4byte	.LBE39
+ 1782 0040 00000000 		.4byte	0
+ 1783 0044 00000000 		.4byte	0
+ 1784 0048 3E000000 		.4byte	.LBB42
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 44
 
 
- 1397      69676E65 
- 1397      6420696E 
- 1397      7400
- 1398              	.LASF9:
- 1399 01e7 75696E74 		.ascii	"uint8\000"
- 1399      3800
- 1400              	.LASF24:
- 1401 01ed 636F6E74 		.ascii	"control\000"
- 1401      726F6C00 
- 1402              	.LASF23:
- 1403 01f5 696E7465 		.ascii	"interruptsMask\000"
- 1403      72727570 
- 1403      74734D61 
- 1403      736B00
- 1404              	.LASF45:
- 1405 0204 436F756E 		.ascii	"Counter_1_initVar\000"
- 1405      7465725F 
- 1405      315F696E 
- 1405      69745661 
- 1405      7200
- 1406              	.LASF19:
- 1407 0216 436F756E 		.ascii	"Counter_1_ReadStatusRegister\000"
- 1407      7465725F 
- 1407      315F5265 
- 1407      61645374 
- 1407      61747573 
- 1408              	.LASF12:
- 1409 0233 646F7562 		.ascii	"double\000"
- 1409      6C6500
- 1410              	.LASF10:
- 1411 023a 75696E74 		.ascii	"uint16\000"
- 1411      313600
- 1412              	.LASF29:
- 1413 0241 436F756E 		.ascii	"Counter_1_WritePeriod\000"
- 1413      7465725F 
- 1413      315F5772 
- 1413      69746550 
- 1413      6572696F 
- 1414              	.LASF46:
- 1415 0257 4379456E 		.ascii	"CyEnterCriticalSection\000"
- 1415      74657243 
- 1415      72697469 
- 1415      63616C53 
- 1415      65637469 
- 1416              	.LASF31:
- 1417 026e 436F756E 		.ascii	"Counter_1_ReadPeriod\000"
- 1417      7465725F 
- 1417      315F5265 
- 1417      61645065 
- 1417      72696F64 
- 1418              	.LASF47:
- 1419 0283 43794578 		.ascii	"CyExitCriticalSection\000"
- 1419      69744372 
- 1419      69746963 
- 1419      616C5365 
- 1419      6374696F 
- 1420              	.LASF38:
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 38
+ 1785 004c 40000000 		.4byte	.LBE42
+ 1786 0050 42000000 		.4byte	.LBB48
+ 1787 0054 44000000 		.4byte	.LBE48
+ 1788 0058 00000000 		.4byte	0
+ 1789 005c 00000000 		.4byte	0
+ 1790 0060 40000000 		.4byte	.LBB45
+ 1791 0064 42000000 		.4byte	.LBE45
+ 1792 0068 44000000 		.4byte	.LBB49
+ 1793 006c 48000000 		.4byte	.LBE49
+ 1794 0070 00000000 		.4byte	0
+ 1795 0074 00000000 		.4byte	0
+ 1796 0078 12000000 		.4byte	.LBB50
+ 1797 007c 16000000 		.4byte	.LBE50
+ 1798 0080 16000000 		.4byte	.LBB53
+ 1799 0084 1C000000 		.4byte	.LBE53
+ 1800 0088 00000000 		.4byte	0
+ 1801 008c 00000000 		.4byte	0
+ 1802 0090 00000000 		.4byte	.LBB54
+ 1803 0094 04000000 		.4byte	.LBE54
+ 1804 0098 0E000000 		.4byte	.LBB59
+ 1805 009c 10000000 		.4byte	.LBE59
+ 1806 00a0 00000000 		.4byte	0
+ 1807 00a4 00000000 		.4byte	0
+ 1808 00a8 00000000 		.4byte	.LFB0
+ 1809 00ac 7C000000 		.4byte	.LFE0
+ 1810 00b0 00000000 		.4byte	.LFB1
+ 1811 00b4 10000000 		.4byte	.LFE1
+ 1812 00b8 00000000 		.4byte	.LFB2
+ 1813 00bc 28000000 		.4byte	.LFE2
+ 1814 00c0 00000000 		.4byte	.LFB3
+ 1815 00c4 10000000 		.4byte	.LFE3
+ 1816 00c8 00000000 		.4byte	.LFB4
+ 1817 00cc 0C000000 		.4byte	.LFE4
+ 1818 00d0 00000000 		.4byte	.LFB5
+ 1819 00d4 0C000000 		.4byte	.LFE5
+ 1820 00d8 00000000 		.4byte	.LFB6
+ 1821 00dc 0C000000 		.4byte	.LFE6
+ 1822 00e0 00000000 		.4byte	.LFB7
+ 1823 00e4 0C000000 		.4byte	.LFE7
+ 1824 00e8 00000000 		.4byte	.LFB8
+ 1825 00ec 0C000000 		.4byte	.LFE8
+ 1826 00f0 00000000 		.4byte	.LFB9
+ 1827 00f4 14000000 		.4byte	.LFE9
+ 1828 00f8 00000000 		.4byte	.LFB10
+ 1829 00fc 0C000000 		.4byte	.LFE10
+ 1830 0100 00000000 		.4byte	.LFB11
+ 1831 0104 0C000000 		.4byte	.LFE11
+ 1832 0108 00000000 		.4byte	.LFB12
+ 1833 010c 0C000000 		.4byte	.LFE12
+ 1834 0110 00000000 		.4byte	.LFB13
+ 1835 0114 0C000000 		.4byte	.LFE13
+ 1836 0118 00000000 		.4byte	.LFB14
+ 1837 011c 0C000000 		.4byte	.LFE14
+ 1838 0120 00000000 		.4byte	.LFB15
+ 1839 0124 18000000 		.4byte	.LFE15
+ 1840 0128 00000000 		.4byte	.LFB16
+ 1841 012c 20000000 		.4byte	.LFE16
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 45
 
 
- 1421 0299 436F756E 		.ascii	"Counter_1_Init\000"
- 1421      7465725F 
- 1421      315F496E 
- 1421      697400
- 1422              	.LASF39:
- 1423 02a8 6374726C 		.ascii	"ctrl\000"
- 1423      00
- 1424              	.LASF16:
- 1425 02ad 73697A65 		.ascii	"sizetype\000"
- 1425      74797065 
- 1425      00
- 1426              	.LASF25:
- 1427 02b6 436F756E 		.ascii	"Counter_1_WriteCounter\000"
- 1427      7465725F 
- 1427      315F5772 
- 1427      69746543 
- 1427      6F756E74 
- 1428              	.LASF40:
- 1429 02cd 436F756E 		.ascii	"Counter_1_interruptState\000"
- 1429      7465725F 
- 1429      315F696E 
- 1429      74657272 
- 1429      75707453 
- 1430              	.LASF6:
- 1431 02e6 6C6F6E67 		.ascii	"long long int\000"
- 1431      206C6F6E 
- 1431      6720696E 
- 1431      7400
- 1432              	.LASF13:
- 1433 02f4 63686172 		.ascii	"char\000"
- 1433      00
- 1434              	.LASF21:
- 1435 02f9 436F756E 		.ascii	"Counter_1_SetInterruptMode\000"
- 1435      7465725F 
- 1435      315F5365 
- 1435      74496E74 
- 1435      65727275 
- 1436              	.LASF8:
- 1437 0314 756E7369 		.ascii	"unsigned int\000"
- 1437      676E6564 
- 1437      20696E74 
- 1437      00
- 1438              	.LASF2:
- 1439 0321 73686F72 		.ascii	"short int\000"
- 1439      7420696E 
- 1439      7400
- 1440              	.LASF34:
- 1441 032b 436F756E 		.ascii	"Counter_1_ReadCompare\000"
- 1441      7465725F 
- 1441      315F5265 
- 1441      6164436F 
- 1441      6D706172 
- 1442              	.LASF4:
- 1443 0341 6C6F6E67 		.ascii	"long int\000"
- 1443      20696E74 
- 1443      00
- 1444              	.LASF41:
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCVzgX2.s 			page 39
+ 1842 0130 00000000 		.4byte	0
+ 1843 0134 00000000 		.4byte	0
+ 1844              		.section	.debug_line,"",%progbits
+ 1845              	.Ldebug_line0:
+ 1846 0000 1F020000 		.section	.debug_str,"MS",%progbits,1
+ 1846      02005100 
+ 1846      00000201 
+ 1846      FB0E0D00 
+ 1846      01010101 
+ 1847              	.LASF15:
+ 1848 0000 72656731 		.ascii	"reg16\000"
+ 1848      3600
+ 1849              	.LASF44:
+ 1850 0006 443A5C63 		.ascii	"D:\\code\\cypress\\Tarocco\\Tarocco.cydsn\000"
+ 1850      6F64655C 
+ 1850      63797072 
+ 1850      6573735C 
+ 1850      5461726F 
+ 1851              	.LASF17:
+ 1852 002c 436F756E 		.ascii	"Counter_1_ReadCapture\000"
+ 1852      7465725F 
+ 1852      315F5265 
+ 1852      61644361 
+ 1852      70747572 
+ 1853              	.LASF40:
+ 1854 0042 636F6D70 		.ascii	"compareMode\000"
+ 1854      6172654D 
+ 1854      6F646500 
+ 1855              	.LASF43:
+ 1856 004e 47656E65 		.ascii	"Generated_Source\\PSoC4\\Counter_1.c\000"
+ 1856      72617465 
+ 1856      645F536F 
+ 1856      75726365 
+ 1856      5C50536F 
+ 1857              	.LASF21:
+ 1858 0071 70657269 		.ascii	"period\000"
+ 1858      6F6400
+ 1859              	.LASF3:
+ 1860 0078 73686F72 		.ascii	"short unsigned int\000"
+ 1860      7420756E 
+ 1860      7369676E 
+ 1860      65642069 
+ 1860      6E7400
+ 1861              	.LASF33:
+ 1862 008b 436F756E 		.ascii	"Counter_1_WriteControlRegister\000"
+ 1862      7465725F 
+ 1862      315F5772 
+ 1862      69746543 
+ 1862      6F6E7472 
+ 1863              	.LASF27:
+ 1864 00aa 436F756E 		.ascii	"Counter_1_ClearFIFO\000"
+ 1864      7465725F 
+ 1864      315F436C 
+ 1864      65617246 
+ 1864      49464F00 
+ 1865              	.LASF38:
+ 1866 00be 436F756E 		.ascii	"Counter_1_SetCompareMode\000"
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 46
 
 
- 1445 034a 436F756E 		.ascii	"Counter_1_Start\000"
- 1445      7465725F 
- 1445      315F5374 
- 1445      61727400 
- 1446              	.LASF17:
- 1447 035a 436F756E 		.ascii	"Counter_1_Enable\000"
- 1447      7465725F 
- 1447      315F456E 
- 1447      61626C65 
- 1447      00
- 1448              	.LASF0:
- 1449 036b 7369676E 		.ascii	"signed char\000"
- 1449      65642063 
- 1449      68617200 
- 1450              	.LASF33:
- 1451 0377 636F6D70 		.ascii	"compare\000"
- 1451      61726500 
- 1452              	.LASF18:
- 1453 037f 436F756E 		.ascii	"Counter_1_Stop\000"
- 1453      7465725F 
- 1453      315F5374 
- 1453      6F7000
- 1454              	.LASF20:
- 1455 038e 436F756E 		.ascii	"Counter_1_ReadControlRegister\000"
- 1455      7465725F 
- 1455      315F5265 
- 1455      6164436F 
- 1455      6E74726F 
- 1456              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
+ 1866      7465725F 
+ 1866      315F5365 
+ 1866      74436F6D 
+ 1866      70617265 
+ 1867              	.LASF42:
+ 1868 00d7 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1868      4320342E 
+ 1868      392E3320 
+ 1868      32303135 
+ 1868      30333033 
+ 1869 010a 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 1869      20726576 
+ 1869      6973696F 
+ 1869      6E203232 
+ 1869      31323230 
+ 1870 013d 32202D73 		.ascii	"2 -std=gnu99 -ffunction-sections -ffat-lto-objects\000"
+ 1870      74643D67 
+ 1870      6E753939 
+ 1870      202D6666 
+ 1870      756E6374 
+ 1871              	.LASF35:
+ 1872 0170 436F756E 		.ascii	"Counter_1_ReadCounter\000"
+ 1872      7465725F 
+ 1872      315F5265 
+ 1872      6164436F 
+ 1872      756E7465 
+ 1873              	.LASF11:
+ 1874 0186 666C6F61 		.ascii	"float\000"
+ 1874      7400
+ 1875              	.LASF22:
+ 1876 018c 636F756E 		.ascii	"counter\000"
+ 1876      74657200 
+ 1877              	.LASF7:
+ 1878 0194 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1878      206C6F6E 
+ 1878      6720756E 
+ 1878      7369676E 
+ 1878      65642069 
+ 1879              	.LASF1:
+ 1880 01ab 756E7369 		.ascii	"unsigned char\000"
+ 1880      676E6564 
+ 1880      20636861 
+ 1880      7200
+ 1881              	.LASF14:
+ 1882 01b9 72656738 		.ascii	"reg8\000"
+ 1882      00
+ 1883              	.LASF25:
+ 1884 01be 436F756E 		.ascii	"Counter_1_WriteCompare\000"
+ 1884      7465725F 
+ 1884      315F5772 
+ 1884      69746543 
+ 1884      6F6D7061 
+ 1885              	.LASF5:
+ 1886 01d5 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1886      20756E73 
+ 1886      69676E65 
+ 1886      6420696E 
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 47
+
+
+ 1886      7400
+ 1887              	.LASF9:
+ 1888 01e7 75696E74 		.ascii	"uint8\000"
+ 1888      3800
+ 1889              	.LASF39:
+ 1890 01ed 636F6E74 		.ascii	"control\000"
+ 1890      726F6C00 
+ 1891              	.LASF24:
+ 1892 01f5 696E7465 		.ascii	"interruptsMask\000"
+ 1892      72727570 
+ 1892      74734D61 
+ 1892      736B00
+ 1893              	.LASF46:
+ 1894 0204 436F756E 		.ascii	"Counter_1_initVar\000"
+ 1894      7465725F 
+ 1894      315F696E 
+ 1894      69745661 
+ 1894      7200
+ 1895              	.LASF18:
+ 1896 0216 436F756E 		.ascii	"Counter_1_ReadStatusRegister\000"
+ 1896      7465725F 
+ 1896      315F5265 
+ 1896      61645374 
+ 1896      61747573 
+ 1897              	.LASF12:
+ 1898 0233 646F7562 		.ascii	"double\000"
+ 1898      6C6500
+ 1899              	.LASF10:
+ 1900 023a 75696E74 		.ascii	"uint16\000"
+ 1900      313600
+ 1901              	.LASF19:
+ 1902 0241 436F756E 		.ascii	"Counter_1_WritePeriod\000"
+ 1902      7465725F 
+ 1902      315F5772 
+ 1902      69746550 
+ 1902      6572696F 
+ 1903              	.LASF41:
+ 1904 0257 4379456E 		.ascii	"CyEnterCriticalSection\000"
+ 1904      74657243 
+ 1904      72697469 
+ 1904      63616C53 
+ 1904      65637469 
+ 1905              	.LASF36:
+ 1906 026e 436F756E 		.ascii	"Counter_1_ReadPeriod\000"
+ 1906      7465725F 
+ 1906      315F5265 
+ 1906      61645065 
+ 1906      72696F64 
+ 1907              	.LASF47:
+ 1908 0283 43794578 		.ascii	"CyExitCriticalSection\000"
+ 1908      69744372 
+ 1908      69746963 
+ 1908      616C5365 
+ 1908      6374696F 
+ 1909              	.LASF31:
+ 1910 0299 436F756E 		.ascii	"Counter_1_Init\000"
+ 1910      7465725F 
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 48
+
+
+ 1910      315F496E 
+ 1910      697400
+ 1911              	.LASF29:
+ 1912 02a8 6374726C 		.ascii	"ctrl\000"
+ 1912      00
+ 1913              	.LASF16:
+ 1914 02ad 73697A65 		.ascii	"sizetype\000"
+ 1914      74797065 
+ 1914      00
+ 1915              	.LASF20:
+ 1916 02b6 436F756E 		.ascii	"Counter_1_WriteCounter\000"
+ 1916      7465725F 
+ 1916      315F5772 
+ 1916      69746543 
+ 1916      6F756E74 
+ 1917              	.LASF30:
+ 1918 02cd 436F756E 		.ascii	"Counter_1_interruptState\000"
+ 1918      7465725F 
+ 1918      315F696E 
+ 1918      74657272 
+ 1918      75707453 
+ 1919              	.LASF6:
+ 1920 02e6 6C6F6E67 		.ascii	"long long int\000"
+ 1920      206C6F6E 
+ 1920      6720696E 
+ 1920      7400
+ 1921              	.LASF13:
+ 1922 02f4 63686172 		.ascii	"char\000"
+ 1922      00
+ 1923              	.LASF23:
+ 1924 02f9 436F756E 		.ascii	"Counter_1_SetInterruptMode\000"
+ 1924      7465725F 
+ 1924      315F5365 
+ 1924      74496E74 
+ 1924      65727275 
+ 1925              	.LASF8:
+ 1926 0314 756E7369 		.ascii	"unsigned int\000"
+ 1926      676E6564 
+ 1926      20696E74 
+ 1926      00
+ 1927              	.LASF2:
+ 1928 0321 73686F72 		.ascii	"short int\000"
+ 1928      7420696E 
+ 1928      7400
+ 1929              	.LASF37:
+ 1930 032b 436F756E 		.ascii	"Counter_1_ReadCompare\000"
+ 1930      7465725F 
+ 1930      315F5265 
+ 1930      6164436F 
+ 1930      6D706172 
+ 1931              	.LASF4:
+ 1932 0341 6C6F6E67 		.ascii	"long int\000"
+ 1932      20696E74 
+ 1932      00
+ 1933              	.LASF32:
+ 1934 034a 436F756E 		.ascii	"Counter_1_Start\000"
+ 1934      7465725F 
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccS4tpgG.s 			page 49
+
+
+ 1934      315F5374 
+ 1934      61727400 
+ 1935              	.LASF28:
+ 1936 035a 436F756E 		.ascii	"Counter_1_Enable\000"
+ 1936      7465725F 
+ 1936      315F456E 
+ 1936      61626C65 
+ 1936      00
+ 1937              	.LASF0:
+ 1938 036b 7369676E 		.ascii	"signed char\000"
+ 1938      65642063 
+ 1938      68617200 
+ 1939              	.LASF26:
+ 1940 0377 636F6D70 		.ascii	"compare\000"
+ 1940      61726500 
+ 1941              	.LASF45:
+ 1942 037f 436F756E 		.ascii	"Counter_1_Stop\000"
+ 1942      7465725F 
+ 1942      315F5374 
+ 1942      6F7000
+ 1943              	.LASF34:
+ 1944 038e 436F756E 		.ascii	"Counter_1_ReadControlRegister\000"
+ 1944      7465725F 
+ 1944      315F5265 
+ 1944      6164436F 
+ 1944      6E74726F 
+ 1945              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

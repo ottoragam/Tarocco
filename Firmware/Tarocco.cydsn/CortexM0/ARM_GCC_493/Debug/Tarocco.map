@@ -3,7 +3,7 @@ Archive member included because of file (symbol)
 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(cyfitter_cfg.o)
                               .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o (cyfitter_cfg)
 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
-                              .\CortexM0\ARM_GCC_493\Debug\main.o (PWM_MOT_WriteCompare)
+                              .\CortexM0\ARM_GCC_493\Debug\main.o (PWM_MOT_Start)
 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(phase.o)
                               .\CortexM0\ARM_GCC_493\Debug\main.o (phase_Write)
 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(sleep.o)
@@ -35,13 +35,13 @@ Archive member included because of file (symbol)
 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(EEPROM.o)
                               .\CortexM0\ARM_GCC_493\Debug\main.o (EEPROM_Start)
 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
-                              .\CortexM0\ARM_GCC_493\Debug\main.o (Counter_1_WriteCounter)
+                              .\CortexM0\ARM_GCC_493\Debug\main.o (Counter_1_Start)
 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
                               .\CortexM0\ARM_GCC_493\Debug\main.o (pwmISR_StartEx)
 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyFlash.o)
                               .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(EEPROM.o) (CySysFlashWriteRow)
 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
-                              .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(cyfitter_cfg.o) (CyIntEnable)
+                              .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(cyfitter_cfg.o) (CySysClkWriteImoFreq)
 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
                               .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(cyfitter_cfg.o) (CySysWdtIsr)
 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(vin.o)
@@ -127,7 +127,11 @@ Discarded input sections
  .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\main.o
  .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\main.o
  .text.ffast_itoa
-                0x00000000       0x84 .\CortexM0\ARM_GCC_493\Debug\main.o
+                0x00000000       0x94 .\CortexM0\ARM_GCC_493\Debug\main.o
+ .text.transmitting
+                0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\main.o
+ .text.transmit_data
+                0x00000000       0x28 .\CortexM0\ARM_GCC_493\Debug\main.o
  .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
  .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
  .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
@@ -135,7 +139,7 @@ Discarded input sections
  .data          0x00000000        0x4 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
  .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
  .text._exit    0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
- .text._sbrk    0x00000000       0x30 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+ .text._sbrk    0x00000000       0x2c .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
  .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\cybootloader.o
  .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\cybootloader.o
  .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\cybootloader.o
@@ -146,6 +150,8 @@ Discarded input sections
                 0x00000000       0x20 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(cyfitter_cfg.o)
  .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
  .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
+ .text.PWM_MOT_Init
+                0x00000000       0x5c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
  .text.PWM_MOT_Stop
                 0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
  .text.PWM_MOT_SetMode
@@ -166,10 +172,14 @@ Discarded input sections
                 0x00000000       0x2c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
  .text.PWM_MOT_SetPWMInvert
                 0x00000000       0x28 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
+ .text.PWM_MOT_WriteCounter
+                0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
  .text.PWM_MOT_ReadCounter
                 0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
  .text.PWM_MOT_SetCounterMode
                 0x00000000       0x28 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
+ .text.PWM_MOT_WritePeriod
+                0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
  .text.PWM_MOT_ReadPeriod
                 0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
  .text.PWM_MOT_SetCompareSwap
@@ -200,8 +210,12 @@ Discarded input sections
                 0x00000000       0x24 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
  .text.PWM_MOT_SetCountMode
                 0x00000000       0x24 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
+ .text.PWM_MOT_TriggerCommand
+                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
  .text.PWM_MOT_ReadStatus
                 0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
+ .text.PWM_MOT_SetInterruptMode
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
  .text.PWM_MOT_GetInterruptSourceMasked
                 0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
  .text.PWM_MOT_GetInterruptSource
@@ -240,7 +254,7 @@ Discarded input sections
  .text.fault_SetDriveMode
                 0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(fault.o)
  .text.fault_Write
-                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(fault.o)
+                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(fault.o)
  .text.fault_ReadDataReg
                 0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(fault.o)
  .text.fault_SetInterruptMode
@@ -253,7 +267,7 @@ Discarded input sections
  .text.ovc_SetDriveMode
                 0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ovc.o)
  .text.ovc_Write
-                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ovc.o)
+                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ovc.o)
  .text.ovc_ReadDataReg
                 0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ovc.o)
  .text.ovc_SetInterruptMode
@@ -262,6 +276,8 @@ Discarded input sections
                 0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ovc.o)
  .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC.o)
  .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC.o)
+ .text.ADC_Enable
+                0x00000000       0x20 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC.o)
  .text.ADC_Stop
                 0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC.o)
  .text.ADC_StartConvert
@@ -269,7 +285,7 @@ Discarded input sections
  .text.ADC_StopConvert
                 0x00000000        0x4 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC.o)
  .text.ADC_IsEndConversion
-                0x00000000       0x28 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC.o)
+                0x00000000       0x2c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC.o)
  .text.ADC_SetChanMask
                 0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC.o)
  .text.ADC_SetLowLimit
@@ -285,7 +301,7 @@ Discarded input sections
  .text.ADC_SetGain
                 0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC.o)
  .text.ADC_CountsTo_mVolts
-                0x00000000       0x5c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC.o)
+                0x00000000       0x54 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC.o)
  .text.ADC_CountsTo_uVolts
                 0x00000000       0x40 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC.o)
  .text.ADC_CountsTo_Volts
@@ -295,8 +311,10 @@ Discarded input sections
  .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC_INT.o)
  .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART.o)
  .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART.o)
- .text.UART_ScbModeStop
+ .text.UART_Init
                 0x00000000        0x8 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART.o)
+ .text.UART_Enable
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART.o)
  .text.UART_Stop
                 0x00000000       0x20 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART.o)
  .text.UART_SetRxFifoLevel
@@ -311,7 +329,7 @@ Discarded input sections
  .text.UART_SpiUartClearRxBuffer
                 0x00000000       0x20 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_SPI_UART.o)
  .text.UART_SpiUartPutArray
-                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_SPI_UART.o)
+                0x00000000       0x2c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_SPI_UART.o)
  .text.UART_SpiUartGetTxBufferSize
                 0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_SPI_UART.o)
  .text.UART_SpiUartClearTxBuffer
@@ -332,7 +350,7 @@ Discarded input sections
  .text.UART_UartGetByte
                 0x00000000       0x30 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_UART.o)
  .text.UART_UartPutString
-                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_UART.o)
+                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_UART.o)
  .text.UART_UartPutCRLF
                 0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_UART.o)
  .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(reset.o)
@@ -341,7 +359,7 @@ Discarded input sections
  .text.reset_SetDriveMode
                 0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(reset.o)
  .text.reset_Write
-                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(reset.o)
+                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(reset.o)
  .text.reset_ReadDataReg
                 0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(reset.o)
  .text.reset_SetInterruptMode
@@ -366,22 +384,30 @@ Discarded input sections
  .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(rxISR.o)
  .text.rxISR_Interrupt
                 0x00000000        0x4 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(rxISR.o)
+ .text.rxISR_Stop
+                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(rxISR.o)
+ .text.rxISR_SetVector
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(rxISR.o)
  .text.rxISR_GetVector
                 0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(rxISR.o)
+ .text.rxISR_Start
+                0x00000000       0x2c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(rxISR.o)
  .text.rxISR_GetPriority
                 0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(rxISR.o)
+ .text.rxISR_Enable
+                0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(rxISR.o)
  .text.rxISR_GetState
-                0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(rxISR.o)
- .text.rxISR_Start
-                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(rxISR.o)
- .text.rxISR_Stop
-                0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(rxISR.o)
+                0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(rxISR.o)
+ .text.rxISR_Disable
+                0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(rxISR.o)
  .text.rxISR_SetPending
                 0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(rxISR.o)
  .text.rxISR_ClearPending
                 0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(rxISR.o)
  .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
  .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
+ .text.TX_SEND_Init
+                0x00000000       0x38 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
  .text.TX_SEND_Stop
                 0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
  .text.TX_SEND_SetMode
@@ -402,10 +428,14 @@ Discarded input sections
                 0x00000000       0x2c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
  .text.TX_SEND_SetPWMInvert
                 0x00000000       0x28 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
+ .text.TX_SEND_WriteCounter
+                0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
  .text.TX_SEND_ReadCounter
                 0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
  .text.TX_SEND_SetCounterMode
                 0x00000000       0x28 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
+ .text.TX_SEND_WritePeriod
+                0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
  .text.TX_SEND_ReadPeriod
                 0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
  .text.TX_SEND_SetCompareSwap
@@ -438,8 +468,12 @@ Discarded input sections
                 0x00000000       0x24 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
  .text.TX_SEND_SetCountMode
                 0x00000000       0x24 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
+ .text.TX_SEND_TriggerCommand
+                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
  .text.TX_SEND_ReadStatus
                 0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
+ .text.TX_SEND_SetInterruptMode
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
  .text.TX_SEND_GetInterruptSourceMasked
                 0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
  .text.TX_SEND_GetInterruptSource
@@ -453,16 +487,22 @@ Discarded input sections
  .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(txISR.o)
  .text.txISR_Interrupt
                 0x00000000        0x4 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(txISR.o)
+ .text.txISR_Stop
+                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(txISR.o)
+ .text.txISR_SetVector
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(txISR.o)
  .text.txISR_GetVector
                 0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(txISR.o)
+ .text.txISR_Start
+                0x00000000       0x2c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(txISR.o)
  .text.txISR_GetPriority
                 0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(txISR.o)
+ .text.txISR_Enable
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(txISR.o)
  .text.txISR_GetState
                 0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(txISR.o)
- .text.txISR_Start
-                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(txISR.o)
- .text.txISR_Stop
-                0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(txISR.o)
+ .text.txISR_Disable
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(txISR.o)
  .text.txISR_SetPending
                 0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(txISR.o)
  .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(EEPROM.o)
@@ -472,33 +512,53 @@ Discarded input sections
                 0x00000000        0x4 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(EEPROM.o)
  .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
  .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
+ .text.Counter_1_Enable
+                0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
  .text.Counter_1_Stop
                 0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
+ .text.Counter_1_SetInterruptMode
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
+ .text.Counter_1_ReadStatusRegister
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
  .text.Counter_1_ReadControlRegister
                 0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
  .text.Counter_1_WriteControlRegister
                 0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
+ .text.Counter_1_ReadCapture
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
+ .text.Counter_1_WritePeriod
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
  .text.Counter_1_ReadPeriod
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
+ .text.Counter_1_WriteCompare
                 0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
  .text.Counter_1_ReadCompare
                 0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
  .text.Counter_1_SetCompareMode
                 0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
+ .text.Counter_1_ClearFIFO
+                0x00000000       0x20 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
  .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
  .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
  .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
  .text.pwmISR_Interrupt
                 0x00000000        0x4 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
+ .text.pwmISR_Stop
+                0x00000000       0x20 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
+ .text.pwmISR_SetVector
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
  .text.pwmISR_GetVector
                 0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
+ .text.pwmISR_Start
+                0x00000000       0x30 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
  .text.pwmISR_GetPriority
                 0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
+ .text.pwmISR_Enable
+                0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
  .text.pwmISR_GetState
-                0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
- .text.pwmISR_Start
-                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
- .text.pwmISR_Stop
-                0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
+                0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
+ .text.pwmISR_Disable
+                0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
  .text.pwmISR_SetPending
                 0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
  .text.pwmISR_ClearPending
@@ -506,9 +566,11 @@ Discarded input sections
  .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyFlash.o)
  .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyFlash.o)
  .text.CySysFlashSetWaitCycles
-                0x00000000       0x34 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyFlash.o)
+                0x00000000       0x30 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyFlash.o)
  .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
  .bss           0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
+ .text.CySysTickServiceCallbacks
+                0x00000000       0x28 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
  .text.CySysClkImoStart
                 0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
  .text.CySysClkImoStop
@@ -516,9 +578,11 @@ Discarded input sections
  .text.CySysClkWriteHfclkDirect
                 0x00000000       0x20 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
  .text.CySysClkGetSysclkSource
-                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
  .text.CySysClkWriteSysclkDiv
                 0x00000000       0x28 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
+ .text.CySysLvdEnable
+                0x00000000       0x50 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
  .text.CySysLvdDisable
                 0x00000000       0x20 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
  .text.CySysLvdGetInterruptSource
@@ -531,6 +595,14 @@ Discarded input sections
                 0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
  .text.CyEnableInts
                 0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
+ .text.CyIntSetSysVector
+                0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
+ .text.CyIntGetSysVector
+                0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
+ .text.CyIntGetVector
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
+ .text.CyIntGetPriority
+                0x00000000       0x28 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
  .text.CyIntGetState
                 0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
  .text.CyIntDisable
@@ -539,26 +611,20 @@ Discarded input sections
                 0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
  .text.CyIntClearPending
                 0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
- .text.CyIntSetSysVector
-                0x00000000       0x20 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
- .text.CyIntGetSysVector
-                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
- .text.CyIntGetVector
-                0x00000000       0x20 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
- .text.CyIntGetPriority
-                0x00000000       0x2c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
  .text.CySoftwareReset
                 0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
- .text.CySysLvdEnable
-                0x00000000       0x44 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
  .text.CyDelayFreq
-                0x00000000       0x4c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
+                0x00000000       0x58 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
+ .text.CySysTickStart
+                0x00000000       0x70 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
+ .text.CySysTickInit
+                0x00000000       0x50 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
+ .text.CySysTickEnable
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
  .text.CySysTickStop
                 0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
  .text.CySysTickEnableInterrupt
                 0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
- .text.CySysTickEnable
-                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
  .text.CySysTickDisableInterrupt
                 0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
  .text.CySysTickSetReload
@@ -569,14 +635,8 @@ Discarded input sections
                 0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
  .text.CySysTickGetCountFlag
                 0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
- .text.CySysTickServiceCallbacks
-                0x00000000       0x28 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
  .text.CySysTickClear
                 0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
- .text.CySysTickInit
-                0x00000000       0x44 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
- .text.CySysTickStart
-                0x00000000       0x20 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
  .text.CySysTickSetCallback
                 0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
  .text.CySysTickGetCallback
@@ -584,8 +644,6 @@ Discarded input sections
  .text.CyGetUniqueId
                 0x00000000       0x70 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
  .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
- .text.CySysClkIloEnabled
-                0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
  .text.CySysClkIloStart
                 0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
  .text.CySysClkIloStartMeasurement
@@ -593,13 +651,11 @@ Discarded input sections
  .text.CySysClkIloStopMeasurement
                 0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
  .text.CySysClkIloCompensate
-                0x00000000      0x108 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
+                0x00000000       0xf8 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
  .text.CySysWdtGetEnabledStatus
                 0x00000000       0x24 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
  .text.CySysWdtSetMode
-                0x00000000       0x38 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
- .text.CySysClkLfclkPosedgeRestore
-                0x00000000       0x2c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
+                0x00000000       0x3c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
  .text.CySysWdtGetMode
                 0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
  .text.CySysWdtSetClearOnMatch
@@ -607,9 +663,9 @@ Discarded input sections
  .text.CySysWdtGetClearOnMatch
                 0x00000000       0x24 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
  .text.CySysWdtEnable
-                0x00000000       0x40 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
+                0x00000000       0x4c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
  .text.CySysWdtDisable
-                0x00000000       0x44 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
+                0x00000000       0x4c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
  .text.CySysWdtSetCascade
                 0x00000000       0x34 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
  .text.CySysWdtGetCascade
@@ -617,21 +673,19 @@ Discarded input sections
  .text.CySysWdtSetMatch
                 0x00000000       0x3c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
  .text.CySysWdtSetToggleBit
-                0x00000000       0x2c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
+                0x00000000       0x28 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
  .text.CySysWdtGetToggleBit
                 0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
  .text.CySysWdtGetMatch
                 0x00000000       0x20 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
  .text.CySysWdtGetCount
-                0x00000000       0x3c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
- .text.CySysClkLfclkPosedgeCatch
-                0x00000000       0x74 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
- .text.CySysClkIloStop
                 0x00000000       0x38 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
+ .text.CySysClkIloStop
+                0x00000000       0xc4 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
  .text.CySysWdtGetInterruptSource
                 0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
  .text.CySysWdtResetCounters
-                0x00000000       0x20 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
+                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
  .text.CySysWdtSetInterruptCallback
                 0x00000000       0x20 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
  .text.CySysWdtGetInterruptCallback
@@ -641,9 +695,9 @@ Discarded input sections
  .text.CySysWdtDisableCounterIsr
                 0x00000000       0x28 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
  .text.CySysWatchdogFeed
-                0x00000000       0x60 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
+                0x00000000       0x7c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
  .text.CySysTimerDelayUntilMatch
-                0x00000000       0x6c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
+                0x00000000       0x78 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
  .text.CySysTimerDelay
                 0x00000000       0x3c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
  .rodata        0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
@@ -817,345 +871,237 @@ END GROUP
                 0x20001000                PROVIDE (__cy_stack, (ORIGIN (ram) + 0x1000))
                 0x20000f00                PROVIDE (__cy_heap_end, (__cy_stack - 0x100))
 
-.cybootloader   0x00000000     0x1700
+.cybootloader   0x00000000     0x1380
  *(.cybootloader)
- .cybootloader  0x00000000     0x1700 .\CortexM0\ARM_GCC_493\Debug\cybootloader.o
+ .cybootloader  0x00000000     0x1380 .\CortexM0\ARM_GCC_493\Debug\cybootloader.o
                 0x00000000                cy_bootloader
-                0x00001700                appl1_start = CY_APPL_ORIGIN?CY_APPL_ORIGIN:ALIGN (CY_FLASH_ROW_SIZE)
-                0x00004b00                appl2_start = (appl1_start + ALIGN ((((0x8000 - appl1_start) - (0x2 * CY_FLASH_ROW_SIZE)) / 0x2), CY_FLASH_ROW_SIZE))
-                0x00001700                appl_start = (CY_APPL_NUM == 0x1)?appl1_start:appl2_start
+                0x00001380                appl1_start = CY_APPL_ORIGIN?CY_APPL_ORIGIN:ALIGN (CY_FLASH_ROW_SIZE)
+                0x00004980                appl2_start = (appl1_start + ALIGN ((((0x8000 - appl1_start) - (0x2 * CY_FLASH_ROW_SIZE)) / 0x2), CY_FLASH_ROW_SIZE))
+                0x00001380                appl_start = (CY_APPL_NUM == 0x1)?appl1_start:appl2_start
                 0x00000000                cy_project_type_bootloader = (appl_start == 0x0)?0x1:0x0
                 0x00000000                cy_project_type_app_for_stack_and_copier = (CY_APP_FOR_STACK_AND_COPIER == 0x1)?0x1:0x0
 
-.text           0x00001700     0x19dc
+.text           0x00001380     0x1854
  CREATE_OBJECT_SYMBOLS
-                0x00001700                PROVIDE (__cy_interrupt_vector, RomVectors)
+                0x00001380                PROVIDE (__cy_interrupt_vector, RomVectors)
  *(.romvectors)
- .romvectors    0x00001700       0x10 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
-                0x00001700                RomVectors
+ .romvectors    0x00001380       0x10 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+                0x00001380                RomVectors
                 0x00000001                ASSERT ((. != __cy_interrupt_vector), No interrupt vector)
                 0x00000001                ASSERT (CY_APPL_ORIGIN?(SIZEOF (.cybootloader) <= CY_APPL_ORIGIN):0x1, Wrong image location)
-                0x00001710                PROVIDE (__cy_reset, Reset)
+                0x00001390                PROVIDE (__cy_reset, Reset)
  *(.text.Reset)
- .text.Reset    0x00001710       0x10 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
-                0x00001710                Reset
+ .text.Reset    0x00001390       0x10 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+                0x00001390                Reset
                 0x00000001                ASSERT ((. != __cy_reset), No reset code)
  *(.psocinit)
- .psocinit      0x00001720      0x23c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(cyfitter_cfg.o)
-                0x000017ec                cyfitter_cfg
-                0x0000195c                . = MAX (., 0x100)
+ .psocinit      0x000013a0      0x254 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(cyfitter_cfg.o)
+                0x000013a0                cyfitter_cfg
+                0x000015f4                . = MAX (., 0x100)
  *(.text .text.* .gnu.linkonce.t.*)
- .text          0x0000195c       0x60 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
+ .text          0x000015f4       0x60 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
  .text.transmitUpdate
-                0x000019bc       0x14 .\CortexM0\ARM_GCC_493\Debug\main.o
-                0x000019bc                transmitUpdate
+                0x00001654       0x14 .\CortexM0\ARM_GCC_493\Debug\main.o
+                0x00001654                transmitUpdate
  .text.pwmCycle
-                0x000019d0       0x14 .\CortexM0\ARM_GCC_493\Debug\main.o
-                0x000019d0                pwmCycle
+                0x00001668       0x14 .\CortexM0\ARM_GCC_493\Debug\main.o
+                0x00001668                pwmCycle
  .text.fast_itoa
-                0x000019e4       0x48 .\CortexM0\ARM_GCC_493\Debug\main.o
-                0x000019e4                fast_itoa
- .text.transmitting
-                0x00001a2c       0x10 .\CortexM0\ARM_GCC_493\Debug\main.o
-                0x00001a2c                transmitting
- .text.transmit_data
-                0x00001a3c       0x2c .\CortexM0\ARM_GCC_493\Debug\main.o
-                0x00001a3c                transmit_data
- .text.main     0x00001a68      0x38c .\CortexM0\ARM_GCC_493\Debug\main.o
-                0x00001a68                main
+                0x0000167c       0x48 .\CortexM0\ARM_GCC_493\Debug\main.o
+                0x0000167c                fast_itoa
+ .text.startup.main
+                0x000016c4      0x3e0 .\CortexM0\ARM_GCC_493\Debug\main.o
+                0x000016c4                main
  .text.transmit_engine
-                0x00001df4       0xc4 .\CortexM0\ARM_GCC_493\Debug\main.o
-                0x00001df4                transmit_engine
+                0x00001aa4       0x94 .\CortexM0\ARM_GCC_493\Debug\main.o
+                0x00001aa4                transmit_engine
  .text.uartReceiveTransmit
-                0x00001eb8       0x90 .\CortexM0\ARM_GCC_493\Debug\main.o
-                0x00001eb8                uartReceiveTransmit
+                0x00001b38       0x8c .\CortexM0\ARM_GCC_493\Debug\main.o
+                0x00001b38                uartReceiveTransmit
  .text.IntDefaultHandler
-                0x00001f48        0x4 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
-                0x00001f48                IntDefaultHandler
- .text.Start_c  0x00001f4c       0x48 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
-                0x00001f4c                Start_c
- .text.initialize_psoc
-                0x00001f94       0x58 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
-                0x00001f94                initialize_psoc
- .text.cfg_write_bytes32
-                0x00001fec       0x34 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(cyfitter_cfg.o)
- .text.AnalogSetDefault
-                0x00002020        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(cyfitter_cfg.o)
- .text.CYMEMZERO
-                0x0000202c        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(cyfitter_cfg.o)
- .text.CYCONFIGCPYCODE
-                0x00002038        0x8 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(cyfitter_cfg.o)
- .text.PWM_MOT_WriteCounter
-                0x00002040       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
-                0x00002040                PWM_MOT_WriteCounter
- .text.PWM_MOT_WritePeriod
-                0x00002050       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
-                0x00002050                PWM_MOT_WritePeriod
- .text.PWM_MOT_WriteCompare
-                0x00002060       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
-                0x00002060                PWM_MOT_WriteCompare
- .text.PWM_MOT_TriggerCommand
-                0x00002070       0x1c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
-                0x00002070                PWM_MOT_TriggerCommand
+                0x00001bc4        0x4 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+                0x00001bc4                IntDefaultHandler
+ .text.Start_c  0x00001bc8       0x4c .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+                0x00001bc8                Start_c
+ .text.startup.initialize_psoc
+                0x00001c14       0x60 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+                0x00001c14                initialize_psoc
  .text.PWM_MOT_Enable
-                0x0000208c       0x24 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
-                0x0000208c                PWM_MOT_Enable
- .text.PWM_MOT_SetInterruptMode
-                0x000020b0        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
-                0x000020b0                PWM_MOT_SetInterruptMode
- .text.PWM_MOT_Init
-                0x000020bc       0x50 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
-                0x000020bc                PWM_MOT_Init
+                0x00001c74       0x30 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
+                0x00001c74                PWM_MOT_Enable
  .text.PWM_MOT_Start
-                0x0000210c       0x20 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
-                0x0000210c                PWM_MOT_Start
+                0x00001ca4       0x6c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
+                0x00001ca4                PWM_MOT_Start
+ .text.PWM_MOT_WriteCompare
+                0x00001d10       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
+                0x00001d10                PWM_MOT_WriteCompare
  .text.PWM_MOT_ClearInterrupt
-                0x0000212c        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
-                0x0000212c                PWM_MOT_ClearInterrupt
+                0x00001d20        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
+                0x00001d20                PWM_MOT_ClearInterrupt
  .text.phase_Write
-                0x00002138       0x18 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(phase.o)
-                0x00002138                phase_Write
+                0x00001d2c       0x18 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(phase.o)
+                0x00001d2c                phase_Write
  .text.sleep_Write
-                0x00002150       0x18 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(sleep.o)
-                0x00002150                sleep_Write
+                0x00001d44       0x1c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(sleep.o)
+                0x00001d44                sleep_Write
  .text.fault_Read
-                0x00002168       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(fault.o)
-                0x00002168                fault_Read
+                0x00001d60       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(fault.o)
+                0x00001d60                fault_Read
  .text.ovc_Read
-                0x00002178       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ovc.o)
-                0x00002178                ovc_Read
+                0x00001d70       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ovc.o)
+                0x00001d70                ovc_Read
  .text.ADC_Init
-                0x00002188      0x108 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC.o)
-                0x00002188                ADC_Init
- .text.ADC_Enable
-                0x00002290       0x24 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC.o)
-                0x00002290                ADC_Enable
+                0x00001d80       0xf4 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC.o)
+                0x00001d80                ADC_Init
  .text.ADC_Start
-                0x000022b4       0x20 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC.o)
-                0x000022b4                ADC_Start
+                0x00001e74       0x38 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC.o)
+                0x00001e74                ADC_Start
  .text.ADC_GetResult16
-                0x000022d4       0x2c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC.o)
-                0x000022d4                ADC_GetResult16
- .text.ADC_ISR  0x00002300        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC_INT.o)
-                0x00002300                ADC_ISR
- .text.UART_ScbModePostEnable
-                0x0000230c        0x8 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART.o)
- .text.UART_Init
-                0x00002314        0x8 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART.o)
-                0x00002314                UART_Init
- .text.UART_Enable
-                0x0000231c       0x18 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART.o)
-                0x0000231c                UART_Enable
+                0x00001eac       0x20 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC.o)
+                0x00001eac                ADC_GetResult16
+ .text.ADC_ISR  0x00001ecc        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC_INT.o)
+                0x00001ecc                ADC_ISR
  .text.UART_Start
-                0x00002334       0x20 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART.o)
-                0x00002334                UART_Start
+                0x00001ed8       0x2c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART.o)
+                0x00001ed8                UART_Start
  .text.UART_SpiUartReadRxData
-                0x00002354        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_SPI_UART.o)
-                0x00002354                UART_SpiUartReadRxData
+                0x00001f04        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_SPI_UART.o)
+                0x00001f04                UART_SpiUartReadRxData
  .text.UART_SpiUartGetRxBufferSize
-                0x00002360       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_SPI_UART.o)
-                0x00002360                UART_SpiUartGetRxBufferSize
+                0x00001f10       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_SPI_UART.o)
+                0x00001f10                UART_SpiUartGetRxBufferSize
  .text.UART_SpiUartWriteTxData
-                0x00002370       0x1c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_SPI_UART.o)
-                0x00002370                UART_SpiUartWriteTxData
+                0x00001f20       0x1c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_SPI_UART.o)
+                0x00001f20                UART_SpiUartWriteTxData
  .text.UART_UartInit
-                0x0000238c       0x9c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_UART.o)
-                0x0000238c                UART_UartInit
+                0x00001f3c       0x9c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_UART.o)
+                0x00001f3c                UART_UartInit
  .text.UART_UartPostEnable
-                0x00002428       0x24 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_UART.o)
-                0x00002428                UART_UartPostEnable
+                0x00001fd8       0x24 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_UART.o)
+                0x00001fd8                UART_UartPostEnable
  .text.UART_UartGetChar
-                0x0000244c       0x2c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_UART.o)
-                0x0000244c                UART_UartGetChar
+                0x00001ffc       0x2c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_UART.o)
+                0x00001ffc                UART_UartGetChar
  .text.reset_Read
-                0x00002478       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(reset.o)
-                0x00002478                reset_Read
+                0x00002028       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(reset.o)
+                0x00002028                reset_Read
  .text.error_Write
-                0x00002488       0x18 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(error.o)
-                0x00002488                error_Write
- .text.rxISR_SetVector
-                0x000024a0        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(rxISR.o)
-                0x000024a0                rxISR_SetVector
+                0x00002038       0x1c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(error.o)
+                0x00002038                error_Write
  .text.rxISR_SetPriority
-                0x000024ac       0x20 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(rxISR.o)
-                0x000024ac                rxISR_SetPriority
- .text.rxISR_Enable
-                0x000024cc       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(rxISR.o)
-                0x000024cc                rxISR_Enable
- .text.rxISR_Disable
-                0x000024dc       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(rxISR.o)
-                0x000024dc                rxISR_Disable
+                0x00002054       0x20 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(rxISR.o)
+                0x00002054                rxISR_SetPriority
  .text.rxISR_StartEx
-                0x000024ec       0x1c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(rxISR.o)
-                0x000024ec                rxISR_StartEx
- .text.TX_SEND_WriteCounter
-                0x00002508       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
-                0x00002508                TX_SEND_WriteCounter
- .text.TX_SEND_WritePeriod
-                0x00002518       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
-                0x00002518                TX_SEND_WritePeriod
- .text.TX_SEND_TriggerCommand
-                0x00002528       0x1c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
-                0x00002528                TX_SEND_TriggerCommand
+                0x00002074       0x28 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(rxISR.o)
+                0x00002074                rxISR_StartEx
  .text.TX_SEND_Enable
-                0x00002544       0x24 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
-                0x00002544                TX_SEND_Enable
- .text.TX_SEND_SetInterruptMode
-                0x00002568        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
-                0x00002568                TX_SEND_SetInterruptMode
- .text.TX_SEND_Init
-                0x00002574       0x30 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
-                0x00002574                TX_SEND_Init
+                0x0000209c       0x30 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
+                0x0000209c                TX_SEND_Enable
  .text.TX_SEND_Start
-                0x000025a4       0x20 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
-                0x000025a4                TX_SEND_Start
- .text.txISR_SetVector
-                0x000025c4        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(txISR.o)
-                0x000025c4                txISR_SetVector
+                0x000020cc       0x4c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
+                0x000020cc                TX_SEND_Start
  .text.txISR_SetPriority
-                0x000025d0       0x20 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(txISR.o)
-                0x000025d0                txISR_SetPriority
- .text.txISR_Enable
-                0x000025f0        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(txISR.o)
-                0x000025f0                txISR_Enable
- .text.txISR_Disable
-                0x000025fc        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(txISR.o)
-                0x000025fc                txISR_Disable
+                0x00002118       0x20 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(txISR.o)
+                0x00002118                txISR_SetPriority
  .text.txISR_StartEx
-                0x00002608       0x1c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(txISR.o)
-                0x00002608                txISR_StartEx
+                0x00002138       0x24 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(txISR.o)
+                0x00002138                txISR_StartEx
  .text.txISR_ClearPending
-                0x00002624        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(txISR.o)
-                0x00002624                txISR_ClearPending
+                0x0000215c        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(txISR.o)
+                0x0000215c                txISR_ClearPending
  .text.EEPROM_Start
-                0x00002630        0x4 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(EEPROM.o)
-                0x00002630                EEPROM_Start
+                0x00002168        0x4 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(EEPROM.o)
+                0x00002168                EEPROM_Start
  .text.EEPROM_Write
-                0x00002634       0x80 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(EEPROM.o)
-                0x00002634                EEPROM_Write
- .text.Counter_1_Enable
-                0x000026b4       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
-                0x000026b4                Counter_1_Enable
- .text.Counter_1_SetInterruptMode
-                0x000026c4        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
-                0x000026c4                Counter_1_SetInterruptMode
- .text.Counter_1_ReadStatusRegister
-                0x000026d0        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
-                0x000026d0                Counter_1_ReadStatusRegister
- .text.Counter_1_WriteCounter
-                0x000026dc        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
-                0x000026dc                Counter_1_WriteCounter
- .text.Counter_1_ReadCounter
-                0x000026e8       0x14 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
-                0x000026e8                Counter_1_ReadCounter
- .text.Counter_1_ReadCapture
-                0x000026fc        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
-                0x000026fc                Counter_1_ReadCapture
- .text.Counter_1_WritePeriod
-                0x00002708        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
-                0x00002708                Counter_1_WritePeriod
- .text.Counter_1_WriteCompare
-                0x00002714        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
-                0x00002714                Counter_1_WriteCompare
- .text.Counter_1_ClearFIFO
-                0x00002720       0x14 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
-                0x00002720                Counter_1_ClearFIFO
+                0x0000216c       0x94 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(EEPROM.o)
+                0x0000216c                EEPROM_Write
  .text.Counter_1_Init
-                0x00002734       0x60 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
-                0x00002734                Counter_1_Init
+                0x00002200       0x7c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
+                0x00002200                Counter_1_Init
  .text.Counter_1_Start
-                0x00002794       0x20 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
-                0x00002794                Counter_1_Start
- .text.pwmISR_SetVector
-                0x000027b4        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
-                0x000027b4                pwmISR_SetVector
+                0x0000227c       0x28 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
+                0x0000227c                Counter_1_Start
+ .text.Counter_1_WriteCounter
+                0x000022a4        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
+                0x000022a4                Counter_1_WriteCounter
+ .text.Counter_1_ReadCounter
+                0x000022b0       0x14 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
+                0x000022b0                Counter_1_ReadCounter
  .text.pwmISR_SetPriority
-                0x000027c0       0x20 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
-                0x000027c0                pwmISR_SetPriority
- .text.pwmISR_Enable
-                0x000027e0       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
-                0x000027e0                pwmISR_Enable
- .text.pwmISR_Disable
-                0x000027f0       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
-                0x000027f0                pwmISR_Disable
+                0x000022c4       0x20 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
+                0x000022c4                pwmISR_SetPriority
  .text.pwmISR_StartEx
-                0x00002800       0x1c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
-                0x00002800                pwmISR_StartEx
- .text.CySysFlashClockBackup
-                0x0000281c       0x14 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyFlash.o)
- .text.CySysFlashClockRestore
-                0x00002830       0x14 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyFlash.o)
+                0x000022e4       0x28 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
+                0x000022e4                pwmISR_StartEx
  .text.CySysFlashWriteRow
-                0x00002844      0x1d8 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyFlash.o)
-                0x00002844                CySysFlashWriteRow
- .text.CyIntEnable
-                0x00002a1c       0x14 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
-                0x00002a1c                CyIntEnable
- .text.CyHalt   0x00002a30        0x4 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
-                0x00002a30                CyHalt
- .text.CyIntSetVector
-                0x00002a34       0x24 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
-                0x00002a34                CyIntSetVector
- .text.CyIntSetPriority
-                0x00002a58       0x4c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
-                0x00002a58                CyIntSetPriority
- .text.CyDelay  0x00002aa4       0x30 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
-                0x00002aa4                CyDelay
- .text.CyDelayUs
-                0x00002ad4       0x14 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
-                0x00002ad4                CyDelayUs
+                0x0000230c      0x1d8 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyFlash.o)
+                0x0000230c                CySysFlashWriteRow
  .text.CySysClkWriteImoFreq
-                0x00002ae8      0x164 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
-                0x00002ae8                CySysClkWriteImoFreq
- .text.CySysWdtLocked
-                0x00002c4c       0x14 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
+                0x000024e4      0x18c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
+                0x000024e4                CySysClkWriteImoFreq
+ .text.CyIntSetVector
+                0x00002670       0x18 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
+                0x00002670                CyIntSetVector
+ .text.CyIntSetPriority
+                0x00002688       0x40 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
+                0x00002688                CyIntSetPriority
+ .text.CyIntEnable
+                0x000026c8       0x14 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
+                0x000026c8                CyIntEnable
+ .text.CyHalt   0x000026dc        0x4 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
+                0x000026dc                CyHalt
+ .text.CyDelay  0x000026e0       0x48 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
+                0x000026e0                CyDelay
+ .text.CyDelayUs
+                0x00002728       0x14 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
+                0x00002728                CyDelayUs
  .text.CySysWdtLock
-                0x00002c60       0x1c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
-                0x00002c60                CySysWdtLock
+                0x0000273c       0x1c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
+                0x0000273c                CySysWdtLock
  .text.CySysWdtUnlock
-                0x00002c7c       0x30 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
-                0x00002c7c                CySysWdtUnlock
+                0x00002758       0x30 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
+                0x00002758                CySysWdtUnlock
  .text.CySysWdtClearInterrupt
-                0x00002cac       0x4c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
-                0x00002cac                CySysWdtClearInterrupt
+                0x00002788       0x5c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
+                0x00002788                CySysWdtClearInterrupt
  .text.CySysWdtIsr
-                0x00002cf8       0xa4 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
-                0x00002cf8                CySysWdtIsr
+                0x000027e4       0xa8 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
+                0x000027e4                CySysWdtIsr
  .text.vin_Write
-                0x00002d9c       0x18 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(vin.o)
-                0x00002d9c                vin_Write
+                0x0000288c       0x1c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(vin.o)
+                0x0000288c                vin_Write
  .text.err_Write
-                0x00002db4       0x18 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(err.o)
-                0x00002db4                err_Write
+                0x000028a8       0x1c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(err.o)
+                0x000028a8                err_Write
  .text.step_register_Read
-                0x00002dcc        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(step_register.o)
-                0x00002dcc                step_register_Read
- .text          0x00002dd8       0x28 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyBootAsmGnu.o)
-                0x00002dd8                CyDelayCycles
-                0x00002dec                CyEnterCriticalSection
-                0x00002df4                CyExitCriticalSection
- .text          0x00002e00      0x120 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_udivsi3.o)
-                0x00002e00                __aeabi_uidiv
-                0x00002e00                __udivsi3
-                0x00002f0c                __aeabi_uidivmod
- .text          0x00002f20        0x4 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_dvmd_tls.o)
-                0x00002f20                __aeabi_idiv0
-                0x00002f20                __aeabi_ldiv0
- .text.atoi     0x00002f24        0xc c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-atoi.o)
-                0x00002f24                atoi
+                0x000028c4        0xc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(step_register.o)
+                0x000028c4                step_register_Read
+ .text          0x000028d0       0x28 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyBootAsmGnu.o)
+                0x000028d0                CyDelayCycles
+                0x000028e4                CyEnterCriticalSection
+                0x000028ec                CyExitCriticalSection
+ .text          0x000028f8      0x120 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_udivsi3.o)
+                0x000028f8                __aeabi_uidiv
+                0x000028f8                __udivsi3
+                0x00002a04                __aeabi_uidivmod
+ .text          0x00002a18        0x4 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_dvmd_tls.o)
+                0x00002a18                __aeabi_idiv0
+                0x00002a18                __aeabi_ldiv0
+ .text.atoi     0x00002a1c        0xc c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-atoi.o)
+                0x00002a1c                atoi
  .text.__libc_init_array
-                0x00002f30       0x4c c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
-                0x00002f30                __libc_init_array
- .text.memcpy   0x00002f7c       0x12 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memcpy.o)
-                0x00002f7c                memcpy
- .text.memset   0x00002f8e       0x10 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
-                0x00002f8e                memset
- *fill*         0x00002f9e        0x2 
+                0x00002a28       0x4c c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
+                0x00002a28                __libc_init_array
+ .text.memcpy   0x00002a74       0x12 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memcpy.o)
+                0x00002a74                memcpy
+ .text.memset   0x00002a86       0x10 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
+                0x00002a86                memset
+ *fill*         0x00002a96        0x2 
  .text._strtol_r
-                0x00002fa0      0x120 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-strtol.o)
-                0x00002fa0                _strtol_r
- .text.strtol   0x000030c0       0x1c c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-strtol.o)
-                0x000030c0                strtol
+                0x00002a98      0x120 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-strtol.o)
+                0x00002a98                _strtol_r
+ .text.strtol   0x00002bb8       0x1c c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-strtol.o)
+                0x00002bb8                strtol
  *(.plt)
  *(.gnu.warning)
  *(.glue_7t)
@@ -1168,83 +1114,85 @@ END GROUP
  *(.ARM.extab* .gnu.linkonce.armextab.*)
  *(.gcc_except_table)
 
-.v4_bx          0x000030dc        0x0
+.v4_bx          0x00002bd4        0x0
  .v4_bx         0x00000000        0x0 linker stubs
 
-.iplt           0x000030dc        0x0
+.iplt           0x00002bd4        0x0
  .iplt          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
 
 .eh_frame_hdr
  *(.eh_frame_hdr)
 
-.eh_frame       0x000030dc        0x4
+.eh_frame       0x00002bd4        0x4
  *(.eh_frame)
- .eh_frame      0x000030dc        0x0 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
- .eh_frame      0x000030dc        0x4 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtend.o
-                0x000030e0                PROVIDE (__exidx_start, .)
+ .eh_frame      0x00002bd4        0x0 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
+ .eh_frame      0x00002bd4        0x4 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtend.o
+                0x00002bd8                PROVIDE (__exidx_start, .)
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x000030e0                __exidx_end = .
+                0x00002bd8                __exidx_end = .
 
-.rodata         0x000030e0      0x548
+.rodata         0x00002bd8      0x540
  *(.rodata .rodata.* .gnu.linkonce.r.*)
- .rodata        0x000030e0      0x150 .\CortexM0\ARM_GCC_493\Debug\main.o
- .rodata        0x00003230      0x290 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(cyfitter_cfg.o)
- .rodata        0x000034c0       0x30 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
-                0x000034c0                cyImoFreqMhz2Reg
+ .rodata.cst2   0x00002bd8        0x2 .\CortexM0\ARM_GCC_493\Debug\main.o
+ *fill*         0x00002bda        0x2 
+ .rodata        0x00002bdc      0x150 .\CortexM0\ARM_GCC_493\Debug\main.o
+ .rodata        0x00002d2c      0x284 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(cyfitter_cfg.o)
+ .rodata        0x00002fb0       0x30 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
+                0x00002fb0                cyImoFreqMhz2Reg
  .rodata.str1.1
-                0x000034f0        0x2 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
+                0x00002fe0        0x2 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
  .rodata._ctype_
-                0x000034f2      0x101 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-ctype_.o)
-                0x000034f2                _ctype_
-                0x000035f4                . = ALIGN (0x4)
- *fill*         0x000035f3        0x1 
+                0x00002fe2      0x101 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-ctype_.o)
+                0x00002fe2                _ctype_
+                0x000030e4                . = ALIGN (0x4)
+ *fill*         0x000030e3        0x1 
  *(.init)
- .init          0x000035f4        0x4 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crti.o
-                0x000035f4                _init
- .init          0x000035f8        0x8 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtn.o
-                0x00003600                . = ALIGN (0x4)
-                0x00003600                __preinit_array_start = .
+ .init          0x000030e4        0x4 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crti.o
+                0x000030e4                _init
+ .init          0x000030e8        0x8 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtn.o
+                0x000030f0                . = ALIGN (0x4)
+                0x000030f0                __preinit_array_start = .
  *(.preinit_array)
-                0x00003600                __preinit_array_end = .
-                0x00003600                . = ALIGN (0x4)
-                0x00003600                __init_array_start = .
+                0x000030f0                __preinit_array_end = .
+                0x000030f0                . = ALIGN (0x4)
+                0x000030f0                __init_array_start = .
  *(SORT(.init_array.*))
  *(.init_array)
- .init_array    0x00003600        0x4 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
- .init_array    0x00003604        0x4 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
-                0x00003608                __init_array_end = .
-                0x00003608                . = ALIGN (0x4)
+ .init_array    0x000030f0        0x4 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
+ .init_array    0x000030f4        0x4 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+                0x000030f8                __init_array_end = .
+                0x000030f8                . = ALIGN (0x4)
  *(.fini)
- .fini          0x00003608        0x4 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crti.o
-                0x00003608                _fini
- .fini          0x0000360c        0x8 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtn.o
-                0x00003614                . = ALIGN (0x4)
-                0x00003614                __fini_array_start = .
+ .fini          0x000030f8        0x4 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crti.o
+                0x000030f8                _fini
+ .fini          0x000030fc        0x8 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtn.o
+                0x00003104                . = ALIGN (0x4)
+                0x00003104                __fini_array_start = .
  *(.fini_array)
- .fini_array    0x00003614        0x4 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
+ .fini_array    0x00003104        0x4 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
  *(SORT(.fini_array.*))
-                0x00003618                __fini_array_end = .
-                0x00003618                . = ALIGN (0x4)
+                0x00003108                __fini_array_end = .
+                0x00003108                . = ALIGN (0x4)
  *crtbegin.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o) .ctors)
  *(SORT(.ctors.*))
  *crtend.o(.ctors)
-                0x00003618                . = ALIGN (0x4)
+                0x00003108                . = ALIGN (0x4)
  *crtbegin.o(.dtors)
  *(EXCLUDE_FILE(*crtend.o) .dtors)
  *(SORT(.dtors.*))
  *crtend.o(.dtors)
-                0x00003618                . = ALIGN (0x4)
-                0x00003618                __cy_regions = .
-                0x00003618        0x4 LONG 0x3628 __cy_region_init_ram
-                0x0000361c        0x4 LONG 0x200000d0 __cy_region_start_data
-                0x00003620        0x4 LONG 0x80 __cy_region_init_size_ram
-                0x00003624        0x4 LONG 0x80 __cy_region_zero_size_ram
-                0x00003628                __cy_regions_end = .
-                0x00003628                . = ALIGN (0x8)
-                0x00003628                _etext = .
+                0x00003108                . = ALIGN (0x4)
+                0x00003108                __cy_regions = .
+                0x00003108        0x4 LONG 0x3118 __cy_region_init_ram
+                0x0000310c        0x4 LONG 0x200000d0 __cy_region_start_data
+                0x00003110        0x4 LONG 0x80 __cy_region_init_size_ram
+                0x00003114        0x4 LONG 0x80 __cy_region_zero_size_ram
+                0x00003118                __cy_regions_end = .
+                0x00003118                . = ALIGN (0x8)
+                0x00003118                _etext = .
 
 .ramvectors     0x20000000       0xc0
                 0x20000000                __cy_region_start_ram = .
@@ -1262,7 +1210,7 @@ END GROUP
  *(.noinit)
  .noinit        0x200000c8        0x4 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
 
-.data           0x200000d0       0x80 load address 0x00003628
+.data           0x200000d0       0x80 load address 0x00003118
                 0x200000d0                __cy_region_start_data = .
  *(.jcr)
  .jcr           0x200000d0        0x0 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
@@ -1272,9 +1220,9 @@ END GROUP
  *(.shdata)
  *(.data .data.* .gnu.linkonce.d.*)
  .data          0x200000d4       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
-                0x200000d4                cydelay32kMs
-                0x200000d8                cydelayFreqKhz
-                0x200000dc                cydelayFreqMhz
+                0x200000d4                cydelayFreqMhz
+                0x200000d8                cydelay32kMs
+                0x200000dc                cydelayFreqKhz
                 0x200000e0                cydelayFreqHz
  .data          0x200000e4        0x4 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
  .data.impure_data
@@ -1289,10 +1237,10 @@ END GROUP
  *(.ram)
                 0x20000150                _edata = .
 
-.igot.plt       0x20000150        0x0 load address 0x000036a8
+.igot.plt       0x20000150        0x0 load address 0x00003198
  .igot.plt      0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
 
-.bss            0x20000150       0x80 load address 0x000036a8
+.bss            0x20000150       0x80 load address 0x00003198
                 0x20000150                PROVIDE (__bss_start__, .)
  *(.shbss)
  *(.bss .bss.* .gnu.linkonce.b.*)
@@ -1336,11 +1284,11 @@ END GROUP
                 0x200001d0                __end = .
                 0x200001d0                PROVIDE (end, .)
                 0x200001d0                PROVIDE (__bss_end__, .)
-                0x00003628                __cy_region_init_ram = LOADADDR (.data)
+                0x00003118                __cy_region_init_ram = LOADADDR (.data)
                 0x00000080                __cy_region_init_size_ram = (_edata - ADDR (.data))
                 0x00000080                __cy_region_zero_size_ram = (_end - _edata)
 
-.heap           0x200001d0       0x20 load address 0x000036a8
+.heap           0x200001d0       0x20 load address 0x00003198
                 0x200001d0                . = _end
                 0x200001f0                . = (. + 0x20)
  *fill*         0x200001d0       0x20 
@@ -1411,7 +1359,7 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0xd98
+.debug_aranges  0x00000000      0xd30
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x60 .\CortexM0\ARM_GCC_493\Debug\main.o
@@ -1422,207 +1370,207 @@ END GROUP
  .debug_aranges
                 0x000000c0       0x18 .\CortexM0\ARM_GCC_493\Debug\cybootloader.o
  .debug_aranges
-                0x000000d8       0x50 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(cyfitter_cfg.o)
+                0x000000d8       0x28 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(cyfitter_cfg.o)
  .debug_aranges
-                0x00000128      0x158 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
+                0x00000100      0x158 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
  .debug_aranges
-                0x00000280       0x48 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(phase.o)
+                0x00000258       0x48 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(phase.o)
  .debug_aranges
-                0x000002c8       0x48 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(sleep.o)
+                0x000002a0       0x48 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(sleep.o)
  .debug_aranges
-                0x00000310       0x48 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(fault.o)
+                0x000002e8       0x48 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(fault.o)
  .debug_aranges
-                0x00000358       0x48 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ovc.o)
+                0x00000330       0x48 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ovc.o)
  .debug_aranges
-                0x000003a0       0xa8 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC.o)
+                0x00000378       0xa8 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC.o)
  .debug_aranges
-                0x00000448       0x20 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC_INT.o)
+                0x00000420       0x20 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC_INT.o)
  .debug_aranges
-                0x00000468       0x60 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART.o)
+                0x00000440       0x50 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART.o)
  .debug_aranges
-                0x000004c8       0x60 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_SPI_UART.o)
+                0x00000490       0x60 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_SPI_UART.o)
  .debug_aranges
-                0x00000528       0x60 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_UART.o)
+                0x000004f0       0x60 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_UART.o)
  .debug_aranges
-                0x00000588       0x48 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(reset.o)
+                0x00000550       0x48 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(reset.o)
  .debug_aranges
-                0x000005d0       0x48 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(error.o)
+                0x00000598       0x48 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(error.o)
  .debug_aranges
-                0x00000618       0x80 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(rxISR.o)
+                0x000005e0       0x80 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(rxISR.o)
  .debug_aranges
-                0x00000698      0x158 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
+                0x00000660      0x158 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
  .debug_aranges
-                0x000007f0       0x80 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(txISR.o)
+                0x000007b8       0x80 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(txISR.o)
  .debug_aranges
-                0x00000870       0x30 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(EEPROM.o)
+                0x00000838       0x30 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(EEPROM.o)
  .debug_aranges
-                0x000008a0       0xa0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
+                0x00000868       0xa0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
  .debug_aranges
-                0x00000940       0x80 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
+                0x00000908       0x80 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
  .debug_aranges
-                0x000009c0       0x38 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyFlash.o)
+                0x00000988       0x28 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyFlash.o)
  .debug_aranges
-                0x000009f8      0x178 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
+                0x000009b0      0x178 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
  .debug_aranges
-                0x00000b70      0x138 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
+                0x00000b28      0x118 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
  .debug_aranges
-                0x00000ca8       0x48 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(vin.o)
+                0x00000c40       0x48 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(vin.o)
  .debug_aranges
-                0x00000cf0       0x48 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(err.o)
+                0x00000c88       0x48 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(err.o)
  .debug_aranges
-                0x00000d38       0x40 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(step_register.o)
+                0x00000cd0       0x40 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(step_register.o)
  .debug_aranges
-                0x00000d78       0x20 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyBootAsmGnu.o)
+                0x00000d10       0x20 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyBootAsmGnu.o)
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x6ea3
+.debug_info     0x00000000     0x7714
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000      0xbc5 .\CortexM0\ARM_GCC_493\Debug\main.o
- .debug_info    0x00000bc5       0xb2 .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
- .debug_info    0x00000c77      0x39d .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
- .debug_info    0x00001014      0x14e .\CortexM0\ARM_GCC_493\Debug\cybootloader.o
- .debug_info    0x00001162      0x585 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(cyfitter_cfg.o)
- .debug_info    0x000016e7      0x904 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
- .debug_info    0x00001feb      0x19b .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(phase.o)
- .debug_info    0x00002186      0x19d .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(sleep.o)
- .debug_info    0x00002323      0x19d .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(fault.o)
- .debug_info    0x000024c0      0x19d .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ovc.o)
- .debug_info    0x0000265d      0x598 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC.o)
- .debug_info    0x00002bf5       0xc4 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC_INT.o)
- .debug_info    0x00002cb9      0x239 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART.o)
- .debug_info    0x00002ef2      0x219 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_SPI_UART.o)
- .debug_info    0x0000310b      0x2c4 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_UART.o)
- .debug_info    0x000033cf      0x19d .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(reset.o)
- .debug_info    0x0000356c      0x19d .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(error.o)
- .debug_info    0x00003709      0x300 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(rxISR.o)
- .debug_info    0x00003a09      0x8f1 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
- .debug_info    0x000042fa      0x300 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(txISR.o)
- .debug_info    0x000045fa      0x1e4 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(EEPROM.o)
- .debug_info    0x000047de      0x367 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
- .debug_info    0x00004b45      0x300 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
- .debug_info    0x00004e45      0x369 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyFlash.o)
- .debug_info    0x000051ae      0xad1 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
- .debug_info    0x00005c7f      0xcfc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
- .debug_info    0x0000697b      0x19d .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(vin.o)
- .debug_info    0x00006b18      0x19d .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(err.o)
- .debug_info    0x00006cb5      0x17a .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(step_register.o)
- .debug_info    0x00006e2f       0x74 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyBootAsmGnu.o)
+ .debug_info    0x00000000      0xbdd .\CortexM0\ARM_GCC_493\Debug\main.o
+ .debug_info    0x00000bdd       0xb2 .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
+ .debug_info    0x00000c8f      0x399 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+ .debug_info    0x00001028      0x14e .\CortexM0\ARM_GCC_493\Debug\cybootloader.o
+ .debug_info    0x00001176      0x57b .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(cyfitter_cfg.o)
+ .debug_info    0x000016f1      0xa2b .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
+ .debug_info    0x0000211c      0x199 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(phase.o)
+ .debug_info    0x000022b5      0x19b .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(sleep.o)
+ .debug_info    0x00002450      0x19b .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(fault.o)
+ .debug_info    0x000025eb      0x19b .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ovc.o)
+ .debug_info    0x00002786      0x5c0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC.o)
+ .debug_info    0x00002d46       0xc4 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC_INT.o)
+ .debug_info    0x00002e0a      0x274 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART.o)
+ .debug_info    0x0000307e      0x23e .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_SPI_UART.o)
+ .debug_info    0x000032bc      0x2c4 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_UART.o)
+ .debug_info    0x00003580      0x19b .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(reset.o)
+ .debug_info    0x0000371b      0x19b .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(error.o)
+ .debug_info    0x000038b6      0x350 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(rxISR.o)
+ .debug_info    0x00003c06      0x9e4 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
+ .debug_info    0x000045ea      0x350 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(txISR.o)
+ .debug_info    0x0000493a      0x1e4 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(EEPROM.o)
+ .debug_info    0x00004b1e      0x41d .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
+ .debug_info    0x00004f3b      0x350 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
+ .debug_info    0x0000528b      0x38c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyFlash.o)
+ .debug_info    0x00005617      0xd1a .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
+ .debug_info    0x00006331      0xebf .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
+ .debug_info    0x000071f0      0x19b .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(vin.o)
+ .debug_info    0x0000738b      0x19b .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(err.o)
+ .debug_info    0x00007526      0x17a .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(step_register.o)
+ .debug_info    0x000076a0       0x74 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyBootAsmGnu.o)
 
-.debug_abbrev   0x00000000     0x2403
+.debug_abbrev   0x00000000     0x2c70
  *(.debug_abbrev)
- .debug_abbrev  0x00000000      0x266 .\CortexM0\ARM_GCC_493\Debug\main.o
- .debug_abbrev  0x00000266       0x5d .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
- .debug_abbrev  0x000002c3      0x20f .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
- .debug_abbrev  0x000004d2       0x77 .\CortexM0\ARM_GCC_493\Debug\cybootloader.o
- .debug_abbrev  0x00000549      0x22c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(cyfitter_cfg.o)
- .debug_abbrev  0x00000775      0x133 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
- .debug_abbrev  0x000008a8       0xc8 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(phase.o)
- .debug_abbrev  0x00000970       0xc8 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(sleep.o)
- .debug_abbrev  0x00000a38       0xc8 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(fault.o)
- .debug_abbrev  0x00000b00       0xc8 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ovc.o)
- .debug_abbrev  0x00000bc8      0x1c3 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC.o)
- .debug_abbrev  0x00000d8b       0x65 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC_INT.o)
- .debug_abbrev  0x00000df0       0xed .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART.o)
- .debug_abbrev  0x00000edd      0x14f .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_SPI_UART.o)
- .debug_abbrev  0x0000102c      0x13d .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_UART.o)
- .debug_abbrev  0x00001169       0xc8 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(reset.o)
- .debug_abbrev  0x00001231       0xc8 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(error.o)
- .debug_abbrev  0x000012f9      0x1b4 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(rxISR.o)
- .debug_abbrev  0x000014ad      0x133 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
- .debug_abbrev  0x000015e0      0x1b4 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(txISR.o)
- .debug_abbrev  0x00001794      0x101 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(EEPROM.o)
- .debug_abbrev  0x00001895      0x140 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
- .debug_abbrev  0x000019d5      0x1b4 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
- .debug_abbrev  0x00001b89      0x1c8 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyFlash.o)
- .debug_abbrev  0x00001d51      0x20d .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
- .debug_abbrev  0x00001f5e      0x23b .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
- .debug_abbrev  0x00002199       0xc8 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(vin.o)
- .debug_abbrev  0x00002261       0xc8 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(err.o)
- .debug_abbrev  0x00002329       0xc6 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(step_register.o)
- .debug_abbrev  0x000023ef       0x14 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyBootAsmGnu.o)
+ .debug_abbrev  0x00000000      0x2d8 .\CortexM0\ARM_GCC_493\Debug\main.o
+ .debug_abbrev  0x000002d8       0x5d .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
+ .debug_abbrev  0x00000335      0x20d .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+ .debug_abbrev  0x00000542       0x77 .\CortexM0\ARM_GCC_493\Debug\cybootloader.o
+ .debug_abbrev  0x000005b9      0x2c1 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(cyfitter_cfg.o)
+ .debug_abbrev  0x0000087a      0x1c6 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
+ .debug_abbrev  0x00000a40       0xd5 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(phase.o)
+ .debug_abbrev  0x00000b15       0xc6 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(sleep.o)
+ .debug_abbrev  0x00000bdb       0xc6 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(fault.o)
+ .debug_abbrev  0x00000ca1       0xc6 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ovc.o)
+ .debug_abbrev  0x00000d67      0x1db .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC.o)
+ .debug_abbrev  0x00000f42       0x65 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC_INT.o)
+ .debug_abbrev  0x00000fa7      0x136 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART.o)
+ .debug_abbrev  0x000010dd      0x188 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_SPI_UART.o)
+ .debug_abbrev  0x00001265      0x13d .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_UART.o)
+ .debug_abbrev  0x000013a2       0xc6 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(reset.o)
+ .debug_abbrev  0x00001468       0xc6 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(error.o)
+ .debug_abbrev  0x0000152e      0x24d .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(rxISR.o)
+ .debug_abbrev  0x0000177b      0x1c6 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
+ .debug_abbrev  0x00001941      0x25e .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(txISR.o)
+ .debug_abbrev  0x00001b9f      0x101 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(EEPROM.o)
+ .debug_abbrev  0x00001ca0      0x219 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
+ .debug_abbrev  0x00001eb9      0x24d .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
+ .debug_abbrev  0x00002106      0x20d .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyFlash.o)
+ .debug_abbrev  0x00002313      0x352 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
+ .debug_abbrev  0x00002665      0x3a5 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
+ .debug_abbrev  0x00002a0a       0xc6 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(vin.o)
+ .debug_abbrev  0x00002ad0       0xc6 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(err.o)
+ .debug_abbrev  0x00002b96       0xc6 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(step_register.o)
+ .debug_abbrev  0x00002c5c       0x14 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyBootAsmGnu.o)
 
-.debug_line     0x00000000     0x2e45
+.debug_line     0x00000000     0x3525
  *(.debug_line)
- .debug_line    0x00000000      0x488 .\CortexM0\ARM_GCC_493\Debug\main.o
- .debug_line    0x00000488       0x51 .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
- .debug_line    0x000004d9      0x247 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
- .debug_line    0x00000720       0x53 .\CortexM0\ARM_GCC_493\Debug\cybootloader.o
- .debug_line    0x00000773      0x1d0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(cyfitter_cfg.o)
- .debug_line    0x00000943      0x380 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
- .debug_line    0x00000cc3       0xbc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(phase.o)
- .debug_line    0x00000d7f       0xbd .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(sleep.o)
- .debug_line    0x00000e3c       0xbd .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(fault.o)
- .debug_line    0x00000ef9       0xbb .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ovc.o)
- .debug_line    0x00000fb4      0x276 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC.o)
- .debug_line    0x0000122a       0x62 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC_INT.o)
- .debug_line    0x0000128c      0x127 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART.o)
- .debug_line    0x000013b3      0x11a .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_SPI_UART.o)
- .debug_line    0x000014cd      0x14c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_UART.o)
- .debug_line    0x00001619       0xbd .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(reset.o)
- .debug_line    0x000016d6       0xbd .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(error.o)
- .debug_line    0x00001793      0x151 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(rxISR.o)
- .debug_line    0x000018e4      0x37b .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
- .debug_line    0x00001c5f      0x14d .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(txISR.o)
- .debug_line    0x00001dac       0xca .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(EEPROM.o)
- .debug_line    0x00001e76      0x1a5 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
- .debug_line    0x0000201b      0x152 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
- .debug_line    0x0000216d      0x18d .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyFlash.o)
- .debug_line    0x000022fa      0x449 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
- .debug_line    0x00002743      0x467 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
- .debug_line    0x00002baa       0xbb .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(vin.o)
- .debug_line    0x00002c65       0xbb .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(err.o)
- .debug_line    0x00002d20       0xbc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(step_register.o)
- .debug_line    0x00002ddc       0x69 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyBootAsmGnu.o)
+ .debug_line    0x00000000      0x4fd .\CortexM0\ARM_GCC_493\Debug\main.o
+ .debug_line    0x000004fd       0x51 .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
+ .debug_line    0x0000054e      0x259 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+ .debug_line    0x000007a7       0x53 .\CortexM0\ARM_GCC_493\Debug\cybootloader.o
+ .debug_line    0x000007fa      0x1d6 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(cyfitter_cfg.o)
+ .debug_line    0x000009d0      0x433 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
+ .debug_line    0x00000e03       0xc9 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(phase.o)
+ .debug_line    0x00000ecc       0xca .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(sleep.o)
+ .debug_line    0x00000f96       0xca .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(fault.o)
+ .debug_line    0x00001060       0xc8 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ovc.o)
+ .debug_line    0x00001128      0x2ed .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC.o)
+ .debug_line    0x00001415       0x68 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC_INT.o)
+ .debug_line    0x0000147d      0x136 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART.o)
+ .debug_line    0x000015b3      0x138 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_SPI_UART.o)
+ .debug_line    0x000016eb      0x174 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_UART.o)
+ .debug_line    0x0000185f       0xca .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(reset.o)
+ .debug_line    0x00001929       0xca .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(error.o)
+ .debug_line    0x000019f3      0x19f .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(rxISR.o)
+ .debug_line    0x00001b92      0x41a .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
+ .debug_line    0x00001fac      0x1af .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(txISR.o)
+ .debug_line    0x0000215b       0xc5 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(EEPROM.o)
+ .debug_line    0x00002220      0x223 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
+ .debug_line    0x00002443      0x1a0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
+ .debug_line    0x000025e3      0x19e .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyFlash.o)
+ .debug_line    0x00002781      0x561 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
+ .debug_line    0x00002ce2      0x584 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
+ .debug_line    0x00003266       0xc8 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(vin.o)
+ .debug_line    0x0000332e       0xc8 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(err.o)
+ .debug_line    0x000033f6       0xc6 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(step_register.o)
+ .debug_line    0x000034bc       0x69 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyBootAsmGnu.o)
 
-.debug_frame    0x00000000     0x21d0
+.debug_frame    0x00000000     0x2024
  *(.debug_frame)
- .debug_frame   0x00000000      0x10c .\CortexM0\ARM_GCC_493\Debug\main.o
- .debug_frame   0x0000010c       0xb0 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
- .debug_frame   0x000001bc       0xcc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(cyfitter_cfg.o)
- .debug_frame   0x00000288      0x390 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
- .debug_frame   0x00000618       0x70 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(phase.o)
- .debug_frame   0x00000688       0x70 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(sleep.o)
- .debug_frame   0x000006f8       0x70 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(fault.o)
- .debug_frame   0x00000768       0x70 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ovc.o)
- .debug_frame   0x000007d8      0x1b0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC.o)
- .debug_frame   0x00000988       0x20 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC_INT.o)
- .debug_frame   0x000009a8       0xe8 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART.o)
- .debug_frame   0x00000a90       0xb0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_SPI_UART.o)
- .debug_frame   0x00000b40       0xe0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_UART.o)
- .debug_frame   0x00000c20       0x70 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(reset.o)
- .debug_frame   0x00000c90       0x70 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(error.o)
- .debug_frame   0x00000d00      0x110 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(rxISR.o)
- .debug_frame   0x00000e10      0x390 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
- .debug_frame   0x000011a0      0x110 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(txISR.o)
- .debug_frame   0x000012b0       0x60 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(EEPROM.o)
- .debug_frame   0x00001310      0x144 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
- .debug_frame   0x00001454      0x110 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
- .debug_frame   0x00001564       0x74 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyFlash.o)
- .debug_frame   0x000015d8      0x3d0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
- .debug_frame   0x000019a8      0x3a8 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
- .debug_frame   0x00001d50       0x70 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(vin.o)
- .debug_frame   0x00001dc0       0x70 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(err.o)
- .debug_frame   0x00001e30       0x78 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(step_register.o)
- .debug_frame   0x00001ea8       0x20 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_udivsi3.o)
- .debug_frame   0x00001ec8       0x20 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_divsi3.o)
- .debug_frame   0x00001ee8       0x34 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_muldi3.o)
- .debug_frame   0x00001f1c       0x50 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(bpabi.o)
- .debug_frame   0x00001f6c       0x3c c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(divsf3.o)
- .debug_frame   0x00001fa8       0x3c c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(mulsf3.o)
- .debug_frame   0x00001fe4       0x2c c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(floatsisf.o)
- .debug_frame   0x00002010       0x3c c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_divdi3.o)
- .debug_frame   0x0000204c       0x3c c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_udivdi3.o)
- .debug_frame   0x00002088       0x40 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-atoi.o)
- .debug_frame   0x000020c8       0x20 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-errno.o)
- .debug_frame   0x000020e8       0x28 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-exit.o)
- .debug_frame   0x00002110       0x2c c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
- .debug_frame   0x0000213c       0x28 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memcpy.o)
- .debug_frame   0x00002164       0x20 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
- .debug_frame   0x00002184       0x4c c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-strtol.o)
+ .debug_frame   0x00000000      0x110 .\CortexM0\ARM_GCC_493\Debug\main.o
+ .debug_frame   0x00000110       0xbc .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+ .debug_frame   0x000001cc       0x48 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(cyfitter_cfg.o)
+ .debug_frame   0x00000214      0x384 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
+ .debug_frame   0x00000598       0x70 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(phase.o)
+ .debug_frame   0x00000608       0x70 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(sleep.o)
+ .debug_frame   0x00000678       0x70 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(fault.o)
+ .debug_frame   0x000006e8       0x70 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ovc.o)
+ .debug_frame   0x00000758      0x1b0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC.o)
+ .debug_frame   0x00000908       0x20 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC_INT.o)
+ .debug_frame   0x00000928       0xb0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART.o)
+ .debug_frame   0x000009d8       0xb0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_SPI_UART.o)
+ .debug_frame   0x00000a88       0xdc .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_UART.o)
+ .debug_frame   0x00000b64       0x70 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(reset.o)
+ .debug_frame   0x00000bd4       0x70 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(error.o)
+ .debug_frame   0x00000c44      0x104 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(rxISR.o)
+ .debug_frame   0x00000d48      0x384 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
+ .debug_frame   0x000010cc      0x104 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(txISR.o)
+ .debug_frame   0x000011d0       0x68 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(EEPROM.o)
+ .debug_frame   0x00001238      0x138 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
+ .debug_frame   0x00001370      0x104 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
+ .debug_frame   0x00001474       0x64 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyFlash.o)
+ .debug_frame   0x000014d8      0x398 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
+ .debug_frame   0x00001870      0x334 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
+ .debug_frame   0x00001ba4       0x70 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(vin.o)
+ .debug_frame   0x00001c14       0x70 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(err.o)
+ .debug_frame   0x00001c84       0x78 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(step_register.o)
+ .debug_frame   0x00001cfc       0x20 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_udivsi3.o)
+ .debug_frame   0x00001d1c       0x20 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_divsi3.o)
+ .debug_frame   0x00001d3c       0x34 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_muldi3.o)
+ .debug_frame   0x00001d70       0x50 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(bpabi.o)
+ .debug_frame   0x00001dc0       0x3c c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(divsf3.o)
+ .debug_frame   0x00001dfc       0x3c c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(mulsf3.o)
+ .debug_frame   0x00001e38       0x2c c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(floatsisf.o)
+ .debug_frame   0x00001e64       0x3c c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_divdi3.o)
+ .debug_frame   0x00001ea0       0x3c c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_udivdi3.o)
+ .debug_frame   0x00001edc       0x40 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-atoi.o)
+ .debug_frame   0x00001f1c       0x20 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-errno.o)
+ .debug_frame   0x00001f3c       0x28 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-exit.o)
+ .debug_frame   0x00001f64       0x2c c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
+ .debug_frame   0x00001f90       0x28 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memcpy.o)
+ .debug_frame   0x00001fb8       0x20 c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
+ .debug_frame   0x00001fd8       0x4c c:/program files (x86)/cypress/psoc creator/4.0/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-strtol.o)
 
-.debug_str      0x00000000     0x296e
+.debug_str      0x00000000     0x2981
  *(.debug_str)
  .debug_str     0x00000000      0x57a .\CortexM0\ARM_GCC_493\Debug\main.o
                                 0x621 (size before relaxing)
@@ -1648,102 +1596,102 @@ END GROUP
                                 0x3b4 (size before relaxing)
  .debug_str     0x00001106       0x35 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC_INT.o)
                                 0x1a0 (size before relaxing)
- .debug_str     0x0000113b      0x113 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART.o)
-                                0x296 (size before relaxing)
- .debug_str     0x0000124e      0x11d .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_SPI_UART.o)
+ .debug_str     0x0000113b      0x126 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART.o)
+                                0x2a9 (size before relaxing)
+ .debug_str     0x00001261      0x11d .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_SPI_UART.o)
                                 0x2b1 (size before relaxing)
- .debug_str     0x0000136b       0xc1 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_UART.o)
+ .debug_str     0x0000137e       0xc1 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_UART.o)
                                 0x2e5 (size before relaxing)
- .debug_str     0x0000142c       0x7c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(reset.o)
+ .debug_str     0x0000143f       0x7c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(reset.o)
                                 0x225 (size before relaxing)
- .debug_str     0x000014a8       0x7b .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(error.o)
+ .debug_str     0x000014bb       0x7b .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(error.o)
                                 0x225 (size before relaxing)
- .debug_str     0x00001523       0xf0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(rxISR.o)
+ .debug_str     0x00001536       0xf0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(rxISR.o)
                                 0x2cd (size before relaxing)
- .debug_str     0x00001613      0x36d .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
+ .debug_str     0x00001626      0x36d .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
                                 0x5e8 (size before relaxing)
- .debug_str     0x00001980       0xc5 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(txISR.o)
+ .debug_str     0x00001993       0xc5 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(txISR.o)
                                 0x2cd (size before relaxing)
- .debug_str     0x00001a45       0x9a .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(EEPROM.o)
+ .debug_str     0x00001a58       0x9a .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(EEPROM.o)
                                 0x22d (size before relaxing)
- .debug_str     0x00001adf      0x1bb .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
+ .debug_str     0x00001af2      0x1bb .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
                                 0x3ac (size before relaxing)
- .debug_str     0x00001c9a       0xe5 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
+ .debug_str     0x00001cad       0xe5 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
                                 0x2db (size before relaxing)
- .debug_str     0x00001d7f      0x133 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyFlash.o)
+ .debug_str     0x00001d92      0x133 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyFlash.o)
                                 0x311 (size before relaxing)
- .debug_str     0x00001eb2      0x430 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
+ .debug_str     0x00001ec5      0x430 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
                                 0x678 (size before relaxing)
- .debug_str     0x000022e2      0x51b .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
+ .debug_str     0x000022f5      0x51b .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
                                 0x720 (size before relaxing)
- .debug_str     0x000027fd       0x6f .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(vin.o)
+ .debug_str     0x00002810       0x6f .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(vin.o)
                                 0x217 (size before relaxing)
- .debug_str     0x0000286c       0x6f .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(err.o)
+ .debug_str     0x0000287f       0x6f .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(err.o)
                                 0x217 (size before relaxing)
- .debug_str     0x000028db       0x93 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(step_register.o)
+ .debug_str     0x000028ee       0x93 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(step_register.o)
                                 0x250 (size before relaxing)
 
-.debug_loc      0x00000000     0x3331
+.debug_loc      0x00000000     0x3aba
  *(.debug_loc)
- .debug_loc     0x00000000      0x491 .\CortexM0\ARM_GCC_493\Debug\main.o
- .debug_loc     0x00000491      0x14f .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
- .debug_loc     0x000005e0      0x21c .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(cyfitter_cfg.o)
- .debug_loc     0x000007fc      0x547 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
- .debug_loc     0x00000d43       0x81 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(phase.o)
- .debug_loc     0x00000dc4       0xa2 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(sleep.o)
- .debug_loc     0x00000e66       0xa2 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(fault.o)
- .debug_loc     0x00000f08       0xa2 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ovc.o)
- .debug_loc     0x00000faa      0x3aa .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC.o)
- .debug_loc     0x00001354       0x7e .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART.o)
- .debug_loc     0x000013d2       0x96 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_SPI_UART.o)
- .debug_loc     0x00001468      0x173 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_UART.o)
- .debug_loc     0x000015db       0xa2 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(reset.o)
- .debug_loc     0x0000167d       0xa2 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(error.o)
- .debug_loc     0x0000171f       0x82 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(rxISR.o)
- .debug_loc     0x000017a1      0x547 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
- .debug_loc     0x00001ce8       0x82 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(txISR.o)
- .debug_loc     0x00001d6a      0x1c2 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(EEPROM.o)
- .debug_loc     0x00001f2c       0x52 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
- .debug_loc     0x00001f7e       0x82 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
- .debug_loc     0x00002000      0x21f .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyFlash.o)
- .debug_loc     0x0000221f      0x5b5 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
- .debug_loc     0x000027d4      0x9d5 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
- .debug_loc     0x000031a9       0xa2 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(vin.o)
- .debug_loc     0x0000324b       0xa2 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(err.o)
- .debug_loc     0x000032ed       0x44 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(step_register.o)
+ .debug_loc     0x00000000      0x5ff .\CortexM0\ARM_GCC_493\Debug\main.o
+ .debug_loc     0x000005ff      0x1a5 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+ .debug_loc     0x000007a4      0x15b .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(cyfitter_cfg.o)
+ .debug_loc     0x000008ff      0x5a1 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
+ .debug_loc     0x00000ea0       0x80 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(phase.o)
+ .debug_loc     0x00000f20       0xa1 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(sleep.o)
+ .debug_loc     0x00000fc1       0xa1 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(fault.o)
+ .debug_loc     0x00001062       0xa1 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ovc.o)
+ .debug_loc     0x00001103      0x3fd .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC.o)
+ .debug_loc     0x00001500       0x7e .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART.o)
+ .debug_loc     0x0000157e       0xef .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_SPI_UART.o)
+ .debug_loc     0x0000166d      0x1b6 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_UART.o)
+ .debug_loc     0x00001823       0xa1 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(reset.o)
+ .debug_loc     0x000018c4       0xa1 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(error.o)
+ .debug_loc     0x00001965       0xac .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(rxISR.o)
+ .debug_loc     0x00001a11      0x58d .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
+ .debug_loc     0x00001f9e       0xaa .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(txISR.o)
+ .debug_loc     0x00002048      0x1c6 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(EEPROM.o)
+ .debug_loc     0x0000220e       0x72 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
+ .debug_loc     0x00002280       0xae .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
+ .debug_loc     0x0000232e      0x2dd .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyFlash.o)
+ .debug_loc     0x0000260b      0x7c9 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
+ .debug_loc     0x00002dd4      0xb60 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
+ .debug_loc     0x00003934       0xa1 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(vin.o)
+ .debug_loc     0x000039d5       0xa1 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(err.o)
+ .debug_loc     0x00003a76       0x44 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(step_register.o)
 
 .debug_macinfo
  *(.debug_macinfo)
 
-.debug_ranges   0x00000000      0xb98
+.debug_ranges   0x00000000     0x10f8
  *(.debug_ranges)
- .debug_ranges  0x00000000       0x50 .\CortexM0\ARM_GCC_493\Debug\main.o
- .debug_ranges  0x00000050       0x38 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
- .debug_ranges  0x00000088       0x40 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(cyfitter_cfg.o)
- .debug_ranges  0x000000c8      0x148 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
- .debug_ranges  0x00000210       0x38 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(phase.o)
- .debug_ranges  0x00000248       0x38 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(sleep.o)
- .debug_ranges  0x00000280       0x38 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(fault.o)
- .debug_ranges  0x000002b8       0x38 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ovc.o)
- .debug_ranges  0x000002f0       0x98 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC.o)
- .debug_ranges  0x00000388       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC_INT.o)
- .debug_ranges  0x00000398       0x50 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART.o)
- .debug_ranges  0x000003e8       0x50 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_SPI_UART.o)
- .debug_ranges  0x00000438       0x50 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_UART.o)
- .debug_ranges  0x00000488       0x38 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(reset.o)
- .debug_ranges  0x000004c0       0x38 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(error.o)
- .debug_ranges  0x000004f8       0x70 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(rxISR.o)
- .debug_ranges  0x00000568      0x148 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
- .debug_ranges  0x000006b0       0x70 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(txISR.o)
- .debug_ranges  0x00000720       0x20 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(EEPROM.o)
- .debug_ranges  0x00000740       0x90 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
- .debug_ranges  0x000007d0       0x70 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
- .debug_ranges  0x00000840       0x28 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyFlash.o)
- .debug_ranges  0x00000868      0x168 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
- .debug_ranges  0x000009d0      0x128 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
- .debug_ranges  0x00000af8       0x38 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(vin.o)
- .debug_ranges  0x00000b30       0x38 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(err.o)
- .debug_ranges  0x00000b68       0x30 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(step_register.o)
+ .debug_ranges  0x00000000       0x88 .\CortexM0\ARM_GCC_493\Debug\main.o
+ .debug_ranges  0x00000088       0x58 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+ .debug_ranges  0x000000e0       0xc8 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(cyfitter_cfg.o)
+ .debug_ranges  0x000001a8      0x168 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(PWM_MOT.o)
+ .debug_ranges  0x00000310       0x38 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(phase.o)
+ .debug_ranges  0x00000348       0x38 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(sleep.o)
+ .debug_ranges  0x00000380       0x38 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(fault.o)
+ .debug_ranges  0x000003b8       0x38 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ovc.o)
+ .debug_ranges  0x000003f0       0x98 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC.o)
+ .debug_ranges  0x00000488       0x10 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(ADC_INT.o)
+ .debug_ranges  0x00000498       0x58 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART.o)
+ .debug_ranges  0x000004f0       0x68 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_SPI_UART.o)
+ .debug_ranges  0x00000558       0x50 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(UART_UART.o)
+ .debug_ranges  0x000005a8       0x38 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(reset.o)
+ .debug_ranges  0x000005e0       0x38 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(error.o)
+ .debug_ranges  0x00000618       0xd0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(rxISR.o)
+ .debug_ranges  0x000006e8      0x1b8 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(TX_SEND.o)
+ .debug_ranges  0x000008a0       0xf0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(txISR.o)
+ .debug_ranges  0x00000990       0x20 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(EEPROM.o)
+ .debug_ranges  0x000009b0      0x138 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(Counter_1.o)
+ .debug_ranges  0x00000ae8       0xd0 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(pwmISR.o)
+ .debug_ranges  0x00000bb8       0x38 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyFlash.o)
+ .debug_ranges  0x00000bf0      0x270 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLib.o)
+ .debug_ranges  0x00000e60      0x1f8 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(CyLFClk.o)
+ .debug_ranges  0x00001058       0x38 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(vin.o)
+ .debug_ranges  0x00001090       0x38 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(err.o)
+ .debug_ranges  0x000010c8       0x30 .\CortexM0\ARM_GCC_493\Debug\Tarocco.a(step_register.o)
 
 .comment        0x00000000       0x70
  .comment       0x00000000       0x70 .\CortexM0\ARM_GCC_493\Debug\main.o

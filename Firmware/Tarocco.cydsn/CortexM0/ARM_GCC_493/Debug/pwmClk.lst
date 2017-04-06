@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCFOfKo.s 			page 1
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbzRqwd.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -9,7 +9,7 @@ ARM GAS  C:\Users\g\AppData\Local\Temp\ccCFOfKo.s 			page 1
    6              		.eabi_attribute 24, 1
    7              		.eabi_attribute 25, 1
    8              		.eabi_attribute 26, 1
-   9              		.eabi_attribute 30, 1
+   9              		.eabi_attribute 30, 2
   10              		.eabi_attribute 34, 0
   11              		.eabi_attribute 18, 4
   12              		.code	16
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\g\AppData\Local\Temp\ccCFOfKo.s 			page 1
   30:Generated_Source\PSoC4/pwmClk.c **** *
   31:Generated_Source\PSoC4/pwmClk.c **** * Parameters:
   32:Generated_Source\PSoC4/pwmClk.c **** *  alignClkDiv:  The divider to which phase alignment is performed when the
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCFOfKo.s 			page 2
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbzRqwd.s 			page 2
 
 
   33:Generated_Source\PSoC4/pwmClk.c **** *    clock is started.
@@ -105,34 +105,37 @@ ARM GAS  C:\Users\g\AppData\Local\Temp\ccCFOfKo.s 			page 1
   72:Generated_Source\PSoC4/pwmClk.c ****     /* Set the bit to enable the clock. */
   73:Generated_Source\PSoC4/pwmClk.c ****     pwmClk_ENABLE_REG |= pwmClk__ENABLE_MASK;
   28              		.loc 1 73 0
-  29 0000 034A     		ldr	r2, .L2
-  30 0002 1368     		ldr	r3, [r2]
-  31 0004 8021     		mov	r1, #128
-  32 0006 0906     		lsl	r1, r1, #24
-  33 0008 0B43     		orr	r3, r1
-  34 000a 1360     		str	r3, [r2]
+  29 0000 8021     		mov	r1, #128
+  30 0002 034A     		ldr	r2, .L2
+  31 0004 0906     		lsl	r1, r1, #24
+  32 0006 1368     		ldr	r3, [r2]
   74:Generated_Source\PSoC4/pwmClk.c **** }
-  35              		.loc 1 74 0
-  36              		@ sp needed
-  37 000c 7047     		bx	lr
-  38              	.L3:
-  39 000e C046     		.align	2
-  40              	.L2:
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCFOfKo.s 			page 3
+  33              		.loc 1 74 0
+  34              		@ sp needed
+  73:Generated_Source\PSoC4/pwmClk.c **** }
+  35              		.loc 1 73 0
+  36 0008 0B43     		orr	r3, r1
+  37 000a 1360     		str	r3, [r2]
+  38              		.loc 1 74 0
+  39 000c 7047     		bx	lr
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbzRqwd.s 			page 3
 
 
-  41 0010 80000240 		.word	1073873024
-  42              		.cfi_endproc
-  43              	.LFE0:
-  44              		.size	pwmClk_Start, .-pwmClk_Start
-  45              		.section	.text.pwmClk_Stop,"ax",%progbits
-  46              		.align	2
-  47              		.global	pwmClk_Stop
-  48              		.code	16
-  49              		.thumb_func
-  50              		.type	pwmClk_Stop, %function
-  51              	pwmClk_Stop:
-  52              	.LFB1:
+  40              	.L3:
+  41 000e C046     		.align	2
+  42              	.L2:
+  43 0010 80000240 		.word	1073873024
+  44              		.cfi_endproc
+  45              	.LFE0:
+  46              		.size	pwmClk_Start, .-pwmClk_Start
+  47              		.section	.text.pwmClk_Stop,"ax",%progbits
+  48              		.align	2
+  49              		.global	pwmClk_Stop
+  50              		.code	16
+  51              		.thumb_func
+  52              		.type	pwmClk_Stop, %function
+  53              	pwmClk_Stop:
+  54              	.LFB1:
   75:Generated_Source\PSoC4/pwmClk.c **** 
   76:Generated_Source\PSoC4/pwmClk.c **** #endif /* CYREG_PERI_DIV_CMD */
   77:Generated_Source\PSoC4/pwmClk.c **** 
@@ -155,8 +158,8 @@ ARM GAS  C:\Users\g\AppData\Local\Temp\ccCFOfKo.s 			page 1
   94:Generated_Source\PSoC4/pwmClk.c **** *******************************************************************************/
   95:Generated_Source\PSoC4/pwmClk.c **** void pwmClk_Stop(void)
   96:Generated_Source\PSoC4/pwmClk.c **** {
-  53              		.loc 1 96 0
-  54              		.cfi_startproc
+  55              		.loc 1 96 0
+  56              		.cfi_startproc
   97:Generated_Source\PSoC4/pwmClk.c **** #if defined CYREG_PERI_DIV_CMD
   98:Generated_Source\PSoC4/pwmClk.c **** 
   99:Generated_Source\PSoC4/pwmClk.c ****     /* Make sure any previous start command has finished. */
@@ -173,36 +176,39 @@ ARM GAS  C:\Users\g\AppData\Local\Temp\ccCFOfKo.s 			page 1
  110:Generated_Source\PSoC4/pwmClk.c **** 
  111:Generated_Source\PSoC4/pwmClk.c ****     /* Clear the bit to disable the clock. */
  112:Generated_Source\PSoC4/pwmClk.c ****     pwmClk_ENABLE_REG &= (uint32)(~pwmClk__ENABLE_MASK);
-  55              		.loc 1 112 0
-  56 0000 024A     		ldr	r2, .L5
-  57 0002 1368     		ldr	r3, [r2]
-  58 0004 5B00     		lsl	r3, r3, #1
-  59 0006 5B08     		lsr	r3, r3, #1
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCFOfKo.s 			page 4
+  57              		.loc 1 112 0
+  58 0000 024A     		ldr	r2, .L5
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbzRqwd.s 			page 4
 
 
-  60 0008 1360     		str	r3, [r2]
  113:Generated_Source\PSoC4/pwmClk.c ****     
  114:Generated_Source\PSoC4/pwmClk.c **** #endif /* CYREG_PERI_DIV_CMD */
  115:Generated_Source\PSoC4/pwmClk.c **** }
-  61              		.loc 1 115 0
-  62              		@ sp needed
-  63 000a 7047     		bx	lr
-  64              	.L6:
-  65              		.align	2
-  66              	.L5:
-  67 000c 80000240 		.word	1073873024
-  68              		.cfi_endproc
-  69              	.LFE1:
-  70              		.size	pwmClk_Stop, .-pwmClk_Stop
-  71              		.section	.text.pwmClk_SetFractionalDividerRegister,"ax",%progbits
-  72              		.align	2
-  73              		.global	pwmClk_SetFractionalDividerRegister
-  74              		.code	16
-  75              		.thumb_func
-  76              		.type	pwmClk_SetFractionalDividerRegister, %function
-  77              	pwmClk_SetFractionalDividerRegister:
-  78              	.LFB2:
+  59              		.loc 1 115 0
+  60              		@ sp needed
+ 112:Generated_Source\PSoC4/pwmClk.c ****     
+  61              		.loc 1 112 0
+  62 0002 1368     		ldr	r3, [r2]
+  63 0004 5B00     		lsl	r3, r3, #1
+  64 0006 5B08     		lsr	r3, r3, #1
+  65 0008 1360     		str	r3, [r2]
+  66              		.loc 1 115 0
+  67 000a 7047     		bx	lr
+  68              	.L6:
+  69              		.align	2
+  70              	.L5:
+  71 000c 80000240 		.word	1073873024
+  72              		.cfi_endproc
+  73              	.LFE1:
+  74              		.size	pwmClk_Stop, .-pwmClk_Stop
+  75              		.section	.text.pwmClk_SetFractionalDividerRegister,"ax",%progbits
+  76              		.align	2
+  77              		.global	pwmClk_SetFractionalDividerRegister
+  78              		.code	16
+  79              		.thumb_func
+  80              		.type	pwmClk_SetFractionalDividerRegister, %function
+  81              	pwmClk_SetFractionalDividerRegister:
+  82              	.LFB2:
  116:Generated_Source\PSoC4/pwmClk.c **** 
  117:Generated_Source\PSoC4/pwmClk.c **** 
  118:Generated_Source\PSoC4/pwmClk.c **** /*******************************************************************************
@@ -223,69 +229,78 @@ ARM GAS  C:\Users\g\AppData\Local\Temp\ccCFOfKo.s 			page 1
  133:Generated_Source\PSoC4/pwmClk.c **** *******************************************************************************/
  134:Generated_Source\PSoC4/pwmClk.c **** void pwmClk_SetFractionalDividerRegister(uint16 clkDivider, uint8 clkFractional)
  135:Generated_Source\PSoC4/pwmClk.c **** {
-  79              		.loc 1 135 0
-  80              		.cfi_startproc
-  81              	.LVL0:
+  83              		.loc 1 135 0
+  84              		.cfi_startproc
+  85              	.LVL0:
  136:Generated_Source\PSoC4/pwmClk.c ****     uint32 maskVal;
  137:Generated_Source\PSoC4/pwmClk.c ****     uint32 regVal;
  138:Generated_Source\PSoC4/pwmClk.c ****     
  139:Generated_Source\PSoC4/pwmClk.c **** #if defined (pwmClk__FRAC_MASK) || defined (CYREG_PERI_DIV_CMD)
  140:Generated_Source\PSoC4/pwmClk.c ****     
  141:Generated_Source\PSoC4/pwmClk.c **** 	/* get all but divider bits */
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbzRqwd.s 			page 5
+
+
  142:Generated_Source\PSoC4/pwmClk.c ****     maskVal = pwmClk_DIV_REG & 
  143:Generated_Source\PSoC4/pwmClk.c ****                     (uint32)(~(uint32)(pwmClk_DIV_INT_MASK | pwmClk_DIV_FRAC_MASK)); 
  144:Generated_Source\PSoC4/pwmClk.c **** 	/* combine mask and new divider vals into 32-bit value */
  145:Generated_Source\PSoC4/pwmClk.c ****     regVal = maskVal |
  146:Generated_Source\PSoC4/pwmClk.c ****         ((uint32)((uint32)clkDivider <<  pwmClk_DIV_INT_SHIFT) & pwmClk_DIV_INT_MASK) |
  147:Generated_Source\PSoC4/pwmClk.c ****         ((uint32)((uint32)clkFractional << pwmClk_DIV_FRAC_SHIFT) & pwmClk_DIV_FRAC_MASK);
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCFOfKo.s 			page 5
-
-
  148:Generated_Source\PSoC4/pwmClk.c ****     
  149:Generated_Source\PSoC4/pwmClk.c **** #else
  150:Generated_Source\PSoC4/pwmClk.c ****     /* get all but integer divider bits */
  151:Generated_Source\PSoC4/pwmClk.c ****     maskVal = pwmClk_DIV_REG & (uint32)(~(uint32)pwmClk__DIVIDER_MASK);
-  82              		.loc 1 151 0
-  83 0000 034A     		ldr	r2, .L8
-  84 0002 1368     		ldr	r3, [r2]
-  85 0004 1B0C     		lsr	r3, r3, #16
-  86 0006 1B04     		lsl	r3, r3, #16
-  87              	.LVL1:
+  86              		.loc 1 151 0
+  87 0000 034A     		ldr	r2, .L8
  152:Generated_Source\PSoC4/pwmClk.c ****     /* combine mask and new divider val into 32-bit value */
  153:Generated_Source\PSoC4/pwmClk.c ****     regVal = clkDivider | maskVal;
-  88              		.loc 1 153 0
-  89 0008 1843     		orr	r0, r3
-  90              	.LVL2:
  154:Generated_Source\PSoC4/pwmClk.c ****     
  155:Generated_Source\PSoC4/pwmClk.c **** #endif /* pwmClk__FRAC_MASK || CYREG_PERI_DIV_CMD */
  156:Generated_Source\PSoC4/pwmClk.c **** 
  157:Generated_Source\PSoC4/pwmClk.c ****     pwmClk_DIV_REG = regVal;
-  91              		.loc 1 157 0
-  92 000a 1060     		str	r0, [r2]
  158:Generated_Source\PSoC4/pwmClk.c **** }
-  93              		.loc 1 158 0
-  94              		@ sp needed
-  95 000c 7047     		bx	lr
-  96              	.L9:
-  97 000e C046     		.align	2
-  98              	.L8:
-  99 0010 80000240 		.word	1073873024
- 100              		.cfi_endproc
- 101              	.LFE2:
- 102              		.size	pwmClk_SetFractionalDividerRegister, .-pwmClk_SetFractionalDividerRegister
- 103              		.section	.text.pwmClk_GetDividerRegister,"ax",%progbits
- 104              		.align	2
- 105              		.global	pwmClk_GetDividerRegister
- 106              		.code	16
- 107              		.thumb_func
- 108              		.type	pwmClk_GetDividerRegister, %function
- 109              	pwmClk_GetDividerRegister:
- 110              	.LFB3:
+  88              		.loc 1 158 0
+  89              		@ sp needed
+ 151:Generated_Source\PSoC4/pwmClk.c ****     /* combine mask and new divider val into 32-bit value */
+  90              		.loc 1 151 0
+  91 0002 1368     		ldr	r3, [r2]
+  92              	.LVL1:
+  93 0004 1B0C     		lsr	r3, r3, #16
+  94              	.LVL2:
+  95 0006 1B04     		lsl	r3, r3, #16
+ 153:Generated_Source\PSoC4/pwmClk.c ****     
+  96              		.loc 1 153 0
+  97 0008 1843     		orr	r0, r3
+  98              	.LVL3:
+ 157:Generated_Source\PSoC4/pwmClk.c **** }
+  99              		.loc 1 157 0
+ 100 000a 1060     		str	r0, [r2]
+ 101              		.loc 1 158 0
+ 102 000c 7047     		bx	lr
+ 103              	.L9:
+ 104 000e C046     		.align	2
+ 105              	.L8:
+ 106 0010 80000240 		.word	1073873024
+ 107              		.cfi_endproc
+ 108              	.LFE2:
+ 109              		.size	pwmClk_SetFractionalDividerRegister, .-pwmClk_SetFractionalDividerRegister
+ 110              		.section	.text.pwmClk_GetDividerRegister,"ax",%progbits
+ 111              		.align	2
+ 112              		.global	pwmClk_GetDividerRegister
+ 113              		.code	16
+ 114              		.thumb_func
+ 115              		.type	pwmClk_GetDividerRegister, %function
+ 116              	pwmClk_GetDividerRegister:
+ 117              	.LFB3:
  159:Generated_Source\PSoC4/pwmClk.c **** 
  160:Generated_Source\PSoC4/pwmClk.c **** 
  161:Generated_Source\PSoC4/pwmClk.c **** /*******************************************************************************
  162:Generated_Source\PSoC4/pwmClk.c **** * Function Name: pwmClk_GetDividerRegister
  163:Generated_Source\PSoC4/pwmClk.c **** ********************************************************************************
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbzRqwd.s 			page 6
+
+
  164:Generated_Source\PSoC4/pwmClk.c **** *
  165:Generated_Source\PSoC4/pwmClk.c **** * Summary:
  166:Generated_Source\PSoC4/pwmClk.c **** *  Gets the clock divider register value.
@@ -298,38 +313,38 @@ ARM GAS  C:\Users\g\AppData\Local\Temp\ccCFOfKo.s 			page 1
  173:Generated_Source\PSoC4/pwmClk.c **** *  divide by 2, the return value will be 1.
  174:Generated_Source\PSoC4/pwmClk.c **** *
  175:Generated_Source\PSoC4/pwmClk.c **** *******************************************************************************/
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCFOfKo.s 			page 6
-
-
  176:Generated_Source\PSoC4/pwmClk.c **** uint16 pwmClk_GetDividerRegister(void)
  177:Generated_Source\PSoC4/pwmClk.c **** {
- 111              		.loc 1 177 0
- 112              		.cfi_startproc
+ 118              		.loc 1 177 0
+ 119              		.cfi_startproc
  178:Generated_Source\PSoC4/pwmClk.c ****     return (uint16)((pwmClk_DIV_REG & pwmClk_DIV_INT_MASK)
- 113              		.loc 1 178 0
- 114 0000 014B     		ldr	r3, .L11
- 115 0002 1868     		ldr	r0, [r3]
- 116 0004 80B2     		uxth	r0, r0
+ 120              		.loc 1 178 0
+ 121 0000 014B     		ldr	r3, .L11
  179:Generated_Source\PSoC4/pwmClk.c ****         >> pwmClk_DIV_INT_SHIFT);
  180:Generated_Source\PSoC4/pwmClk.c **** }
- 117              		.loc 1 180 0
- 118              		@ sp needed
- 119 0006 7047     		bx	lr
- 120              	.L12:
- 121              		.align	2
- 122              	.L11:
- 123 0008 80000240 		.word	1073873024
- 124              		.cfi_endproc
- 125              	.LFE3:
- 126              		.size	pwmClk_GetDividerRegister, .-pwmClk_GetDividerRegister
- 127              		.section	.text.pwmClk_GetFractionalDividerRegister,"ax",%progbits
- 128              		.align	2
- 129              		.global	pwmClk_GetFractionalDividerRegister
- 130              		.code	16
- 131              		.thumb_func
- 132              		.type	pwmClk_GetFractionalDividerRegister, %function
- 133              	pwmClk_GetFractionalDividerRegister:
- 134              	.LFB4:
+ 122              		.loc 1 180 0
+ 123              		@ sp needed
+ 178:Generated_Source\PSoC4/pwmClk.c ****     return (uint16)((pwmClk_DIV_REG & pwmClk_DIV_INT_MASK)
+ 124              		.loc 1 178 0
+ 125 0002 1868     		ldr	r0, [r3]
+ 126 0004 80B2     		uxth	r0, r0
+ 127              		.loc 1 180 0
+ 128 0006 7047     		bx	lr
+ 129              	.L12:
+ 130              		.align	2
+ 131              	.L11:
+ 132 0008 80000240 		.word	1073873024
+ 133              		.cfi_endproc
+ 134              	.LFE3:
+ 135              		.size	pwmClk_GetDividerRegister, .-pwmClk_GetDividerRegister
+ 136              		.section	.text.pwmClk_GetFractionalDividerRegister,"ax",%progbits
+ 137              		.align	2
+ 138              		.global	pwmClk_GetFractionalDividerRegister
+ 139              		.code	16
+ 140              		.thumb_func
+ 141              		.type	pwmClk_GetFractionalDividerRegister, %function
+ 142              	pwmClk_GetFractionalDividerRegister:
+ 143              	.LFB4:
  181:Generated_Source\PSoC4/pwmClk.c **** 
  182:Generated_Source\PSoC4/pwmClk.c **** 
  183:Generated_Source\PSoC4/pwmClk.c **** /*******************************************************************************
@@ -343,14 +358,17 @@ ARM GAS  C:\Users\g\AppData\Local\Temp\ccCFOfKo.s 			page 1
  191:Generated_Source\PSoC4/pwmClk.c **** *  None
  192:Generated_Source\PSoC4/pwmClk.c **** *
  193:Generated_Source\PSoC4/pwmClk.c **** * Returns:
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbzRqwd.s 			page 7
+
+
  194:Generated_Source\PSoC4/pwmClk.c **** *  Fractional Divide value of the clock
  195:Generated_Source\PSoC4/pwmClk.c **** *  0 if the fractional divider is not in use.
  196:Generated_Source\PSoC4/pwmClk.c **** *
  197:Generated_Source\PSoC4/pwmClk.c **** *******************************************************************************/
  198:Generated_Source\PSoC4/pwmClk.c **** uint8 pwmClk_GetFractionalDividerRegister(void)
  199:Generated_Source\PSoC4/pwmClk.c **** {
- 135              		.loc 1 199 0
- 136              		.cfi_startproc
+ 144              		.loc 1 199 0
+ 145              		.cfi_startproc
  200:Generated_Source\PSoC4/pwmClk.c **** #if defined (pwmClk__FRAC_MASK)
  201:Generated_Source\PSoC4/pwmClk.c ****     /* return fractional divider bits */
  202:Generated_Source\PSoC4/pwmClk.c ****     return (uint8)((pwmClk_DIV_REG & pwmClk_DIV_FRAC_MASK)
@@ -358,580 +376,606 @@ ARM GAS  C:\Users\g\AppData\Local\Temp\ccCFOfKo.s 			page 1
  204:Generated_Source\PSoC4/pwmClk.c **** #else
  205:Generated_Source\PSoC4/pwmClk.c ****     return 0u;
  206:Generated_Source\PSoC4/pwmClk.c **** #endif /* pwmClk__FRAC_MASK */
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCFOfKo.s 			page 7
-
-
  207:Generated_Source\PSoC4/pwmClk.c **** }
- 137              		.loc 1 207 0
- 138 0000 0020     		mov	r0, #0
- 139              		@ sp needed
- 140 0002 7047     		bx	lr
- 141              		.cfi_endproc
- 142              	.LFE4:
- 143              		.size	pwmClk_GetFractionalDividerRegister, .-pwmClk_GetFractionalDividerRegister
- 144              		.text
- 145              	.Letext0:
- 146              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
- 147              		.section	.debug_info,"",%progbits
- 148              	.Ldebug_info0:
- 149 0000 4A010000 		.4byte	0x14a
- 150 0004 0400     		.2byte	0x4
- 151 0006 00000000 		.4byte	.Ldebug_abbrev0
- 152 000a 04       		.byte	0x4
- 153 000b 01       		.uleb128 0x1
- 154 000c 72000000 		.4byte	.LASF24
- 155 0010 01       		.byte	0x1
- 156 0011 4A010000 		.4byte	.LASF25
- 157 0015 00000000 		.4byte	.LASF26
- 158 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 159 001d 00000000 		.4byte	0
- 160 0021 00000000 		.4byte	.Ldebug_line0
- 161 0025 02       		.uleb128 0x2
- 162 0026 01       		.byte	0x1
- 163 0027 06       		.byte	0x6
- 164 0028 26020000 		.4byte	.LASF0
- 165 002c 02       		.uleb128 0x2
- 166 002d 01       		.byte	0x1
- 167 002e 08       		.byte	0x8
- 168 002f 0B010000 		.4byte	.LASF1
- 169 0033 02       		.uleb128 0x2
- 170 0034 02       		.byte	0x2
- 171 0035 05       		.byte	0x5
- 172 0036 07020000 		.4byte	.LASF2
- 173 003a 02       		.uleb128 0x2
- 174 003b 02       		.byte	0x2
- 175 003c 07       		.byte	0x7
- 176 003d 37010000 		.4byte	.LASF3
- 177 0041 02       		.uleb128 0x2
- 178 0042 04       		.byte	0x4
- 179 0043 05       		.byte	0x5
- 180 0044 17020000 		.4byte	.LASF4
- 181 0048 02       		.uleb128 0x2
- 182 0049 04       		.byte	0x4
- 183 004a 07       		.byte	0x7
- 184 004b 25010000 		.4byte	.LASF5
- 185 004f 02       		.uleb128 0x2
- 186 0050 08       		.byte	0x8
- 187 0051 05       		.byte	0x5
- 188 0052 F4010000 		.4byte	.LASF6
- 189 0056 02       		.uleb128 0x2
- 190 0057 08       		.byte	0x8
- 191 0058 07       		.byte	0x7
- 192 0059 D0010000 		.4byte	.LASF7
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCFOfKo.s 			page 8
+ 146              		.loc 1 207 0
+ 147 0000 0020     		mov	r0, #0
+ 148              		@ sp needed
+ 149 0002 7047     		bx	lr
+ 150              		.cfi_endproc
+ 151              	.LFE4:
+ 152              		.size	pwmClk_GetFractionalDividerRegister, .-pwmClk_GetFractionalDividerRegister
+ 153              		.text
+ 154              	.Letext0:
+ 155              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 156              		.section	.debug_info,"",%progbits
+ 157              	.Ldebug_info0:
+ 158 0000 4C010000 		.4byte	0x14c
+ 159 0004 0400     		.2byte	0x4
+ 160 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 161 000a 04       		.byte	0x4
+ 162 000b 01       		.uleb128 0x1
+ 163 000c 48000000 		.4byte	.LASF24
+ 164 0010 01       		.byte	0x1
+ 165 0011 4A010000 		.4byte	.LASF25
+ 166 0015 00000000 		.4byte	.LASF26
+ 167 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 168 001d 00000000 		.4byte	0
+ 169 0021 00000000 		.4byte	.Ldebug_line0
+ 170 0025 02       		.uleb128 0x2
+ 171 0026 01       		.byte	0x1
+ 172 0027 06       		.byte	0x6
+ 173 0028 26020000 		.4byte	.LASF0
+ 174 002c 02       		.uleb128 0x2
+ 175 002d 01       		.byte	0x1
+ 176 002e 08       		.byte	0x8
+ 177 002f 0B010000 		.4byte	.LASF1
+ 178 0033 02       		.uleb128 0x2
+ 179 0034 02       		.byte	0x2
+ 180 0035 05       		.byte	0x5
+ 181 0036 07020000 		.4byte	.LASF2
+ 182 003a 02       		.uleb128 0x2
+ 183 003b 02       		.byte	0x2
+ 184 003c 07       		.byte	0x7
+ 185 003d 37010000 		.4byte	.LASF3
+ 186 0041 02       		.uleb128 0x2
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbzRqwd.s 			page 8
 
 
- 193 005d 03       		.uleb128 0x3
- 194 005e 04       		.byte	0x4
- 195 005f 05       		.byte	0x5
- 196 0060 696E7400 		.ascii	"int\000"
- 197 0064 02       		.uleb128 0x2
- 198 0065 04       		.byte	0x4
- 199 0066 07       		.byte	0x7
- 200 0067 9F010000 		.4byte	.LASF8
- 201 006b 04       		.uleb128 0x4
- 202 006c 11020000 		.4byte	.LASF9
- 203 0070 02       		.byte	0x2
- 204 0071 9801     		.2byte	0x198
- 205 0073 2C000000 		.4byte	0x2c
- 206 0077 04       		.uleb128 0x4
- 207 0078 91010000 		.4byte	.LASF10
- 208 007c 02       		.byte	0x2
- 209 007d 9901     		.2byte	0x199
- 210 007f 3A000000 		.4byte	0x3a
- 211 0083 04       		.uleb128 0x4
- 212 0084 98010000 		.4byte	.LASF11
- 213 0088 02       		.byte	0x2
- 214 0089 9A01     		.2byte	0x19a
- 215 008b 48000000 		.4byte	0x48
- 216 008f 02       		.uleb128 0x2
- 217 0090 04       		.byte	0x4
- 218 0091 04       		.byte	0x4
- 219 0092 48000000 		.4byte	.LASF12
- 220 0096 02       		.uleb128 0x2
- 221 0097 08       		.byte	0x8
- 222 0098 04       		.byte	0x4
- 223 0099 75010000 		.4byte	.LASF13
- 224 009d 02       		.uleb128 0x2
- 225 009e 01       		.byte	0x1
- 226 009f 08       		.byte	0x8
- 227 00a0 02020000 		.4byte	.LASF14
- 228 00a4 04       		.uleb128 0x4
- 229 00a5 20020000 		.4byte	.LASF15
- 230 00a9 02       		.byte	0x2
- 231 00aa 4402     		.2byte	0x244
- 232 00ac B0000000 		.4byte	0xb0
- 233 00b0 05       		.uleb128 0x5
- 234 00b1 83000000 		.4byte	0x83
- 235 00b5 06       		.uleb128 0x6
- 236 00b6 E7010000 		.4byte	.LASF16
- 237 00ba 01       		.byte	0x1
- 238 00bb 46       		.byte	0x46
- 239 00bc 00000000 		.4byte	.LFB0
- 240 00c0 14000000 		.4byte	.LFE0-.LFB0
- 241 00c4 01       		.uleb128 0x1
- 242 00c5 9C       		.byte	0x9c
- 243 00c6 06       		.uleb128 0x6
- 244 00c7 19010000 		.4byte	.LASF17
- 245 00cb 01       		.byte	0x1
- 246 00cc 5F       		.byte	0x5f
- 247 00cd 00000000 		.4byte	.LFB1
- 248 00d1 10000000 		.4byte	.LFE1-.LFB1
- 249 00d5 01       		.uleb128 0x1
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCFOfKo.s 			page 9
+ 187 0042 04       		.byte	0x4
+ 188 0043 05       		.byte	0x5
+ 189 0044 17020000 		.4byte	.LASF4
+ 190 0048 02       		.uleb128 0x2
+ 191 0049 04       		.byte	0x4
+ 192 004a 07       		.byte	0x7
+ 193 004b 25010000 		.4byte	.LASF5
+ 194 004f 02       		.uleb128 0x2
+ 195 0050 08       		.byte	0x8
+ 196 0051 05       		.byte	0x5
+ 197 0052 F4010000 		.4byte	.LASF6
+ 198 0056 02       		.uleb128 0x2
+ 199 0057 08       		.byte	0x8
+ 200 0058 07       		.byte	0x7
+ 201 0059 D0010000 		.4byte	.LASF7
+ 202 005d 03       		.uleb128 0x3
+ 203 005e 04       		.byte	0x4
+ 204 005f 05       		.byte	0x5
+ 205 0060 696E7400 		.ascii	"int\000"
+ 206 0064 02       		.uleb128 0x2
+ 207 0065 04       		.byte	0x4
+ 208 0066 07       		.byte	0x7
+ 209 0067 9F010000 		.4byte	.LASF8
+ 210 006b 04       		.uleb128 0x4
+ 211 006c 11020000 		.4byte	.LASF9
+ 212 0070 02       		.byte	0x2
+ 213 0071 9801     		.2byte	0x198
+ 214 0073 2C000000 		.4byte	0x2c
+ 215 0077 04       		.uleb128 0x4
+ 216 0078 91010000 		.4byte	.LASF10
+ 217 007c 02       		.byte	0x2
+ 218 007d 9901     		.2byte	0x199
+ 219 007f 3A000000 		.4byte	0x3a
+ 220 0083 04       		.uleb128 0x4
+ 221 0084 98010000 		.4byte	.LASF11
+ 222 0088 02       		.byte	0x2
+ 223 0089 9A01     		.2byte	0x19a
+ 224 008b 48000000 		.4byte	0x48
+ 225 008f 02       		.uleb128 0x2
+ 226 0090 04       		.byte	0x4
+ 227 0091 04       		.byte	0x4
+ 228 0092 E1000000 		.4byte	.LASF12
+ 229 0096 02       		.uleb128 0x2
+ 230 0097 08       		.byte	0x8
+ 231 0098 04       		.byte	0x4
+ 232 0099 75010000 		.4byte	.LASF13
+ 233 009d 02       		.uleb128 0x2
+ 234 009e 01       		.byte	0x1
+ 235 009f 08       		.byte	0x8
+ 236 00a0 02020000 		.4byte	.LASF14
+ 237 00a4 04       		.uleb128 0x4
+ 238 00a5 20020000 		.4byte	.LASF15
+ 239 00a9 02       		.byte	0x2
+ 240 00aa 4402     		.2byte	0x244
+ 241 00ac B0000000 		.4byte	0xb0
+ 242 00b0 05       		.uleb128 0x5
+ 243 00b1 83000000 		.4byte	0x83
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbzRqwd.s 			page 9
 
 
- 250 00d6 9C       		.byte	0x9c
- 251 00d7 07       		.uleb128 0x7
- 252 00d8 AC010000 		.4byte	.LASF27
- 253 00dc 01       		.byte	0x1
- 254 00dd 86       		.byte	0x86
- 255 00de 00000000 		.4byte	.LFB2
- 256 00e2 14000000 		.4byte	.LFE2-.LFB2
- 257 00e6 01       		.uleb128 0x1
- 258 00e7 9C       		.byte	0x9c
- 259 00e8 23010000 		.4byte	0x123
- 260 00ec 08       		.uleb128 0x8
- 261 00ed 6A010000 		.4byte	.LASF18
- 262 00f1 01       		.byte	0x1
- 263 00f2 86       		.byte	0x86
- 264 00f3 77000000 		.4byte	0x77
- 265 00f7 00000000 		.4byte	.LLST0
- 266 00fb 09       		.uleb128 0x9
- 267 00fc 83010000 		.4byte	.LASF19
- 268 0100 01       		.byte	0x1
- 269 0101 86       		.byte	0x86
- 270 0102 6B000000 		.4byte	0x6b
- 271 0106 01       		.uleb128 0x1
- 272 0107 51       		.byte	0x51
- 273 0108 0A       		.uleb128 0xa
- 274 0109 40000000 		.4byte	.LASF20
- 275 010d 01       		.byte	0x1
- 276 010e 88       		.byte	0x88
- 277 010f 83000000 		.4byte	0x83
- 278 0113 01       		.uleb128 0x1
- 279 0114 53       		.byte	0x53
- 280 0115 0A       		.uleb128 0xa
- 281 0116 7C010000 		.4byte	.LASF21
- 282 011a 01       		.byte	0x1
- 283 011b 89       		.byte	0x89
- 284 011c 83000000 		.4byte	0x83
- 285 0120 01       		.uleb128 0x1
- 286 0121 50       		.byte	0x50
- 287 0122 00       		.byte	0
- 288 0123 0B       		.uleb128 0xb
- 289 0124 26000000 		.4byte	.LASF22
- 290 0128 01       		.byte	0x1
- 291 0129 B0       		.byte	0xb0
- 292 012a 77000000 		.4byte	0x77
- 293 012e 00000000 		.4byte	.LFB3
- 294 0132 0C000000 		.4byte	.LFE3-.LFB3
- 295 0136 01       		.uleb128 0x1
- 296 0137 9C       		.byte	0x9c
- 297 0138 0B       		.uleb128 0xb
- 298 0139 4E000000 		.4byte	.LASF23
- 299 013d 01       		.byte	0x1
- 300 013e C6       		.byte	0xc6
- 301 013f 6B000000 		.4byte	0x6b
- 302 0143 00000000 		.4byte	.LFB4
- 303 0147 04000000 		.4byte	.LFE4-.LFB4
- 304 014b 01       		.uleb128 0x1
- 305 014c 9C       		.byte	0x9c
- 306 014d 00       		.byte	0
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCFOfKo.s 			page 10
+ 244 00b5 06       		.uleb128 0x6
+ 245 00b6 E7010000 		.4byte	.LASF16
+ 246 00ba 01       		.byte	0x1
+ 247 00bb 46       		.byte	0x46
+ 248 00bc 00000000 		.4byte	.LFB0
+ 249 00c0 14000000 		.4byte	.LFE0-.LFB0
+ 250 00c4 01       		.uleb128 0x1
+ 251 00c5 9C       		.byte	0x9c
+ 252 00c6 06       		.uleb128 0x6
+ 253 00c7 19010000 		.4byte	.LASF17
+ 254 00cb 01       		.byte	0x1
+ 255 00cc 5F       		.byte	0x5f
+ 256 00cd 00000000 		.4byte	.LFB1
+ 257 00d1 10000000 		.4byte	.LFE1-.LFB1
+ 258 00d5 01       		.uleb128 0x1
+ 259 00d6 9C       		.byte	0x9c
+ 260 00d7 07       		.uleb128 0x7
+ 261 00d8 AC010000 		.4byte	.LASF27
+ 262 00dc 01       		.byte	0x1
+ 263 00dd 86       		.byte	0x86
+ 264 00de 00000000 		.4byte	.LFB2
+ 265 00e2 14000000 		.4byte	.LFE2-.LFB2
+ 266 00e6 01       		.uleb128 0x1
+ 267 00e7 9C       		.byte	0x9c
+ 268 00e8 25010000 		.4byte	0x125
+ 269 00ec 08       		.uleb128 0x8
+ 270 00ed 6A010000 		.4byte	.LASF18
+ 271 00f1 01       		.byte	0x1
+ 272 00f2 86       		.byte	0x86
+ 273 00f3 77000000 		.4byte	0x77
+ 274 00f7 00000000 		.4byte	.LLST0
+ 275 00fb 09       		.uleb128 0x9
+ 276 00fc 83010000 		.4byte	.LASF19
+ 277 0100 01       		.byte	0x1
+ 278 0101 86       		.byte	0x86
+ 279 0102 6B000000 		.4byte	0x6b
+ 280 0106 01       		.uleb128 0x1
+ 281 0107 51       		.byte	0x51
+ 282 0108 0A       		.uleb128 0xa
+ 283 0109 40000000 		.4byte	.LASF20
+ 284 010d 01       		.byte	0x1
+ 285 010e 88       		.byte	0x88
+ 286 010f 83000000 		.4byte	0x83
+ 287 0113 21000000 		.4byte	.LLST1
+ 288 0117 0B       		.uleb128 0xb
+ 289 0118 7C010000 		.4byte	.LASF21
+ 290 011c 01       		.byte	0x1
+ 291 011d 89       		.byte	0x89
+ 292 011e 83000000 		.4byte	0x83
+ 293 0122 01       		.uleb128 0x1
+ 294 0123 50       		.byte	0x50
+ 295 0124 00       		.byte	0
+ 296 0125 0C       		.uleb128 0xc
+ 297 0126 26000000 		.4byte	.LASF22
+ 298 012a 01       		.byte	0x1
+ 299 012b B0       		.byte	0xb0
+ 300 012c 77000000 		.4byte	0x77
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbzRqwd.s 			page 10
 
 
- 307              		.section	.debug_abbrev,"",%progbits
- 308              	.Ldebug_abbrev0:
- 309 0000 01       		.uleb128 0x1
- 310 0001 11       		.uleb128 0x11
- 311 0002 01       		.byte	0x1
- 312 0003 25       		.uleb128 0x25
- 313 0004 0E       		.uleb128 0xe
- 314 0005 13       		.uleb128 0x13
- 315 0006 0B       		.uleb128 0xb
- 316 0007 03       		.uleb128 0x3
- 317 0008 0E       		.uleb128 0xe
- 318 0009 1B       		.uleb128 0x1b
- 319 000a 0E       		.uleb128 0xe
- 320 000b 55       		.uleb128 0x55
- 321 000c 17       		.uleb128 0x17
- 322 000d 11       		.uleb128 0x11
- 323 000e 01       		.uleb128 0x1
- 324 000f 10       		.uleb128 0x10
- 325 0010 17       		.uleb128 0x17
- 326 0011 00       		.byte	0
- 327 0012 00       		.byte	0
- 328 0013 02       		.uleb128 0x2
- 329 0014 24       		.uleb128 0x24
- 330 0015 00       		.byte	0
- 331 0016 0B       		.uleb128 0xb
- 332 0017 0B       		.uleb128 0xb
- 333 0018 3E       		.uleb128 0x3e
- 334 0019 0B       		.uleb128 0xb
- 335 001a 03       		.uleb128 0x3
- 336 001b 0E       		.uleb128 0xe
- 337 001c 00       		.byte	0
- 338 001d 00       		.byte	0
- 339 001e 03       		.uleb128 0x3
- 340 001f 24       		.uleb128 0x24
- 341 0020 00       		.byte	0
- 342 0021 0B       		.uleb128 0xb
- 343 0022 0B       		.uleb128 0xb
- 344 0023 3E       		.uleb128 0x3e
- 345 0024 0B       		.uleb128 0xb
- 346 0025 03       		.uleb128 0x3
- 347 0026 08       		.uleb128 0x8
- 348 0027 00       		.byte	0
- 349 0028 00       		.byte	0
- 350 0029 04       		.uleb128 0x4
- 351 002a 16       		.uleb128 0x16
- 352 002b 00       		.byte	0
- 353 002c 03       		.uleb128 0x3
- 354 002d 0E       		.uleb128 0xe
- 355 002e 3A       		.uleb128 0x3a
- 356 002f 0B       		.uleb128 0xb
- 357 0030 3B       		.uleb128 0x3b
- 358 0031 05       		.uleb128 0x5
- 359 0032 49       		.uleb128 0x49
- 360 0033 13       		.uleb128 0x13
- 361 0034 00       		.byte	0
- 362 0035 00       		.byte	0
- 363 0036 05       		.uleb128 0x5
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCFOfKo.s 			page 11
+ 301 0130 00000000 		.4byte	.LFB3
+ 302 0134 0C000000 		.4byte	.LFE3-.LFB3
+ 303 0138 01       		.uleb128 0x1
+ 304 0139 9C       		.byte	0x9c
+ 305 013a 0C       		.uleb128 0xc
+ 306 013b E7000000 		.4byte	.LASF23
+ 307 013f 01       		.byte	0x1
+ 308 0140 C6       		.byte	0xc6
+ 309 0141 6B000000 		.4byte	0x6b
+ 310 0145 00000000 		.4byte	.LFB4
+ 311 0149 04000000 		.4byte	.LFE4-.LFB4
+ 312 014d 01       		.uleb128 0x1
+ 313 014e 9C       		.byte	0x9c
+ 314 014f 00       		.byte	0
+ 315              		.section	.debug_abbrev,"",%progbits
+ 316              	.Ldebug_abbrev0:
+ 317 0000 01       		.uleb128 0x1
+ 318 0001 11       		.uleb128 0x11
+ 319 0002 01       		.byte	0x1
+ 320 0003 25       		.uleb128 0x25
+ 321 0004 0E       		.uleb128 0xe
+ 322 0005 13       		.uleb128 0x13
+ 323 0006 0B       		.uleb128 0xb
+ 324 0007 03       		.uleb128 0x3
+ 325 0008 0E       		.uleb128 0xe
+ 326 0009 1B       		.uleb128 0x1b
+ 327 000a 0E       		.uleb128 0xe
+ 328 000b 55       		.uleb128 0x55
+ 329 000c 17       		.uleb128 0x17
+ 330 000d 11       		.uleb128 0x11
+ 331 000e 01       		.uleb128 0x1
+ 332 000f 10       		.uleb128 0x10
+ 333 0010 17       		.uleb128 0x17
+ 334 0011 00       		.byte	0
+ 335 0012 00       		.byte	0
+ 336 0013 02       		.uleb128 0x2
+ 337 0014 24       		.uleb128 0x24
+ 338 0015 00       		.byte	0
+ 339 0016 0B       		.uleb128 0xb
+ 340 0017 0B       		.uleb128 0xb
+ 341 0018 3E       		.uleb128 0x3e
+ 342 0019 0B       		.uleb128 0xb
+ 343 001a 03       		.uleb128 0x3
+ 344 001b 0E       		.uleb128 0xe
+ 345 001c 00       		.byte	0
+ 346 001d 00       		.byte	0
+ 347 001e 03       		.uleb128 0x3
+ 348 001f 24       		.uleb128 0x24
+ 349 0020 00       		.byte	0
+ 350 0021 0B       		.uleb128 0xb
+ 351 0022 0B       		.uleb128 0xb
+ 352 0023 3E       		.uleb128 0x3e
+ 353 0024 0B       		.uleb128 0xb
+ 354 0025 03       		.uleb128 0x3
+ 355 0026 08       		.uleb128 0x8
+ 356 0027 00       		.byte	0
+ 357 0028 00       		.byte	0
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbzRqwd.s 			page 11
 
 
- 364 0037 35       		.uleb128 0x35
- 365 0038 00       		.byte	0
- 366 0039 49       		.uleb128 0x49
- 367 003a 13       		.uleb128 0x13
- 368 003b 00       		.byte	0
- 369 003c 00       		.byte	0
- 370 003d 06       		.uleb128 0x6
- 371 003e 2E       		.uleb128 0x2e
- 372 003f 00       		.byte	0
- 373 0040 3F       		.uleb128 0x3f
- 374 0041 19       		.uleb128 0x19
- 375 0042 03       		.uleb128 0x3
- 376 0043 0E       		.uleb128 0xe
- 377 0044 3A       		.uleb128 0x3a
- 378 0045 0B       		.uleb128 0xb
- 379 0046 3B       		.uleb128 0x3b
- 380 0047 0B       		.uleb128 0xb
- 381 0048 27       		.uleb128 0x27
- 382 0049 19       		.uleb128 0x19
- 383 004a 11       		.uleb128 0x11
- 384 004b 01       		.uleb128 0x1
- 385 004c 12       		.uleb128 0x12
- 386 004d 06       		.uleb128 0x6
- 387 004e 40       		.uleb128 0x40
- 388 004f 18       		.uleb128 0x18
- 389 0050 9742     		.uleb128 0x2117
- 390 0052 19       		.uleb128 0x19
- 391 0053 00       		.byte	0
- 392 0054 00       		.byte	0
- 393 0055 07       		.uleb128 0x7
- 394 0056 2E       		.uleb128 0x2e
- 395 0057 01       		.byte	0x1
- 396 0058 3F       		.uleb128 0x3f
- 397 0059 19       		.uleb128 0x19
- 398 005a 03       		.uleb128 0x3
- 399 005b 0E       		.uleb128 0xe
- 400 005c 3A       		.uleb128 0x3a
- 401 005d 0B       		.uleb128 0xb
- 402 005e 3B       		.uleb128 0x3b
- 403 005f 0B       		.uleb128 0xb
- 404 0060 27       		.uleb128 0x27
- 405 0061 19       		.uleb128 0x19
- 406 0062 11       		.uleb128 0x11
- 407 0063 01       		.uleb128 0x1
- 408 0064 12       		.uleb128 0x12
- 409 0065 06       		.uleb128 0x6
- 410 0066 40       		.uleb128 0x40
- 411 0067 18       		.uleb128 0x18
- 412 0068 9742     		.uleb128 0x2117
- 413 006a 19       		.uleb128 0x19
- 414 006b 01       		.uleb128 0x1
- 415 006c 13       		.uleb128 0x13
- 416 006d 00       		.byte	0
- 417 006e 00       		.byte	0
- 418 006f 08       		.uleb128 0x8
- 419 0070 05       		.uleb128 0x5
- 420 0071 00       		.byte	0
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCFOfKo.s 			page 12
+ 358 0029 04       		.uleb128 0x4
+ 359 002a 16       		.uleb128 0x16
+ 360 002b 00       		.byte	0
+ 361 002c 03       		.uleb128 0x3
+ 362 002d 0E       		.uleb128 0xe
+ 363 002e 3A       		.uleb128 0x3a
+ 364 002f 0B       		.uleb128 0xb
+ 365 0030 3B       		.uleb128 0x3b
+ 366 0031 05       		.uleb128 0x5
+ 367 0032 49       		.uleb128 0x49
+ 368 0033 13       		.uleb128 0x13
+ 369 0034 00       		.byte	0
+ 370 0035 00       		.byte	0
+ 371 0036 05       		.uleb128 0x5
+ 372 0037 35       		.uleb128 0x35
+ 373 0038 00       		.byte	0
+ 374 0039 49       		.uleb128 0x49
+ 375 003a 13       		.uleb128 0x13
+ 376 003b 00       		.byte	0
+ 377 003c 00       		.byte	0
+ 378 003d 06       		.uleb128 0x6
+ 379 003e 2E       		.uleb128 0x2e
+ 380 003f 00       		.byte	0
+ 381 0040 3F       		.uleb128 0x3f
+ 382 0041 19       		.uleb128 0x19
+ 383 0042 03       		.uleb128 0x3
+ 384 0043 0E       		.uleb128 0xe
+ 385 0044 3A       		.uleb128 0x3a
+ 386 0045 0B       		.uleb128 0xb
+ 387 0046 3B       		.uleb128 0x3b
+ 388 0047 0B       		.uleb128 0xb
+ 389 0048 27       		.uleb128 0x27
+ 390 0049 19       		.uleb128 0x19
+ 391 004a 11       		.uleb128 0x11
+ 392 004b 01       		.uleb128 0x1
+ 393 004c 12       		.uleb128 0x12
+ 394 004d 06       		.uleb128 0x6
+ 395 004e 40       		.uleb128 0x40
+ 396 004f 18       		.uleb128 0x18
+ 397 0050 9742     		.uleb128 0x2117
+ 398 0052 19       		.uleb128 0x19
+ 399 0053 00       		.byte	0
+ 400 0054 00       		.byte	0
+ 401 0055 07       		.uleb128 0x7
+ 402 0056 2E       		.uleb128 0x2e
+ 403 0057 01       		.byte	0x1
+ 404 0058 3F       		.uleb128 0x3f
+ 405 0059 19       		.uleb128 0x19
+ 406 005a 03       		.uleb128 0x3
+ 407 005b 0E       		.uleb128 0xe
+ 408 005c 3A       		.uleb128 0x3a
+ 409 005d 0B       		.uleb128 0xb
+ 410 005e 3B       		.uleb128 0x3b
+ 411 005f 0B       		.uleb128 0xb
+ 412 0060 27       		.uleb128 0x27
+ 413 0061 19       		.uleb128 0x19
+ 414 0062 11       		.uleb128 0x11
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbzRqwd.s 			page 12
 
 
- 421 0072 03       		.uleb128 0x3
- 422 0073 0E       		.uleb128 0xe
- 423 0074 3A       		.uleb128 0x3a
- 424 0075 0B       		.uleb128 0xb
- 425 0076 3B       		.uleb128 0x3b
- 426 0077 0B       		.uleb128 0xb
- 427 0078 49       		.uleb128 0x49
- 428 0079 13       		.uleb128 0x13
- 429 007a 02       		.uleb128 0x2
- 430 007b 17       		.uleb128 0x17
- 431 007c 00       		.byte	0
- 432 007d 00       		.byte	0
- 433 007e 09       		.uleb128 0x9
- 434 007f 05       		.uleb128 0x5
- 435 0080 00       		.byte	0
- 436 0081 03       		.uleb128 0x3
- 437 0082 0E       		.uleb128 0xe
- 438 0083 3A       		.uleb128 0x3a
- 439 0084 0B       		.uleb128 0xb
- 440 0085 3B       		.uleb128 0x3b
- 441 0086 0B       		.uleb128 0xb
- 442 0087 49       		.uleb128 0x49
- 443 0088 13       		.uleb128 0x13
- 444 0089 02       		.uleb128 0x2
- 445 008a 18       		.uleb128 0x18
- 446 008b 00       		.byte	0
- 447 008c 00       		.byte	0
- 448 008d 0A       		.uleb128 0xa
- 449 008e 34       		.uleb128 0x34
- 450 008f 00       		.byte	0
- 451 0090 03       		.uleb128 0x3
- 452 0091 0E       		.uleb128 0xe
- 453 0092 3A       		.uleb128 0x3a
- 454 0093 0B       		.uleb128 0xb
- 455 0094 3B       		.uleb128 0x3b
- 456 0095 0B       		.uleb128 0xb
- 457 0096 49       		.uleb128 0x49
- 458 0097 13       		.uleb128 0x13
- 459 0098 02       		.uleb128 0x2
- 460 0099 18       		.uleb128 0x18
- 461 009a 00       		.byte	0
- 462 009b 00       		.byte	0
- 463 009c 0B       		.uleb128 0xb
- 464 009d 2E       		.uleb128 0x2e
- 465 009e 00       		.byte	0
- 466 009f 3F       		.uleb128 0x3f
- 467 00a0 19       		.uleb128 0x19
- 468 00a1 03       		.uleb128 0x3
- 469 00a2 0E       		.uleb128 0xe
- 470 00a3 3A       		.uleb128 0x3a
- 471 00a4 0B       		.uleb128 0xb
- 472 00a5 3B       		.uleb128 0x3b
- 473 00a6 0B       		.uleb128 0xb
- 474 00a7 27       		.uleb128 0x27
- 475 00a8 19       		.uleb128 0x19
- 476 00a9 49       		.uleb128 0x49
- 477 00aa 13       		.uleb128 0x13
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCFOfKo.s 			page 13
+ 415 0063 01       		.uleb128 0x1
+ 416 0064 12       		.uleb128 0x12
+ 417 0065 06       		.uleb128 0x6
+ 418 0066 40       		.uleb128 0x40
+ 419 0067 18       		.uleb128 0x18
+ 420 0068 9742     		.uleb128 0x2117
+ 421 006a 19       		.uleb128 0x19
+ 422 006b 01       		.uleb128 0x1
+ 423 006c 13       		.uleb128 0x13
+ 424 006d 00       		.byte	0
+ 425 006e 00       		.byte	0
+ 426 006f 08       		.uleb128 0x8
+ 427 0070 05       		.uleb128 0x5
+ 428 0071 00       		.byte	0
+ 429 0072 03       		.uleb128 0x3
+ 430 0073 0E       		.uleb128 0xe
+ 431 0074 3A       		.uleb128 0x3a
+ 432 0075 0B       		.uleb128 0xb
+ 433 0076 3B       		.uleb128 0x3b
+ 434 0077 0B       		.uleb128 0xb
+ 435 0078 49       		.uleb128 0x49
+ 436 0079 13       		.uleb128 0x13
+ 437 007a 02       		.uleb128 0x2
+ 438 007b 17       		.uleb128 0x17
+ 439 007c 00       		.byte	0
+ 440 007d 00       		.byte	0
+ 441 007e 09       		.uleb128 0x9
+ 442 007f 05       		.uleb128 0x5
+ 443 0080 00       		.byte	0
+ 444 0081 03       		.uleb128 0x3
+ 445 0082 0E       		.uleb128 0xe
+ 446 0083 3A       		.uleb128 0x3a
+ 447 0084 0B       		.uleb128 0xb
+ 448 0085 3B       		.uleb128 0x3b
+ 449 0086 0B       		.uleb128 0xb
+ 450 0087 49       		.uleb128 0x49
+ 451 0088 13       		.uleb128 0x13
+ 452 0089 02       		.uleb128 0x2
+ 453 008a 18       		.uleb128 0x18
+ 454 008b 00       		.byte	0
+ 455 008c 00       		.byte	0
+ 456 008d 0A       		.uleb128 0xa
+ 457 008e 34       		.uleb128 0x34
+ 458 008f 00       		.byte	0
+ 459 0090 03       		.uleb128 0x3
+ 460 0091 0E       		.uleb128 0xe
+ 461 0092 3A       		.uleb128 0x3a
+ 462 0093 0B       		.uleb128 0xb
+ 463 0094 3B       		.uleb128 0x3b
+ 464 0095 0B       		.uleb128 0xb
+ 465 0096 49       		.uleb128 0x49
+ 466 0097 13       		.uleb128 0x13
+ 467 0098 02       		.uleb128 0x2
+ 468 0099 17       		.uleb128 0x17
+ 469 009a 00       		.byte	0
+ 470 009b 00       		.byte	0
+ 471 009c 0B       		.uleb128 0xb
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbzRqwd.s 			page 13
 
 
- 478 00ab 11       		.uleb128 0x11
- 479 00ac 01       		.uleb128 0x1
- 480 00ad 12       		.uleb128 0x12
- 481 00ae 06       		.uleb128 0x6
- 482 00af 40       		.uleb128 0x40
- 483 00b0 18       		.uleb128 0x18
- 484 00b1 9742     		.uleb128 0x2117
- 485 00b3 19       		.uleb128 0x19
- 486 00b4 00       		.byte	0
- 487 00b5 00       		.byte	0
- 488 00b6 00       		.byte	0
- 489              		.section	.debug_loc,"",%progbits
- 490              	.Ldebug_loc0:
- 491              	.LLST0:
- 492 0000 00000000 		.4byte	.LVL0
- 493 0004 0A000000 		.4byte	.LVL2
- 494 0008 0100     		.2byte	0x1
- 495 000a 50       		.byte	0x50
- 496 000b 0A000000 		.4byte	.LVL2
- 497 000f 14000000 		.4byte	.LFE2
- 498 0013 0400     		.2byte	0x4
- 499 0015 F3       		.byte	0xf3
- 500 0016 01       		.uleb128 0x1
- 501 0017 50       		.byte	0x50
- 502 0018 9F       		.byte	0x9f
- 503 0019 00000000 		.4byte	0
- 504 001d 00000000 		.4byte	0
- 505              		.section	.debug_aranges,"",%progbits
- 506 0000 3C000000 		.4byte	0x3c
- 507 0004 0200     		.2byte	0x2
- 508 0006 00000000 		.4byte	.Ldebug_info0
- 509 000a 04       		.byte	0x4
- 510 000b 00       		.byte	0
- 511 000c 0000     		.2byte	0
- 512 000e 0000     		.2byte	0
- 513 0010 00000000 		.4byte	.LFB0
- 514 0014 14000000 		.4byte	.LFE0-.LFB0
- 515 0018 00000000 		.4byte	.LFB1
- 516 001c 10000000 		.4byte	.LFE1-.LFB1
- 517 0020 00000000 		.4byte	.LFB2
- 518 0024 14000000 		.4byte	.LFE2-.LFB2
- 519 0028 00000000 		.4byte	.LFB3
- 520 002c 0C000000 		.4byte	.LFE3-.LFB3
- 521 0030 00000000 		.4byte	.LFB4
- 522 0034 04000000 		.4byte	.LFE4-.LFB4
- 523 0038 00000000 		.4byte	0
- 524 003c 00000000 		.4byte	0
- 525              		.section	.debug_ranges,"",%progbits
- 526              	.Ldebug_ranges0:
- 527 0000 00000000 		.4byte	.LFB0
- 528 0004 14000000 		.4byte	.LFE0
- 529 0008 00000000 		.4byte	.LFB1
- 530 000c 10000000 		.4byte	.LFE1
- 531 0010 00000000 		.4byte	.LFB2
- 532 0014 14000000 		.4byte	.LFE2
- 533 0018 00000000 		.4byte	.LFB3
- 534 001c 0C000000 		.4byte	.LFE3
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCFOfKo.s 			page 14
+ 472 009d 34       		.uleb128 0x34
+ 473 009e 00       		.byte	0
+ 474 009f 03       		.uleb128 0x3
+ 475 00a0 0E       		.uleb128 0xe
+ 476 00a1 3A       		.uleb128 0x3a
+ 477 00a2 0B       		.uleb128 0xb
+ 478 00a3 3B       		.uleb128 0x3b
+ 479 00a4 0B       		.uleb128 0xb
+ 480 00a5 49       		.uleb128 0x49
+ 481 00a6 13       		.uleb128 0x13
+ 482 00a7 02       		.uleb128 0x2
+ 483 00a8 18       		.uleb128 0x18
+ 484 00a9 00       		.byte	0
+ 485 00aa 00       		.byte	0
+ 486 00ab 0C       		.uleb128 0xc
+ 487 00ac 2E       		.uleb128 0x2e
+ 488 00ad 00       		.byte	0
+ 489 00ae 3F       		.uleb128 0x3f
+ 490 00af 19       		.uleb128 0x19
+ 491 00b0 03       		.uleb128 0x3
+ 492 00b1 0E       		.uleb128 0xe
+ 493 00b2 3A       		.uleb128 0x3a
+ 494 00b3 0B       		.uleb128 0xb
+ 495 00b4 3B       		.uleb128 0x3b
+ 496 00b5 0B       		.uleb128 0xb
+ 497 00b6 27       		.uleb128 0x27
+ 498 00b7 19       		.uleb128 0x19
+ 499 00b8 49       		.uleb128 0x49
+ 500 00b9 13       		.uleb128 0x13
+ 501 00ba 11       		.uleb128 0x11
+ 502 00bb 01       		.uleb128 0x1
+ 503 00bc 12       		.uleb128 0x12
+ 504 00bd 06       		.uleb128 0x6
+ 505 00be 40       		.uleb128 0x40
+ 506 00bf 18       		.uleb128 0x18
+ 507 00c0 9742     		.uleb128 0x2117
+ 508 00c2 19       		.uleb128 0x19
+ 509 00c3 00       		.byte	0
+ 510 00c4 00       		.byte	0
+ 511 00c5 00       		.byte	0
+ 512              		.section	.debug_loc,"",%progbits
+ 513              	.Ldebug_loc0:
+ 514              	.LLST0:
+ 515 0000 00000000 		.4byte	.LVL0
+ 516 0004 0A000000 		.4byte	.LVL3
+ 517 0008 0100     		.2byte	0x1
+ 518 000a 50       		.byte	0x50
+ 519 000b 0A000000 		.4byte	.LVL3
+ 520 000f 14000000 		.4byte	.LFE2
+ 521 0013 0400     		.2byte	0x4
+ 522 0015 F3       		.byte	0xf3
+ 523 0016 01       		.uleb128 0x1
+ 524 0017 50       		.byte	0x50
+ 525 0018 9F       		.byte	0x9f
+ 526 0019 00000000 		.4byte	0
+ 527 001d 00000000 		.4byte	0
+ 528              	.LLST1:
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbzRqwd.s 			page 14
 
 
- 535 0020 00000000 		.4byte	.LFB4
- 536 0024 04000000 		.4byte	.LFE4
- 537 0028 00000000 		.4byte	0
- 538 002c 00000000 		.4byte	0
- 539              		.section	.debug_line,"",%progbits
- 540              	.Ldebug_line0:
- 541 0000 A8000000 		.section	.debug_str,"MS",%progbits,1
- 541      02004300 
- 541      00000201 
- 541      FB0E0D00 
- 541      01010101 
- 542              	.LASF26:
- 543 0000 443A5C63 		.ascii	"D:\\code\\cypress\\Tarocco\\Tarocco.cydsn\000"
- 543      6F64655C 
- 543      63797072 
- 543      6573735C 
- 543      5461726F 
- 544              	.LASF22:
- 545 0026 70776D43 		.ascii	"pwmClk_GetDividerRegister\000"
- 545      6C6B5F47 
- 545      65744469 
- 545      76696465 
- 545      72526567 
- 546              	.LASF20:
- 547 0040 6D61736B 		.ascii	"maskVal\000"
- 547      56616C00 
- 548              	.LASF12:
- 549 0048 666C6F61 		.ascii	"float\000"
- 549      7400
- 550              	.LASF23:
- 551 004e 70776D43 		.ascii	"pwmClk_GetFractionalDividerRegister\000"
- 551      6C6B5F47 
- 551      65744672 
- 551      61637469 
- 551      6F6E616C 
- 552              	.LASF24:
- 553 0072 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
- 553      4320342E 
- 553      392E3320 
- 553      32303135 
- 553      30333033 
- 554 00a5 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
- 554      20726576 
- 554      6973696F 
- 554      6E203232 
- 554      31323230 
- 555 00d8 67202D73 		.ascii	"g -std=gnu99 -ffunction-sections -ffat-lto-objects\000"
- 555      74643D67 
- 555      6E753939 
- 555      202D6666 
- 555      756E6374 
- 556              	.LASF1:
- 557 010b 756E7369 		.ascii	"unsigned char\000"
- 557      676E6564 
- 557      20636861 
- 557      7200
- 558              	.LASF17:
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCFOfKo.s 			page 15
+ 529 0021 04000000 		.4byte	.LVL1
+ 530 0025 06000000 		.4byte	.LVL2
+ 531 0029 0800     		.2byte	0x8
+ 532 002b 73       		.byte	0x73
+ 533 002c 00       		.sleb128 0
+ 534 002d 11       		.byte	0x11
+ 535 002e 80807C   		.sleb128 -65536
+ 536 0031 1A       		.byte	0x1a
+ 537 0032 9F       		.byte	0x9f
+ 538 0033 00000000 		.4byte	0
+ 539 0037 00000000 		.4byte	0
+ 540              		.section	.debug_aranges,"",%progbits
+ 541 0000 3C000000 		.4byte	0x3c
+ 542 0004 0200     		.2byte	0x2
+ 543 0006 00000000 		.4byte	.Ldebug_info0
+ 544 000a 04       		.byte	0x4
+ 545 000b 00       		.byte	0
+ 546 000c 0000     		.2byte	0
+ 547 000e 0000     		.2byte	0
+ 548 0010 00000000 		.4byte	.LFB0
+ 549 0014 14000000 		.4byte	.LFE0-.LFB0
+ 550 0018 00000000 		.4byte	.LFB1
+ 551 001c 10000000 		.4byte	.LFE1-.LFB1
+ 552 0020 00000000 		.4byte	.LFB2
+ 553 0024 14000000 		.4byte	.LFE2-.LFB2
+ 554 0028 00000000 		.4byte	.LFB3
+ 555 002c 0C000000 		.4byte	.LFE3-.LFB3
+ 556 0030 00000000 		.4byte	.LFB4
+ 557 0034 04000000 		.4byte	.LFE4-.LFB4
+ 558 0038 00000000 		.4byte	0
+ 559 003c 00000000 		.4byte	0
+ 560              		.section	.debug_ranges,"",%progbits
+ 561              	.Ldebug_ranges0:
+ 562 0000 00000000 		.4byte	.LFB0
+ 563 0004 14000000 		.4byte	.LFE0
+ 564 0008 00000000 		.4byte	.LFB1
+ 565 000c 10000000 		.4byte	.LFE1
+ 566 0010 00000000 		.4byte	.LFB2
+ 567 0014 14000000 		.4byte	.LFE2
+ 568 0018 00000000 		.4byte	.LFB3
+ 569 001c 0C000000 		.4byte	.LFE3
+ 570 0020 00000000 		.4byte	.LFB4
+ 571 0024 04000000 		.4byte	.LFE4
+ 572 0028 00000000 		.4byte	0
+ 573 002c 00000000 		.4byte	0
+ 574              		.section	.debug_line,"",%progbits
+ 575              	.Ldebug_line0:
+ 576 0000 B2000000 		.section	.debug_str,"MS",%progbits,1
+ 576      02004300 
+ 576      00000201 
+ 576      FB0E0D00 
+ 576      01010101 
+ 577              	.LASF26:
+ 578 0000 443A5C63 		.ascii	"D:\\code\\cypress\\Tarocco\\Tarocco.cydsn\000"
+ 578      6F64655C 
+ 578      63797072 
+ 578      6573735C 
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbzRqwd.s 			page 15
 
 
- 559 0119 70776D43 		.ascii	"pwmClk_Stop\000"
- 559      6C6B5F53 
- 559      746F7000 
- 560              	.LASF5:
- 561 0125 6C6F6E67 		.ascii	"long unsigned int\000"
- 561      20756E73 
- 561      69676E65 
- 561      6420696E 
- 561      7400
- 562              	.LASF3:
- 563 0137 73686F72 		.ascii	"short unsigned int\000"
- 563      7420756E 
- 563      7369676E 
- 563      65642069 
- 563      6E7400
- 564              	.LASF25:
- 565 014a 47656E65 		.ascii	"Generated_Source\\PSoC4\\pwmClk.c\000"
- 565      72617465 
- 565      645F536F 
- 565      75726365 
- 565      5C50536F 
- 566              	.LASF18:
- 567 016a 636C6B44 		.ascii	"clkDivider\000"
- 567      69766964 
- 567      657200
- 568              	.LASF13:
- 569 0175 646F7562 		.ascii	"double\000"
- 569      6C6500
- 570              	.LASF21:
- 571 017c 72656756 		.ascii	"regVal\000"
- 571      616C00
- 572              	.LASF19:
- 573 0183 636C6B46 		.ascii	"clkFractional\000"
- 573      72616374 
- 573      696F6E61 
- 573      6C00
- 574              	.LASF10:
- 575 0191 75696E74 		.ascii	"uint16\000"
- 575      313600
- 576              	.LASF11:
- 577 0198 75696E74 		.ascii	"uint32\000"
- 577      333200
- 578              	.LASF8:
- 579 019f 756E7369 		.ascii	"unsigned int\000"
- 579      676E6564 
- 579      20696E74 
- 579      00
- 580              	.LASF27:
- 581 01ac 70776D43 		.ascii	"pwmClk_SetFractionalDividerRegister\000"
- 581      6C6B5F53 
- 581      65744672 
- 581      61637469 
- 581      6F6E616C 
- 582              	.LASF7:
- 583 01d0 6C6F6E67 		.ascii	"long long unsigned int\000"
- 583      206C6F6E 
- 583      6720756E 
-ARM GAS  C:\Users\g\AppData\Local\Temp\ccCFOfKo.s 			page 16
+ 578      5461726F 
+ 579              	.LASF22:
+ 580 0026 70776D43 		.ascii	"pwmClk_GetDividerRegister\000"
+ 580      6C6B5F47 
+ 580      65744469 
+ 580      76696465 
+ 580      72526567 
+ 581              	.LASF20:
+ 582 0040 6D61736B 		.ascii	"maskVal\000"
+ 582      56616C00 
+ 583              	.LASF24:
+ 584 0048 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 584      4320342E 
+ 584      392E3320 
+ 584      32303135 
+ 584      30333033 
+ 585 007b 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 585      20726576 
+ 585      6973696F 
+ 585      6E203232 
+ 585      31323230 
+ 586 00ae 32202D73 		.ascii	"2 -std=gnu99 -ffunction-sections -ffat-lto-objects\000"
+ 586      74643D67 
+ 586      6E753939 
+ 586      202D6666 
+ 586      756E6374 
+ 587              	.LASF12:
+ 588 00e1 666C6F61 		.ascii	"float\000"
+ 588      7400
+ 589              	.LASF23:
+ 590 00e7 70776D43 		.ascii	"pwmClk_GetFractionalDividerRegister\000"
+ 590      6C6B5F47 
+ 590      65744672 
+ 590      61637469 
+ 590      6F6E616C 
+ 591              	.LASF1:
+ 592 010b 756E7369 		.ascii	"unsigned char\000"
+ 592      676E6564 
+ 592      20636861 
+ 592      7200
+ 593              	.LASF17:
+ 594 0119 70776D43 		.ascii	"pwmClk_Stop\000"
+ 594      6C6B5F53 
+ 594      746F7000 
+ 595              	.LASF5:
+ 596 0125 6C6F6E67 		.ascii	"long unsigned int\000"
+ 596      20756E73 
+ 596      69676E65 
+ 596      6420696E 
+ 596      7400
+ 597              	.LASF3:
+ 598 0137 73686F72 		.ascii	"short unsigned int\000"
+ 598      7420756E 
+ 598      7369676E 
+ 598      65642069 
+ 598      6E7400
+ 599              	.LASF25:
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbzRqwd.s 			page 16
 
 
- 583      7369676E 
- 583      65642069 
- 584              	.LASF16:
- 585 01e7 70776D43 		.ascii	"pwmClk_Start\000"
- 585      6C6B5F53 
- 585      74617274 
- 585      00
- 586              	.LASF6:
- 587 01f4 6C6F6E67 		.ascii	"long long int\000"
- 587      206C6F6E 
- 587      6720696E 
- 587      7400
- 588              	.LASF14:
- 589 0202 63686172 		.ascii	"char\000"
- 589      00
- 590              	.LASF2:
- 591 0207 73686F72 		.ascii	"short int\000"
- 591      7420696E 
- 591      7400
- 592              	.LASF9:
- 593 0211 75696E74 		.ascii	"uint8\000"
- 593      3800
- 594              	.LASF4:
- 595 0217 6C6F6E67 		.ascii	"long int\000"
- 595      20696E74 
- 595      00
- 596              	.LASF15:
- 597 0220 72656733 		.ascii	"reg32\000"
- 597      3200
- 598              	.LASF0:
- 599 0226 7369676E 		.ascii	"signed char\000"
- 599      65642063 
- 599      68617200 
- 600              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
+ 600 014a 47656E65 		.ascii	"Generated_Source\\PSoC4\\pwmClk.c\000"
+ 600      72617465 
+ 600      645F536F 
+ 600      75726365 
+ 600      5C50536F 
+ 601              	.LASF18:
+ 602 016a 636C6B44 		.ascii	"clkDivider\000"
+ 602      69766964 
+ 602      657200
+ 603              	.LASF13:
+ 604 0175 646F7562 		.ascii	"double\000"
+ 604      6C6500
+ 605              	.LASF21:
+ 606 017c 72656756 		.ascii	"regVal\000"
+ 606      616C00
+ 607              	.LASF19:
+ 608 0183 636C6B46 		.ascii	"clkFractional\000"
+ 608      72616374 
+ 608      696F6E61 
+ 608      6C00
+ 609              	.LASF10:
+ 610 0191 75696E74 		.ascii	"uint16\000"
+ 610      313600
+ 611              	.LASF11:
+ 612 0198 75696E74 		.ascii	"uint32\000"
+ 612      333200
+ 613              	.LASF8:
+ 614 019f 756E7369 		.ascii	"unsigned int\000"
+ 614      676E6564 
+ 614      20696E74 
+ 614      00
+ 615              	.LASF27:
+ 616 01ac 70776D43 		.ascii	"pwmClk_SetFractionalDividerRegister\000"
+ 616      6C6B5F53 
+ 616      65744672 
+ 616      61637469 
+ 616      6F6E616C 
+ 617              	.LASF7:
+ 618 01d0 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 618      206C6F6E 
+ 618      6720756E 
+ 618      7369676E 
+ 618      65642069 
+ 619              	.LASF16:
+ 620 01e7 70776D43 		.ascii	"pwmClk_Start\000"
+ 620      6C6B5F53 
+ 620      74617274 
+ 620      00
+ 621              	.LASF6:
+ 622 01f4 6C6F6E67 		.ascii	"long long int\000"
+ 622      206C6F6E 
+ 622      6720696E 
+ 622      7400
+ 623              	.LASF14:
+ 624 0202 63686172 		.ascii	"char\000"
+ 624      00
+ 625              	.LASF2:
+ARM GAS  C:\Users\g\AppData\Local\Temp\ccbzRqwd.s 			page 17
+
+
+ 626 0207 73686F72 		.ascii	"short int\000"
+ 626      7420696E 
+ 626      7400
+ 627              	.LASF9:
+ 628 0211 75696E74 		.ascii	"uint8\000"
+ 628      3800
+ 629              	.LASF4:
+ 630 0217 6C6F6E67 		.ascii	"long int\000"
+ 630      20696E74 
+ 630      00
+ 631              	.LASF15:
+ 632 0220 72656733 		.ascii	"reg32\000"
+ 632      3200
+ 633              	.LASF0:
+ 634 0226 7369676E 		.ascii	"signed char\000"
+ 634      65642063 
+ 634      68617200 
+ 635              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
