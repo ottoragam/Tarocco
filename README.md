@@ -20,7 +20,6 @@ Changelog
 2017-05-24
 
 * Fixed motor stutter every third of a second
-* Step pulse timeout can be switched off
 * Fixed serial communications bug that froze the status reporting
 * Made status reporting frequency exactly 100 Hz, to help with plotting and tunning
 * Increased maximum following error value to 65535
