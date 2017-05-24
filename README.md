@@ -15,11 +15,9 @@ Low cost servo drive for small CNC machinery
 
 Get yours on https://www.crowdsupply.com/citrus-cnc/tarocco
 
-![drive](/Images/tarocco-extras.jpg)
-
 Changelog
 
-20217-05-24
+2017-05-24
 
 Fixed motor stutter every third of a second
 Step pulse timeout can be switched off
@@ -28,5 +26,6 @@ Made status reporting frequency exactly 100 Hz, to help with plotting and tunnin
 Increased maximum following error value to 65535
 User can now switch between current or PWM output for status reporting
 
-
 Thanks to Patrick Dussud for all the help
+
+![drive](/Images/tarocco-extras.jpg)
