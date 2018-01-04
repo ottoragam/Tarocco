@@ -12576,6 +12576,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <sheets>
 <sheet>
 <plain>
+<text x="48.26" y="50.8" size="1.778" layer="95">CY8C4245PVI</text>
 </plain>
 <instances>
 <instance part="CONTROL" gate="A" x="15.24" y="124.46"/>
@@ -12706,9 +12707,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <attribute name="NAME" x="152.6286" y="69.85" size="1.778" layer="95" rot="R270"/>
 <attribute name="VALUE" x="155.448" y="69.85" size="1.778" layer="96" rot="R270"/>
 </instance>
-<instance part="IC1" gate="G$1" x="66.04" y="73.66" smashed="yes">
-<attribute name="VALUE" x="50.8" y="50.8" size="1.778" layer="96"/>
-</instance>
+<instance part="IC1" gate="G$1" x="66.04" y="73.66" smashed="yes"/>
 <instance part="SERIAL" gate="A" x="106.68" y="121.92"/>
 <instance part="GND6" gate="1" x="17.78" y="58.42"/>
 <instance part="GND8" gate="1" x="116.84" y="111.76"/>
