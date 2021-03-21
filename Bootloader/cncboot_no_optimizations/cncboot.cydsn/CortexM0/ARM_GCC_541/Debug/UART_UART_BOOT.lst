@@ -1,0 +1,1759 @@
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccPSniX6.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"UART_UART_BOOT.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.UART_UartCyBtldrCommStart,"ax",%progbits
+  20              		.align	2
+  21              		.global	UART_UartCyBtldrCommStart
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	UART_UartCyBtldrCommStart, %function
+  25              	UART_UartCyBtldrCommStart:
+  26              	.LFB0:
+  27              		.file 1 "Generated_Source\\PSoC4\\UART_UART_BOOT.c"
+   1:Generated_Source\PSoC4/UART_UART_BOOT.c **** /***************************************************************************//**
+   2:Generated_Source\PSoC4/UART_UART_BOOT.c **** * \file UART_UART_BOOT.c
+   3:Generated_Source\PSoC4/UART_UART_BOOT.c **** * \version 3.20
+   4:Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+   5:Generated_Source\PSoC4/UART_UART_BOOT.c **** * \brief
+   6:Generated_Source\PSoC4/UART_UART_BOOT.c **** *  This file provides the source code of the bootloader communication APIs
+   7:Generated_Source\PSoC4/UART_UART_BOOT.c **** *  for the SCB Component UART mode.
+   8:Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+   9:Generated_Source\PSoC4/UART_UART_BOOT.c **** * Note:
+  10:Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+  11:Generated_Source\PSoC4/UART_UART_BOOT.c **** ********************************************************************************
+  12:Generated_Source\PSoC4/UART_UART_BOOT.c **** * \copyright
+  13:Generated_Source\PSoC4/UART_UART_BOOT.c **** * Copyright 2013-2016, Cypress Semiconductor Corporation.  All rights reserved.
+  14:Generated_Source\PSoC4/UART_UART_BOOT.c **** * You may use this file only in accordance with the license, terms, conditions,
+  15:Generated_Source\PSoC4/UART_UART_BOOT.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  16:Generated_Source\PSoC4/UART_UART_BOOT.c **** * the software package with which this file was provided.
+  17:Generated_Source\PSoC4/UART_UART_BOOT.c **** *******************************************************************************/
+  18:Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+  19:Generated_Source\PSoC4/UART_UART_BOOT.c **** #include "UART_BOOT.h"
+  20:Generated_Source\PSoC4/UART_UART_BOOT.c **** #include "UART_SPI_UART.h"
+  21:Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+  22:Generated_Source\PSoC4/UART_UART_BOOT.c **** #if defined(CYDEV_BOOTLOADER_IO_COMP) && (UART_UART_BTLDR_COMM_ENABLED)
+  23:Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+  24:Generated_Source\PSoC4/UART_UART_BOOT.c **** /*******************************************************************************
+  25:Generated_Source\PSoC4/UART_UART_BOOT.c **** * Function Name: UART_UartCyBtldrCommStart
+  26:Generated_Source\PSoC4/UART_UART_BOOT.c **** ****************************************************************************//**
+  27:Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+  28:Generated_Source\PSoC4/UART_UART_BOOT.c **** *  Starts the UART component.
+  29:Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+  30:Generated_Source\PSoC4/UART_UART_BOOT.c **** *******************************************************************************/
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccPSniX6.s 			page 2
+
+
+  31:Generated_Source\PSoC4/UART_UART_BOOT.c **** void UART_UartCyBtldrCommStart(void)
+  32:Generated_Source\PSoC4/UART_UART_BOOT.c **** {
+  28              		.loc 1 32 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 10B5     		push	{r4, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+  33:Generated_Source\PSoC4/UART_UART_BOOT.c ****     UART_Start();
+  36              		.loc 1 33 0
+  37 0002 FFF7FEFF 		bl	UART_Start
+  38              	.LVL0:
+  34:Generated_Source\PSoC4/UART_UART_BOOT.c **** }
+  39              		.loc 1 34 0
+  40              		@ sp needed
+  41 0006 10BD     		pop	{r4, pc}
+  42              		.cfi_endproc
+  43              	.LFE0:
+  44              		.size	UART_UartCyBtldrCommStart, .-UART_UartCyBtldrCommStart
+  45              		.section	.text.UART_UartCyBtldrCommStop,"ax",%progbits
+  46              		.align	2
+  47              		.global	UART_UartCyBtldrCommStop
+  48              		.code	16
+  49              		.thumb_func
+  50              		.type	UART_UartCyBtldrCommStop, %function
+  51              	UART_UartCyBtldrCommStop:
+  52              	.LFB1:
+  35:Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+  36:Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+  37:Generated_Source\PSoC4/UART_UART_BOOT.c **** /*******************************************************************************
+  38:Generated_Source\PSoC4/UART_UART_BOOT.c **** * Function Name: UART_UartCyBtldrCommStop
+  39:Generated_Source\PSoC4/UART_UART_BOOT.c **** ****************************************************************************//**
+  40:Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+  41:Generated_Source\PSoC4/UART_UART_BOOT.c **** *  Disables the UART component.
+  42:Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+  43:Generated_Source\PSoC4/UART_UART_BOOT.c **** *******************************************************************************/
+  44:Generated_Source\PSoC4/UART_UART_BOOT.c **** void UART_UartCyBtldrCommStop(void)
+  45:Generated_Source\PSoC4/UART_UART_BOOT.c **** {
+  53              		.loc 1 45 0
+  54              		.cfi_startproc
+  55              		@ args = 0, pretend = 0, frame = 0
+  56              		@ frame_needed = 0, uses_anonymous_args = 0
+  57 0000 10B5     		push	{r4, lr}
+  58              		.cfi_def_cfa_offset 8
+  59              		.cfi_offset 4, -8
+  60              		.cfi_offset 14, -4
+  46:Generated_Source\PSoC4/UART_UART_BOOT.c ****     UART_Stop();
+  61              		.loc 1 46 0
+  62 0002 FFF7FEFF 		bl	UART_Stop
+  63              	.LVL1:
+  47:Generated_Source\PSoC4/UART_UART_BOOT.c **** }
+  64              		.loc 1 47 0
+  65              		@ sp needed
+  66 0006 10BD     		pop	{r4, pc}
+  67              		.cfi_endproc
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccPSniX6.s 			page 3
+
+
+  68              	.LFE1:
+  69              		.size	UART_UartCyBtldrCommStop, .-UART_UartCyBtldrCommStop
+  70              		.section	.text.UART_UartCyBtldrCommReset,"ax",%progbits
+  71              		.align	2
+  72              		.global	UART_UartCyBtldrCommReset
+  73              		.code	16
+  74              		.thumb_func
+  75              		.type	UART_UartCyBtldrCommReset, %function
+  76              	UART_UartCyBtldrCommReset:
+  77              	.LFB2:
+  48:Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+  49:Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+  50:Generated_Source\PSoC4/UART_UART_BOOT.c **** /*******************************************************************************
+  51:Generated_Source\PSoC4/UART_UART_BOOT.c **** * Function Name: UART_UartCyBtldrCommReset
+  52:Generated_Source\PSoC4/UART_UART_BOOT.c **** ****************************************************************************//**
+  53:Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+  54:Generated_Source\PSoC4/UART_UART_BOOT.c **** *  Resets the receive and transmit communication buffers.
+  55:Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+  56:Generated_Source\PSoC4/UART_UART_BOOT.c **** *******************************************************************************/
+  57:Generated_Source\PSoC4/UART_UART_BOOT.c **** void UART_UartCyBtldrCommReset(void)
+  58:Generated_Source\PSoC4/UART_UART_BOOT.c **** {
+  78              		.loc 1 58 0
+  79              		.cfi_startproc
+  80              		@ args = 0, pretend = 0, frame = 0
+  81              		@ frame_needed = 0, uses_anonymous_args = 0
+  82 0000 10B5     		push	{r4, lr}
+  83              		.cfi_def_cfa_offset 8
+  84              		.cfi_offset 4, -8
+  85              		.cfi_offset 14, -4
+  59:Generated_Source\PSoC4/UART_UART_BOOT.c ****     /* Clear RX and TX buffers */
+  60:Generated_Source\PSoC4/UART_UART_BOOT.c ****     UART_SpiUartClearRxBuffer();
+  86              		.loc 1 60 0
+  87 0002 FFF7FEFF 		bl	UART_SpiUartClearRxBuffer
+  88              	.LVL2:
+  61:Generated_Source\PSoC4/UART_UART_BOOT.c ****     UART_SpiUartClearTxBuffer();
+  89              		.loc 1 61 0
+  90 0006 FFF7FEFF 		bl	UART_SpiUartClearTxBuffer
+  91              	.LVL3:
+  62:Generated_Source\PSoC4/UART_UART_BOOT.c **** }
+  92              		.loc 1 62 0
+  93              		@ sp needed
+  94 000a 10BD     		pop	{r4, pc}
+  95              		.cfi_endproc
+  96              	.LFE2:
+  97              		.size	UART_UartCyBtldrCommReset, .-UART_UartCyBtldrCommReset
+  98              		.section	.text.UART_UartCyBtldrCommRead,"ax",%progbits
+  99              		.align	2
+ 100              		.global	UART_UartCyBtldrCommRead
+ 101              		.code	16
+ 102              		.thumb_func
+ 103              		.type	UART_UartCyBtldrCommRead, %function
+ 104              	UART_UartCyBtldrCommRead:
+ 105              	.LFB3:
+  63:Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+  64:Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+  65:Generated_Source\PSoC4/UART_UART_BOOT.c **** /*******************************************************************************
+  66:Generated_Source\PSoC4/UART_UART_BOOT.c **** * Function Name: UART_UartCyBtldrCommRead
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccPSniX6.s 			page 4
+
+
+  67:Generated_Source\PSoC4/UART_UART_BOOT.c **** ****************************************************************************//**
+  68:Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+  69:Generated_Source\PSoC4/UART_UART_BOOT.c **** *  Allows the caller to read data from the bootloader host (the host writes the
+  70:Generated_Source\PSoC4/UART_UART_BOOT.c **** *  data). The function handles polling to allow a block of data to be completely
+  71:Generated_Source\PSoC4/UART_UART_BOOT.c **** *  received from the host device.
+  72:Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+  73:Generated_Source\PSoC4/UART_UART_BOOT.c **** *  \param pData: Pointer to storage for the block of data to be read from the
+  74:Generated_Source\PSoC4/UART_UART_BOOT.c **** *   bootloader host
+  75:Generated_Source\PSoC4/UART_UART_BOOT.c **** *  \param size: Number of bytes to be read.
+  76:Generated_Source\PSoC4/UART_UART_BOOT.c **** *  \param count: Pointer to the variable to write the number of bytes actually
+  77:Generated_Source\PSoC4/UART_UART_BOOT.c **** *   read.
+  78:Generated_Source\PSoC4/UART_UART_BOOT.c **** *  \param timeOut Number of units in 10 ms to wait before returning
+  79:Generated_Source\PSoC4/UART_UART_BOOT.c **** *   because of a timeout.
+  80:Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+  81:Generated_Source\PSoC4/UART_UART_BOOT.c **** *  \return
+  82:Generated_Source\PSoC4/UART_UART_BOOT.c **** *   Returns CYRET_SUCCESS if no problem was encountered or returns the value
+  83:Generated_Source\PSoC4/UART_UART_BOOT.c **** *   that best describes the problem. For more information refer to the
+  84:Generated_Source\PSoC4/UART_UART_BOOT.c **** *   "Return Codes" section of the System Reference Guide.
+  85:Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+  86:Generated_Source\PSoC4/UART_UART_BOOT.c **** *******************************************************************************/
+  87:Generated_Source\PSoC4/UART_UART_BOOT.c **** cystatus UART_UartCyBtldrCommRead(uint8 pData[], uint16 size, uint16 * count, uint8 timeOut)
+  88:Generated_Source\PSoC4/UART_UART_BOOT.c **** {
+ 106              		.loc 1 88 0
+ 107              		.cfi_startproc
+ 108              		@ args = 0, pretend = 0, frame = 8
+ 109              		@ frame_needed = 0, uses_anonymous_args = 0
+ 110              	.LVL4:
+ 111 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 112              		.cfi_def_cfa_offset 20
+ 113              		.cfi_offset 4, -20
+ 114              		.cfi_offset 5, -16
+ 115              		.cfi_offset 6, -12
+ 116              		.cfi_offset 7, -8
+ 117              		.cfi_offset 14, -4
+ 118 0002 83B0     		sub	sp, sp, #12
+ 119              		.cfi_def_cfa_offset 32
+ 120 0004 0700     		movs	r7, r0
+ 121 0006 0E00     		movs	r6, r1
+ 122 0008 0192     		str	r2, [sp, #4]
+ 123              	.LVL5:
+  89:Generated_Source\PSoC4/UART_UART_BOOT.c ****     cystatus status;
+  90:Generated_Source\PSoC4/UART_UART_BOOT.c ****     uint32 byteCount;
+  91:Generated_Source\PSoC4/UART_UART_BOOT.c ****     uint32 timeoutMs;
+  92:Generated_Source\PSoC4/UART_UART_BOOT.c ****     uint32 i;
+  93:Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+  94:Generated_Source\PSoC4/UART_UART_BOOT.c ****     status = CYRET_BAD_PARAM;
+  95:Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+  96:Generated_Source\PSoC4/UART_UART_BOOT.c ****     if ((NULL != pData) && (size > 0u))
+ 124              		.loc 1 96 0
+ 125 000a 0028     		cmp	r0, #0
+ 126 000c 2ED0     		beq	.L13
+ 127              		.loc 1 96 0 is_stmt 0 discriminator 1
+ 128 000e 0029     		cmp	r1, #0
+ 129 0010 2FD0     		beq	.L14
+ 130              	.LVL6:
+  97:Generated_Source\PSoC4/UART_UART_BOOT.c ****     {
+  98:Generated_Source\PSoC4/UART_UART_BOOT.c ****         status = CYRET_TIMEOUT;
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccPSniX6.s 			page 5
+
+
+  99:Generated_Source\PSoC4/UART_UART_BOOT.c ****         timeoutMs = ((uint32) 10u * timeOut); /* Convert from 10mS check to 1mS checks */
+ 131              		.loc 1 99 0 is_stmt 1
+ 132 0012 9A00     		lsls	r2, r3, #2
+ 133              	.LVL7:
+ 134 0014 D318     		adds	r3, r2, r3
+ 135              	.LVL8:
+ 136 0016 5C00     		lsls	r4, r3, #1
+ 137              	.LVL9:
+ 138              	.L10:
+ 100:Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+ 101:Generated_Source\PSoC4/UART_UART_BOOT.c ****         /* Wait with timeout 1mS for packet end */
+ 102:Generated_Source\PSoC4/UART_UART_BOOT.c ****         byteCount = 0u;
+ 103:Generated_Source\PSoC4/UART_UART_BOOT.c ****         do
+ 104:Generated_Source\PSoC4/UART_UART_BOOT.c ****         {
+ 105:Generated_Source\PSoC4/UART_UART_BOOT.c ****             /* Check packet start */
+ 106:Generated_Source\PSoC4/UART_UART_BOOT.c ****             if (0u != UART_SpiUartGetRxBufferSize())
+ 139              		.loc 1 106 0
+ 140 0018 FFF7FEFF 		bl	UART_SpiUartGetRxBufferSize
+ 141              	.LVL10:
+ 142 001c 0028     		cmp	r0, #0
+ 143 001e 12D0     		beq	.L6
+ 144              	.LVL11:
+ 145              	.L7:
+ 107:Generated_Source\PSoC4/UART_UART_BOOT.c ****             {
+ 108:Generated_Source\PSoC4/UART_UART_BOOT.c ****                 /* Wait for end of packet */
+ 109:Generated_Source\PSoC4/UART_UART_BOOT.c ****                 do
+ 110:Generated_Source\PSoC4/UART_UART_BOOT.c ****                 {
+ 111:Generated_Source\PSoC4/UART_UART_BOOT.c ****                     byteCount = UART_SpiUartGetRxBufferSize();
+ 146              		.loc 1 111 0 discriminator 1
+ 147 0020 FFF7FEFF 		bl	UART_SpiUartGetRxBufferSize
+ 148              	.LVL12:
+ 149 0024 0500     		movs	r5, r0
+ 150              	.LVL13:
+ 112:Generated_Source\PSoC4/UART_UART_BOOT.c ****                     CyDelayUs(UART_UART_BYTE_TO_BYTE);
+ 151              		.loc 1 112 0 discriminator 1
+ 152 0026 5C20     		movs	r0, #92
+ 153              	.LVL14:
+ 154 0028 FF30     		adds	r0, r0, #255
+ 155 002a FFF7FEFF 		bl	CyDelayUs
+ 156              	.LVL15:
+ 113:Generated_Source\PSoC4/UART_UART_BOOT.c ****                 }
+ 114:Generated_Source\PSoC4/UART_UART_BOOT.c ****                 while (byteCount != UART_SpiUartGetRxBufferSize());
+ 157              		.loc 1 114 0 discriminator 1
+ 158 002e FFF7FEFF 		bl	UART_SpiUartGetRxBufferSize
+ 159              	.LVL16:
+ 160 0032 8542     		cmp	r5, r0
+ 161 0034 F4D1     		bne	.L7
+ 115:Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+ 116:Generated_Source\PSoC4/UART_UART_BOOT.c ****                 byteCount = UART_BYTES_TO_COPY(byteCount, size);
+ 162              		.loc 1 116 0
+ 163 0036 B542     		cmp	r5, r6
+ 164 0038 00D9     		bls	.L8
+ 165 003a 3500     		movs	r5, r6
+ 166              	.LVL17:
+ 167              	.L8:
+ 117:Generated_Source\PSoC4/UART_UART_BOOT.c ****                 *count = (uint16) byteCount;
+ 168              		.loc 1 117 0
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccPSniX6.s 			page 6
+
+
+ 169 003c 019B     		ldr	r3, [sp, #4]
+ 170 003e 1D80     		strh	r5, [r3]
+ 171              	.LVL18:
+ 118:Generated_Source\PSoC4/UART_UART_BOOT.c ****                 status = CYRET_SUCCESS;
+ 172              		.loc 1 118 0
+ 173 0040 0023     		movs	r3, #0
+ 174 0042 0193     		str	r3, [sp, #4]
+ 175              	.LVL19:
+ 119:Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+ 120:Generated_Source\PSoC4/UART_UART_BOOT.c ****                 break;
+ 176              		.loc 1 120 0
+ 177 0044 08E0     		b	.L9
+ 178              	.LVL20:
+ 179              	.L6:
+ 121:Generated_Source\PSoC4/UART_UART_BOOT.c ****             }
+ 122:Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+ 123:Generated_Source\PSoC4/UART_UART_BOOT.c ****             CyDelay(UART_WAIT_1_MS);
+ 180              		.loc 1 123 0
+ 181 0046 0120     		movs	r0, #1
+ 182 0048 FFF7FEFF 		bl	CyDelay
+ 183              	.LVL21:
+ 124:Generated_Source\PSoC4/UART_UART_BOOT.c ****             --timeoutMs;
+ 184              		.loc 1 124 0
+ 185 004c 013C     		subs	r4, r4, #1
+ 186              	.LVL22:
+ 125:Generated_Source\PSoC4/UART_UART_BOOT.c ****         }
+ 126:Generated_Source\PSoC4/UART_UART_BOOT.c ****         while (0u != timeoutMs);
+ 187              		.loc 1 126 0
+ 188 004e 002C     		cmp	r4, #0
+ 189 0050 E2D1     		bne	.L10
+ 102:Generated_Source\PSoC4/UART_UART_BOOT.c ****         do
+ 190              		.loc 1 102 0
+ 191 0052 0025     		movs	r5, #0
+  98:Generated_Source\PSoC4/UART_UART_BOOT.c ****         timeoutMs = ((uint32) 10u * timeOut); /* Convert from 10mS check to 1mS checks */
+ 192              		.loc 1 98 0
+ 193 0054 1023     		movs	r3, #16
+ 194 0056 0193     		str	r3, [sp, #4]
+ 195              	.LVL23:
+ 196              	.L9:
+ 127:Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+ 128:Generated_Source\PSoC4/UART_UART_BOOT.c ****         /* Get data from RX buffer into bootloader buffer */
+ 129:Generated_Source\PSoC4/UART_UART_BOOT.c ****         for (i = 0u; i < byteCount; ++i)
+ 197              		.loc 1 129 0
+ 198 0058 0024     		movs	r4, #0
+ 199              	.LVL24:
+ 200 005a 04E0     		b	.L11
+ 201              	.LVL25:
+ 202              	.L12:
+ 130:Generated_Source\PSoC4/UART_UART_BOOT.c ****         {
+ 131:Generated_Source\PSoC4/UART_UART_BOOT.c ****             pData[i] = (uint8) UART_SpiUartReadRxData();
+ 203              		.loc 1 131 0 discriminator 3
+ 204 005c 3E19     		adds	r6, r7, r4
+ 205 005e FFF7FEFF 		bl	UART_SpiUartReadRxData
+ 206              	.LVL26:
+ 207 0062 3070     		strb	r0, [r6]
+ 129:Generated_Source\PSoC4/UART_UART_BOOT.c ****         {
+ 208              		.loc 1 129 0 discriminator 3
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccPSniX6.s 			page 7
+
+
+ 209 0064 0134     		adds	r4, r4, #1
+ 210              	.LVL27:
+ 211              	.L11:
+ 129:Generated_Source\PSoC4/UART_UART_BOOT.c ****         {
+ 212              		.loc 1 129 0 is_stmt 0 discriminator 1
+ 213 0066 A542     		cmp	r5, r4
+ 214 0068 F8D8     		bhi	.L12
+ 215 006a 04E0     		b	.L5
+ 216              	.LVL28:
+ 217              	.L13:
+  94:Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+ 218              		.loc 1 94 0 is_stmt 1
+ 219 006c 0123     		movs	r3, #1
+ 220              	.LVL29:
+ 221 006e 0193     		str	r3, [sp, #4]
+ 222 0070 01E0     		b	.L5
+ 223              	.LVL30:
+ 224              	.L14:
+ 225 0072 0123     		movs	r3, #1
+ 226              	.LVL31:
+ 227 0074 0193     		str	r3, [sp, #4]
+ 228              	.LVL32:
+ 229              	.L5:
+ 132:Generated_Source\PSoC4/UART_UART_BOOT.c ****         }
+ 133:Generated_Source\PSoC4/UART_UART_BOOT.c ****     }
+ 134:Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+ 135:Generated_Source\PSoC4/UART_UART_BOOT.c ****     return (status);
+ 136:Generated_Source\PSoC4/UART_UART_BOOT.c **** }
+ 230              		.loc 1 136 0
+ 231 0076 0198     		ldr	r0, [sp, #4]
+ 232 0078 03B0     		add	sp, sp, #12
+ 233              		@ sp needed
+ 234              	.LVL33:
+ 235 007a F0BD     		pop	{r4, r5, r6, r7, pc}
+ 236              		.cfi_endproc
+ 237              	.LFE3:
+ 238              		.size	UART_UartCyBtldrCommRead, .-UART_UartCyBtldrCommRead
+ 239              		.section	.text.UART_UartCyBtldrCommWrite,"ax",%progbits
+ 240              		.align	2
+ 241              		.global	UART_UartCyBtldrCommWrite
+ 242              		.code	16
+ 243              		.thumb_func
+ 244              		.type	UART_UartCyBtldrCommWrite, %function
+ 245              	UART_UartCyBtldrCommWrite:
+ 246              	.LFB4:
+ 137:Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+ 138:Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+ 139:Generated_Source\PSoC4/UART_UART_BOOT.c **** /*******************************************************************************
+ 140:Generated_Source\PSoC4/UART_UART_BOOT.c **** * Function Name: UART_UartCyBtldrCommWrite
+ 141:Generated_Source\PSoC4/UART_UART_BOOT.c **** ****************************************************************************//**
+ 142:Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+ 143:Generated_Source\PSoC4/UART_UART_BOOT.c **** *  Allows the caller to write data to the bootloader host (the host reads the
+ 144:Generated_Source\PSoC4/UART_UART_BOOT.c **** *  data). The function does not use timeout and returns after data has been
+ 145:Generated_Source\PSoC4/UART_UART_BOOT.c **** *  copied into the transmit buffer. The data transmission starts immediately
+ 146:Generated_Source\PSoC4/UART_UART_BOOT.c **** *  after the first data element is written into the buffer and lasts until all
+ 147:Generated_Source\PSoC4/UART_UART_BOOT.c **** *  data elements from the buffer are sent.
+ 148:Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccPSniX6.s 			page 8
+
+
+ 149:Generated_Source\PSoC4/UART_UART_BOOT.c **** *  \param pData: Pointer to the block of data to be written to the bootloader
+ 150:Generated_Source\PSoC4/UART_UART_BOOT.c **** *   host.
+ 151:Generated_Source\PSoC4/UART_UART_BOOT.c **** *  \param size: Number of bytes to be written.
+ 152:Generated_Source\PSoC4/UART_UART_BOOT.c **** *  \param count: Pointer to the variable to write the number of bytes actually
+ 153:Generated_Source\PSoC4/UART_UART_BOOT.c **** *   written.
+ 154:Generated_Source\PSoC4/UART_UART_BOOT.c **** *  \param timeOut: The timeout is not used by this function.
+ 155:Generated_Source\PSoC4/UART_UART_BOOT.c **** *   The function returns as soon as data is copied into the transmit buffer.
+ 156:Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+ 157:Generated_Source\PSoC4/UART_UART_BOOT.c **** *  \return
+ 158:Generated_Source\PSoC4/UART_UART_BOOT.c **** *   Returns CYRET_SUCCESS if no problem was encountered or returns the value
+ 159:Generated_Source\PSoC4/UART_UART_BOOT.c **** *   that best describes the problem. For more information refer to the
+ 160:Generated_Source\PSoC4/UART_UART_BOOT.c **** *   "Return Codes" section of the System Reference Guide.
+ 161:Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+ 162:Generated_Source\PSoC4/UART_UART_BOOT.c **** *******************************************************************************/
+ 163:Generated_Source\PSoC4/UART_UART_BOOT.c **** cystatus UART_UartCyBtldrCommWrite(const uint8 pData[], uint16 size, uint16 * count, uint8 timeOut)
+ 164:Generated_Source\PSoC4/UART_UART_BOOT.c **** {
+ 247              		.loc 1 164 0
+ 248              		.cfi_startproc
+ 249              		@ args = 0, pretend = 0, frame = 0
+ 250              		@ frame_needed = 0, uses_anonymous_args = 0
+ 251              	.LVL34:
+ 252 0000 70B5     		push	{r4, r5, r6, lr}
+ 253              		.cfi_def_cfa_offset 16
+ 254              		.cfi_offset 4, -16
+ 255              		.cfi_offset 5, -12
+ 256              		.cfi_offset 6, -8
+ 257              		.cfi_offset 14, -4
+ 258 0002 0C00     		movs	r4, r1
+ 259 0004 1500     		movs	r5, r2
+ 260              	.LVL35:
+ 165:Generated_Source\PSoC4/UART_UART_BOOT.c ****     cystatus status;
+ 166:Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+ 167:Generated_Source\PSoC4/UART_UART_BOOT.c ****     status = CYRET_BAD_PARAM;
+ 168:Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+ 169:Generated_Source\PSoC4/UART_UART_BOOT.c ****     if ((NULL != pData) && (size > 0u))
+ 261              		.loc 1 169 0
+ 262 0006 0028     		cmp	r0, #0
+ 263 0008 06D0     		beq	.L17
+ 264              		.loc 1 169 0 is_stmt 0 discriminator 1
+ 265 000a 0029     		cmp	r1, #0
+ 266 000c 06D0     		beq	.L18
+ 170:Generated_Source\PSoC4/UART_UART_BOOT.c ****     {
+ 171:Generated_Source\PSoC4/UART_UART_BOOT.c ****         /* Transmit data. This function does not wait until data is sent. */
+ 172:Generated_Source\PSoC4/UART_UART_BOOT.c ****         UART_SpiUartPutArray(pData, (uint32) size);
+ 267              		.loc 1 172 0 is_stmt 1
+ 268 000e FFF7FEFF 		bl	UART_SpiUartPutArray
+ 269              	.LVL36:
+ 173:Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+ 174:Generated_Source\PSoC4/UART_UART_BOOT.c ****         *count = size;
+ 270              		.loc 1 174 0
+ 271 0012 2C80     		strh	r4, [r5]
+ 272              	.LVL37:
+ 175:Generated_Source\PSoC4/UART_UART_BOOT.c ****         status = CYRET_SUCCESS;
+ 273              		.loc 1 175 0
+ 274 0014 0020     		movs	r0, #0
+ 275 0016 02E0     		b	.L16
+ 276              	.LVL38:
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccPSniX6.s 			page 9
+
+
+ 277              	.L17:
+ 167:Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+ 278              		.loc 1 167 0
+ 279 0018 0120     		movs	r0, #1
+ 280              	.LVL39:
+ 281 001a 00E0     		b	.L16
+ 282              	.LVL40:
+ 283              	.L18:
+ 284 001c 0120     		movs	r0, #1
+ 285              	.LVL41:
+ 286              	.L16:
+ 176:Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+ 177:Generated_Source\PSoC4/UART_UART_BOOT.c ****         if (0u != timeOut)
+ 178:Generated_Source\PSoC4/UART_UART_BOOT.c ****         {
+ 179:Generated_Source\PSoC4/UART_UART_BOOT.c ****             /* Suppress compiler warning */
+ 180:Generated_Source\PSoC4/UART_UART_BOOT.c ****         }
+ 181:Generated_Source\PSoC4/UART_UART_BOOT.c ****     }
+ 182:Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+ 183:Generated_Source\PSoC4/UART_UART_BOOT.c ****     return (status);
+ 184:Generated_Source\PSoC4/UART_UART_BOOT.c **** }
+ 287              		.loc 1 184 0
+ 288              		@ sp needed
+ 289              	.LVL42:
+ 290 001e 70BD     		pop	{r4, r5, r6, pc}
+ 291              		.cfi_endproc
+ 292              	.LFE4:
+ 293              		.size	UART_UartCyBtldrCommWrite, .-UART_UartCyBtldrCommWrite
+ 294              		.text
+ 295              	.Letext0:
+ 296              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 297              		.file 3 "Generated_Source\\PSoC4\\UART.h"
+ 298              		.file 4 "Generated_Source\\PSoC4\\UART_SPI_UART.h"
+ 299              		.file 5 "Generated_Source\\PSoC4/CyLib.h"
+ 300              		.section	.debug_info,"",%progbits
+ 301              	.Ldebug_info0:
+ 302 0000 F8020000 		.4byte	0x2f8
+ 303 0004 0400     		.2byte	0x4
+ 304 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 305 000a 04       		.byte	0x4
+ 306 000b 01       		.uleb128 0x1
+ 307 000c 87010000 		.4byte	.LASF39
+ 308 0010 0C       		.byte	0xc
+ 309 0011 1E020000 		.4byte	.LASF40
+ 310 0015 81000000 		.4byte	.LASF41
+ 311 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 312 001d 00000000 		.4byte	0
+ 313 0021 00000000 		.4byte	.Ldebug_line0
+ 314 0025 02       		.uleb128 0x2
+ 315 0026 01       		.byte	0x1
+ 316 0027 06       		.byte	0x6
+ 317 0028 EF020000 		.4byte	.LASF0
+ 318 002c 02       		.uleb128 0x2
+ 319 002d 01       		.byte	0x1
+ 320 002e 08       		.byte	0x8
+ 321 002f D5000000 		.4byte	.LASF1
+ 322 0033 02       		.uleb128 0x2
+ 323 0034 02       		.byte	0x2
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccPSniX6.s 			page 10
+
+
+ 324 0035 05       		.byte	0x5
+ 325 0036 63020000 		.4byte	.LASF2
+ 326 003a 02       		.uleb128 0x2
+ 327 003b 02       		.byte	0x2
+ 328 003c 07       		.byte	0x7
+ 329 003d 19000000 		.4byte	.LASF3
+ 330 0041 02       		.uleb128 0x2
+ 331 0042 04       		.byte	0x4
+ 332 0043 05       		.byte	0x5
+ 333 0044 C0020000 		.4byte	.LASF4
+ 334 0048 02       		.uleb128 0x2
+ 335 0049 04       		.byte	0x4
+ 336 004a 07       		.byte	0x7
+ 337 004b 5E000000 		.4byte	.LASF5
+ 338 004f 02       		.uleb128 0x2
+ 339 0050 08       		.byte	0x8
+ 340 0051 05       		.byte	0x5
+ 341 0052 46020000 		.4byte	.LASF6
+ 342 0056 02       		.uleb128 0x2
+ 343 0057 08       		.byte	0x8
+ 344 0058 07       		.byte	0x7
+ 345 0059 4E010000 		.4byte	.LASF7
+ 346 005d 03       		.uleb128 0x3
+ 347 005e 04       		.byte	0x4
+ 348 005f 05       		.byte	0x5
+ 349 0060 696E7400 		.ascii	"int\000"
+ 350 0064 02       		.uleb128 0x2
+ 351 0065 04       		.byte	0x4
+ 352 0066 07       		.byte	0x7
+ 353 0067 41010000 		.4byte	.LASF8
+ 354 006b 04       		.uleb128 0x4
+ 355 006c 70000000 		.4byte	.LASF9
+ 356 0070 02       		.byte	0x2
+ 357 0071 9801     		.2byte	0x198
+ 358 0073 2C000000 		.4byte	0x2c
+ 359 0077 04       		.uleb128 0x4
+ 360 0078 04010000 		.4byte	.LASF10
+ 361 007c 02       		.byte	0x2
+ 362 007d 9901     		.2byte	0x199
+ 363 007f 3A000000 		.4byte	0x3a
+ 364 0083 04       		.uleb128 0x4
+ 365 0084 0B010000 		.4byte	.LASF11
+ 366 0088 02       		.byte	0x2
+ 367 0089 9A01     		.2byte	0x19a
+ 368 008b 48000000 		.4byte	0x48
+ 369 008f 02       		.uleb128 0x2
+ 370 0090 04       		.byte	0x4
+ 371 0091 04       		.byte	0x4
+ 372 0092 39000000 		.4byte	.LASF12
+ 373 0096 02       		.uleb128 0x2
+ 374 0097 08       		.byte	0x8
+ 375 0098 04       		.byte	0x4
+ 376 0099 FD000000 		.4byte	.LASF13
+ 377 009d 02       		.uleb128 0x2
+ 378 009e 01       		.byte	0x1
+ 379 009f 08       		.byte	0x8
+ 380 00a0 5E020000 		.4byte	.LASF14
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccPSniX6.s 			page 11
+
+
+ 381 00a4 04       		.uleb128 0x4
+ 382 00a5 0A000000 		.4byte	.LASF15
+ 383 00a9 02       		.byte	0x2
+ 384 00aa 3A02     		.2byte	0x23a
+ 385 00ac 48000000 		.4byte	0x48
+ 386 00b0 02       		.uleb128 0x2
+ 387 00b1 08       		.byte	0x8
+ 388 00b2 04       		.byte	0x4
+ 389 00b3 E3020000 		.4byte	.LASF16
+ 390 00b7 02       		.uleb128 0x2
+ 391 00b8 04       		.byte	0x4
+ 392 00b9 07       		.byte	0x7
+ 393 00ba 15020000 		.4byte	.LASF17
+ 394 00be 05       		.uleb128 0x5
+ 395 00bf 04       		.byte	0x4
+ 396 00c0 6B000000 		.4byte	0x6b
+ 397 00c4 06       		.uleb128 0x6
+ 398 00c5 E3000000 		.4byte	.LASF18
+ 399 00c9 01       		.byte	0x1
+ 400 00ca 1F       		.byte	0x1f
+ 401 00cb 00000000 		.4byte	.LFB0
+ 402 00cf 08000000 		.4byte	.LFE0-.LFB0
+ 403 00d3 01       		.uleb128 0x1
+ 404 00d4 9C       		.byte	0x9c
+ 405 00d5 E3000000 		.4byte	0xe3
+ 406 00d9 07       		.uleb128 0x7
+ 407 00da 06000000 		.4byte	.LVL0
+ 408 00de 93020000 		.4byte	0x293
+ 409 00e2 00       		.byte	0
+ 410 00e3 06       		.uleb128 0x6
+ 411 00e4 90020000 		.4byte	.LASF19
+ 412 00e8 01       		.byte	0x1
+ 413 00e9 2C       		.byte	0x2c
+ 414 00ea 00000000 		.4byte	.LFB1
+ 415 00ee 08000000 		.4byte	.LFE1-.LFB1
+ 416 00f2 01       		.uleb128 0x1
+ 417 00f3 9C       		.byte	0x9c
+ 418 00f4 02010000 		.4byte	0x102
+ 419 00f8 07       		.uleb128 0x7
+ 420 00f9 06000000 		.4byte	.LVL1
+ 421 00fd 9E020000 		.4byte	0x29e
+ 422 0101 00       		.byte	0
+ 423 0102 06       		.uleb128 0x6
+ 424 0103 44000000 		.4byte	.LASF20
+ 425 0107 01       		.byte	0x1
+ 426 0108 39       		.byte	0x39
+ 427 0109 00000000 		.4byte	.LFB2
+ 428 010d 0C000000 		.4byte	.LFE2-.LFB2
+ 429 0111 01       		.uleb128 0x1
+ 430 0112 9C       		.byte	0x9c
+ 431 0113 2A010000 		.4byte	0x12a
+ 432 0117 07       		.uleb128 0x7
+ 433 0118 06000000 		.4byte	.LVL2
+ 434 011c A9020000 		.4byte	0x2a9
+ 435 0120 07       		.uleb128 0x7
+ 436 0121 0A000000 		.4byte	.LVL3
+ 437 0125 B5020000 		.4byte	0x2b5
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccPSniX6.s 			page 12
+
+
+ 438 0129 00       		.byte	0
+ 439 012a 08       		.uleb128 0x8
+ 440 012b 77020000 		.4byte	.LASF28
+ 441 012f 01       		.byte	0x1
+ 442 0130 57       		.byte	0x57
+ 443 0131 A4000000 		.4byte	0xa4
+ 444 0135 00000000 		.4byte	.LFB3
+ 445 0139 7C000000 		.4byte	.LFE3-.LFB3
+ 446 013d 01       		.uleb128 0x1
+ 447 013e 9C       		.byte	0x9c
+ 448 013f 06020000 		.4byte	0x206
+ 449 0143 09       		.uleb128 0x9
+ 450 0144 33000000 		.4byte	.LASF21
+ 451 0148 01       		.byte	0x1
+ 452 0149 57       		.byte	0x57
+ 453 014a BE000000 		.4byte	0xbe
+ 454 014e 00000000 		.4byte	.LLST0
+ 455 0152 09       		.uleb128 0x9
+ 456 0153 3F000000 		.4byte	.LASF22
+ 457 0157 01       		.byte	0x1
+ 458 0158 57       		.byte	0x57
+ 459 0159 77000000 		.4byte	0x77
+ 460 015d 42000000 		.4byte	.LLST1
+ 461 0161 09       		.uleb128 0x9
+ 462 0162 13000000 		.4byte	.LASF23
+ 463 0166 01       		.byte	0x1
+ 464 0167 57       		.byte	0x57
+ 465 0168 06020000 		.4byte	0x206
+ 466 016c 7C000000 		.4byte	.LLST2
+ 467 0170 09       		.uleb128 0x9
+ 468 0171 7F010000 		.4byte	.LASF24
+ 469 0175 01       		.byte	0x1
+ 470 0176 57       		.byte	0x57
+ 471 0177 6B000000 		.4byte	0x6b
+ 472 017b DC000000 		.4byte	.LLST3
+ 473 017f 0A       		.uleb128 0xa
+ 474 0180 2C000000 		.4byte	.LASF25
+ 475 0184 01       		.byte	0x1
+ 476 0185 59       		.byte	0x59
+ 477 0186 A4000000 		.4byte	0xa4
+ 478 018a 2F010000 		.4byte	.LLST4
+ 479 018e 0A       		.uleb128 0xa
+ 480 018f CB000000 		.4byte	.LASF26
+ 481 0193 01       		.byte	0x1
+ 482 0194 5A       		.byte	0x5a
+ 483 0195 83000000 		.4byte	0x83
+ 484 0199 8B010000 		.4byte	.LLST5
+ 485 019d 0A       		.uleb128 0xa
+ 486 019e 00000000 		.4byte	.LASF27
+ 487 01a2 01       		.byte	0x1
+ 488 01a3 5B       		.byte	0x5b
+ 489 01a4 83000000 		.4byte	0x83
+ 490 01a8 CC010000 		.4byte	.LLST6
+ 491 01ac 0B       		.uleb128 0xb
+ 492 01ad 6900     		.ascii	"i\000"
+ 493 01af 01       		.byte	0x1
+ 494 01b0 5C       		.byte	0x5c
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccPSniX6.s 			page 13
+
+
+ 495 01b1 83000000 		.4byte	0x83
+ 496 01b5 DF010000 		.4byte	.LLST7
+ 497 01b9 07       		.uleb128 0x7
+ 498 01ba 1C000000 		.4byte	.LVL10
+ 499 01be C1020000 		.4byte	0x2c1
+ 500 01c2 07       		.uleb128 0x7
+ 501 01c3 24000000 		.4byte	.LVL12
+ 502 01c7 C1020000 		.4byte	0x2c1
+ 503 01cb 0C       		.uleb128 0xc
+ 504 01cc 2E000000 		.4byte	.LVL15
+ 505 01d0 CD020000 		.4byte	0x2cd
+ 506 01d4 E0010000 		.4byte	0x1e0
+ 507 01d8 0D       		.uleb128 0xd
+ 508 01d9 01       		.uleb128 0x1
+ 509 01da 50       		.byte	0x50
+ 510 01db 03       		.uleb128 0x3
+ 511 01dc 0A       		.byte	0xa
+ 512 01dd 5B01     		.2byte	0x15b
+ 513 01df 00       		.byte	0
+ 514 01e0 07       		.uleb128 0x7
+ 515 01e1 32000000 		.4byte	.LVL16
+ 516 01e5 C1020000 		.4byte	0x2c1
+ 517 01e9 0C       		.uleb128 0xc
+ 518 01ea 4C000000 		.4byte	.LVL21
+ 519 01ee D8020000 		.4byte	0x2d8
+ 520 01f2 FC010000 		.4byte	0x1fc
+ 521 01f6 0D       		.uleb128 0xd
+ 522 01f7 01       		.uleb128 0x1
+ 523 01f8 50       		.byte	0x50
+ 524 01f9 01       		.uleb128 0x1
+ 525 01fa 31       		.byte	0x31
+ 526 01fb 00       		.byte	0
+ 527 01fc 07       		.uleb128 0x7
+ 528 01fd 62000000 		.4byte	.LVL26
+ 529 0201 E3020000 		.4byte	0x2e3
+ 530 0205 00       		.byte	0
+ 531 0206 05       		.uleb128 0x5
+ 532 0207 04       		.byte	0x4
+ 533 0208 77000000 		.4byte	0x77
+ 534 020c 08       		.uleb128 0x8
+ 535 020d 65010000 		.4byte	.LASF29
+ 536 0211 01       		.byte	0x1
+ 537 0212 A3       		.byte	0xa3
+ 538 0213 A4000000 		.4byte	0xa4
+ 539 0217 00000000 		.4byte	.LFB4
+ 540 021b 20000000 		.4byte	.LFE4-.LFB4
+ 541 021f 01       		.uleb128 0x1
+ 542 0220 9C       		.byte	0x9c
+ 543 0221 88020000 		.4byte	0x288
+ 544 0225 09       		.uleb128 0x9
+ 545 0226 33000000 		.4byte	.LASF21
+ 546 022a 01       		.byte	0x1
+ 547 022b A3       		.byte	0xa3
+ 548 022c 88020000 		.4byte	0x288
+ 549 0230 FE010000 		.4byte	.LLST8
+ 550 0234 09       		.uleb128 0x9
+ 551 0235 3F000000 		.4byte	.LASF22
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccPSniX6.s 			page 14
+
+
+ 552 0239 01       		.byte	0x1
+ 553 023a A3       		.byte	0xa3
+ 554 023b 77000000 		.4byte	0x77
+ 555 023f 51020000 		.4byte	.LLST9
+ 556 0243 09       		.uleb128 0x9
+ 557 0244 13000000 		.4byte	.LASF23
+ 558 0248 01       		.byte	0x1
+ 559 0249 A3       		.byte	0xa3
+ 560 024a 06020000 		.4byte	0x206
+ 561 024e 8B020000 		.4byte	.LLST10
+ 562 0252 09       		.uleb128 0x9
+ 563 0253 7F010000 		.4byte	.LASF24
+ 564 0257 01       		.byte	0x1
+ 565 0258 A3       		.byte	0xa3
+ 566 0259 6B000000 		.4byte	0x6b
+ 567 025d CD020000 		.4byte	.LLST11
+ 568 0261 0A       		.uleb128 0xa
+ 569 0262 2C000000 		.4byte	.LASF25
+ 570 0266 01       		.byte	0x1
+ 571 0267 A5       		.byte	0xa5
+ 572 0268 A4000000 		.4byte	0xa4
+ 573 026c 07030000 		.4byte	.LLST12
+ 574 0270 0E       		.uleb128 0xe
+ 575 0271 12000000 		.4byte	.LVL36
+ 576 0275 EF020000 		.4byte	0x2ef
+ 577 0279 0D       		.uleb128 0xd
+ 578 027a 01       		.uleb128 0x1
+ 579 027b 50       		.byte	0x50
+ 580 027c 03       		.uleb128 0x3
+ 581 027d F3       		.byte	0xf3
+ 582 027e 01       		.uleb128 0x1
+ 583 027f 50       		.byte	0x50
+ 584 0280 0D       		.uleb128 0xd
+ 585 0281 01       		.uleb128 0x1
+ 586 0282 51       		.byte	0x51
+ 587 0283 02       		.uleb128 0x2
+ 588 0284 74       		.byte	0x74
+ 589 0285 00       		.sleb128 0
+ 590 0286 00       		.byte	0
+ 591 0287 00       		.byte	0
+ 592 0288 05       		.uleb128 0x5
+ 593 0289 04       		.byte	0x4
+ 594 028a 8E020000 		.4byte	0x28e
+ 595 028e 0F       		.uleb128 0xf
+ 596 028f 6B000000 		.4byte	0x6b
+ 597 0293 10       		.uleb128 0x10
+ 598 0294 76000000 		.4byte	.LASF30
+ 599 0298 76000000 		.4byte	.LASF30
+ 600 029c 03       		.byte	0x3
+ 601 029d 6E       		.byte	0x6e
+ 602 029e 10       		.uleb128 0x10
+ 603 029f 6D020000 		.4byte	.LASF31
+ 604 02a3 6D020000 		.4byte	.LASF31
+ 605 02a7 03       		.byte	0x3
+ 606 02a8 6F       		.byte	0x6f
+ 607 02a9 11       		.uleb128 0x11
+ 608 02aa C9020000 		.4byte	.LASF32
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccPSniX6.s 			page 15
+
+
+ 609 02ae C9020000 		.4byte	.LASF32
+ 610 02b2 04       		.byte	0x4
+ 611 02b3 3503     		.2byte	0x335
+ 612 02b5 11       		.uleb128 0x11
+ 613 02b6 12010000 		.4byte	.LASF33
+ 614 02ba 12010000 		.4byte	.LASF33
+ 615 02be 04       		.byte	0x4
+ 616 02bf 3D03     		.2byte	0x33d
+ 617 02c1 11       		.uleb128 0x11
+ 618 02c2 FB020000 		.4byte	.LASF34
+ 619 02c6 FB020000 		.4byte	.LASF34
+ 620 02ca 04       		.byte	0x4
+ 621 02cb 3403     		.2byte	0x334
+ 622 02cd 10       		.uleb128 0x10
+ 623 02ce 54020000 		.4byte	.LASF35
+ 624 02d2 54020000 		.4byte	.LASF35
+ 625 02d6 05       		.byte	0x5
+ 626 02d7 D8       		.byte	0xd8
+ 627 02d8 10       		.uleb128 0x10
+ 628 02d9 17030000 		.4byte	.LASF36
+ 629 02dd 17030000 		.4byte	.LASF36
+ 630 02e1 05       		.byte	0x5
+ 631 02e2 D7       		.byte	0xd7
+ 632 02e3 11       		.uleb128 0x11
+ 633 02e4 A9020000 		.4byte	.LASF37
+ 634 02e8 A9020000 		.4byte	.LASF37
+ 635 02ec 04       		.byte	0x4
+ 636 02ed 3303     		.2byte	0x333
+ 637 02ef 11       		.uleb128 0x11
+ 638 02f0 2C010000 		.4byte	.LASF38
+ 639 02f4 2C010000 		.4byte	.LASF38
+ 640 02f8 04       		.byte	0x4
+ 641 02f9 3B03     		.2byte	0x33b
+ 642 02fb 00       		.byte	0
+ 643              		.section	.debug_abbrev,"",%progbits
+ 644              	.Ldebug_abbrev0:
+ 645 0000 01       		.uleb128 0x1
+ 646 0001 11       		.uleb128 0x11
+ 647 0002 01       		.byte	0x1
+ 648 0003 25       		.uleb128 0x25
+ 649 0004 0E       		.uleb128 0xe
+ 650 0005 13       		.uleb128 0x13
+ 651 0006 0B       		.uleb128 0xb
+ 652 0007 03       		.uleb128 0x3
+ 653 0008 0E       		.uleb128 0xe
+ 654 0009 1B       		.uleb128 0x1b
+ 655 000a 0E       		.uleb128 0xe
+ 656 000b 55       		.uleb128 0x55
+ 657 000c 17       		.uleb128 0x17
+ 658 000d 11       		.uleb128 0x11
+ 659 000e 01       		.uleb128 0x1
+ 660 000f 10       		.uleb128 0x10
+ 661 0010 17       		.uleb128 0x17
+ 662 0011 00       		.byte	0
+ 663 0012 00       		.byte	0
+ 664 0013 02       		.uleb128 0x2
+ 665 0014 24       		.uleb128 0x24
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccPSniX6.s 			page 16
+
+
+ 666 0015 00       		.byte	0
+ 667 0016 0B       		.uleb128 0xb
+ 668 0017 0B       		.uleb128 0xb
+ 669 0018 3E       		.uleb128 0x3e
+ 670 0019 0B       		.uleb128 0xb
+ 671 001a 03       		.uleb128 0x3
+ 672 001b 0E       		.uleb128 0xe
+ 673 001c 00       		.byte	0
+ 674 001d 00       		.byte	0
+ 675 001e 03       		.uleb128 0x3
+ 676 001f 24       		.uleb128 0x24
+ 677 0020 00       		.byte	0
+ 678 0021 0B       		.uleb128 0xb
+ 679 0022 0B       		.uleb128 0xb
+ 680 0023 3E       		.uleb128 0x3e
+ 681 0024 0B       		.uleb128 0xb
+ 682 0025 03       		.uleb128 0x3
+ 683 0026 08       		.uleb128 0x8
+ 684 0027 00       		.byte	0
+ 685 0028 00       		.byte	0
+ 686 0029 04       		.uleb128 0x4
+ 687 002a 16       		.uleb128 0x16
+ 688 002b 00       		.byte	0
+ 689 002c 03       		.uleb128 0x3
+ 690 002d 0E       		.uleb128 0xe
+ 691 002e 3A       		.uleb128 0x3a
+ 692 002f 0B       		.uleb128 0xb
+ 693 0030 3B       		.uleb128 0x3b
+ 694 0031 05       		.uleb128 0x5
+ 695 0032 49       		.uleb128 0x49
+ 696 0033 13       		.uleb128 0x13
+ 697 0034 00       		.byte	0
+ 698 0035 00       		.byte	0
+ 699 0036 05       		.uleb128 0x5
+ 700 0037 0F       		.uleb128 0xf
+ 701 0038 00       		.byte	0
+ 702 0039 0B       		.uleb128 0xb
+ 703 003a 0B       		.uleb128 0xb
+ 704 003b 49       		.uleb128 0x49
+ 705 003c 13       		.uleb128 0x13
+ 706 003d 00       		.byte	0
+ 707 003e 00       		.byte	0
+ 708 003f 06       		.uleb128 0x6
+ 709 0040 2E       		.uleb128 0x2e
+ 710 0041 01       		.byte	0x1
+ 711 0042 3F       		.uleb128 0x3f
+ 712 0043 19       		.uleb128 0x19
+ 713 0044 03       		.uleb128 0x3
+ 714 0045 0E       		.uleb128 0xe
+ 715 0046 3A       		.uleb128 0x3a
+ 716 0047 0B       		.uleb128 0xb
+ 717 0048 3B       		.uleb128 0x3b
+ 718 0049 0B       		.uleb128 0xb
+ 719 004a 27       		.uleb128 0x27
+ 720 004b 19       		.uleb128 0x19
+ 721 004c 11       		.uleb128 0x11
+ 722 004d 01       		.uleb128 0x1
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccPSniX6.s 			page 17
+
+
+ 723 004e 12       		.uleb128 0x12
+ 724 004f 06       		.uleb128 0x6
+ 725 0050 40       		.uleb128 0x40
+ 726 0051 18       		.uleb128 0x18
+ 727 0052 9742     		.uleb128 0x2117
+ 728 0054 19       		.uleb128 0x19
+ 729 0055 01       		.uleb128 0x1
+ 730 0056 13       		.uleb128 0x13
+ 731 0057 00       		.byte	0
+ 732 0058 00       		.byte	0
+ 733 0059 07       		.uleb128 0x7
+ 734 005a 898201   		.uleb128 0x4109
+ 735 005d 00       		.byte	0
+ 736 005e 11       		.uleb128 0x11
+ 737 005f 01       		.uleb128 0x1
+ 738 0060 31       		.uleb128 0x31
+ 739 0061 13       		.uleb128 0x13
+ 740 0062 00       		.byte	0
+ 741 0063 00       		.byte	0
+ 742 0064 08       		.uleb128 0x8
+ 743 0065 2E       		.uleb128 0x2e
+ 744 0066 01       		.byte	0x1
+ 745 0067 3F       		.uleb128 0x3f
+ 746 0068 19       		.uleb128 0x19
+ 747 0069 03       		.uleb128 0x3
+ 748 006a 0E       		.uleb128 0xe
+ 749 006b 3A       		.uleb128 0x3a
+ 750 006c 0B       		.uleb128 0xb
+ 751 006d 3B       		.uleb128 0x3b
+ 752 006e 0B       		.uleb128 0xb
+ 753 006f 27       		.uleb128 0x27
+ 754 0070 19       		.uleb128 0x19
+ 755 0071 49       		.uleb128 0x49
+ 756 0072 13       		.uleb128 0x13
+ 757 0073 11       		.uleb128 0x11
+ 758 0074 01       		.uleb128 0x1
+ 759 0075 12       		.uleb128 0x12
+ 760 0076 06       		.uleb128 0x6
+ 761 0077 40       		.uleb128 0x40
+ 762 0078 18       		.uleb128 0x18
+ 763 0079 9742     		.uleb128 0x2117
+ 764 007b 19       		.uleb128 0x19
+ 765 007c 01       		.uleb128 0x1
+ 766 007d 13       		.uleb128 0x13
+ 767 007e 00       		.byte	0
+ 768 007f 00       		.byte	0
+ 769 0080 09       		.uleb128 0x9
+ 770 0081 05       		.uleb128 0x5
+ 771 0082 00       		.byte	0
+ 772 0083 03       		.uleb128 0x3
+ 773 0084 0E       		.uleb128 0xe
+ 774 0085 3A       		.uleb128 0x3a
+ 775 0086 0B       		.uleb128 0xb
+ 776 0087 3B       		.uleb128 0x3b
+ 777 0088 0B       		.uleb128 0xb
+ 778 0089 49       		.uleb128 0x49
+ 779 008a 13       		.uleb128 0x13
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccPSniX6.s 			page 18
+
+
+ 780 008b 02       		.uleb128 0x2
+ 781 008c 17       		.uleb128 0x17
+ 782 008d 00       		.byte	0
+ 783 008e 00       		.byte	0
+ 784 008f 0A       		.uleb128 0xa
+ 785 0090 34       		.uleb128 0x34
+ 786 0091 00       		.byte	0
+ 787 0092 03       		.uleb128 0x3
+ 788 0093 0E       		.uleb128 0xe
+ 789 0094 3A       		.uleb128 0x3a
+ 790 0095 0B       		.uleb128 0xb
+ 791 0096 3B       		.uleb128 0x3b
+ 792 0097 0B       		.uleb128 0xb
+ 793 0098 49       		.uleb128 0x49
+ 794 0099 13       		.uleb128 0x13
+ 795 009a 02       		.uleb128 0x2
+ 796 009b 17       		.uleb128 0x17
+ 797 009c 00       		.byte	0
+ 798 009d 00       		.byte	0
+ 799 009e 0B       		.uleb128 0xb
+ 800 009f 34       		.uleb128 0x34
+ 801 00a0 00       		.byte	0
+ 802 00a1 03       		.uleb128 0x3
+ 803 00a2 08       		.uleb128 0x8
+ 804 00a3 3A       		.uleb128 0x3a
+ 805 00a4 0B       		.uleb128 0xb
+ 806 00a5 3B       		.uleb128 0x3b
+ 807 00a6 0B       		.uleb128 0xb
+ 808 00a7 49       		.uleb128 0x49
+ 809 00a8 13       		.uleb128 0x13
+ 810 00a9 02       		.uleb128 0x2
+ 811 00aa 17       		.uleb128 0x17
+ 812 00ab 00       		.byte	0
+ 813 00ac 00       		.byte	0
+ 814 00ad 0C       		.uleb128 0xc
+ 815 00ae 898201   		.uleb128 0x4109
+ 816 00b1 01       		.byte	0x1
+ 817 00b2 11       		.uleb128 0x11
+ 818 00b3 01       		.uleb128 0x1
+ 819 00b4 31       		.uleb128 0x31
+ 820 00b5 13       		.uleb128 0x13
+ 821 00b6 01       		.uleb128 0x1
+ 822 00b7 13       		.uleb128 0x13
+ 823 00b8 00       		.byte	0
+ 824 00b9 00       		.byte	0
+ 825 00ba 0D       		.uleb128 0xd
+ 826 00bb 8A8201   		.uleb128 0x410a
+ 827 00be 00       		.byte	0
+ 828 00bf 02       		.uleb128 0x2
+ 829 00c0 18       		.uleb128 0x18
+ 830 00c1 9142     		.uleb128 0x2111
+ 831 00c3 18       		.uleb128 0x18
+ 832 00c4 00       		.byte	0
+ 833 00c5 00       		.byte	0
+ 834 00c6 0E       		.uleb128 0xe
+ 835 00c7 898201   		.uleb128 0x4109
+ 836 00ca 01       		.byte	0x1
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccPSniX6.s 			page 19
+
+
+ 837 00cb 11       		.uleb128 0x11
+ 838 00cc 01       		.uleb128 0x1
+ 839 00cd 31       		.uleb128 0x31
+ 840 00ce 13       		.uleb128 0x13
+ 841 00cf 00       		.byte	0
+ 842 00d0 00       		.byte	0
+ 843 00d1 0F       		.uleb128 0xf
+ 844 00d2 26       		.uleb128 0x26
+ 845 00d3 00       		.byte	0
+ 846 00d4 49       		.uleb128 0x49
+ 847 00d5 13       		.uleb128 0x13
+ 848 00d6 00       		.byte	0
+ 849 00d7 00       		.byte	0
+ 850 00d8 10       		.uleb128 0x10
+ 851 00d9 2E       		.uleb128 0x2e
+ 852 00da 00       		.byte	0
+ 853 00db 3F       		.uleb128 0x3f
+ 854 00dc 19       		.uleb128 0x19
+ 855 00dd 3C       		.uleb128 0x3c
+ 856 00de 19       		.uleb128 0x19
+ 857 00df 6E       		.uleb128 0x6e
+ 858 00e0 0E       		.uleb128 0xe
+ 859 00e1 03       		.uleb128 0x3
+ 860 00e2 0E       		.uleb128 0xe
+ 861 00e3 3A       		.uleb128 0x3a
+ 862 00e4 0B       		.uleb128 0xb
+ 863 00e5 3B       		.uleb128 0x3b
+ 864 00e6 0B       		.uleb128 0xb
+ 865 00e7 00       		.byte	0
+ 866 00e8 00       		.byte	0
+ 867 00e9 11       		.uleb128 0x11
+ 868 00ea 2E       		.uleb128 0x2e
+ 869 00eb 00       		.byte	0
+ 870 00ec 3F       		.uleb128 0x3f
+ 871 00ed 19       		.uleb128 0x19
+ 872 00ee 3C       		.uleb128 0x3c
+ 873 00ef 19       		.uleb128 0x19
+ 874 00f0 6E       		.uleb128 0x6e
+ 875 00f1 0E       		.uleb128 0xe
+ 876 00f2 03       		.uleb128 0x3
+ 877 00f3 0E       		.uleb128 0xe
+ 878 00f4 3A       		.uleb128 0x3a
+ 879 00f5 0B       		.uleb128 0xb
+ 880 00f6 3B       		.uleb128 0x3b
+ 881 00f7 05       		.uleb128 0x5
+ 882 00f8 00       		.byte	0
+ 883 00f9 00       		.byte	0
+ 884 00fa 00       		.byte	0
+ 885              		.section	.debug_loc,"",%progbits
+ 886              	.Ldebug_loc0:
+ 887              	.LLST0:
+ 888 0000 00000000 		.4byte	.LVL4
+ 889 0004 18000000 		.4byte	.LVL9
+ 890 0008 0100     		.2byte	0x1
+ 891 000a 50       		.byte	0x50
+ 892 000b 18000000 		.4byte	.LVL9
+ 893 000f 6C000000 		.4byte	.LVL28
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccPSniX6.s 			page 20
+
+
+ 894 0013 0100     		.2byte	0x1
+ 895 0015 57       		.byte	0x57
+ 896 0016 6C000000 		.4byte	.LVL28
+ 897 001a 76000000 		.4byte	.LVL32
+ 898 001e 0100     		.2byte	0x1
+ 899 0020 50       		.byte	0x50
+ 900 0021 76000000 		.4byte	.LVL32
+ 901 0025 7A000000 		.4byte	.LVL33
+ 902 0029 0100     		.2byte	0x1
+ 903 002b 57       		.byte	0x57
+ 904 002c 7A000000 		.4byte	.LVL33
+ 905 0030 7C000000 		.4byte	.LFE3
+ 906 0034 0400     		.2byte	0x4
+ 907 0036 F3       		.byte	0xf3
+ 908 0037 01       		.uleb128 0x1
+ 909 0038 50       		.byte	0x50
+ 910 0039 9F       		.byte	0x9f
+ 911 003a 00000000 		.4byte	0
+ 912 003e 00000000 		.4byte	0
+ 913              	.LLST1:
+ 914 0042 00000000 		.4byte	.LVL4
+ 915 0046 18000000 		.4byte	.LVL9
+ 916 004a 0100     		.2byte	0x1
+ 917 004c 51       		.byte	0x51
+ 918 004d 18000000 		.4byte	.LVL9
+ 919 0051 6C000000 		.4byte	.LVL28
+ 920 0055 0400     		.2byte	0x4
+ 921 0057 F3       		.byte	0xf3
+ 922 0058 01       		.uleb128 0x1
+ 923 0059 51       		.byte	0x51
+ 924 005a 9F       		.byte	0x9f
+ 925 005b 6C000000 		.4byte	.LVL28
+ 926 005f 76000000 		.4byte	.LVL32
+ 927 0063 0100     		.2byte	0x1
+ 928 0065 51       		.byte	0x51
+ 929 0066 76000000 		.4byte	.LVL32
+ 930 006a 7C000000 		.4byte	.LFE3
+ 931 006e 0400     		.2byte	0x4
+ 932 0070 F3       		.byte	0xf3
+ 933 0071 01       		.uleb128 0x1
+ 934 0072 51       		.byte	0x51
+ 935 0073 9F       		.byte	0x9f
+ 936 0074 00000000 		.4byte	0
+ 937 0078 00000000 		.4byte	0
+ 938              	.LLST2:
+ 939 007c 00000000 		.4byte	.LVL4
+ 940 0080 14000000 		.4byte	.LVL7
+ 941 0084 0100     		.2byte	0x1
+ 942 0086 52       		.byte	0x52
+ 943 0087 14000000 		.4byte	.LVL7
+ 944 008b 44000000 		.4byte	.LVL19
+ 945 008f 0200     		.2byte	0x2
+ 946 0091 91       		.byte	0x91
+ 947 0092 64       		.sleb128 -28
+ 948 0093 44000000 		.4byte	.LVL19
+ 949 0097 46000000 		.4byte	.LVL20
+ 950 009b 0400     		.2byte	0x4
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccPSniX6.s 			page 21
+
+
+ 951 009d F3       		.byte	0xf3
+ 952 009e 01       		.uleb128 0x1
+ 953 009f 52       		.byte	0x52
+ 954 00a0 9F       		.byte	0x9f
+ 955 00a1 46000000 		.4byte	.LVL20
+ 956 00a5 58000000 		.4byte	.LVL23
+ 957 00a9 0200     		.2byte	0x2
+ 958 00ab 91       		.byte	0x91
+ 959 00ac 64       		.sleb128 -28
+ 960 00ad 58000000 		.4byte	.LVL23
+ 961 00b1 6C000000 		.4byte	.LVL28
+ 962 00b5 0400     		.2byte	0x4
+ 963 00b7 F3       		.byte	0xf3
+ 964 00b8 01       		.uleb128 0x1
+ 965 00b9 52       		.byte	0x52
+ 966 00ba 9F       		.byte	0x9f
+ 967 00bb 6C000000 		.4byte	.LVL28
+ 968 00bf 76000000 		.4byte	.LVL32
+ 969 00c3 0100     		.2byte	0x1
+ 970 00c5 52       		.byte	0x52
+ 971 00c6 76000000 		.4byte	.LVL32
+ 972 00ca 7C000000 		.4byte	.LFE3
+ 973 00ce 0400     		.2byte	0x4
+ 974 00d0 F3       		.byte	0xf3
+ 975 00d1 01       		.uleb128 0x1
+ 976 00d2 52       		.byte	0x52
+ 977 00d3 9F       		.byte	0x9f
+ 978 00d4 00000000 		.4byte	0
+ 979 00d8 00000000 		.4byte	0
+ 980              	.LLST3:
+ 981 00dc 00000000 		.4byte	.LVL4
+ 982 00e0 16000000 		.4byte	.LVL8
+ 983 00e4 0100     		.2byte	0x1
+ 984 00e6 53       		.byte	0x53
+ 985 00e7 16000000 		.4byte	.LVL8
+ 986 00eb 6C000000 		.4byte	.LVL28
+ 987 00ef 0400     		.2byte	0x4
+ 988 00f1 F3       		.byte	0xf3
+ 989 00f2 01       		.uleb128 0x1
+ 990 00f3 53       		.byte	0x53
+ 991 00f4 9F       		.byte	0x9f
+ 992 00f5 6C000000 		.4byte	.LVL28
+ 993 00f9 6E000000 		.4byte	.LVL29
+ 994 00fd 0100     		.2byte	0x1
+ 995 00ff 53       		.byte	0x53
+ 996 0100 6E000000 		.4byte	.LVL29
+ 997 0104 72000000 		.4byte	.LVL30
+ 998 0108 0400     		.2byte	0x4
+ 999 010a F3       		.byte	0xf3
+ 1000 010b 01       		.uleb128 0x1
+ 1001 010c 53       		.byte	0x53
+ 1002 010d 9F       		.byte	0x9f
+ 1003 010e 72000000 		.4byte	.LVL30
+ 1004 0112 74000000 		.4byte	.LVL31
+ 1005 0116 0100     		.2byte	0x1
+ 1006 0118 53       		.byte	0x53
+ 1007 0119 74000000 		.4byte	.LVL31
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccPSniX6.s 			page 22
+
+
+ 1008 011d 7C000000 		.4byte	.LFE3
+ 1009 0121 0400     		.2byte	0x4
+ 1010 0123 F3       		.byte	0xf3
+ 1011 0124 01       		.uleb128 0x1
+ 1012 0125 53       		.byte	0x53
+ 1013 0126 9F       		.byte	0x9f
+ 1014 0127 00000000 		.4byte	0
+ 1015 012b 00000000 		.4byte	0
+ 1016              	.LLST4:
+ 1017 012f 0A000000 		.4byte	.LVL5
+ 1018 0133 12000000 		.4byte	.LVL6
+ 1019 0137 0200     		.2byte	0x2
+ 1020 0139 31       		.byte	0x31
+ 1021 013a 9F       		.byte	0x9f
+ 1022 013b 12000000 		.4byte	.LVL6
+ 1023 013f 40000000 		.4byte	.LVL18
+ 1024 0143 0200     		.2byte	0x2
+ 1025 0145 40       		.byte	0x40
+ 1026 0146 9F       		.byte	0x9f
+ 1027 0147 40000000 		.4byte	.LVL18
+ 1028 014b 46000000 		.4byte	.LVL20
+ 1029 014f 0200     		.2byte	0x2
+ 1030 0151 30       		.byte	0x30
+ 1031 0152 9F       		.byte	0x9f
+ 1032 0153 46000000 		.4byte	.LVL20
+ 1033 0157 58000000 		.4byte	.LVL23
+ 1034 015b 0200     		.2byte	0x2
+ 1035 015d 40       		.byte	0x40
+ 1036 015e 9F       		.byte	0x9f
+ 1037 015f 58000000 		.4byte	.LVL23
+ 1038 0163 6C000000 		.4byte	.LVL28
+ 1039 0167 0200     		.2byte	0x2
+ 1040 0169 91       		.byte	0x91
+ 1041 016a 64       		.sleb128 -28
+ 1042 016b 6C000000 		.4byte	.LVL28
+ 1043 016f 76000000 		.4byte	.LVL32
+ 1044 0173 0200     		.2byte	0x2
+ 1045 0175 31       		.byte	0x31
+ 1046 0176 9F       		.byte	0x9f
+ 1047 0177 76000000 		.4byte	.LVL32
+ 1048 017b 7C000000 		.4byte	.LFE3
+ 1049 017f 0200     		.2byte	0x2
+ 1050 0181 91       		.byte	0x91
+ 1051 0182 64       		.sleb128 -28
+ 1052 0183 00000000 		.4byte	0
+ 1053 0187 00000000 		.4byte	0
+ 1054              	.LLST5:
+ 1055 018b 18000000 		.4byte	.LVL9
+ 1056 018f 20000000 		.4byte	.LVL11
+ 1057 0193 0200     		.2byte	0x2
+ 1058 0195 30       		.byte	0x30
+ 1059 0196 9F       		.byte	0x9f
+ 1060 0197 26000000 		.4byte	.LVL13
+ 1061 019b 28000000 		.4byte	.LVL14
+ 1062 019f 0100     		.2byte	0x1
+ 1063 01a1 50       		.byte	0x50
+ 1064 01a2 28000000 		.4byte	.LVL14
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccPSniX6.s 			page 23
+
+
+ 1065 01a6 46000000 		.4byte	.LVL20
+ 1066 01aa 0100     		.2byte	0x1
+ 1067 01ac 55       		.byte	0x55
+ 1068 01ad 46000000 		.4byte	.LVL20
+ 1069 01b1 58000000 		.4byte	.LVL23
+ 1070 01b5 0200     		.2byte	0x2
+ 1071 01b7 30       		.byte	0x30
+ 1072 01b8 9F       		.byte	0x9f
+ 1073 01b9 58000000 		.4byte	.LVL23
+ 1074 01bd 6C000000 		.4byte	.LVL28
+ 1075 01c1 0100     		.2byte	0x1
+ 1076 01c3 55       		.byte	0x55
+ 1077 01c4 00000000 		.4byte	0
+ 1078 01c8 00000000 		.4byte	0
+ 1079              	.LLST6:
+ 1080 01cc 18000000 		.4byte	.LVL9
+ 1081 01d0 5A000000 		.4byte	.LVL24
+ 1082 01d4 0100     		.2byte	0x1
+ 1083 01d6 54       		.byte	0x54
+ 1084 01d7 00000000 		.4byte	0
+ 1085 01db 00000000 		.4byte	0
+ 1086              	.LLST7:
+ 1087 01df 58000000 		.4byte	.LVL23
+ 1088 01e3 5C000000 		.4byte	.LVL25
+ 1089 01e7 0200     		.2byte	0x2
+ 1090 01e9 30       		.byte	0x30
+ 1091 01ea 9F       		.byte	0x9f
+ 1092 01eb 5C000000 		.4byte	.LVL25
+ 1093 01ef 6C000000 		.4byte	.LVL28
+ 1094 01f3 0100     		.2byte	0x1
+ 1095 01f5 54       		.byte	0x54
+ 1096 01f6 00000000 		.4byte	0
+ 1097 01fa 00000000 		.4byte	0
+ 1098              	.LLST8:
+ 1099 01fe 00000000 		.4byte	.LVL34
+ 1100 0202 11000000 		.4byte	.LVL36-1
+ 1101 0206 0100     		.2byte	0x1
+ 1102 0208 50       		.byte	0x50
+ 1103 0209 11000000 		.4byte	.LVL36-1
+ 1104 020d 18000000 		.4byte	.LVL38
+ 1105 0211 0400     		.2byte	0x4
+ 1106 0213 F3       		.byte	0xf3
+ 1107 0214 01       		.uleb128 0x1
+ 1108 0215 50       		.byte	0x50
+ 1109 0216 9F       		.byte	0x9f
+ 1110 0217 18000000 		.4byte	.LVL38
+ 1111 021b 1A000000 		.4byte	.LVL39
+ 1112 021f 0100     		.2byte	0x1
+ 1113 0221 50       		.byte	0x50
+ 1114 0222 1A000000 		.4byte	.LVL39
+ 1115 0226 1C000000 		.4byte	.LVL40
+ 1116 022a 0400     		.2byte	0x4
+ 1117 022c F3       		.byte	0xf3
+ 1118 022d 01       		.uleb128 0x1
+ 1119 022e 50       		.byte	0x50
+ 1120 022f 9F       		.byte	0x9f
+ 1121 0230 1C000000 		.4byte	.LVL40
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccPSniX6.s 			page 24
+
+
+ 1122 0234 1E000000 		.4byte	.LVL41
+ 1123 0238 0100     		.2byte	0x1
+ 1124 023a 50       		.byte	0x50
+ 1125 023b 1E000000 		.4byte	.LVL41
+ 1126 023f 20000000 		.4byte	.LFE4
+ 1127 0243 0400     		.2byte	0x4
+ 1128 0245 F3       		.byte	0xf3
+ 1129 0246 01       		.uleb128 0x1
+ 1130 0247 50       		.byte	0x50
+ 1131 0248 9F       		.byte	0x9f
+ 1132 0249 00000000 		.4byte	0
+ 1133 024d 00000000 		.4byte	0
+ 1134              	.LLST9:
+ 1135 0251 00000000 		.4byte	.LVL34
+ 1136 0255 11000000 		.4byte	.LVL36-1
+ 1137 0259 0100     		.2byte	0x1
+ 1138 025b 51       		.byte	0x51
+ 1139 025c 11000000 		.4byte	.LVL36-1
+ 1140 0260 18000000 		.4byte	.LVL38
+ 1141 0264 0400     		.2byte	0x4
+ 1142 0266 F3       		.byte	0xf3
+ 1143 0267 01       		.uleb128 0x1
+ 1144 0268 51       		.byte	0x51
+ 1145 0269 9F       		.byte	0x9f
+ 1146 026a 18000000 		.4byte	.LVL38
+ 1147 026e 1E000000 		.4byte	.LVL41
+ 1148 0272 0100     		.2byte	0x1
+ 1149 0274 51       		.byte	0x51
+ 1150 0275 1E000000 		.4byte	.LVL41
+ 1151 0279 20000000 		.4byte	.LFE4
+ 1152 027d 0400     		.2byte	0x4
+ 1153 027f F3       		.byte	0xf3
+ 1154 0280 01       		.uleb128 0x1
+ 1155 0281 51       		.byte	0x51
+ 1156 0282 9F       		.byte	0x9f
+ 1157 0283 00000000 		.4byte	0
+ 1158 0287 00000000 		.4byte	0
+ 1159              	.LLST10:
+ 1160 028b 00000000 		.4byte	.LVL34
+ 1161 028f 11000000 		.4byte	.LVL36-1
+ 1162 0293 0100     		.2byte	0x1
+ 1163 0295 52       		.byte	0x52
+ 1164 0296 11000000 		.4byte	.LVL36-1
+ 1165 029a 18000000 		.4byte	.LVL38
+ 1166 029e 0100     		.2byte	0x1
+ 1167 02a0 55       		.byte	0x55
+ 1168 02a1 18000000 		.4byte	.LVL38
+ 1169 02a5 1E000000 		.4byte	.LVL41
+ 1170 02a9 0100     		.2byte	0x1
+ 1171 02ab 52       		.byte	0x52
+ 1172 02ac 1E000000 		.4byte	.LVL41
+ 1173 02b0 1E000000 		.4byte	.LVL42
+ 1174 02b4 0100     		.2byte	0x1
+ 1175 02b6 55       		.byte	0x55
+ 1176 02b7 1E000000 		.4byte	.LVL42
+ 1177 02bb 20000000 		.4byte	.LFE4
+ 1178 02bf 0400     		.2byte	0x4
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccPSniX6.s 			page 25
+
+
+ 1179 02c1 F3       		.byte	0xf3
+ 1180 02c2 01       		.uleb128 0x1
+ 1181 02c3 52       		.byte	0x52
+ 1182 02c4 9F       		.byte	0x9f
+ 1183 02c5 00000000 		.4byte	0
+ 1184 02c9 00000000 		.4byte	0
+ 1185              	.LLST11:
+ 1186 02cd 00000000 		.4byte	.LVL34
+ 1187 02d1 11000000 		.4byte	.LVL36-1
+ 1188 02d5 0100     		.2byte	0x1
+ 1189 02d7 53       		.byte	0x53
+ 1190 02d8 11000000 		.4byte	.LVL36-1
+ 1191 02dc 18000000 		.4byte	.LVL38
+ 1192 02e0 0400     		.2byte	0x4
+ 1193 02e2 F3       		.byte	0xf3
+ 1194 02e3 01       		.uleb128 0x1
+ 1195 02e4 53       		.byte	0x53
+ 1196 02e5 9F       		.byte	0x9f
+ 1197 02e6 18000000 		.4byte	.LVL38
+ 1198 02ea 1E000000 		.4byte	.LVL41
+ 1199 02ee 0100     		.2byte	0x1
+ 1200 02f0 53       		.byte	0x53
+ 1201 02f1 1E000000 		.4byte	.LVL41
+ 1202 02f5 20000000 		.4byte	.LFE4
+ 1203 02f9 0400     		.2byte	0x4
+ 1204 02fb F3       		.byte	0xf3
+ 1205 02fc 01       		.uleb128 0x1
+ 1206 02fd 53       		.byte	0x53
+ 1207 02fe 9F       		.byte	0x9f
+ 1208 02ff 00000000 		.4byte	0
+ 1209 0303 00000000 		.4byte	0
+ 1210              	.LLST12:
+ 1211 0307 06000000 		.4byte	.LVL35
+ 1212 030b 14000000 		.4byte	.LVL37
+ 1213 030f 0200     		.2byte	0x2
+ 1214 0311 31       		.byte	0x31
+ 1215 0312 9F       		.byte	0x9f
+ 1216 0313 14000000 		.4byte	.LVL37
+ 1217 0317 18000000 		.4byte	.LVL38
+ 1218 031b 0200     		.2byte	0x2
+ 1219 031d 30       		.byte	0x30
+ 1220 031e 9F       		.byte	0x9f
+ 1221 031f 18000000 		.4byte	.LVL38
+ 1222 0323 1E000000 		.4byte	.LVL41
+ 1223 0327 0200     		.2byte	0x2
+ 1224 0329 31       		.byte	0x31
+ 1225 032a 9F       		.byte	0x9f
+ 1226 032b 1E000000 		.4byte	.LVL41
+ 1227 032f 20000000 		.4byte	.LFE4
+ 1228 0333 0100     		.2byte	0x1
+ 1229 0335 50       		.byte	0x50
+ 1230 0336 00000000 		.4byte	0
+ 1231 033a 00000000 		.4byte	0
+ 1232              		.section	.debug_aranges,"",%progbits
+ 1233 0000 3C000000 		.4byte	0x3c
+ 1234 0004 0200     		.2byte	0x2
+ 1235 0006 00000000 		.4byte	.Ldebug_info0
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccPSniX6.s 			page 26
+
+
+ 1236 000a 04       		.byte	0x4
+ 1237 000b 00       		.byte	0
+ 1238 000c 0000     		.2byte	0
+ 1239 000e 0000     		.2byte	0
+ 1240 0010 00000000 		.4byte	.LFB0
+ 1241 0014 08000000 		.4byte	.LFE0-.LFB0
+ 1242 0018 00000000 		.4byte	.LFB1
+ 1243 001c 08000000 		.4byte	.LFE1-.LFB1
+ 1244 0020 00000000 		.4byte	.LFB2
+ 1245 0024 0C000000 		.4byte	.LFE2-.LFB2
+ 1246 0028 00000000 		.4byte	.LFB3
+ 1247 002c 7C000000 		.4byte	.LFE3-.LFB3
+ 1248 0030 00000000 		.4byte	.LFB4
+ 1249 0034 20000000 		.4byte	.LFE4-.LFB4
+ 1250 0038 00000000 		.4byte	0
+ 1251 003c 00000000 		.4byte	0
+ 1252              		.section	.debug_ranges,"",%progbits
+ 1253              	.Ldebug_ranges0:
+ 1254 0000 00000000 		.4byte	.LFB0
+ 1255 0004 08000000 		.4byte	.LFE0
+ 1256 0008 00000000 		.4byte	.LFB1
+ 1257 000c 08000000 		.4byte	.LFE1
+ 1258 0010 00000000 		.4byte	.LFB2
+ 1259 0014 0C000000 		.4byte	.LFE2
+ 1260 0018 00000000 		.4byte	.LFB3
+ 1261 001c 7C000000 		.4byte	.LFE3
+ 1262 0020 00000000 		.4byte	.LFB4
+ 1263 0024 20000000 		.4byte	.LFE4
+ 1264 0028 00000000 		.4byte	0
+ 1265 002c 00000000 		.4byte	0
+ 1266              		.section	.debug_line,"",%progbits
+ 1267              	.Ldebug_line0:
+ 1268 0000 1C010000 		.section	.debug_str,"MS",%progbits,1
+ 1268      02007300 
+ 1268      00000201 
+ 1268      FB0E0D00 
+ 1268      01010101 
+ 1269              	.LASF27:
+ 1270 0000 74696D65 		.ascii	"timeoutMs\000"
+ 1270      6F75744D 
+ 1270      7300
+ 1271              	.LASF15:
+ 1272 000a 63797374 		.ascii	"cystatus\000"
+ 1272      61747573 
+ 1272      00
+ 1273              	.LASF23:
+ 1274 0013 636F756E 		.ascii	"count\000"
+ 1274      7400
+ 1275              	.LASF3:
+ 1276 0019 73686F72 		.ascii	"short unsigned int\000"
+ 1276      7420756E 
+ 1276      7369676E 
+ 1276      65642069 
+ 1276      6E7400
+ 1277              	.LASF25:
+ 1278 002c 73746174 		.ascii	"status\000"
+ 1278      757300
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccPSniX6.s 			page 27
+
+
+ 1279              	.LASF21:
+ 1280 0033 70446174 		.ascii	"pData\000"
+ 1280      6100
+ 1281              	.LASF12:
+ 1282 0039 666C6F61 		.ascii	"float\000"
+ 1282      7400
+ 1283              	.LASF22:
+ 1284 003f 73697A65 		.ascii	"size\000"
+ 1284      00
+ 1285              	.LASF20:
+ 1286 0044 55415254 		.ascii	"UART_UartCyBtldrCommReset\000"
+ 1286      5F556172 
+ 1286      74437942 
+ 1286      746C6472 
+ 1286      436F6D6D 
+ 1287              	.LASF5:
+ 1288 005e 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1288      20756E73 
+ 1288      69676E65 
+ 1288      6420696E 
+ 1288      7400
+ 1289              	.LASF9:
+ 1290 0070 75696E74 		.ascii	"uint8\000"
+ 1290      3800
+ 1291              	.LASF30:
+ 1292 0076 55415254 		.ascii	"UART_Start\000"
+ 1292      5F537461 
+ 1292      727400
+ 1293              	.LASF41:
+ 1294 0081 443A5C72 		.ascii	"D:\\repositories\\Tarocco\\Bootloader\\cncboot_no_o"
+ 1294      65706F73 
+ 1294      69746F72 
+ 1294      6965735C 
+ 1294      5461726F 
+ 1295 00b0 7074696D 		.ascii	"ptimizations\\cncboot.cydsn\000"
+ 1295      697A6174 
+ 1295      696F6E73 
+ 1295      5C636E63 
+ 1295      626F6F74 
+ 1296              	.LASF26:
+ 1297 00cb 62797465 		.ascii	"byteCount\000"
+ 1297      436F756E 
+ 1297      7400
+ 1298              	.LASF1:
+ 1299 00d5 756E7369 		.ascii	"unsigned char\000"
+ 1299      676E6564 
+ 1299      20636861 
+ 1299      7200
+ 1300              	.LASF18:
+ 1301 00e3 55415254 		.ascii	"UART_UartCyBtldrCommStart\000"
+ 1301      5F556172 
+ 1301      74437942 
+ 1301      746C6472 
+ 1301      436F6D6D 
+ 1302              	.LASF13:
+ 1303 00fd 646F7562 		.ascii	"double\000"
+ 1303      6C6500
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccPSniX6.s 			page 28
+
+
+ 1304              	.LASF10:
+ 1305 0104 75696E74 		.ascii	"uint16\000"
+ 1305      313600
+ 1306              	.LASF11:
+ 1307 010b 75696E74 		.ascii	"uint32\000"
+ 1307      333200
+ 1308              	.LASF33:
+ 1309 0112 55415254 		.ascii	"UART_SpiUartClearTxBuffer\000"
+ 1309      5F537069 
+ 1309      55617274 
+ 1309      436C6561 
+ 1309      72547842 
+ 1310              	.LASF38:
+ 1311 012c 55415254 		.ascii	"UART_SpiUartPutArray\000"
+ 1311      5F537069 
+ 1311      55617274 
+ 1311      50757441 
+ 1311      72726179 
+ 1312              	.LASF8:
+ 1313 0141 756E7369 		.ascii	"unsigned int\000"
+ 1313      676E6564 
+ 1313      20696E74 
+ 1313      00
+ 1314              	.LASF7:
+ 1315 014e 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1315      206C6F6E 
+ 1315      6720756E 
+ 1315      7369676E 
+ 1315      65642069 
+ 1316              	.LASF29:
+ 1317 0165 55415254 		.ascii	"UART_UartCyBtldrCommWrite\000"
+ 1317      5F556172 
+ 1317      74437942 
+ 1317      746C6472 
+ 1317      436F6D6D 
+ 1318              	.LASF24:
+ 1319 017f 74696D65 		.ascii	"timeOut\000"
+ 1319      4F757400 
+ 1320              	.LASF39:
+ 1321 0187 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1321      43313120 
+ 1321      352E342E 
+ 1321      31203230 
+ 1321      31363036 
+ 1322 01ba 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 1322      20726576 
+ 1322      6973696F 
+ 1322      6E203233 
+ 1322      37373135 
+ 1323 01ed 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1323      66756E63 
+ 1323      74696F6E 
+ 1323      2D736563 
+ 1323      74696F6E 
+ 1324              	.LASF17:
+ 1325 0215 73697A65 		.ascii	"sizetype\000"
+ 1325      74797065 
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccPSniX6.s 			page 29
+
+
+ 1325      00
+ 1326              	.LASF40:
+ 1327 021e 47656E65 		.ascii	"Generated_Source\\PSoC4\\UART_UART_BOOT.c\000"
+ 1327      72617465 
+ 1327      645F536F 
+ 1327      75726365 
+ 1327      5C50536F 
+ 1328              	.LASF6:
+ 1329 0246 6C6F6E67 		.ascii	"long long int\000"
+ 1329      206C6F6E 
+ 1329      6720696E 
+ 1329      7400
+ 1330              	.LASF35:
+ 1331 0254 43794465 		.ascii	"CyDelayUs\000"
+ 1331      6C617955 
+ 1331      7300
+ 1332              	.LASF14:
+ 1333 025e 63686172 		.ascii	"char\000"
+ 1333      00
+ 1334              	.LASF2:
+ 1335 0263 73686F72 		.ascii	"short int\000"
+ 1335      7420696E 
+ 1335      7400
+ 1336              	.LASF31:
+ 1337 026d 55415254 		.ascii	"UART_Stop\000"
+ 1337      5F53746F 
+ 1337      7000
+ 1338              	.LASF28:
+ 1339 0277 55415254 		.ascii	"UART_UartCyBtldrCommRead\000"
+ 1339      5F556172 
+ 1339      74437942 
+ 1339      746C6472 
+ 1339      436F6D6D 
+ 1340              	.LASF19:
+ 1341 0290 55415254 		.ascii	"UART_UartCyBtldrCommStop\000"
+ 1341      5F556172 
+ 1341      74437942 
+ 1341      746C6472 
+ 1341      436F6D6D 
+ 1342              	.LASF37:
+ 1343 02a9 55415254 		.ascii	"UART_SpiUartReadRxData\000"
+ 1343      5F537069 
+ 1343      55617274 
+ 1343      52656164 
+ 1343      52784461 
+ 1344              	.LASF4:
+ 1345 02c0 6C6F6E67 		.ascii	"long int\000"
+ 1345      20696E74 
+ 1345      00
+ 1346              	.LASF32:
+ 1347 02c9 55415254 		.ascii	"UART_SpiUartClearRxBuffer\000"
+ 1347      5F537069 
+ 1347      55617274 
+ 1347      436C6561 
+ 1347      72527842 
+ 1348              	.LASF16:
+ 1349 02e3 6C6F6E67 		.ascii	"long double\000"
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccPSniX6.s 			page 30
+
+
+ 1349      20646F75 
+ 1349      626C6500 
+ 1350              	.LASF0:
+ 1351 02ef 7369676E 		.ascii	"signed char\000"
+ 1351      65642063 
+ 1351      68617200 
+ 1352              	.LASF34:
+ 1353 02fb 55415254 		.ascii	"UART_SpiUartGetRxBufferSize\000"
+ 1353      5F537069 
+ 1353      55617274 
+ 1353      47657452 
+ 1353      78427566 
+ 1354              	.LASF36:
+ 1355 0317 43794465 		.ascii	"CyDelay\000"
+ 1355      6C617900 
+ 1356              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

@@ -1,0 +1,650 @@
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccAgkrMA.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"UART_rx_PM.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.UART_rx_Sleep,"ax",%progbits
+  20              		.align	2
+  21              		.global	UART_rx_Sleep
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	UART_rx_Sleep, %function
+  25              	UART_rx_Sleep:
+  26              	.LFB0:
+  27              		.file 1 "Generated_Source\\PSoC4\\UART_rx_PM.c"
+   1:Generated_Source\PSoC4/UART_rx_PM.c **** /*******************************************************************************
+   2:Generated_Source\PSoC4/UART_rx_PM.c **** * File Name: UART_rx.c  
+   3:Generated_Source\PSoC4/UART_rx_PM.c **** * Version 2.20
+   4:Generated_Source\PSoC4/UART_rx_PM.c **** *
+   5:Generated_Source\PSoC4/UART_rx_PM.c **** * Description:
+   6:Generated_Source\PSoC4/UART_rx_PM.c **** *  This file contains APIs to set up the Pins component for low power modes.
+   7:Generated_Source\PSoC4/UART_rx_PM.c **** *
+   8:Generated_Source\PSoC4/UART_rx_PM.c **** * Note:
+   9:Generated_Source\PSoC4/UART_rx_PM.c **** *
+  10:Generated_Source\PSoC4/UART_rx_PM.c **** ********************************************************************************
+  11:Generated_Source\PSoC4/UART_rx_PM.c **** * Copyright 2015, Cypress Semiconductor Corporation.  All rights reserved.
+  12:Generated_Source\PSoC4/UART_rx_PM.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  13:Generated_Source\PSoC4/UART_rx_PM.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  14:Generated_Source\PSoC4/UART_rx_PM.c **** * the software package with which this file was provided.
+  15:Generated_Source\PSoC4/UART_rx_PM.c **** *******************************************************************************/
+  16:Generated_Source\PSoC4/UART_rx_PM.c **** 
+  17:Generated_Source\PSoC4/UART_rx_PM.c **** #include "cytypes.h"
+  18:Generated_Source\PSoC4/UART_rx_PM.c **** #include "UART_rx.h"
+  19:Generated_Source\PSoC4/UART_rx_PM.c **** 
+  20:Generated_Source\PSoC4/UART_rx_PM.c **** static UART_rx_BACKUP_STRUCT  UART_rx_backup = {0u, 0u, 0u};
+  21:Generated_Source\PSoC4/UART_rx_PM.c **** 
+  22:Generated_Source\PSoC4/UART_rx_PM.c **** 
+  23:Generated_Source\PSoC4/UART_rx_PM.c **** /*******************************************************************************
+  24:Generated_Source\PSoC4/UART_rx_PM.c **** * Function Name: UART_rx_Sleep
+  25:Generated_Source\PSoC4/UART_rx_PM.c **** ****************************************************************************//**
+  26:Generated_Source\PSoC4/UART_rx_PM.c **** *
+  27:Generated_Source\PSoC4/UART_rx_PM.c **** * \brief Stores the pin configuration and prepares the pin for entering chip 
+  28:Generated_Source\PSoC4/UART_rx_PM.c **** *  deep-sleep/hibernate modes. This function applies only to SIO and USBIO pins.
+  29:Generated_Source\PSoC4/UART_rx_PM.c **** *  It should not be called for GPIO or GPIO_OVT pins.
+  30:Generated_Source\PSoC4/UART_rx_PM.c **** *
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccAgkrMA.s 			page 2
+
+
+  31:Generated_Source\PSoC4/UART_rx_PM.c **** * <b>Note</b> This function is available in PSoC 4 only.
+  32:Generated_Source\PSoC4/UART_rx_PM.c **** *
+  33:Generated_Source\PSoC4/UART_rx_PM.c **** * \return 
+  34:Generated_Source\PSoC4/UART_rx_PM.c **** *  None 
+  35:Generated_Source\PSoC4/UART_rx_PM.c **** *  
+  36:Generated_Source\PSoC4/UART_rx_PM.c **** * \sideeffect
+  37:Generated_Source\PSoC4/UART_rx_PM.c **** *  For SIO pins, this function configures the pin input threshold to CMOS and
+  38:Generated_Source\PSoC4/UART_rx_PM.c **** *  drive level to Vddio. This is needed for SIO pins when in device 
+  39:Generated_Source\PSoC4/UART_rx_PM.c **** *  deep-sleep/hibernate modes.
+  40:Generated_Source\PSoC4/UART_rx_PM.c **** *
+  41:Generated_Source\PSoC4/UART_rx_PM.c **** * \funcusage
+  42:Generated_Source\PSoC4/UART_rx_PM.c **** *  \snippet UART_rx_SUT.c usage_UART_rx_Sleep_Wakeup
+  43:Generated_Source\PSoC4/UART_rx_PM.c **** *******************************************************************************/
+  44:Generated_Source\PSoC4/UART_rx_PM.c **** void UART_rx_Sleep(void)
+  45:Generated_Source\PSoC4/UART_rx_PM.c **** {
+  28              		.loc 1 45 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  46:Generated_Source\PSoC4/UART_rx_PM.c ****     #if defined(UART_rx__PC)
+  47:Generated_Source\PSoC4/UART_rx_PM.c ****         UART_rx_backup.pcState = UART_rx_PC;
+  33              		.loc 1 47 0
+  34 0000 024B     		ldr	r3, .L2
+  35 0002 1A68     		ldr	r2, [r3]
+  36 0004 024B     		ldr	r3, .L2+4
+  37 0006 1A60     		str	r2, [r3]
+  48:Generated_Source\PSoC4/UART_rx_PM.c ****     #else
+  49:Generated_Source\PSoC4/UART_rx_PM.c ****         #if (CY_PSOC4_4200L)
+  50:Generated_Source\PSoC4/UART_rx_PM.c ****             /* Save the regulator state and put the PHY into suspend mode */
+  51:Generated_Source\PSoC4/UART_rx_PM.c ****             UART_rx_backup.usbState = UART_rx_CR1_REG;
+  52:Generated_Source\PSoC4/UART_rx_PM.c ****             UART_rx_USB_POWER_REG |= UART_rx_USBIO_ENTER_SLEEP;
+  53:Generated_Source\PSoC4/UART_rx_PM.c ****             UART_rx_CR1_REG &= UART_rx_USBIO_CR1_OFF;
+  54:Generated_Source\PSoC4/UART_rx_PM.c ****         #endif
+  55:Generated_Source\PSoC4/UART_rx_PM.c ****     #endif
+  56:Generated_Source\PSoC4/UART_rx_PM.c ****     #if defined(CYIPBLOCK_m0s8ioss_VERSION) && defined(UART_rx__SIO)
+  57:Generated_Source\PSoC4/UART_rx_PM.c ****         UART_rx_backup.sioState = UART_rx_SIO_REG;
+  58:Generated_Source\PSoC4/UART_rx_PM.c ****         /* SIO requires unregulated output buffer and single ended input buffer */
+  59:Generated_Source\PSoC4/UART_rx_PM.c ****         UART_rx_SIO_REG &= (uint32)(~UART_rx_SIO_LPM_MASK);
+  60:Generated_Source\PSoC4/UART_rx_PM.c ****     #endif  
+  61:Generated_Source\PSoC4/UART_rx_PM.c **** }
+  38              		.loc 1 61 0
+  39              		@ sp needed
+  40 0008 7047     		bx	lr
+  41              	.L3:
+  42 000a C046     		.align	2
+  43              	.L2:
+  44 000c 08030440 		.word	1074004744
+  45 0010 00000000 		.word	.LANCHOR0
+  46              		.cfi_endproc
+  47              	.LFE0:
+  48              		.size	UART_rx_Sleep, .-UART_rx_Sleep
+  49              		.section	.text.UART_rx_Wakeup,"ax",%progbits
+  50              		.align	2
+  51              		.global	UART_rx_Wakeup
+  52              		.code	16
+  53              		.thumb_func
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccAgkrMA.s 			page 3
+
+
+  54              		.type	UART_rx_Wakeup, %function
+  55              	UART_rx_Wakeup:
+  56              	.LFB1:
+  62:Generated_Source\PSoC4/UART_rx_PM.c **** 
+  63:Generated_Source\PSoC4/UART_rx_PM.c **** 
+  64:Generated_Source\PSoC4/UART_rx_PM.c **** /*******************************************************************************
+  65:Generated_Source\PSoC4/UART_rx_PM.c **** * Function Name: UART_rx_Wakeup
+  66:Generated_Source\PSoC4/UART_rx_PM.c **** ****************************************************************************//**
+  67:Generated_Source\PSoC4/UART_rx_PM.c **** *
+  68:Generated_Source\PSoC4/UART_rx_PM.c **** * \brief Restores the pin configuration that was saved during Pin_Sleep(). This 
+  69:Generated_Source\PSoC4/UART_rx_PM.c **** * function applies only to SIO and USBIO pins. It should not be called for
+  70:Generated_Source\PSoC4/UART_rx_PM.c **** * GPIO or GPIO_OVT pins.
+  71:Generated_Source\PSoC4/UART_rx_PM.c **** *
+  72:Generated_Source\PSoC4/UART_rx_PM.c **** * For USBIO pins, the wakeup is only triggered for falling edge interrupts.
+  73:Generated_Source\PSoC4/UART_rx_PM.c **** *
+  74:Generated_Source\PSoC4/UART_rx_PM.c **** * <b>Note</b> This function is available in PSoC 4 only.
+  75:Generated_Source\PSoC4/UART_rx_PM.c **** *
+  76:Generated_Source\PSoC4/UART_rx_PM.c **** * \return 
+  77:Generated_Source\PSoC4/UART_rx_PM.c **** *  None
+  78:Generated_Source\PSoC4/UART_rx_PM.c **** *  
+  79:Generated_Source\PSoC4/UART_rx_PM.c **** * \funcusage
+  80:Generated_Source\PSoC4/UART_rx_PM.c **** *  Refer to UART_rx_Sleep() for an example usage.
+  81:Generated_Source\PSoC4/UART_rx_PM.c **** *******************************************************************************/
+  82:Generated_Source\PSoC4/UART_rx_PM.c **** void UART_rx_Wakeup(void)
+  83:Generated_Source\PSoC4/UART_rx_PM.c **** {
+  57              		.loc 1 83 0
+  58              		.cfi_startproc
+  59              		@ args = 0, pretend = 0, frame = 0
+  60              		@ frame_needed = 0, uses_anonymous_args = 0
+  61              		@ link register save eliminated.
+  84:Generated_Source\PSoC4/UART_rx_PM.c ****     #if defined(UART_rx__PC)
+  85:Generated_Source\PSoC4/UART_rx_PM.c ****         UART_rx_PC = UART_rx_backup.pcState;
+  62              		.loc 1 85 0
+  63 0000 024B     		ldr	r3, .L5
+  64 0002 1A68     		ldr	r2, [r3]
+  65 0004 024B     		ldr	r3, .L5+4
+  66 0006 1A60     		str	r2, [r3]
+  86:Generated_Source\PSoC4/UART_rx_PM.c ****     #else
+  87:Generated_Source\PSoC4/UART_rx_PM.c ****         #if (CY_PSOC4_4200L)
+  88:Generated_Source\PSoC4/UART_rx_PM.c ****             /* Restore the regulator state and come out of suspend mode */
+  89:Generated_Source\PSoC4/UART_rx_PM.c ****             UART_rx_USB_POWER_REG &= UART_rx_USBIO_EXIT_SLEEP_PH1;
+  90:Generated_Source\PSoC4/UART_rx_PM.c ****             UART_rx_CR1_REG = UART_rx_backup.usbState;
+  91:Generated_Source\PSoC4/UART_rx_PM.c ****             UART_rx_USB_POWER_REG &= UART_rx_USBIO_EXIT_SLEEP_PH2;
+  92:Generated_Source\PSoC4/UART_rx_PM.c ****         #endif
+  93:Generated_Source\PSoC4/UART_rx_PM.c ****     #endif
+  94:Generated_Source\PSoC4/UART_rx_PM.c ****     #if defined(CYIPBLOCK_m0s8ioss_VERSION) && defined(UART_rx__SIO)
+  95:Generated_Source\PSoC4/UART_rx_PM.c ****         UART_rx_SIO_REG = UART_rx_backup.sioState;
+  96:Generated_Source\PSoC4/UART_rx_PM.c ****     #endif
+  97:Generated_Source\PSoC4/UART_rx_PM.c **** }
+  67              		.loc 1 97 0
+  68              		@ sp needed
+  69 0008 7047     		bx	lr
+  70              	.L6:
+  71 000a C046     		.align	2
+  72              	.L5:
+  73 000c 00000000 		.word	.LANCHOR0
+  74 0010 08030440 		.word	1074004744
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccAgkrMA.s 			page 4
+
+
+  75              		.cfi_endproc
+  76              	.LFE1:
+  77              		.size	UART_rx_Wakeup, .-UART_rx_Wakeup
+  78              		.bss
+  79              		.align	2
+  80              		.set	.LANCHOR0,. + 0
+  81              		.type	UART_rx_backup, %object
+  82              		.size	UART_rx_backup, 12
+  83              	UART_rx_backup:
+  84 0000 00000000 		.space	12
+  84      00000000 
+  84      00000000 
+  85              		.text
+  86              	.Letext0:
+  87              		.file 2 "Generated_Source\\PSoC4\\cytypes.h"
+  88              		.file 3 "Generated_Source\\PSoC4\\UART_rx.h"
+  89              		.section	.debug_info,"",%progbits
+  90              	.Ldebug_info0:
+  91 0000 05010000 		.4byte	0x105
+  92 0004 0400     		.2byte	0x4
+  93 0006 00000000 		.4byte	.Ldebug_abbrev0
+  94 000a 04       		.byte	0x4
+  95 000b 01       		.uleb128 0x1
+  96 000c 1B010000 		.4byte	.LASF20
+  97 0010 0C       		.byte	0xc
+  98 0011 1E000000 		.4byte	.LASF21
+  99 0015 7B000000 		.4byte	.LASF22
+ 100 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 101 001d 00000000 		.4byte	0
+ 102 0021 00000000 		.4byte	.Ldebug_line0
+ 103 0025 02       		.uleb128 0x2
+ 104 0026 01       		.byte	0x1
+ 105 0027 06       		.byte	0x6
+ 106 0028 E0010000 		.4byte	.LASF0
+ 107 002c 02       		.uleb128 0x2
+ 108 002d 01       		.byte	0x1
+ 109 002e 08       		.byte	0x8
+ 110 002f 48000000 		.4byte	.LASF1
+ 111 0033 02       		.uleb128 0x2
+ 112 0034 02       		.byte	0x2
+ 113 0035 05       		.byte	0x5
+ 114 0036 C5010000 		.4byte	.LASF2
+ 115 003a 02       		.uleb128 0x2
+ 116 003b 02       		.byte	0x2
+ 117 003c 07       		.byte	0x7
+ 118 003d 68000000 		.4byte	.LASF3
+ 119 0041 02       		.uleb128 0x2
+ 120 0042 04       		.byte	0x4
+ 121 0043 05       		.byte	0x5
+ 122 0044 D7010000 		.4byte	.LASF4
+ 123 0048 02       		.uleb128 0x2
+ 124 0049 04       		.byte	0x4
+ 125 004a 07       		.byte	0x7
+ 126 004b 56000000 		.4byte	.LASF5
+ 127 004f 02       		.uleb128 0x2
+ 128 0050 08       		.byte	0x8
+ 129 0051 05       		.byte	0x5
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccAgkrMA.s 			page 5
+
+
+ 130 0052 B2010000 		.4byte	.LASF6
+ 131 0056 02       		.uleb128 0x2
+ 132 0057 08       		.byte	0x8
+ 133 0058 07       		.byte	0x7
+ 134 0059 04010000 		.4byte	.LASF7
+ 135 005d 03       		.uleb128 0x3
+ 136 005e 04       		.byte	0x4
+ 137 005f 05       		.byte	0x5
+ 138 0060 696E7400 		.ascii	"int\000"
+ 139 0064 02       		.uleb128 0x2
+ 140 0065 04       		.byte	0x4
+ 141 0066 07       		.byte	0x7
+ 142 0067 F7000000 		.4byte	.LASF8
+ 143 006b 04       		.uleb128 0x4
+ 144 006c F0000000 		.4byte	.LASF12
+ 145 0070 02       		.byte	0x2
+ 146 0071 9A01     		.2byte	0x19a
+ 147 0073 48000000 		.4byte	0x48
+ 148 0077 02       		.uleb128 0x2
+ 149 0078 04       		.byte	0x4
+ 150 0079 04       		.byte	0x4
+ 151 007a 42000000 		.4byte	.LASF9
+ 152 007e 02       		.uleb128 0x2
+ 153 007f 08       		.byte	0x8
+ 154 0080 04       		.byte	0x4
+ 155 0081 DB000000 		.4byte	.LASF10
+ 156 0085 02       		.uleb128 0x2
+ 157 0086 01       		.byte	0x1
+ 158 0087 08       		.byte	0x8
+ 159 0088 C0010000 		.4byte	.LASF11
+ 160 008c 04       		.uleb128 0x4
+ 161 008d 00000000 		.4byte	.LASF13
+ 162 0091 02       		.byte	0x2
+ 163 0092 4402     		.2byte	0x244
+ 164 0094 98000000 		.4byte	0x98
+ 165 0098 05       		.uleb128 0x5
+ 166 0099 6B000000 		.4byte	0x6b
+ 167 009d 06       		.uleb128 0x6
+ 168 009e 0C       		.byte	0xc
+ 169 009f 03       		.byte	0x3
+ 170 00a0 21       		.byte	0x21
+ 171 00a1 CA000000 		.4byte	0xca
+ 172 00a5 07       		.uleb128 0x7
+ 173 00a6 CF010000 		.4byte	.LASF14
+ 174 00aa 03       		.byte	0x3
+ 175 00ab 23       		.byte	0x23
+ 176 00ac 6B000000 		.4byte	0x6b
+ 177 00b0 00       		.byte	0
+ 178 00b1 07       		.uleb128 0x7
+ 179 00b2 A9010000 		.4byte	.LASF15
+ 180 00b6 03       		.byte	0x3
+ 181 00b7 24       		.byte	0x24
+ 182 00b8 6B000000 		.4byte	0x6b
+ 183 00bc 04       		.byte	0x4
+ 184 00bd 07       		.uleb128 0x7
+ 185 00be 06000000 		.4byte	.LASF16
+ 186 00c2 03       		.byte	0x3
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccAgkrMA.s 			page 6
+
+
+ 187 00c3 25       		.byte	0x25
+ 188 00c4 6B000000 		.4byte	0x6b
+ 189 00c8 08       		.byte	0x8
+ 190 00c9 00       		.byte	0
+ 191 00ca 08       		.uleb128 0x8
+ 192 00cb C5000000 		.4byte	.LASF17
+ 193 00cf 03       		.byte	0x3
+ 194 00d0 26       		.byte	0x26
+ 195 00d1 9D000000 		.4byte	0x9d
+ 196 00d5 09       		.uleb128 0x9
+ 197 00d6 E2000000 		.4byte	.LASF18
+ 198 00da 01       		.byte	0x1
+ 199 00db 2C       		.byte	0x2c
+ 200 00dc 00000000 		.4byte	.LFB0
+ 201 00e0 14000000 		.4byte	.LFE0-.LFB0
+ 202 00e4 01       		.uleb128 0x1
+ 203 00e5 9C       		.byte	0x9c
+ 204 00e6 09       		.uleb128 0x9
+ 205 00e7 0F000000 		.4byte	.LASF19
+ 206 00eb 01       		.byte	0x1
+ 207 00ec 52       		.byte	0x52
+ 208 00ed 00000000 		.4byte	.LFB1
+ 209 00f1 14000000 		.4byte	.LFE1-.LFB1
+ 210 00f5 01       		.uleb128 0x1
+ 211 00f6 9C       		.byte	0x9c
+ 212 00f7 0A       		.uleb128 0xa
+ 213 00f8 EC010000 		.4byte	.LASF23
+ 214 00fc 01       		.byte	0x1
+ 215 00fd 14       		.byte	0x14
+ 216 00fe CA000000 		.4byte	0xca
+ 217 0102 05       		.uleb128 0x5
+ 218 0103 03       		.byte	0x3
+ 219 0104 00000000 		.4byte	UART_rx_backup
+ 220 0108 00       		.byte	0
+ 221              		.section	.debug_abbrev,"",%progbits
+ 222              	.Ldebug_abbrev0:
+ 223 0000 01       		.uleb128 0x1
+ 224 0001 11       		.uleb128 0x11
+ 225 0002 01       		.byte	0x1
+ 226 0003 25       		.uleb128 0x25
+ 227 0004 0E       		.uleb128 0xe
+ 228 0005 13       		.uleb128 0x13
+ 229 0006 0B       		.uleb128 0xb
+ 230 0007 03       		.uleb128 0x3
+ 231 0008 0E       		.uleb128 0xe
+ 232 0009 1B       		.uleb128 0x1b
+ 233 000a 0E       		.uleb128 0xe
+ 234 000b 55       		.uleb128 0x55
+ 235 000c 17       		.uleb128 0x17
+ 236 000d 11       		.uleb128 0x11
+ 237 000e 01       		.uleb128 0x1
+ 238 000f 10       		.uleb128 0x10
+ 239 0010 17       		.uleb128 0x17
+ 240 0011 00       		.byte	0
+ 241 0012 00       		.byte	0
+ 242 0013 02       		.uleb128 0x2
+ 243 0014 24       		.uleb128 0x24
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccAgkrMA.s 			page 7
+
+
+ 244 0015 00       		.byte	0
+ 245 0016 0B       		.uleb128 0xb
+ 246 0017 0B       		.uleb128 0xb
+ 247 0018 3E       		.uleb128 0x3e
+ 248 0019 0B       		.uleb128 0xb
+ 249 001a 03       		.uleb128 0x3
+ 250 001b 0E       		.uleb128 0xe
+ 251 001c 00       		.byte	0
+ 252 001d 00       		.byte	0
+ 253 001e 03       		.uleb128 0x3
+ 254 001f 24       		.uleb128 0x24
+ 255 0020 00       		.byte	0
+ 256 0021 0B       		.uleb128 0xb
+ 257 0022 0B       		.uleb128 0xb
+ 258 0023 3E       		.uleb128 0x3e
+ 259 0024 0B       		.uleb128 0xb
+ 260 0025 03       		.uleb128 0x3
+ 261 0026 08       		.uleb128 0x8
+ 262 0027 00       		.byte	0
+ 263 0028 00       		.byte	0
+ 264 0029 04       		.uleb128 0x4
+ 265 002a 16       		.uleb128 0x16
+ 266 002b 00       		.byte	0
+ 267 002c 03       		.uleb128 0x3
+ 268 002d 0E       		.uleb128 0xe
+ 269 002e 3A       		.uleb128 0x3a
+ 270 002f 0B       		.uleb128 0xb
+ 271 0030 3B       		.uleb128 0x3b
+ 272 0031 05       		.uleb128 0x5
+ 273 0032 49       		.uleb128 0x49
+ 274 0033 13       		.uleb128 0x13
+ 275 0034 00       		.byte	0
+ 276 0035 00       		.byte	0
+ 277 0036 05       		.uleb128 0x5
+ 278 0037 35       		.uleb128 0x35
+ 279 0038 00       		.byte	0
+ 280 0039 49       		.uleb128 0x49
+ 281 003a 13       		.uleb128 0x13
+ 282 003b 00       		.byte	0
+ 283 003c 00       		.byte	0
+ 284 003d 06       		.uleb128 0x6
+ 285 003e 13       		.uleb128 0x13
+ 286 003f 01       		.byte	0x1
+ 287 0040 0B       		.uleb128 0xb
+ 288 0041 0B       		.uleb128 0xb
+ 289 0042 3A       		.uleb128 0x3a
+ 290 0043 0B       		.uleb128 0xb
+ 291 0044 3B       		.uleb128 0x3b
+ 292 0045 0B       		.uleb128 0xb
+ 293 0046 01       		.uleb128 0x1
+ 294 0047 13       		.uleb128 0x13
+ 295 0048 00       		.byte	0
+ 296 0049 00       		.byte	0
+ 297 004a 07       		.uleb128 0x7
+ 298 004b 0D       		.uleb128 0xd
+ 299 004c 00       		.byte	0
+ 300 004d 03       		.uleb128 0x3
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccAgkrMA.s 			page 8
+
+
+ 301 004e 0E       		.uleb128 0xe
+ 302 004f 3A       		.uleb128 0x3a
+ 303 0050 0B       		.uleb128 0xb
+ 304 0051 3B       		.uleb128 0x3b
+ 305 0052 0B       		.uleb128 0xb
+ 306 0053 49       		.uleb128 0x49
+ 307 0054 13       		.uleb128 0x13
+ 308 0055 38       		.uleb128 0x38
+ 309 0056 0B       		.uleb128 0xb
+ 310 0057 00       		.byte	0
+ 311 0058 00       		.byte	0
+ 312 0059 08       		.uleb128 0x8
+ 313 005a 16       		.uleb128 0x16
+ 314 005b 00       		.byte	0
+ 315 005c 03       		.uleb128 0x3
+ 316 005d 0E       		.uleb128 0xe
+ 317 005e 3A       		.uleb128 0x3a
+ 318 005f 0B       		.uleb128 0xb
+ 319 0060 3B       		.uleb128 0x3b
+ 320 0061 0B       		.uleb128 0xb
+ 321 0062 49       		.uleb128 0x49
+ 322 0063 13       		.uleb128 0x13
+ 323 0064 00       		.byte	0
+ 324 0065 00       		.byte	0
+ 325 0066 09       		.uleb128 0x9
+ 326 0067 2E       		.uleb128 0x2e
+ 327 0068 00       		.byte	0
+ 328 0069 3F       		.uleb128 0x3f
+ 329 006a 19       		.uleb128 0x19
+ 330 006b 03       		.uleb128 0x3
+ 331 006c 0E       		.uleb128 0xe
+ 332 006d 3A       		.uleb128 0x3a
+ 333 006e 0B       		.uleb128 0xb
+ 334 006f 3B       		.uleb128 0x3b
+ 335 0070 0B       		.uleb128 0xb
+ 336 0071 27       		.uleb128 0x27
+ 337 0072 19       		.uleb128 0x19
+ 338 0073 11       		.uleb128 0x11
+ 339 0074 01       		.uleb128 0x1
+ 340 0075 12       		.uleb128 0x12
+ 341 0076 06       		.uleb128 0x6
+ 342 0077 40       		.uleb128 0x40
+ 343 0078 18       		.uleb128 0x18
+ 344 0079 9742     		.uleb128 0x2117
+ 345 007b 19       		.uleb128 0x19
+ 346 007c 00       		.byte	0
+ 347 007d 00       		.byte	0
+ 348 007e 0A       		.uleb128 0xa
+ 349 007f 34       		.uleb128 0x34
+ 350 0080 00       		.byte	0
+ 351 0081 03       		.uleb128 0x3
+ 352 0082 0E       		.uleb128 0xe
+ 353 0083 3A       		.uleb128 0x3a
+ 354 0084 0B       		.uleb128 0xb
+ 355 0085 3B       		.uleb128 0x3b
+ 356 0086 0B       		.uleb128 0xb
+ 357 0087 49       		.uleb128 0x49
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccAgkrMA.s 			page 9
+
+
+ 358 0088 13       		.uleb128 0x13
+ 359 0089 02       		.uleb128 0x2
+ 360 008a 18       		.uleb128 0x18
+ 361 008b 00       		.byte	0
+ 362 008c 00       		.byte	0
+ 363 008d 00       		.byte	0
+ 364              		.section	.debug_aranges,"",%progbits
+ 365 0000 24000000 		.4byte	0x24
+ 366 0004 0200     		.2byte	0x2
+ 367 0006 00000000 		.4byte	.Ldebug_info0
+ 368 000a 04       		.byte	0x4
+ 369 000b 00       		.byte	0
+ 370 000c 0000     		.2byte	0
+ 371 000e 0000     		.2byte	0
+ 372 0010 00000000 		.4byte	.LFB0
+ 373 0014 14000000 		.4byte	.LFE0-.LFB0
+ 374 0018 00000000 		.4byte	.LFB1
+ 375 001c 14000000 		.4byte	.LFE1-.LFB1
+ 376 0020 00000000 		.4byte	0
+ 377 0024 00000000 		.4byte	0
+ 378              		.section	.debug_ranges,"",%progbits
+ 379              	.Ldebug_ranges0:
+ 380 0000 00000000 		.4byte	.LFB0
+ 381 0004 14000000 		.4byte	.LFE0
+ 382 0008 00000000 		.4byte	.LFB1
+ 383 000c 14000000 		.4byte	.LFE1
+ 384 0010 00000000 		.4byte	0
+ 385 0014 00000000 		.4byte	0
+ 386              		.section	.debug_line,"",%progbits
+ 387              	.Ldebug_line0:
+ 388 0000 81000000 		.section	.debug_str,"MS",%progbits,1
+ 388      02005400 
+ 388      00000201 
+ 388      FB0E0D00 
+ 388      01010101 
+ 389              	.LASF13:
+ 390 0000 72656733 		.ascii	"reg32\000"
+ 390      3200
+ 391              	.LASF16:
+ 392 0006 75736253 		.ascii	"usbState\000"
+ 392      74617465 
+ 392      00
+ 393              	.LASF19:
+ 394 000f 55415254 		.ascii	"UART_rx_Wakeup\000"
+ 394      5F72785F 
+ 394      57616B65 
+ 394      757000
+ 395              	.LASF21:
+ 396 001e 47656E65 		.ascii	"Generated_Source\\PSoC4\\UART_rx_PM.c\000"
+ 396      72617465 
+ 396      645F536F 
+ 396      75726365 
+ 396      5C50536F 
+ 397              	.LASF9:
+ 398 0042 666C6F61 		.ascii	"float\000"
+ 398      7400
+ 399              	.LASF1:
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccAgkrMA.s 			page 10
+
+
+ 400 0048 756E7369 		.ascii	"unsigned char\000"
+ 400      676E6564 
+ 400      20636861 
+ 400      7200
+ 401              	.LASF5:
+ 402 0056 6C6F6E67 		.ascii	"long unsigned int\000"
+ 402      20756E73 
+ 402      69676E65 
+ 402      6420696E 
+ 402      7400
+ 403              	.LASF3:
+ 404 0068 73686F72 		.ascii	"short unsigned int\000"
+ 404      7420756E 
+ 404      7369676E 
+ 404      65642069 
+ 404      6E7400
+ 405              	.LASF22:
+ 406 007b 443A5C72 		.ascii	"D:\\repositories\\Tarocco\\Bootloader\\cncboot_no_o"
+ 406      65706F73 
+ 406      69746F72 
+ 406      6965735C 
+ 406      5461726F 
+ 407 00aa 7074696D 		.ascii	"ptimizations\\cncboot.cydsn\000"
+ 407      697A6174 
+ 407      696F6E73 
+ 407      5C636E63 
+ 407      626F6F74 
+ 408              	.LASF17:
+ 409 00c5 55415254 		.ascii	"UART_rx_BACKUP_STRUCT\000"
+ 409      5F72785F 
+ 409      4241434B 
+ 409      55505F53 
+ 409      54525543 
+ 410              	.LASF10:
+ 411 00db 646F7562 		.ascii	"double\000"
+ 411      6C6500
+ 412              	.LASF18:
+ 413 00e2 55415254 		.ascii	"UART_rx_Sleep\000"
+ 413      5F72785F 
+ 413      536C6565 
+ 413      7000
+ 414              	.LASF12:
+ 415 00f0 75696E74 		.ascii	"uint32\000"
+ 415      333200
+ 416              	.LASF8:
+ 417 00f7 756E7369 		.ascii	"unsigned int\000"
+ 417      676E6564 
+ 417      20696E74 
+ 417      00
+ 418              	.LASF7:
+ 419 0104 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 419      206C6F6E 
+ 419      6720756E 
+ 419      7369676E 
+ 419      65642069 
+ 420              	.LASF20:
+ 421 011b 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccAgkrMA.s 			page 11
+
+
+ 421      43313120 
+ 421      352E342E 
+ 421      31203230 
+ 421      31363036 
+ 422 014e 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 422      20726576 
+ 422      6973696F 
+ 422      6E203233 
+ 422      37373135 
+ 423 0181 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 423      66756E63 
+ 423      74696F6E 
+ 423      2D736563 
+ 423      74696F6E 
+ 424              	.LASF15:
+ 425 01a9 73696F53 		.ascii	"sioState\000"
+ 425      74617465 
+ 425      00
+ 426              	.LASF6:
+ 427 01b2 6C6F6E67 		.ascii	"long long int\000"
+ 427      206C6F6E 
+ 427      6720696E 
+ 427      7400
+ 428              	.LASF11:
+ 429 01c0 63686172 		.ascii	"char\000"
+ 429      00
+ 430              	.LASF2:
+ 431 01c5 73686F72 		.ascii	"short int\000"
+ 431      7420696E 
+ 431      7400
+ 432              	.LASF14:
+ 433 01cf 70635374 		.ascii	"pcState\000"
+ 433      61746500 
+ 434              	.LASF4:
+ 435 01d7 6C6F6E67 		.ascii	"long int\000"
+ 435      20696E74 
+ 435      00
+ 436              	.LASF0:
+ 437 01e0 7369676E 		.ascii	"signed char\000"
+ 437      65642063 
+ 437      68617200 
+ 438              	.LASF23:
+ 439 01ec 55415254 		.ascii	"UART_rx_backup\000"
+ 439      5F72785F 
+ 439      6261636B 
+ 439      757000
+ 440              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

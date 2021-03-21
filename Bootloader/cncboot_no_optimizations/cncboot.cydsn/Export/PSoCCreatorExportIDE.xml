@@ -6,26 +6,26 @@
     <Toolchain Name="ARM GCC Generic" Selected="True">
       <Tool Name="prebuild" Command="" Options="" />
       <Tool Name="assembler" Command="arm-none-eabi-as.exe" Options="-mcpu=cortex-m0 -mthumb -I. -IGenerated_Source\PSoC4 -alh=${OutputDir}/${CompileFile}.lst -g -W" />
-      <Tool Name="compiler" Command="arm-none-eabi-gcc.exe" Options="-mcpu=cortex-m0 -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
-      <Tool Name="linker" Command="arm-none-eabi-gcc.exe" Options="-mcpu=cortex-m0 -mthumb -g -ffunction-sections -Og -ffat-lto-objects -L Generated_Source\PSoC4 -Wl,-Map,${OutputDir}/${ProjectShortName}.map -T D:\code\cypress\bootloaders\cncboot.cydsn\Generated_Source\PSoC4\cm0gcc.ld -specs=nano.specs -Wl,--gc-sections" />
+      <Tool Name="compiler" Command="arm-none-eabi-gcc.exe" Options="-mcpu=cortex-m0 -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -Og" />
+      <Tool Name="linker" Command="arm-none-eabi-gcc.exe" Options="-mcpu=cortex-m0 -mthumb -L Generated_Source\PSoC4 -Wl,-Map,${OutputDir}/${ProjectShortName}.map -T Generated_Source\PSoC4\cm0gcc.ld -specs=nano.specs -Wl,--gc-sections -g -ffunction-sections -Og -ffat-lto-objects" />
       <Tool Name="postbuild" Command="" Options="" />
     </Toolchain>
     <Toolchain Name="ARM MDK Generic" Selected="False">
       <Tool Name="prebuild" Command="" Options="" />
-      <Tool Name="assembler" Command="armasm.exe" Options="--cpu=Cortex-M0 --diag_style=gnu --thumb -i. -iGenerated_Source\PSoC4 -g --list=${OutputDir}/${CompileFile}.lst" />
-      <Tool Name="compiler" Command="armcc.exe" Options="--cpu=Cortex-M0 --diag_style=gnu -I. -IGenerated_Source\PSoC4 --list --signed_chars -g -D DEBUG -O0 --split_sections" />
-      <Tool Name="linker" Command="armlink.exe" Options="--cpu=Cortex-M0 --diag_style=gnu --no_startup --library_type=microlib --map --list ${OutputDir}/${ProjectShortName}.map --scatter D:\code\cypress\bootloaders\cncboot.cydsn\Generated_Source\PSoC4\Cm0RealView.scat --keep=Bootloader_1_Checksum --keep=Bootloader_1_SizeBytes" />
+      <Tool Name="assembler" Command="armasm.exe" Options="--cpu=Cortex-M0 --diag_style=gnu --thumb -i. -iGenerated_Source\PSoC4 -g --list=${OutputDir}/${CompileFile}.lst &quot;--predefine=__MICROLIB SETA 1&quot;" />
+      <Tool Name="compiler" Command="armcc.exe" Options="--cpu=Cortex-M0 --C99 --diag_style=gnu -I. -IGenerated_Source\PSoC4 --list --signed_chars -g -D DEBUG -O0 --split_sections -D__MICROLIB" />
+      <Tool Name="linker" Command="armlink.exe" Options="--cpu=Cortex-M0 --diag_style=gnu --no_startup --library_type=microlib --map --list ${OutputDir}/${ProjectShortName}.map --scatter Generated_Source\PSoC4\Cm0RealView.scat --keep=Bootloader_1_Checksum --keep=Bootloader_1_SizeBytes" />
       <Tool Name="postbuild" Command="" Options="" />
     </Toolchain>
     <Toolchain Name="ARM IAR Generic" Selected="False">
       <Tool Name="prebuild" Command="" Options="" />
       <Tool Name="assembler" Command="iasmarm.exe" Options="--cpu Cortex-M0 -I. -IGenerated_Source\PSoC4 -s+ -M&lt;&gt; -w+ -r -DDEBUG --fpu None" />
-      <Tool Name="compiler" Command="iccarm.exe" Options="--cpu Cortex-M0 -I. -IGenerated_Source\PSoC4 -D DEBUG --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little -e --fpu=None -On --no_wrap_diagnostics" />
-      <Tool Name="linker" Command="ilinkarm.exe" Options="--semihosting --entry __iar_program_start --config Generated_Source\PSoC4\Generated_Source\PSoC4\Cm0Iar.icf" />
+      <Tool Name="compiler" Command="iccarm.exe" Options="--cpu Cortex-M0 -I. -IGenerated_Source\PSoC4 -D DEBUG -D CY_CORE_ID=0 -I. -IGenerated_Source\PSoC4 -D DEBUG --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little -e --fpu=None -On --no_wrap_diagnostics" />
+      <Tool Name="linker" Command="ilinkarm.exe" Options="--semihosting --entry __iar_program_start --config Generated_Source\PSoC4\Cm0Iar.icf" />
       <Tool Name="postbuild" Command="" Options="" />
     </Toolchain>
   </Toolchains>
-  <Project Name="cncboot" Path="D:\code\cypress\bootloaders\cncboot.cydsn" Version="5.40" Type="Bootloader">
+  <Project Name="cncboot" Path="D:\repositories\Tarocco\Bootloader\cncboot_no_optimizations\cncboot.cydsn" Version="5.40" Type="Bootloader">
     <CMSIS_SVD_File>cncboot.svd</CMSIS_SVD_File>
     <Datasheet />
     <LinkerFiles>
@@ -34,14 +34,14 @@
       <LinkerFile Toolchain="ARM IAR Generic">.\Generated_Source\PSoC4\Cm0Iar.icf</LinkerFile>
     </LinkerFiles>
     <Folders>
-      <Folder BuildType="STRICT" Path="D:\code\cypress\bootloaders\cncboot.cydsn">
-        <Files Root="D:\code\cypress\bootloaders\cncboot.cydsn">
+      <Folder BuildType="STRICT" Path="D:\repositories\Tarocco\Bootloader\cncboot_no_optimizations\cncboot.cydsn">
+        <Files Root="D:\repositories\Tarocco\Bootloader\cncboot_no_optimizations\cncboot.cydsn">
           <File BuildType="BUILD" Toolchain="">main.c</File>
           <File BuildType="BUILD" Toolchain="">cyapicallbacks.h</File>
         </Files>
       </Folder>
-      <Folder BuildType="STRICT" Path="D:\code\cypress\bootloaders\cncboot.cydsn\Generated_Source\PSoC4">
-        <Files Root="D:\code\cypress\bootloaders\cncboot.cydsn">
+      <Folder BuildType="STRICT" Path="D:\repositories\Tarocco\Bootloader\cncboot_no_optimizations\cncboot.cydsn\Generated_Source\PSoC4">
+        <Files Root="D:\repositories\Tarocco\Bootloader\cncboot_no_optimizations\cncboot.cydsn">
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\cyfitter_cfg.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\cyfitter_cfg.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\cymetadata.c</File>
@@ -123,58 +123,39 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\PWM.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\PWM.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\PWM_PM.c</File>
-        </Files>
-      </Folder>
-      <Folder BuildType="STRICT" Path="D:\code\cypress\bootloaders\cncboot.cydsn\Export\ARM_GCC_Generic">
-        <Files Root="D:\code\cypress\bootloaders\cncboot.cydsn">
-          <File BuildType="BUILD" Toolchain="ARM GCC Generic">.\Export\ARM_GCC_Generic\CyComponentLibrary.a</File>
-        </Files>
-      </Folder>
-      <Folder BuildType="STRICT" Path="D:\code\cypress\bootloaders\cncboot.cydsn\Export\ARM_MDK_Generic">
-        <Files Root="D:\code\cypress\bootloaders\cncboot.cydsn">
-          <File BuildType="BUILD" Toolchain="ARM MDK Generic">.\Export\ARM_MDK_Generic\CyComponentLibrary.a</File>
-        </Files>
-      </Folder>
-      <Folder BuildType="STRICT" Path="D:\code\cypress\bootloaders\cncboot.cydsn\Export\ARM_IAR_Generic">
-        <Files Root="D:\code\cypress\bootloaders\cncboot.cydsn">
-          <File BuildType="BUILD" Toolchain="ARM IAR Generic">.\Export\ARM_IAR_Generic\CyComponentLibrary.a</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\cy_em_eeprom.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\cy_em_eeprom.h</File>
         </Files>
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\codegentemp">
-        <Files Root="D:\code\cypress\bootloaders\cncboot.cydsn" />
+        <Files Root="D:\repositories\Tarocco\Bootloader\cncboot_no_optimizations\cncboot.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\ARM_GCC_441">
-        <Files Root="D:\code\cypress\bootloaders\cncboot.cydsn" />
+        <Files Root="D:\repositories\Tarocco\Bootloader\cncboot_no_optimizations\cncboot.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\ARM_GCC_473">
-        <Files Root="D:\code\cypress\bootloaders\cncboot.cydsn" />
+        <Files Root="D:\repositories\Tarocco\Bootloader\cncboot_no_optimizations\cncboot.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\DP8051_Keil_952">
-        <Files Root="D:\code\cypress\bootloaders\cncboot.cydsn" />
+        <Files Root="D:\repositories\Tarocco\Bootloader\cncboot_no_optimizations\cncboot.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\DP8051">
-        <Files Root="D:\code\cypress\bootloaders\cncboot.cydsn" />
+        <Files Root="D:\repositories\Tarocco\Bootloader\cncboot_no_optimizations\cncboot.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM0">
-        <Files Root="D:\code\cypress\bootloaders\cncboot.cydsn" />
+        <Files Root="D:\repositories\Tarocco\Bootloader\cncboot_no_optimizations\cncboot.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM0p">
-        <Files Root="D:\code\cypress\bootloaders\cncboot.cydsn" />
+        <Files Root="D:\repositories\Tarocco\Bootloader\cncboot_no_optimizations\cncboot.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM3">
-        <Files Root="D:\code\cypress\bootloaders\cncboot.cydsn" />
+        <Files Root="D:\repositories\Tarocco\Bootloader\cncboot_no_optimizations\cncboot.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM4">
-        <Files Root="D:\code\cypress\bootloaders\cncboot.cydsn" />
+        <Files Root="D:\repositories\Tarocco\Bootloader\cncboot_no_optimizations\cncboot.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM7">
-        <Files Root="D:\code\cypress\bootloaders\cncboot.cydsn" />
-      </Folder>
-      <Folder BuildType="EXCLUDE" Path=".\Generated_Source\PSoC3">
-        <Files Root="D:\code\cypress\bootloaders\cncboot.cydsn" />
-      </Folder>
-      <Folder BuildType="EXCLUDE" Path=".\Generated_Source\PSoC5">
-        <Files Root="D:\code\cypress\bootloaders\cncboot.cydsn" />
+        <Files Root="D:\repositories\Tarocco\Bootloader\cncboot_no_optimizations\cncboot.cydsn" />
       </Folder>
     </Folders>
   </Project>

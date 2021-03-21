@@ -1,0 +1,2052 @@
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccaPYQsp.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"UART_SCB_IRQ.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.UART_SCB_IRQ_Interrupt,"ax",%progbits
+  20              		.align	2
+  21              		.global	UART_SCB_IRQ_Interrupt
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	UART_SCB_IRQ_Interrupt, %function
+  25              	UART_SCB_IRQ_Interrupt:
+  26              	.LFB3:
+  27              		.file 1 "Generated_Source\\PSoC4\\UART_SCB_IRQ.c"
+   1:Generated_Source\PSoC4/UART_SCB_IRQ.c **** /*******************************************************************************
+   2:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * File Name: UART_SCB_IRQ.c  
+   3:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Version 1.70
+   4:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+   5:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *  Description:
+   6:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   API for controlling the state of an interrupt.
+   7:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+   8:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+   9:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *  Note:
+  10:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+  11:Generated_Source\PSoC4/UART_SCB_IRQ.c **** ********************************************************************************
+  12:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
+  13:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  14:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  15:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * the software package with which this file was provided.
+  16:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *******************************************************************************/
+  17:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+  18:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+  19:Generated_Source\PSoC4/UART_SCB_IRQ.c **** #include <cydevice_trm.h>
+  20:Generated_Source\PSoC4/UART_SCB_IRQ.c **** #include <CyLib.h>
+  21:Generated_Source\PSoC4/UART_SCB_IRQ.c **** #include <UART_SCB_IRQ.h>
+  22:Generated_Source\PSoC4/UART_SCB_IRQ.c **** #include "cyapicallbacks.h"
+  23:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+  24:Generated_Source\PSoC4/UART_SCB_IRQ.c **** #if !defined(UART_SCB_IRQ__REMOVED) /* Check for removal by optimization */
+  25:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+  26:Generated_Source\PSoC4/UART_SCB_IRQ.c **** /*******************************************************************************
+  27:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *  Place your includes, defines and code here 
+  28:Generated_Source\PSoC4/UART_SCB_IRQ.c **** ********************************************************************************/
+  29:Generated_Source\PSoC4/UART_SCB_IRQ.c **** /* `#START UART_SCB_IRQ_intc` */
+  30:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccaPYQsp.s 			page 2
+
+
+  31:Generated_Source\PSoC4/UART_SCB_IRQ.c **** /* `#END` */
+  32:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+  33:Generated_Source\PSoC4/UART_SCB_IRQ.c **** extern cyisraddress CyRamVectors[CYINT_IRQ_BASE + CY_NUM_INTERRUPTS];
+  34:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+  35:Generated_Source\PSoC4/UART_SCB_IRQ.c **** /* Declared in startup, used to set unused interrupts to. */
+  36:Generated_Source\PSoC4/UART_SCB_IRQ.c **** CY_ISR_PROTO(IntDefaultHandler);
+  37:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+  38:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+  39:Generated_Source\PSoC4/UART_SCB_IRQ.c **** /*******************************************************************************
+  40:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Function Name: UART_SCB_IRQ_Start
+  41:Generated_Source\PSoC4/UART_SCB_IRQ.c **** ********************************************************************************
+  42:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+  43:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Summary:
+  44:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *  Set up the interrupt and enable it. This function disables the interrupt, 
+  45:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *  sets the default interrupt vector, sets the priority from the value in the
+  46:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *  Design Wide Resources Interrupt Editor, then enables the interrupt to the 
+  47:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *  interrupt controller.
+  48:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+  49:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Parameters:  
+  50:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   None
+  51:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+  52:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Return:
+  53:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   None
+  54:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+  55:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *******************************************************************************/
+  56:Generated_Source\PSoC4/UART_SCB_IRQ.c **** void UART_SCB_IRQ_Start(void)
+  57:Generated_Source\PSoC4/UART_SCB_IRQ.c **** {
+  58:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     /* For all we know the interrupt is active. */
+  59:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     UART_SCB_IRQ_Disable();
+  60:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+  61:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     /* Set the ISR to point to the UART_SCB_IRQ Interrupt. */
+  62:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     UART_SCB_IRQ_SetVector(&UART_SCB_IRQ_Interrupt);
+  63:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+  64:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     /* Set the priority. */
+  65:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     UART_SCB_IRQ_SetPriority((uint8)UART_SCB_IRQ_INTC_PRIOR_NUMBER);
+  66:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+  67:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     /* Enable it. */
+  68:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     UART_SCB_IRQ_Enable();
+  69:Generated_Source\PSoC4/UART_SCB_IRQ.c **** }
+  70:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+  71:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+  72:Generated_Source\PSoC4/UART_SCB_IRQ.c **** /*******************************************************************************
+  73:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Function Name: UART_SCB_IRQ_StartEx
+  74:Generated_Source\PSoC4/UART_SCB_IRQ.c **** ********************************************************************************
+  75:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+  76:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Summary:
+  77:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *  Sets up the interrupt and enables it. This function disables the interrupt,
+  78:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *  sets the interrupt vector based on the address passed in, sets the priority 
+  79:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *  from the value in the Design Wide Resources Interrupt Editor, then enables 
+  80:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *  the interrupt to the interrupt controller.
+  81:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *  
+  82:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *  When defining ISR functions, the CY_ISR and CY_ISR_PROTO macros should be 
+  83:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *  used to provide consistent definition across compilers:
+  84:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *  
+  85:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *  Function definition example:
+  86:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   CY_ISR(MyISR)
+  87:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   {
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccaPYQsp.s 			page 3
+
+
+  88:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   }
+  89:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   Function prototype example:
+  90:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   CY_ISR_PROTO(MyISR);
+  91:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+  92:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Parameters:  
+  93:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   address: Address of the ISR to set in the interrupt vector table.
+  94:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+  95:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Return:
+  96:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   None
+  97:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+  98:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *******************************************************************************/
+  99:Generated_Source\PSoC4/UART_SCB_IRQ.c **** void UART_SCB_IRQ_StartEx(cyisraddress address)
+ 100:Generated_Source\PSoC4/UART_SCB_IRQ.c **** {
+ 101:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     /* For all we know the interrupt is active. */
+ 102:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     UART_SCB_IRQ_Disable();
+ 103:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ 104:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     /* Set the ISR to point to the UART_SCB_IRQ Interrupt. */
+ 105:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     UART_SCB_IRQ_SetVector(address);
+ 106:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ 107:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     /* Set the priority. */
+ 108:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     UART_SCB_IRQ_SetPriority((uint8)UART_SCB_IRQ_INTC_PRIOR_NUMBER);
+ 109:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ 110:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     /* Enable it. */
+ 111:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     UART_SCB_IRQ_Enable();
+ 112:Generated_Source\PSoC4/UART_SCB_IRQ.c **** }
+ 113:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ 114:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ 115:Generated_Source\PSoC4/UART_SCB_IRQ.c **** /*******************************************************************************
+ 116:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Function Name: UART_SCB_IRQ_Stop
+ 117:Generated_Source\PSoC4/UART_SCB_IRQ.c **** ********************************************************************************
+ 118:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 119:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Summary:
+ 120:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   Disables and removes the interrupt.
+ 121:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 122:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Parameters:  
+ 123:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   None
+ 124:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 125:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Return:
+ 126:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   None
+ 127:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 128:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *******************************************************************************/
+ 129:Generated_Source\PSoC4/UART_SCB_IRQ.c **** void UART_SCB_IRQ_Stop(void)
+ 130:Generated_Source\PSoC4/UART_SCB_IRQ.c **** {
+ 131:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     /* Disable this interrupt. */
+ 132:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     UART_SCB_IRQ_Disable();
+ 133:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ 134:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     /* Set the ISR to point to the passive one. */
+ 135:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     UART_SCB_IRQ_SetVector(&IntDefaultHandler);
+ 136:Generated_Source\PSoC4/UART_SCB_IRQ.c **** }
+ 137:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ 138:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ 139:Generated_Source\PSoC4/UART_SCB_IRQ.c **** /*******************************************************************************
+ 140:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Function Name: UART_SCB_IRQ_Interrupt
+ 141:Generated_Source\PSoC4/UART_SCB_IRQ.c **** ********************************************************************************
+ 142:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 143:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Summary:
+ 144:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   The default Interrupt Service Routine for UART_SCB_IRQ.
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccaPYQsp.s 			page 4
+
+
+ 145:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 146:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   Add custom code between the START and END comments to keep the next version
+ 147:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   of this file from over-writing your code.
+ 148:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 149:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   Note You may use either the default ISR by using this API, or you may define
+ 150:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   your own separate ISR through ISR_StartEx().
+ 151:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 152:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Parameters:  
+ 153:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   None
+ 154:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 155:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Return:
+ 156:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   None
+ 157:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 158:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *******************************************************************************/
+ 159:Generated_Source\PSoC4/UART_SCB_IRQ.c **** CY_ISR(UART_SCB_IRQ_Interrupt)
+ 160:Generated_Source\PSoC4/UART_SCB_IRQ.c **** {
+  28              		.loc 1 160 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+ 161:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     #ifdef UART_SCB_IRQ_INTERRUPT_INTERRUPT_CALLBACK
+ 162:Generated_Source\PSoC4/UART_SCB_IRQ.c ****         UART_SCB_IRQ_Interrupt_InterruptCallback();
+ 163:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     #endif /* UART_SCB_IRQ_INTERRUPT_INTERRUPT_CALLBACK */ 
+ 164:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ 165:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     /*  Place your Interrupt code here. */
+ 166:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     /* `#START UART_SCB_IRQ_Interrupt` */
+ 167:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ 168:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     /* `#END` */
+ 169:Generated_Source\PSoC4/UART_SCB_IRQ.c **** }
+  33              		.loc 1 169 0
+  34              		@ sp needed
+  35 0000 7047     		bx	lr
+  36              		.cfi_endproc
+  37              	.LFE3:
+  38              		.size	UART_SCB_IRQ_Interrupt, .-UART_SCB_IRQ_Interrupt
+  39 0002 C046     		.section	.text.UART_SCB_IRQ_SetVector,"ax",%progbits
+  40              		.align	2
+  41              		.global	UART_SCB_IRQ_SetVector
+  42              		.code	16
+  43              		.thumb_func
+  44              		.type	UART_SCB_IRQ_SetVector, %function
+  45              	UART_SCB_IRQ_SetVector:
+  46              	.LFB4:
+ 170:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ 171:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ 172:Generated_Source\PSoC4/UART_SCB_IRQ.c **** /*******************************************************************************
+ 173:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Function Name: UART_SCB_IRQ_SetVector
+ 174:Generated_Source\PSoC4/UART_SCB_IRQ.c **** ********************************************************************************
+ 175:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 176:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Summary:
+ 177:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   Change the ISR vector for the Interrupt. Note calling UART_SCB_IRQ_Start
+ 178:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   will override any effect this method would have had. To set the vector 
+ 179:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   before the component has been started use UART_SCB_IRQ_StartEx instead.
+ 180:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * 
+ 181:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   When defining ISR functions, the CY_ISR and CY_ISR_PROTO macros should be 
+ 182:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   used to provide consistent definition across compilers:
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccaPYQsp.s 			page 5
+
+
+ 183:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 184:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   Function definition example:
+ 185:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   CY_ISR(MyISR)
+ 186:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   {
+ 187:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   }
+ 188:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 189:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   Function prototype example:
+ 190:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *     CY_ISR_PROTO(MyISR);
+ 191:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 192:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Parameters:
+ 193:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   address: Address of the ISR to set in the interrupt vector table.
+ 194:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 195:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Return:
+ 196:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   None
+ 197:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 198:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *******************************************************************************/
+ 199:Generated_Source\PSoC4/UART_SCB_IRQ.c **** void UART_SCB_IRQ_SetVector(cyisraddress address)
+ 200:Generated_Source\PSoC4/UART_SCB_IRQ.c **** {
+  47              		.loc 1 200 0
+  48              		.cfi_startproc
+  49              		@ args = 0, pretend = 0, frame = 0
+  50              		@ frame_needed = 0, uses_anonymous_args = 0
+  51              		@ link register save eliminated.
+  52              	.LVL0:
+ 201:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     CyRamVectors[CYINT_IRQ_BASE + UART_SCB_IRQ__INTC_NUMBER] = address;
+  53              		.loc 1 201 0
+  54 0000 014B     		ldr	r3, .L3
+  55 0002 D866     		str	r0, [r3, #108]
+ 202:Generated_Source\PSoC4/UART_SCB_IRQ.c **** }
+  56              		.loc 1 202 0
+  57              		@ sp needed
+  58 0004 7047     		bx	lr
+  59              	.L4:
+  60 0006 C046     		.align	2
+  61              	.L3:
+  62 0008 00000000 		.word	CyRamVectors
+  63              		.cfi_endproc
+  64              	.LFE4:
+  65              		.size	UART_SCB_IRQ_SetVector, .-UART_SCB_IRQ_SetVector
+  66              		.section	.text.UART_SCB_IRQ_GetVector,"ax",%progbits
+  67              		.align	2
+  68              		.global	UART_SCB_IRQ_GetVector
+  69              		.code	16
+  70              		.thumb_func
+  71              		.type	UART_SCB_IRQ_GetVector, %function
+  72              	UART_SCB_IRQ_GetVector:
+  73              	.LFB5:
+ 203:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ 204:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ 205:Generated_Source\PSoC4/UART_SCB_IRQ.c **** /*******************************************************************************
+ 206:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Function Name: UART_SCB_IRQ_GetVector
+ 207:Generated_Source\PSoC4/UART_SCB_IRQ.c **** ********************************************************************************
+ 208:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 209:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Summary:
+ 210:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   Gets the "address" of the current ISR vector for the Interrupt.
+ 211:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 212:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Parameters:
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccaPYQsp.s 			page 6
+
+
+ 213:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   None
+ 214:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 215:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Return:
+ 216:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   Address of the ISR in the interrupt vector table.
+ 217:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 218:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *******************************************************************************/
+ 219:Generated_Source\PSoC4/UART_SCB_IRQ.c **** cyisraddress UART_SCB_IRQ_GetVector(void)
+ 220:Generated_Source\PSoC4/UART_SCB_IRQ.c **** {
+  74              		.loc 1 220 0
+  75              		.cfi_startproc
+  76              		@ args = 0, pretend = 0, frame = 0
+  77              		@ frame_needed = 0, uses_anonymous_args = 0
+  78              		@ link register save eliminated.
+ 221:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     return CyRamVectors[CYINT_IRQ_BASE + UART_SCB_IRQ__INTC_NUMBER];
+  79              		.loc 1 221 0
+  80 0000 014B     		ldr	r3, .L6
+  81 0002 D86E     		ldr	r0, [r3, #108]
+ 222:Generated_Source\PSoC4/UART_SCB_IRQ.c **** }
+  82              		.loc 1 222 0
+  83              		@ sp needed
+  84 0004 7047     		bx	lr
+  85              	.L7:
+  86 0006 C046     		.align	2
+  87              	.L6:
+  88 0008 00000000 		.word	CyRamVectors
+  89              		.cfi_endproc
+  90              	.LFE5:
+  91              		.size	UART_SCB_IRQ_GetVector, .-UART_SCB_IRQ_GetVector
+  92              		.section	.text.UART_SCB_IRQ_SetPriority,"ax",%progbits
+  93              		.align	2
+  94              		.global	UART_SCB_IRQ_SetPriority
+  95              		.code	16
+  96              		.thumb_func
+  97              		.type	UART_SCB_IRQ_SetPriority, %function
+  98              	UART_SCB_IRQ_SetPriority:
+  99              	.LFB6:
+ 223:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ 224:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ 225:Generated_Source\PSoC4/UART_SCB_IRQ.c **** /*******************************************************************************
+ 226:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Function Name: UART_SCB_IRQ_SetPriority
+ 227:Generated_Source\PSoC4/UART_SCB_IRQ.c **** ********************************************************************************
+ 228:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 229:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Summary:
+ 230:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   Sets the Priority of the Interrupt. 
+ 231:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 232:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   Note calling UART_SCB_IRQ_Start or UART_SCB_IRQ_StartEx will 
+ 233:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   override any effect this API would have had. This API should only be called
+ 234:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   after UART_SCB_IRQ_Start or UART_SCB_IRQ_StartEx has been called. 
+ 235:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   To set the initial priority for the component, use the Design-Wide Resources
+ 236:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   Interrupt Editor.
+ 237:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 238:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   Note This API has no effect on Non-maskable interrupt NMI).
+ 239:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 240:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Parameters:
+ 241:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   priority: Priority of the interrupt, 0 being the highest priority
+ 242:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *             PSoC 3 and PSoC 5LP: Priority is from 0 to 7.
+ 243:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *             PSoC 4: Priority is from 0 to 3.
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccaPYQsp.s 			page 7
+
+
+ 244:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 245:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Return:
+ 246:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   None
+ 247:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 248:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *******************************************************************************/
+ 249:Generated_Source\PSoC4/UART_SCB_IRQ.c **** void UART_SCB_IRQ_SetPriority(uint8 priority)
+ 250:Generated_Source\PSoC4/UART_SCB_IRQ.c **** {
+ 100              		.loc 1 250 0
+ 101              		.cfi_startproc
+ 102              		@ args = 0, pretend = 0, frame = 0
+ 103              		@ frame_needed = 0, uses_anonymous_args = 0
+ 104              	.LVL1:
+ 105 0000 10B5     		push	{r4, lr}
+ 106              		.cfi_def_cfa_offset 8
+ 107              		.cfi_offset 4, -8
+ 108              		.cfi_offset 14, -4
+ 109 0002 0400     		movs	r4, r0
+ 110              	.LVL2:
+ 251:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 	uint8 interruptState;
+ 252:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     uint32 priorityOffset = ((UART_SCB_IRQ__INTC_NUMBER % 4u) * 8u) + 6u;
+ 253:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     
+ 254:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 	interruptState = CyEnterCriticalSection();
+ 111              		.loc 1 254 0
+ 112 0004 FFF7FEFF 		bl	CyEnterCriticalSection
+ 113              	.LVL3:
+ 255:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     *UART_SCB_IRQ_INTC_PRIOR = (*UART_SCB_IRQ_INTC_PRIOR & (uint32)(~UART_SCB_IRQ__INTC_PRIOR_MASK)
+ 114              		.loc 1 255 0
+ 115 0008 044A     		ldr	r2, .L9
+ 116 000a 1368     		ldr	r3, [r2]
+ 117 000c 9B00     		lsls	r3, r3, #2
+ 118 000e 9B08     		lsrs	r3, r3, #2
+ 256:Generated_Source\PSoC4/UART_SCB_IRQ.c ****                                     ((uint32)priority << priorityOffset);
+ 119              		.loc 1 256 0
+ 120 0010 A407     		lsls	r4, r4, #30
+ 255:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     *UART_SCB_IRQ_INTC_PRIOR = (*UART_SCB_IRQ_INTC_PRIOR & (uint32)(~UART_SCB_IRQ__INTC_PRIOR_MASK)
+ 121              		.loc 1 255 0
+ 122 0012 1C43     		orrs	r4, r3
+ 123 0014 1460     		str	r4, [r2]
+ 257:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 	CyExitCriticalSection(interruptState);
+ 124              		.loc 1 257 0
+ 125 0016 FFF7FEFF 		bl	CyExitCriticalSection
+ 126              	.LVL4:
+ 258:Generated_Source\PSoC4/UART_SCB_IRQ.c **** }
+ 127              		.loc 1 258 0
+ 128              		@ sp needed
+ 129 001a 10BD     		pop	{r4, pc}
+ 130              	.L10:
+ 131              		.align	2
+ 132              	.L9:
+ 133 001c 08E400E0 		.word	-536812536
+ 134              		.cfi_endproc
+ 135              	.LFE6:
+ 136              		.size	UART_SCB_IRQ_SetPriority, .-UART_SCB_IRQ_SetPriority
+ 137              		.section	.text.UART_SCB_IRQ_GetPriority,"ax",%progbits
+ 138              		.align	2
+ 139              		.global	UART_SCB_IRQ_GetPriority
+ 140              		.code	16
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccaPYQsp.s 			page 8
+
+
+ 141              		.thumb_func
+ 142              		.type	UART_SCB_IRQ_GetPriority, %function
+ 143              	UART_SCB_IRQ_GetPriority:
+ 144              	.LFB7:
+ 259:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ 260:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ 261:Generated_Source\PSoC4/UART_SCB_IRQ.c **** /*******************************************************************************
+ 262:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Function Name: UART_SCB_IRQ_GetPriority
+ 263:Generated_Source\PSoC4/UART_SCB_IRQ.c **** ********************************************************************************
+ 264:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 265:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Summary:
+ 266:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   Gets the Priority of the Interrupt.
+ 267:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 268:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Parameters:
+ 269:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   None
+ 270:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 271:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Return:
+ 272:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   Priority of the interrupt, 0 being the highest priority
+ 273:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *    PSoC 3 and PSoC 5LP: Priority is from 0 to 7.
+ 274:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *    PSoC 4: Priority is from 0 to 3.
+ 275:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 276:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *******************************************************************************/
+ 277:Generated_Source\PSoC4/UART_SCB_IRQ.c **** uint8 UART_SCB_IRQ_GetPriority(void)
+ 278:Generated_Source\PSoC4/UART_SCB_IRQ.c **** {
+ 145              		.loc 1 278 0
+ 146              		.cfi_startproc
+ 147              		@ args = 0, pretend = 0, frame = 0
+ 148              		@ frame_needed = 0, uses_anonymous_args = 0
+ 149              		@ link register save eliminated.
+ 150              	.LVL5:
+ 279:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     uint32 priority;
+ 280:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 	uint32 priorityOffset = ((UART_SCB_IRQ__INTC_NUMBER % 4u) * 8u) + 6u;
+ 281:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ 282:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     priority = (*UART_SCB_IRQ_INTC_PRIOR & UART_SCB_IRQ__INTC_PRIOR_MASK) >> priorityOffset;
+ 151              		.loc 1 282 0
+ 152 0000 014B     		ldr	r3, .L12
+ 153 0002 1868     		ldr	r0, [r3]
+ 154              	.LVL6:
+ 283:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ 284:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     return (uint8)priority;
+ 155              		.loc 1 284 0
+ 156 0004 800F     		lsrs	r0, r0, #30
+ 157              	.LVL7:
+ 285:Generated_Source\PSoC4/UART_SCB_IRQ.c **** }
+ 158              		.loc 1 285 0
+ 159              		@ sp needed
+ 160 0006 7047     		bx	lr
+ 161              	.L13:
+ 162              		.align	2
+ 163              	.L12:
+ 164 0008 08E400E0 		.word	-536812536
+ 165              		.cfi_endproc
+ 166              	.LFE7:
+ 167              		.size	UART_SCB_IRQ_GetPriority, .-UART_SCB_IRQ_GetPriority
+ 168              		.section	.text.UART_SCB_IRQ_Enable,"ax",%progbits
+ 169              		.align	2
+ 170              		.global	UART_SCB_IRQ_Enable
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccaPYQsp.s 			page 9
+
+
+ 171              		.code	16
+ 172              		.thumb_func
+ 173              		.type	UART_SCB_IRQ_Enable, %function
+ 174              	UART_SCB_IRQ_Enable:
+ 175              	.LFB8:
+ 286:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ 287:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ 288:Generated_Source\PSoC4/UART_SCB_IRQ.c **** /*******************************************************************************
+ 289:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Function Name: UART_SCB_IRQ_Enable
+ 290:Generated_Source\PSoC4/UART_SCB_IRQ.c **** ********************************************************************************
+ 291:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 292:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Summary:
+ 293:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   Enables the interrupt to the interrupt controller. Do not call this function
+ 294:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   unless ISR_Start() has been called or the functionality of the ISR_Start() 
+ 295:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   function, which sets the vector and the priority, has been called.
+ 296:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 297:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Parameters:
+ 298:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   None
+ 299:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 300:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Return:
+ 301:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   None
+ 302:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 303:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *******************************************************************************/
+ 304:Generated_Source\PSoC4/UART_SCB_IRQ.c **** void UART_SCB_IRQ_Enable(void)
+ 305:Generated_Source\PSoC4/UART_SCB_IRQ.c **** {
+ 176              		.loc 1 305 0
+ 177              		.cfi_startproc
+ 178              		@ args = 0, pretend = 0, frame = 0
+ 179              		@ frame_needed = 0, uses_anonymous_args = 0
+ 180              		@ link register save eliminated.
+ 306:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     /* Enable the general interrupt. */
+ 307:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     *UART_SCB_IRQ_INTC_SET_EN = UART_SCB_IRQ__INTC_MASK;
+ 181              		.loc 1 307 0
+ 182 0000 8022     		movs	r2, #128
+ 183 0002 1201     		lsls	r2, r2, #4
+ 184 0004 014B     		ldr	r3, .L15
+ 185 0006 1A60     		str	r2, [r3]
+ 308:Generated_Source\PSoC4/UART_SCB_IRQ.c **** }
+ 186              		.loc 1 308 0
+ 187              		@ sp needed
+ 188 0008 7047     		bx	lr
+ 189              	.L16:
+ 190 000a C046     		.align	2
+ 191              	.L15:
+ 192 000c 00E100E0 		.word	-536813312
+ 193              		.cfi_endproc
+ 194              	.LFE8:
+ 195              		.size	UART_SCB_IRQ_Enable, .-UART_SCB_IRQ_Enable
+ 196              		.section	.text.UART_SCB_IRQ_GetState,"ax",%progbits
+ 197              		.align	2
+ 198              		.global	UART_SCB_IRQ_GetState
+ 199              		.code	16
+ 200              		.thumb_func
+ 201              		.type	UART_SCB_IRQ_GetState, %function
+ 202              	UART_SCB_IRQ_GetState:
+ 203              	.LFB9:
+ 309:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccaPYQsp.s 			page 10
+
+
+ 310:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ 311:Generated_Source\PSoC4/UART_SCB_IRQ.c **** /*******************************************************************************
+ 312:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Function Name: UART_SCB_IRQ_GetState
+ 313:Generated_Source\PSoC4/UART_SCB_IRQ.c **** ********************************************************************************
+ 314:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 315:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Summary:
+ 316:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   Gets the state (enabled, disabled) of the Interrupt.
+ 317:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 318:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Parameters:
+ 319:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   None
+ 320:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 321:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Return:
+ 322:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   1 if enabled, 0 if disabled.
+ 323:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 324:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *******************************************************************************/
+ 325:Generated_Source\PSoC4/UART_SCB_IRQ.c **** uint8 UART_SCB_IRQ_GetState(void)
+ 326:Generated_Source\PSoC4/UART_SCB_IRQ.c **** {
+ 204              		.loc 1 326 0
+ 205              		.cfi_startproc
+ 206              		@ args = 0, pretend = 0, frame = 0
+ 207              		@ frame_needed = 0, uses_anonymous_args = 0
+ 208              		@ link register save eliminated.
+ 327:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     /* Get the state of the general interrupt. */
+ 328:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     return ((*UART_SCB_IRQ_INTC_SET_EN & (uint32)UART_SCB_IRQ__INTC_MASK) != 0u) ? 1u:0u;
+ 209              		.loc 1 328 0
+ 210 0000 034B     		ldr	r3, .L20
+ 211 0002 1B68     		ldr	r3, [r3]
+ 212 0004 1B05     		lsls	r3, r3, #20
+ 213 0006 01D5     		bpl	.L19
+ 214 0008 0120     		movs	r0, #1
+ 215 000a 00E0     		b	.L18
+ 216              	.L19:
+ 217 000c 0020     		movs	r0, #0
+ 218              	.L18:
+ 329:Generated_Source\PSoC4/UART_SCB_IRQ.c **** }
+ 219              		.loc 1 329 0 discriminator 4
+ 220              		@ sp needed
+ 221 000e 7047     		bx	lr
+ 222              	.L21:
+ 223              		.align	2
+ 224              	.L20:
+ 225 0010 00E100E0 		.word	-536813312
+ 226              		.cfi_endproc
+ 227              	.LFE9:
+ 228              		.size	UART_SCB_IRQ_GetState, .-UART_SCB_IRQ_GetState
+ 229              		.section	.text.UART_SCB_IRQ_Disable,"ax",%progbits
+ 230              		.align	2
+ 231              		.global	UART_SCB_IRQ_Disable
+ 232              		.code	16
+ 233              		.thumb_func
+ 234              		.type	UART_SCB_IRQ_Disable, %function
+ 235              	UART_SCB_IRQ_Disable:
+ 236              	.LFB10:
+ 330:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ 331:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ 332:Generated_Source\PSoC4/UART_SCB_IRQ.c **** /*******************************************************************************
+ 333:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Function Name: UART_SCB_IRQ_Disable
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccaPYQsp.s 			page 11
+
+
+ 334:Generated_Source\PSoC4/UART_SCB_IRQ.c **** ********************************************************************************
+ 335:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 336:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Summary:
+ 337:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   Disables the Interrupt in the interrupt controller.
+ 338:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 339:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Parameters:
+ 340:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   None
+ 341:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 342:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Return:
+ 343:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   None
+ 344:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 345:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *******************************************************************************/
+ 346:Generated_Source\PSoC4/UART_SCB_IRQ.c **** void UART_SCB_IRQ_Disable(void)
+ 347:Generated_Source\PSoC4/UART_SCB_IRQ.c **** {
+ 237              		.loc 1 347 0
+ 238              		.cfi_startproc
+ 239              		@ args = 0, pretend = 0, frame = 0
+ 240              		@ frame_needed = 0, uses_anonymous_args = 0
+ 241              		@ link register save eliminated.
+ 348:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     /* Disable the general interrupt. */
+ 349:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     *UART_SCB_IRQ_INTC_CLR_EN = UART_SCB_IRQ__INTC_MASK;
+ 242              		.loc 1 349 0
+ 243 0000 8022     		movs	r2, #128
+ 244 0002 1201     		lsls	r2, r2, #4
+ 245 0004 014B     		ldr	r3, .L23
+ 246 0006 1A60     		str	r2, [r3]
+ 350:Generated_Source\PSoC4/UART_SCB_IRQ.c **** }
+ 247              		.loc 1 350 0
+ 248              		@ sp needed
+ 249 0008 7047     		bx	lr
+ 250              	.L24:
+ 251 000a C046     		.align	2
+ 252              	.L23:
+ 253 000c 80E100E0 		.word	-536813184
+ 254              		.cfi_endproc
+ 255              	.LFE10:
+ 256              		.size	UART_SCB_IRQ_Disable, .-UART_SCB_IRQ_Disable
+ 257              		.section	.text.UART_SCB_IRQ_Start,"ax",%progbits
+ 258              		.align	2
+ 259              		.global	UART_SCB_IRQ_Start
+ 260              		.code	16
+ 261              		.thumb_func
+ 262              		.type	UART_SCB_IRQ_Start, %function
+ 263              	UART_SCB_IRQ_Start:
+ 264              	.LFB0:
+  57:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     /* For all we know the interrupt is active. */
+ 265              		.loc 1 57 0
+ 266              		.cfi_startproc
+ 267              		@ args = 0, pretend = 0, frame = 0
+ 268              		@ frame_needed = 0, uses_anonymous_args = 0
+ 269 0000 10B5     		push	{r4, lr}
+ 270              		.cfi_def_cfa_offset 8
+ 271              		.cfi_offset 4, -8
+ 272              		.cfi_offset 14, -4
+  59:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ 273              		.loc 1 59 0
+ 274 0002 FFF7FEFF 		bl	UART_SCB_IRQ_Disable
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccaPYQsp.s 			page 12
+
+
+ 275              	.LVL8:
+  62:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ 276              		.loc 1 62 0
+ 277 0006 0448     		ldr	r0, .L26
+ 278 0008 FFF7FEFF 		bl	UART_SCB_IRQ_SetVector
+ 279              	.LVL9:
+  65:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ 280              		.loc 1 65 0
+ 281 000c 0320     		movs	r0, #3
+ 282 000e FFF7FEFF 		bl	UART_SCB_IRQ_SetPriority
+ 283              	.LVL10:
+  68:Generated_Source\PSoC4/UART_SCB_IRQ.c **** }
+ 284              		.loc 1 68 0
+ 285 0012 FFF7FEFF 		bl	UART_SCB_IRQ_Enable
+ 286              	.LVL11:
+  69:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ 287              		.loc 1 69 0
+ 288              		@ sp needed
+ 289 0016 10BD     		pop	{r4, pc}
+ 290              	.L27:
+ 291              		.align	2
+ 292              	.L26:
+ 293 0018 00000000 		.word	UART_SCB_IRQ_Interrupt
+ 294              		.cfi_endproc
+ 295              	.LFE0:
+ 296              		.size	UART_SCB_IRQ_Start, .-UART_SCB_IRQ_Start
+ 297              		.section	.text.UART_SCB_IRQ_StartEx,"ax",%progbits
+ 298              		.align	2
+ 299              		.global	UART_SCB_IRQ_StartEx
+ 300              		.code	16
+ 301              		.thumb_func
+ 302              		.type	UART_SCB_IRQ_StartEx, %function
+ 303              	UART_SCB_IRQ_StartEx:
+ 304              	.LFB1:
+ 100:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     /* For all we know the interrupt is active. */
+ 305              		.loc 1 100 0
+ 306              		.cfi_startproc
+ 307              		@ args = 0, pretend = 0, frame = 0
+ 308              		@ frame_needed = 0, uses_anonymous_args = 0
+ 309              	.LVL12:
+ 310 0000 10B5     		push	{r4, lr}
+ 311              		.cfi_def_cfa_offset 8
+ 312              		.cfi_offset 4, -8
+ 313              		.cfi_offset 14, -4
+ 314 0002 0400     		movs	r4, r0
+ 102:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ 315              		.loc 1 102 0
+ 316 0004 FFF7FEFF 		bl	UART_SCB_IRQ_Disable
+ 317              	.LVL13:
+ 105:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ 318              		.loc 1 105 0
+ 319 0008 2000     		movs	r0, r4
+ 320 000a FFF7FEFF 		bl	UART_SCB_IRQ_SetVector
+ 321              	.LVL14:
+ 108:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ 322              		.loc 1 108 0
+ 323 000e 0320     		movs	r0, #3
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccaPYQsp.s 			page 13
+
+
+ 324 0010 FFF7FEFF 		bl	UART_SCB_IRQ_SetPriority
+ 325              	.LVL15:
+ 111:Generated_Source\PSoC4/UART_SCB_IRQ.c **** }
+ 326              		.loc 1 111 0
+ 327 0014 FFF7FEFF 		bl	UART_SCB_IRQ_Enable
+ 328              	.LVL16:
+ 112:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ 329              		.loc 1 112 0
+ 330              		@ sp needed
+ 331              	.LVL17:
+ 332 0018 10BD     		pop	{r4, pc}
+ 333              		.cfi_endproc
+ 334              	.LFE1:
+ 335              		.size	UART_SCB_IRQ_StartEx, .-UART_SCB_IRQ_StartEx
+ 336 001a C046     		.section	.text.UART_SCB_IRQ_Stop,"ax",%progbits
+ 337              		.align	2
+ 338              		.global	UART_SCB_IRQ_Stop
+ 339              		.code	16
+ 340              		.thumb_func
+ 341              		.type	UART_SCB_IRQ_Stop, %function
+ 342              	UART_SCB_IRQ_Stop:
+ 343              	.LFB2:
+ 130:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     /* Disable this interrupt. */
+ 344              		.loc 1 130 0
+ 345              		.cfi_startproc
+ 346              		@ args = 0, pretend = 0, frame = 0
+ 347              		@ frame_needed = 0, uses_anonymous_args = 0
+ 348 0000 10B5     		push	{r4, lr}
+ 349              		.cfi_def_cfa_offset 8
+ 350              		.cfi_offset 4, -8
+ 351              		.cfi_offset 14, -4
+ 132:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ 352              		.loc 1 132 0
+ 353 0002 FFF7FEFF 		bl	UART_SCB_IRQ_Disable
+ 354              	.LVL18:
+ 135:Generated_Source\PSoC4/UART_SCB_IRQ.c **** }
+ 355              		.loc 1 135 0
+ 356 0006 0248     		ldr	r0, .L30
+ 357 0008 FFF7FEFF 		bl	UART_SCB_IRQ_SetVector
+ 358              	.LVL19:
+ 136:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ 359              		.loc 1 136 0
+ 360              		@ sp needed
+ 361 000c 10BD     		pop	{r4, pc}
+ 362              	.L31:
+ 363 000e C046     		.align	2
+ 364              	.L30:
+ 365 0010 00000000 		.word	IntDefaultHandler
+ 366              		.cfi_endproc
+ 367              	.LFE2:
+ 368              		.size	UART_SCB_IRQ_Stop, .-UART_SCB_IRQ_Stop
+ 369              		.section	.text.UART_SCB_IRQ_SetPending,"ax",%progbits
+ 370              		.align	2
+ 371              		.global	UART_SCB_IRQ_SetPending
+ 372              		.code	16
+ 373              		.thumb_func
+ 374              		.type	UART_SCB_IRQ_SetPending, %function
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccaPYQsp.s 			page 14
+
+
+ 375              	UART_SCB_IRQ_SetPending:
+ 376              	.LFB11:
+ 351:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ 352:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ 353:Generated_Source\PSoC4/UART_SCB_IRQ.c **** /*******************************************************************************
+ 354:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Function Name: UART_SCB_IRQ_SetPending
+ 355:Generated_Source\PSoC4/UART_SCB_IRQ.c **** ********************************************************************************
+ 356:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 357:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Summary:
+ 358:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   Causes the Interrupt to enter the pending state, a software method of
+ 359:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   generating the interrupt.
+ 360:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 361:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Parameters:
+ 362:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   None
+ 363:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 364:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Return:
+ 365:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   None
+ 366:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 367:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Side Effects:
+ 368:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   If interrupts are enabled and the interrupt is set up properly, the ISR is
+ 369:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   entered (depending on the priority of this interrupt and other pending 
+ 370:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   interrupts).
+ 371:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 372:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *******************************************************************************/
+ 373:Generated_Source\PSoC4/UART_SCB_IRQ.c **** void UART_SCB_IRQ_SetPending(void)
+ 374:Generated_Source\PSoC4/UART_SCB_IRQ.c **** {
+ 377              		.loc 1 374 0
+ 378              		.cfi_startproc
+ 379              		@ args = 0, pretend = 0, frame = 0
+ 380              		@ frame_needed = 0, uses_anonymous_args = 0
+ 381              		@ link register save eliminated.
+ 375:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     *UART_SCB_IRQ_INTC_SET_PD = UART_SCB_IRQ__INTC_MASK;
+ 382              		.loc 1 375 0
+ 383 0000 8022     		movs	r2, #128
+ 384 0002 1201     		lsls	r2, r2, #4
+ 385 0004 014B     		ldr	r3, .L33
+ 386 0006 1A60     		str	r2, [r3]
+ 376:Generated_Source\PSoC4/UART_SCB_IRQ.c **** }
+ 387              		.loc 1 376 0
+ 388              		@ sp needed
+ 389 0008 7047     		bx	lr
+ 390              	.L34:
+ 391 000a C046     		.align	2
+ 392              	.L33:
+ 393 000c 00E200E0 		.word	-536813056
+ 394              		.cfi_endproc
+ 395              	.LFE11:
+ 396              		.size	UART_SCB_IRQ_SetPending, .-UART_SCB_IRQ_SetPending
+ 397              		.section	.text.UART_SCB_IRQ_ClearPending,"ax",%progbits
+ 398              		.align	2
+ 399              		.global	UART_SCB_IRQ_ClearPending
+ 400              		.code	16
+ 401              		.thumb_func
+ 402              		.type	UART_SCB_IRQ_ClearPending, %function
+ 403              	UART_SCB_IRQ_ClearPending:
+ 404              	.LFB12:
+ 377:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccaPYQsp.s 			page 15
+
+
+ 378:Generated_Source\PSoC4/UART_SCB_IRQ.c **** 
+ 379:Generated_Source\PSoC4/UART_SCB_IRQ.c **** /*******************************************************************************
+ 380:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Function Name: UART_SCB_IRQ_ClearPending
+ 381:Generated_Source\PSoC4/UART_SCB_IRQ.c **** ********************************************************************************
+ 382:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 383:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Summary:
+ 384:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   Clears a pending interrupt in the interrupt controller.
+ 385:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 386:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   Note Some interrupt sources are clear-on-read and require the block 
+ 387:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   interrupt/status register to be read/cleared with the appropriate block API 
+ 388:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   (GPIO, UART, and so on). Otherwise the ISR will continue to remain in 
+ 389:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   pending state even though the interrupt itself is cleared using this API.
+ 390:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 391:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Parameters:
+ 392:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   None
+ 393:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 394:Generated_Source\PSoC4/UART_SCB_IRQ.c **** * Return:
+ 395:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *   None
+ 396:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *
+ 397:Generated_Source\PSoC4/UART_SCB_IRQ.c **** *******************************************************************************/
+ 398:Generated_Source\PSoC4/UART_SCB_IRQ.c **** void UART_SCB_IRQ_ClearPending(void)
+ 399:Generated_Source\PSoC4/UART_SCB_IRQ.c **** {
+ 405              		.loc 1 399 0
+ 406              		.cfi_startproc
+ 407              		@ args = 0, pretend = 0, frame = 0
+ 408              		@ frame_needed = 0, uses_anonymous_args = 0
+ 409              		@ link register save eliminated.
+ 400:Generated_Source\PSoC4/UART_SCB_IRQ.c ****     *UART_SCB_IRQ_INTC_CLR_PD = UART_SCB_IRQ__INTC_MASK;
+ 410              		.loc 1 400 0
+ 411 0000 8022     		movs	r2, #128
+ 412 0002 1201     		lsls	r2, r2, #4
+ 413 0004 014B     		ldr	r3, .L36
+ 414 0006 1A60     		str	r2, [r3]
+ 401:Generated_Source\PSoC4/UART_SCB_IRQ.c **** }
+ 415              		.loc 1 401 0
+ 416              		@ sp needed
+ 417 0008 7047     		bx	lr
+ 418              	.L37:
+ 419 000a C046     		.align	2
+ 420              	.L36:
+ 421 000c 80E200E0 		.word	-536812928
+ 422              		.cfi_endproc
+ 423              	.LFE12:
+ 424              		.size	UART_SCB_IRQ_ClearPending, .-UART_SCB_IRQ_ClearPending
+ 425              		.text
+ 426              	.Letext0:
+ 427              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 428              		.file 3 "Generated_Source\\PSoC4/CyLib.h"
+ 429              		.section	.debug_info,"",%progbits
+ 430              	.Ldebug_info0:
+ 431 0000 01030000 		.4byte	0x301
+ 432 0004 0400     		.2byte	0x4
+ 433 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 434 000a 04       		.byte	0x4
+ 435 000b 01       		.uleb128 0x1
+ 436 000c 00020000 		.4byte	.LASF36
+ 437 0010 0C       		.byte	0xc
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccaPYQsp.s 			page 16
+
+
+ 438 0011 35000000 		.4byte	.LASF37
+ 439 0015 E2000000 		.4byte	.LASF38
+ 440 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 441 001d 00000000 		.4byte	0
+ 442 0021 00000000 		.4byte	.Ldebug_line0
+ 443 0025 02       		.uleb128 0x2
+ 444 0026 01       		.byte	0x1
+ 445 0027 06       		.byte	0x6
+ 446 0028 48030000 		.4byte	.LASF0
+ 447 002c 02       		.uleb128 0x2
+ 448 002d 01       		.byte	0x1
+ 449 002e 08       		.byte	0x8
+ 450 002f 98000000 		.4byte	.LASF1
+ 451 0033 02       		.uleb128 0x2
+ 452 0034 02       		.byte	0x2
+ 453 0035 05       		.byte	0x5
+ 454 0036 EB020000 		.4byte	.LASF2
+ 455 003a 02       		.uleb128 0x2
+ 456 003b 02       		.byte	0x2
+ 457 003c 07       		.byte	0x7
+ 458 003d 68000000 		.4byte	.LASF3
+ 459 0041 02       		.uleb128 0x2
+ 460 0042 04       		.byte	0x4
+ 461 0043 05       		.byte	0x5
+ 462 0044 1D030000 		.4byte	.LASF4
+ 463 0048 02       		.uleb128 0x2
+ 464 0049 04       		.byte	0x4
+ 465 004a 07       		.byte	0x7
+ 466 004b CA000000 		.4byte	.LASF5
+ 467 004f 02       		.uleb128 0x2
+ 468 0050 08       		.byte	0x8
+ 469 0051 05       		.byte	0x5
+ 470 0052 97020000 		.4byte	.LASF6
+ 471 0056 02       		.uleb128 0x2
+ 472 0057 08       		.byte	0x8
+ 473 0058 07       		.byte	0x7
+ 474 0059 81000000 		.4byte	.LASF7
+ 475 005d 03       		.uleb128 0x3
+ 476 005e 04       		.byte	0x4
+ 477 005f 05       		.byte	0x5
+ 478 0060 696E7400 		.ascii	"int\000"
+ 479 0064 02       		.uleb128 0x2
+ 480 0065 04       		.byte	0x4
+ 481 0066 07       		.byte	0x7
+ 482 0067 B5010000 		.4byte	.LASF8
+ 483 006b 04       		.uleb128 0x4
+ 484 006c DC000000 		.4byte	.LASF9
+ 485 0070 02       		.byte	0x2
+ 486 0071 9801     		.2byte	0x198
+ 487 0073 2C000000 		.4byte	0x2c
+ 488 0077 04       		.uleb128 0x4
+ 489 0078 7E010000 		.4byte	.LASF10
+ 490 007c 02       		.byte	0x2
+ 491 007d 9A01     		.2byte	0x19a
+ 492 007f 48000000 		.4byte	0x48
+ 493 0083 02       		.uleb128 0x2
+ 494 0084 04       		.byte	0x4
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccaPYQsp.s 			page 17
+
+
+ 495 0085 04       		.byte	0x4
+ 496 0086 7B000000 		.4byte	.LASF11
+ 497 008a 02       		.uleb128 0x2
+ 498 008b 08       		.byte	0x8
+ 499 008c 04       		.byte	0x4
+ 500 008d 77010000 		.4byte	.LASF12
+ 501 0091 02       		.uleb128 0x2
+ 502 0092 01       		.byte	0x1
+ 503 0093 08       		.byte	0x8
+ 504 0094 BA020000 		.4byte	.LASF13
+ 505 0098 04       		.uleb128 0x4
+ 506 0099 18000000 		.4byte	.LASF14
+ 507 009d 02       		.byte	0x2
+ 508 009e 4402     		.2byte	0x244
+ 509 00a0 A4000000 		.4byte	0xa4
+ 510 00a4 05       		.uleb128 0x5
+ 511 00a5 77000000 		.4byte	0x77
+ 512 00a9 04       		.uleb128 0x4
+ 513 00aa E0010000 		.4byte	.LASF15
+ 514 00ae 02       		.byte	0x2
+ 515 00af 5402     		.2byte	0x254
+ 516 00b1 B5000000 		.4byte	0xb5
+ 517 00b5 06       		.uleb128 0x6
+ 518 00b6 04       		.byte	0x4
+ 519 00b7 BB000000 		.4byte	0xbb
+ 520 00bb 07       		.uleb128 0x7
+ 521 00bc 02       		.uleb128 0x2
+ 522 00bd 08       		.byte	0x8
+ 523 00be 04       		.byte	0x4
+ 524 00bf 3C030000 		.4byte	.LASF16
+ 525 00c3 02       		.uleb128 0x2
+ 526 00c4 04       		.byte	0x4
+ 527 00c5 07       		.byte	0x7
+ 528 00c6 8E020000 		.4byte	.LASF17
+ 529 00ca 08       		.uleb128 0x8
+ 530 00cb 4C010000 		.4byte	.LASF24
+ 531 00cf 01       		.byte	0x1
+ 532 00d0 9F       		.byte	0x9f
+ 533 00d1 00000000 		.4byte	.LFB3
+ 534 00d5 02000000 		.4byte	.LFE3-.LFB3
+ 535 00d9 01       		.uleb128 0x1
+ 536 00da 9C       		.byte	0x9c
+ 537 00db 09       		.uleb128 0x9
+ 538 00dc 1E000000 		.4byte	.LASF18
+ 539 00e0 01       		.byte	0x1
+ 540 00e1 C7       		.byte	0xc7
+ 541 00e2 00000000 		.4byte	.LFB4
+ 542 00e6 0C000000 		.4byte	.LFE4-.LFB4
+ 543 00ea 01       		.uleb128 0x1
+ 544 00eb 9C       		.byte	0x9c
+ 545 00ec FE000000 		.4byte	0xfe
+ 546 00f0 0A       		.uleb128 0xa
+ 547 00f1 C2010000 		.4byte	.LASF20
+ 548 00f5 01       		.byte	0x1
+ 549 00f6 C7       		.byte	0xc7
+ 550 00f7 A9000000 		.4byte	0xa9
+ 551 00fb 01       		.uleb128 0x1
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccaPYQsp.s 			page 18
+
+
+ 552 00fc 50       		.byte	0x50
+ 553 00fd 00       		.byte	0
+ 554 00fe 0B       		.uleb128 0xb
+ 555 00ff 2C010000 		.4byte	.LASF26
+ 556 0103 01       		.byte	0x1
+ 557 0104 DB       		.byte	0xdb
+ 558 0105 A9000000 		.4byte	0xa9
+ 559 0109 00000000 		.4byte	.LFB5
+ 560 010d 0C000000 		.4byte	.LFE5-.LFB5
+ 561 0111 01       		.uleb128 0x1
+ 562 0112 9C       		.byte	0x9c
+ 563 0113 09       		.uleb128 0x9
+ 564 0114 F5020000 		.4byte	.LASF19
+ 565 0118 01       		.byte	0x1
+ 566 0119 F9       		.byte	0xf9
+ 567 011a 00000000 		.4byte	.LFB6
+ 568 011e 20000000 		.4byte	.LFE6-.LFB6
+ 569 0122 01       		.uleb128 0x1
+ 570 0123 9C       		.byte	0x9c
+ 571 0124 65010000 		.4byte	0x165
+ 572 0128 0C       		.uleb128 0xc
+ 573 0129 43010000 		.4byte	.LASF21
+ 574 012d 01       		.byte	0x1
+ 575 012e F9       		.byte	0xf9
+ 576 012f 6B000000 		.4byte	0x6b
+ 577 0133 00000000 		.4byte	.LLST0
+ 578 0137 0D       		.uleb128 0xd
+ 579 0138 BB000000 		.4byte	.LASF22
+ 580 013c 01       		.byte	0x1
+ 581 013d FB       		.byte	0xfb
+ 582 013e 6B000000 		.4byte	0x6b
+ 583 0142 21000000 		.4byte	.LLST1
+ 584 0146 0E       		.uleb128 0xe
+ 585 0147 0E030000 		.4byte	.LASF23
+ 586 014b 01       		.byte	0x1
+ 587 014c FC       		.byte	0xfc
+ 588 014d 77000000 		.4byte	0x77
+ 589 0151 1E       		.byte	0x1e
+ 590 0152 0F       		.uleb128 0xf
+ 591 0153 08000000 		.4byte	.LVL3
+ 592 0157 EE020000 		.4byte	0x2ee
+ 593 015b 0F       		.uleb128 0xf
+ 594 015c 1A000000 		.4byte	.LVL4
+ 595 0160 F9020000 		.4byte	0x2f9
+ 596 0164 00       		.byte	0
+ 597 0165 10       		.uleb128 0x10
+ 598 0166 9C010000 		.4byte	.LASF39
+ 599 016a 01       		.byte	0x1
+ 600 016b 1501     		.2byte	0x115
+ 601 016d 6B000000 		.4byte	0x6b
+ 602 0171 00000000 		.4byte	.LFB7
+ 603 0175 0C000000 		.4byte	.LFE7-.LFB7
+ 604 0179 01       		.uleb128 0x1
+ 605 017a 9C       		.byte	0x9c
+ 606 017b 9D010000 		.4byte	0x19d
+ 607 017f 11       		.uleb128 0x11
+ 608 0180 43010000 		.4byte	.LASF21
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccaPYQsp.s 			page 19
+
+
+ 609 0184 01       		.byte	0x1
+ 610 0185 1701     		.2byte	0x117
+ 611 0187 77000000 		.4byte	0x77
+ 612 018b 34000000 		.4byte	.LLST2
+ 613 018f 12       		.uleb128 0x12
+ 614 0190 0E030000 		.4byte	.LASF23
+ 615 0194 01       		.byte	0x1
+ 616 0195 1801     		.2byte	0x118
+ 617 0197 77000000 		.4byte	0x77
+ 618 019b 1E       		.byte	0x1e
+ 619 019c 00       		.byte	0
+ 620 019d 13       		.uleb128 0x13
+ 621 019e 63010000 		.4byte	.LASF25
+ 622 01a2 01       		.byte	0x1
+ 623 01a3 3001     		.2byte	0x130
+ 624 01a5 00000000 		.4byte	.LFB8
+ 625 01a9 10000000 		.4byte	.LFE8-.LFB8
+ 626 01ad 01       		.uleb128 0x1
+ 627 01ae 9C       		.byte	0x9c
+ 628 01af 14       		.uleb128 0x14
+ 629 01b0 26030000 		.4byte	.LASF27
+ 630 01b4 01       		.byte	0x1
+ 631 01b5 4501     		.2byte	0x145
+ 632 01b7 6B000000 		.4byte	0x6b
+ 633 01bb 00000000 		.4byte	.LFB9
+ 634 01bf 14000000 		.4byte	.LFE9-.LFB9
+ 635 01c3 01       		.uleb128 0x1
+ 636 01c4 9C       		.byte	0x9c
+ 637 01c5 13       		.uleb128 0x13
+ 638 01c6 A5020000 		.4byte	.LASF28
+ 639 01ca 01       		.byte	0x1
+ 640 01cb 5A01     		.2byte	0x15a
+ 641 01cd 00000000 		.4byte	.LFB10
+ 642 01d1 10000000 		.4byte	.LFE10-.LFB10
+ 643 01d5 01       		.uleb128 0x1
+ 644 01d6 9C       		.byte	0x9c
+ 645 01d7 09       		.uleb128 0x9
+ 646 01d8 ED010000 		.4byte	.LASF29
+ 647 01dc 01       		.byte	0x1
+ 648 01dd 38       		.byte	0x38
+ 649 01de 00000000 		.4byte	.LFB0
+ 650 01e2 1C000000 		.4byte	.LFE0-.LFB0
+ 651 01e6 01       		.uleb128 0x1
+ 652 01e7 9C       		.byte	0x9c
+ 653 01e8 29020000 		.4byte	0x229
+ 654 01ec 0F       		.uleb128 0xf
+ 655 01ed 06000000 		.4byte	.LVL8
+ 656 01f1 C5010000 		.4byte	0x1c5
+ 657 01f5 15       		.uleb128 0x15
+ 658 01f6 0C000000 		.4byte	.LVL9
+ 659 01fa DB000000 		.4byte	0xdb
+ 660 01fe 0C020000 		.4byte	0x20c
+ 661 0202 16       		.uleb128 0x16
+ 662 0203 01       		.uleb128 0x1
+ 663 0204 50       		.byte	0x50
+ 664 0205 05       		.uleb128 0x5
+ 665 0206 03       		.byte	0x3
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccaPYQsp.s 			page 20
+
+
+ 666 0207 00000000 		.4byte	UART_SCB_IRQ_Interrupt
+ 667 020b 00       		.byte	0
+ 668 020c 15       		.uleb128 0x15
+ 669 020d 12000000 		.4byte	.LVL10
+ 670 0211 13010000 		.4byte	0x113
+ 671 0215 1F020000 		.4byte	0x21f
+ 672 0219 16       		.uleb128 0x16
+ 673 021a 01       		.uleb128 0x1
+ 674 021b 50       		.byte	0x50
+ 675 021c 01       		.uleb128 0x1
+ 676 021d 33       		.byte	0x33
+ 677 021e 00       		.byte	0
+ 678 021f 0F       		.uleb128 0xf
+ 679 0220 16000000 		.4byte	.LVL11
+ 680 0224 9D010000 		.4byte	0x19d
+ 681 0228 00       		.byte	0
+ 682 0229 09       		.uleb128 0x9
+ 683 022a A6000000 		.4byte	.LASF30
+ 684 022e 01       		.byte	0x1
+ 685 022f 63       		.byte	0x63
+ 686 0230 00000000 		.4byte	.LFB1
+ 687 0234 1A000000 		.4byte	.LFE1-.LFB1
+ 688 0238 01       		.uleb128 0x1
+ 689 0239 9C       		.byte	0x9c
+ 690 023a 87020000 		.4byte	0x287
+ 691 023e 0C       		.uleb128 0xc
+ 692 023f C2010000 		.4byte	.LASF20
+ 693 0243 01       		.byte	0x1
+ 694 0244 63       		.byte	0x63
+ 695 0245 A9000000 		.4byte	0xa9
+ 696 0249 56000000 		.4byte	.LLST3
+ 697 024d 0F       		.uleb128 0xf
+ 698 024e 08000000 		.4byte	.LVL13
+ 699 0252 C5010000 		.4byte	0x1c5
+ 700 0256 15       		.uleb128 0x15
+ 701 0257 0E000000 		.4byte	.LVL14
+ 702 025b DB000000 		.4byte	0xdb
+ 703 025f 6A020000 		.4byte	0x26a
+ 704 0263 16       		.uleb128 0x16
+ 705 0264 01       		.uleb128 0x1
+ 706 0265 50       		.byte	0x50
+ 707 0266 02       		.uleb128 0x2
+ 708 0267 74       		.byte	0x74
+ 709 0268 00       		.sleb128 0
+ 710 0269 00       		.byte	0
+ 711 026a 15       		.uleb128 0x15
+ 712 026b 14000000 		.4byte	.LVL15
+ 713 026f 13010000 		.4byte	0x113
+ 714 0273 7D020000 		.4byte	0x27d
+ 715 0277 16       		.uleb128 0x16
+ 716 0278 01       		.uleb128 0x1
+ 717 0279 50       		.byte	0x50
+ 718 027a 01       		.uleb128 0x1
+ 719 027b 33       		.byte	0x33
+ 720 027c 00       		.byte	0
+ 721 027d 0F       		.uleb128 0xf
+ 722 027e 18000000 		.4byte	.LVL16
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccaPYQsp.s 			page 21
+
+
+ 723 0282 9D010000 		.4byte	0x19d
+ 724 0286 00       		.byte	0
+ 725 0287 09       		.uleb128 0x9
+ 726 0288 BF020000 		.4byte	.LASF31
+ 727 028c 01       		.byte	0x1
+ 728 028d 81       		.byte	0x81
+ 729 028e 00000000 		.4byte	.LFB2
+ 730 0292 14000000 		.4byte	.LFE2-.LFB2
+ 731 0296 01       		.uleb128 0x1
+ 732 0297 9C       		.byte	0x9c
+ 733 0298 AF020000 		.4byte	0x2af
+ 734 029c 0F       		.uleb128 0xf
+ 735 029d 06000000 		.4byte	.LVL18
+ 736 02a1 C5010000 		.4byte	0x1c5
+ 737 02a5 0F       		.uleb128 0xf
+ 738 02a6 0C000000 		.4byte	.LVL19
+ 739 02aa DB000000 		.4byte	0xdb
+ 740 02ae 00       		.byte	0
+ 741 02af 13       		.uleb128 0x13
+ 742 02b0 00000000 		.4byte	.LASF32
+ 743 02b4 01       		.byte	0x1
+ 744 02b5 7501     		.2byte	0x175
+ 745 02b7 00000000 		.4byte	.LFB11
+ 746 02bb 10000000 		.4byte	.LFE11-.LFB11
+ 747 02bf 01       		.uleb128 0x1
+ 748 02c0 9C       		.byte	0x9c
+ 749 02c1 13       		.uleb128 0x13
+ 750 02c2 D1020000 		.4byte	.LASF33
+ 751 02c6 01       		.byte	0x1
+ 752 02c7 8E01     		.2byte	0x18e
+ 753 02c9 00000000 		.4byte	.LFB12
+ 754 02cd 10000000 		.4byte	.LFE12-.LFB12
+ 755 02d1 01       		.uleb128 0x1
+ 756 02d2 9C       		.byte	0x9c
+ 757 02d3 17       		.uleb128 0x17
+ 758 02d4 A9000000 		.4byte	0xa9
+ 759 02d8 E3020000 		.4byte	0x2e3
+ 760 02dc 18       		.uleb128 0x18
+ 761 02dd C3000000 		.4byte	0xc3
+ 762 02e1 2F       		.byte	0x2f
+ 763 02e2 00       		.byte	0
+ 764 02e3 19       		.uleb128 0x19
+ 765 02e4 5B000000 		.4byte	.LASF40
+ 766 02e8 01       		.byte	0x1
+ 767 02e9 21       		.byte	0x21
+ 768 02ea D3020000 		.4byte	0x2d3
+ 769 02ee 1A       		.uleb128 0x1a
+ 770 02ef 85010000 		.4byte	.LASF34
+ 771 02f3 85010000 		.4byte	.LASF34
+ 772 02f7 03       		.byte	0x3
+ 773 02f8 E3       		.byte	0xe3
+ 774 02f9 1A       		.uleb128 0x1a
+ 775 02fa CA010000 		.4byte	.LASF35
+ 776 02fe CA010000 		.4byte	.LASF35
+ 777 0302 03       		.byte	0x3
+ 778 0303 E4       		.byte	0xe4
+ 779 0304 00       		.byte	0
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccaPYQsp.s 			page 22
+
+
+ 780              		.section	.debug_abbrev,"",%progbits
+ 781              	.Ldebug_abbrev0:
+ 782 0000 01       		.uleb128 0x1
+ 783 0001 11       		.uleb128 0x11
+ 784 0002 01       		.byte	0x1
+ 785 0003 25       		.uleb128 0x25
+ 786 0004 0E       		.uleb128 0xe
+ 787 0005 13       		.uleb128 0x13
+ 788 0006 0B       		.uleb128 0xb
+ 789 0007 03       		.uleb128 0x3
+ 790 0008 0E       		.uleb128 0xe
+ 791 0009 1B       		.uleb128 0x1b
+ 792 000a 0E       		.uleb128 0xe
+ 793 000b 55       		.uleb128 0x55
+ 794 000c 17       		.uleb128 0x17
+ 795 000d 11       		.uleb128 0x11
+ 796 000e 01       		.uleb128 0x1
+ 797 000f 10       		.uleb128 0x10
+ 798 0010 17       		.uleb128 0x17
+ 799 0011 00       		.byte	0
+ 800 0012 00       		.byte	0
+ 801 0013 02       		.uleb128 0x2
+ 802 0014 24       		.uleb128 0x24
+ 803 0015 00       		.byte	0
+ 804 0016 0B       		.uleb128 0xb
+ 805 0017 0B       		.uleb128 0xb
+ 806 0018 3E       		.uleb128 0x3e
+ 807 0019 0B       		.uleb128 0xb
+ 808 001a 03       		.uleb128 0x3
+ 809 001b 0E       		.uleb128 0xe
+ 810 001c 00       		.byte	0
+ 811 001d 00       		.byte	0
+ 812 001e 03       		.uleb128 0x3
+ 813 001f 24       		.uleb128 0x24
+ 814 0020 00       		.byte	0
+ 815 0021 0B       		.uleb128 0xb
+ 816 0022 0B       		.uleb128 0xb
+ 817 0023 3E       		.uleb128 0x3e
+ 818 0024 0B       		.uleb128 0xb
+ 819 0025 03       		.uleb128 0x3
+ 820 0026 08       		.uleb128 0x8
+ 821 0027 00       		.byte	0
+ 822 0028 00       		.byte	0
+ 823 0029 04       		.uleb128 0x4
+ 824 002a 16       		.uleb128 0x16
+ 825 002b 00       		.byte	0
+ 826 002c 03       		.uleb128 0x3
+ 827 002d 0E       		.uleb128 0xe
+ 828 002e 3A       		.uleb128 0x3a
+ 829 002f 0B       		.uleb128 0xb
+ 830 0030 3B       		.uleb128 0x3b
+ 831 0031 05       		.uleb128 0x5
+ 832 0032 49       		.uleb128 0x49
+ 833 0033 13       		.uleb128 0x13
+ 834 0034 00       		.byte	0
+ 835 0035 00       		.byte	0
+ 836 0036 05       		.uleb128 0x5
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccaPYQsp.s 			page 23
+
+
+ 837 0037 35       		.uleb128 0x35
+ 838 0038 00       		.byte	0
+ 839 0039 49       		.uleb128 0x49
+ 840 003a 13       		.uleb128 0x13
+ 841 003b 00       		.byte	0
+ 842 003c 00       		.byte	0
+ 843 003d 06       		.uleb128 0x6
+ 844 003e 0F       		.uleb128 0xf
+ 845 003f 00       		.byte	0
+ 846 0040 0B       		.uleb128 0xb
+ 847 0041 0B       		.uleb128 0xb
+ 848 0042 49       		.uleb128 0x49
+ 849 0043 13       		.uleb128 0x13
+ 850 0044 00       		.byte	0
+ 851 0045 00       		.byte	0
+ 852 0046 07       		.uleb128 0x7
+ 853 0047 15       		.uleb128 0x15
+ 854 0048 00       		.byte	0
+ 855 0049 27       		.uleb128 0x27
+ 856 004a 19       		.uleb128 0x19
+ 857 004b 00       		.byte	0
+ 858 004c 00       		.byte	0
+ 859 004d 08       		.uleb128 0x8
+ 860 004e 2E       		.uleb128 0x2e
+ 861 004f 00       		.byte	0
+ 862 0050 3F       		.uleb128 0x3f
+ 863 0051 19       		.uleb128 0x19
+ 864 0052 03       		.uleb128 0x3
+ 865 0053 0E       		.uleb128 0xe
+ 866 0054 3A       		.uleb128 0x3a
+ 867 0055 0B       		.uleb128 0xb
+ 868 0056 3B       		.uleb128 0x3b
+ 869 0057 0B       		.uleb128 0xb
+ 870 0058 27       		.uleb128 0x27
+ 871 0059 19       		.uleb128 0x19
+ 872 005a 11       		.uleb128 0x11
+ 873 005b 01       		.uleb128 0x1
+ 874 005c 12       		.uleb128 0x12
+ 875 005d 06       		.uleb128 0x6
+ 876 005e 40       		.uleb128 0x40
+ 877 005f 18       		.uleb128 0x18
+ 878 0060 9742     		.uleb128 0x2117
+ 879 0062 19       		.uleb128 0x19
+ 880 0063 00       		.byte	0
+ 881 0064 00       		.byte	0
+ 882 0065 09       		.uleb128 0x9
+ 883 0066 2E       		.uleb128 0x2e
+ 884 0067 01       		.byte	0x1
+ 885 0068 3F       		.uleb128 0x3f
+ 886 0069 19       		.uleb128 0x19
+ 887 006a 03       		.uleb128 0x3
+ 888 006b 0E       		.uleb128 0xe
+ 889 006c 3A       		.uleb128 0x3a
+ 890 006d 0B       		.uleb128 0xb
+ 891 006e 3B       		.uleb128 0x3b
+ 892 006f 0B       		.uleb128 0xb
+ 893 0070 27       		.uleb128 0x27
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccaPYQsp.s 			page 24
+
+
+ 894 0071 19       		.uleb128 0x19
+ 895 0072 11       		.uleb128 0x11
+ 896 0073 01       		.uleb128 0x1
+ 897 0074 12       		.uleb128 0x12
+ 898 0075 06       		.uleb128 0x6
+ 899 0076 40       		.uleb128 0x40
+ 900 0077 18       		.uleb128 0x18
+ 901 0078 9742     		.uleb128 0x2117
+ 902 007a 19       		.uleb128 0x19
+ 903 007b 01       		.uleb128 0x1
+ 904 007c 13       		.uleb128 0x13
+ 905 007d 00       		.byte	0
+ 906 007e 00       		.byte	0
+ 907 007f 0A       		.uleb128 0xa
+ 908 0080 05       		.uleb128 0x5
+ 909 0081 00       		.byte	0
+ 910 0082 03       		.uleb128 0x3
+ 911 0083 0E       		.uleb128 0xe
+ 912 0084 3A       		.uleb128 0x3a
+ 913 0085 0B       		.uleb128 0xb
+ 914 0086 3B       		.uleb128 0x3b
+ 915 0087 0B       		.uleb128 0xb
+ 916 0088 49       		.uleb128 0x49
+ 917 0089 13       		.uleb128 0x13
+ 918 008a 02       		.uleb128 0x2
+ 919 008b 18       		.uleb128 0x18
+ 920 008c 00       		.byte	0
+ 921 008d 00       		.byte	0
+ 922 008e 0B       		.uleb128 0xb
+ 923 008f 2E       		.uleb128 0x2e
+ 924 0090 00       		.byte	0
+ 925 0091 3F       		.uleb128 0x3f
+ 926 0092 19       		.uleb128 0x19
+ 927 0093 03       		.uleb128 0x3
+ 928 0094 0E       		.uleb128 0xe
+ 929 0095 3A       		.uleb128 0x3a
+ 930 0096 0B       		.uleb128 0xb
+ 931 0097 3B       		.uleb128 0x3b
+ 932 0098 0B       		.uleb128 0xb
+ 933 0099 27       		.uleb128 0x27
+ 934 009a 19       		.uleb128 0x19
+ 935 009b 49       		.uleb128 0x49
+ 936 009c 13       		.uleb128 0x13
+ 937 009d 11       		.uleb128 0x11
+ 938 009e 01       		.uleb128 0x1
+ 939 009f 12       		.uleb128 0x12
+ 940 00a0 06       		.uleb128 0x6
+ 941 00a1 40       		.uleb128 0x40
+ 942 00a2 18       		.uleb128 0x18
+ 943 00a3 9742     		.uleb128 0x2117
+ 944 00a5 19       		.uleb128 0x19
+ 945 00a6 00       		.byte	0
+ 946 00a7 00       		.byte	0
+ 947 00a8 0C       		.uleb128 0xc
+ 948 00a9 05       		.uleb128 0x5
+ 949 00aa 00       		.byte	0
+ 950 00ab 03       		.uleb128 0x3
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccaPYQsp.s 			page 25
+
+
+ 951 00ac 0E       		.uleb128 0xe
+ 952 00ad 3A       		.uleb128 0x3a
+ 953 00ae 0B       		.uleb128 0xb
+ 954 00af 3B       		.uleb128 0x3b
+ 955 00b0 0B       		.uleb128 0xb
+ 956 00b1 49       		.uleb128 0x49
+ 957 00b2 13       		.uleb128 0x13
+ 958 00b3 02       		.uleb128 0x2
+ 959 00b4 17       		.uleb128 0x17
+ 960 00b5 00       		.byte	0
+ 961 00b6 00       		.byte	0
+ 962 00b7 0D       		.uleb128 0xd
+ 963 00b8 34       		.uleb128 0x34
+ 964 00b9 00       		.byte	0
+ 965 00ba 03       		.uleb128 0x3
+ 966 00bb 0E       		.uleb128 0xe
+ 967 00bc 3A       		.uleb128 0x3a
+ 968 00bd 0B       		.uleb128 0xb
+ 969 00be 3B       		.uleb128 0x3b
+ 970 00bf 0B       		.uleb128 0xb
+ 971 00c0 49       		.uleb128 0x49
+ 972 00c1 13       		.uleb128 0x13
+ 973 00c2 02       		.uleb128 0x2
+ 974 00c3 17       		.uleb128 0x17
+ 975 00c4 00       		.byte	0
+ 976 00c5 00       		.byte	0
+ 977 00c6 0E       		.uleb128 0xe
+ 978 00c7 34       		.uleb128 0x34
+ 979 00c8 00       		.byte	0
+ 980 00c9 03       		.uleb128 0x3
+ 981 00ca 0E       		.uleb128 0xe
+ 982 00cb 3A       		.uleb128 0x3a
+ 983 00cc 0B       		.uleb128 0xb
+ 984 00cd 3B       		.uleb128 0x3b
+ 985 00ce 0B       		.uleb128 0xb
+ 986 00cf 49       		.uleb128 0x49
+ 987 00d0 13       		.uleb128 0x13
+ 988 00d1 1C       		.uleb128 0x1c
+ 989 00d2 0B       		.uleb128 0xb
+ 990 00d3 00       		.byte	0
+ 991 00d4 00       		.byte	0
+ 992 00d5 0F       		.uleb128 0xf
+ 993 00d6 898201   		.uleb128 0x4109
+ 994 00d9 00       		.byte	0
+ 995 00da 11       		.uleb128 0x11
+ 996 00db 01       		.uleb128 0x1
+ 997 00dc 31       		.uleb128 0x31
+ 998 00dd 13       		.uleb128 0x13
+ 999 00de 00       		.byte	0
+ 1000 00df 00       		.byte	0
+ 1001 00e0 10       		.uleb128 0x10
+ 1002 00e1 2E       		.uleb128 0x2e
+ 1003 00e2 01       		.byte	0x1
+ 1004 00e3 3F       		.uleb128 0x3f
+ 1005 00e4 19       		.uleb128 0x19
+ 1006 00e5 03       		.uleb128 0x3
+ 1007 00e6 0E       		.uleb128 0xe
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccaPYQsp.s 			page 26
+
+
+ 1008 00e7 3A       		.uleb128 0x3a
+ 1009 00e8 0B       		.uleb128 0xb
+ 1010 00e9 3B       		.uleb128 0x3b
+ 1011 00ea 05       		.uleb128 0x5
+ 1012 00eb 27       		.uleb128 0x27
+ 1013 00ec 19       		.uleb128 0x19
+ 1014 00ed 49       		.uleb128 0x49
+ 1015 00ee 13       		.uleb128 0x13
+ 1016 00ef 11       		.uleb128 0x11
+ 1017 00f0 01       		.uleb128 0x1
+ 1018 00f1 12       		.uleb128 0x12
+ 1019 00f2 06       		.uleb128 0x6
+ 1020 00f3 40       		.uleb128 0x40
+ 1021 00f4 18       		.uleb128 0x18
+ 1022 00f5 9742     		.uleb128 0x2117
+ 1023 00f7 19       		.uleb128 0x19
+ 1024 00f8 01       		.uleb128 0x1
+ 1025 00f9 13       		.uleb128 0x13
+ 1026 00fa 00       		.byte	0
+ 1027 00fb 00       		.byte	0
+ 1028 00fc 11       		.uleb128 0x11
+ 1029 00fd 34       		.uleb128 0x34
+ 1030 00fe 00       		.byte	0
+ 1031 00ff 03       		.uleb128 0x3
+ 1032 0100 0E       		.uleb128 0xe
+ 1033 0101 3A       		.uleb128 0x3a
+ 1034 0102 0B       		.uleb128 0xb
+ 1035 0103 3B       		.uleb128 0x3b
+ 1036 0104 05       		.uleb128 0x5
+ 1037 0105 49       		.uleb128 0x49
+ 1038 0106 13       		.uleb128 0x13
+ 1039 0107 02       		.uleb128 0x2
+ 1040 0108 17       		.uleb128 0x17
+ 1041 0109 00       		.byte	0
+ 1042 010a 00       		.byte	0
+ 1043 010b 12       		.uleb128 0x12
+ 1044 010c 34       		.uleb128 0x34
+ 1045 010d 00       		.byte	0
+ 1046 010e 03       		.uleb128 0x3
+ 1047 010f 0E       		.uleb128 0xe
+ 1048 0110 3A       		.uleb128 0x3a
+ 1049 0111 0B       		.uleb128 0xb
+ 1050 0112 3B       		.uleb128 0x3b
+ 1051 0113 05       		.uleb128 0x5
+ 1052 0114 49       		.uleb128 0x49
+ 1053 0115 13       		.uleb128 0x13
+ 1054 0116 1C       		.uleb128 0x1c
+ 1055 0117 0B       		.uleb128 0xb
+ 1056 0118 00       		.byte	0
+ 1057 0119 00       		.byte	0
+ 1058 011a 13       		.uleb128 0x13
+ 1059 011b 2E       		.uleb128 0x2e
+ 1060 011c 00       		.byte	0
+ 1061 011d 3F       		.uleb128 0x3f
+ 1062 011e 19       		.uleb128 0x19
+ 1063 011f 03       		.uleb128 0x3
+ 1064 0120 0E       		.uleb128 0xe
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccaPYQsp.s 			page 27
+
+
+ 1065 0121 3A       		.uleb128 0x3a
+ 1066 0122 0B       		.uleb128 0xb
+ 1067 0123 3B       		.uleb128 0x3b
+ 1068 0124 05       		.uleb128 0x5
+ 1069 0125 27       		.uleb128 0x27
+ 1070 0126 19       		.uleb128 0x19
+ 1071 0127 11       		.uleb128 0x11
+ 1072 0128 01       		.uleb128 0x1
+ 1073 0129 12       		.uleb128 0x12
+ 1074 012a 06       		.uleb128 0x6
+ 1075 012b 40       		.uleb128 0x40
+ 1076 012c 18       		.uleb128 0x18
+ 1077 012d 9742     		.uleb128 0x2117
+ 1078 012f 19       		.uleb128 0x19
+ 1079 0130 00       		.byte	0
+ 1080 0131 00       		.byte	0
+ 1081 0132 14       		.uleb128 0x14
+ 1082 0133 2E       		.uleb128 0x2e
+ 1083 0134 00       		.byte	0
+ 1084 0135 3F       		.uleb128 0x3f
+ 1085 0136 19       		.uleb128 0x19
+ 1086 0137 03       		.uleb128 0x3
+ 1087 0138 0E       		.uleb128 0xe
+ 1088 0139 3A       		.uleb128 0x3a
+ 1089 013a 0B       		.uleb128 0xb
+ 1090 013b 3B       		.uleb128 0x3b
+ 1091 013c 05       		.uleb128 0x5
+ 1092 013d 27       		.uleb128 0x27
+ 1093 013e 19       		.uleb128 0x19
+ 1094 013f 49       		.uleb128 0x49
+ 1095 0140 13       		.uleb128 0x13
+ 1096 0141 11       		.uleb128 0x11
+ 1097 0142 01       		.uleb128 0x1
+ 1098 0143 12       		.uleb128 0x12
+ 1099 0144 06       		.uleb128 0x6
+ 1100 0145 40       		.uleb128 0x40
+ 1101 0146 18       		.uleb128 0x18
+ 1102 0147 9742     		.uleb128 0x2117
+ 1103 0149 19       		.uleb128 0x19
+ 1104 014a 00       		.byte	0
+ 1105 014b 00       		.byte	0
+ 1106 014c 15       		.uleb128 0x15
+ 1107 014d 898201   		.uleb128 0x4109
+ 1108 0150 01       		.byte	0x1
+ 1109 0151 11       		.uleb128 0x11
+ 1110 0152 01       		.uleb128 0x1
+ 1111 0153 31       		.uleb128 0x31
+ 1112 0154 13       		.uleb128 0x13
+ 1113 0155 01       		.uleb128 0x1
+ 1114 0156 13       		.uleb128 0x13
+ 1115 0157 00       		.byte	0
+ 1116 0158 00       		.byte	0
+ 1117 0159 16       		.uleb128 0x16
+ 1118 015a 8A8201   		.uleb128 0x410a
+ 1119 015d 00       		.byte	0
+ 1120 015e 02       		.uleb128 0x2
+ 1121 015f 18       		.uleb128 0x18
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccaPYQsp.s 			page 28
+
+
+ 1122 0160 9142     		.uleb128 0x2111
+ 1123 0162 18       		.uleb128 0x18
+ 1124 0163 00       		.byte	0
+ 1125 0164 00       		.byte	0
+ 1126 0165 17       		.uleb128 0x17
+ 1127 0166 01       		.uleb128 0x1
+ 1128 0167 01       		.byte	0x1
+ 1129 0168 49       		.uleb128 0x49
+ 1130 0169 13       		.uleb128 0x13
+ 1131 016a 01       		.uleb128 0x1
+ 1132 016b 13       		.uleb128 0x13
+ 1133 016c 00       		.byte	0
+ 1134 016d 00       		.byte	0
+ 1135 016e 18       		.uleb128 0x18
+ 1136 016f 21       		.uleb128 0x21
+ 1137 0170 00       		.byte	0
+ 1138 0171 49       		.uleb128 0x49
+ 1139 0172 13       		.uleb128 0x13
+ 1140 0173 2F       		.uleb128 0x2f
+ 1141 0174 0B       		.uleb128 0xb
+ 1142 0175 00       		.byte	0
+ 1143 0176 00       		.byte	0
+ 1144 0177 19       		.uleb128 0x19
+ 1145 0178 34       		.uleb128 0x34
+ 1146 0179 00       		.byte	0
+ 1147 017a 03       		.uleb128 0x3
+ 1148 017b 0E       		.uleb128 0xe
+ 1149 017c 3A       		.uleb128 0x3a
+ 1150 017d 0B       		.uleb128 0xb
+ 1151 017e 3B       		.uleb128 0x3b
+ 1152 017f 0B       		.uleb128 0xb
+ 1153 0180 49       		.uleb128 0x49
+ 1154 0181 13       		.uleb128 0x13
+ 1155 0182 3F       		.uleb128 0x3f
+ 1156 0183 19       		.uleb128 0x19
+ 1157 0184 3C       		.uleb128 0x3c
+ 1158 0185 19       		.uleb128 0x19
+ 1159 0186 00       		.byte	0
+ 1160 0187 00       		.byte	0
+ 1161 0188 1A       		.uleb128 0x1a
+ 1162 0189 2E       		.uleb128 0x2e
+ 1163 018a 00       		.byte	0
+ 1164 018b 3F       		.uleb128 0x3f
+ 1165 018c 19       		.uleb128 0x19
+ 1166 018d 3C       		.uleb128 0x3c
+ 1167 018e 19       		.uleb128 0x19
+ 1168 018f 6E       		.uleb128 0x6e
+ 1169 0190 0E       		.uleb128 0xe
+ 1170 0191 03       		.uleb128 0x3
+ 1171 0192 0E       		.uleb128 0xe
+ 1172 0193 3A       		.uleb128 0x3a
+ 1173 0194 0B       		.uleb128 0xb
+ 1174 0195 3B       		.uleb128 0x3b
+ 1175 0196 0B       		.uleb128 0xb
+ 1176 0197 00       		.byte	0
+ 1177 0198 00       		.byte	0
+ 1178 0199 00       		.byte	0
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccaPYQsp.s 			page 29
+
+
+ 1179              		.section	.debug_loc,"",%progbits
+ 1180              	.Ldebug_loc0:
+ 1181              	.LLST0:
+ 1182 0000 00000000 		.4byte	.LVL1
+ 1183 0004 07000000 		.4byte	.LVL3-1
+ 1184 0008 0100     		.2byte	0x1
+ 1185 000a 50       		.byte	0x50
+ 1186 000b 07000000 		.4byte	.LVL3-1
+ 1187 000f 20000000 		.4byte	.LFE6
+ 1188 0013 0400     		.2byte	0x4
+ 1189 0015 F3       		.byte	0xf3
+ 1190 0016 01       		.uleb128 0x1
+ 1191 0017 50       		.byte	0x50
+ 1192 0018 9F       		.byte	0x9f
+ 1193 0019 00000000 		.4byte	0
+ 1194 001d 00000000 		.4byte	0
+ 1195              	.LLST1:
+ 1196 0021 08000000 		.4byte	.LVL3
+ 1197 0025 19000000 		.4byte	.LVL4-1
+ 1198 0029 0100     		.2byte	0x1
+ 1199 002b 50       		.byte	0x50
+ 1200 002c 00000000 		.4byte	0
+ 1201 0030 00000000 		.4byte	0
+ 1202              	.LLST2:
+ 1203 0034 04000000 		.4byte	.LVL6
+ 1204 0038 06000000 		.4byte	.LVL7
+ 1205 003c 0500     		.2byte	0x5
+ 1206 003e 70       		.byte	0x70
+ 1207 003f 00       		.sleb128 0
+ 1208 0040 4E       		.byte	0x4e
+ 1209 0041 25       		.byte	0x25
+ 1210 0042 9F       		.byte	0x9f
+ 1211 0043 06000000 		.4byte	.LVL7
+ 1212 0047 0C000000 		.4byte	.LFE7
+ 1213 004b 0100     		.2byte	0x1
+ 1214 004d 50       		.byte	0x50
+ 1215 004e 00000000 		.4byte	0
+ 1216 0052 00000000 		.4byte	0
+ 1217              	.LLST3:
+ 1218 0056 00000000 		.4byte	.LVL12
+ 1219 005a 07000000 		.4byte	.LVL13-1
+ 1220 005e 0100     		.2byte	0x1
+ 1221 0060 50       		.byte	0x50
+ 1222 0061 07000000 		.4byte	.LVL13-1
+ 1223 0065 18000000 		.4byte	.LVL17
+ 1224 0069 0100     		.2byte	0x1
+ 1225 006b 54       		.byte	0x54
+ 1226 006c 18000000 		.4byte	.LVL17
+ 1227 0070 1A000000 		.4byte	.LFE1
+ 1228 0074 0400     		.2byte	0x4
+ 1229 0076 F3       		.byte	0xf3
+ 1230 0077 01       		.uleb128 0x1
+ 1231 0078 50       		.byte	0x50
+ 1232 0079 9F       		.byte	0x9f
+ 1233 007a 00000000 		.4byte	0
+ 1234 007e 00000000 		.4byte	0
+ 1235              		.section	.debug_aranges,"",%progbits
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccaPYQsp.s 			page 30
+
+
+ 1236 0000 7C000000 		.4byte	0x7c
+ 1237 0004 0200     		.2byte	0x2
+ 1238 0006 00000000 		.4byte	.Ldebug_info0
+ 1239 000a 04       		.byte	0x4
+ 1240 000b 00       		.byte	0
+ 1241 000c 0000     		.2byte	0
+ 1242 000e 0000     		.2byte	0
+ 1243 0010 00000000 		.4byte	.LFB3
+ 1244 0014 02000000 		.4byte	.LFE3-.LFB3
+ 1245 0018 00000000 		.4byte	.LFB4
+ 1246 001c 0C000000 		.4byte	.LFE4-.LFB4
+ 1247 0020 00000000 		.4byte	.LFB5
+ 1248 0024 0C000000 		.4byte	.LFE5-.LFB5
+ 1249 0028 00000000 		.4byte	.LFB6
+ 1250 002c 20000000 		.4byte	.LFE6-.LFB6
+ 1251 0030 00000000 		.4byte	.LFB7
+ 1252 0034 0C000000 		.4byte	.LFE7-.LFB7
+ 1253 0038 00000000 		.4byte	.LFB8
+ 1254 003c 10000000 		.4byte	.LFE8-.LFB8
+ 1255 0040 00000000 		.4byte	.LFB9
+ 1256 0044 14000000 		.4byte	.LFE9-.LFB9
+ 1257 0048 00000000 		.4byte	.LFB10
+ 1258 004c 10000000 		.4byte	.LFE10-.LFB10
+ 1259 0050 00000000 		.4byte	.LFB0
+ 1260 0054 1C000000 		.4byte	.LFE0-.LFB0
+ 1261 0058 00000000 		.4byte	.LFB1
+ 1262 005c 1A000000 		.4byte	.LFE1-.LFB1
+ 1263 0060 00000000 		.4byte	.LFB2
+ 1264 0064 14000000 		.4byte	.LFE2-.LFB2
+ 1265 0068 00000000 		.4byte	.LFB11
+ 1266 006c 10000000 		.4byte	.LFE11-.LFB11
+ 1267 0070 00000000 		.4byte	.LFB12
+ 1268 0074 10000000 		.4byte	.LFE12-.LFB12
+ 1269 0078 00000000 		.4byte	0
+ 1270 007c 00000000 		.4byte	0
+ 1271              		.section	.debug_ranges,"",%progbits
+ 1272              	.Ldebug_ranges0:
+ 1273 0000 00000000 		.4byte	.LFB3
+ 1274 0004 02000000 		.4byte	.LFE3
+ 1275 0008 00000000 		.4byte	.LFB4
+ 1276 000c 0C000000 		.4byte	.LFE4
+ 1277 0010 00000000 		.4byte	.LFB5
+ 1278 0014 0C000000 		.4byte	.LFE5
+ 1279 0018 00000000 		.4byte	.LFB6
+ 1280 001c 20000000 		.4byte	.LFE6
+ 1281 0020 00000000 		.4byte	.LFB7
+ 1282 0024 0C000000 		.4byte	.LFE7
+ 1283 0028 00000000 		.4byte	.LFB8
+ 1284 002c 10000000 		.4byte	.LFE8
+ 1285 0030 00000000 		.4byte	.LFB9
+ 1286 0034 14000000 		.4byte	.LFE9
+ 1287 0038 00000000 		.4byte	.LFB10
+ 1288 003c 10000000 		.4byte	.LFE10
+ 1289 0040 00000000 		.4byte	.LFB0
+ 1290 0044 1C000000 		.4byte	.LFE0
+ 1291 0048 00000000 		.4byte	.LFB1
+ 1292 004c 1A000000 		.4byte	.LFE1
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccaPYQsp.s 			page 31
+
+
+ 1293 0050 00000000 		.4byte	.LFB2
+ 1294 0054 14000000 		.4byte	.LFE2
+ 1295 0058 00000000 		.4byte	.LFB11
+ 1296 005c 10000000 		.4byte	.LFE11
+ 1297 0060 00000000 		.4byte	.LFB12
+ 1298 0064 10000000 		.4byte	.LFE12
+ 1299 0068 00000000 		.4byte	0
+ 1300 006c 00000000 		.4byte	0
+ 1301              		.section	.debug_line,"",%progbits
+ 1302              	.Ldebug_line0:
+ 1303 0000 54010000 		.section	.debug_str,"MS",%progbits,1
+ 1303      02005400 
+ 1303      00000201 
+ 1303      FB0E0D00 
+ 1303      01010101 
+ 1304              	.LASF32:
+ 1305 0000 55415254 		.ascii	"UART_SCB_IRQ_SetPending\000"
+ 1305      5F534342 
+ 1305      5F495251 
+ 1305      5F536574 
+ 1305      50656E64 
+ 1306              	.LASF14:
+ 1307 0018 72656733 		.ascii	"reg32\000"
+ 1307      3200
+ 1308              	.LASF18:
+ 1309 001e 55415254 		.ascii	"UART_SCB_IRQ_SetVector\000"
+ 1309      5F534342 
+ 1309      5F495251 
+ 1309      5F536574 
+ 1309      56656374 
+ 1310              	.LASF37:
+ 1311 0035 47656E65 		.ascii	"Generated_Source\\PSoC4\\UART_SCB_IRQ.c\000"
+ 1311      72617465 
+ 1311      645F536F 
+ 1311      75726365 
+ 1311      5C50536F 
+ 1312              	.LASF40:
+ 1313 005b 43795261 		.ascii	"CyRamVectors\000"
+ 1313      6D566563 
+ 1313      746F7273 
+ 1313      00
+ 1314              	.LASF3:
+ 1315 0068 73686F72 		.ascii	"short unsigned int\000"
+ 1315      7420756E 
+ 1315      7369676E 
+ 1315      65642069 
+ 1315      6E7400
+ 1316              	.LASF11:
+ 1317 007b 666C6F61 		.ascii	"float\000"
+ 1317      7400
+ 1318              	.LASF7:
+ 1319 0081 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1319      206C6F6E 
+ 1319      6720756E 
+ 1319      7369676E 
+ 1319      65642069 
+ 1320              	.LASF1:
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccaPYQsp.s 			page 32
+
+
+ 1321 0098 756E7369 		.ascii	"unsigned char\000"
+ 1321      676E6564 
+ 1321      20636861 
+ 1321      7200
+ 1322              	.LASF30:
+ 1323 00a6 55415254 		.ascii	"UART_SCB_IRQ_StartEx\000"
+ 1323      5F534342 
+ 1323      5F495251 
+ 1323      5F537461 
+ 1323      72744578 
+ 1324              	.LASF22:
+ 1325 00bb 696E7465 		.ascii	"interruptState\000"
+ 1325      72727570 
+ 1325      74537461 
+ 1325      746500
+ 1326              	.LASF5:
+ 1327 00ca 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1327      20756E73 
+ 1327      69676E65 
+ 1327      6420696E 
+ 1327      7400
+ 1328              	.LASF9:
+ 1329 00dc 75696E74 		.ascii	"uint8\000"
+ 1329      3800
+ 1330              	.LASF38:
+ 1331 00e2 443A5C72 		.ascii	"D:\\repositories\\Tarocco\\Bootloader\\cncboot_no_o"
+ 1331      65706F73 
+ 1331      69746F72 
+ 1331      6965735C 
+ 1331      5461726F 
+ 1332 0111 7074696D 		.ascii	"ptimizations\\cncboot.cydsn\000"
+ 1332      697A6174 
+ 1332      696F6E73 
+ 1332      5C636E63 
+ 1332      626F6F74 
+ 1333              	.LASF26:
+ 1334 012c 55415254 		.ascii	"UART_SCB_IRQ_GetVector\000"
+ 1334      5F534342 
+ 1334      5F495251 
+ 1334      5F476574 
+ 1334      56656374 
+ 1335              	.LASF21:
+ 1336 0143 7072696F 		.ascii	"priority\000"
+ 1336      72697479 
+ 1336      00
+ 1337              	.LASF24:
+ 1338 014c 55415254 		.ascii	"UART_SCB_IRQ_Interrupt\000"
+ 1338      5F534342 
+ 1338      5F495251 
+ 1338      5F496E74 
+ 1338      65727275 
+ 1339              	.LASF25:
+ 1340 0163 55415254 		.ascii	"UART_SCB_IRQ_Enable\000"
+ 1340      5F534342 
+ 1340      5F495251 
+ 1340      5F456E61 
+ 1340      626C6500 
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccaPYQsp.s 			page 33
+
+
+ 1341              	.LASF12:
+ 1342 0177 646F7562 		.ascii	"double\000"
+ 1342      6C6500
+ 1343              	.LASF10:
+ 1344 017e 75696E74 		.ascii	"uint32\000"
+ 1344      333200
+ 1345              	.LASF34:
+ 1346 0185 4379456E 		.ascii	"CyEnterCriticalSection\000"
+ 1346      74657243 
+ 1346      72697469 
+ 1346      63616C53 
+ 1346      65637469 
+ 1347              	.LASF39:
+ 1348 019c 55415254 		.ascii	"UART_SCB_IRQ_GetPriority\000"
+ 1348      5F534342 
+ 1348      5F495251 
+ 1348      5F476574 
+ 1348      5072696F 
+ 1349              	.LASF8:
+ 1350 01b5 756E7369 		.ascii	"unsigned int\000"
+ 1350      676E6564 
+ 1350      20696E74 
+ 1350      00
+ 1351              	.LASF20:
+ 1352 01c2 61646472 		.ascii	"address\000"
+ 1352      65737300 
+ 1353              	.LASF35:
+ 1354 01ca 43794578 		.ascii	"CyExitCriticalSection\000"
+ 1354      69744372 
+ 1354      69746963 
+ 1354      616C5365 
+ 1354      6374696F 
+ 1355              	.LASF15:
+ 1356 01e0 63796973 		.ascii	"cyisraddress\000"
+ 1356      72616464 
+ 1356      72657373 
+ 1356      00
+ 1357              	.LASF29:
+ 1358 01ed 55415254 		.ascii	"UART_SCB_IRQ_Start\000"
+ 1358      5F534342 
+ 1358      5F495251 
+ 1358      5F537461 
+ 1358      727400
+ 1359              	.LASF36:
+ 1360 0200 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1360      43313120 
+ 1360      352E342E 
+ 1360      31203230 
+ 1360      31363036 
+ 1361 0233 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 1361      20726576 
+ 1361      6973696F 
+ 1361      6E203233 
+ 1361      37373135 
+ 1362 0266 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1362      66756E63 
+ 1362      74696F6E 
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccaPYQsp.s 			page 34
+
+
+ 1362      2D736563 
+ 1362      74696F6E 
+ 1363              	.LASF17:
+ 1364 028e 73697A65 		.ascii	"sizetype\000"
+ 1364      74797065 
+ 1364      00
+ 1365              	.LASF6:
+ 1366 0297 6C6F6E67 		.ascii	"long long int\000"
+ 1366      206C6F6E 
+ 1366      6720696E 
+ 1366      7400
+ 1367              	.LASF28:
+ 1368 02a5 55415254 		.ascii	"UART_SCB_IRQ_Disable\000"
+ 1368      5F534342 
+ 1368      5F495251 
+ 1368      5F446973 
+ 1368      61626C65 
+ 1369              	.LASF13:
+ 1370 02ba 63686172 		.ascii	"char\000"
+ 1370      00
+ 1371              	.LASF31:
+ 1372 02bf 55415254 		.ascii	"UART_SCB_IRQ_Stop\000"
+ 1372      5F534342 
+ 1372      5F495251 
+ 1372      5F53746F 
+ 1372      7000
+ 1373              	.LASF33:
+ 1374 02d1 55415254 		.ascii	"UART_SCB_IRQ_ClearPending\000"
+ 1374      5F534342 
+ 1374      5F495251 
+ 1374      5F436C65 
+ 1374      61725065 
+ 1375              	.LASF2:
+ 1376 02eb 73686F72 		.ascii	"short int\000"
+ 1376      7420696E 
+ 1376      7400
+ 1377              	.LASF19:
+ 1378 02f5 55415254 		.ascii	"UART_SCB_IRQ_SetPriority\000"
+ 1378      5F534342 
+ 1378      5F495251 
+ 1378      5F536574 
+ 1378      5072696F 
+ 1379              	.LASF23:
+ 1380 030e 7072696F 		.ascii	"priorityOffset\000"
+ 1380      72697479 
+ 1380      4F666673 
+ 1380      657400
+ 1381              	.LASF4:
+ 1382 031d 6C6F6E67 		.ascii	"long int\000"
+ 1382      20696E74 
+ 1382      00
+ 1383              	.LASF27:
+ 1384 0326 55415254 		.ascii	"UART_SCB_IRQ_GetState\000"
+ 1384      5F534342 
+ 1384      5F495251 
+ 1384      5F476574 
+ 1384      53746174 
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccaPYQsp.s 			page 35
+
+
+ 1385              	.LASF16:
+ 1386 033c 6C6F6E67 		.ascii	"long double\000"
+ 1386      20646F75 
+ 1386      626C6500 
+ 1387              	.LASF0:
+ 1388 0348 7369676E 		.ascii	"signed char\000"
+ 1388      65642063 
+ 1388      68617200 
+ 1389              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

@@ -1,0 +1,449 @@
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cckacuwo.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.main,"ax",%progbits
+  20              		.align	2
+  21              		.global	main
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	main, %function
+  25              	main:
+  26              	.LFB34:
+  27              		.file 1 "main.c"
+   1:main.c        **** /* ========================================
+   2:main.c        ****  *
+   3:main.c        ****  * Copyright YOUR COMPANY, THE YEAR
+   4:main.c        ****  * All Rights Reserved
+   5:main.c        ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:main.c        ****  *
+   7:main.c        ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:main.c        ****  * WHICH IS THE PROPERTY OF your company.
+   9:main.c        ****  *
+  10:main.c        ****  * ========================================
+  11:main.c        **** */
+  12:main.c        **** #include <project.h>
+  13:main.c        **** 
+  14:main.c        **** int main()
+  15:main.c        **** {
+  28              		.loc 1 15 0
+  29              		.cfi_startproc
+  30              		@ Volatile: function does not return.
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 10B5     		push	{r4, lr}
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 4, -8
+  36              		.cfi_offset 14, -4
+  16:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
+  37              		.loc 1 16 0
+  38              		.syntax divided
+  39              	@ 16 "main.c" 1
+  40 0002 62B6     		CPSIE   i
+  41              	@ 0 "" 2
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cckacuwo.s 			page 2
+
+
+  17:main.c        **** 
+  18:main.c        ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+  19:main.c        ****     PWM_Start();
+  42              		.loc 1 19 0
+  43              		.thumb
+  44              		.syntax unified
+  45 0004 FFF7FEFF 		bl	PWM_Start
+  46              	.LVL0:
+  20:main.c        ****     CyBtldr_Start();
+  47              		.loc 1 20 0
+  48 0008 FFF7FEFF 		bl	Bootloader_1_Start
+  49              	.LVL1:
+  50              	.L2:
+  51 000c FEE7     		b	.L2
+  52              		.cfi_endproc
+  53              	.LFE34:
+  54              		.size	main, .-main
+  55 000e C046     		.text
+  56              	.Letext0:
+  57              		.file 2 "Generated_Source\\PSoC4/PWM.h"
+  58              		.file 3 "Generated_Source\\PSoC4/Bootloader_1.h"
+  59              		.section	.debug_info,"",%progbits
+  60              	.Ldebug_info0:
+  61 0000 CE000000 		.4byte	0xce
+  62 0004 0400     		.2byte	0x4
+  63 0006 00000000 		.4byte	.Ldebug_abbrev0
+  64 000a 04       		.byte	0x4
+  65 000b 01       		.uleb128 0x1
+  66 000c 96000000 		.4byte	.LASF16
+  67 0010 0C       		.byte	0xc
+  68 0011 2E000000 		.4byte	.LASF17
+  69 0015 59010000 		.4byte	.LASF18
+  70 0019 00000000 		.4byte	.Ldebug_ranges0+0
+  71 001d 00000000 		.4byte	0
+  72 0021 00000000 		.4byte	.Ldebug_line0
+  73 0025 02       		.uleb128 0x2
+  74 0026 01       		.byte	0x1
+  75 0027 06       		.byte	0x6
+  76 0028 37010000 		.4byte	.LASF0
+  77 002c 02       		.uleb128 0x2
+  78 002d 01       		.byte	0x1
+  79 002e 08       		.byte	0x8
+  80 002f 73000000 		.4byte	.LASF1
+  81 0033 02       		.uleb128 0x2
+  82 0034 02       		.byte	0x2
+  83 0035 05       		.byte	0x5
+  84 0036 4F010000 		.4byte	.LASF2
+  85 003a 02       		.uleb128 0x2
+  86 003b 02       		.byte	0x2
+  87 003c 07       		.byte	0x7
+  88 003d 24010000 		.4byte	.LASF3
+  89 0041 02       		.uleb128 0x2
+  90 0042 04       		.byte	0x4
+  91 0043 05       		.byte	0x5
+  92 0044 86000000 		.4byte	.LASF4
+  93 0048 02       		.uleb128 0x2
+  94 0049 04       		.byte	0x4
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cckacuwo.s 			page 3
+
+
+  95 004a 07       		.byte	0x7
+  96 004b 3A000000 		.4byte	.LASF5
+  97 004f 02       		.uleb128 0x2
+  98 0050 08       		.byte	0x8
+  99 0051 05       		.byte	0x5
+ 100 0052 00000000 		.4byte	.LASF6
+ 101 0056 02       		.uleb128 0x2
+ 102 0057 08       		.byte	0x8
+ 103 0058 07       		.byte	0x7
+ 104 0059 4C000000 		.4byte	.LASF7
+ 105 005d 03       		.uleb128 0x3
+ 106 005e 04       		.byte	0x4
+ 107 005f 05       		.byte	0x5
+ 108 0060 696E7400 		.ascii	"int\000"
+ 109 0064 02       		.uleb128 0x2
+ 110 0065 04       		.byte	0x4
+ 111 0066 07       		.byte	0x7
+ 112 0067 0E000000 		.4byte	.LASF8
+ 113 006b 02       		.uleb128 0x2
+ 114 006c 04       		.byte	0x4
+ 115 006d 04       		.byte	0x4
+ 116 006e 63000000 		.4byte	.LASF9
+ 117 0072 02       		.uleb128 0x2
+ 118 0073 08       		.byte	0x8
+ 119 0074 04       		.byte	0x4
+ 120 0075 8F000000 		.4byte	.LASF10
+ 121 0079 02       		.uleb128 0x2
+ 122 007a 01       		.byte	0x1
+ 123 007b 08       		.byte	0x8
+ 124 007c 81000000 		.4byte	.LASF11
+ 125 0080 02       		.uleb128 0x2
+ 126 0081 08       		.byte	0x8
+ 127 0082 04       		.byte	0x4
+ 128 0083 43010000 		.4byte	.LASF12
+ 129 0087 02       		.uleb128 0x2
+ 130 0088 04       		.byte	0x4
+ 131 0089 07       		.byte	0x7
+ 132 008a A3010000 		.4byte	.LASF13
+ 133 008e 04       		.uleb128 0x4
+ 134 008f 35000000 		.4byte	.LASF19
+ 135 0093 01       		.byte	0x1
+ 136 0094 0E       		.byte	0xe
+ 137 0095 5D000000 		.4byte	0x5d
+ 138 0099 00000000 		.4byte	.LFB34
+ 139 009d 0E000000 		.4byte	.LFE34-.LFB34
+ 140 00a1 01       		.uleb128 0x1
+ 141 00a2 9C       		.byte	0x9c
+ 142 00a3 BA000000 		.4byte	0xba
+ 143 00a7 05       		.uleb128 0x5
+ 144 00a8 08000000 		.4byte	.LVL0
+ 145 00ac BA000000 		.4byte	0xba
+ 146 00b0 05       		.uleb128 0x5
+ 147 00b1 0C000000 		.4byte	.LVL1
+ 148 00b5 C6000000 		.4byte	0xc6
+ 149 00b9 00       		.byte	0
+ 150 00ba 06       		.uleb128 0x6
+ 151 00bb 69000000 		.4byte	.LASF14
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cckacuwo.s 			page 4
+
+
+ 152 00bf 69000000 		.4byte	.LASF14
+ 153 00c3 02       		.byte	0x2
+ 154 00c4 3201     		.2byte	0x132
+ 155 00c6 07       		.uleb128 0x7
+ 156 00c7 1B000000 		.4byte	.LASF15
+ 157 00cb 1B000000 		.4byte	.LASF15
+ 158 00cf 03       		.byte	0x3
+ 159 00d0 E6       		.byte	0xe6
+ 160 00d1 00       		.byte	0
+ 161              		.section	.debug_abbrev,"",%progbits
+ 162              	.Ldebug_abbrev0:
+ 163 0000 01       		.uleb128 0x1
+ 164 0001 11       		.uleb128 0x11
+ 165 0002 01       		.byte	0x1
+ 166 0003 25       		.uleb128 0x25
+ 167 0004 0E       		.uleb128 0xe
+ 168 0005 13       		.uleb128 0x13
+ 169 0006 0B       		.uleb128 0xb
+ 170 0007 03       		.uleb128 0x3
+ 171 0008 0E       		.uleb128 0xe
+ 172 0009 1B       		.uleb128 0x1b
+ 173 000a 0E       		.uleb128 0xe
+ 174 000b 55       		.uleb128 0x55
+ 175 000c 17       		.uleb128 0x17
+ 176 000d 11       		.uleb128 0x11
+ 177 000e 01       		.uleb128 0x1
+ 178 000f 10       		.uleb128 0x10
+ 179 0010 17       		.uleb128 0x17
+ 180 0011 00       		.byte	0
+ 181 0012 00       		.byte	0
+ 182 0013 02       		.uleb128 0x2
+ 183 0014 24       		.uleb128 0x24
+ 184 0015 00       		.byte	0
+ 185 0016 0B       		.uleb128 0xb
+ 186 0017 0B       		.uleb128 0xb
+ 187 0018 3E       		.uleb128 0x3e
+ 188 0019 0B       		.uleb128 0xb
+ 189 001a 03       		.uleb128 0x3
+ 190 001b 0E       		.uleb128 0xe
+ 191 001c 00       		.byte	0
+ 192 001d 00       		.byte	0
+ 193 001e 03       		.uleb128 0x3
+ 194 001f 24       		.uleb128 0x24
+ 195 0020 00       		.byte	0
+ 196 0021 0B       		.uleb128 0xb
+ 197 0022 0B       		.uleb128 0xb
+ 198 0023 3E       		.uleb128 0x3e
+ 199 0024 0B       		.uleb128 0xb
+ 200 0025 03       		.uleb128 0x3
+ 201 0026 08       		.uleb128 0x8
+ 202 0027 00       		.byte	0
+ 203 0028 00       		.byte	0
+ 204 0029 04       		.uleb128 0x4
+ 205 002a 2E       		.uleb128 0x2e
+ 206 002b 01       		.byte	0x1
+ 207 002c 3F       		.uleb128 0x3f
+ 208 002d 19       		.uleb128 0x19
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cckacuwo.s 			page 5
+
+
+ 209 002e 03       		.uleb128 0x3
+ 210 002f 0E       		.uleb128 0xe
+ 211 0030 3A       		.uleb128 0x3a
+ 212 0031 0B       		.uleb128 0xb
+ 213 0032 3B       		.uleb128 0x3b
+ 214 0033 0B       		.uleb128 0xb
+ 215 0034 49       		.uleb128 0x49
+ 216 0035 13       		.uleb128 0x13
+ 217 0036 8701     		.uleb128 0x87
+ 218 0038 19       		.uleb128 0x19
+ 219 0039 11       		.uleb128 0x11
+ 220 003a 01       		.uleb128 0x1
+ 221 003b 12       		.uleb128 0x12
+ 222 003c 06       		.uleb128 0x6
+ 223 003d 40       		.uleb128 0x40
+ 224 003e 18       		.uleb128 0x18
+ 225 003f 9742     		.uleb128 0x2117
+ 226 0041 19       		.uleb128 0x19
+ 227 0042 01       		.uleb128 0x1
+ 228 0043 13       		.uleb128 0x13
+ 229 0044 00       		.byte	0
+ 230 0045 00       		.byte	0
+ 231 0046 05       		.uleb128 0x5
+ 232 0047 898201   		.uleb128 0x4109
+ 233 004a 00       		.byte	0
+ 234 004b 11       		.uleb128 0x11
+ 235 004c 01       		.uleb128 0x1
+ 236 004d 31       		.uleb128 0x31
+ 237 004e 13       		.uleb128 0x13
+ 238 004f 00       		.byte	0
+ 239 0050 00       		.byte	0
+ 240 0051 06       		.uleb128 0x6
+ 241 0052 2E       		.uleb128 0x2e
+ 242 0053 00       		.byte	0
+ 243 0054 3F       		.uleb128 0x3f
+ 244 0055 19       		.uleb128 0x19
+ 245 0056 3C       		.uleb128 0x3c
+ 246 0057 19       		.uleb128 0x19
+ 247 0058 6E       		.uleb128 0x6e
+ 248 0059 0E       		.uleb128 0xe
+ 249 005a 03       		.uleb128 0x3
+ 250 005b 0E       		.uleb128 0xe
+ 251 005c 3A       		.uleb128 0x3a
+ 252 005d 0B       		.uleb128 0xb
+ 253 005e 3B       		.uleb128 0x3b
+ 254 005f 05       		.uleb128 0x5
+ 255 0060 00       		.byte	0
+ 256 0061 00       		.byte	0
+ 257 0062 07       		.uleb128 0x7
+ 258 0063 2E       		.uleb128 0x2e
+ 259 0064 00       		.byte	0
+ 260 0065 3F       		.uleb128 0x3f
+ 261 0066 19       		.uleb128 0x19
+ 262 0067 3C       		.uleb128 0x3c
+ 263 0068 19       		.uleb128 0x19
+ 264 0069 6E       		.uleb128 0x6e
+ 265 006a 0E       		.uleb128 0xe
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cckacuwo.s 			page 6
+
+
+ 266 006b 03       		.uleb128 0x3
+ 267 006c 0E       		.uleb128 0xe
+ 268 006d 3A       		.uleb128 0x3a
+ 269 006e 0B       		.uleb128 0xb
+ 270 006f 3B       		.uleb128 0x3b
+ 271 0070 0B       		.uleb128 0xb
+ 272 0071 00       		.byte	0
+ 273 0072 00       		.byte	0
+ 274 0073 00       		.byte	0
+ 275              		.section	.debug_aranges,"",%progbits
+ 276 0000 1C000000 		.4byte	0x1c
+ 277 0004 0200     		.2byte	0x2
+ 278 0006 00000000 		.4byte	.Ldebug_info0
+ 279 000a 04       		.byte	0x4
+ 280 000b 00       		.byte	0
+ 281 000c 0000     		.2byte	0
+ 282 000e 0000     		.2byte	0
+ 283 0010 00000000 		.4byte	.LFB34
+ 284 0014 0E000000 		.4byte	.LFE34-.LFB34
+ 285 0018 00000000 		.4byte	0
+ 286 001c 00000000 		.4byte	0
+ 287              		.section	.debug_ranges,"",%progbits
+ 288              	.Ldebug_ranges0:
+ 289 0000 00000000 		.4byte	.LFB34
+ 290 0004 0E000000 		.4byte	.LFE34
+ 291 0008 00000000 		.4byte	0
+ 292 000c 00000000 		.4byte	0
+ 293              		.section	.debug_line,"",%progbits
+ 294              	.Ldebug_line0:
+ 295 0000 67000000 		.section	.debug_str,"MS",%progbits,1
+ 295      02004F00 
+ 295      00000201 
+ 295      FB0E0D00 
+ 295      01010101 
+ 296              	.LASF6:
+ 297 0000 6C6F6E67 		.ascii	"long long int\000"
+ 297      206C6F6E 
+ 297      6720696E 
+ 297      7400
+ 298              	.LASF8:
+ 299 000e 756E7369 		.ascii	"unsigned int\000"
+ 299      676E6564 
+ 299      20696E74 
+ 299      00
+ 300              	.LASF15:
+ 301 001b 426F6F74 		.ascii	"Bootloader_1_Start\000"
+ 301      6C6F6164 
+ 301      65725F31 
+ 301      5F537461 
+ 301      727400
+ 302              	.LASF17:
+ 303 002e 6D61696E 		.ascii	"main.c\000"
+ 303      2E6300
+ 304              	.LASF19:
+ 305 0035 6D61696E 		.ascii	"main\000"
+ 305      00
+ 306              	.LASF5:
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cckacuwo.s 			page 7
+
+
+ 307 003a 6C6F6E67 		.ascii	"long unsigned int\000"
+ 307      20756E73 
+ 307      69676E65 
+ 307      6420696E 
+ 307      7400
+ 308              	.LASF7:
+ 309 004c 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 309      206C6F6E 
+ 309      6720756E 
+ 309      7369676E 
+ 309      65642069 
+ 310              	.LASF9:
+ 311 0063 666C6F61 		.ascii	"float\000"
+ 311      7400
+ 312              	.LASF14:
+ 313 0069 50574D5F 		.ascii	"PWM_Start\000"
+ 313      53746172 
+ 313      7400
+ 314              	.LASF1:
+ 315 0073 756E7369 		.ascii	"unsigned char\000"
+ 315      676E6564 
+ 315      20636861 
+ 315      7200
+ 316              	.LASF11:
+ 317 0081 63686172 		.ascii	"char\000"
+ 317      00
+ 318              	.LASF4:
+ 319 0086 6C6F6E67 		.ascii	"long int\000"
+ 319      20696E74 
+ 319      00
+ 320              	.LASF10:
+ 321 008f 646F7562 		.ascii	"double\000"
+ 321      6C6500
+ 322              	.LASF16:
+ 323 0096 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 323      43313120 
+ 323      352E342E 
+ 323      31203230 
+ 323      31363036 
+ 324 00c9 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 324      20726576 
+ 324      6973696F 
+ 324      6E203233 
+ 324      37373135 
+ 325 00fc 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 325      66756E63 
+ 325      74696F6E 
+ 325      2D736563 
+ 325      74696F6E 
+ 326              	.LASF3:
+ 327 0124 73686F72 		.ascii	"short unsigned int\000"
+ 327      7420756E 
+ 327      7369676E 
+ 327      65642069 
+ 327      6E7400
+ 328              	.LASF0:
+ 329 0137 7369676E 		.ascii	"signed char\000"
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cckacuwo.s 			page 8
+
+
+ 329      65642063 
+ 329      68617200 
+ 330              	.LASF12:
+ 331 0143 6C6F6E67 		.ascii	"long double\000"
+ 331      20646F75 
+ 331      626C6500 
+ 332              	.LASF2:
+ 333 014f 73686F72 		.ascii	"short int\000"
+ 333      7420696E 
+ 333      7400
+ 334              	.LASF18:
+ 335 0159 443A5C72 		.ascii	"D:\\repositories\\Tarocco\\Bootloader\\cncboot_no_o"
+ 335      65706F73 
+ 335      69746F72 
+ 335      6965735C 
+ 335      5461726F 
+ 336 0188 7074696D 		.ascii	"ptimizations\\cncboot.cydsn\000"
+ 336      697A6174 
+ 336      696F6E73 
+ 336      5C636E63 
+ 336      626F6F74 
+ 337              	.LASF13:
+ 338 01a3 73697A65 		.ascii	"sizetype\000"
+ 338      74797065 
+ 338      00
+ 339              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

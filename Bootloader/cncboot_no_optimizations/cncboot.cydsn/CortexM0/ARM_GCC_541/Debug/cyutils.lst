@@ -1,0 +1,748 @@
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccYvKVFa.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"cyutils.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.CySetReg24,"ax",%progbits
+  20              		.align	2
+  21              		.global	CySetReg24
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	CySetReg24, %function
+  25              	CySetReg24:
+  26              	.LFB0:
+  27              		.file 1 "Generated_Source\\PSoC4\\cyutils.c"
+   1:Generated_Source\PSoC4/cyutils.c **** /***************************************************************************//**
+   2:Generated_Source\PSoC4/cyutils.c **** * \file cyutils.c
+   3:Generated_Source\PSoC4/cyutils.c **** * \version 5.40
+   4:Generated_Source\PSoC4/cyutils.c **** *
+   5:Generated_Source\PSoC4/cyutils.c **** * \brief Provides a function to handle 24-bit value writes.
+   6:Generated_Source\PSoC4/cyutils.c **** *
+   7:Generated_Source\PSoC4/cyutils.c **** ********************************************************************************
+   8:Generated_Source\PSoC4/cyutils.c **** * \copyright
+   9:Generated_Source\PSoC4/cyutils.c **** * Copyright 2008-2016, Cypress Semiconductor Corporation.  All rights reserved.
+  10:Generated_Source\PSoC4/cyutils.c **** * You may use this file only in accordance with the license, terms, conditions,
+  11:Generated_Source\PSoC4/cyutils.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  12:Generated_Source\PSoC4/cyutils.c **** * the software package with which this file was provided.
+  13:Generated_Source\PSoC4/cyutils.c **** *******************************************************************************/
+  14:Generated_Source\PSoC4/cyutils.c **** 
+  15:Generated_Source\PSoC4/cyutils.c **** #include "cytypes.h"
+  16:Generated_Source\PSoC4/cyutils.c **** 
+  17:Generated_Source\PSoC4/cyutils.c **** #if (!CY_PSOC3)
+  18:Generated_Source\PSoC4/cyutils.c **** 
+  19:Generated_Source\PSoC4/cyutils.c ****     /***************************************************************************
+  20:Generated_Source\PSoC4/cyutils.c ****     * Function Name: CySetReg24
+  21:Generated_Source\PSoC4/cyutils.c ****     ************************************************************************//**
+  22:Generated_Source\PSoC4/cyutils.c ****     *
+  23:Generated_Source\PSoC4/cyutils.c ****     * Writes a 24-bit value to the specified register.
+  24:Generated_Source\PSoC4/cyutils.c ****     *
+  25:Generated_Source\PSoC4/cyutils.c ****     * \param addr The address where data must be written.
+  26:Generated_Source\PSoC4/cyutils.c ****     * \param value The data that must be written.
+  27:Generated_Source\PSoC4/cyutils.c ****     *
+  28:Generated_Source\PSoC4/cyutils.c ****     * \reentrant No
+  29:Generated_Source\PSoC4/cyutils.c ****     *
+  30:Generated_Source\PSoC4/cyutils.c ****     ***************************************************************************/
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccYvKVFa.s 			page 2
+
+
+  31:Generated_Source\PSoC4/cyutils.c ****     void CySetReg24(uint32 volatile * addr, uint32 value)
+  32:Generated_Source\PSoC4/cyutils.c ****     {
+  28              		.loc 1 32 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  33              	.LVL0:
+  33:Generated_Source\PSoC4/cyutils.c ****         uint8 volatile *tmpAddr;
+  34:Generated_Source\PSoC4/cyutils.c **** 
+  35:Generated_Source\PSoC4/cyutils.c ****         tmpAddr = (uint8 volatile *) addr;
+  36:Generated_Source\PSoC4/cyutils.c **** 
+  37:Generated_Source\PSoC4/cyutils.c ****         tmpAddr[0u] = (uint8) value;
+  34              		.loc 1 37 0
+  35 0000 CBB2     		uxtb	r3, r1
+  36 0002 0370     		strb	r3, [r0]
+  38:Generated_Source\PSoC4/cyutils.c ****         tmpAddr[1u] = (uint8) (value >> 8u);
+  37              		.loc 1 38 0
+  38 0004 0B0A     		lsrs	r3, r1, #8
+  39 0006 DBB2     		uxtb	r3, r3
+  40 0008 4370     		strb	r3, [r0, #1]
+  39:Generated_Source\PSoC4/cyutils.c ****         tmpAddr[2u] = (uint8) (value >> 16u);
+  41              		.loc 1 39 0
+  42 000a 090C     		lsrs	r1, r1, #16
+  43              	.LVL1:
+  44 000c C9B2     		uxtb	r1, r1
+  45 000e 8170     		strb	r1, [r0, #2]
+  40:Generated_Source\PSoC4/cyutils.c ****     }
+  46              		.loc 1 40 0
+  47              		@ sp needed
+  48 0010 7047     		bx	lr
+  49              		.cfi_endproc
+  50              	.LFE0:
+  51              		.size	CySetReg24, .-CySetReg24
+  52 0012 C046     		.section	.text.CyGetReg24,"ax",%progbits
+  53              		.align	2
+  54              		.global	CyGetReg24
+  55              		.code	16
+  56              		.thumb_func
+  57              		.type	CyGetReg24, %function
+  58              	CyGetReg24:
+  59              	.LFB1:
+  41:Generated_Source\PSoC4/cyutils.c **** 
+  42:Generated_Source\PSoC4/cyutils.c **** 
+  43:Generated_Source\PSoC4/cyutils.c ****     #if(CY_PSOC4)
+  44:Generated_Source\PSoC4/cyutils.c **** 
+  45:Generated_Source\PSoC4/cyutils.c ****         /***************************************************************************
+  46:Generated_Source\PSoC4/cyutils.c ****         * Function Name: CyGetReg24
+  47:Generated_Source\PSoC4/cyutils.c ****         ************************************************************************//**
+  48:Generated_Source\PSoC4/cyutils.c ****         *
+  49:Generated_Source\PSoC4/cyutils.c ****         * Reads the 24-bit value from the specified register.
+  50:Generated_Source\PSoC4/cyutils.c ****         *
+  51:Generated_Source\PSoC4/cyutils.c ****         * \param addr The address where data must be read.
+  52:Generated_Source\PSoC4/cyutils.c ****         *
+  53:Generated_Source\PSoC4/cyutils.c ****         * \reentrant No
+  54:Generated_Source\PSoC4/cyutils.c ****         *
+  55:Generated_Source\PSoC4/cyutils.c ****         ***************************************************************************/
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccYvKVFa.s 			page 3
+
+
+  56:Generated_Source\PSoC4/cyutils.c ****         uint32 CyGetReg24(uint32 const volatile * addr)
+  57:Generated_Source\PSoC4/cyutils.c ****         {
+  60              		.loc 1 57 0
+  61              		.cfi_startproc
+  62              		@ args = 0, pretend = 0, frame = 0
+  63              		@ frame_needed = 0, uses_anonymous_args = 0
+  64              		@ link register save eliminated.
+  65              	.LVL2:
+  58:Generated_Source\PSoC4/cyutils.c ****             uint8 const volatile *tmpAddr;
+  59:Generated_Source\PSoC4/cyutils.c ****             uint32 value;
+  60:Generated_Source\PSoC4/cyutils.c **** 
+  61:Generated_Source\PSoC4/cyutils.c ****             tmpAddr = (uint8 const volatile *) addr;
+  62:Generated_Source\PSoC4/cyutils.c **** 
+  63:Generated_Source\PSoC4/cyutils.c ****             value  =  (uint32) tmpAddr[0u];
+  66              		.loc 1 63 0
+  67 0000 0378     		ldrb	r3, [r0]
+  68              	.LVL3:
+  64:Generated_Source\PSoC4/cyutils.c ****             value |= ((uint32) tmpAddr[1u] << 8u );
+  69              		.loc 1 64 0
+  70 0002 4278     		ldrb	r2, [r0, #1]
+  71 0004 1202     		lsls	r2, r2, #8
+  72 0006 1A43     		orrs	r2, r3
+  73              	.LVL4:
+  65:Generated_Source\PSoC4/cyutils.c ****             value |= ((uint32) tmpAddr[2u] << 16u);
+  74              		.loc 1 65 0
+  75 0008 8378     		ldrb	r3, [r0, #2]
+  76 000a 1B04     		lsls	r3, r3, #16
+  77 000c 1A43     		orrs	r2, r3
+  78              	.LVL5:
+  79 000e 1000     		movs	r0, r2
+  80              	.LVL6:
+  66:Generated_Source\PSoC4/cyutils.c **** 
+  67:Generated_Source\PSoC4/cyutils.c ****             return(value);
+  68:Generated_Source\PSoC4/cyutils.c ****         }
+  81              		.loc 1 68 0
+  82              		@ sp needed
+  83 0010 7047     		bx	lr
+  84              		.cfi_endproc
+  85              	.LFE1:
+  86              		.size	CyGetReg24, .-CyGetReg24
+  87 0012 C046     		.text
+  88              	.Letext0:
+  89              		.file 2 "Generated_Source\\PSoC4\\cytypes.h"
+  90              		.section	.debug_info,"",%progbits
+  91              	.Ldebug_info0:
+  92 0000 47010000 		.4byte	0x147
+  93 0004 0400     		.2byte	0x4
+  94 0006 00000000 		.4byte	.Ldebug_abbrev0
+  95 000a 04       		.byte	0x4
+  96 000b 01       		.uleb128 0x1
+  97 000c DE000000 		.4byte	.LASF17
+  98 0010 0C       		.byte	0xc
+  99 0011 6C010000 		.4byte	.LASF18
+ 100 0015 62000000 		.4byte	.LASF19
+ 101 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 102 001d 00000000 		.4byte	0
+ 103 0021 00000000 		.4byte	.Ldebug_line0
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccYvKVFa.s 			page 4
+
+
+ 104 0025 02       		.uleb128 0x2
+ 105 0026 01       		.byte	0x1
+ 106 0027 06       		.byte	0x6
+ 107 0028 B9010000 		.4byte	.LASF0
+ 108 002c 02       		.uleb128 0x2
+ 109 002d 01       		.byte	0x1
+ 110 002e 08       		.byte	0x8
+ 111 002f 27000000 		.4byte	.LASF1
+ 112 0033 02       		.uleb128 0x2
+ 113 0034 02       		.byte	0x2
+ 114 0035 05       		.byte	0x5
+ 115 0036 A0010000 		.4byte	.LASF2
+ 116 003a 02       		.uleb128 0x2
+ 117 003b 02       		.byte	0x2
+ 118 003c 07       		.byte	0x7
+ 119 003d 4F000000 		.4byte	.LASF3
+ 120 0041 02       		.uleb128 0x2
+ 121 0042 04       		.byte	0x4
+ 122 0043 05       		.byte	0x5
+ 123 0044 B0010000 		.4byte	.LASF4
+ 124 0048 02       		.uleb128 0x2
+ 125 0049 04       		.byte	0x4
+ 126 004a 07       		.byte	0x7
+ 127 004b 3D000000 		.4byte	.LASF5
+ 128 004f 02       		.uleb128 0x2
+ 129 0050 08       		.byte	0x8
+ 130 0051 05       		.byte	0x5
+ 131 0052 8D010000 		.4byte	.LASF6
+ 132 0056 02       		.uleb128 0x2
+ 133 0057 08       		.byte	0x8
+ 134 0058 07       		.byte	0x7
+ 135 0059 C7000000 		.4byte	.LASF7
+ 136 005d 03       		.uleb128 0x3
+ 137 005e 04       		.byte	0x4
+ 138 005f 05       		.byte	0x5
+ 139 0060 696E7400 		.ascii	"int\000"
+ 140 0064 02       		.uleb128 0x2
+ 141 0065 04       		.byte	0x4
+ 142 0066 07       		.byte	0x7
+ 143 0067 BA000000 		.4byte	.LASF8
+ 144 006b 04       		.uleb128 0x4
+ 145 006c AA010000 		.4byte	.LASF9
+ 146 0070 02       		.byte	0x2
+ 147 0071 9801     		.2byte	0x198
+ 148 0073 2C000000 		.4byte	0x2c
+ 149 0077 04       		.uleb128 0x4
+ 150 0078 B3000000 		.4byte	.LASF10
+ 151 007c 02       		.byte	0x2
+ 152 007d 9A01     		.2byte	0x19a
+ 153 007f 48000000 		.4byte	0x48
+ 154 0083 02       		.uleb128 0x2
+ 155 0084 04       		.byte	0x4
+ 156 0085 04       		.byte	0x4
+ 157 0086 21000000 		.4byte	.LASF11
+ 158 008a 02       		.uleb128 0x2
+ 159 008b 08       		.byte	0x8
+ 160 008c 04       		.byte	0x4
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccYvKVFa.s 			page 5
+
+
+ 161 008d AC000000 		.4byte	.LASF12
+ 162 0091 02       		.uleb128 0x2
+ 163 0092 01       		.byte	0x1
+ 164 0093 08       		.byte	0x8
+ 165 0094 9B010000 		.4byte	.LASF13
+ 166 0098 05       		.uleb128 0x5
+ 167 0099 6B000000 		.4byte	0x6b
+ 168 009d 05       		.uleb128 0x5
+ 169 009e 77000000 		.4byte	0x77
+ 170 00a2 06       		.uleb128 0x6
+ 171 00a3 11000000 		.4byte	.LASF20
+ 172 00a7 01       		.byte	0x1
+ 173 00a8 1F       		.byte	0x1f
+ 174 00a9 00000000 		.4byte	.LFB0
+ 175 00ad 12000000 		.4byte	.LFE0-.LFB0
+ 176 00b1 01       		.uleb128 0x1
+ 177 00b2 9C       		.byte	0x9c
+ 178 00b3 E1000000 		.4byte	0xe1
+ 179 00b7 07       		.uleb128 0x7
+ 180 00b8 1C000000 		.4byte	.LASF14
+ 181 00bc 01       		.byte	0x1
+ 182 00bd 1F       		.byte	0x1f
+ 183 00be E1000000 		.4byte	0xe1
+ 184 00c2 01       		.uleb128 0x1
+ 185 00c3 50       		.byte	0x50
+ 186 00c4 08       		.uleb128 0x8
+ 187 00c5 00000000 		.4byte	.LASF15
+ 188 00c9 01       		.byte	0x1
+ 189 00ca 1F       		.byte	0x1f
+ 190 00cb 77000000 		.4byte	0x77
+ 191 00cf 00000000 		.4byte	.LLST0
+ 192 00d3 09       		.uleb128 0x9
+ 193 00d4 35000000 		.4byte	.LASF16
+ 194 00d8 01       		.byte	0x1
+ 195 00d9 21       		.byte	0x21
+ 196 00da E7000000 		.4byte	0xe7
+ 197 00de 01       		.uleb128 0x1
+ 198 00df 50       		.byte	0x50
+ 199 00e0 00       		.byte	0
+ 200 00e1 0A       		.uleb128 0xa
+ 201 00e2 04       		.byte	0x4
+ 202 00e3 9D000000 		.4byte	0x9d
+ 203 00e7 0A       		.uleb128 0xa
+ 204 00e8 04       		.byte	0x4
+ 205 00e9 98000000 		.4byte	0x98
+ 206 00ed 0B       		.uleb128 0xb
+ 207 00ee 06000000 		.4byte	.LASF21
+ 208 00f2 01       		.byte	0x1
+ 209 00f3 38       		.byte	0x38
+ 210 00f4 77000000 		.4byte	0x77
+ 211 00f8 00000000 		.4byte	.LFB1
+ 212 00fc 12000000 		.4byte	.LFE1-.LFB1
+ 213 0100 01       		.uleb128 0x1
+ 214 0101 9C       		.byte	0x9c
+ 215 0102 34010000 		.4byte	0x134
+ 216 0106 08       		.uleb128 0x8
+ 217 0107 1C000000 		.4byte	.LASF14
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccYvKVFa.s 			page 6
+
+
+ 218 010b 01       		.byte	0x1
+ 219 010c 38       		.byte	0x38
+ 220 010d 34010000 		.4byte	0x134
+ 221 0111 21000000 		.4byte	.LLST1
+ 222 0115 0C       		.uleb128 0xc
+ 223 0116 35000000 		.4byte	.LASF16
+ 224 011a 01       		.byte	0x1
+ 225 011b 3A       		.byte	0x3a
+ 226 011c 3F010000 		.4byte	0x13f
+ 227 0120 42000000 		.4byte	.LLST2
+ 228 0124 0C       		.uleb128 0xc
+ 229 0125 00000000 		.4byte	.LASF15
+ 230 0129 01       		.byte	0x1
+ 231 012a 3B       		.byte	0x3b
+ 232 012b 77000000 		.4byte	0x77
+ 233 012f 63000000 		.4byte	.LLST3
+ 234 0133 00       		.byte	0
+ 235 0134 0A       		.uleb128 0xa
+ 236 0135 04       		.byte	0x4
+ 237 0136 3A010000 		.4byte	0x13a
+ 238 013a 0D       		.uleb128 0xd
+ 239 013b 9D000000 		.4byte	0x9d
+ 240 013f 0A       		.uleb128 0xa
+ 241 0140 04       		.byte	0x4
+ 242 0141 45010000 		.4byte	0x145
+ 243 0145 0D       		.uleb128 0xd
+ 244 0146 98000000 		.4byte	0x98
+ 245 014a 00       		.byte	0
+ 246              		.section	.debug_abbrev,"",%progbits
+ 247              	.Ldebug_abbrev0:
+ 248 0000 01       		.uleb128 0x1
+ 249 0001 11       		.uleb128 0x11
+ 250 0002 01       		.byte	0x1
+ 251 0003 25       		.uleb128 0x25
+ 252 0004 0E       		.uleb128 0xe
+ 253 0005 13       		.uleb128 0x13
+ 254 0006 0B       		.uleb128 0xb
+ 255 0007 03       		.uleb128 0x3
+ 256 0008 0E       		.uleb128 0xe
+ 257 0009 1B       		.uleb128 0x1b
+ 258 000a 0E       		.uleb128 0xe
+ 259 000b 55       		.uleb128 0x55
+ 260 000c 17       		.uleb128 0x17
+ 261 000d 11       		.uleb128 0x11
+ 262 000e 01       		.uleb128 0x1
+ 263 000f 10       		.uleb128 0x10
+ 264 0010 17       		.uleb128 0x17
+ 265 0011 00       		.byte	0
+ 266 0012 00       		.byte	0
+ 267 0013 02       		.uleb128 0x2
+ 268 0014 24       		.uleb128 0x24
+ 269 0015 00       		.byte	0
+ 270 0016 0B       		.uleb128 0xb
+ 271 0017 0B       		.uleb128 0xb
+ 272 0018 3E       		.uleb128 0x3e
+ 273 0019 0B       		.uleb128 0xb
+ 274 001a 03       		.uleb128 0x3
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccYvKVFa.s 			page 7
+
+
+ 275 001b 0E       		.uleb128 0xe
+ 276 001c 00       		.byte	0
+ 277 001d 00       		.byte	0
+ 278 001e 03       		.uleb128 0x3
+ 279 001f 24       		.uleb128 0x24
+ 280 0020 00       		.byte	0
+ 281 0021 0B       		.uleb128 0xb
+ 282 0022 0B       		.uleb128 0xb
+ 283 0023 3E       		.uleb128 0x3e
+ 284 0024 0B       		.uleb128 0xb
+ 285 0025 03       		.uleb128 0x3
+ 286 0026 08       		.uleb128 0x8
+ 287 0027 00       		.byte	0
+ 288 0028 00       		.byte	0
+ 289 0029 04       		.uleb128 0x4
+ 290 002a 16       		.uleb128 0x16
+ 291 002b 00       		.byte	0
+ 292 002c 03       		.uleb128 0x3
+ 293 002d 0E       		.uleb128 0xe
+ 294 002e 3A       		.uleb128 0x3a
+ 295 002f 0B       		.uleb128 0xb
+ 296 0030 3B       		.uleb128 0x3b
+ 297 0031 05       		.uleb128 0x5
+ 298 0032 49       		.uleb128 0x49
+ 299 0033 13       		.uleb128 0x13
+ 300 0034 00       		.byte	0
+ 301 0035 00       		.byte	0
+ 302 0036 05       		.uleb128 0x5
+ 303 0037 35       		.uleb128 0x35
+ 304 0038 00       		.byte	0
+ 305 0039 49       		.uleb128 0x49
+ 306 003a 13       		.uleb128 0x13
+ 307 003b 00       		.byte	0
+ 308 003c 00       		.byte	0
+ 309 003d 06       		.uleb128 0x6
+ 310 003e 2E       		.uleb128 0x2e
+ 311 003f 01       		.byte	0x1
+ 312 0040 3F       		.uleb128 0x3f
+ 313 0041 19       		.uleb128 0x19
+ 314 0042 03       		.uleb128 0x3
+ 315 0043 0E       		.uleb128 0xe
+ 316 0044 3A       		.uleb128 0x3a
+ 317 0045 0B       		.uleb128 0xb
+ 318 0046 3B       		.uleb128 0x3b
+ 319 0047 0B       		.uleb128 0xb
+ 320 0048 27       		.uleb128 0x27
+ 321 0049 19       		.uleb128 0x19
+ 322 004a 11       		.uleb128 0x11
+ 323 004b 01       		.uleb128 0x1
+ 324 004c 12       		.uleb128 0x12
+ 325 004d 06       		.uleb128 0x6
+ 326 004e 40       		.uleb128 0x40
+ 327 004f 18       		.uleb128 0x18
+ 328 0050 9742     		.uleb128 0x2117
+ 329 0052 19       		.uleb128 0x19
+ 330 0053 01       		.uleb128 0x1
+ 331 0054 13       		.uleb128 0x13
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccYvKVFa.s 			page 8
+
+
+ 332 0055 00       		.byte	0
+ 333 0056 00       		.byte	0
+ 334 0057 07       		.uleb128 0x7
+ 335 0058 05       		.uleb128 0x5
+ 336 0059 00       		.byte	0
+ 337 005a 03       		.uleb128 0x3
+ 338 005b 0E       		.uleb128 0xe
+ 339 005c 3A       		.uleb128 0x3a
+ 340 005d 0B       		.uleb128 0xb
+ 341 005e 3B       		.uleb128 0x3b
+ 342 005f 0B       		.uleb128 0xb
+ 343 0060 49       		.uleb128 0x49
+ 344 0061 13       		.uleb128 0x13
+ 345 0062 02       		.uleb128 0x2
+ 346 0063 18       		.uleb128 0x18
+ 347 0064 00       		.byte	0
+ 348 0065 00       		.byte	0
+ 349 0066 08       		.uleb128 0x8
+ 350 0067 05       		.uleb128 0x5
+ 351 0068 00       		.byte	0
+ 352 0069 03       		.uleb128 0x3
+ 353 006a 0E       		.uleb128 0xe
+ 354 006b 3A       		.uleb128 0x3a
+ 355 006c 0B       		.uleb128 0xb
+ 356 006d 3B       		.uleb128 0x3b
+ 357 006e 0B       		.uleb128 0xb
+ 358 006f 49       		.uleb128 0x49
+ 359 0070 13       		.uleb128 0x13
+ 360 0071 02       		.uleb128 0x2
+ 361 0072 17       		.uleb128 0x17
+ 362 0073 00       		.byte	0
+ 363 0074 00       		.byte	0
+ 364 0075 09       		.uleb128 0x9
+ 365 0076 34       		.uleb128 0x34
+ 366 0077 00       		.byte	0
+ 367 0078 03       		.uleb128 0x3
+ 368 0079 0E       		.uleb128 0xe
+ 369 007a 3A       		.uleb128 0x3a
+ 370 007b 0B       		.uleb128 0xb
+ 371 007c 3B       		.uleb128 0x3b
+ 372 007d 0B       		.uleb128 0xb
+ 373 007e 49       		.uleb128 0x49
+ 374 007f 13       		.uleb128 0x13
+ 375 0080 02       		.uleb128 0x2
+ 376 0081 18       		.uleb128 0x18
+ 377 0082 00       		.byte	0
+ 378 0083 00       		.byte	0
+ 379 0084 0A       		.uleb128 0xa
+ 380 0085 0F       		.uleb128 0xf
+ 381 0086 00       		.byte	0
+ 382 0087 0B       		.uleb128 0xb
+ 383 0088 0B       		.uleb128 0xb
+ 384 0089 49       		.uleb128 0x49
+ 385 008a 13       		.uleb128 0x13
+ 386 008b 00       		.byte	0
+ 387 008c 00       		.byte	0
+ 388 008d 0B       		.uleb128 0xb
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccYvKVFa.s 			page 9
+
+
+ 389 008e 2E       		.uleb128 0x2e
+ 390 008f 01       		.byte	0x1
+ 391 0090 3F       		.uleb128 0x3f
+ 392 0091 19       		.uleb128 0x19
+ 393 0092 03       		.uleb128 0x3
+ 394 0093 0E       		.uleb128 0xe
+ 395 0094 3A       		.uleb128 0x3a
+ 396 0095 0B       		.uleb128 0xb
+ 397 0096 3B       		.uleb128 0x3b
+ 398 0097 0B       		.uleb128 0xb
+ 399 0098 27       		.uleb128 0x27
+ 400 0099 19       		.uleb128 0x19
+ 401 009a 49       		.uleb128 0x49
+ 402 009b 13       		.uleb128 0x13
+ 403 009c 11       		.uleb128 0x11
+ 404 009d 01       		.uleb128 0x1
+ 405 009e 12       		.uleb128 0x12
+ 406 009f 06       		.uleb128 0x6
+ 407 00a0 40       		.uleb128 0x40
+ 408 00a1 18       		.uleb128 0x18
+ 409 00a2 9742     		.uleb128 0x2117
+ 410 00a4 19       		.uleb128 0x19
+ 411 00a5 01       		.uleb128 0x1
+ 412 00a6 13       		.uleb128 0x13
+ 413 00a7 00       		.byte	0
+ 414 00a8 00       		.byte	0
+ 415 00a9 0C       		.uleb128 0xc
+ 416 00aa 34       		.uleb128 0x34
+ 417 00ab 00       		.byte	0
+ 418 00ac 03       		.uleb128 0x3
+ 419 00ad 0E       		.uleb128 0xe
+ 420 00ae 3A       		.uleb128 0x3a
+ 421 00af 0B       		.uleb128 0xb
+ 422 00b0 3B       		.uleb128 0x3b
+ 423 00b1 0B       		.uleb128 0xb
+ 424 00b2 49       		.uleb128 0x49
+ 425 00b3 13       		.uleb128 0x13
+ 426 00b4 02       		.uleb128 0x2
+ 427 00b5 17       		.uleb128 0x17
+ 428 00b6 00       		.byte	0
+ 429 00b7 00       		.byte	0
+ 430 00b8 0D       		.uleb128 0xd
+ 431 00b9 26       		.uleb128 0x26
+ 432 00ba 00       		.byte	0
+ 433 00bb 49       		.uleb128 0x49
+ 434 00bc 13       		.uleb128 0x13
+ 435 00bd 00       		.byte	0
+ 436 00be 00       		.byte	0
+ 437 00bf 00       		.byte	0
+ 438              		.section	.debug_loc,"",%progbits
+ 439              	.Ldebug_loc0:
+ 440              	.LLST0:
+ 441 0000 00000000 		.4byte	.LVL0
+ 442 0004 0C000000 		.4byte	.LVL1
+ 443 0008 0100     		.2byte	0x1
+ 444 000a 51       		.byte	0x51
+ 445 000b 0C000000 		.4byte	.LVL1
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccYvKVFa.s 			page 10
+
+
+ 446 000f 12000000 		.4byte	.LFE0
+ 447 0013 0400     		.2byte	0x4
+ 448 0015 F3       		.byte	0xf3
+ 449 0016 01       		.uleb128 0x1
+ 450 0017 51       		.byte	0x51
+ 451 0018 9F       		.byte	0x9f
+ 452 0019 00000000 		.4byte	0
+ 453 001d 00000000 		.4byte	0
+ 454              	.LLST1:
+ 455 0021 00000000 		.4byte	.LVL2
+ 456 0025 10000000 		.4byte	.LVL6
+ 457 0029 0100     		.2byte	0x1
+ 458 002b 50       		.byte	0x50
+ 459 002c 10000000 		.4byte	.LVL6
+ 460 0030 12000000 		.4byte	.LFE1
+ 461 0034 0400     		.2byte	0x4
+ 462 0036 F3       		.byte	0xf3
+ 463 0037 01       		.uleb128 0x1
+ 464 0038 50       		.byte	0x50
+ 465 0039 9F       		.byte	0x9f
+ 466 003a 00000000 		.4byte	0
+ 467 003e 00000000 		.4byte	0
+ 468              	.LLST2:
+ 469 0042 00000000 		.4byte	.LVL2
+ 470 0046 10000000 		.4byte	.LVL6
+ 471 004a 0100     		.2byte	0x1
+ 472 004c 50       		.byte	0x50
+ 473 004d 10000000 		.4byte	.LVL6
+ 474 0051 12000000 		.4byte	.LFE1
+ 475 0055 0400     		.2byte	0x4
+ 476 0057 F3       		.byte	0xf3
+ 477 0058 01       		.uleb128 0x1
+ 478 0059 50       		.byte	0x50
+ 479 005a 9F       		.byte	0x9f
+ 480 005b 00000000 		.4byte	0
+ 481 005f 00000000 		.4byte	0
+ 482              	.LLST3:
+ 483 0063 02000000 		.4byte	.LVL3
+ 484 0067 08000000 		.4byte	.LVL4
+ 485 006b 0600     		.2byte	0x6
+ 486 006d 73       		.byte	0x73
+ 487 006e 00       		.sleb128 0
+ 488 006f 08       		.byte	0x8
+ 489 0070 FF       		.byte	0xff
+ 490 0071 1A       		.byte	0x1a
+ 491 0072 9F       		.byte	0x9f
+ 492 0073 08000000 		.4byte	.LVL4
+ 493 0077 0E000000 		.4byte	.LVL5
+ 494 007b 0100     		.2byte	0x1
+ 495 007d 52       		.byte	0x52
+ 496 007e 10000000 		.4byte	.LVL6
+ 497 0082 12000000 		.4byte	.LFE1
+ 498 0086 0100     		.2byte	0x1
+ 499 0088 50       		.byte	0x50
+ 500 0089 00000000 		.4byte	0
+ 501 008d 00000000 		.4byte	0
+ 502              		.section	.debug_aranges,"",%progbits
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccYvKVFa.s 			page 11
+
+
+ 503 0000 24000000 		.4byte	0x24
+ 504 0004 0200     		.2byte	0x2
+ 505 0006 00000000 		.4byte	.Ldebug_info0
+ 506 000a 04       		.byte	0x4
+ 507 000b 00       		.byte	0
+ 508 000c 0000     		.2byte	0
+ 509 000e 0000     		.2byte	0
+ 510 0010 00000000 		.4byte	.LFB0
+ 511 0014 12000000 		.4byte	.LFE0-.LFB0
+ 512 0018 00000000 		.4byte	.LFB1
+ 513 001c 12000000 		.4byte	.LFE1-.LFB1
+ 514 0020 00000000 		.4byte	0
+ 515 0024 00000000 		.4byte	0
+ 516              		.section	.debug_ranges,"",%progbits
+ 517              	.Ldebug_ranges0:
+ 518 0000 00000000 		.4byte	.LFB0
+ 519 0004 12000000 		.4byte	.LFE0
+ 520 0008 00000000 		.4byte	.LFB1
+ 521 000c 12000000 		.4byte	.LFE1
+ 522 0010 00000000 		.4byte	0
+ 523 0014 00000000 		.4byte	0
+ 524              		.section	.debug_line,"",%progbits
+ 525              	.Ldebug_line0:
+ 526 0000 70000000 		.section	.debug_str,"MS",%progbits,1
+ 526      02004400 
+ 526      00000201 
+ 526      FB0E0D00 
+ 526      01010101 
+ 527              	.LASF15:
+ 528 0000 76616C75 		.ascii	"value\000"
+ 528      6500
+ 529              	.LASF21:
+ 530 0006 43794765 		.ascii	"CyGetReg24\000"
+ 530      74526567 
+ 530      323400
+ 531              	.LASF20:
+ 532 0011 43795365 		.ascii	"CySetReg24\000"
+ 532      74526567 
+ 532      323400
+ 533              	.LASF14:
+ 534 001c 61646472 		.ascii	"addr\000"
+ 534      00
+ 535              	.LASF11:
+ 536 0021 666C6F61 		.ascii	"float\000"
+ 536      7400
+ 537              	.LASF1:
+ 538 0027 756E7369 		.ascii	"unsigned char\000"
+ 538      676E6564 
+ 538      20636861 
+ 538      7200
+ 539              	.LASF16:
+ 540 0035 746D7041 		.ascii	"tmpAddr\000"
+ 540      64647200 
+ 541              	.LASF5:
+ 542 003d 6C6F6E67 		.ascii	"long unsigned int\000"
+ 542      20756E73 
+ 542      69676E65 
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccYvKVFa.s 			page 12
+
+
+ 542      6420696E 
+ 542      7400
+ 543              	.LASF3:
+ 544 004f 73686F72 		.ascii	"short unsigned int\000"
+ 544      7420756E 
+ 544      7369676E 
+ 544      65642069 
+ 544      6E7400
+ 545              	.LASF19:
+ 546 0062 443A5C72 		.ascii	"D:\\repositories\\Tarocco\\Bootloader\\cncboot_no_o"
+ 546      65706F73 
+ 546      69746F72 
+ 546      6965735C 
+ 546      5461726F 
+ 547 0091 7074696D 		.ascii	"ptimizations\\cncboot.cydsn\000"
+ 547      697A6174 
+ 547      696F6E73 
+ 547      5C636E63 
+ 547      626F6F74 
+ 548              	.LASF12:
+ 549 00ac 646F7562 		.ascii	"double\000"
+ 549      6C6500
+ 550              	.LASF10:
+ 551 00b3 75696E74 		.ascii	"uint32\000"
+ 551      333200
+ 552              	.LASF8:
+ 553 00ba 756E7369 		.ascii	"unsigned int\000"
+ 553      676E6564 
+ 553      20696E74 
+ 553      00
+ 554              	.LASF7:
+ 555 00c7 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 555      206C6F6E 
+ 555      6720756E 
+ 555      7369676E 
+ 555      65642069 
+ 556              	.LASF17:
+ 557 00de 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 557      43313120 
+ 557      352E342E 
+ 557      31203230 
+ 557      31363036 
+ 558 0111 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 558      20726576 
+ 558      6973696F 
+ 558      6E203233 
+ 558      37373135 
+ 559 0144 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 559      66756E63 
+ 559      74696F6E 
+ 559      2D736563 
+ 559      74696F6E 
+ 560              	.LASF18:
+ 561 016c 47656E65 		.ascii	"Generated_Source\\PSoC4\\cyutils.c\000"
+ 561      72617465 
+ 561      645F536F 
+ 561      75726365 
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccYvKVFa.s 			page 13
+
+
+ 561      5C50536F 
+ 562              	.LASF6:
+ 563 018d 6C6F6E67 		.ascii	"long long int\000"
+ 563      206C6F6E 
+ 563      6720696E 
+ 563      7400
+ 564              	.LASF13:
+ 565 019b 63686172 		.ascii	"char\000"
+ 565      00
+ 566              	.LASF2:
+ 567 01a0 73686F72 		.ascii	"short int\000"
+ 567      7420696E 
+ 567      7400
+ 568              	.LASF9:
+ 569 01aa 75696E74 		.ascii	"uint8\000"
+ 569      3800
+ 570              	.LASF4:
+ 571 01b0 6C6F6E67 		.ascii	"long int\000"
+ 571      20696E74 
+ 571      00
+ 572              	.LASF0:
+ 573 01b9 7369676E 		.ascii	"signed char\000"
+ 573      65642063 
+ 573      68617200 
+ 574              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

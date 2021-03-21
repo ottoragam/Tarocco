@@ -1,0 +1,860 @@
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccLY9cuN.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"UART_PM.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.UART_Sleep,"ax",%progbits
+  20              		.align	2
+  21              		.global	UART_Sleep
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	UART_Sleep, %function
+  25              	UART_Sleep:
+  26              	.LFB0:
+  27              		.file 1 "Generated_Source\\PSoC4\\UART_PM.c"
+   1:Generated_Source\PSoC4/UART_PM.c **** /***************************************************************************//**
+   2:Generated_Source\PSoC4/UART_PM.c **** * \file UART_PM.c
+   3:Generated_Source\PSoC4/UART_PM.c **** * \version 3.20
+   4:Generated_Source\PSoC4/UART_PM.c **** *
+   5:Generated_Source\PSoC4/UART_PM.c **** * \brief
+   6:Generated_Source\PSoC4/UART_PM.c **** *  This file provides the source code to the Power Management support for
+   7:Generated_Source\PSoC4/UART_PM.c **** *  the SCB Component.
+   8:Generated_Source\PSoC4/UART_PM.c **** *
+   9:Generated_Source\PSoC4/UART_PM.c **** * Note:
+  10:Generated_Source\PSoC4/UART_PM.c **** *
+  11:Generated_Source\PSoC4/UART_PM.c **** ********************************************************************************
+  12:Generated_Source\PSoC4/UART_PM.c **** * \copyright
+  13:Generated_Source\PSoC4/UART_PM.c **** * Copyright 2013-2016, Cypress Semiconductor Corporation.  All rights reserved.
+  14:Generated_Source\PSoC4/UART_PM.c **** * You may use this file only in accordance with the license, terms, conditions,
+  15:Generated_Source\PSoC4/UART_PM.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  16:Generated_Source\PSoC4/UART_PM.c **** * the software package with which this file was provided.
+  17:Generated_Source\PSoC4/UART_PM.c **** *******************************************************************************/
+  18:Generated_Source\PSoC4/UART_PM.c **** 
+  19:Generated_Source\PSoC4/UART_PM.c **** #include "UART.h"
+  20:Generated_Source\PSoC4/UART_PM.c **** #include "UART_PVT.h"
+  21:Generated_Source\PSoC4/UART_PM.c **** 
+  22:Generated_Source\PSoC4/UART_PM.c **** #if(UART_SCB_MODE_I2C_INC)
+  23:Generated_Source\PSoC4/UART_PM.c ****     #include "UART_I2C_PVT.h"
+  24:Generated_Source\PSoC4/UART_PM.c **** #endif /* (UART_SCB_MODE_I2C_INC) */
+  25:Generated_Source\PSoC4/UART_PM.c **** 
+  26:Generated_Source\PSoC4/UART_PM.c **** #if(UART_SCB_MODE_EZI2C_INC)
+  27:Generated_Source\PSoC4/UART_PM.c ****     #include "UART_EZI2C_PVT.h"
+  28:Generated_Source\PSoC4/UART_PM.c **** #endif /* (UART_SCB_MODE_EZI2C_INC) */
+  29:Generated_Source\PSoC4/UART_PM.c **** 
+  30:Generated_Source\PSoC4/UART_PM.c **** #if(UART_SCB_MODE_SPI_INC || UART_SCB_MODE_UART_INC)
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccLY9cuN.s 			page 2
+
+
+  31:Generated_Source\PSoC4/UART_PM.c ****     #include "UART_SPI_UART_PVT.h"
+  32:Generated_Source\PSoC4/UART_PM.c **** #endif /* (UART_SCB_MODE_SPI_INC || UART_SCB_MODE_UART_INC) */
+  33:Generated_Source\PSoC4/UART_PM.c **** 
+  34:Generated_Source\PSoC4/UART_PM.c **** 
+  35:Generated_Source\PSoC4/UART_PM.c **** /***************************************
+  36:Generated_Source\PSoC4/UART_PM.c **** *   Backup Structure declaration
+  37:Generated_Source\PSoC4/UART_PM.c **** ***************************************/
+  38:Generated_Source\PSoC4/UART_PM.c **** 
+  39:Generated_Source\PSoC4/UART_PM.c **** #if(UART_SCB_MODE_UNCONFIG_CONST_CFG || \
+  40:Generated_Source\PSoC4/UART_PM.c ****    (UART_SCB_MODE_I2C_CONST_CFG   && (!UART_I2C_WAKE_ENABLE_CONST))   || \
+  41:Generated_Source\PSoC4/UART_PM.c ****    (UART_SCB_MODE_EZI2C_CONST_CFG && (!UART_EZI2C_WAKE_ENABLE_CONST)) || \
+  42:Generated_Source\PSoC4/UART_PM.c ****    (UART_SCB_MODE_SPI_CONST_CFG   && (!UART_SPI_WAKE_ENABLE_CONST))   || \
+  43:Generated_Source\PSoC4/UART_PM.c ****    (UART_SCB_MODE_UART_CONST_CFG  && (!UART_UART_WAKE_ENABLE_CONST)))
+  44:Generated_Source\PSoC4/UART_PM.c **** 
+  45:Generated_Source\PSoC4/UART_PM.c ****     UART_BACKUP_STRUCT UART_backup =
+  46:Generated_Source\PSoC4/UART_PM.c ****     {
+  47:Generated_Source\PSoC4/UART_PM.c ****         0u, /* enableState */
+  48:Generated_Source\PSoC4/UART_PM.c ****     };
+  49:Generated_Source\PSoC4/UART_PM.c **** #endif
+  50:Generated_Source\PSoC4/UART_PM.c **** 
+  51:Generated_Source\PSoC4/UART_PM.c **** 
+  52:Generated_Source\PSoC4/UART_PM.c **** /*******************************************************************************
+  53:Generated_Source\PSoC4/UART_PM.c **** * Function Name: UART_Sleep
+  54:Generated_Source\PSoC4/UART_PM.c **** ****************************************************************************//**
+  55:Generated_Source\PSoC4/UART_PM.c **** *
+  56:Generated_Source\PSoC4/UART_PM.c **** *  Prepares the UART component to enter Deep Sleep.
+  57:Generated_Source\PSoC4/UART_PM.c **** *  The “Enable wakeup from Deep Sleep Mode” selection has an influence on this 
+  58:Generated_Source\PSoC4/UART_PM.c **** *  function implementation:
+  59:Generated_Source\PSoC4/UART_PM.c **** *  - Checked: configures the component to be wakeup source from Deep Sleep.
+  60:Generated_Source\PSoC4/UART_PM.c **** *  - Unchecked: stores the current component state (enabled or disabled) and 
+  61:Generated_Source\PSoC4/UART_PM.c **** *    disables the component. See SCB_Stop() function for details about component 
+  62:Generated_Source\PSoC4/UART_PM.c **** *    disabling.
+  63:Generated_Source\PSoC4/UART_PM.c **** *
+  64:Generated_Source\PSoC4/UART_PM.c **** *  Call the UART_Sleep() function before calling the 
+  65:Generated_Source\PSoC4/UART_PM.c **** *  CyPmSysDeepSleep() function. 
+  66:Generated_Source\PSoC4/UART_PM.c **** *  Refer to the PSoC Creator System Reference Guide for more information about 
+  67:Generated_Source\PSoC4/UART_PM.c **** *  power management functions and Low power section of this document for the 
+  68:Generated_Source\PSoC4/UART_PM.c **** *  selected mode.
+  69:Generated_Source\PSoC4/UART_PM.c **** *
+  70:Generated_Source\PSoC4/UART_PM.c **** *  This function should not be called before entering Sleep.
+  71:Generated_Source\PSoC4/UART_PM.c **** *
+  72:Generated_Source\PSoC4/UART_PM.c **** *******************************************************************************/
+  73:Generated_Source\PSoC4/UART_PM.c **** void UART_Sleep(void)
+  74:Generated_Source\PSoC4/UART_PM.c **** {
+  28              		.loc 1 74 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 10B5     		push	{r4, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+  75:Generated_Source\PSoC4/UART_PM.c **** #if(UART_SCB_MODE_UNCONFIG_CONST_CFG)
+  76:Generated_Source\PSoC4/UART_PM.c **** 
+  77:Generated_Source\PSoC4/UART_PM.c ****     if(UART_SCB_WAKE_ENABLE_CHECK)
+  78:Generated_Source\PSoC4/UART_PM.c ****     {
+  79:Generated_Source\PSoC4/UART_PM.c ****         if(UART_SCB_MODE_I2C_RUNTM_CFG)
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccLY9cuN.s 			page 3
+
+
+  80:Generated_Source\PSoC4/UART_PM.c ****         {
+  81:Generated_Source\PSoC4/UART_PM.c ****             UART_I2CSaveConfig();
+  82:Generated_Source\PSoC4/UART_PM.c ****         }
+  83:Generated_Source\PSoC4/UART_PM.c ****         else if(UART_SCB_MODE_EZI2C_RUNTM_CFG)
+  84:Generated_Source\PSoC4/UART_PM.c ****         {
+  85:Generated_Source\PSoC4/UART_PM.c ****             UART_EzI2CSaveConfig();
+  86:Generated_Source\PSoC4/UART_PM.c ****         }
+  87:Generated_Source\PSoC4/UART_PM.c ****     #if(!UART_CY_SCBIP_V1)
+  88:Generated_Source\PSoC4/UART_PM.c ****         else if(UART_SCB_MODE_SPI_RUNTM_CFG)
+  89:Generated_Source\PSoC4/UART_PM.c ****         {
+  90:Generated_Source\PSoC4/UART_PM.c ****             UART_SpiSaveConfig();
+  91:Generated_Source\PSoC4/UART_PM.c ****         }
+  92:Generated_Source\PSoC4/UART_PM.c ****         else if(UART_SCB_MODE_UART_RUNTM_CFG)
+  93:Generated_Source\PSoC4/UART_PM.c ****         {
+  94:Generated_Source\PSoC4/UART_PM.c ****             UART_UartSaveConfig();
+  95:Generated_Source\PSoC4/UART_PM.c ****         }
+  96:Generated_Source\PSoC4/UART_PM.c ****     #endif /* (!UART_CY_SCBIP_V1) */
+  97:Generated_Source\PSoC4/UART_PM.c ****         else
+  98:Generated_Source\PSoC4/UART_PM.c ****         {
+  99:Generated_Source\PSoC4/UART_PM.c ****             /* Unknown mode */
+ 100:Generated_Source\PSoC4/UART_PM.c ****         }
+ 101:Generated_Source\PSoC4/UART_PM.c ****     }
+ 102:Generated_Source\PSoC4/UART_PM.c ****     else
+ 103:Generated_Source\PSoC4/UART_PM.c ****     {
+ 104:Generated_Source\PSoC4/UART_PM.c ****         UART_backup.enableState = (uint8) UART_GET_CTRL_ENABLED;
+ 105:Generated_Source\PSoC4/UART_PM.c **** 
+ 106:Generated_Source\PSoC4/UART_PM.c ****         if(0u != UART_backup.enableState)
+ 107:Generated_Source\PSoC4/UART_PM.c ****         {
+ 108:Generated_Source\PSoC4/UART_PM.c ****             UART_Stop();
+ 109:Generated_Source\PSoC4/UART_PM.c ****         }
+ 110:Generated_Source\PSoC4/UART_PM.c ****     }
+ 111:Generated_Source\PSoC4/UART_PM.c **** 
+ 112:Generated_Source\PSoC4/UART_PM.c **** #else
+ 113:Generated_Source\PSoC4/UART_PM.c **** 
+ 114:Generated_Source\PSoC4/UART_PM.c ****     #if (UART_SCB_MODE_I2C_CONST_CFG && UART_I2C_WAKE_ENABLE_CONST)
+ 115:Generated_Source\PSoC4/UART_PM.c ****         UART_I2CSaveConfig();
+ 116:Generated_Source\PSoC4/UART_PM.c **** 
+ 117:Generated_Source\PSoC4/UART_PM.c ****     #elif (UART_SCB_MODE_EZI2C_CONST_CFG && UART_EZI2C_WAKE_ENABLE_CONST)
+ 118:Generated_Source\PSoC4/UART_PM.c ****         UART_EzI2CSaveConfig();
+ 119:Generated_Source\PSoC4/UART_PM.c **** 
+ 120:Generated_Source\PSoC4/UART_PM.c ****     #elif (UART_SCB_MODE_SPI_CONST_CFG && UART_SPI_WAKE_ENABLE_CONST)
+ 121:Generated_Source\PSoC4/UART_PM.c ****         UART_SpiSaveConfig();
+ 122:Generated_Source\PSoC4/UART_PM.c **** 
+ 123:Generated_Source\PSoC4/UART_PM.c ****     #elif (UART_SCB_MODE_UART_CONST_CFG && UART_UART_WAKE_ENABLE_CONST)
+ 124:Generated_Source\PSoC4/UART_PM.c ****         UART_UartSaveConfig();
+ 125:Generated_Source\PSoC4/UART_PM.c **** 
+ 126:Generated_Source\PSoC4/UART_PM.c ****     #else
+ 127:Generated_Source\PSoC4/UART_PM.c **** 
+ 128:Generated_Source\PSoC4/UART_PM.c ****         UART_backup.enableState = (uint8) UART_GET_CTRL_ENABLED;
+  36              		.loc 1 128 0
+  37 0002 044B     		ldr	r3, .L3
+  38 0004 1B68     		ldr	r3, [r3]
+  39 0006 DB0F     		lsrs	r3, r3, #31
+  40 0008 034A     		ldr	r2, .L3+4
+  41 000a 1370     		strb	r3, [r2]
+ 129:Generated_Source\PSoC4/UART_PM.c **** 
+ 130:Generated_Source\PSoC4/UART_PM.c ****         if(0u != UART_backup.enableState)
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccLY9cuN.s 			page 4
+
+
+  42              		.loc 1 130 0
+  43 000c 01D0     		beq	.L1
+ 131:Generated_Source\PSoC4/UART_PM.c ****         {
+ 132:Generated_Source\PSoC4/UART_PM.c ****             UART_Stop();
+  44              		.loc 1 132 0
+  45 000e FFF7FEFF 		bl	UART_Stop
+  46              	.LVL0:
+  47              	.L1:
+ 133:Generated_Source\PSoC4/UART_PM.c ****         }
+ 134:Generated_Source\PSoC4/UART_PM.c **** 
+ 135:Generated_Source\PSoC4/UART_PM.c ****     #endif /* defined (UART_SCB_MODE_I2C_CONST_CFG) && (UART_I2C_WAKE_ENABLE_CONST) */
+ 136:Generated_Source\PSoC4/UART_PM.c **** 
+ 137:Generated_Source\PSoC4/UART_PM.c **** #endif /* (UART_SCB_MODE_UNCONFIG_CONST_CFG) */
+ 138:Generated_Source\PSoC4/UART_PM.c **** }
+  48              		.loc 1 138 0
+  49              		@ sp needed
+  50 0012 10BD     		pop	{r4, pc}
+  51              	.L4:
+  52              		.align	2
+  53              	.L3:
+  54 0014 00000740 		.word	1074200576
+  55 0018 00000000 		.word	.LANCHOR0
+  56              		.cfi_endproc
+  57              	.LFE0:
+  58              		.size	UART_Sleep, .-UART_Sleep
+  59              		.section	.text.UART_Wakeup,"ax",%progbits
+  60              		.align	2
+  61              		.global	UART_Wakeup
+  62              		.code	16
+  63              		.thumb_func
+  64              		.type	UART_Wakeup, %function
+  65              	UART_Wakeup:
+  66              	.LFB1:
+ 139:Generated_Source\PSoC4/UART_PM.c **** 
+ 140:Generated_Source\PSoC4/UART_PM.c **** 
+ 141:Generated_Source\PSoC4/UART_PM.c **** /*******************************************************************************
+ 142:Generated_Source\PSoC4/UART_PM.c **** * Function Name: UART_Wakeup
+ 143:Generated_Source\PSoC4/UART_PM.c **** ****************************************************************************//**
+ 144:Generated_Source\PSoC4/UART_PM.c **** *
+ 145:Generated_Source\PSoC4/UART_PM.c **** *  Prepares the UART component for Active mode operation after 
+ 146:Generated_Source\PSoC4/UART_PM.c **** *  Deep Sleep.
+ 147:Generated_Source\PSoC4/UART_PM.c **** *  The “Enable wakeup from Deep Sleep Mode” selection has influence on this 
+ 148:Generated_Source\PSoC4/UART_PM.c **** *  function implementation:
+ 149:Generated_Source\PSoC4/UART_PM.c **** *  - Checked: restores the component Active mode configuration.
+ 150:Generated_Source\PSoC4/UART_PM.c **** *  - Unchecked: enables the component if it was enabled before enter Deep Sleep.
+ 151:Generated_Source\PSoC4/UART_PM.c **** *
+ 152:Generated_Source\PSoC4/UART_PM.c **** *  This function should not be called after exiting Sleep.
+ 153:Generated_Source\PSoC4/UART_PM.c **** *
+ 154:Generated_Source\PSoC4/UART_PM.c **** *  \sideeffect
+ 155:Generated_Source\PSoC4/UART_PM.c **** *   Calling the UART_Wakeup() function without first calling the 
+ 156:Generated_Source\PSoC4/UART_PM.c **** *   UART_Sleep() function may produce unexpected behavior.
+ 157:Generated_Source\PSoC4/UART_PM.c **** *
+ 158:Generated_Source\PSoC4/UART_PM.c **** *******************************************************************************/
+ 159:Generated_Source\PSoC4/UART_PM.c **** void UART_Wakeup(void)
+ 160:Generated_Source\PSoC4/UART_PM.c **** {
+  67              		.loc 1 160 0
+  68              		.cfi_startproc
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccLY9cuN.s 			page 5
+
+
+  69              		@ args = 0, pretend = 0, frame = 0
+  70              		@ frame_needed = 0, uses_anonymous_args = 0
+  71 0000 10B5     		push	{r4, lr}
+  72              		.cfi_def_cfa_offset 8
+  73              		.cfi_offset 4, -8
+  74              		.cfi_offset 14, -4
+ 161:Generated_Source\PSoC4/UART_PM.c **** #if(UART_SCB_MODE_UNCONFIG_CONST_CFG)
+ 162:Generated_Source\PSoC4/UART_PM.c **** 
+ 163:Generated_Source\PSoC4/UART_PM.c ****     if(UART_SCB_WAKE_ENABLE_CHECK)
+ 164:Generated_Source\PSoC4/UART_PM.c ****     {
+ 165:Generated_Source\PSoC4/UART_PM.c ****         if(UART_SCB_MODE_I2C_RUNTM_CFG)
+ 166:Generated_Source\PSoC4/UART_PM.c ****         {
+ 167:Generated_Source\PSoC4/UART_PM.c ****             UART_I2CRestoreConfig();
+ 168:Generated_Source\PSoC4/UART_PM.c ****         }
+ 169:Generated_Source\PSoC4/UART_PM.c ****         else if(UART_SCB_MODE_EZI2C_RUNTM_CFG)
+ 170:Generated_Source\PSoC4/UART_PM.c ****         {
+ 171:Generated_Source\PSoC4/UART_PM.c ****             UART_EzI2CRestoreConfig();
+ 172:Generated_Source\PSoC4/UART_PM.c ****         }
+ 173:Generated_Source\PSoC4/UART_PM.c ****     #if(!UART_CY_SCBIP_V1)
+ 174:Generated_Source\PSoC4/UART_PM.c ****         else if(UART_SCB_MODE_SPI_RUNTM_CFG)
+ 175:Generated_Source\PSoC4/UART_PM.c ****         {
+ 176:Generated_Source\PSoC4/UART_PM.c ****             UART_SpiRestoreConfig();
+ 177:Generated_Source\PSoC4/UART_PM.c ****         }
+ 178:Generated_Source\PSoC4/UART_PM.c ****         else if(UART_SCB_MODE_UART_RUNTM_CFG)
+ 179:Generated_Source\PSoC4/UART_PM.c ****         {
+ 180:Generated_Source\PSoC4/UART_PM.c ****             UART_UartRestoreConfig();
+ 181:Generated_Source\PSoC4/UART_PM.c ****         }
+ 182:Generated_Source\PSoC4/UART_PM.c ****     #endif /* (!UART_CY_SCBIP_V1) */
+ 183:Generated_Source\PSoC4/UART_PM.c ****         else
+ 184:Generated_Source\PSoC4/UART_PM.c ****         {
+ 185:Generated_Source\PSoC4/UART_PM.c ****             /* Unknown mode */
+ 186:Generated_Source\PSoC4/UART_PM.c ****         }
+ 187:Generated_Source\PSoC4/UART_PM.c ****     }
+ 188:Generated_Source\PSoC4/UART_PM.c ****     else
+ 189:Generated_Source\PSoC4/UART_PM.c ****     {
+ 190:Generated_Source\PSoC4/UART_PM.c ****         if(0u != UART_backup.enableState)
+ 191:Generated_Source\PSoC4/UART_PM.c ****         {
+ 192:Generated_Source\PSoC4/UART_PM.c ****             UART_Enable();
+ 193:Generated_Source\PSoC4/UART_PM.c ****         }
+ 194:Generated_Source\PSoC4/UART_PM.c ****     }
+ 195:Generated_Source\PSoC4/UART_PM.c **** 
+ 196:Generated_Source\PSoC4/UART_PM.c **** #else
+ 197:Generated_Source\PSoC4/UART_PM.c **** 
+ 198:Generated_Source\PSoC4/UART_PM.c ****     #if (UART_SCB_MODE_I2C_CONST_CFG  && UART_I2C_WAKE_ENABLE_CONST)
+ 199:Generated_Source\PSoC4/UART_PM.c ****         UART_I2CRestoreConfig();
+ 200:Generated_Source\PSoC4/UART_PM.c **** 
+ 201:Generated_Source\PSoC4/UART_PM.c ****     #elif (UART_SCB_MODE_EZI2C_CONST_CFG && UART_EZI2C_WAKE_ENABLE_CONST)
+ 202:Generated_Source\PSoC4/UART_PM.c ****         UART_EzI2CRestoreConfig();
+ 203:Generated_Source\PSoC4/UART_PM.c **** 
+ 204:Generated_Source\PSoC4/UART_PM.c ****     #elif (UART_SCB_MODE_SPI_CONST_CFG && UART_SPI_WAKE_ENABLE_CONST)
+ 205:Generated_Source\PSoC4/UART_PM.c ****         UART_SpiRestoreConfig();
+ 206:Generated_Source\PSoC4/UART_PM.c **** 
+ 207:Generated_Source\PSoC4/UART_PM.c ****     #elif (UART_SCB_MODE_UART_CONST_CFG && UART_UART_WAKE_ENABLE_CONST)
+ 208:Generated_Source\PSoC4/UART_PM.c ****         UART_UartRestoreConfig();
+ 209:Generated_Source\PSoC4/UART_PM.c **** 
+ 210:Generated_Source\PSoC4/UART_PM.c ****     #else
+ 211:Generated_Source\PSoC4/UART_PM.c **** 
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccLY9cuN.s 			page 6
+
+
+ 212:Generated_Source\PSoC4/UART_PM.c ****         if(0u != UART_backup.enableState)
+  75              		.loc 1 212 0
+  76 0002 034B     		ldr	r3, .L7
+  77 0004 1B78     		ldrb	r3, [r3]
+  78 0006 002B     		cmp	r3, #0
+  79 0008 01D0     		beq	.L5
+ 213:Generated_Source\PSoC4/UART_PM.c ****         {
+ 214:Generated_Source\PSoC4/UART_PM.c ****             UART_Enable();
+  80              		.loc 1 214 0
+  81 000a FFF7FEFF 		bl	UART_Enable
+  82              	.LVL1:
+  83              	.L5:
+ 215:Generated_Source\PSoC4/UART_PM.c ****         }
+ 216:Generated_Source\PSoC4/UART_PM.c **** 
+ 217:Generated_Source\PSoC4/UART_PM.c ****     #endif /* (UART_I2C_WAKE_ENABLE_CONST) */
+ 218:Generated_Source\PSoC4/UART_PM.c **** 
+ 219:Generated_Source\PSoC4/UART_PM.c **** #endif /* (UART_SCB_MODE_UNCONFIG_CONST_CFG) */
+ 220:Generated_Source\PSoC4/UART_PM.c **** }
+  84              		.loc 1 220 0
+  85              		@ sp needed
+  86 000e 10BD     		pop	{r4, pc}
+  87              	.L8:
+  88              		.align	2
+  89              	.L7:
+  90 0010 00000000 		.word	.LANCHOR0
+  91              		.cfi_endproc
+  92              	.LFE1:
+  93              		.size	UART_Wakeup, .-UART_Wakeup
+  94              		.global	UART_backup
+  95              		.bss
+  96              		.align	2
+  97              		.set	.LANCHOR0,. + 0
+  98              		.type	UART_backup, %object
+  99              		.size	UART_backup, 1
+ 100              	UART_backup:
+ 101 0000 00       		.space	1
+ 102              		.text
+ 103              	.Letext0:
+ 104              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 105              		.file 3 "Generated_Source\\PSoC4\\UART.h"
+ 106              		.section	.debug_info,"",%progbits
+ 107              	.Ldebug_info0:
+ 108 0000 39010000 		.4byte	0x139
+ 109 0004 0400     		.2byte	0x4
+ 110 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 111 000a 04       		.byte	0x4
+ 112 000b 01       		.uleb128 0x1
+ 113 000c D8000000 		.4byte	.LASF22
+ 114 0010 0C       		.byte	0xc
+ 115 0011 EE010000 		.4byte	.LASF23
+ 116 0015 9B010000 		.4byte	.LASF24
+ 117 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 118 001d 00000000 		.4byte	0
+ 119 0021 00000000 		.4byte	.Ldebug_line0
+ 120 0025 02       		.uleb128 0x2
+ 121 0026 01       		.byte	0x1
+ 122 0027 06       		.byte	0x6
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccLY9cuN.s 			page 7
+
+
+ 123 0028 79010000 		.4byte	.LASF0
+ 124 002c 02       		.uleb128 0x2
+ 125 002d 01       		.byte	0x1
+ 126 002e 08       		.byte	0x8
+ 127 002f 90000000 		.4byte	.LASF1
+ 128 0033 02       		.uleb128 0x2
+ 129 0034 02       		.byte	0x2
+ 130 0035 05       		.byte	0x5
+ 131 0036 91010000 		.4byte	.LASF2
+ 132 003a 02       		.uleb128 0x2
+ 133 003b 02       		.byte	0x2
+ 134 003c 07       		.byte	0x7
+ 135 003d 66010000 		.4byte	.LASF3
+ 136 0041 02       		.uleb128 0x2
+ 137 0042 04       		.byte	0x4
+ 138 0043 05       		.byte	0x5
+ 139 0044 C9000000 		.4byte	.LASF4
+ 140 0048 02       		.uleb128 0x2
+ 141 0049 04       		.byte	0x4
+ 142 004a 07       		.byte	0x7
+ 143 004b 49000000 		.4byte	.LASF5
+ 144 004f 02       		.uleb128 0x2
+ 145 0050 08       		.byte	0x8
+ 146 0051 05       		.byte	0x5
+ 147 0052 00000000 		.4byte	.LASF6
+ 148 0056 02       		.uleb128 0x2
+ 149 0057 08       		.byte	0x8
+ 150 0058 07       		.byte	0x7
+ 151 0059 5B000000 		.4byte	.LASF7
+ 152 005d 03       		.uleb128 0x3
+ 153 005e 04       		.byte	0x4
+ 154 005f 05       		.byte	0x5
+ 155 0060 696E7400 		.ascii	"int\000"
+ 156 0064 02       		.uleb128 0x2
+ 157 0065 04       		.byte	0x4
+ 158 0066 07       		.byte	0x7
+ 159 0067 21000000 		.4byte	.LASF8
+ 160 006b 04       		.uleb128 0x4
+ 161 006c 43000000 		.4byte	.LASF9
+ 162 0070 02       		.byte	0x2
+ 163 0071 9801     		.2byte	0x198
+ 164 0073 2C000000 		.4byte	0x2c
+ 165 0077 04       		.uleb128 0x4
+ 166 0078 0E000000 		.4byte	.LASF10
+ 167 007c 02       		.byte	0x2
+ 168 007d 9A01     		.2byte	0x19a
+ 169 007f 48000000 		.4byte	0x48
+ 170 0083 02       		.uleb128 0x2
+ 171 0084 04       		.byte	0x4
+ 172 0085 04       		.byte	0x4
+ 173 0086 7E000000 		.4byte	.LASF11
+ 174 008a 02       		.uleb128 0x2
+ 175 008b 08       		.byte	0x8
+ 176 008c 04       		.byte	0x4
+ 177 008d C2000000 		.4byte	.LASF12
+ 178 0091 02       		.uleb128 0x2
+ 179 0092 01       		.byte	0x1
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccLY9cuN.s 			page 8
+
+
+ 180 0093 08       		.byte	0x8
+ 181 0094 9E000000 		.4byte	.LASF13
+ 182 0098 04       		.uleb128 0x4
+ 183 0099 D2000000 		.4byte	.LASF14
+ 184 009d 02       		.byte	0x2
+ 185 009e 4402     		.2byte	0x244
+ 186 00a0 A4000000 		.4byte	0xa4
+ 187 00a4 05       		.uleb128 0x5
+ 188 00a5 77000000 		.4byte	0x77
+ 189 00a9 02       		.uleb128 0x2
+ 190 00aa 08       		.byte	0x8
+ 191 00ab 04       		.byte	0x4
+ 192 00ac 85010000 		.4byte	.LASF15
+ 193 00b0 02       		.uleb128 0x2
+ 194 00b1 04       		.byte	0x4
+ 195 00b2 07       		.byte	0x7
+ 196 00b3 E5010000 		.4byte	.LASF16
+ 197 00b7 06       		.uleb128 0x6
+ 198 00b8 01       		.byte	0x1
+ 199 00b9 03       		.byte	0x3
+ 200 00ba 5C       		.byte	0x5c
+ 201 00bb CC000000 		.4byte	0xcc
+ 202 00bf 07       		.uleb128 0x7
+ 203 00c0 B6000000 		.4byte	.LASF25
+ 204 00c4 03       		.byte	0x3
+ 205 00c5 5E       		.byte	0x5e
+ 206 00c6 6B000000 		.4byte	0x6b
+ 207 00ca 00       		.byte	0
+ 208 00cb 00       		.byte	0
+ 209 00cc 08       		.uleb128 0x8
+ 210 00cd A3000000 		.4byte	.LASF17
+ 211 00d1 03       		.byte	0x3
+ 212 00d2 5F       		.byte	0x5f
+ 213 00d3 B7000000 		.4byte	0xb7
+ 214 00d7 09       		.uleb128 0x9
+ 215 00d8 38000000 		.4byte	.LASF18
+ 216 00dc 01       		.byte	0x1
+ 217 00dd 49       		.byte	0x49
+ 218 00de 00000000 		.4byte	.LFB0
+ 219 00e2 1C000000 		.4byte	.LFE0-.LFB0
+ 220 00e6 01       		.uleb128 0x1
+ 221 00e7 9C       		.byte	0x9c
+ 222 00e8 F6000000 		.4byte	0xf6
+ 223 00ec 0A       		.uleb128 0xa
+ 224 00ed 12000000 		.4byte	.LVL0
+ 225 00f1 26010000 		.4byte	0x126
+ 226 00f5 00       		.byte	0
+ 227 00f6 09       		.uleb128 0x9
+ 228 00f7 72000000 		.4byte	.LASF19
+ 229 00fb 01       		.byte	0x1
+ 230 00fc 9F       		.byte	0x9f
+ 231 00fd 00000000 		.4byte	.LFB1
+ 232 0101 14000000 		.4byte	.LFE1-.LFB1
+ 233 0105 01       		.uleb128 0x1
+ 234 0106 9C       		.byte	0x9c
+ 235 0107 15010000 		.4byte	0x115
+ 236 010b 0A       		.uleb128 0xa
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccLY9cuN.s 			page 9
+
+
+ 237 010c 0E000000 		.4byte	.LVL1
+ 238 0110 31010000 		.4byte	0x131
+ 239 0114 00       		.byte	0
+ 240 0115 0B       		.uleb128 0xb
+ 241 0116 15000000 		.4byte	.LASF26
+ 242 011a 01       		.byte	0x1
+ 243 011b 2D       		.byte	0x2d
+ 244 011c CC000000 		.4byte	0xcc
+ 245 0120 05       		.uleb128 0x5
+ 246 0121 03       		.byte	0x3
+ 247 0122 00000000 		.4byte	UART_backup
+ 248 0126 0C       		.uleb128 0xc
+ 249 0127 2E000000 		.4byte	.LASF20
+ 250 012b 2E000000 		.4byte	.LASF20
+ 251 012f 03       		.byte	0x3
+ 252 0130 6F       		.byte	0x6f
+ 253 0131 0C       		.uleb128 0xc
+ 254 0132 84000000 		.4byte	.LASF21
+ 255 0136 84000000 		.4byte	.LASF21
+ 256 013a 03       		.byte	0x3
+ 257 013b 6D       		.byte	0x6d
+ 258 013c 00       		.byte	0
+ 259              		.section	.debug_abbrev,"",%progbits
+ 260              	.Ldebug_abbrev0:
+ 261 0000 01       		.uleb128 0x1
+ 262 0001 11       		.uleb128 0x11
+ 263 0002 01       		.byte	0x1
+ 264 0003 25       		.uleb128 0x25
+ 265 0004 0E       		.uleb128 0xe
+ 266 0005 13       		.uleb128 0x13
+ 267 0006 0B       		.uleb128 0xb
+ 268 0007 03       		.uleb128 0x3
+ 269 0008 0E       		.uleb128 0xe
+ 270 0009 1B       		.uleb128 0x1b
+ 271 000a 0E       		.uleb128 0xe
+ 272 000b 55       		.uleb128 0x55
+ 273 000c 17       		.uleb128 0x17
+ 274 000d 11       		.uleb128 0x11
+ 275 000e 01       		.uleb128 0x1
+ 276 000f 10       		.uleb128 0x10
+ 277 0010 17       		.uleb128 0x17
+ 278 0011 00       		.byte	0
+ 279 0012 00       		.byte	0
+ 280 0013 02       		.uleb128 0x2
+ 281 0014 24       		.uleb128 0x24
+ 282 0015 00       		.byte	0
+ 283 0016 0B       		.uleb128 0xb
+ 284 0017 0B       		.uleb128 0xb
+ 285 0018 3E       		.uleb128 0x3e
+ 286 0019 0B       		.uleb128 0xb
+ 287 001a 03       		.uleb128 0x3
+ 288 001b 0E       		.uleb128 0xe
+ 289 001c 00       		.byte	0
+ 290 001d 00       		.byte	0
+ 291 001e 03       		.uleb128 0x3
+ 292 001f 24       		.uleb128 0x24
+ 293 0020 00       		.byte	0
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccLY9cuN.s 			page 10
+
+
+ 294 0021 0B       		.uleb128 0xb
+ 295 0022 0B       		.uleb128 0xb
+ 296 0023 3E       		.uleb128 0x3e
+ 297 0024 0B       		.uleb128 0xb
+ 298 0025 03       		.uleb128 0x3
+ 299 0026 08       		.uleb128 0x8
+ 300 0027 00       		.byte	0
+ 301 0028 00       		.byte	0
+ 302 0029 04       		.uleb128 0x4
+ 303 002a 16       		.uleb128 0x16
+ 304 002b 00       		.byte	0
+ 305 002c 03       		.uleb128 0x3
+ 306 002d 0E       		.uleb128 0xe
+ 307 002e 3A       		.uleb128 0x3a
+ 308 002f 0B       		.uleb128 0xb
+ 309 0030 3B       		.uleb128 0x3b
+ 310 0031 05       		.uleb128 0x5
+ 311 0032 49       		.uleb128 0x49
+ 312 0033 13       		.uleb128 0x13
+ 313 0034 00       		.byte	0
+ 314 0035 00       		.byte	0
+ 315 0036 05       		.uleb128 0x5
+ 316 0037 35       		.uleb128 0x35
+ 317 0038 00       		.byte	0
+ 318 0039 49       		.uleb128 0x49
+ 319 003a 13       		.uleb128 0x13
+ 320 003b 00       		.byte	0
+ 321 003c 00       		.byte	0
+ 322 003d 06       		.uleb128 0x6
+ 323 003e 13       		.uleb128 0x13
+ 324 003f 01       		.byte	0x1
+ 325 0040 0B       		.uleb128 0xb
+ 326 0041 0B       		.uleb128 0xb
+ 327 0042 3A       		.uleb128 0x3a
+ 328 0043 0B       		.uleb128 0xb
+ 329 0044 3B       		.uleb128 0x3b
+ 330 0045 0B       		.uleb128 0xb
+ 331 0046 01       		.uleb128 0x1
+ 332 0047 13       		.uleb128 0x13
+ 333 0048 00       		.byte	0
+ 334 0049 00       		.byte	0
+ 335 004a 07       		.uleb128 0x7
+ 336 004b 0D       		.uleb128 0xd
+ 337 004c 00       		.byte	0
+ 338 004d 03       		.uleb128 0x3
+ 339 004e 0E       		.uleb128 0xe
+ 340 004f 3A       		.uleb128 0x3a
+ 341 0050 0B       		.uleb128 0xb
+ 342 0051 3B       		.uleb128 0x3b
+ 343 0052 0B       		.uleb128 0xb
+ 344 0053 49       		.uleb128 0x49
+ 345 0054 13       		.uleb128 0x13
+ 346 0055 38       		.uleb128 0x38
+ 347 0056 0B       		.uleb128 0xb
+ 348 0057 00       		.byte	0
+ 349 0058 00       		.byte	0
+ 350 0059 08       		.uleb128 0x8
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccLY9cuN.s 			page 11
+
+
+ 351 005a 16       		.uleb128 0x16
+ 352 005b 00       		.byte	0
+ 353 005c 03       		.uleb128 0x3
+ 354 005d 0E       		.uleb128 0xe
+ 355 005e 3A       		.uleb128 0x3a
+ 356 005f 0B       		.uleb128 0xb
+ 357 0060 3B       		.uleb128 0x3b
+ 358 0061 0B       		.uleb128 0xb
+ 359 0062 49       		.uleb128 0x49
+ 360 0063 13       		.uleb128 0x13
+ 361 0064 00       		.byte	0
+ 362 0065 00       		.byte	0
+ 363 0066 09       		.uleb128 0x9
+ 364 0067 2E       		.uleb128 0x2e
+ 365 0068 01       		.byte	0x1
+ 366 0069 3F       		.uleb128 0x3f
+ 367 006a 19       		.uleb128 0x19
+ 368 006b 03       		.uleb128 0x3
+ 369 006c 0E       		.uleb128 0xe
+ 370 006d 3A       		.uleb128 0x3a
+ 371 006e 0B       		.uleb128 0xb
+ 372 006f 3B       		.uleb128 0x3b
+ 373 0070 0B       		.uleb128 0xb
+ 374 0071 27       		.uleb128 0x27
+ 375 0072 19       		.uleb128 0x19
+ 376 0073 11       		.uleb128 0x11
+ 377 0074 01       		.uleb128 0x1
+ 378 0075 12       		.uleb128 0x12
+ 379 0076 06       		.uleb128 0x6
+ 380 0077 40       		.uleb128 0x40
+ 381 0078 18       		.uleb128 0x18
+ 382 0079 9742     		.uleb128 0x2117
+ 383 007b 19       		.uleb128 0x19
+ 384 007c 01       		.uleb128 0x1
+ 385 007d 13       		.uleb128 0x13
+ 386 007e 00       		.byte	0
+ 387 007f 00       		.byte	0
+ 388 0080 0A       		.uleb128 0xa
+ 389 0081 898201   		.uleb128 0x4109
+ 390 0084 00       		.byte	0
+ 391 0085 11       		.uleb128 0x11
+ 392 0086 01       		.uleb128 0x1
+ 393 0087 31       		.uleb128 0x31
+ 394 0088 13       		.uleb128 0x13
+ 395 0089 00       		.byte	0
+ 396 008a 00       		.byte	0
+ 397 008b 0B       		.uleb128 0xb
+ 398 008c 34       		.uleb128 0x34
+ 399 008d 00       		.byte	0
+ 400 008e 03       		.uleb128 0x3
+ 401 008f 0E       		.uleb128 0xe
+ 402 0090 3A       		.uleb128 0x3a
+ 403 0091 0B       		.uleb128 0xb
+ 404 0092 3B       		.uleb128 0x3b
+ 405 0093 0B       		.uleb128 0xb
+ 406 0094 49       		.uleb128 0x49
+ 407 0095 13       		.uleb128 0x13
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccLY9cuN.s 			page 12
+
+
+ 408 0096 3F       		.uleb128 0x3f
+ 409 0097 19       		.uleb128 0x19
+ 410 0098 02       		.uleb128 0x2
+ 411 0099 18       		.uleb128 0x18
+ 412 009a 00       		.byte	0
+ 413 009b 00       		.byte	0
+ 414 009c 0C       		.uleb128 0xc
+ 415 009d 2E       		.uleb128 0x2e
+ 416 009e 00       		.byte	0
+ 417 009f 3F       		.uleb128 0x3f
+ 418 00a0 19       		.uleb128 0x19
+ 419 00a1 3C       		.uleb128 0x3c
+ 420 00a2 19       		.uleb128 0x19
+ 421 00a3 6E       		.uleb128 0x6e
+ 422 00a4 0E       		.uleb128 0xe
+ 423 00a5 03       		.uleb128 0x3
+ 424 00a6 0E       		.uleb128 0xe
+ 425 00a7 3A       		.uleb128 0x3a
+ 426 00a8 0B       		.uleb128 0xb
+ 427 00a9 3B       		.uleb128 0x3b
+ 428 00aa 0B       		.uleb128 0xb
+ 429 00ab 00       		.byte	0
+ 430 00ac 00       		.byte	0
+ 431 00ad 00       		.byte	0
+ 432              		.section	.debug_aranges,"",%progbits
+ 433 0000 24000000 		.4byte	0x24
+ 434 0004 0200     		.2byte	0x2
+ 435 0006 00000000 		.4byte	.Ldebug_info0
+ 436 000a 04       		.byte	0x4
+ 437 000b 00       		.byte	0
+ 438 000c 0000     		.2byte	0
+ 439 000e 0000     		.2byte	0
+ 440 0010 00000000 		.4byte	.LFB0
+ 441 0014 1C000000 		.4byte	.LFE0-.LFB0
+ 442 0018 00000000 		.4byte	.LFB1
+ 443 001c 14000000 		.4byte	.LFE1-.LFB1
+ 444 0020 00000000 		.4byte	0
+ 445 0024 00000000 		.4byte	0
+ 446              		.section	.debug_ranges,"",%progbits
+ 447              	.Ldebug_ranges0:
+ 448 0000 00000000 		.4byte	.LFB0
+ 449 0004 1C000000 		.4byte	.LFE0
+ 450 0008 00000000 		.4byte	.LFB1
+ 451 000c 14000000 		.4byte	.LFE1
+ 452 0010 00000000 		.4byte	0
+ 453 0014 00000000 		.4byte	0
+ 454              		.section	.debug_line,"",%progbits
+ 455              	.Ldebug_line0:
+ 456 0000 7F000000 		.section	.debug_str,"MS",%progbits,1
+ 456      02004E00 
+ 456      00000201 
+ 456      FB0E0D00 
+ 456      01010101 
+ 457              	.LASF6:
+ 458 0000 6C6F6E67 		.ascii	"long long int\000"
+ 458      206C6F6E 
+ 458      6720696E 
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccLY9cuN.s 			page 13
+
+
+ 458      7400
+ 459              	.LASF10:
+ 460 000e 75696E74 		.ascii	"uint32\000"
+ 460      333200
+ 461              	.LASF26:
+ 462 0015 55415254 		.ascii	"UART_backup\000"
+ 462      5F626163 
+ 462      6B757000 
+ 463              	.LASF8:
+ 464 0021 756E7369 		.ascii	"unsigned int\000"
+ 464      676E6564 
+ 464      20696E74 
+ 464      00
+ 465              	.LASF20:
+ 466 002e 55415254 		.ascii	"UART_Stop\000"
+ 466      5F53746F 
+ 466      7000
+ 467              	.LASF18:
+ 468 0038 55415254 		.ascii	"UART_Sleep\000"
+ 468      5F536C65 
+ 468      657000
+ 469              	.LASF9:
+ 470 0043 75696E74 		.ascii	"uint8\000"
+ 470      3800
+ 471              	.LASF5:
+ 472 0049 6C6F6E67 		.ascii	"long unsigned int\000"
+ 472      20756E73 
+ 472      69676E65 
+ 472      6420696E 
+ 472      7400
+ 473              	.LASF7:
+ 474 005b 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 474      206C6F6E 
+ 474      6720756E 
+ 474      7369676E 
+ 474      65642069 
+ 475              	.LASF19:
+ 476 0072 55415254 		.ascii	"UART_Wakeup\000"
+ 476      5F57616B 
+ 476      65757000 
+ 477              	.LASF11:
+ 478 007e 666C6F61 		.ascii	"float\000"
+ 478      7400
+ 479              	.LASF21:
+ 480 0084 55415254 		.ascii	"UART_Enable\000"
+ 480      5F456E61 
+ 480      626C6500 
+ 481              	.LASF1:
+ 482 0090 756E7369 		.ascii	"unsigned char\000"
+ 482      676E6564 
+ 482      20636861 
+ 482      7200
+ 483              	.LASF13:
+ 484 009e 63686172 		.ascii	"char\000"
+ 484      00
+ 485              	.LASF17:
+ 486 00a3 55415254 		.ascii	"UART_BACKUP_STRUCT\000"
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccLY9cuN.s 			page 14
+
+
+ 486      5F424143 
+ 486      4B55505F 
+ 486      53545255 
+ 486      435400
+ 487              	.LASF25:
+ 488 00b6 656E6162 		.ascii	"enableState\000"
+ 488      6C655374 
+ 488      61746500 
+ 489              	.LASF12:
+ 490 00c2 646F7562 		.ascii	"double\000"
+ 490      6C6500
+ 491              	.LASF4:
+ 492 00c9 6C6F6E67 		.ascii	"long int\000"
+ 492      20696E74 
+ 492      00
+ 493              	.LASF14:
+ 494 00d2 72656733 		.ascii	"reg32\000"
+ 494      3200
+ 495              	.LASF22:
+ 496 00d8 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 496      43313120 
+ 496      352E342E 
+ 496      31203230 
+ 496      31363036 
+ 497 010b 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 497      20726576 
+ 497      6973696F 
+ 497      6E203233 
+ 497      37373135 
+ 498 013e 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 498      66756E63 
+ 498      74696F6E 
+ 498      2D736563 
+ 498      74696F6E 
+ 499              	.LASF3:
+ 500 0166 73686F72 		.ascii	"short unsigned int\000"
+ 500      7420756E 
+ 500      7369676E 
+ 500      65642069 
+ 500      6E7400
+ 501              	.LASF0:
+ 502 0179 7369676E 		.ascii	"signed char\000"
+ 502      65642063 
+ 502      68617200 
+ 503              	.LASF15:
+ 504 0185 6C6F6E67 		.ascii	"long double\000"
+ 504      20646F75 
+ 504      626C6500 
+ 505              	.LASF2:
+ 506 0191 73686F72 		.ascii	"short int\000"
+ 506      7420696E 
+ 506      7400
+ 507              	.LASF24:
+ 508 019b 443A5C72 		.ascii	"D:\\repositories\\Tarocco\\Bootloader\\cncboot_no_o"
+ 508      65706F73 
+ 508      69746F72 
+ 508      6965735C 
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccLY9cuN.s 			page 15
+
+
+ 508      5461726F 
+ 509 01ca 7074696D 		.ascii	"ptimizations\\cncboot.cydsn\000"
+ 509      697A6174 
+ 509      696F6E73 
+ 509      5C636E63 
+ 509      626F6F74 
+ 510              	.LASF16:
+ 511 01e5 73697A65 		.ascii	"sizetype\000"
+ 511      74797065 
+ 511      00
+ 512              	.LASF23:
+ 513 01ee 47656E65 		.ascii	"Generated_Source\\PSoC4\\UART_PM.c\000"
+ 513      72617465 
+ 513      645F536F 
+ 513      75726365 
+ 513      5C50536F 
+ 514              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

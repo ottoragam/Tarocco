@@ -1,0 +1,1181 @@
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccmN7reb.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"UART_tx.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.UART_tx_SetDriveMode,"ax",%progbits
+  20              		.align	2
+  21              		.global	UART_tx_SetDriveMode
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	UART_tx_SetDriveMode, %function
+  25              	UART_tx_SetDriveMode:
+  26              	.LFB0:
+  27              		.file 1 "Generated_Source\\PSoC4\\UART_tx.c"
+   1:Generated_Source\PSoC4/UART_tx.c **** /*******************************************************************************
+   2:Generated_Source\PSoC4/UART_tx.c **** * File Name: UART_tx.c  
+   3:Generated_Source\PSoC4/UART_tx.c **** * Version 2.20
+   4:Generated_Source\PSoC4/UART_tx.c **** *
+   5:Generated_Source\PSoC4/UART_tx.c **** * Description:
+   6:Generated_Source\PSoC4/UART_tx.c **** *  This file contains API to enable firmware control of a Pins component.
+   7:Generated_Source\PSoC4/UART_tx.c **** *
+   8:Generated_Source\PSoC4/UART_tx.c **** ********************************************************************************
+   9:Generated_Source\PSoC4/UART_tx.c **** * Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
+  10:Generated_Source\PSoC4/UART_tx.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  11:Generated_Source\PSoC4/UART_tx.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  12:Generated_Source\PSoC4/UART_tx.c **** * the software package with which this file was provided.
+  13:Generated_Source\PSoC4/UART_tx.c **** *******************************************************************************/
+  14:Generated_Source\PSoC4/UART_tx.c **** 
+  15:Generated_Source\PSoC4/UART_tx.c **** #include "cytypes.h"
+  16:Generated_Source\PSoC4/UART_tx.c **** #include "UART_tx.h"
+  17:Generated_Source\PSoC4/UART_tx.c **** 
+  18:Generated_Source\PSoC4/UART_tx.c **** 
+  19:Generated_Source\PSoC4/UART_tx.c **** #if defined(UART_tx__PC)
+  20:Generated_Source\PSoC4/UART_tx.c ****     #define UART_tx_SetP4PinDriveMode(shift, mode)  \
+  21:Generated_Source\PSoC4/UART_tx.c ****     do { \
+  22:Generated_Source\PSoC4/UART_tx.c ****         UART_tx_PC =   (UART_tx_PC & \
+  23:Generated_Source\PSoC4/UART_tx.c ****                                 (uint32)(~(uint32)(UART_tx_DRIVE_MODE_IND_MASK << \
+  24:Generated_Source\PSoC4/UART_tx.c ****                                 (UART_tx_DRIVE_MODE_BITS * (shift))))) | \
+  25:Generated_Source\PSoC4/UART_tx.c ****                                 (uint32)((uint32)(mode) << \
+  26:Generated_Source\PSoC4/UART_tx.c ****                                 (UART_tx_DRIVE_MODE_BITS * (shift))); \
+  27:Generated_Source\PSoC4/UART_tx.c ****     } while (0)
+  28:Generated_Source\PSoC4/UART_tx.c **** #else
+  29:Generated_Source\PSoC4/UART_tx.c ****     #if (CY_PSOC4_4200L)
+  30:Generated_Source\PSoC4/UART_tx.c ****         #define UART_tx_SetP4PinDriveMode(shift, mode)  \
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccmN7reb.s 			page 2
+
+
+  31:Generated_Source\PSoC4/UART_tx.c ****         do { \
+  32:Generated_Source\PSoC4/UART_tx.c ****             UART_tx_USBIO_CTRL_REG = (UART_tx_USBIO_CTRL_REG & \
+  33:Generated_Source\PSoC4/UART_tx.c ****                                     (uint32)(~(uint32)(UART_tx_DRIVE_MODE_IND_MASK << \
+  34:Generated_Source\PSoC4/UART_tx.c ****                                     (UART_tx_DRIVE_MODE_BITS * (shift))))) | \
+  35:Generated_Source\PSoC4/UART_tx.c ****                                     (uint32)((uint32)(mode) << \
+  36:Generated_Source\PSoC4/UART_tx.c ****                                     (UART_tx_DRIVE_MODE_BITS * (shift))); \
+  37:Generated_Source\PSoC4/UART_tx.c ****         } while (0)
+  38:Generated_Source\PSoC4/UART_tx.c ****     #endif
+  39:Generated_Source\PSoC4/UART_tx.c **** #endif
+  40:Generated_Source\PSoC4/UART_tx.c ****   
+  41:Generated_Source\PSoC4/UART_tx.c **** 
+  42:Generated_Source\PSoC4/UART_tx.c **** #if defined(UART_tx__PC) || (CY_PSOC4_4200L) 
+  43:Generated_Source\PSoC4/UART_tx.c ****     /*******************************************************************************
+  44:Generated_Source\PSoC4/UART_tx.c ****     * Function Name: UART_tx_SetDriveMode
+  45:Generated_Source\PSoC4/UART_tx.c ****     ****************************************************************************//**
+  46:Generated_Source\PSoC4/UART_tx.c ****     *
+  47:Generated_Source\PSoC4/UART_tx.c ****     * \brief Sets the drive mode for each of the Pins component's pins.
+  48:Generated_Source\PSoC4/UART_tx.c ****     * 
+  49:Generated_Source\PSoC4/UART_tx.c ****     * <b>Note</b> This affects all pins in the Pins component instance. Use the
+  50:Generated_Source\PSoC4/UART_tx.c ****     * Per-Pin APIs if you wish to control individual pin's drive modes.
+  51:Generated_Source\PSoC4/UART_tx.c ****     *
+  52:Generated_Source\PSoC4/UART_tx.c ****     * <b>Note</b> USBIOs have limited drive functionality. Refer to the Drive Mode
+  53:Generated_Source\PSoC4/UART_tx.c ****     * parameter for more information.
+  54:Generated_Source\PSoC4/UART_tx.c ****     *
+  55:Generated_Source\PSoC4/UART_tx.c ****     * \param mode
+  56:Generated_Source\PSoC4/UART_tx.c ****     *  Mode for the selected signals. Valid options are documented in 
+  57:Generated_Source\PSoC4/UART_tx.c ****     *  \ref driveMode.
+  58:Generated_Source\PSoC4/UART_tx.c ****     *
+  59:Generated_Source\PSoC4/UART_tx.c ****     * \return
+  60:Generated_Source\PSoC4/UART_tx.c ****     *  None
+  61:Generated_Source\PSoC4/UART_tx.c ****     *
+  62:Generated_Source\PSoC4/UART_tx.c ****     * \sideeffect
+  63:Generated_Source\PSoC4/UART_tx.c ****     *  If you use read-modify-write operations that are not atomic, the ISR can
+  64:Generated_Source\PSoC4/UART_tx.c ****     *  cause corruption of this function. An ISR that interrupts this function 
+  65:Generated_Source\PSoC4/UART_tx.c ****     *  and performs writes to the Pins component Drive Mode registers can cause 
+  66:Generated_Source\PSoC4/UART_tx.c ****     *  corrupted port data. To avoid this issue, you should either use the Per-Pin
+  67:Generated_Source\PSoC4/UART_tx.c ****     *  APIs (primary method) or disable interrupts around this function.
+  68:Generated_Source\PSoC4/UART_tx.c ****     *
+  69:Generated_Source\PSoC4/UART_tx.c ****     * \funcusage
+  70:Generated_Source\PSoC4/UART_tx.c ****     *  \snippet UART_tx_SUT.c usage_UART_tx_SetDriveMode
+  71:Generated_Source\PSoC4/UART_tx.c ****     *******************************************************************************/
+  72:Generated_Source\PSoC4/UART_tx.c ****     void UART_tx_SetDriveMode(uint8 mode)
+  73:Generated_Source\PSoC4/UART_tx.c ****     {
+  28              		.loc 1 73 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  33              	.LVL0:
+  74:Generated_Source\PSoC4/UART_tx.c **** 		UART_tx_SetP4PinDriveMode(UART_tx__0__SHIFT, mode);
+  34              		.loc 1 74 0
+  35 0000 034A     		ldr	r2, .L2
+  36 0002 1368     		ldr	r3, [r2]
+  37 0004 3821     		movs	r1, #56
+  38 0006 8B43     		bics	r3, r1
+  39 0008 C000     		lsls	r0, r0, #3
+  40              	.LVL1:
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccmN7reb.s 			page 3
+
+
+  41 000a 1843     		orrs	r0, r3
+  42 000c 1060     		str	r0, [r2]
+  75:Generated_Source\PSoC4/UART_tx.c ****     }
+  43              		.loc 1 75 0
+  44              		@ sp needed
+  45 000e 7047     		bx	lr
+  46              	.L3:
+  47              		.align	2
+  48              	.L2:
+  49 0010 08030440 		.word	1074004744
+  50              		.cfi_endproc
+  51              	.LFE0:
+  52              		.size	UART_tx_SetDriveMode, .-UART_tx_SetDriveMode
+  53              		.section	.text.UART_tx_Write,"ax",%progbits
+  54              		.align	2
+  55              		.global	UART_tx_Write
+  56              		.code	16
+  57              		.thumb_func
+  58              		.type	UART_tx_Write, %function
+  59              	UART_tx_Write:
+  60              	.LFB1:
+  76:Generated_Source\PSoC4/UART_tx.c **** #endif
+  77:Generated_Source\PSoC4/UART_tx.c **** 
+  78:Generated_Source\PSoC4/UART_tx.c **** 
+  79:Generated_Source\PSoC4/UART_tx.c **** /*******************************************************************************
+  80:Generated_Source\PSoC4/UART_tx.c **** * Function Name: UART_tx_Write
+  81:Generated_Source\PSoC4/UART_tx.c **** ****************************************************************************//**
+  82:Generated_Source\PSoC4/UART_tx.c **** *
+  83:Generated_Source\PSoC4/UART_tx.c **** * \brief Writes the value to the physical port (data output register), masking
+  84:Generated_Source\PSoC4/UART_tx.c **** *  and shifting the bits appropriately. 
+  85:Generated_Source\PSoC4/UART_tx.c **** *
+  86:Generated_Source\PSoC4/UART_tx.c **** * The data output register controls the signal applied to the physical pin in 
+  87:Generated_Source\PSoC4/UART_tx.c **** * conjunction with the drive mode parameter. This function avoids changing 
+  88:Generated_Source\PSoC4/UART_tx.c **** * other bits in the port by using the appropriate method (read-modify-write or
+  89:Generated_Source\PSoC4/UART_tx.c **** * bit banding).
+  90:Generated_Source\PSoC4/UART_tx.c **** *
+  91:Generated_Source\PSoC4/UART_tx.c **** * <b>Note</b> This function should not be used on a hardware digital output pin 
+  92:Generated_Source\PSoC4/UART_tx.c **** * as it is driven by the hardware signal attached to it.
+  93:Generated_Source\PSoC4/UART_tx.c **** *
+  94:Generated_Source\PSoC4/UART_tx.c **** * \param value
+  95:Generated_Source\PSoC4/UART_tx.c **** *  Value to write to the component instance.
+  96:Generated_Source\PSoC4/UART_tx.c **** *
+  97:Generated_Source\PSoC4/UART_tx.c **** * \return 
+  98:Generated_Source\PSoC4/UART_tx.c **** *  None 
+  99:Generated_Source\PSoC4/UART_tx.c **** *
+ 100:Generated_Source\PSoC4/UART_tx.c **** * \sideeffect
+ 101:Generated_Source\PSoC4/UART_tx.c **** *  If you use read-modify-write operations that are not atomic; the Interrupt 
+ 102:Generated_Source\PSoC4/UART_tx.c **** *  Service Routines (ISR) can cause corruption of this function. An ISR that 
+ 103:Generated_Source\PSoC4/UART_tx.c **** *  interrupts this function and performs writes to the Pins component data 
+ 104:Generated_Source\PSoC4/UART_tx.c **** *  register can cause corrupted port data. To avoid this issue, you should 
+ 105:Generated_Source\PSoC4/UART_tx.c **** *  either use the Per-Pin APIs (primary method) or disable interrupts around 
+ 106:Generated_Source\PSoC4/UART_tx.c **** *  this function.
+ 107:Generated_Source\PSoC4/UART_tx.c **** *
+ 108:Generated_Source\PSoC4/UART_tx.c **** * \funcusage
+ 109:Generated_Source\PSoC4/UART_tx.c **** *  \snippet UART_tx_SUT.c usage_UART_tx_Write
+ 110:Generated_Source\PSoC4/UART_tx.c **** *******************************************************************************/
+ 111:Generated_Source\PSoC4/UART_tx.c **** void UART_tx_Write(uint8 value)
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccmN7reb.s 			page 4
+
+
+ 112:Generated_Source\PSoC4/UART_tx.c **** {
+  61              		.loc 1 112 0
+  62              		.cfi_startproc
+  63              		@ args = 0, pretend = 0, frame = 0
+  64              		@ frame_needed = 0, uses_anonymous_args = 0
+  65              		@ link register save eliminated.
+  66              	.LVL2:
+ 113:Generated_Source\PSoC4/UART_tx.c ****     uint8 drVal = (uint8)(UART_tx_DR & (uint8)(~UART_tx_MASK));
+  67              		.loc 1 113 0
+  68 0000 0449     		ldr	r1, .L5
+  69 0002 0A68     		ldr	r2, [r1]
+  70 0004 D2B2     		uxtb	r2, r2
+  71 0006 0223     		movs	r3, #2
+  72 0008 9A43     		bics	r2, r3
+  73              	.LVL3:
+ 114:Generated_Source\PSoC4/UART_tx.c ****     drVal = (drVal | ((uint8)(value << UART_tx_SHIFT) & UART_tx_MASK));
+  74              		.loc 1 114 0
+  75 000a 4000     		lsls	r0, r0, #1
+  76              	.LVL4:
+  77 000c 1840     		ands	r0, r3
+  78 000e 1043     		orrs	r0, r2
+  79              	.LVL5:
+ 115:Generated_Source\PSoC4/UART_tx.c ****     UART_tx_DR = (uint32)drVal;
+  80              		.loc 1 115 0
+  81 0010 0860     		str	r0, [r1]
+ 116:Generated_Source\PSoC4/UART_tx.c **** }
+  82              		.loc 1 116 0
+  83              		@ sp needed
+  84 0012 7047     		bx	lr
+  85              	.L6:
+  86              		.align	2
+  87              	.L5:
+  88 0014 00030440 		.word	1074004736
+  89              		.cfi_endproc
+  90              	.LFE1:
+  91              		.size	UART_tx_Write, .-UART_tx_Write
+  92              		.section	.text.UART_tx_Read,"ax",%progbits
+  93              		.align	2
+  94              		.global	UART_tx_Read
+  95              		.code	16
+  96              		.thumb_func
+  97              		.type	UART_tx_Read, %function
+  98              	UART_tx_Read:
+  99              	.LFB2:
+ 117:Generated_Source\PSoC4/UART_tx.c **** 
+ 118:Generated_Source\PSoC4/UART_tx.c **** 
+ 119:Generated_Source\PSoC4/UART_tx.c **** /*******************************************************************************
+ 120:Generated_Source\PSoC4/UART_tx.c **** * Function Name: UART_tx_Read
+ 121:Generated_Source\PSoC4/UART_tx.c **** ****************************************************************************//**
+ 122:Generated_Source\PSoC4/UART_tx.c **** *
+ 123:Generated_Source\PSoC4/UART_tx.c **** * \brief Reads the associated physical port (pin status register) and masks 
+ 124:Generated_Source\PSoC4/UART_tx.c **** *  the required bits according to the width and bit position of the component
+ 125:Generated_Source\PSoC4/UART_tx.c **** *  instance. 
+ 126:Generated_Source\PSoC4/UART_tx.c **** *
+ 127:Generated_Source\PSoC4/UART_tx.c **** * The pin's status register returns the current logic level present on the 
+ 128:Generated_Source\PSoC4/UART_tx.c **** * physical pin.
+ 129:Generated_Source\PSoC4/UART_tx.c **** *
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccmN7reb.s 			page 5
+
+
+ 130:Generated_Source\PSoC4/UART_tx.c **** * \return 
+ 131:Generated_Source\PSoC4/UART_tx.c **** *  The current value for the pins in the component as a right justified number.
+ 132:Generated_Source\PSoC4/UART_tx.c **** *
+ 133:Generated_Source\PSoC4/UART_tx.c **** * \funcusage
+ 134:Generated_Source\PSoC4/UART_tx.c **** *  \snippet UART_tx_SUT.c usage_UART_tx_Read  
+ 135:Generated_Source\PSoC4/UART_tx.c **** *******************************************************************************/
+ 136:Generated_Source\PSoC4/UART_tx.c **** uint8 UART_tx_Read(void)
+ 137:Generated_Source\PSoC4/UART_tx.c **** {
+ 100              		.loc 1 137 0
+ 101              		.cfi_startproc
+ 102              		@ args = 0, pretend = 0, frame = 0
+ 103              		@ frame_needed = 0, uses_anonymous_args = 0
+ 104              		@ link register save eliminated.
+ 138:Generated_Source\PSoC4/UART_tx.c ****     return (uint8)((UART_tx_PS & UART_tx_MASK) >> UART_tx_SHIFT);
+ 105              		.loc 1 138 0
+ 106 0000 024B     		ldr	r3, .L8
+ 107 0002 1868     		ldr	r0, [r3]
+ 108 0004 4008     		lsrs	r0, r0, #1
+ 109 0006 0123     		movs	r3, #1
+ 110 0008 1840     		ands	r0, r3
+ 139:Generated_Source\PSoC4/UART_tx.c **** }
+ 111              		.loc 1 139 0
+ 112              		@ sp needed
+ 113 000a 7047     		bx	lr
+ 114              	.L9:
+ 115              		.align	2
+ 116              	.L8:
+ 117 000c 04030440 		.word	1074004740
+ 118              		.cfi_endproc
+ 119              	.LFE2:
+ 120              		.size	UART_tx_Read, .-UART_tx_Read
+ 121              		.section	.text.UART_tx_ReadDataReg,"ax",%progbits
+ 122              		.align	2
+ 123              		.global	UART_tx_ReadDataReg
+ 124              		.code	16
+ 125              		.thumb_func
+ 126              		.type	UART_tx_ReadDataReg, %function
+ 127              	UART_tx_ReadDataReg:
+ 128              	.LFB3:
+ 140:Generated_Source\PSoC4/UART_tx.c **** 
+ 141:Generated_Source\PSoC4/UART_tx.c **** 
+ 142:Generated_Source\PSoC4/UART_tx.c **** /*******************************************************************************
+ 143:Generated_Source\PSoC4/UART_tx.c **** * Function Name: UART_tx_ReadDataReg
+ 144:Generated_Source\PSoC4/UART_tx.c **** ****************************************************************************//**
+ 145:Generated_Source\PSoC4/UART_tx.c **** *
+ 146:Generated_Source\PSoC4/UART_tx.c **** * \brief Reads the associated physical port's data output register and masks 
+ 147:Generated_Source\PSoC4/UART_tx.c **** *  the correct bits according to the width and bit position of the component 
+ 148:Generated_Source\PSoC4/UART_tx.c **** *  instance. 
+ 149:Generated_Source\PSoC4/UART_tx.c **** *
+ 150:Generated_Source\PSoC4/UART_tx.c **** * The data output register controls the signal applied to the physical pin in 
+ 151:Generated_Source\PSoC4/UART_tx.c **** * conjunction with the drive mode parameter. This is not the same as the 
+ 152:Generated_Source\PSoC4/UART_tx.c **** * preferred UART_tx_Read() API because the 
+ 153:Generated_Source\PSoC4/UART_tx.c **** * UART_tx_ReadDataReg() reads the data register instead of the status 
+ 154:Generated_Source\PSoC4/UART_tx.c **** * register. For output pins this is a useful function to determine the value 
+ 155:Generated_Source\PSoC4/UART_tx.c **** * just written to the pin.
+ 156:Generated_Source\PSoC4/UART_tx.c **** *
+ 157:Generated_Source\PSoC4/UART_tx.c **** * \return 
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccmN7reb.s 			page 6
+
+
+ 158:Generated_Source\PSoC4/UART_tx.c **** *  The current value of the data register masked and shifted into a right 
+ 159:Generated_Source\PSoC4/UART_tx.c **** *  justified number for the component instance.
+ 160:Generated_Source\PSoC4/UART_tx.c **** *
+ 161:Generated_Source\PSoC4/UART_tx.c **** * \funcusage
+ 162:Generated_Source\PSoC4/UART_tx.c **** *  \snippet UART_tx_SUT.c usage_UART_tx_ReadDataReg 
+ 163:Generated_Source\PSoC4/UART_tx.c **** *******************************************************************************/
+ 164:Generated_Source\PSoC4/UART_tx.c **** uint8 UART_tx_ReadDataReg(void)
+ 165:Generated_Source\PSoC4/UART_tx.c **** {
+ 129              		.loc 1 165 0
+ 130              		.cfi_startproc
+ 131              		@ args = 0, pretend = 0, frame = 0
+ 132              		@ frame_needed = 0, uses_anonymous_args = 0
+ 133              		@ link register save eliminated.
+ 166:Generated_Source\PSoC4/UART_tx.c ****     return (uint8)((UART_tx_DR & UART_tx_MASK) >> UART_tx_SHIFT);
+ 134              		.loc 1 166 0
+ 135 0000 024B     		ldr	r3, .L11
+ 136 0002 1868     		ldr	r0, [r3]
+ 137 0004 4008     		lsrs	r0, r0, #1
+ 138 0006 0123     		movs	r3, #1
+ 139 0008 1840     		ands	r0, r3
+ 167:Generated_Source\PSoC4/UART_tx.c **** }
+ 140              		.loc 1 167 0
+ 141              		@ sp needed
+ 142 000a 7047     		bx	lr
+ 143              	.L12:
+ 144              		.align	2
+ 145              	.L11:
+ 146 000c 00030440 		.word	1074004736
+ 147              		.cfi_endproc
+ 148              	.LFE3:
+ 149              		.size	UART_tx_ReadDataReg, .-UART_tx_ReadDataReg
+ 150              		.section	.text.UART_tx_SetInterruptMode,"ax",%progbits
+ 151              		.align	2
+ 152              		.global	UART_tx_SetInterruptMode
+ 153              		.code	16
+ 154              		.thumb_func
+ 155              		.type	UART_tx_SetInterruptMode, %function
+ 156              	UART_tx_SetInterruptMode:
+ 157              	.LFB4:
+ 168:Generated_Source\PSoC4/UART_tx.c **** 
+ 169:Generated_Source\PSoC4/UART_tx.c **** 
+ 170:Generated_Source\PSoC4/UART_tx.c **** /*******************************************************************************
+ 171:Generated_Source\PSoC4/UART_tx.c **** * Function Name: UART_tx_SetInterruptMode
+ 172:Generated_Source\PSoC4/UART_tx.c **** ****************************************************************************//**
+ 173:Generated_Source\PSoC4/UART_tx.c **** *
+ 174:Generated_Source\PSoC4/UART_tx.c **** * \brief Configures the interrupt mode for each of the Pins component's
+ 175:Generated_Source\PSoC4/UART_tx.c **** *  pins. Alternatively you may set the interrupt mode for all the pins
+ 176:Generated_Source\PSoC4/UART_tx.c **** *  specified in the Pins component.
+ 177:Generated_Source\PSoC4/UART_tx.c **** *
+ 178:Generated_Source\PSoC4/UART_tx.c **** *  <b>Note</b> The interrupt is port-wide and therefore any enabled pin
+ 179:Generated_Source\PSoC4/UART_tx.c **** *  interrupt may trigger it.
+ 180:Generated_Source\PSoC4/UART_tx.c **** *
+ 181:Generated_Source\PSoC4/UART_tx.c **** * \param position
+ 182:Generated_Source\PSoC4/UART_tx.c **** *  The pin position as listed in the Pins component. You may OR these to be 
+ 183:Generated_Source\PSoC4/UART_tx.c **** *  able to configure the interrupt mode of multiple pins within a Pins 
+ 184:Generated_Source\PSoC4/UART_tx.c **** *  component. Or you may use UART_tx_INTR_ALL to configure the
+ 185:Generated_Source\PSoC4/UART_tx.c **** *  interrupt mode of all the pins in the Pins component.       
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccmN7reb.s 			page 7
+
+
+ 186:Generated_Source\PSoC4/UART_tx.c **** *  - UART_tx_0_INTR       (First pin in the list)
+ 187:Generated_Source\PSoC4/UART_tx.c **** *  - UART_tx_1_INTR       (Second pin in the list)
+ 188:Generated_Source\PSoC4/UART_tx.c **** *  - ...
+ 189:Generated_Source\PSoC4/UART_tx.c **** *  - UART_tx_INTR_ALL     (All pins in Pins component)
+ 190:Generated_Source\PSoC4/UART_tx.c **** *
+ 191:Generated_Source\PSoC4/UART_tx.c **** * \param mode
+ 192:Generated_Source\PSoC4/UART_tx.c **** *  Interrupt mode for the selected pins. Valid options are documented in
+ 193:Generated_Source\PSoC4/UART_tx.c **** *  \ref intrMode.
+ 194:Generated_Source\PSoC4/UART_tx.c **** *
+ 195:Generated_Source\PSoC4/UART_tx.c **** * \return 
+ 196:Generated_Source\PSoC4/UART_tx.c **** *  None
+ 197:Generated_Source\PSoC4/UART_tx.c **** *  
+ 198:Generated_Source\PSoC4/UART_tx.c **** * \sideeffect
+ 199:Generated_Source\PSoC4/UART_tx.c **** *  It is recommended that the interrupt be disabled before calling this 
+ 200:Generated_Source\PSoC4/UART_tx.c **** *  function to avoid unintended interrupt requests. Note that the interrupt
+ 201:Generated_Source\PSoC4/UART_tx.c **** *  type is port wide, and therefore will trigger for any enabled pin on the 
+ 202:Generated_Source\PSoC4/UART_tx.c **** *  port.
+ 203:Generated_Source\PSoC4/UART_tx.c **** *
+ 204:Generated_Source\PSoC4/UART_tx.c **** * \funcusage
+ 205:Generated_Source\PSoC4/UART_tx.c **** *  \snippet UART_tx_SUT.c usage_UART_tx_SetInterruptMode
+ 206:Generated_Source\PSoC4/UART_tx.c **** *******************************************************************************/
+ 207:Generated_Source\PSoC4/UART_tx.c **** void UART_tx_SetInterruptMode(uint16 position, uint16 mode)
+ 208:Generated_Source\PSoC4/UART_tx.c **** {
+ 158              		.loc 1 208 0
+ 159              		.cfi_startproc
+ 160              		@ args = 0, pretend = 0, frame = 0
+ 161              		@ frame_needed = 0, uses_anonymous_args = 0
+ 162              		@ link register save eliminated.
+ 163              	.LVL6:
+ 209:Generated_Source\PSoC4/UART_tx.c ****     uint32 intrCfg;
+ 210:Generated_Source\PSoC4/UART_tx.c ****     
+ 211:Generated_Source\PSoC4/UART_tx.c ****     intrCfg =  UART_tx_INTCFG & (uint32)(~(uint32)position);
+ 164              		.loc 1 211 0
+ 165 0000 034A     		ldr	r2, .L14
+ 166 0002 1368     		ldr	r3, [r2]
+ 167 0004 8343     		bics	r3, r0
+ 168              	.LVL7:
+ 212:Generated_Source\PSoC4/UART_tx.c ****     UART_tx_INTCFG = intrCfg | ((uint32)position & (uint32)mode);
+ 169              		.loc 1 212 0
+ 170 0006 0840     		ands	r0, r1
+ 171              	.LVL8:
+ 172 0008 1843     		orrs	r0, r3
+ 173 000a 1060     		str	r0, [r2]
+ 213:Generated_Source\PSoC4/UART_tx.c **** }
+ 174              		.loc 1 213 0
+ 175              		@ sp needed
+ 176 000c 7047     		bx	lr
+ 177              	.L15:
+ 178 000e C046     		.align	2
+ 179              	.L14:
+ 180 0010 0C030440 		.word	1074004748
+ 181              		.cfi_endproc
+ 182              	.LFE4:
+ 183              		.size	UART_tx_SetInterruptMode, .-UART_tx_SetInterruptMode
+ 184              		.section	.text.UART_tx_ClearInterrupt,"ax",%progbits
+ 185              		.align	2
+ 186              		.global	UART_tx_ClearInterrupt
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccmN7reb.s 			page 8
+
+
+ 187              		.code	16
+ 188              		.thumb_func
+ 189              		.type	UART_tx_ClearInterrupt, %function
+ 190              	UART_tx_ClearInterrupt:
+ 191              	.LFB5:
+ 214:Generated_Source\PSoC4/UART_tx.c **** 
+ 215:Generated_Source\PSoC4/UART_tx.c **** 
+ 216:Generated_Source\PSoC4/UART_tx.c **** /*******************************************************************************
+ 217:Generated_Source\PSoC4/UART_tx.c **** * Function Name: UART_tx_ClearInterrupt
+ 218:Generated_Source\PSoC4/UART_tx.c **** ****************************************************************************//**
+ 219:Generated_Source\PSoC4/UART_tx.c **** *
+ 220:Generated_Source\PSoC4/UART_tx.c **** * \brief Clears any active interrupts attached with the component and returns 
+ 221:Generated_Source\PSoC4/UART_tx.c **** *  the value of the interrupt status register allowing determination of which
+ 222:Generated_Source\PSoC4/UART_tx.c **** *  pins generated an interrupt event.
+ 223:Generated_Source\PSoC4/UART_tx.c **** *
+ 224:Generated_Source\PSoC4/UART_tx.c **** * \return 
+ 225:Generated_Source\PSoC4/UART_tx.c **** *  The right-shifted current value of the interrupt status register. Each pin 
+ 226:Generated_Source\PSoC4/UART_tx.c **** *  has one bit set if it generated an interrupt event. For example, bit 0 is 
+ 227:Generated_Source\PSoC4/UART_tx.c **** *  for pin 0 and bit 1 is for pin 1 of the Pins component.
+ 228:Generated_Source\PSoC4/UART_tx.c **** *  
+ 229:Generated_Source\PSoC4/UART_tx.c **** * \sideeffect
+ 230:Generated_Source\PSoC4/UART_tx.c **** *  Clears all bits of the physical port's interrupt status register, not just
+ 231:Generated_Source\PSoC4/UART_tx.c **** *  those associated with the Pins component.
+ 232:Generated_Source\PSoC4/UART_tx.c **** *
+ 233:Generated_Source\PSoC4/UART_tx.c **** * \funcusage
+ 234:Generated_Source\PSoC4/UART_tx.c **** *  \snippet UART_tx_SUT.c usage_UART_tx_ClearInterrupt
+ 235:Generated_Source\PSoC4/UART_tx.c **** *******************************************************************************/
+ 236:Generated_Source\PSoC4/UART_tx.c **** uint8 UART_tx_ClearInterrupt(void)
+ 237:Generated_Source\PSoC4/UART_tx.c **** {
+ 192              		.loc 1 237 0
+ 193              		.cfi_startproc
+ 194              		@ args = 0, pretend = 0, frame = 0
+ 195              		@ frame_needed = 0, uses_anonymous_args = 0
+ 196              		@ link register save eliminated.
+ 238:Generated_Source\PSoC4/UART_tx.c **** 	uint8 maskedStatus = (uint8)(UART_tx_INTSTAT & UART_tx_MASK);
+ 197              		.loc 1 238 0
+ 198 0000 034A     		ldr	r2, .L17
+ 199 0002 1068     		ldr	r0, [r2]
+ 200 0004 0223     		movs	r3, #2
+ 201 0006 1840     		ands	r0, r3
+ 202              	.LVL9:
+ 239:Generated_Source\PSoC4/UART_tx.c **** 	UART_tx_INTSTAT = maskedStatus;
+ 203              		.loc 1 239 0
+ 204 0008 1060     		str	r0, [r2]
+ 240:Generated_Source\PSoC4/UART_tx.c ****     return maskedStatus >> UART_tx_SHIFT;
+ 205              		.loc 1 240 0
+ 206 000a 4008     		lsrs	r0, r0, #1
+ 207              	.LVL10:
+ 208 000c C0B2     		uxtb	r0, r0
+ 241:Generated_Source\PSoC4/UART_tx.c **** }
+ 209              		.loc 1 241 0
+ 210              		@ sp needed
+ 211 000e 7047     		bx	lr
+ 212              	.L18:
+ 213              		.align	2
+ 214              	.L17:
+ 215 0010 10030440 		.word	1074004752
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccmN7reb.s 			page 9
+
+
+ 216              		.cfi_endproc
+ 217              	.LFE5:
+ 218              		.size	UART_tx_ClearInterrupt, .-UART_tx_ClearInterrupt
+ 219              		.text
+ 220              	.Letext0:
+ 221              		.file 2 "Generated_Source\\PSoC4\\cytypes.h"
+ 222              		.section	.debug_info,"",%progbits
+ 223              	.Ldebug_info0:
+ 224 0000 99010000 		.4byte	0x199
+ 225 0004 0400     		.2byte	0x4
+ 226 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 227 000a 04       		.byte	0x4
+ 228 000b 01       		.uleb128 0x1
+ 229 000c 06010000 		.4byte	.LASF28
+ 230 0010 0C       		.byte	0xc
+ 231 0011 D6010000 		.4byte	.LASF29
+ 232 0015 59000000 		.4byte	.LASF30
+ 233 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 234 001d 00000000 		.4byte	0
+ 235 0021 00000000 		.4byte	.Ldebug_line0
+ 236 0025 02       		.uleb128 0x2
+ 237 0026 01       		.byte	0x1
+ 238 0027 06       		.byte	0x6
+ 239 0028 29020000 		.4byte	.LASF0
+ 240 002c 02       		.uleb128 0x2
+ 241 002d 01       		.byte	0x1
+ 242 002e 08       		.byte	0x8
+ 243 002f 12000000 		.4byte	.LASF1
+ 244 0033 02       		.uleb128 0x2
+ 245 0034 02       		.byte	0x2
+ 246 0035 05       		.byte	0x5
+ 247 0036 10020000 		.4byte	.LASF2
+ 248 003a 02       		.uleb128 0x2
+ 249 003b 02       		.byte	0x2
+ 250 003c 07       		.byte	0x7
+ 251 003d 46000000 		.4byte	.LASF3
+ 252 0041 02       		.uleb128 0x2
+ 253 0042 04       		.byte	0x4
+ 254 0043 05       		.byte	0x5
+ 255 0044 20020000 		.4byte	.LASF4
+ 256 0048 02       		.uleb128 0x2
+ 257 0049 04       		.byte	0x4
+ 258 004a 07       		.byte	0x7
+ 259 004b 26000000 		.4byte	.LASF5
+ 260 004f 02       		.uleb128 0x2
+ 261 0050 08       		.byte	0x8
+ 262 0051 05       		.byte	0x5
+ 263 0052 A1010000 		.4byte	.LASF6
+ 264 0056 02       		.uleb128 0x2
+ 265 0057 08       		.byte	0x8
+ 266 0058 07       		.byte	0x7
+ 267 0059 D6000000 		.4byte	.LASF7
+ 268 005d 03       		.uleb128 0x3
+ 269 005e 04       		.byte	0x4
+ 270 005f 05       		.byte	0x5
+ 271 0060 696E7400 		.ascii	"int\000"
+ 272 0064 02       		.uleb128 0x2
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccmN7reb.s 			page 10
+
+
+ 273 0065 04       		.byte	0x4
+ 274 0066 07       		.byte	0x7
+ 275 0067 C9000000 		.4byte	.LASF8
+ 276 006b 04       		.uleb128 0x4
+ 277 006c 1A020000 		.4byte	.LASF9
+ 278 0070 02       		.byte	0x2
+ 279 0071 9801     		.2byte	0x198
+ 280 0073 2C000000 		.4byte	0x2c
+ 281 0077 04       		.uleb128 0x4
+ 282 0078 AA000000 		.4byte	.LASF10
+ 283 007c 02       		.byte	0x2
+ 284 007d 9901     		.2byte	0x199
+ 285 007f 3A000000 		.4byte	0x3a
+ 286 0083 04       		.uleb128 0x4
+ 287 0084 BA000000 		.4byte	.LASF11
+ 288 0088 02       		.byte	0x2
+ 289 0089 9A01     		.2byte	0x19a
+ 290 008b 48000000 		.4byte	0x48
+ 291 008f 02       		.uleb128 0x2
+ 292 0090 04       		.byte	0x4
+ 293 0091 04       		.byte	0x4
+ 294 0092 0C000000 		.4byte	.LASF12
+ 295 0096 02       		.uleb128 0x2
+ 296 0097 08       		.byte	0x8
+ 297 0098 04       		.byte	0x4
+ 298 0099 A3000000 		.4byte	.LASF13
+ 299 009d 02       		.uleb128 0x2
+ 300 009e 01       		.byte	0x1
+ 301 009f 08       		.byte	0x8
+ 302 00a0 D1010000 		.4byte	.LASF14
+ 303 00a4 04       		.uleb128 0x4
+ 304 00a5 00000000 		.4byte	.LASF15
+ 305 00a9 02       		.byte	0x2
+ 306 00aa 4402     		.2byte	0x244
+ 307 00ac B0000000 		.4byte	0xb0
+ 308 00b0 05       		.uleb128 0x5
+ 309 00b1 83000000 		.4byte	0x83
+ 310 00b5 06       		.uleb128 0x6
+ 311 00b6 AF010000 		.4byte	.LASF16
+ 312 00ba 01       		.byte	0x1
+ 313 00bb 48       		.byte	0x48
+ 314 00bc 00000000 		.4byte	.LFB0
+ 315 00c0 14000000 		.4byte	.LFE0-.LFB0
+ 316 00c4 01       		.uleb128 0x1
+ 317 00c5 9C       		.byte	0x9c
+ 318 00c6 DA000000 		.4byte	0xda
+ 319 00ca 07       		.uleb128 0x7
+ 320 00cb ED000000 		.4byte	.LASF18
+ 321 00cf 01       		.byte	0x1
+ 322 00d0 48       		.byte	0x48
+ 323 00d1 6B000000 		.4byte	0x6b
+ 324 00d5 00000000 		.4byte	.LLST0
+ 325 00d9 00       		.byte	0
+ 326 00da 06       		.uleb128 0x6
+ 327 00db 38000000 		.4byte	.LASF17
+ 328 00df 01       		.byte	0x1
+ 329 00e0 6F       		.byte	0x6f
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccmN7reb.s 			page 11
+
+
+ 330 00e1 00000000 		.4byte	.LFB1
+ 331 00e5 18000000 		.4byte	.LFE1-.LFB1
+ 332 00e9 01       		.uleb128 0x1
+ 333 00ea 9C       		.byte	0x9c
+ 334 00eb 0E010000 		.4byte	0x10e
+ 335 00ef 07       		.uleb128 0x7
+ 336 00f0 06000000 		.4byte	.LASF19
+ 337 00f4 01       		.byte	0x1
+ 338 00f5 6F       		.byte	0x6f
+ 339 00f6 6B000000 		.4byte	0x6b
+ 340 00fa 21000000 		.4byte	.LLST1
+ 341 00fe 08       		.uleb128 0x8
+ 342 00ff 20000000 		.4byte	.LASF24
+ 343 0103 01       		.byte	0x1
+ 344 0104 71       		.byte	0x71
+ 345 0105 6B000000 		.4byte	0x6b
+ 346 0109 42000000 		.4byte	.LLST2
+ 347 010d 00       		.byte	0
+ 348 010e 09       		.uleb128 0x9
+ 349 010f 94010000 		.4byte	.LASF20
+ 350 0113 01       		.byte	0x1
+ 351 0114 88       		.byte	0x88
+ 352 0115 6B000000 		.4byte	0x6b
+ 353 0119 00000000 		.4byte	.LFB2
+ 354 011d 10000000 		.4byte	.LFE2-.LFB2
+ 355 0121 01       		.uleb128 0x1
+ 356 0122 9C       		.byte	0x9c
+ 357 0123 09       		.uleb128 0x9
+ 358 0124 F2000000 		.4byte	.LASF21
+ 359 0128 01       		.byte	0x1
+ 360 0129 A4       		.byte	0xa4
+ 361 012a 6B000000 		.4byte	0x6b
+ 362 012e 00000000 		.4byte	.LFB3
+ 363 0132 10000000 		.4byte	.LFE3-.LFB3
+ 364 0136 01       		.uleb128 0x1
+ 365 0137 9C       		.byte	0x9c
+ 366 0138 06       		.uleb128 0x6
+ 367 0139 F7010000 		.4byte	.LASF22
+ 368 013d 01       		.byte	0x1
+ 369 013e CF       		.byte	0xcf
+ 370 013f 00000000 		.4byte	.LFB4
+ 371 0143 14000000 		.4byte	.LFE4-.LFB4
+ 372 0147 01       		.uleb128 0x1
+ 373 0148 9C       		.byte	0x9c
+ 374 0149 77010000 		.4byte	0x177
+ 375 014d 07       		.uleb128 0x7
+ 376 014e B1000000 		.4byte	.LASF23
+ 377 0152 01       		.byte	0x1
+ 378 0153 CF       		.byte	0xcf
+ 379 0154 77000000 		.4byte	0x77
+ 380 0158 60000000 		.4byte	.LLST3
+ 381 015c 0A       		.uleb128 0xa
+ 382 015d ED000000 		.4byte	.LASF18
+ 383 0161 01       		.byte	0x1
+ 384 0162 CF       		.byte	0xcf
+ 385 0163 77000000 		.4byte	0x77
+ 386 0167 01       		.uleb128 0x1
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccmN7reb.s 			page 12
+
+
+ 387 0168 51       		.byte	0x51
+ 388 0169 0B       		.uleb128 0xb
+ 389 016a C1000000 		.4byte	.LASF25
+ 390 016e 01       		.byte	0x1
+ 391 016f D1       		.byte	0xd1
+ 392 0170 83000000 		.4byte	0x83
+ 393 0174 01       		.uleb128 0x1
+ 394 0175 53       		.byte	0x53
+ 395 0176 00       		.byte	0
+ 396 0177 0C       		.uleb128 0xc
+ 397 0178 35020000 		.4byte	.LASF26
+ 398 017c 01       		.byte	0x1
+ 399 017d EC       		.byte	0xec
+ 400 017e 6B000000 		.4byte	0x6b
+ 401 0182 00000000 		.4byte	.LFB5
+ 402 0186 14000000 		.4byte	.LFE5-.LFB5
+ 403 018a 01       		.uleb128 0x1
+ 404 018b 9C       		.byte	0x9c
+ 405 018c 08       		.uleb128 0x8
+ 406 018d C4010000 		.4byte	.LASF27
+ 407 0191 01       		.byte	0x1
+ 408 0192 EE       		.byte	0xee
+ 409 0193 6B000000 		.4byte	0x6b
+ 410 0197 81000000 		.4byte	.LLST4
+ 411 019b 00       		.byte	0
+ 412 019c 00       		.byte	0
+ 413              		.section	.debug_abbrev,"",%progbits
+ 414              	.Ldebug_abbrev0:
+ 415 0000 01       		.uleb128 0x1
+ 416 0001 11       		.uleb128 0x11
+ 417 0002 01       		.byte	0x1
+ 418 0003 25       		.uleb128 0x25
+ 419 0004 0E       		.uleb128 0xe
+ 420 0005 13       		.uleb128 0x13
+ 421 0006 0B       		.uleb128 0xb
+ 422 0007 03       		.uleb128 0x3
+ 423 0008 0E       		.uleb128 0xe
+ 424 0009 1B       		.uleb128 0x1b
+ 425 000a 0E       		.uleb128 0xe
+ 426 000b 55       		.uleb128 0x55
+ 427 000c 17       		.uleb128 0x17
+ 428 000d 11       		.uleb128 0x11
+ 429 000e 01       		.uleb128 0x1
+ 430 000f 10       		.uleb128 0x10
+ 431 0010 17       		.uleb128 0x17
+ 432 0011 00       		.byte	0
+ 433 0012 00       		.byte	0
+ 434 0013 02       		.uleb128 0x2
+ 435 0014 24       		.uleb128 0x24
+ 436 0015 00       		.byte	0
+ 437 0016 0B       		.uleb128 0xb
+ 438 0017 0B       		.uleb128 0xb
+ 439 0018 3E       		.uleb128 0x3e
+ 440 0019 0B       		.uleb128 0xb
+ 441 001a 03       		.uleb128 0x3
+ 442 001b 0E       		.uleb128 0xe
+ 443 001c 00       		.byte	0
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccmN7reb.s 			page 13
+
+
+ 444 001d 00       		.byte	0
+ 445 001e 03       		.uleb128 0x3
+ 446 001f 24       		.uleb128 0x24
+ 447 0020 00       		.byte	0
+ 448 0021 0B       		.uleb128 0xb
+ 449 0022 0B       		.uleb128 0xb
+ 450 0023 3E       		.uleb128 0x3e
+ 451 0024 0B       		.uleb128 0xb
+ 452 0025 03       		.uleb128 0x3
+ 453 0026 08       		.uleb128 0x8
+ 454 0027 00       		.byte	0
+ 455 0028 00       		.byte	0
+ 456 0029 04       		.uleb128 0x4
+ 457 002a 16       		.uleb128 0x16
+ 458 002b 00       		.byte	0
+ 459 002c 03       		.uleb128 0x3
+ 460 002d 0E       		.uleb128 0xe
+ 461 002e 3A       		.uleb128 0x3a
+ 462 002f 0B       		.uleb128 0xb
+ 463 0030 3B       		.uleb128 0x3b
+ 464 0031 05       		.uleb128 0x5
+ 465 0032 49       		.uleb128 0x49
+ 466 0033 13       		.uleb128 0x13
+ 467 0034 00       		.byte	0
+ 468 0035 00       		.byte	0
+ 469 0036 05       		.uleb128 0x5
+ 470 0037 35       		.uleb128 0x35
+ 471 0038 00       		.byte	0
+ 472 0039 49       		.uleb128 0x49
+ 473 003a 13       		.uleb128 0x13
+ 474 003b 00       		.byte	0
+ 475 003c 00       		.byte	0
+ 476 003d 06       		.uleb128 0x6
+ 477 003e 2E       		.uleb128 0x2e
+ 478 003f 01       		.byte	0x1
+ 479 0040 3F       		.uleb128 0x3f
+ 480 0041 19       		.uleb128 0x19
+ 481 0042 03       		.uleb128 0x3
+ 482 0043 0E       		.uleb128 0xe
+ 483 0044 3A       		.uleb128 0x3a
+ 484 0045 0B       		.uleb128 0xb
+ 485 0046 3B       		.uleb128 0x3b
+ 486 0047 0B       		.uleb128 0xb
+ 487 0048 27       		.uleb128 0x27
+ 488 0049 19       		.uleb128 0x19
+ 489 004a 11       		.uleb128 0x11
+ 490 004b 01       		.uleb128 0x1
+ 491 004c 12       		.uleb128 0x12
+ 492 004d 06       		.uleb128 0x6
+ 493 004e 40       		.uleb128 0x40
+ 494 004f 18       		.uleb128 0x18
+ 495 0050 9742     		.uleb128 0x2117
+ 496 0052 19       		.uleb128 0x19
+ 497 0053 01       		.uleb128 0x1
+ 498 0054 13       		.uleb128 0x13
+ 499 0055 00       		.byte	0
+ 500 0056 00       		.byte	0
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccmN7reb.s 			page 14
+
+
+ 501 0057 07       		.uleb128 0x7
+ 502 0058 05       		.uleb128 0x5
+ 503 0059 00       		.byte	0
+ 504 005a 03       		.uleb128 0x3
+ 505 005b 0E       		.uleb128 0xe
+ 506 005c 3A       		.uleb128 0x3a
+ 507 005d 0B       		.uleb128 0xb
+ 508 005e 3B       		.uleb128 0x3b
+ 509 005f 0B       		.uleb128 0xb
+ 510 0060 49       		.uleb128 0x49
+ 511 0061 13       		.uleb128 0x13
+ 512 0062 02       		.uleb128 0x2
+ 513 0063 17       		.uleb128 0x17
+ 514 0064 00       		.byte	0
+ 515 0065 00       		.byte	0
+ 516 0066 08       		.uleb128 0x8
+ 517 0067 34       		.uleb128 0x34
+ 518 0068 00       		.byte	0
+ 519 0069 03       		.uleb128 0x3
+ 520 006a 0E       		.uleb128 0xe
+ 521 006b 3A       		.uleb128 0x3a
+ 522 006c 0B       		.uleb128 0xb
+ 523 006d 3B       		.uleb128 0x3b
+ 524 006e 0B       		.uleb128 0xb
+ 525 006f 49       		.uleb128 0x49
+ 526 0070 13       		.uleb128 0x13
+ 527 0071 02       		.uleb128 0x2
+ 528 0072 17       		.uleb128 0x17
+ 529 0073 00       		.byte	0
+ 530 0074 00       		.byte	0
+ 531 0075 09       		.uleb128 0x9
+ 532 0076 2E       		.uleb128 0x2e
+ 533 0077 00       		.byte	0
+ 534 0078 3F       		.uleb128 0x3f
+ 535 0079 19       		.uleb128 0x19
+ 536 007a 03       		.uleb128 0x3
+ 537 007b 0E       		.uleb128 0xe
+ 538 007c 3A       		.uleb128 0x3a
+ 539 007d 0B       		.uleb128 0xb
+ 540 007e 3B       		.uleb128 0x3b
+ 541 007f 0B       		.uleb128 0xb
+ 542 0080 27       		.uleb128 0x27
+ 543 0081 19       		.uleb128 0x19
+ 544 0082 49       		.uleb128 0x49
+ 545 0083 13       		.uleb128 0x13
+ 546 0084 11       		.uleb128 0x11
+ 547 0085 01       		.uleb128 0x1
+ 548 0086 12       		.uleb128 0x12
+ 549 0087 06       		.uleb128 0x6
+ 550 0088 40       		.uleb128 0x40
+ 551 0089 18       		.uleb128 0x18
+ 552 008a 9742     		.uleb128 0x2117
+ 553 008c 19       		.uleb128 0x19
+ 554 008d 00       		.byte	0
+ 555 008e 00       		.byte	0
+ 556 008f 0A       		.uleb128 0xa
+ 557 0090 05       		.uleb128 0x5
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccmN7reb.s 			page 15
+
+
+ 558 0091 00       		.byte	0
+ 559 0092 03       		.uleb128 0x3
+ 560 0093 0E       		.uleb128 0xe
+ 561 0094 3A       		.uleb128 0x3a
+ 562 0095 0B       		.uleb128 0xb
+ 563 0096 3B       		.uleb128 0x3b
+ 564 0097 0B       		.uleb128 0xb
+ 565 0098 49       		.uleb128 0x49
+ 566 0099 13       		.uleb128 0x13
+ 567 009a 02       		.uleb128 0x2
+ 568 009b 18       		.uleb128 0x18
+ 569 009c 00       		.byte	0
+ 570 009d 00       		.byte	0
+ 571 009e 0B       		.uleb128 0xb
+ 572 009f 34       		.uleb128 0x34
+ 573 00a0 00       		.byte	0
+ 574 00a1 03       		.uleb128 0x3
+ 575 00a2 0E       		.uleb128 0xe
+ 576 00a3 3A       		.uleb128 0x3a
+ 577 00a4 0B       		.uleb128 0xb
+ 578 00a5 3B       		.uleb128 0x3b
+ 579 00a6 0B       		.uleb128 0xb
+ 580 00a7 49       		.uleb128 0x49
+ 581 00a8 13       		.uleb128 0x13
+ 582 00a9 02       		.uleb128 0x2
+ 583 00aa 18       		.uleb128 0x18
+ 584 00ab 00       		.byte	0
+ 585 00ac 00       		.byte	0
+ 586 00ad 0C       		.uleb128 0xc
+ 587 00ae 2E       		.uleb128 0x2e
+ 588 00af 01       		.byte	0x1
+ 589 00b0 3F       		.uleb128 0x3f
+ 590 00b1 19       		.uleb128 0x19
+ 591 00b2 03       		.uleb128 0x3
+ 592 00b3 0E       		.uleb128 0xe
+ 593 00b4 3A       		.uleb128 0x3a
+ 594 00b5 0B       		.uleb128 0xb
+ 595 00b6 3B       		.uleb128 0x3b
+ 596 00b7 0B       		.uleb128 0xb
+ 597 00b8 27       		.uleb128 0x27
+ 598 00b9 19       		.uleb128 0x19
+ 599 00ba 49       		.uleb128 0x49
+ 600 00bb 13       		.uleb128 0x13
+ 601 00bc 11       		.uleb128 0x11
+ 602 00bd 01       		.uleb128 0x1
+ 603 00be 12       		.uleb128 0x12
+ 604 00bf 06       		.uleb128 0x6
+ 605 00c0 40       		.uleb128 0x40
+ 606 00c1 18       		.uleb128 0x18
+ 607 00c2 9742     		.uleb128 0x2117
+ 608 00c4 19       		.uleb128 0x19
+ 609 00c5 00       		.byte	0
+ 610 00c6 00       		.byte	0
+ 611 00c7 00       		.byte	0
+ 612              		.section	.debug_loc,"",%progbits
+ 613              	.Ldebug_loc0:
+ 614              	.LLST0:
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccmN7reb.s 			page 16
+
+
+ 615 0000 00000000 		.4byte	.LVL0
+ 616 0004 0A000000 		.4byte	.LVL1
+ 617 0008 0100     		.2byte	0x1
+ 618 000a 50       		.byte	0x50
+ 619 000b 0A000000 		.4byte	.LVL1
+ 620 000f 14000000 		.4byte	.LFE0
+ 621 0013 0400     		.2byte	0x4
+ 622 0015 F3       		.byte	0xf3
+ 623 0016 01       		.uleb128 0x1
+ 624 0017 50       		.byte	0x50
+ 625 0018 9F       		.byte	0x9f
+ 626 0019 00000000 		.4byte	0
+ 627 001d 00000000 		.4byte	0
+ 628              	.LLST1:
+ 629 0021 00000000 		.4byte	.LVL2
+ 630 0025 0C000000 		.4byte	.LVL4
+ 631 0029 0100     		.2byte	0x1
+ 632 002b 50       		.byte	0x50
+ 633 002c 0C000000 		.4byte	.LVL4
+ 634 0030 18000000 		.4byte	.LFE1
+ 635 0034 0400     		.2byte	0x4
+ 636 0036 F3       		.byte	0xf3
+ 637 0037 01       		.uleb128 0x1
+ 638 0038 50       		.byte	0x50
+ 639 0039 9F       		.byte	0x9f
+ 640 003a 00000000 		.4byte	0
+ 641 003e 00000000 		.4byte	0
+ 642              	.LLST2:
+ 643 0042 0A000000 		.4byte	.LVL3
+ 644 0046 10000000 		.4byte	.LVL5
+ 645 004a 0100     		.2byte	0x1
+ 646 004c 52       		.byte	0x52
+ 647 004d 10000000 		.4byte	.LVL5
+ 648 0051 18000000 		.4byte	.LFE1
+ 649 0055 0100     		.2byte	0x1
+ 650 0057 50       		.byte	0x50
+ 651 0058 00000000 		.4byte	0
+ 652 005c 00000000 		.4byte	0
+ 653              	.LLST3:
+ 654 0060 00000000 		.4byte	.LVL6
+ 655 0064 08000000 		.4byte	.LVL8
+ 656 0068 0100     		.2byte	0x1
+ 657 006a 50       		.byte	0x50
+ 658 006b 08000000 		.4byte	.LVL8
+ 659 006f 14000000 		.4byte	.LFE4
+ 660 0073 0400     		.2byte	0x4
+ 661 0075 F3       		.byte	0xf3
+ 662 0076 01       		.uleb128 0x1
+ 663 0077 50       		.byte	0x50
+ 664 0078 9F       		.byte	0x9f
+ 665 0079 00000000 		.4byte	0
+ 666 007d 00000000 		.4byte	0
+ 667              	.LLST4:
+ 668 0081 08000000 		.4byte	.LVL9
+ 669 0085 0C000000 		.4byte	.LVL10
+ 670 0089 0100     		.2byte	0x1
+ 671 008b 50       		.byte	0x50
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccmN7reb.s 			page 17
+
+
+ 672 008c 0C000000 		.4byte	.LVL10
+ 673 0090 14000000 		.4byte	.LFE5
+ 674 0094 0400     		.2byte	0x4
+ 675 0096 72       		.byte	0x72
+ 676 0097 00       		.sleb128 0
+ 677 0098 06       		.byte	0x6
+ 678 0099 9F       		.byte	0x9f
+ 679 009a 00000000 		.4byte	0
+ 680 009e 00000000 		.4byte	0
+ 681              		.section	.debug_aranges,"",%progbits
+ 682 0000 44000000 		.4byte	0x44
+ 683 0004 0200     		.2byte	0x2
+ 684 0006 00000000 		.4byte	.Ldebug_info0
+ 685 000a 04       		.byte	0x4
+ 686 000b 00       		.byte	0
+ 687 000c 0000     		.2byte	0
+ 688 000e 0000     		.2byte	0
+ 689 0010 00000000 		.4byte	.LFB0
+ 690 0014 14000000 		.4byte	.LFE0-.LFB0
+ 691 0018 00000000 		.4byte	.LFB1
+ 692 001c 18000000 		.4byte	.LFE1-.LFB1
+ 693 0020 00000000 		.4byte	.LFB2
+ 694 0024 10000000 		.4byte	.LFE2-.LFB2
+ 695 0028 00000000 		.4byte	.LFB3
+ 696 002c 10000000 		.4byte	.LFE3-.LFB3
+ 697 0030 00000000 		.4byte	.LFB4
+ 698 0034 14000000 		.4byte	.LFE4-.LFB4
+ 699 0038 00000000 		.4byte	.LFB5
+ 700 003c 14000000 		.4byte	.LFE5-.LFB5
+ 701 0040 00000000 		.4byte	0
+ 702 0044 00000000 		.4byte	0
+ 703              		.section	.debug_ranges,"",%progbits
+ 704              	.Ldebug_ranges0:
+ 705 0000 00000000 		.4byte	.LFB0
+ 706 0004 14000000 		.4byte	.LFE0
+ 707 0008 00000000 		.4byte	.LFB1
+ 708 000c 18000000 		.4byte	.LFE1
+ 709 0010 00000000 		.4byte	.LFB2
+ 710 0014 10000000 		.4byte	.LFE2
+ 711 0018 00000000 		.4byte	.LFB3
+ 712 001c 10000000 		.4byte	.LFE3
+ 713 0020 00000000 		.4byte	.LFB4
+ 714 0024 14000000 		.4byte	.LFE4
+ 715 0028 00000000 		.4byte	.LFB5
+ 716 002c 14000000 		.4byte	.LFE5
+ 717 0030 00000000 		.4byte	0
+ 718 0034 00000000 		.4byte	0
+ 719              		.section	.debug_line,"",%progbits
+ 720              	.Ldebug_line0:
+ 721 0000 BB000000 		.section	.debug_str,"MS",%progbits,1
+ 721      02004400 
+ 721      00000201 
+ 721      FB0E0D00 
+ 721      01010101 
+ 722              	.LASF15:
+ 723 0000 72656733 		.ascii	"reg32\000"
+ 723      3200
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccmN7reb.s 			page 18
+
+
+ 724              	.LASF19:
+ 725 0006 76616C75 		.ascii	"value\000"
+ 725      6500
+ 726              	.LASF12:
+ 727 000c 666C6F61 		.ascii	"float\000"
+ 727      7400
+ 728              	.LASF1:
+ 729 0012 756E7369 		.ascii	"unsigned char\000"
+ 729      676E6564 
+ 729      20636861 
+ 729      7200
+ 730              	.LASF24:
+ 731 0020 64725661 		.ascii	"drVal\000"
+ 731      6C00
+ 732              	.LASF5:
+ 733 0026 6C6F6E67 		.ascii	"long unsigned int\000"
+ 733      20756E73 
+ 733      69676E65 
+ 733      6420696E 
+ 733      7400
+ 734              	.LASF17:
+ 735 0038 55415254 		.ascii	"UART_tx_Write\000"
+ 735      5F74785F 
+ 735      57726974 
+ 735      6500
+ 736              	.LASF3:
+ 737 0046 73686F72 		.ascii	"short unsigned int\000"
+ 737      7420756E 
+ 737      7369676E 
+ 737      65642069 
+ 737      6E7400
+ 738              	.LASF30:
+ 739 0059 443A5C72 		.ascii	"D:\\repositories\\Tarocco\\Bootloader\\cncboot_no_o"
+ 739      65706F73 
+ 739      69746F72 
+ 739      6965735C 
+ 739      5461726F 
+ 740 0088 7074696D 		.ascii	"ptimizations\\cncboot.cydsn\000"
+ 740      697A6174 
+ 740      696F6E73 
+ 740      5C636E63 
+ 740      626F6F74 
+ 741              	.LASF13:
+ 742 00a3 646F7562 		.ascii	"double\000"
+ 742      6C6500
+ 743              	.LASF10:
+ 744 00aa 75696E74 		.ascii	"uint16\000"
+ 744      313600
+ 745              	.LASF23:
+ 746 00b1 706F7369 		.ascii	"position\000"
+ 746      74696F6E 
+ 746      00
+ 747              	.LASF11:
+ 748 00ba 75696E74 		.ascii	"uint32\000"
+ 748      333200
+ 749              	.LASF25:
+ 750 00c1 696E7472 		.ascii	"intrCfg\000"
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccmN7reb.s 			page 19
+
+
+ 750      43666700 
+ 751              	.LASF8:
+ 752 00c9 756E7369 		.ascii	"unsigned int\000"
+ 752      676E6564 
+ 752      20696E74 
+ 752      00
+ 753              	.LASF7:
+ 754 00d6 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 754      206C6F6E 
+ 754      6720756E 
+ 754      7369676E 
+ 754      65642069 
+ 755              	.LASF18:
+ 756 00ed 6D6F6465 		.ascii	"mode\000"
+ 756      00
+ 757              	.LASF21:
+ 758 00f2 55415254 		.ascii	"UART_tx_ReadDataReg\000"
+ 758      5F74785F 
+ 758      52656164 
+ 758      44617461 
+ 758      52656700 
+ 759              	.LASF28:
+ 760 0106 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 760      43313120 
+ 760      352E342E 
+ 760      31203230 
+ 760      31363036 
+ 761 0139 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 761      20726576 
+ 761      6973696F 
+ 761      6E203233 
+ 761      37373135 
+ 762 016c 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 762      66756E63 
+ 762      74696F6E 
+ 762      2D736563 
+ 762      74696F6E 
+ 763              	.LASF20:
+ 764 0194 55415254 		.ascii	"UART_tx_Read\000"
+ 764      5F74785F 
+ 764      52656164 
+ 764      00
+ 765              	.LASF6:
+ 766 01a1 6C6F6E67 		.ascii	"long long int\000"
+ 766      206C6F6E 
+ 766      6720696E 
+ 766      7400
+ 767              	.LASF16:
+ 768 01af 55415254 		.ascii	"UART_tx_SetDriveMode\000"
+ 768      5F74785F 
+ 768      53657444 
+ 768      72697665 
+ 768      4D6F6465 
+ 769              	.LASF27:
+ 770 01c4 6D61736B 		.ascii	"maskedStatus\000"
+ 770      65645374 
+ 770      61747573 
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\ccmN7reb.s 			page 20
+
+
+ 770      00
+ 771              	.LASF14:
+ 772 01d1 63686172 		.ascii	"char\000"
+ 772      00
+ 773              	.LASF29:
+ 774 01d6 47656E65 		.ascii	"Generated_Source\\PSoC4\\UART_tx.c\000"
+ 774      72617465 
+ 774      645F536F 
+ 774      75726365 
+ 774      5C50536F 
+ 775              	.LASF22:
+ 776 01f7 55415254 		.ascii	"UART_tx_SetInterruptMode\000"
+ 776      5F74785F 
+ 776      53657449 
+ 776      6E746572 
+ 776      72757074 
+ 777              	.LASF2:
+ 778 0210 73686F72 		.ascii	"short int\000"
+ 778      7420696E 
+ 778      7400
+ 779              	.LASF9:
+ 780 021a 75696E74 		.ascii	"uint8\000"
+ 780      3800
+ 781              	.LASF4:
+ 782 0220 6C6F6E67 		.ascii	"long int\000"
+ 782      20696E74 
+ 782      00
+ 783              	.LASF0:
+ 784 0229 7369676E 		.ascii	"signed char\000"
+ 784      65642063 
+ 784      68617200 
+ 785              	.LASF26:
+ 786 0235 55415254 		.ascii	"UART_tx_ClearInterrupt\000"
+ 786      5F74785F 
+ 786      436C6561 
+ 786      72496E74 
+ 786      65727275 
+ 787              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

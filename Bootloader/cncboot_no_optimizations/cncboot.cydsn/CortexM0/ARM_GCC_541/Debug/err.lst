@@ -1,0 +1,1179 @@
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciOE3qa.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"err.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.err_SetDriveMode,"ax",%progbits
+  20              		.align	2
+  21              		.global	err_SetDriveMode
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	err_SetDriveMode, %function
+  25              	err_SetDriveMode:
+  26              	.LFB0:
+  27              		.file 1 "Generated_Source\\PSoC4\\err.c"
+   1:Generated_Source\PSoC4/err.c **** /*******************************************************************************
+   2:Generated_Source\PSoC4/err.c **** * File Name: err.c  
+   3:Generated_Source\PSoC4/err.c **** * Version 2.20
+   4:Generated_Source\PSoC4/err.c **** *
+   5:Generated_Source\PSoC4/err.c **** * Description:
+   6:Generated_Source\PSoC4/err.c **** *  This file contains API to enable firmware control of a Pins component.
+   7:Generated_Source\PSoC4/err.c **** *
+   8:Generated_Source\PSoC4/err.c **** ********************************************************************************
+   9:Generated_Source\PSoC4/err.c **** * Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
+  10:Generated_Source\PSoC4/err.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  11:Generated_Source\PSoC4/err.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  12:Generated_Source\PSoC4/err.c **** * the software package with which this file was provided.
+  13:Generated_Source\PSoC4/err.c **** *******************************************************************************/
+  14:Generated_Source\PSoC4/err.c **** 
+  15:Generated_Source\PSoC4/err.c **** #include "cytypes.h"
+  16:Generated_Source\PSoC4/err.c **** #include "err.h"
+  17:Generated_Source\PSoC4/err.c **** 
+  18:Generated_Source\PSoC4/err.c **** 
+  19:Generated_Source\PSoC4/err.c **** #if defined(err__PC)
+  20:Generated_Source\PSoC4/err.c ****     #define err_SetP4PinDriveMode(shift, mode)  \
+  21:Generated_Source\PSoC4/err.c ****     do { \
+  22:Generated_Source\PSoC4/err.c ****         err_PC =   (err_PC & \
+  23:Generated_Source\PSoC4/err.c ****                                 (uint32)(~(uint32)(err_DRIVE_MODE_IND_MASK << \
+  24:Generated_Source\PSoC4/err.c ****                                 (err_DRIVE_MODE_BITS * (shift))))) | \
+  25:Generated_Source\PSoC4/err.c ****                                 (uint32)((uint32)(mode) << \
+  26:Generated_Source\PSoC4/err.c ****                                 (err_DRIVE_MODE_BITS * (shift))); \
+  27:Generated_Source\PSoC4/err.c ****     } while (0)
+  28:Generated_Source\PSoC4/err.c **** #else
+  29:Generated_Source\PSoC4/err.c ****     #if (CY_PSOC4_4200L)
+  30:Generated_Source\PSoC4/err.c ****         #define err_SetP4PinDriveMode(shift, mode)  \
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciOE3qa.s 			page 2
+
+
+  31:Generated_Source\PSoC4/err.c ****         do { \
+  32:Generated_Source\PSoC4/err.c ****             err_USBIO_CTRL_REG = (err_USBIO_CTRL_REG & \
+  33:Generated_Source\PSoC4/err.c ****                                     (uint32)(~(uint32)(err_DRIVE_MODE_IND_MASK << \
+  34:Generated_Source\PSoC4/err.c ****                                     (err_DRIVE_MODE_BITS * (shift))))) | \
+  35:Generated_Source\PSoC4/err.c ****                                     (uint32)((uint32)(mode) << \
+  36:Generated_Source\PSoC4/err.c ****                                     (err_DRIVE_MODE_BITS * (shift))); \
+  37:Generated_Source\PSoC4/err.c ****         } while (0)
+  38:Generated_Source\PSoC4/err.c ****     #endif
+  39:Generated_Source\PSoC4/err.c **** #endif
+  40:Generated_Source\PSoC4/err.c ****   
+  41:Generated_Source\PSoC4/err.c **** 
+  42:Generated_Source\PSoC4/err.c **** #if defined(err__PC) || (CY_PSOC4_4200L) 
+  43:Generated_Source\PSoC4/err.c ****     /*******************************************************************************
+  44:Generated_Source\PSoC4/err.c ****     * Function Name: err_SetDriveMode
+  45:Generated_Source\PSoC4/err.c ****     ****************************************************************************//**
+  46:Generated_Source\PSoC4/err.c ****     *
+  47:Generated_Source\PSoC4/err.c ****     * \brief Sets the drive mode for each of the Pins component's pins.
+  48:Generated_Source\PSoC4/err.c ****     * 
+  49:Generated_Source\PSoC4/err.c ****     * <b>Note</b> This affects all pins in the Pins component instance. Use the
+  50:Generated_Source\PSoC4/err.c ****     * Per-Pin APIs if you wish to control individual pin's drive modes.
+  51:Generated_Source\PSoC4/err.c ****     *
+  52:Generated_Source\PSoC4/err.c ****     * <b>Note</b> USBIOs have limited drive functionality. Refer to the Drive Mode
+  53:Generated_Source\PSoC4/err.c ****     * parameter for more information.
+  54:Generated_Source\PSoC4/err.c ****     *
+  55:Generated_Source\PSoC4/err.c ****     * \param mode
+  56:Generated_Source\PSoC4/err.c ****     *  Mode for the selected signals. Valid options are documented in 
+  57:Generated_Source\PSoC4/err.c ****     *  \ref driveMode.
+  58:Generated_Source\PSoC4/err.c ****     *
+  59:Generated_Source\PSoC4/err.c ****     * \return
+  60:Generated_Source\PSoC4/err.c ****     *  None
+  61:Generated_Source\PSoC4/err.c ****     *
+  62:Generated_Source\PSoC4/err.c ****     * \sideeffect
+  63:Generated_Source\PSoC4/err.c ****     *  If you use read-modify-write operations that are not atomic, the ISR can
+  64:Generated_Source\PSoC4/err.c ****     *  cause corruption of this function. An ISR that interrupts this function 
+  65:Generated_Source\PSoC4/err.c ****     *  and performs writes to the Pins component Drive Mode registers can cause 
+  66:Generated_Source\PSoC4/err.c ****     *  corrupted port data. To avoid this issue, you should either use the Per-Pin
+  67:Generated_Source\PSoC4/err.c ****     *  APIs (primary method) or disable interrupts around this function.
+  68:Generated_Source\PSoC4/err.c ****     *
+  69:Generated_Source\PSoC4/err.c ****     * \funcusage
+  70:Generated_Source\PSoC4/err.c ****     *  \snippet err_SUT.c usage_err_SetDriveMode
+  71:Generated_Source\PSoC4/err.c ****     *******************************************************************************/
+  72:Generated_Source\PSoC4/err.c ****     void err_SetDriveMode(uint8 mode)
+  73:Generated_Source\PSoC4/err.c ****     {
+  28              		.loc 1 73 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  33              	.LVL0:
+  74:Generated_Source\PSoC4/err.c **** 		err_SetP4PinDriveMode(err__0__SHIFT, mode);
+  34              		.loc 1 74 0
+  35 0000 034A     		ldr	r2, .L2
+  36 0002 1168     		ldr	r1, [r2]
+  37 0004 034B     		ldr	r3, .L2+4
+  38 0006 0B40     		ands	r3, r1
+  39 0008 4002     		lsls	r0, r0, #9
+  40              	.LVL1:
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciOE3qa.s 			page 3
+
+
+  41 000a 1843     		orrs	r0, r3
+  42 000c 1060     		str	r0, [r2]
+  75:Generated_Source\PSoC4/err.c ****     }
+  43              		.loc 1 75 0
+  44              		@ sp needed
+  45 000e 7047     		bx	lr
+  46              	.L3:
+  47              		.align	2
+  48              	.L2:
+  49 0010 08030440 		.word	1074004744
+  50 0014 FFF1FFFF 		.word	-3585
+  51              		.cfi_endproc
+  52              	.LFE0:
+  53              		.size	err_SetDriveMode, .-err_SetDriveMode
+  54              		.section	.text.err_Write,"ax",%progbits
+  55              		.align	2
+  56              		.global	err_Write
+  57              		.code	16
+  58              		.thumb_func
+  59              		.type	err_Write, %function
+  60              	err_Write:
+  61              	.LFB1:
+  76:Generated_Source\PSoC4/err.c **** #endif
+  77:Generated_Source\PSoC4/err.c **** 
+  78:Generated_Source\PSoC4/err.c **** 
+  79:Generated_Source\PSoC4/err.c **** /*******************************************************************************
+  80:Generated_Source\PSoC4/err.c **** * Function Name: err_Write
+  81:Generated_Source\PSoC4/err.c **** ****************************************************************************//**
+  82:Generated_Source\PSoC4/err.c **** *
+  83:Generated_Source\PSoC4/err.c **** * \brief Writes the value to the physical port (data output register), masking
+  84:Generated_Source\PSoC4/err.c **** *  and shifting the bits appropriately. 
+  85:Generated_Source\PSoC4/err.c **** *
+  86:Generated_Source\PSoC4/err.c **** * The data output register controls the signal applied to the physical pin in 
+  87:Generated_Source\PSoC4/err.c **** * conjunction with the drive mode parameter. This function avoids changing 
+  88:Generated_Source\PSoC4/err.c **** * other bits in the port by using the appropriate method (read-modify-write or
+  89:Generated_Source\PSoC4/err.c **** * bit banding).
+  90:Generated_Source\PSoC4/err.c **** *
+  91:Generated_Source\PSoC4/err.c **** * <b>Note</b> This function should not be used on a hardware digital output pin 
+  92:Generated_Source\PSoC4/err.c **** * as it is driven by the hardware signal attached to it.
+  93:Generated_Source\PSoC4/err.c **** *
+  94:Generated_Source\PSoC4/err.c **** * \param value
+  95:Generated_Source\PSoC4/err.c **** *  Value to write to the component instance.
+  96:Generated_Source\PSoC4/err.c **** *
+  97:Generated_Source\PSoC4/err.c **** * \return 
+  98:Generated_Source\PSoC4/err.c **** *  None 
+  99:Generated_Source\PSoC4/err.c **** *
+ 100:Generated_Source\PSoC4/err.c **** * \sideeffect
+ 101:Generated_Source\PSoC4/err.c **** *  If you use read-modify-write operations that are not atomic; the Interrupt 
+ 102:Generated_Source\PSoC4/err.c **** *  Service Routines (ISR) can cause corruption of this function. An ISR that 
+ 103:Generated_Source\PSoC4/err.c **** *  interrupts this function and performs writes to the Pins component data 
+ 104:Generated_Source\PSoC4/err.c **** *  register can cause corrupted port data. To avoid this issue, you should 
+ 105:Generated_Source\PSoC4/err.c **** *  either use the Per-Pin APIs (primary method) or disable interrupts around 
+ 106:Generated_Source\PSoC4/err.c **** *  this function.
+ 107:Generated_Source\PSoC4/err.c **** *
+ 108:Generated_Source\PSoC4/err.c **** * \funcusage
+ 109:Generated_Source\PSoC4/err.c **** *  \snippet err_SUT.c usage_err_Write
+ 110:Generated_Source\PSoC4/err.c **** *******************************************************************************/
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciOE3qa.s 			page 4
+
+
+ 111:Generated_Source\PSoC4/err.c **** void err_Write(uint8 value)
+ 112:Generated_Source\PSoC4/err.c **** {
+  62              		.loc 1 112 0
+  63              		.cfi_startproc
+  64              		@ args = 0, pretend = 0, frame = 0
+  65              		@ frame_needed = 0, uses_anonymous_args = 0
+  66              		@ link register save eliminated.
+  67              	.LVL2:
+ 113:Generated_Source\PSoC4/err.c ****     uint8 drVal = (uint8)(err_DR & (uint8)(~err_MASK));
+  68              		.loc 1 113 0
+  69 0000 0449     		ldr	r1, .L5
+  70 0002 0A68     		ldr	r2, [r1]
+  71 0004 D2B2     		uxtb	r2, r2
+  72 0006 0823     		movs	r3, #8
+  73 0008 9A43     		bics	r2, r3
+  74              	.LVL3:
+ 114:Generated_Source\PSoC4/err.c ****     drVal = (drVal | ((uint8)(value << err_SHIFT) & err_MASK));
+  75              		.loc 1 114 0
+  76 000a C000     		lsls	r0, r0, #3
+  77              	.LVL4:
+  78 000c 1840     		ands	r0, r3
+  79 000e 1043     		orrs	r0, r2
+  80              	.LVL5:
+ 115:Generated_Source\PSoC4/err.c ****     err_DR = (uint32)drVal;
+  81              		.loc 1 115 0
+  82 0010 0860     		str	r0, [r1]
+ 116:Generated_Source\PSoC4/err.c **** }
+  83              		.loc 1 116 0
+  84              		@ sp needed
+  85 0012 7047     		bx	lr
+  86              	.L6:
+  87              		.align	2
+  88              	.L5:
+  89 0014 00030440 		.word	1074004736
+  90              		.cfi_endproc
+  91              	.LFE1:
+  92              		.size	err_Write, .-err_Write
+  93              		.section	.text.err_Read,"ax",%progbits
+  94              		.align	2
+  95              		.global	err_Read
+  96              		.code	16
+  97              		.thumb_func
+  98              		.type	err_Read, %function
+  99              	err_Read:
+ 100              	.LFB2:
+ 117:Generated_Source\PSoC4/err.c **** 
+ 118:Generated_Source\PSoC4/err.c **** 
+ 119:Generated_Source\PSoC4/err.c **** /*******************************************************************************
+ 120:Generated_Source\PSoC4/err.c **** * Function Name: err_Read
+ 121:Generated_Source\PSoC4/err.c **** ****************************************************************************//**
+ 122:Generated_Source\PSoC4/err.c **** *
+ 123:Generated_Source\PSoC4/err.c **** * \brief Reads the associated physical port (pin status register) and masks 
+ 124:Generated_Source\PSoC4/err.c **** *  the required bits according to the width and bit position of the component
+ 125:Generated_Source\PSoC4/err.c **** *  instance. 
+ 126:Generated_Source\PSoC4/err.c **** *
+ 127:Generated_Source\PSoC4/err.c **** * The pin's status register returns the current logic level present on the 
+ 128:Generated_Source\PSoC4/err.c **** * physical pin.
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciOE3qa.s 			page 5
+
+
+ 129:Generated_Source\PSoC4/err.c **** *
+ 130:Generated_Source\PSoC4/err.c **** * \return 
+ 131:Generated_Source\PSoC4/err.c **** *  The current value for the pins in the component as a right justified number.
+ 132:Generated_Source\PSoC4/err.c **** *
+ 133:Generated_Source\PSoC4/err.c **** * \funcusage
+ 134:Generated_Source\PSoC4/err.c **** *  \snippet err_SUT.c usage_err_Read  
+ 135:Generated_Source\PSoC4/err.c **** *******************************************************************************/
+ 136:Generated_Source\PSoC4/err.c **** uint8 err_Read(void)
+ 137:Generated_Source\PSoC4/err.c **** {
+ 101              		.loc 1 137 0
+ 102              		.cfi_startproc
+ 103              		@ args = 0, pretend = 0, frame = 0
+ 104              		@ frame_needed = 0, uses_anonymous_args = 0
+ 105              		@ link register save eliminated.
+ 138:Generated_Source\PSoC4/err.c ****     return (uint8)((err_PS & err_MASK) >> err_SHIFT);
+ 106              		.loc 1 138 0
+ 107 0000 024B     		ldr	r3, .L8
+ 108 0002 1868     		ldr	r0, [r3]
+ 109 0004 C008     		lsrs	r0, r0, #3
+ 110 0006 0123     		movs	r3, #1
+ 111 0008 1840     		ands	r0, r3
+ 139:Generated_Source\PSoC4/err.c **** }
+ 112              		.loc 1 139 0
+ 113              		@ sp needed
+ 114 000a 7047     		bx	lr
+ 115              	.L9:
+ 116              		.align	2
+ 117              	.L8:
+ 118 000c 04030440 		.word	1074004740
+ 119              		.cfi_endproc
+ 120              	.LFE2:
+ 121              		.size	err_Read, .-err_Read
+ 122              		.section	.text.err_ReadDataReg,"ax",%progbits
+ 123              		.align	2
+ 124              		.global	err_ReadDataReg
+ 125              		.code	16
+ 126              		.thumb_func
+ 127              		.type	err_ReadDataReg, %function
+ 128              	err_ReadDataReg:
+ 129              	.LFB3:
+ 140:Generated_Source\PSoC4/err.c **** 
+ 141:Generated_Source\PSoC4/err.c **** 
+ 142:Generated_Source\PSoC4/err.c **** /*******************************************************************************
+ 143:Generated_Source\PSoC4/err.c **** * Function Name: err_ReadDataReg
+ 144:Generated_Source\PSoC4/err.c **** ****************************************************************************//**
+ 145:Generated_Source\PSoC4/err.c **** *
+ 146:Generated_Source\PSoC4/err.c **** * \brief Reads the associated physical port's data output register and masks 
+ 147:Generated_Source\PSoC4/err.c **** *  the correct bits according to the width and bit position of the component 
+ 148:Generated_Source\PSoC4/err.c **** *  instance. 
+ 149:Generated_Source\PSoC4/err.c **** *
+ 150:Generated_Source\PSoC4/err.c **** * The data output register controls the signal applied to the physical pin in 
+ 151:Generated_Source\PSoC4/err.c **** * conjunction with the drive mode parameter. This is not the same as the 
+ 152:Generated_Source\PSoC4/err.c **** * preferred err_Read() API because the 
+ 153:Generated_Source\PSoC4/err.c **** * err_ReadDataReg() reads the data register instead of the status 
+ 154:Generated_Source\PSoC4/err.c **** * register. For output pins this is a useful function to determine the value 
+ 155:Generated_Source\PSoC4/err.c **** * just written to the pin.
+ 156:Generated_Source\PSoC4/err.c **** *
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciOE3qa.s 			page 6
+
+
+ 157:Generated_Source\PSoC4/err.c **** * \return 
+ 158:Generated_Source\PSoC4/err.c **** *  The current value of the data register masked and shifted into a right 
+ 159:Generated_Source\PSoC4/err.c **** *  justified number for the component instance.
+ 160:Generated_Source\PSoC4/err.c **** *
+ 161:Generated_Source\PSoC4/err.c **** * \funcusage
+ 162:Generated_Source\PSoC4/err.c **** *  \snippet err_SUT.c usage_err_ReadDataReg 
+ 163:Generated_Source\PSoC4/err.c **** *******************************************************************************/
+ 164:Generated_Source\PSoC4/err.c **** uint8 err_ReadDataReg(void)
+ 165:Generated_Source\PSoC4/err.c **** {
+ 130              		.loc 1 165 0
+ 131              		.cfi_startproc
+ 132              		@ args = 0, pretend = 0, frame = 0
+ 133              		@ frame_needed = 0, uses_anonymous_args = 0
+ 134              		@ link register save eliminated.
+ 166:Generated_Source\PSoC4/err.c ****     return (uint8)((err_DR & err_MASK) >> err_SHIFT);
+ 135              		.loc 1 166 0
+ 136 0000 024B     		ldr	r3, .L11
+ 137 0002 1868     		ldr	r0, [r3]
+ 138 0004 C008     		lsrs	r0, r0, #3
+ 139 0006 0123     		movs	r3, #1
+ 140 0008 1840     		ands	r0, r3
+ 167:Generated_Source\PSoC4/err.c **** }
+ 141              		.loc 1 167 0
+ 142              		@ sp needed
+ 143 000a 7047     		bx	lr
+ 144              	.L12:
+ 145              		.align	2
+ 146              	.L11:
+ 147 000c 00030440 		.word	1074004736
+ 148              		.cfi_endproc
+ 149              	.LFE3:
+ 150              		.size	err_ReadDataReg, .-err_ReadDataReg
+ 151              		.section	.text.err_SetInterruptMode,"ax",%progbits
+ 152              		.align	2
+ 153              		.global	err_SetInterruptMode
+ 154              		.code	16
+ 155              		.thumb_func
+ 156              		.type	err_SetInterruptMode, %function
+ 157              	err_SetInterruptMode:
+ 158              	.LFB4:
+ 168:Generated_Source\PSoC4/err.c **** 
+ 169:Generated_Source\PSoC4/err.c **** 
+ 170:Generated_Source\PSoC4/err.c **** /*******************************************************************************
+ 171:Generated_Source\PSoC4/err.c **** * Function Name: err_SetInterruptMode
+ 172:Generated_Source\PSoC4/err.c **** ****************************************************************************//**
+ 173:Generated_Source\PSoC4/err.c **** *
+ 174:Generated_Source\PSoC4/err.c **** * \brief Configures the interrupt mode for each of the Pins component's
+ 175:Generated_Source\PSoC4/err.c **** *  pins. Alternatively you may set the interrupt mode for all the pins
+ 176:Generated_Source\PSoC4/err.c **** *  specified in the Pins component.
+ 177:Generated_Source\PSoC4/err.c **** *
+ 178:Generated_Source\PSoC4/err.c **** *  <b>Note</b> The interrupt is port-wide and therefore any enabled pin
+ 179:Generated_Source\PSoC4/err.c **** *  interrupt may trigger it.
+ 180:Generated_Source\PSoC4/err.c **** *
+ 181:Generated_Source\PSoC4/err.c **** * \param position
+ 182:Generated_Source\PSoC4/err.c **** *  The pin position as listed in the Pins component. You may OR these to be 
+ 183:Generated_Source\PSoC4/err.c **** *  able to configure the interrupt mode of multiple pins within a Pins 
+ 184:Generated_Source\PSoC4/err.c **** *  component. Or you may use err_INTR_ALL to configure the
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciOE3qa.s 			page 7
+
+
+ 185:Generated_Source\PSoC4/err.c **** *  interrupt mode of all the pins in the Pins component.       
+ 186:Generated_Source\PSoC4/err.c **** *  - err_0_INTR       (First pin in the list)
+ 187:Generated_Source\PSoC4/err.c **** *  - err_1_INTR       (Second pin in the list)
+ 188:Generated_Source\PSoC4/err.c **** *  - ...
+ 189:Generated_Source\PSoC4/err.c **** *  - err_INTR_ALL     (All pins in Pins component)
+ 190:Generated_Source\PSoC4/err.c **** *
+ 191:Generated_Source\PSoC4/err.c **** * \param mode
+ 192:Generated_Source\PSoC4/err.c **** *  Interrupt mode for the selected pins. Valid options are documented in
+ 193:Generated_Source\PSoC4/err.c **** *  \ref intrMode.
+ 194:Generated_Source\PSoC4/err.c **** *
+ 195:Generated_Source\PSoC4/err.c **** * \return 
+ 196:Generated_Source\PSoC4/err.c **** *  None
+ 197:Generated_Source\PSoC4/err.c **** *  
+ 198:Generated_Source\PSoC4/err.c **** * \sideeffect
+ 199:Generated_Source\PSoC4/err.c **** *  It is recommended that the interrupt be disabled before calling this 
+ 200:Generated_Source\PSoC4/err.c **** *  function to avoid unintended interrupt requests. Note that the interrupt
+ 201:Generated_Source\PSoC4/err.c **** *  type is port wide, and therefore will trigger for any enabled pin on the 
+ 202:Generated_Source\PSoC4/err.c **** *  port.
+ 203:Generated_Source\PSoC4/err.c **** *
+ 204:Generated_Source\PSoC4/err.c **** * \funcusage
+ 205:Generated_Source\PSoC4/err.c **** *  \snippet err_SUT.c usage_err_SetInterruptMode
+ 206:Generated_Source\PSoC4/err.c **** *******************************************************************************/
+ 207:Generated_Source\PSoC4/err.c **** void err_SetInterruptMode(uint16 position, uint16 mode)
+ 208:Generated_Source\PSoC4/err.c **** {
+ 159              		.loc 1 208 0
+ 160              		.cfi_startproc
+ 161              		@ args = 0, pretend = 0, frame = 0
+ 162              		@ frame_needed = 0, uses_anonymous_args = 0
+ 163              		@ link register save eliminated.
+ 164              	.LVL6:
+ 209:Generated_Source\PSoC4/err.c ****     uint32 intrCfg;
+ 210:Generated_Source\PSoC4/err.c ****     
+ 211:Generated_Source\PSoC4/err.c ****     intrCfg =  err_INTCFG & (uint32)(~(uint32)position);
+ 165              		.loc 1 211 0
+ 166 0000 034A     		ldr	r2, .L14
+ 167 0002 1368     		ldr	r3, [r2]
+ 168 0004 8343     		bics	r3, r0
+ 169              	.LVL7:
+ 212:Generated_Source\PSoC4/err.c ****     err_INTCFG = intrCfg | ((uint32)position & (uint32)mode);
+ 170              		.loc 1 212 0
+ 171 0006 0840     		ands	r0, r1
+ 172              	.LVL8:
+ 173 0008 1843     		orrs	r0, r3
+ 174 000a 1060     		str	r0, [r2]
+ 213:Generated_Source\PSoC4/err.c **** }
+ 175              		.loc 1 213 0
+ 176              		@ sp needed
+ 177 000c 7047     		bx	lr
+ 178              	.L15:
+ 179 000e C046     		.align	2
+ 180              	.L14:
+ 181 0010 0C030440 		.word	1074004748
+ 182              		.cfi_endproc
+ 183              	.LFE4:
+ 184              		.size	err_SetInterruptMode, .-err_SetInterruptMode
+ 185              		.section	.text.err_ClearInterrupt,"ax",%progbits
+ 186              		.align	2
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciOE3qa.s 			page 8
+
+
+ 187              		.global	err_ClearInterrupt
+ 188              		.code	16
+ 189              		.thumb_func
+ 190              		.type	err_ClearInterrupt, %function
+ 191              	err_ClearInterrupt:
+ 192              	.LFB5:
+ 214:Generated_Source\PSoC4/err.c **** 
+ 215:Generated_Source\PSoC4/err.c **** 
+ 216:Generated_Source\PSoC4/err.c **** /*******************************************************************************
+ 217:Generated_Source\PSoC4/err.c **** * Function Name: err_ClearInterrupt
+ 218:Generated_Source\PSoC4/err.c **** ****************************************************************************//**
+ 219:Generated_Source\PSoC4/err.c **** *
+ 220:Generated_Source\PSoC4/err.c **** * \brief Clears any active interrupts attached with the component and returns 
+ 221:Generated_Source\PSoC4/err.c **** *  the value of the interrupt status register allowing determination of which
+ 222:Generated_Source\PSoC4/err.c **** *  pins generated an interrupt event.
+ 223:Generated_Source\PSoC4/err.c **** *
+ 224:Generated_Source\PSoC4/err.c **** * \return 
+ 225:Generated_Source\PSoC4/err.c **** *  The right-shifted current value of the interrupt status register. Each pin 
+ 226:Generated_Source\PSoC4/err.c **** *  has one bit set if it generated an interrupt event. For example, bit 0 is 
+ 227:Generated_Source\PSoC4/err.c **** *  for pin 0 and bit 1 is for pin 1 of the Pins component.
+ 228:Generated_Source\PSoC4/err.c **** *  
+ 229:Generated_Source\PSoC4/err.c **** * \sideeffect
+ 230:Generated_Source\PSoC4/err.c **** *  Clears all bits of the physical port's interrupt status register, not just
+ 231:Generated_Source\PSoC4/err.c **** *  those associated with the Pins component.
+ 232:Generated_Source\PSoC4/err.c **** *
+ 233:Generated_Source\PSoC4/err.c **** * \funcusage
+ 234:Generated_Source\PSoC4/err.c **** *  \snippet err_SUT.c usage_err_ClearInterrupt
+ 235:Generated_Source\PSoC4/err.c **** *******************************************************************************/
+ 236:Generated_Source\PSoC4/err.c **** uint8 err_ClearInterrupt(void)
+ 237:Generated_Source\PSoC4/err.c **** {
+ 193              		.loc 1 237 0
+ 194              		.cfi_startproc
+ 195              		@ args = 0, pretend = 0, frame = 0
+ 196              		@ frame_needed = 0, uses_anonymous_args = 0
+ 197              		@ link register save eliminated.
+ 238:Generated_Source\PSoC4/err.c **** 	uint8 maskedStatus = (uint8)(err_INTSTAT & err_MASK);
+ 198              		.loc 1 238 0
+ 199 0000 034A     		ldr	r2, .L17
+ 200 0002 1068     		ldr	r0, [r2]
+ 201 0004 0823     		movs	r3, #8
+ 202 0006 1840     		ands	r0, r3
+ 203              	.LVL9:
+ 239:Generated_Source\PSoC4/err.c **** 	err_INTSTAT = maskedStatus;
+ 204              		.loc 1 239 0
+ 205 0008 1060     		str	r0, [r2]
+ 240:Generated_Source\PSoC4/err.c ****     return maskedStatus >> err_SHIFT;
+ 206              		.loc 1 240 0
+ 207 000a C008     		lsrs	r0, r0, #3
+ 208              	.LVL10:
+ 209 000c C0B2     		uxtb	r0, r0
+ 241:Generated_Source\PSoC4/err.c **** }
+ 210              		.loc 1 241 0
+ 211              		@ sp needed
+ 212 000e 7047     		bx	lr
+ 213              	.L18:
+ 214              		.align	2
+ 215              	.L17:
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciOE3qa.s 			page 9
+
+
+ 216 0010 10030440 		.word	1074004752
+ 217              		.cfi_endproc
+ 218              	.LFE5:
+ 219              		.size	err_ClearInterrupt, .-err_ClearInterrupt
+ 220              		.text
+ 221              	.Letext0:
+ 222              		.file 2 "Generated_Source\\PSoC4\\cytypes.h"
+ 223              		.section	.debug_info,"",%progbits
+ 224              	.Ldebug_info0:
+ 225 0000 99010000 		.4byte	0x199
+ 226 0004 0400     		.2byte	0x4
+ 227 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 228 000a 04       		.byte	0x4
+ 229 000b 01       		.uleb128 0x1
+ 230 000c 4A010000 		.4byte	.LASF28
+ 231 0010 0C       		.byte	0xc
+ 232 0011 00010000 		.4byte	.LASF29
+ 233 0015 83000000 		.4byte	.LASF30
+ 234 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 235 001d 00000000 		.4byte	0
+ 236 0021 00000000 		.4byte	.Ldebug_line0
+ 237 0025 02       		.uleb128 0x2
+ 238 0026 01       		.byte	0x1
+ 239 0027 06       		.byte	0x6
+ 240 0028 24020000 		.4byte	.LASF0
+ 241 002c 02       		.uleb128 0x2
+ 242 002d 01       		.byte	0x1
+ 243 002e 08       		.byte	0x8
+ 244 002f 4A000000 		.4byte	.LASF1
+ 245 0033 02       		.uleb128 0x2
+ 246 0034 02       		.byte	0x2
+ 247 0035 05       		.byte	0x5
+ 248 0036 F8010000 		.4byte	.LASF2
+ 249 003a 02       		.uleb128 0x2
+ 250 003b 02       		.byte	0x2
+ 251 003c 07       		.byte	0x7
+ 252 003d 70000000 		.4byte	.LASF3
+ 253 0041 02       		.uleb128 0x2
+ 254 0042 04       		.byte	0x4
+ 255 0043 05       		.byte	0x5
+ 256 0044 1B020000 		.4byte	.LASF4
+ 257 0048 02       		.uleb128 0x2
+ 258 0049 04       		.byte	0x4
+ 259 004a 07       		.byte	0x7
+ 260 004b 5E000000 		.4byte	.LASF5
+ 261 004f 02       		.uleb128 0x2
+ 262 0050 08       		.byte	0x8
+ 263 0051 05       		.byte	0x5
+ 264 0052 D8010000 		.4byte	.LASF6
+ 265 0056 02       		.uleb128 0x2
+ 266 0057 08       		.byte	0x8
+ 267 0058 07       		.byte	0x7
+ 268 0059 1D010000 		.4byte	.LASF7
+ 269 005d 03       		.uleb128 0x3
+ 270 005e 04       		.byte	0x4
+ 271 005f 05       		.byte	0x5
+ 272 0060 696E7400 		.ascii	"int\000"
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciOE3qa.s 			page 10
+
+
+ 273 0064 02       		.uleb128 0x2
+ 274 0065 04       		.byte	0x4
+ 275 0066 07       		.byte	0x7
+ 276 0067 F3000000 		.4byte	.LASF8
+ 277 006b 04       		.uleb128 0x4
+ 278 006c 02020000 		.4byte	.LASF9
+ 279 0070 02       		.byte	0x2
+ 280 0071 9801     		.2byte	0x198
+ 281 0073 2C000000 		.4byte	0x2c
+ 282 0077 04       		.uleb128 0x4
+ 283 0078 D4000000 		.4byte	.LASF10
+ 284 007c 02       		.byte	0x2
+ 285 007d 9901     		.2byte	0x199
+ 286 007f 3A000000 		.4byte	0x3a
+ 287 0083 04       		.uleb128 0x4
+ 288 0084 E4000000 		.4byte	.LASF11
+ 289 0088 02       		.byte	0x2
+ 290 0089 9A01     		.2byte	0x19a
+ 291 008b 48000000 		.4byte	0x48
+ 292 008f 02       		.uleb128 0x2
+ 293 0090 04       		.byte	0x4
+ 294 0091 04       		.byte	0x4
+ 295 0092 2F000000 		.4byte	.LASF12
+ 296 0096 02       		.uleb128 0x2
+ 297 0097 08       		.byte	0x8
+ 298 0098 04       		.byte	0x4
+ 299 0099 CD000000 		.4byte	.LASF13
+ 300 009d 02       		.uleb128 0x2
+ 301 009e 01       		.byte	0x1
+ 302 009f 08       		.byte	0x8
+ 303 00a0 F3010000 		.4byte	.LASF14
+ 304 00a4 04       		.uleb128 0x4
+ 305 00a5 10000000 		.4byte	.LASF15
+ 306 00a9 02       		.byte	0x2
+ 307 00aa 4402     		.2byte	0x244
+ 308 00ac B0000000 		.4byte	0xb0
+ 309 00b0 05       		.uleb128 0x5
+ 310 00b1 83000000 		.4byte	0x83
+ 311 00b5 06       		.uleb128 0x6
+ 312 00b6 39010000 		.4byte	.LASF16
+ 313 00ba 01       		.byte	0x1
+ 314 00bb 48       		.byte	0x48
+ 315 00bc 00000000 		.4byte	.LFB0
+ 316 00c0 18000000 		.4byte	.LFE0-.LFB0
+ 317 00c4 01       		.uleb128 0x1
+ 318 00c5 9C       		.byte	0x9c
+ 319 00c6 DA000000 		.4byte	0xda
+ 320 00ca 07       		.uleb128 0x7
+ 321 00cb 34010000 		.4byte	.LASF18
+ 322 00cf 01       		.byte	0x1
+ 323 00d0 48       		.byte	0x48
+ 324 00d1 6B000000 		.4byte	0x6b
+ 325 00d5 00000000 		.4byte	.LLST0
+ 326 00d9 00       		.byte	0
+ 327 00da 06       		.uleb128 0x6
+ 328 00db 25000000 		.4byte	.LASF17
+ 329 00df 01       		.byte	0x1
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciOE3qa.s 			page 11
+
+
+ 330 00e0 6F       		.byte	0x6f
+ 331 00e1 00000000 		.4byte	.LFB1
+ 332 00e5 18000000 		.4byte	.LFE1-.LFB1
+ 333 00e9 01       		.uleb128 0x1
+ 334 00ea 9C       		.byte	0x9c
+ 335 00eb 0E010000 		.4byte	0x10e
+ 336 00ef 07       		.uleb128 0x7
+ 337 00f0 1F000000 		.4byte	.LASF19
+ 338 00f4 01       		.byte	0x1
+ 339 00f5 6F       		.byte	0x6f
+ 340 00f6 6B000000 		.4byte	0x6b
+ 341 00fa 21000000 		.4byte	.LLST1
+ 342 00fe 08       		.uleb128 0x8
+ 343 00ff 58000000 		.4byte	.LASF24
+ 344 0103 01       		.byte	0x1
+ 345 0104 71       		.byte	0x71
+ 346 0105 6B000000 		.4byte	0x6b
+ 347 0109 42000000 		.4byte	.LLST2
+ 348 010d 00       		.byte	0
+ 349 010e 09       		.uleb128 0x9
+ 350 010f 16000000 		.4byte	.LASF20
+ 351 0113 01       		.byte	0x1
+ 352 0114 88       		.byte	0x88
+ 353 0115 6B000000 		.4byte	0x6b
+ 354 0119 00000000 		.4byte	.LFB2
+ 355 011d 10000000 		.4byte	.LFE2-.LFB2
+ 356 0121 01       		.uleb128 0x1
+ 357 0122 9C       		.byte	0x9c
+ 358 0123 09       		.uleb128 0x9
+ 359 0124 00000000 		.4byte	.LASF21
+ 360 0128 01       		.byte	0x1
+ 361 0129 A4       		.byte	0xa4
+ 362 012a 6B000000 		.4byte	0x6b
+ 363 012e 00000000 		.4byte	.LFB3
+ 364 0132 10000000 		.4byte	.LFE3-.LFB3
+ 365 0136 01       		.uleb128 0x1
+ 366 0137 9C       		.byte	0x9c
+ 367 0138 06       		.uleb128 0x6
+ 368 0139 35000000 		.4byte	.LASF22
+ 369 013d 01       		.byte	0x1
+ 370 013e CF       		.byte	0xcf
+ 371 013f 00000000 		.4byte	.LFB4
+ 372 0143 14000000 		.4byte	.LFE4-.LFB4
+ 373 0147 01       		.uleb128 0x1
+ 374 0148 9C       		.byte	0x9c
+ 375 0149 77010000 		.4byte	0x177
+ 376 014d 07       		.uleb128 0x7
+ 377 014e DB000000 		.4byte	.LASF23
+ 378 0152 01       		.byte	0x1
+ 379 0153 CF       		.byte	0xcf
+ 380 0154 77000000 		.4byte	0x77
+ 381 0158 60000000 		.4byte	.LLST3
+ 382 015c 0A       		.uleb128 0xa
+ 383 015d 34010000 		.4byte	.LASF18
+ 384 0161 01       		.byte	0x1
+ 385 0162 CF       		.byte	0xcf
+ 386 0163 77000000 		.4byte	0x77
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciOE3qa.s 			page 12
+
+
+ 387 0167 01       		.uleb128 0x1
+ 388 0168 51       		.byte	0x51
+ 389 0169 0B       		.uleb128 0xb
+ 390 016a EB000000 		.4byte	.LASF25
+ 391 016e 01       		.byte	0x1
+ 392 016f D1       		.byte	0xd1
+ 393 0170 83000000 		.4byte	0x83
+ 394 0174 01       		.uleb128 0x1
+ 395 0175 53       		.byte	0x53
+ 396 0176 00       		.byte	0
+ 397 0177 0C       		.uleb128 0xc
+ 398 0178 08020000 		.4byte	.LASF26
+ 399 017c 01       		.byte	0x1
+ 400 017d EC       		.byte	0xec
+ 401 017e 6B000000 		.4byte	0x6b
+ 402 0182 00000000 		.4byte	.LFB5
+ 403 0186 14000000 		.4byte	.LFE5-.LFB5
+ 404 018a 01       		.uleb128 0x1
+ 405 018b 9C       		.byte	0x9c
+ 406 018c 08       		.uleb128 0x8
+ 407 018d E6010000 		.4byte	.LASF27
+ 408 0191 01       		.byte	0x1
+ 409 0192 EE       		.byte	0xee
+ 410 0193 6B000000 		.4byte	0x6b
+ 411 0197 81000000 		.4byte	.LLST4
+ 412 019b 00       		.byte	0
+ 413 019c 00       		.byte	0
+ 414              		.section	.debug_abbrev,"",%progbits
+ 415              	.Ldebug_abbrev0:
+ 416 0000 01       		.uleb128 0x1
+ 417 0001 11       		.uleb128 0x11
+ 418 0002 01       		.byte	0x1
+ 419 0003 25       		.uleb128 0x25
+ 420 0004 0E       		.uleb128 0xe
+ 421 0005 13       		.uleb128 0x13
+ 422 0006 0B       		.uleb128 0xb
+ 423 0007 03       		.uleb128 0x3
+ 424 0008 0E       		.uleb128 0xe
+ 425 0009 1B       		.uleb128 0x1b
+ 426 000a 0E       		.uleb128 0xe
+ 427 000b 55       		.uleb128 0x55
+ 428 000c 17       		.uleb128 0x17
+ 429 000d 11       		.uleb128 0x11
+ 430 000e 01       		.uleb128 0x1
+ 431 000f 10       		.uleb128 0x10
+ 432 0010 17       		.uleb128 0x17
+ 433 0011 00       		.byte	0
+ 434 0012 00       		.byte	0
+ 435 0013 02       		.uleb128 0x2
+ 436 0014 24       		.uleb128 0x24
+ 437 0015 00       		.byte	0
+ 438 0016 0B       		.uleb128 0xb
+ 439 0017 0B       		.uleb128 0xb
+ 440 0018 3E       		.uleb128 0x3e
+ 441 0019 0B       		.uleb128 0xb
+ 442 001a 03       		.uleb128 0x3
+ 443 001b 0E       		.uleb128 0xe
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciOE3qa.s 			page 13
+
+
+ 444 001c 00       		.byte	0
+ 445 001d 00       		.byte	0
+ 446 001e 03       		.uleb128 0x3
+ 447 001f 24       		.uleb128 0x24
+ 448 0020 00       		.byte	0
+ 449 0021 0B       		.uleb128 0xb
+ 450 0022 0B       		.uleb128 0xb
+ 451 0023 3E       		.uleb128 0x3e
+ 452 0024 0B       		.uleb128 0xb
+ 453 0025 03       		.uleb128 0x3
+ 454 0026 08       		.uleb128 0x8
+ 455 0027 00       		.byte	0
+ 456 0028 00       		.byte	0
+ 457 0029 04       		.uleb128 0x4
+ 458 002a 16       		.uleb128 0x16
+ 459 002b 00       		.byte	0
+ 460 002c 03       		.uleb128 0x3
+ 461 002d 0E       		.uleb128 0xe
+ 462 002e 3A       		.uleb128 0x3a
+ 463 002f 0B       		.uleb128 0xb
+ 464 0030 3B       		.uleb128 0x3b
+ 465 0031 05       		.uleb128 0x5
+ 466 0032 49       		.uleb128 0x49
+ 467 0033 13       		.uleb128 0x13
+ 468 0034 00       		.byte	0
+ 469 0035 00       		.byte	0
+ 470 0036 05       		.uleb128 0x5
+ 471 0037 35       		.uleb128 0x35
+ 472 0038 00       		.byte	0
+ 473 0039 49       		.uleb128 0x49
+ 474 003a 13       		.uleb128 0x13
+ 475 003b 00       		.byte	0
+ 476 003c 00       		.byte	0
+ 477 003d 06       		.uleb128 0x6
+ 478 003e 2E       		.uleb128 0x2e
+ 479 003f 01       		.byte	0x1
+ 480 0040 3F       		.uleb128 0x3f
+ 481 0041 19       		.uleb128 0x19
+ 482 0042 03       		.uleb128 0x3
+ 483 0043 0E       		.uleb128 0xe
+ 484 0044 3A       		.uleb128 0x3a
+ 485 0045 0B       		.uleb128 0xb
+ 486 0046 3B       		.uleb128 0x3b
+ 487 0047 0B       		.uleb128 0xb
+ 488 0048 27       		.uleb128 0x27
+ 489 0049 19       		.uleb128 0x19
+ 490 004a 11       		.uleb128 0x11
+ 491 004b 01       		.uleb128 0x1
+ 492 004c 12       		.uleb128 0x12
+ 493 004d 06       		.uleb128 0x6
+ 494 004e 40       		.uleb128 0x40
+ 495 004f 18       		.uleb128 0x18
+ 496 0050 9742     		.uleb128 0x2117
+ 497 0052 19       		.uleb128 0x19
+ 498 0053 01       		.uleb128 0x1
+ 499 0054 13       		.uleb128 0x13
+ 500 0055 00       		.byte	0
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciOE3qa.s 			page 14
+
+
+ 501 0056 00       		.byte	0
+ 502 0057 07       		.uleb128 0x7
+ 503 0058 05       		.uleb128 0x5
+ 504 0059 00       		.byte	0
+ 505 005a 03       		.uleb128 0x3
+ 506 005b 0E       		.uleb128 0xe
+ 507 005c 3A       		.uleb128 0x3a
+ 508 005d 0B       		.uleb128 0xb
+ 509 005e 3B       		.uleb128 0x3b
+ 510 005f 0B       		.uleb128 0xb
+ 511 0060 49       		.uleb128 0x49
+ 512 0061 13       		.uleb128 0x13
+ 513 0062 02       		.uleb128 0x2
+ 514 0063 17       		.uleb128 0x17
+ 515 0064 00       		.byte	0
+ 516 0065 00       		.byte	0
+ 517 0066 08       		.uleb128 0x8
+ 518 0067 34       		.uleb128 0x34
+ 519 0068 00       		.byte	0
+ 520 0069 03       		.uleb128 0x3
+ 521 006a 0E       		.uleb128 0xe
+ 522 006b 3A       		.uleb128 0x3a
+ 523 006c 0B       		.uleb128 0xb
+ 524 006d 3B       		.uleb128 0x3b
+ 525 006e 0B       		.uleb128 0xb
+ 526 006f 49       		.uleb128 0x49
+ 527 0070 13       		.uleb128 0x13
+ 528 0071 02       		.uleb128 0x2
+ 529 0072 17       		.uleb128 0x17
+ 530 0073 00       		.byte	0
+ 531 0074 00       		.byte	0
+ 532 0075 09       		.uleb128 0x9
+ 533 0076 2E       		.uleb128 0x2e
+ 534 0077 00       		.byte	0
+ 535 0078 3F       		.uleb128 0x3f
+ 536 0079 19       		.uleb128 0x19
+ 537 007a 03       		.uleb128 0x3
+ 538 007b 0E       		.uleb128 0xe
+ 539 007c 3A       		.uleb128 0x3a
+ 540 007d 0B       		.uleb128 0xb
+ 541 007e 3B       		.uleb128 0x3b
+ 542 007f 0B       		.uleb128 0xb
+ 543 0080 27       		.uleb128 0x27
+ 544 0081 19       		.uleb128 0x19
+ 545 0082 49       		.uleb128 0x49
+ 546 0083 13       		.uleb128 0x13
+ 547 0084 11       		.uleb128 0x11
+ 548 0085 01       		.uleb128 0x1
+ 549 0086 12       		.uleb128 0x12
+ 550 0087 06       		.uleb128 0x6
+ 551 0088 40       		.uleb128 0x40
+ 552 0089 18       		.uleb128 0x18
+ 553 008a 9742     		.uleb128 0x2117
+ 554 008c 19       		.uleb128 0x19
+ 555 008d 00       		.byte	0
+ 556 008e 00       		.byte	0
+ 557 008f 0A       		.uleb128 0xa
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciOE3qa.s 			page 15
+
+
+ 558 0090 05       		.uleb128 0x5
+ 559 0091 00       		.byte	0
+ 560 0092 03       		.uleb128 0x3
+ 561 0093 0E       		.uleb128 0xe
+ 562 0094 3A       		.uleb128 0x3a
+ 563 0095 0B       		.uleb128 0xb
+ 564 0096 3B       		.uleb128 0x3b
+ 565 0097 0B       		.uleb128 0xb
+ 566 0098 49       		.uleb128 0x49
+ 567 0099 13       		.uleb128 0x13
+ 568 009a 02       		.uleb128 0x2
+ 569 009b 18       		.uleb128 0x18
+ 570 009c 00       		.byte	0
+ 571 009d 00       		.byte	0
+ 572 009e 0B       		.uleb128 0xb
+ 573 009f 34       		.uleb128 0x34
+ 574 00a0 00       		.byte	0
+ 575 00a1 03       		.uleb128 0x3
+ 576 00a2 0E       		.uleb128 0xe
+ 577 00a3 3A       		.uleb128 0x3a
+ 578 00a4 0B       		.uleb128 0xb
+ 579 00a5 3B       		.uleb128 0x3b
+ 580 00a6 0B       		.uleb128 0xb
+ 581 00a7 49       		.uleb128 0x49
+ 582 00a8 13       		.uleb128 0x13
+ 583 00a9 02       		.uleb128 0x2
+ 584 00aa 18       		.uleb128 0x18
+ 585 00ab 00       		.byte	0
+ 586 00ac 00       		.byte	0
+ 587 00ad 0C       		.uleb128 0xc
+ 588 00ae 2E       		.uleb128 0x2e
+ 589 00af 01       		.byte	0x1
+ 590 00b0 3F       		.uleb128 0x3f
+ 591 00b1 19       		.uleb128 0x19
+ 592 00b2 03       		.uleb128 0x3
+ 593 00b3 0E       		.uleb128 0xe
+ 594 00b4 3A       		.uleb128 0x3a
+ 595 00b5 0B       		.uleb128 0xb
+ 596 00b6 3B       		.uleb128 0x3b
+ 597 00b7 0B       		.uleb128 0xb
+ 598 00b8 27       		.uleb128 0x27
+ 599 00b9 19       		.uleb128 0x19
+ 600 00ba 49       		.uleb128 0x49
+ 601 00bb 13       		.uleb128 0x13
+ 602 00bc 11       		.uleb128 0x11
+ 603 00bd 01       		.uleb128 0x1
+ 604 00be 12       		.uleb128 0x12
+ 605 00bf 06       		.uleb128 0x6
+ 606 00c0 40       		.uleb128 0x40
+ 607 00c1 18       		.uleb128 0x18
+ 608 00c2 9742     		.uleb128 0x2117
+ 609 00c4 19       		.uleb128 0x19
+ 610 00c5 00       		.byte	0
+ 611 00c6 00       		.byte	0
+ 612 00c7 00       		.byte	0
+ 613              		.section	.debug_loc,"",%progbits
+ 614              	.Ldebug_loc0:
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciOE3qa.s 			page 16
+
+
+ 615              	.LLST0:
+ 616 0000 00000000 		.4byte	.LVL0
+ 617 0004 0A000000 		.4byte	.LVL1
+ 618 0008 0100     		.2byte	0x1
+ 619 000a 50       		.byte	0x50
+ 620 000b 0A000000 		.4byte	.LVL1
+ 621 000f 18000000 		.4byte	.LFE0
+ 622 0013 0400     		.2byte	0x4
+ 623 0015 F3       		.byte	0xf3
+ 624 0016 01       		.uleb128 0x1
+ 625 0017 50       		.byte	0x50
+ 626 0018 9F       		.byte	0x9f
+ 627 0019 00000000 		.4byte	0
+ 628 001d 00000000 		.4byte	0
+ 629              	.LLST1:
+ 630 0021 00000000 		.4byte	.LVL2
+ 631 0025 0C000000 		.4byte	.LVL4
+ 632 0029 0100     		.2byte	0x1
+ 633 002b 50       		.byte	0x50
+ 634 002c 0C000000 		.4byte	.LVL4
+ 635 0030 18000000 		.4byte	.LFE1
+ 636 0034 0400     		.2byte	0x4
+ 637 0036 F3       		.byte	0xf3
+ 638 0037 01       		.uleb128 0x1
+ 639 0038 50       		.byte	0x50
+ 640 0039 9F       		.byte	0x9f
+ 641 003a 00000000 		.4byte	0
+ 642 003e 00000000 		.4byte	0
+ 643              	.LLST2:
+ 644 0042 0A000000 		.4byte	.LVL3
+ 645 0046 10000000 		.4byte	.LVL5
+ 646 004a 0100     		.2byte	0x1
+ 647 004c 52       		.byte	0x52
+ 648 004d 10000000 		.4byte	.LVL5
+ 649 0051 18000000 		.4byte	.LFE1
+ 650 0055 0100     		.2byte	0x1
+ 651 0057 50       		.byte	0x50
+ 652 0058 00000000 		.4byte	0
+ 653 005c 00000000 		.4byte	0
+ 654              	.LLST3:
+ 655 0060 00000000 		.4byte	.LVL6
+ 656 0064 08000000 		.4byte	.LVL8
+ 657 0068 0100     		.2byte	0x1
+ 658 006a 50       		.byte	0x50
+ 659 006b 08000000 		.4byte	.LVL8
+ 660 006f 14000000 		.4byte	.LFE4
+ 661 0073 0400     		.2byte	0x4
+ 662 0075 F3       		.byte	0xf3
+ 663 0076 01       		.uleb128 0x1
+ 664 0077 50       		.byte	0x50
+ 665 0078 9F       		.byte	0x9f
+ 666 0079 00000000 		.4byte	0
+ 667 007d 00000000 		.4byte	0
+ 668              	.LLST4:
+ 669 0081 08000000 		.4byte	.LVL9
+ 670 0085 0C000000 		.4byte	.LVL10
+ 671 0089 0100     		.2byte	0x1
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciOE3qa.s 			page 17
+
+
+ 672 008b 50       		.byte	0x50
+ 673 008c 0C000000 		.4byte	.LVL10
+ 674 0090 14000000 		.4byte	.LFE5
+ 675 0094 0400     		.2byte	0x4
+ 676 0096 72       		.byte	0x72
+ 677 0097 00       		.sleb128 0
+ 678 0098 06       		.byte	0x6
+ 679 0099 9F       		.byte	0x9f
+ 680 009a 00000000 		.4byte	0
+ 681 009e 00000000 		.4byte	0
+ 682              		.section	.debug_aranges,"",%progbits
+ 683 0000 44000000 		.4byte	0x44
+ 684 0004 0200     		.2byte	0x2
+ 685 0006 00000000 		.4byte	.Ldebug_info0
+ 686 000a 04       		.byte	0x4
+ 687 000b 00       		.byte	0
+ 688 000c 0000     		.2byte	0
+ 689 000e 0000     		.2byte	0
+ 690 0010 00000000 		.4byte	.LFB0
+ 691 0014 18000000 		.4byte	.LFE0-.LFB0
+ 692 0018 00000000 		.4byte	.LFB1
+ 693 001c 18000000 		.4byte	.LFE1-.LFB1
+ 694 0020 00000000 		.4byte	.LFB2
+ 695 0024 10000000 		.4byte	.LFE2-.LFB2
+ 696 0028 00000000 		.4byte	.LFB3
+ 697 002c 10000000 		.4byte	.LFE3-.LFB3
+ 698 0030 00000000 		.4byte	.LFB4
+ 699 0034 14000000 		.4byte	.LFE4-.LFB4
+ 700 0038 00000000 		.4byte	.LFB5
+ 701 003c 14000000 		.4byte	.LFE5-.LFB5
+ 702 0040 00000000 		.4byte	0
+ 703 0044 00000000 		.4byte	0
+ 704              		.section	.debug_ranges,"",%progbits
+ 705              	.Ldebug_ranges0:
+ 706 0000 00000000 		.4byte	.LFB0
+ 707 0004 18000000 		.4byte	.LFE0
+ 708 0008 00000000 		.4byte	.LFB1
+ 709 000c 18000000 		.4byte	.LFE1
+ 710 0010 00000000 		.4byte	.LFB2
+ 711 0014 10000000 		.4byte	.LFE2
+ 712 0018 00000000 		.4byte	.LFB3
+ 713 001c 10000000 		.4byte	.LFE3
+ 714 0020 00000000 		.4byte	.LFB4
+ 715 0024 14000000 		.4byte	.LFE4
+ 716 0028 00000000 		.4byte	.LFB5
+ 717 002c 14000000 		.4byte	.LFE5
+ 718 0030 00000000 		.4byte	0
+ 719 0034 00000000 		.4byte	0
+ 720              		.section	.debug_line,"",%progbits
+ 721              	.Ldebug_line0:
+ 722 0000 B7000000 		.section	.debug_str,"MS",%progbits,1
+ 722      02004000 
+ 722      00000201 
+ 722      FB0E0D00 
+ 722      01010101 
+ 723              	.LASF21:
+ 724 0000 6572725F 		.ascii	"err_ReadDataReg\000"
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciOE3qa.s 			page 18
+
+
+ 724      52656164 
+ 724      44617461 
+ 724      52656700 
+ 725              	.LASF15:
+ 726 0010 72656733 		.ascii	"reg32\000"
+ 726      3200
+ 727              	.LASF20:
+ 728 0016 6572725F 		.ascii	"err_Read\000"
+ 728      52656164 
+ 728      00
+ 729              	.LASF19:
+ 730 001f 76616C75 		.ascii	"value\000"
+ 730      6500
+ 731              	.LASF17:
+ 732 0025 6572725F 		.ascii	"err_Write\000"
+ 732      57726974 
+ 732      6500
+ 733              	.LASF12:
+ 734 002f 666C6F61 		.ascii	"float\000"
+ 734      7400
+ 735              	.LASF22:
+ 736 0035 6572725F 		.ascii	"err_SetInterruptMode\000"
+ 736      53657449 
+ 736      6E746572 
+ 736      72757074 
+ 736      4D6F6465 
+ 737              	.LASF1:
+ 738 004a 756E7369 		.ascii	"unsigned char\000"
+ 738      676E6564 
+ 738      20636861 
+ 738      7200
+ 739              	.LASF24:
+ 740 0058 64725661 		.ascii	"drVal\000"
+ 740      6C00
+ 741              	.LASF5:
+ 742 005e 6C6F6E67 		.ascii	"long unsigned int\000"
+ 742      20756E73 
+ 742      69676E65 
+ 742      6420696E 
+ 742      7400
+ 743              	.LASF3:
+ 744 0070 73686F72 		.ascii	"short unsigned int\000"
+ 744      7420756E 
+ 744      7369676E 
+ 744      65642069 
+ 744      6E7400
+ 745              	.LASF30:
+ 746 0083 443A5C72 		.ascii	"D:\\repositories\\Tarocco\\Bootloader\\cncboot_no_o"
+ 746      65706F73 
+ 746      69746F72 
+ 746      6965735C 
+ 746      5461726F 
+ 747 00b2 7074696D 		.ascii	"ptimizations\\cncboot.cydsn\000"
+ 747      697A6174 
+ 747      696F6E73 
+ 747      5C636E63 
+ 747      626F6F74 
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciOE3qa.s 			page 19
+
+
+ 748              	.LASF13:
+ 749 00cd 646F7562 		.ascii	"double\000"
+ 749      6C6500
+ 750              	.LASF10:
+ 751 00d4 75696E74 		.ascii	"uint16\000"
+ 751      313600
+ 752              	.LASF23:
+ 753 00db 706F7369 		.ascii	"position\000"
+ 753      74696F6E 
+ 753      00
+ 754              	.LASF11:
+ 755 00e4 75696E74 		.ascii	"uint32\000"
+ 755      333200
+ 756              	.LASF25:
+ 757 00eb 696E7472 		.ascii	"intrCfg\000"
+ 757      43666700 
+ 758              	.LASF8:
+ 759 00f3 756E7369 		.ascii	"unsigned int\000"
+ 759      676E6564 
+ 759      20696E74 
+ 759      00
+ 760              	.LASF29:
+ 761 0100 47656E65 		.ascii	"Generated_Source\\PSoC4\\err.c\000"
+ 761      72617465 
+ 761      645F536F 
+ 761      75726365 
+ 761      5C50536F 
+ 762              	.LASF7:
+ 763 011d 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 763      206C6F6E 
+ 763      6720756E 
+ 763      7369676E 
+ 763      65642069 
+ 764              	.LASF18:
+ 765 0134 6D6F6465 		.ascii	"mode\000"
+ 765      00
+ 766              	.LASF16:
+ 767 0139 6572725F 		.ascii	"err_SetDriveMode\000"
+ 767      53657444 
+ 767      72697665 
+ 767      4D6F6465 
+ 767      00
+ 768              	.LASF28:
+ 769 014a 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 769      43313120 
+ 769      352E342E 
+ 769      31203230 
+ 769      31363036 
+ 770 017d 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 770      20726576 
+ 770      6973696F 
+ 770      6E203233 
+ 770      37373135 
+ 771 01b0 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 771      66756E63 
+ 771      74696F6E 
+ 771      2D736563 
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciOE3qa.s 			page 20
+
+
+ 771      74696F6E 
+ 772              	.LASF6:
+ 773 01d8 6C6F6E67 		.ascii	"long long int\000"
+ 773      206C6F6E 
+ 773      6720696E 
+ 773      7400
+ 774              	.LASF27:
+ 775 01e6 6D61736B 		.ascii	"maskedStatus\000"
+ 775      65645374 
+ 775      61747573 
+ 775      00
+ 776              	.LASF14:
+ 777 01f3 63686172 		.ascii	"char\000"
+ 777      00
+ 778              	.LASF2:
+ 779 01f8 73686F72 		.ascii	"short int\000"
+ 779      7420696E 
+ 779      7400
+ 780              	.LASF9:
+ 781 0202 75696E74 		.ascii	"uint8\000"
+ 781      3800
+ 782              	.LASF26:
+ 783 0208 6572725F 		.ascii	"err_ClearInterrupt\000"
+ 783      436C6561 
+ 783      72496E74 
+ 783      65727275 
+ 783      707400
+ 784              	.LASF4:
+ 785 021b 6C6F6E67 		.ascii	"long int\000"
+ 785      20696E74 
+ 785      00
+ 786              	.LASF0:
+ 787 0224 7369676E 		.ascii	"signed char\000"
+ 787      65642063 
+ 787      68617200 
+ 788              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

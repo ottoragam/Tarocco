@@ -1,6 +1,6 @@
 -- Project:   cncboot
--- Generated: 03/13/2017 07:50:28
--- PSoC Creator  4.0 Update 1
+-- Generated: 05/26/2019 20:57:43
+-- PSoC Creator  4.2
 
 ENTITY cncboot IS
     PORT(
@@ -58,9 +58,13 @@ ARCHITECTURE __DEFAULT__ OF cncboot IS
     ATTRIBUTE GROUND OF zero : SIGNAL IS true;
     ATTRIBUTE Location OF ClockGenBlock : LABEL IS "F(CLK_GEN,0)";
     ATTRIBUTE lib_model OF \UART:tx(0)\ : LABEL IS "iocell1";
+    ATTRIBUTE Location OF \UART:tx(0)\ : LABEL IS "P3[1]";
     ATTRIBUTE lib_model OF \UART:rx(0)\ : LABEL IS "iocell2";
+    ATTRIBUTE Location OF \UART:rx(0)\ : LABEL IS "P3[0]";
     ATTRIBUTE lib_model OF vin(0) : LABEL IS "iocell3";
+    ATTRIBUTE Location OF vin(0) : LABEL IS "P3[2]";
     ATTRIBUTE lib_model OF err(0) : LABEL IS "iocell4";
+    ATTRIBUTE Location OF err(0) : LABEL IS "P3[3]";
     COMPONENT interrupt
         PORT (
             interrupt : IN std_ulogic;
@@ -68,11 +72,11 @@ ARCHITECTURE __DEFAULT__ OF cncboot IS
     END COMPONENT;
     COMPONENT iocell
         PORT (
-            pin_input : IN std_ulogic;
             oe : IN std_ulogic;
             fb : OUT std_ulogic;
-            pad_in : IN std_ulogic;
             pa_out : OUT std_ulogic;
+            pin_input : IN std_ulogic;
+            pad_in : IN std_ulogic;
             pad_out : OUT std_ulogic;
             oe_reg : OUT std_ulogic;
             oe_internal : IN std_ulogic;
@@ -224,10 +228,10 @@ ARCHITECTURE __DEFAULT__ OF cncboot IS
         PORT (
             clock : IN std_ulogic;
             interrupt : OUT std_ulogic;
-            cts : IN std_ulogic;
-            rts : OUT std_ulogic;
-            rx : IN std_ulogic;
-            tx : OUT std_ulogic;
+            uart_cts : IN std_ulogic;
+            uart_rts : OUT std_ulogic;
+            uart_rx : IN std_ulogic;
+            uart_tx : OUT std_ulogic;
             mosi_m : OUT std_ulogic;
             miso_m : IN std_ulogic;
             select_m_0 : OUT std_ulogic;
@@ -239,10 +243,10 @@ ARCHITECTURE __DEFAULT__ OF cncboot IS
             miso_s : OUT std_ulogic;
             select_s : IN std_ulogic;
             sclk_s : IN std_ulogic;
-            scl : IN std_ulogic;
-            sda : IN std_ulogic;
-            rx_req : OUT std_ulogic;
-            tx_req : OUT std_ulogic);
+            i2c_scl : IN std_ulogic;
+            i2c_sda : IN std_ulogic;
+            tr_rx_req : OUT std_ulogic;
+            tr_tx_req : OUT std_ulogic);
     END COMPONENT;
     COMPONENT m0s8tcpwmcell
         PORT (
@@ -255,8 +259,8 @@ ARCHITECTURE __DEFAULT__ OF cncboot IS
             tr_underflow : OUT std_ulogic;
             tr_overflow : OUT std_ulogic;
             tr_compare_match : OUT std_ulogic;
-            line_out : OUT std_ulogic;
-            line_out_compl : OUT std_ulogic;
+            line : OUT std_ulogic;
+            line_compl : OUT std_ulogic;
             interrupt : OUT std_ulogic);
     END COMPONENT;
 BEGIN
@@ -657,10 +661,10 @@ BEGIN
         PORT MAP(
             clock => \UART:Net_847_ff2\,
             interrupt => Net_133,
-            rx => \UART:rx_wire\,
-            tx => \UART:tx_wire\,
-            cts => open,
-            rts => \UART:rts_wire\,
+            uart_rx => \UART:rx_wire\,
+            uart_tx => \UART:tx_wire\,
+            uart_cts => open,
+            uart_rts => \UART:rts_wire\,
             mosi_m => \UART:mosi_m_wire\,
             miso_m => open,
             select_m_3 => \UART:select_m_wire_3\,
@@ -672,8 +676,8 @@ BEGIN
             miso_s => \UART:miso_s_wire\,
             select_s => open,
             sclk_s => open,
-            tx_req => Net_136,
-            rx_req => Net_135);
+            tr_tx_req => Net_136,
+            tr_rx_req => Net_135);
 
     \PWM:cy_m0s8_tcpwm_1\:m0s8tcpwmcell
         GENERIC MAP(
@@ -688,8 +692,8 @@ BEGIN
             tr_underflow => Net_238,
             tr_overflow => Net_237,
             tr_compare_match => Net_239,
-            line_out => Net_202,
-            line_out_compl => Net_240,
+            line => Net_202,
+            line_compl => Net_240,
             interrupt => Net_236);
 
 END __DEFAULT__;

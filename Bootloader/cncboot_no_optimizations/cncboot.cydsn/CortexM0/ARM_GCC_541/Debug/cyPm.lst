@@ -1,0 +1,1916 @@
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciQJMM3.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"cyPm.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.CySysPmSleep,"ax",%progbits
+  20              		.align	2
+  21              		.global	CySysPmSleep
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	CySysPmSleep, %function
+  25              	CySysPmSleep:
+  26              	.LFB0:
+  27              		.file 1 "Generated_Source\\PSoC4\\cyPm.c"
+   1:Generated_Source\PSoC4/cyPm.c **** /***************************************************************************//**
+   2:Generated_Source\PSoC4/cyPm.c **** * \file cyPm.c
+   3:Generated_Source\PSoC4/cyPm.c **** * \version 5.40
+   4:Generated_Source\PSoC4/cyPm.c **** *
+   5:Generated_Source\PSoC4/cyPm.c **** * \brief Provides an API for the power management.
+   6:Generated_Source\PSoC4/cyPm.c **** *
+   7:Generated_Source\PSoC4/cyPm.c **** * \note Documentation of the API's in this file is located in the System
+   8:Generated_Source\PSoC4/cyPm.c **** * Reference Guide provided with PSoC Creator.
+   9:Generated_Source\PSoC4/cyPm.c **** *
+  10:Generated_Source\PSoC4/cyPm.c **** ********************************************************************************
+  11:Generated_Source\PSoC4/cyPm.c **** * \copyright
+  12:Generated_Source\PSoC4/cyPm.c **** * Copyright 2011-2016, Cypress Semiconductor Corporation.  All rights reserved.
+  13:Generated_Source\PSoC4/cyPm.c **** * You may use this file only in accordance with the license, terms, conditions,
+  14:Generated_Source\PSoC4/cyPm.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  15:Generated_Source\PSoC4/cyPm.c **** * the software package with which this file was provided.
+  16:Generated_Source\PSoC4/cyPm.c **** *******************************************************************************/
+  17:Generated_Source\PSoC4/cyPm.c **** 
+  18:Generated_Source\PSoC4/cyPm.c **** #include "cyPm.h"
+  19:Generated_Source\PSoC4/cyPm.c **** #include "CyLib.h"
+  20:Generated_Source\PSoC4/cyPm.c **** 
+  21:Generated_Source\PSoC4/cyPm.c **** 
+  22:Generated_Source\PSoC4/cyPm.c **** /*******************************************************************************
+  23:Generated_Source\PSoC4/cyPm.c **** * Function Name: CySysPmSleep
+  24:Generated_Source\PSoC4/cyPm.c **** ****************************************************************************//**
+  25:Generated_Source\PSoC4/cyPm.c **** *
+  26:Generated_Source\PSoC4/cyPm.c **** * Puts the part into the Sleep state. This is a CPU-centric power mode.
+  27:Generated_Source\PSoC4/cyPm.c **** * It means that the CPU has indicated that it is in the sleep mode and
+  28:Generated_Source\PSoC4/cyPm.c **** * its main clock can be removed. It is identical to Active from a peripheral
+  29:Generated_Source\PSoC4/cyPm.c **** * point of view. Any enabled interrupts can cause wakeup from the Sleep mode.
+  30:Generated_Source\PSoC4/cyPm.c **** *
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciQJMM3.s 			page 2
+
+
+  31:Generated_Source\PSoC4/cyPm.c **** *******************************************************************************/
+  32:Generated_Source\PSoC4/cyPm.c **** void CySysPmSleep(void)
+  33:Generated_Source\PSoC4/cyPm.c **** {
+  28              		.loc 1 33 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 10B5     		push	{r4, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+  34:Generated_Source\PSoC4/cyPm.c ****     uint8 interruptState;
+  35:Generated_Source\PSoC4/cyPm.c **** 
+  36:Generated_Source\PSoC4/cyPm.c ****     interruptState = CyEnterCriticalSection();
+  36              		.loc 1 36 0
+  37 0002 FFF7FEFF 		bl	CyEnterCriticalSection
+  38              	.LVL0:
+  37:Generated_Source\PSoC4/cyPm.c **** 
+  38:Generated_Source\PSoC4/cyPm.c ****     /* CPU enters Sleep mode upon execution of WFI */
+  39:Generated_Source\PSoC4/cyPm.c ****     CY_PM_CPU_SCR_REG &= (uint32) (~CY_PM_CPU_SCR_SLEEPDEEP);
+  39              		.loc 1 39 0
+  40 0006 044A     		ldr	r2, .L2
+  41 0008 1368     		ldr	r3, [r2]
+  42 000a 0421     		movs	r1, #4
+  43 000c 8B43     		bics	r3, r1
+  44 000e 1360     		str	r3, [r2]
+  40:Generated_Source\PSoC4/cyPm.c **** 
+  41:Generated_Source\PSoC4/cyPm.c ****     /* Sleep and wait for interrupt */
+  42:Generated_Source\PSoC4/cyPm.c ****     CY_PM_WFI;
+  45              		.loc 1 42 0
+  46              		.syntax divided
+  47              	@ 42 "Generated_Source\PSoC4\cyPm.c" 1
+  48 0010 30BF     		WFI 
+  49              	
+  50              	@ 0 "" 2
+  43:Generated_Source\PSoC4/cyPm.c **** 
+  44:Generated_Source\PSoC4/cyPm.c ****     CyExitCriticalSection(interruptState);
+  51              		.loc 1 44 0
+  52              		.thumb
+  53              		.syntax unified
+  54 0012 FFF7FEFF 		bl	CyExitCriticalSection
+  55              	.LVL1:
+  45:Generated_Source\PSoC4/cyPm.c **** }
+  56              		.loc 1 45 0
+  57              		@ sp needed
+  58 0016 10BD     		pop	{r4, pc}
+  59              	.L3:
+  60              		.align	2
+  61              	.L2:
+  62 0018 10ED00E0 		.word	-536810224
+  63              		.cfi_endproc
+  64              	.LFE0:
+  65              		.size	CySysPmSleep, .-CySysPmSleep
+  66              		.section	.text.CySysPmDeepSleep,"ax",%progbits
+  67              		.align	2
+  68              		.global	CySysPmDeepSleep
+  69              		.code	16
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciQJMM3.s 			page 3
+
+
+  70              		.thumb_func
+  71              		.type	CySysPmDeepSleep, %function
+  72              	CySysPmDeepSleep:
+  73              	.LFB1:
+  46:Generated_Source\PSoC4/cyPm.c **** 
+  47:Generated_Source\PSoC4/cyPm.c **** 
+  48:Generated_Source\PSoC4/cyPm.c **** /*******************************************************************************
+  49:Generated_Source\PSoC4/cyPm.c **** * Function Name: CySysPmDeepSleep
+  50:Generated_Source\PSoC4/cyPm.c **** ****************************************************************************//**
+  51:Generated_Source\PSoC4/cyPm.c **** *
+  52:Generated_Source\PSoC4/cyPm.c **** * Puts the part into the Deep Sleep state. If the firmware attempts to enter
+  53:Generated_Source\PSoC4/cyPm.c **** * this mode before the system is ready (that is, when
+  54:Generated_Source\PSoC4/cyPm.c **** * PWR_CONTROL.LPM_READY = 0), then the device will go into the Sleep mode
+  55:Generated_Source\PSoC4/cyPm.c **** * instead and automatically enter the originally intended mode when the
+  56:Generated_Source\PSoC4/cyPm.c **** * holdoff expires.
+  57:Generated_Source\PSoC4/cyPm.c **** *
+  58:Generated_Source\PSoC4/cyPm.c **** * The wakeup occurs when an interrupt is received from a DeepSleep or
+  59:Generated_Source\PSoC4/cyPm.c **** * Hibernate peripheral. For more details, see a corresponding
+  60:Generated_Source\PSoC4/cyPm.c **** * peripheral's datasheet.
+  61:Generated_Source\PSoC4/cyPm.c **** *
+  62:Generated_Source\PSoC4/cyPm.c **** *******************************************************************************/
+  63:Generated_Source\PSoC4/cyPm.c **** void CySysPmDeepSleep(void)
+  64:Generated_Source\PSoC4/cyPm.c **** {
+  74              		.loc 1 64 0
+  75              		.cfi_startproc
+  76              		@ args = 0, pretend = 0, frame = 8
+  77              		@ frame_needed = 0, uses_anonymous_args = 0
+  78 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+  79              		.cfi_def_cfa_offset 20
+  80              		.cfi_offset 4, -20
+  81              		.cfi_offset 5, -16
+  82              		.cfi_offset 6, -12
+  83              		.cfi_offset 7, -8
+  84              		.cfi_offset 14, -4
+  85 0002 83B0     		sub	sp, sp, #12
+  86              		.cfi_def_cfa_offset 32
+  65:Generated_Source\PSoC4/cyPm.c ****     uint8 interruptState;
+  66:Generated_Source\PSoC4/cyPm.c ****     #if(CY_IP_SRSSV2)
+  67:Generated_Source\PSoC4/cyPm.c ****         volatile uint32 clkSelectReg;
+  68:Generated_Source\PSoC4/cyPm.c ****     #endif /* (CY_IP_SRSSV2) */
+  69:Generated_Source\PSoC4/cyPm.c **** 
+  70:Generated_Source\PSoC4/cyPm.c ****     interruptState = CyEnterCriticalSection();
+  87              		.loc 1 70 0
+  88 0004 FFF7FEFF 		bl	CyEnterCriticalSection
+  89              	.LVL2:
+  90 0008 0400     		movs	r4, r0
+  91              	.LVL3:
+  71:Generated_Source\PSoC4/cyPm.c **** 
+  72:Generated_Source\PSoC4/cyPm.c ****     #if(CY_IP_SRSSV2)
+  73:Generated_Source\PSoC4/cyPm.c ****         /* Device enters DeepSleep mode when CPU asserts SLEEPDEEP signal */
+  74:Generated_Source\PSoC4/cyPm.c ****         CY_PM_PWR_CONTROL_REG &= (uint32) (~CY_PM_PWR_CONTROL_HIBERNATE);
+  92              		.loc 1 74 0
+  93 000a 134A     		ldr	r2, .L5
+  94 000c 1368     		ldr	r3, [r2]
+  95 000e 5B00     		lsls	r3, r3, #1
+  96 0010 5B08     		lsrs	r3, r3, #1
+  97 0012 1360     		str	r3, [r2]
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciQJMM3.s 			page 4
+
+
+  75:Generated_Source\PSoC4/cyPm.c ****     #endif /* (CY_IP_SRSSV2) */
+  76:Generated_Source\PSoC4/cyPm.c **** 
+  77:Generated_Source\PSoC4/cyPm.c ****     #if (CY_IP_CPUSS && CY_IP_SRSSV2)
+  78:Generated_Source\PSoC4/cyPm.c ****         CY_PM_CPUSS_CONFIG_REG |= CY_PM_CPUSS_CONFIG_FLSH_ACC_BYPASS;
+  98              		.loc 1 78 0
+  99 0014 8025     		movs	r5, #128
+ 100 0016 ED05     		lsls	r5, r5, #23
+ 101 0018 2B68     		ldr	r3, [r5]
+ 102 001a 0226     		movs	r6, #2
+ 103 001c 3343     		orrs	r3, r6
+ 104 001e 2B60     		str	r3, [r5]
+  79:Generated_Source\PSoC4/cyPm.c ****     #endif /* (CY_IP_CPUSS && CY_IP_SRSSV2) */
+  80:Generated_Source\PSoC4/cyPm.c **** 
+  81:Generated_Source\PSoC4/cyPm.c ****     /* Adjust delay to wait for references to settle on wakeup from Deep Sleep */
+  82:Generated_Source\PSoC4/cyPm.c ****     CY_PM_PWR_KEY_DELAY_REG = CY_SFLASH_DPSLP_KEY_DELAY_REG;
+ 105              		.loc 1 82 0
+ 106 0020 0E4B     		ldr	r3, .L5+4
+ 107 0022 1B88     		ldrh	r3, [r3]
+ 108 0024 9BB2     		uxth	r3, r3
+ 109 0026 0E4A     		ldr	r2, .L5+8
+ 110 0028 1360     		str	r3, [r2]
+  83:Generated_Source\PSoC4/cyPm.c **** 
+  84:Generated_Source\PSoC4/cyPm.c ****     /* CPU enters DeepSleep/Hibernate mode upon execution of WFI */
+  85:Generated_Source\PSoC4/cyPm.c ****     CY_PM_CPU_SCR_REG |= CY_PM_CPU_SCR_SLEEPDEEP;
+ 111              		.loc 1 85 0
+ 112 002a 0E4A     		ldr	r2, .L5+12
+ 113 002c 1168     		ldr	r1, [r2]
+ 114 002e 0423     		movs	r3, #4
+ 115 0030 0B43     		orrs	r3, r1
+ 116 0032 1360     		str	r3, [r2]
+  86:Generated_Source\PSoC4/cyPm.c **** 
+  87:Generated_Source\PSoC4/cyPm.c ****     #if(CY_IP_SRSSV2)
+  88:Generated_Source\PSoC4/cyPm.c ****         /* Preserve system clock configuration and
+  89:Generated_Source\PSoC4/cyPm.c ****         * reduce sysclk to <=12 MHz (Cypress ID #158710, #179888).
+  90:Generated_Source\PSoC4/cyPm.c ****         */
+  91:Generated_Source\PSoC4/cyPm.c ****         clkSelectReg = CY_SYS_CLK_SELECT_REG;
+ 117              		.loc 1 91 0
+ 118 0034 0C4F     		ldr	r7, .L5+16
+ 119 0036 3B68     		ldr	r3, [r7]
+ 120 0038 0193     		str	r3, [sp, #4]
+  92:Generated_Source\PSoC4/cyPm.c ****         CySysClkWriteSysclkDiv(CY_SYS_CLK_SYSCLK_DIV4);
+ 121              		.loc 1 92 0
+ 122 003a 0220     		movs	r0, #2
+ 123 003c FFF7FEFF 		bl	CySysClkWriteSysclkDiv
+ 124              	.LVL4:
+  93:Generated_Source\PSoC4/cyPm.c ****     #endif /* (CY_IP_SRSSV2) */
+  94:Generated_Source\PSoC4/cyPm.c **** 
+  95:Generated_Source\PSoC4/cyPm.c ****     /* Sleep and wait for interrupt */
+  96:Generated_Source\PSoC4/cyPm.c ****     CY_PM_WFI;
+ 125              		.loc 1 96 0
+ 126              		.syntax divided
+ 127              	@ 96 "Generated_Source\PSoC4\cyPm.c" 1
+ 128 0040 30BF     		WFI 
+ 129              	
+ 130              	@ 0 "" 2
+  97:Generated_Source\PSoC4/cyPm.c **** 
+  98:Generated_Source\PSoC4/cyPm.c ****     #if(CY_IP_SRSSV2)
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciQJMM3.s 			page 5
+
+
+  99:Generated_Source\PSoC4/cyPm.c ****         /* Restore system clock configuration */
+ 100:Generated_Source\PSoC4/cyPm.c ****         CY_SYS_CLK_SELECT_REG = clkSelectReg;
+ 131              		.loc 1 100 0
+ 132              		.thumb
+ 133              		.syntax unified
+ 134 0042 019B     		ldr	r3, [sp, #4]
+ 135 0044 3B60     		str	r3, [r7]
+ 101:Generated_Source\PSoC4/cyPm.c ****     #endif /* (CY_IP_SRSSV2) */
+ 102:Generated_Source\PSoC4/cyPm.c **** 
+ 103:Generated_Source\PSoC4/cyPm.c ****     #if (CY_IP_CPUSS && CY_IP_SRSSV2)
+ 104:Generated_Source\PSoC4/cyPm.c ****         CY_PM_CPUSS_CONFIG_REG &= (uint32) (~CY_PM_CPUSS_CONFIG_FLSH_ACC_BYPASS);
+ 136              		.loc 1 104 0
+ 137 0046 2B68     		ldr	r3, [r5]
+ 138 0048 B343     		bics	r3, r6
+ 139 004a 2B60     		str	r3, [r5]
+ 105:Generated_Source\PSoC4/cyPm.c ****     #endif /* (CY_IP_CPUSS && CY_IP_SRSSV2) */
+ 106:Generated_Source\PSoC4/cyPm.c **** 
+ 107:Generated_Source\PSoC4/cyPm.c ****     CyExitCriticalSection(interruptState);
+ 140              		.loc 1 107 0
+ 141 004c 2000     		movs	r0, r4
+ 142 004e FFF7FEFF 		bl	CyExitCriticalSection
+ 143              	.LVL5:
+ 108:Generated_Source\PSoC4/cyPm.c **** }
+ 144              		.loc 1 108 0
+ 145 0052 03B0     		add	sp, sp, #12
+ 146              		@ sp needed
+ 147              	.LVL6:
+ 148 0054 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 149              	.L6:
+ 150 0056 C046     		.align	2
+ 151              	.L5:
+ 152 0058 00000B40 		.word	1074462720
+ 153 005c 52F1FF0F 		.word	268431698
+ 154 0060 0C000B40 		.word	1074462732
+ 155 0064 10ED00E0 		.word	-536810224
+ 156 0068 00010B40 		.word	1074462976
+ 157              		.cfi_endproc
+ 158              	.LFE1:
+ 159              		.size	CySysPmDeepSleep, .-CySysPmDeepSleep
+ 160              		.section	.text.CySysPmHibernate,"ax",%progbits
+ 161              		.align	2
+ 162              		.global	CySysPmHibernate
+ 163              		.code	16
+ 164              		.thumb_func
+ 165              		.type	CySysPmHibernate, %function
+ 166              	CySysPmHibernate:
+ 167              	.LFB2:
+ 109:Generated_Source\PSoC4/cyPm.c **** 
+ 110:Generated_Source\PSoC4/cyPm.c **** 
+ 111:Generated_Source\PSoC4/cyPm.c **** #if(CY_IP_SRSSV2)
+ 112:Generated_Source\PSoC4/cyPm.c **** 
+ 113:Generated_Source\PSoC4/cyPm.c ****     /*******************************************************************************
+ 114:Generated_Source\PSoC4/cyPm.c ****     * Function Name: CySysPmHibernate
+ 115:Generated_Source\PSoC4/cyPm.c ****     ****************************************************************************//**
+ 116:Generated_Source\PSoC4/cyPm.c ****     *
+ 117:Generated_Source\PSoC4/cyPm.c ****     * Puts the part into the Hibernate state. Only SRAM and UDBs are retained;
+ 118:Generated_Source\PSoC4/cyPm.c ****     * most internal supplies are off. Wakeup is possible from a pin or a hibernate
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciQJMM3.s 			page 6
+
+
+ 119:Generated_Source\PSoC4/cyPm.c ****     * comparator only.
+ 120:Generated_Source\PSoC4/cyPm.c ****     *
+ 121:Generated_Source\PSoC4/cyPm.c ****     * It is expected that the firmware has already frozen the IO-Cells using
+ 122:Generated_Source\PSoC4/cyPm.c ****     * CySysPmFreezeIo() function before the call to this function. If this is
+ 123:Generated_Source\PSoC4/cyPm.c ****     * omitted, the IO-cells will be frozen in the same way as they are
+ 124:Generated_Source\PSoC4/cyPm.c ****     * in the Active to Deep Sleep transition, but will lose their state on wake up
+ 125:Generated_Source\PSoC4/cyPm.c ****     * (because of the reset occurring at that time).
+ 126:Generated_Source\PSoC4/cyPm.c ****     *
+ 127:Generated_Source\PSoC4/cyPm.c ****     * Because all the CPU state is lost, the CPU will start up at the reset vector.
+ 128:Generated_Source\PSoC4/cyPm.c ****     * To save the firmware state through the Hibernate low power mode, a
+ 129:Generated_Source\PSoC4/cyPm.c ****     * corresponding variable should be defined with CY_NOINIT attribute. It
+ 130:Generated_Source\PSoC4/cyPm.c ****     * prevents data from being initialized to zero on startup. The interrupt
+ 131:Generated_Source\PSoC4/cyPm.c ****     * cause of the hibernate peripheral is retained, such that it can be either
+ 132:Generated_Source\PSoC4/cyPm.c ****     * read by the firmware or cause an interrupt after the firmware has booted and
+ 133:Generated_Source\PSoC4/cyPm.c ****     * enabled the corresponding interrupt. To distinguish the wakeup from
+ 134:Generated_Source\PSoC4/cyPm.c ****     * the Hibernate mode and the general Reset event, the
+ 135:Generated_Source\PSoC4/cyPm.c ****     * \ref CySysPmGetResetReason() function could be used.
+ 136:Generated_Source\PSoC4/cyPm.c ****     *
+ 137:Generated_Source\PSoC4/cyPm.c ****     *******************************************************************************/
+ 138:Generated_Source\PSoC4/cyPm.c ****     void CySysPmHibernate(void)
+ 139:Generated_Source\PSoC4/cyPm.c ****     {
+ 168              		.loc 1 139 0
+ 169              		.cfi_startproc
+ 170              		@ args = 0, pretend = 0, frame = 0
+ 171              		@ frame_needed = 0, uses_anonymous_args = 0
+ 172 0000 10B5     		push	{r4, lr}
+ 173              		.cfi_def_cfa_offset 8
+ 174              		.cfi_offset 4, -8
+ 175              		.cfi_offset 14, -4
+ 140:Generated_Source\PSoC4/cyPm.c ****         uint8 interruptState;
+ 141:Generated_Source\PSoC4/cyPm.c **** 
+ 142:Generated_Source\PSoC4/cyPm.c ****         interruptState = CyEnterCriticalSection();
+ 176              		.loc 1 142 0
+ 177 0002 FFF7FEFF 		bl	CyEnterCriticalSection
+ 178              	.LVL7:
+ 143:Generated_Source\PSoC4/cyPm.c **** 
+ 144:Generated_Source\PSoC4/cyPm.c ****         #if (CY_IP_HOBTO_DEVICE)
+ 145:Generated_Source\PSoC4/cyPm.c ****             /* Disable input buffers for all ports */
+ 146:Generated_Source\PSoC4/cyPm.c ****             CySysPmHibPinsDisableInputBuf();
+ 147:Generated_Source\PSoC4/cyPm.c ****         #endif /* (CY_IP_HOBTO_DEVICE) */
+ 148:Generated_Source\PSoC4/cyPm.c **** 
+ 149:Generated_Source\PSoC4/cyPm.c ****         /* Device enters Hibernate mode when CPU asserts SLEEPDEEP signal */
+ 150:Generated_Source\PSoC4/cyPm.c ****         CY_PM_PWR_CONTROL_REG |= CY_PM_PWR_CONTROL_HIBERNATE;
+ 179              		.loc 1 150 0
+ 180 0006 0D4A     		ldr	r2, .L8
+ 181 0008 1368     		ldr	r3, [r2]
+ 182 000a 8021     		movs	r1, #128
+ 183 000c 0906     		lsls	r1, r1, #24
+ 184 000e 0B43     		orrs	r3, r1
+ 185 0010 1360     		str	r3, [r2]
+ 151:Generated_Source\PSoC4/cyPm.c **** 
+ 152:Generated_Source\PSoC4/cyPm.c ****         /* Adjust delay to wait for references to settle on wakeup from hibernate */
+ 153:Generated_Source\PSoC4/cyPm.c ****         CY_PM_PWR_KEY_DELAY_REG = CY_SFLASH_HIB_KEY_DELAY_REG;
+ 186              		.loc 1 153 0
+ 187 0012 0B4B     		ldr	r3, .L8+4
+ 188 0014 1B88     		ldrh	r3, [r3]
+ 189 0016 9BB2     		uxth	r3, r3
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciQJMM3.s 			page 7
+
+
+ 190 0018 0A4A     		ldr	r2, .L8+8
+ 191 001a 1360     		str	r3, [r2]
+ 154:Generated_Source\PSoC4/cyPm.c **** 
+ 155:Generated_Source\PSoC4/cyPm.c ****         /* CPU enters DeepSleep/Hibernate mode upon execution of WFI */
+ 156:Generated_Source\PSoC4/cyPm.c ****         CY_PM_CPU_SCR_REG |= CY_PM_CPU_SCR_SLEEPDEEP;
+ 192              		.loc 1 156 0
+ 193 001c 0A4A     		ldr	r2, .L8+12
+ 194 001e 1168     		ldr	r1, [r2]
+ 195 0020 0423     		movs	r3, #4
+ 196 0022 0B43     		orrs	r3, r1
+ 197 0024 1360     		str	r3, [r2]
+ 157:Generated_Source\PSoC4/cyPm.c **** 
+ 158:Generated_Source\PSoC4/cyPm.c ****         /* Save token that will retain through a STOP/WAKEUP sequence
+ 159:Generated_Source\PSoC4/cyPm.c ****          * thus could be used by CySysPmGetResetReason() to differentiate
+ 160:Generated_Source\PSoC4/cyPm.c ****          * WAKEUP from a general RESET event.
+ 161:Generated_Source\PSoC4/cyPm.c ****          */
+ 162:Generated_Source\PSoC4/cyPm.c ****         CY_PM_PWR_STOP_REG = (CY_PM_PWR_STOP_REG & (uint32)(~CY_PM_PWR_STOP_TOKEN_MASK)) | CY_PM_PW
+ 198              		.loc 1 162 0
+ 199 0026 0949     		ldr	r1, .L8+16
+ 200 0028 0B68     		ldr	r3, [r1]
+ 201 002a FF22     		movs	r2, #255
+ 202 002c 9343     		bics	r3, r2
+ 203 002e 0E3A     		subs	r2, r2, #14
+ 204 0030 1343     		orrs	r3, r2
+ 205 0032 0B60     		str	r3, [r1]
+ 163:Generated_Source\PSoC4/cyPm.c **** 
+ 164:Generated_Source\PSoC4/cyPm.c ****         /* Sleep and wait for interrupt. Wakeup from Hibernate is performed
+ 165:Generated_Source\PSoC4/cyPm.c ****          * through RESET state, causing a normal Boot procedure to occur.
+ 166:Generated_Source\PSoC4/cyPm.c ****          * The WFI instruction doesn't put the core to sleep if its wake condition
+ 167:Generated_Source\PSoC4/cyPm.c ****          * is true when the instruction is executed.
+ 168:Generated_Source\PSoC4/cyPm.c ****          */
+ 169:Generated_Source\PSoC4/cyPm.c ****         CY_PM_WFI;
+ 206              		.loc 1 169 0
+ 207              		.syntax divided
+ 208              	@ 169 "Generated_Source\PSoC4\cyPm.c" 1
+ 209 0034 30BF     		WFI 
+ 210              	
+ 211              	@ 0 "" 2
+ 170:Generated_Source\PSoC4/cyPm.c **** 
+ 171:Generated_Source\PSoC4/cyPm.c ****         CyExitCriticalSection(interruptState);
+ 212              		.loc 1 171 0
+ 213              		.thumb
+ 214              		.syntax unified
+ 215 0036 FFF7FEFF 		bl	CyExitCriticalSection
+ 216              	.LVL8:
+ 172:Generated_Source\PSoC4/cyPm.c ****     }
+ 217              		.loc 1 172 0
+ 218              		@ sp needed
+ 219 003a 10BD     		pop	{r4, pc}
+ 220              	.L9:
+ 221              		.align	2
+ 222              	.L8:
+ 223 003c 00000B40 		.word	1074462720
+ 224 0040 50F1FF0F 		.word	268431696
+ 225 0044 0C000B40 		.word	1074462732
+ 226 0048 10ED00E0 		.word	-536810224
+ 227 004c 2C000B40 		.word	1074462764
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciQJMM3.s 			page 8
+
+
+ 228              		.cfi_endproc
+ 229              	.LFE2:
+ 230              		.size	CySysPmHibernate, .-CySysPmHibernate
+ 231              		.section	.text.CySysPmSetWakeupPolarity,"ax",%progbits
+ 232              		.align	2
+ 233              		.global	CySysPmSetWakeupPolarity
+ 234              		.code	16
+ 235              		.thumb_func
+ 236              		.type	CySysPmSetWakeupPolarity, %function
+ 237              	CySysPmSetWakeupPolarity:
+ 238              	.LFB4:
+ 173:Generated_Source\PSoC4/cyPm.c **** 
+ 174:Generated_Source\PSoC4/cyPm.c **** 
+ 175:Generated_Source\PSoC4/cyPm.c ****     /*******************************************************************************
+ 176:Generated_Source\PSoC4/cyPm.c ****     * Function Name: CySysPmStop
+ 177:Generated_Source\PSoC4/cyPm.c ****     ****************************************************************************//**
+ 178:Generated_Source\PSoC4/cyPm.c ****     *
+ 179:Generated_Source\PSoC4/cyPm.c ****     * Puts the part into the Stop state. All internal supplies are off;
+ 180:Generated_Source\PSoC4/cyPm.c ****     * no state is retained.
+ 181:Generated_Source\PSoC4/cyPm.c ****     *
+ 182:Generated_Source\PSoC4/cyPm.c ****     * Wakeup from Stop is performed by toggling the wakeup pin, causing
+ 183:Generated_Source\PSoC4/cyPm.c ****     * a normal boot procedure to occur. To configure the wakeup pin,
+ 184:Generated_Source\PSoC4/cyPm.c ****     * the Digital Input Pin component should be placed on the schematic,
+ 185:Generated_Source\PSoC4/cyPm.c ****     * assigned to the wakeup pin, and resistively pulled up or down to the inverse
+ 186:Generated_Source\PSoC4/cyPm.c ****     * state of the wakeup polarity. To distinguish the wakeup from the Stop mode
+ 187:Generated_Source\PSoC4/cyPm.c ****     * and the general Reset event, \ref CySysPmGetResetReason() function could be
+ 188:Generated_Source\PSoC4/cyPm.c ****     * used.  The wakeup pin is active low by default. The wakeup pin polarity
+ 189:Generated_Source\PSoC4/cyPm.c ****     * could be changed with the \ref CySysPmSetWakeupPolarity() function.
+ 190:Generated_Source\PSoC4/cyPm.c ****     *
+ 191:Generated_Source\PSoC4/cyPm.c ****     * This function freezes IO cells implicitly. It is not possible to enter
+ 192:Generated_Source\PSoC4/cyPm.c ****     * the STOP mode before freezing the IO cells. The IO cells remain frozen after
+ 193:Generated_Source\PSoC4/cyPm.c ****     * awake from the Stop mode until the firmware unfreezes them after booting
+ 194:Generated_Source\PSoC4/cyPm.c ****     * explicitly with \ref CySysPmUnfreezeIo() function call.
+ 195:Generated_Source\PSoC4/cyPm.c ****     *
+ 196:Generated_Source\PSoC4/cyPm.c ****     *******************************************************************************/
+ 197:Generated_Source\PSoC4/cyPm.c ****     void CySysPmStop(void)
+ 198:Generated_Source\PSoC4/cyPm.c ****     {
+ 199:Generated_Source\PSoC4/cyPm.c ****         (void) CyEnterCriticalSection();
+ 200:Generated_Source\PSoC4/cyPm.c **** 
+ 201:Generated_Source\PSoC4/cyPm.c ****         /* Update token to indicate Stop mode transition. Preserve only polarity. */
+ 202:Generated_Source\PSoC4/cyPm.c ****         CY_PM_PWR_STOP_REG = (CY_PM_PWR_STOP_REG & CY_PM_PWR_STOP_POLARITY) | CY_PM_PWR_STOP_TOKEN_
+ 203:Generated_Source\PSoC4/cyPm.c **** 
+ 204:Generated_Source\PSoC4/cyPm.c ****         /* Freeze IO-Cells to save IO-Cell state */
+ 205:Generated_Source\PSoC4/cyPm.c ****         CySysPmFreezeIo();
+ 206:Generated_Source\PSoC4/cyPm.c **** 
+ 207:Generated_Source\PSoC4/cyPm.c ****         /* Initiates transition to Stop state */
+ 208:Generated_Source\PSoC4/cyPm.c ****         CY_PM_PWR_STOP_REG = CY_PM_PWR_STOP_REG | CY_PM_PWR_STOP_STOP;
+ 209:Generated_Source\PSoC4/cyPm.c **** 
+ 210:Generated_Source\PSoC4/cyPm.c ****         /* Depending on the clock frequency and internal timing delays,
+ 211:Generated_Source\PSoC4/cyPm.c ****          * the final AHB transaction may or may not complete. To guard against
+ 212:Generated_Source\PSoC4/cyPm.c ****          * accidentally executing an unintended instruction, it is recommended
+ 213:Generated_Source\PSoC4/cyPm.c ****          * to add 2 NOP cycles after the final write to the STOP register.
+ 214:Generated_Source\PSoC4/cyPm.c ****          */
+ 215:Generated_Source\PSoC4/cyPm.c ****         CY_NOP;
+ 216:Generated_Source\PSoC4/cyPm.c ****         CY_NOP;
+ 217:Generated_Source\PSoC4/cyPm.c **** 
+ 218:Generated_Source\PSoC4/cyPm.c ****         /* Should never get to this WFI instruction */
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciQJMM3.s 			page 9
+
+
+ 219:Generated_Source\PSoC4/cyPm.c ****         CY_PM_WFI;
+ 220:Generated_Source\PSoC4/cyPm.c **** 
+ 221:Generated_Source\PSoC4/cyPm.c ****         /* Wakeup from Stop is performed by toggling of Wakeup pin,
+ 222:Generated_Source\PSoC4/cyPm.c ****          * causing a normal Boot procedure to occur. No need to exit
+ 223:Generated_Source\PSoC4/cyPm.c ****          * from the critical section.
+ 224:Generated_Source\PSoC4/cyPm.c ****          */
+ 225:Generated_Source\PSoC4/cyPm.c ****     }
+ 226:Generated_Source\PSoC4/cyPm.c **** 
+ 227:Generated_Source\PSoC4/cyPm.c **** 
+ 228:Generated_Source\PSoC4/cyPm.c ****     /*******************************************************************************
+ 229:Generated_Source\PSoC4/cyPm.c ****     * Function Name: CySysPmSetWakeupPolarity
+ 230:Generated_Source\PSoC4/cyPm.c ****     ****************************************************************************//**
+ 231:Generated_Source\PSoC4/cyPm.c ****     *
+ 232:Generated_Source\PSoC4/cyPm.c ****     * Wake up from the stop mode is performed by toggling the wakeup pin,
+ 233:Generated_Source\PSoC4/cyPm.c ****     * causing a normal boot procedure to occur. This function assigns
+ 234:Generated_Source\PSoC4/cyPm.c ****     * the wakeup pin active level. Setting the wakeup pin to this level will cause
+ 235:Generated_Source\PSoC4/cyPm.c ****     * the wakeup from stop mode. The wakeup pin is active low by default.
+ 236:Generated_Source\PSoC4/cyPm.c ****     *
+ 237:Generated_Source\PSoC4/cyPm.c ****     * \param polarity
+ 238:Generated_Source\PSoC4/cyPm.c ****     * - \ref CY_PM_STOP_WAKEUP_ACTIVE_LOW Logical zero will wakeup the chip
+ 239:Generated_Source\PSoC4/cyPm.c ****     * - \ref CY_PM_STOP_WAKEUP_ACTIVE_HIGH Logical one will wakeup the chip
+ 240:Generated_Source\PSoC4/cyPm.c ****     *
+ 241:Generated_Source\PSoC4/cyPm.c ****     *******************************************************************************/
+ 242:Generated_Source\PSoC4/cyPm.c ****     void CySysPmSetWakeupPolarity(uint32 polarity)
+ 243:Generated_Source\PSoC4/cyPm.c ****     {
+ 239              		.loc 1 243 0
+ 240              		.cfi_startproc
+ 241              		@ args = 0, pretend = 0, frame = 0
+ 242              		@ frame_needed = 0, uses_anonymous_args = 0
+ 243              	.LVL9:
+ 244 0000 10B5     		push	{r4, lr}
+ 245              		.cfi_def_cfa_offset 8
+ 246              		.cfi_offset 4, -8
+ 247              		.cfi_offset 14, -4
+ 248 0002 0400     		movs	r4, r0
+ 244:Generated_Source\PSoC4/cyPm.c ****         uint8 interruptState;
+ 245:Generated_Source\PSoC4/cyPm.c **** 
+ 246:Generated_Source\PSoC4/cyPm.c ****         interruptState = CyEnterCriticalSection();
+ 249              		.loc 1 246 0
+ 250 0004 FFF7FEFF 		bl	CyEnterCriticalSection
+ 251              	.LVL10:
+ 247:Generated_Source\PSoC4/cyPm.c **** 
+ 248:Generated_Source\PSoC4/cyPm.c ****         CY_PM_PWR_STOP_REG = (CY_PM_STOP_WAKEUP_ACTIVE_LOW != polarity) ?
+ 249:Generated_Source\PSoC4/cyPm.c ****                             (CY_PM_PWR_STOP_REG | CY_PM_PWR_STOP_POLARITY) :
+ 252              		.loc 1 249 0
+ 253 0008 002C     		cmp	r4, #0
+ 254 000a 05D0     		beq	.L11
+ 255              		.loc 1 249 0 is_stmt 0 discriminator 1
+ 256 000c 074B     		ldr	r3, .L13
+ 257 000e 1B68     		ldr	r3, [r3]
+ 258 0010 8022     		movs	r2, #128
+ 259 0012 5202     		lsls	r2, r2, #9
+ 260 0014 1343     		orrs	r3, r2
+ 261 0016 03E0     		b	.L12
+ 262              	.L11:
+ 250:Generated_Source\PSoC4/cyPm.c ****                             (CY_PM_PWR_STOP_REG & (uint32) (~CY_PM_PWR_STOP_POLARITY));
+ 263              		.loc 1 250 0 is_stmt 1 discriminator 2
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciQJMM3.s 			page 10
+
+
+ 264 0018 044B     		ldr	r3, .L13
+ 265 001a 1A68     		ldr	r2, [r3]
+ 249:Generated_Source\PSoC4/cyPm.c ****                             (CY_PM_PWR_STOP_REG & (uint32) (~CY_PM_PWR_STOP_POLARITY));
+ 266              		.loc 1 249 0 discriminator 2
+ 267 001c 044B     		ldr	r3, .L13+4
+ 268 001e 1340     		ands	r3, r2
+ 269              	.L12:
+ 248:Generated_Source\PSoC4/cyPm.c ****                             (CY_PM_PWR_STOP_REG | CY_PM_PWR_STOP_POLARITY) :
+ 270              		.loc 1 248 0
+ 271 0020 024A     		ldr	r2, .L13
+ 272 0022 1360     		str	r3, [r2]
+ 251:Generated_Source\PSoC4/cyPm.c **** 
+ 252:Generated_Source\PSoC4/cyPm.c ****         CyExitCriticalSection(interruptState);
+ 273              		.loc 1 252 0
+ 274 0024 FFF7FEFF 		bl	CyExitCriticalSection
+ 275              	.LVL11:
+ 253:Generated_Source\PSoC4/cyPm.c ****     }
+ 276              		.loc 1 253 0
+ 277              		@ sp needed
+ 278              	.LVL12:
+ 279 0028 10BD     		pop	{r4, pc}
+ 280              	.L14:
+ 281 002a C046     		.align	2
+ 282              	.L13:
+ 283 002c 2C000B40 		.word	1074462764
+ 284 0030 FFFFFEFF 		.word	-65537
+ 285              		.cfi_endproc
+ 286              	.LFE4:
+ 287              		.size	CySysPmSetWakeupPolarity, .-CySysPmSetWakeupPolarity
+ 288              		.section	.text.CySysPmGetResetReason,"ax",%progbits
+ 289              		.align	2
+ 290              		.global	CySysPmGetResetReason
+ 291              		.code	16
+ 292              		.thumb_func
+ 293              		.type	CySysPmGetResetReason, %function
+ 294              	CySysPmGetResetReason:
+ 295              	.LFB5:
+ 254:Generated_Source\PSoC4/cyPm.c **** 
+ 255:Generated_Source\PSoC4/cyPm.c **** 
+ 256:Generated_Source\PSoC4/cyPm.c ****     /*******************************************************************************
+ 257:Generated_Source\PSoC4/cyPm.c ****     * Function Name: CySysPmGetResetReason
+ 258:Generated_Source\PSoC4/cyPm.c ****     ****************************************************************************//**
+ 259:Generated_Source\PSoC4/cyPm.c ****     *
+ 260:Generated_Source\PSoC4/cyPm.c ****     * Retrieves the last reset reason - transition from OFF/XRES/STOP/HIBERNATE to
+ 261:Generated_Source\PSoC4/cyPm.c ****     * the RESET state. Note that waking up from STOP using XRES will be perceived
+ 262:Generated_Source\PSoC4/cyPm.c ****     * as a general RESET.
+ 263:Generated_Source\PSoC4/cyPm.c ****     *
+ 264:Generated_Source\PSoC4/cyPm.c ****     * \return CY_PM_RESET_REASON_UNKN          Unknown reset reason.
+ 265:Generated_Source\PSoC4/cyPm.c ****     * \return CY_PM_RESET_REASON_XRES          Transition from OFF/XRES to RESET
+ 266:Generated_Source\PSoC4/cyPm.c ****     * \return CY_PM_RESET_REASON_WAKEUP_HIB    Transition/wakeup from HIBERNATE to RESET
+ 267:Generated_Source\PSoC4/cyPm.c ****     * \return CY_PM_RESET_REASON_WAKEUP_STOP   Transition/wakeup from STOP to RESET
+ 268:Generated_Source\PSoC4/cyPm.c ****     *
+ 269:Generated_Source\PSoC4/cyPm.c ****     *******************************************************************************/
+ 270:Generated_Source\PSoC4/cyPm.c ****     uint32 CySysPmGetResetReason(void)
+ 271:Generated_Source\PSoC4/cyPm.c ****     {
+ 296              		.loc 1 271 0
+ 297              		.cfi_startproc
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciQJMM3.s 			page 11
+
+
+ 298              		@ args = 0, pretend = 0, frame = 0
+ 299              		@ frame_needed = 0, uses_anonymous_args = 0
+ 300              		@ link register save eliminated.
+ 301              	.LVL13:
+ 272:Generated_Source\PSoC4/cyPm.c ****         uint32 reason = CY_PM_RESET_REASON_UNKN;
+ 273:Generated_Source\PSoC4/cyPm.c **** 
+ 274:Generated_Source\PSoC4/cyPm.c ****         switch(CY_PM_PWR_STOP_REG & CY_PM_PWR_STOP_TOKEN_MASK)
+ 302              		.loc 1 274 0
+ 303 0000 084B     		ldr	r3, .L21
+ 304 0002 1B68     		ldr	r3, [r3]
+ 305 0004 FF22     		movs	r2, #255
+ 306 0006 1340     		ands	r3, r2
+ 307 0008 F12B     		cmp	r3, #241
+ 308 000a 05D0     		beq	.L17
+ 309 000c F22B     		cmp	r3, #242
+ 310 000e 05D0     		beq	.L18
+ 311 0010 002B     		cmp	r3, #0
+ 312 0012 05D0     		beq	.L20
+ 272:Generated_Source\PSoC4/cyPm.c ****         uint32 reason = CY_PM_RESET_REASON_UNKN;
+ 313              		.loc 1 272 0
+ 314 0014 0020     		movs	r0, #0
+ 315 0016 04E0     		b	.L19
+ 316              	.L17:
+ 317              	.LVL14:
+ 275:Generated_Source\PSoC4/cyPm.c ****         {
+ 276:Generated_Source\PSoC4/cyPm.c ****         /* Power up, XRES */
+ 277:Generated_Source\PSoC4/cyPm.c ****         case CY_PM_PWR_STOP_TOKEN_XRES:
+ 278:Generated_Source\PSoC4/cyPm.c ****             reason = CY_PM_RESET_REASON_XRES;
+ 279:Generated_Source\PSoC4/cyPm.c ****             break;
+ 280:Generated_Source\PSoC4/cyPm.c **** 
+ 281:Generated_Source\PSoC4/cyPm.c ****         /* Wakeup from Hibernate */
+ 282:Generated_Source\PSoC4/cyPm.c ****         case CY_PM_PWR_STOP_TOKEN_HIB:
+ 283:Generated_Source\PSoC4/cyPm.c ****             reason = CY_PM_RESET_REASON_WAKEUP_HIB;
+ 318              		.loc 1 283 0
+ 319 0018 0220     		movs	r0, #2
+ 284:Generated_Source\PSoC4/cyPm.c ****             break;
+ 320              		.loc 1 284 0
+ 321 001a 02E0     		b	.L19
+ 322              	.LVL15:
+ 323              	.L18:
+ 285:Generated_Source\PSoC4/cyPm.c **** 
+ 286:Generated_Source\PSoC4/cyPm.c ****         /* Wakeup from Stop (through WAKEUP pin assert) */
+ 287:Generated_Source\PSoC4/cyPm.c ****         case CY_PM_PWR_STOP_TOKEN_STOP:
+ 288:Generated_Source\PSoC4/cyPm.c ****             reason = CY_PM_RESET_REASON_WAKEUP_STOP;
+ 324              		.loc 1 288 0
+ 325 001c 0320     		movs	r0, #3
+ 289:Generated_Source\PSoC4/cyPm.c ****             break;
+ 326              		.loc 1 289 0
+ 327 001e 00E0     		b	.L19
+ 328              	.LVL16:
+ 329              	.L20:
+ 278:Generated_Source\PSoC4/cyPm.c ****             break;
+ 330              		.loc 1 278 0
+ 331 0020 0120     		movs	r0, #1
+ 332              	.LVL17:
+ 333              	.L19:
+ 290:Generated_Source\PSoC4/cyPm.c **** 
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciQJMM3.s 			page 12
+
+
+ 291:Generated_Source\PSoC4/cyPm.c ****         /* Unknown reason */
+ 292:Generated_Source\PSoC4/cyPm.c ****         default:
+ 293:Generated_Source\PSoC4/cyPm.c ****             break;
+ 294:Generated_Source\PSoC4/cyPm.c ****         }
+ 295:Generated_Source\PSoC4/cyPm.c **** 
+ 296:Generated_Source\PSoC4/cyPm.c ****         return (reason);
+ 297:Generated_Source\PSoC4/cyPm.c ****     }
+ 334              		.loc 1 297 0
+ 335              		@ sp needed
+ 336 0022 7047     		bx	lr
+ 337              	.L22:
+ 338              		.align	2
+ 339              	.L21:
+ 340 0024 2C000B40 		.word	1074462764
+ 341              		.cfi_endproc
+ 342              	.LFE5:
+ 343              		.size	CySysPmGetResetReason, .-CySysPmGetResetReason
+ 344              		.section	.text.CySysPmFreezeIo,"ax",%progbits
+ 345              		.align	2
+ 346              		.global	CySysPmFreezeIo
+ 347              		.code	16
+ 348              		.thumb_func
+ 349              		.type	CySysPmFreezeIo, %function
+ 350              	CySysPmFreezeIo:
+ 351              	.LFB6:
+ 298:Generated_Source\PSoC4/cyPm.c **** 
+ 299:Generated_Source\PSoC4/cyPm.c **** 
+ 300:Generated_Source\PSoC4/cyPm.c ****     /*******************************************************************************
+ 301:Generated_Source\PSoC4/cyPm.c ****     * Function Name: CySysPmFreezeIo
+ 302:Generated_Source\PSoC4/cyPm.c ****     ****************************************************************************//**
+ 303:Generated_Source\PSoC4/cyPm.c ****     *
+ 304:Generated_Source\PSoC4/cyPm.c ****     * Freezes IO-Cells directly to save the IO-Cell state on wake up from the
+ 305:Generated_Source\PSoC4/cyPm.c ****     * Hibernate or Stop state. It is not required to call this function before
+ 306:Generated_Source\PSoC4/cyPm.c ****     * entering the Stop mode, since \ref CySysPmStop() function freezes IO-Cells
+ 307:Generated_Source\PSoC4/cyPm.c ****     * implicitly.
+ 308:Generated_Source\PSoC4/cyPm.c ****     *
+ 309:Generated_Source\PSoC4/cyPm.c ****     * This API is not available for PSoC 4000 family of devices.
+ 310:Generated_Source\PSoC4/cyPm.c ****     *
+ 311:Generated_Source\PSoC4/cyPm.c ****     *******************************************************************************/
+ 312:Generated_Source\PSoC4/cyPm.c ****     void CySysPmFreezeIo(void)
+ 313:Generated_Source\PSoC4/cyPm.c ****     {
+ 352              		.loc 1 313 0
+ 353              		.cfi_startproc
+ 354              		@ args = 0, pretend = 0, frame = 0
+ 355              		@ frame_needed = 0, uses_anonymous_args = 0
+ 356 0000 10B5     		push	{r4, lr}
+ 357              		.cfi_def_cfa_offset 8
+ 358              		.cfi_offset 4, -8
+ 359              		.cfi_offset 14, -4
+ 314:Generated_Source\PSoC4/cyPm.c ****         uint8 interruptState;
+ 315:Generated_Source\PSoC4/cyPm.c **** 
+ 316:Generated_Source\PSoC4/cyPm.c ****         interruptState = CyEnterCriticalSection();
+ 360              		.loc 1 316 0
+ 361 0002 FFF7FEFF 		bl	CyEnterCriticalSection
+ 362              	.LVL18:
+ 317:Generated_Source\PSoC4/cyPm.c **** 
+ 318:Generated_Source\PSoC4/cyPm.c ****         /* Check FREEZE state to avoid recurrent IO-Cells freeze attempt,
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciQJMM3.s 			page 13
+
+
+ 319:Generated_Source\PSoC4/cyPm.c ****          * since the second call to this function will cause accidental switch
+ 320:Generated_Source\PSoC4/cyPm.c ****          * to the STOP mode (the system will enter STOP mode immediately after
+ 321:Generated_Source\PSoC4/cyPm.c ****          * writing to STOP bit since both UNLOCK and FREEZE have been set correctly
+ 322:Generated_Source\PSoC4/cyPm.c ****          * in a previous call to this function).
+ 323:Generated_Source\PSoC4/cyPm.c ****          */
+ 324:Generated_Source\PSoC4/cyPm.c ****         if (0u == (CY_PM_PWR_STOP_REG & CY_PM_PWR_STOP_FREEZE))
+ 363              		.loc 1 324 0
+ 364 0006 094B     		ldr	r3, .L25
+ 365 0008 1B68     		ldr	r3, [r3]
+ 366 000a 9B03     		lsls	r3, r3, #14
+ 367 000c 0AD4     		bmi	.L24
+ 325:Generated_Source\PSoC4/cyPm.c ****         {
+ 326:Generated_Source\PSoC4/cyPm.c ****             /* Preserve last reset reason and disable overrides the next freeze command by peripher
+ 327:Generated_Source\PSoC4/cyPm.c ****             CY_PM_PWR_STOP_REG = CY_PM_PWR_STOP_STOP | CY_PM_PWR_STOP_FREEZE | CY_PM_PWR_STOP_UNLOC
+ 328:Generated_Source\PSoC4/cyPm.c ****                                 (CY_PM_PWR_STOP_REG & (CY_PM_PWR_STOP_TOKEN_MASK | CY_PM_PWR_STOP_P
+ 368              		.loc 1 328 0
+ 369 000e 074B     		ldr	r3, .L25
+ 370 0010 1968     		ldr	r1, [r3]
+ 371 0012 074A     		ldr	r2, .L25+4
+ 372 0014 0A40     		ands	r2, r1
+ 327:Generated_Source\PSoC4/cyPm.c ****                                 (CY_PM_PWR_STOP_REG & (CY_PM_PWR_STOP_TOKEN_MASK | CY_PM_PWR_STOP_P
+ 373              		.loc 1 327 0
+ 374 0016 0749     		ldr	r1, .L25+8
+ 375 0018 0A43     		orrs	r2, r1
+ 376 001a 1A60     		str	r2, [r3]
+ 329:Generated_Source\PSoC4/cyPm.c **** 
+ 330:Generated_Source\PSoC4/cyPm.c ****             /* If reading after writing, read this register three times to delay
+ 331:Generated_Source\PSoC4/cyPm.c ****             *  enough time for internal settling.
+ 332:Generated_Source\PSoC4/cyPm.c ****             */
+ 333:Generated_Source\PSoC4/cyPm.c ****             (void) CY_PM_PWR_STOP_REG;
+ 377              		.loc 1 333 0
+ 378 001c 1A68     		ldr	r2, [r3]
+ 334:Generated_Source\PSoC4/cyPm.c ****             (void) CY_PM_PWR_STOP_REG;
+ 379              		.loc 1 334 0
+ 380 001e 1A68     		ldr	r2, [r3]
+ 335:Generated_Source\PSoC4/cyPm.c **** 
+ 336:Generated_Source\PSoC4/cyPm.c ****             /* Second write causes the freeze of IO-Cells to save IO-Cell state */
+ 337:Generated_Source\PSoC4/cyPm.c ****             CY_PM_PWR_STOP_REG = CY_PM_PWR_STOP_REG;
+ 381              		.loc 1 337 0
+ 382 0020 1A68     		ldr	r2, [r3]
+ 383 0022 1A60     		str	r2, [r3]
+ 384              	.L24:
+ 338:Generated_Source\PSoC4/cyPm.c ****         }
+ 339:Generated_Source\PSoC4/cyPm.c **** 
+ 340:Generated_Source\PSoC4/cyPm.c ****         CyExitCriticalSection(interruptState);
+ 385              		.loc 1 340 0
+ 386 0024 FFF7FEFF 		bl	CyExitCriticalSection
+ 387              	.LVL19:
+ 341:Generated_Source\PSoC4/cyPm.c ****     }
+ 388              		.loc 1 341 0
+ 389              		@ sp needed
+ 390 0028 10BD     		pop	{r4, pc}
+ 391              	.L26:
+ 392 002a C046     		.align	2
+ 393              	.L25:
+ 394 002c 2C000B40 		.word	1074462764
+ 395 0030 FF000100 		.word	65791
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciQJMM3.s 			page 14
+
+
+ 396 0034 003A0280 		.word	-2147337728
+ 397              		.cfi_endproc
+ 398              	.LFE6:
+ 399              		.size	CySysPmFreezeIo, .-CySysPmFreezeIo
+ 400              		.section	.text.CySysPmStop,"ax",%progbits
+ 401              		.align	2
+ 402              		.global	CySysPmStop
+ 403              		.code	16
+ 404              		.thumb_func
+ 405              		.type	CySysPmStop, %function
+ 406              	CySysPmStop:
+ 407              	.LFB3:
+ 198:Generated_Source\PSoC4/cyPm.c ****         (void) CyEnterCriticalSection();
+ 408              		.loc 1 198 0
+ 409              		.cfi_startproc
+ 410              		@ args = 0, pretend = 0, frame = 0
+ 411              		@ frame_needed = 0, uses_anonymous_args = 0
+ 412 0000 10B5     		push	{r4, lr}
+ 413              		.cfi_def_cfa_offset 8
+ 414              		.cfi_offset 4, -8
+ 415              		.cfi_offset 14, -4
+ 199:Generated_Source\PSoC4/cyPm.c **** 
+ 416              		.loc 1 199 0
+ 417 0002 FFF7FEFF 		bl	CyEnterCriticalSection
+ 418              	.LVL20:
+ 202:Generated_Source\PSoC4/cyPm.c **** 
+ 419              		.loc 1 202 0
+ 420 0006 094C     		ldr	r4, .L28
+ 421 0008 2268     		ldr	r2, [r4]
+ 422 000a 8023     		movs	r3, #128
+ 423 000c 5B02     		lsls	r3, r3, #9
+ 424 000e 1340     		ands	r3, r2
+ 425 0010 F222     		movs	r2, #242
+ 426 0012 1343     		orrs	r3, r2
+ 427 0014 2360     		str	r3, [r4]
+ 205:Generated_Source\PSoC4/cyPm.c **** 
+ 428              		.loc 1 205 0
+ 429 0016 FFF7FEFF 		bl	CySysPmFreezeIo
+ 430              	.LVL21:
+ 208:Generated_Source\PSoC4/cyPm.c **** 
+ 431              		.loc 1 208 0
+ 432 001a 2368     		ldr	r3, [r4]
+ 433 001c 8022     		movs	r2, #128
+ 434 001e 1206     		lsls	r2, r2, #24
+ 435 0020 1343     		orrs	r3, r2
+ 436 0022 2360     		str	r3, [r4]
+ 215:Generated_Source\PSoC4/cyPm.c ****         CY_NOP;
+ 437              		.loc 1 215 0
+ 438              		.syntax divided
+ 439              	@ 215 "Generated_Source\PSoC4\cyPm.c" 1
+ 440 0024 C046     		NOP
+ 441              	
+ 442              	@ 0 "" 2
+ 216:Generated_Source\PSoC4/cyPm.c **** 
+ 443              		.loc 1 216 0
+ 444              	@ 216 "Generated_Source\PSoC4\cyPm.c" 1
+ 445 0026 C046     		NOP
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciQJMM3.s 			page 15
+
+
+ 446              	
+ 447              	@ 0 "" 2
+ 219:Generated_Source\PSoC4/cyPm.c **** 
+ 448              		.loc 1 219 0
+ 449              	@ 219 "Generated_Source\PSoC4\cyPm.c" 1
+ 450 0028 30BF     		WFI 
+ 451              	
+ 452              	@ 0 "" 2
+ 225:Generated_Source\PSoC4/cyPm.c **** 
+ 453              		.loc 1 225 0
+ 454              		.thumb
+ 455              		.syntax unified
+ 456              		@ sp needed
+ 457 002a 10BD     		pop	{r4, pc}
+ 458              	.L29:
+ 459              		.align	2
+ 460              	.L28:
+ 461 002c 2C000B40 		.word	1074462764
+ 462              		.cfi_endproc
+ 463              	.LFE3:
+ 464              		.size	CySysPmStop, .-CySysPmStop
+ 465              		.section	.text.CySysPmUnfreezeIo,"ax",%progbits
+ 466              		.align	2
+ 467              		.global	CySysPmUnfreezeIo
+ 468              		.code	16
+ 469              		.thumb_func
+ 470              		.type	CySysPmUnfreezeIo, %function
+ 471              	CySysPmUnfreezeIo:
+ 472              	.LFB7:
+ 342:Generated_Source\PSoC4/cyPm.c **** 
+ 343:Generated_Source\PSoC4/cyPm.c **** 
+ 344:Generated_Source\PSoC4/cyPm.c ****     /*******************************************************************************
+ 345:Generated_Source\PSoC4/cyPm.c ****     * Function Name: CySysPmUnfreezeIo
+ 346:Generated_Source\PSoC4/cyPm.c ****     ****************************************************************************//**
+ 347:Generated_Source\PSoC4/cyPm.c ****     *
+ 348:Generated_Source\PSoC4/cyPm.c ****     * The IO-Cells remain frozen after awake from Hibernate or Stop mode until
+ 349:Generated_Source\PSoC4/cyPm.c ****     * the firmware unfreezes them after booting. The call of this function
+ 350:Generated_Source\PSoC4/cyPm.c ****     * unfreezes IO-Cells explicitly.
+ 351:Generated_Source\PSoC4/cyPm.c ****     *
+ 352:Generated_Source\PSoC4/cyPm.c ****     * If the firmware intent is to retain the data value on the port, then the
+ 353:Generated_Source\PSoC4/cyPm.c ****     * value must be read and re-written to the data register before calling this
+ 354:Generated_Source\PSoC4/cyPm.c ****     * API. Furthermore, the drive mode must be re-programmed.  If this is not done,
+ 355:Generated_Source\PSoC4/cyPm.c ****     * the pin state will change to default state the moment the freeze is removed.
+ 356:Generated_Source\PSoC4/cyPm.c ****     *
+ 357:Generated_Source\PSoC4/cyPm.c ****     * This API is not available for PSoC 4000 family of devices.
+ 358:Generated_Source\PSoC4/cyPm.c ****     *
+ 359:Generated_Source\PSoC4/cyPm.c ****     *******************************************************************************/
+ 360:Generated_Source\PSoC4/cyPm.c ****     void CySysPmUnfreezeIo(void)
+ 361:Generated_Source\PSoC4/cyPm.c ****     {
+ 473              		.loc 1 361 0
+ 474              		.cfi_startproc
+ 475              		@ args = 0, pretend = 0, frame = 0
+ 476              		@ frame_needed = 0, uses_anonymous_args = 0
+ 477 0000 10B5     		push	{r4, lr}
+ 478              		.cfi_def_cfa_offset 8
+ 479              		.cfi_offset 4, -8
+ 480              		.cfi_offset 14, -4
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciQJMM3.s 			page 16
+
+
+ 362:Generated_Source\PSoC4/cyPm.c ****         uint8 interruptState;
+ 363:Generated_Source\PSoC4/cyPm.c **** 
+ 364:Generated_Source\PSoC4/cyPm.c ****         interruptState = CyEnterCriticalSection();
+ 481              		.loc 1 364 0
+ 482 0002 FFF7FEFF 		bl	CyEnterCriticalSection
+ 483              	.LVL22:
+ 365:Generated_Source\PSoC4/cyPm.c **** 
+ 366:Generated_Source\PSoC4/cyPm.c ****         /* Preserve last reset reason and wakeup polarity. Then, unfreeze I/O:
+ 367:Generated_Source\PSoC4/cyPm.c ****          * write PWR_STOP.FREEZE=0, .UNLOCK=0x3A, .STOP=0, .TOKEN
+ 368:Generated_Source\PSoC4/cyPm.c ****          */
+ 369:Generated_Source\PSoC4/cyPm.c ****         CY_PM_PWR_STOP_REG = CY_PM_PWR_STOP_UNLOCK |
+ 370:Generated_Source\PSoC4/cyPm.c ****                             (CY_PM_PWR_STOP_REG & (CY_PM_PWR_STOP_TOKEN_MASK | CY_PM_PWR_STOP_POLAR
+ 484              		.loc 1 370 0
+ 485 0006 084B     		ldr	r3, .L31
+ 486 0008 1A68     		ldr	r2, [r3]
+ 487 000a 0849     		ldr	r1, .L31+4
+ 488 000c 0A40     		ands	r2, r1
+ 369:Generated_Source\PSoC4/cyPm.c ****                             (CY_PM_PWR_STOP_REG & (CY_PM_PWR_STOP_TOKEN_MASK | CY_PM_PWR_STOP_POLAR
+ 489              		.loc 1 369 0
+ 490 000e E824     		movs	r4, #232
+ 491 0010 A401     		lsls	r4, r4, #6
+ 492 0012 2243     		orrs	r2, r4
+ 493 0014 1A60     		str	r2, [r3]
+ 371:Generated_Source\PSoC4/cyPm.c **** 
+ 372:Generated_Source\PSoC4/cyPm.c ****         /* If reading after writing, read this register three times to delay
+ 373:Generated_Source\PSoC4/cyPm.c ****         *  enough time for internal settling.
+ 374:Generated_Source\PSoC4/cyPm.c ****         */
+ 375:Generated_Source\PSoC4/cyPm.c ****         (void) CY_PM_PWR_STOP_REG;
+ 494              		.loc 1 375 0
+ 495 0016 1A68     		ldr	r2, [r3]
+ 376:Generated_Source\PSoC4/cyPm.c ****         (void) CY_PM_PWR_STOP_REG;
+ 496              		.loc 1 376 0
+ 497 0018 1A68     		ldr	r2, [r3]
+ 377:Generated_Source\PSoC4/cyPm.c **** 
+ 378:Generated_Source\PSoC4/cyPm.c ****         /* Lock STOP mode: write PWR_STOP.FREEZE=0, UNLOCK=0x00, STOP=0, .TOKEN */
+ 379:Generated_Source\PSoC4/cyPm.c ****         CY_PM_PWR_STOP_REG &= (CY_PM_PWR_STOP_TOKEN_MASK | CY_PM_PWR_STOP_POLARITY);
+ 498              		.loc 1 379 0
+ 499 001a 1A68     		ldr	r2, [r3]
+ 500 001c 1140     		ands	r1, r2
+ 501 001e 1960     		str	r1, [r3]
+ 380:Generated_Source\PSoC4/cyPm.c **** 
+ 381:Generated_Source\PSoC4/cyPm.c ****         CyExitCriticalSection(interruptState);
+ 502              		.loc 1 381 0
+ 503 0020 FFF7FEFF 		bl	CyExitCriticalSection
+ 504              	.LVL23:
+ 382:Generated_Source\PSoC4/cyPm.c ****     }
+ 505              		.loc 1 382 0
+ 506              		@ sp needed
+ 507 0024 10BD     		pop	{r4, pc}
+ 508              	.L32:
+ 509 0026 C046     		.align	2
+ 510              	.L31:
+ 511 0028 2C000B40 		.word	1074462764
+ 512 002c FF000100 		.word	65791
+ 513              		.cfi_endproc
+ 514              	.LFE7:
+ 515              		.size	CySysPmUnfreezeIo, .-CySysPmUnfreezeIo
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciQJMM3.s 			page 17
+
+
+ 516              		.text
+ 517              	.Letext0:
+ 518              		.file 2 "Generated_Source\\PSoC4\\cytypes.h"
+ 519              		.file 3 "Generated_Source\\PSoC4\\CyLib.h"
+ 520              		.section	.debug_info,"",%progbits
+ 521              	.Ldebug_info0:
+ 522 0000 CB020000 		.4byte	0x2cb
+ 523 0004 0400     		.2byte	0x4
+ 524 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 525 000a 04       		.byte	0x4
+ 526 000b 01       		.uleb128 0x1
+ 527 000c 9C010000 		.4byte	.LASF32
+ 528 0010 0C       		.byte	0xc
+ 529 0011 77020000 		.4byte	.LASF33
+ 530 0015 A8000000 		.4byte	.LASF34
+ 531 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 532 001d 00000000 		.4byte	0
+ 533 0021 00000000 		.4byte	.Ldebug_line0
+ 534 0025 02       		.uleb128 0x2
+ 535 0026 01       		.byte	0x1
+ 536 0027 06       		.byte	0x6
+ 537 0028 A1020000 		.4byte	.LASF0
+ 538 002c 02       		.uleb128 0x2
+ 539 002d 01       		.byte	0x1
+ 540 002e 08       		.byte	0x8
+ 541 002f 73000000 		.4byte	.LASF1
+ 542 0033 02       		.uleb128 0x2
+ 543 0034 02       		.byte	0x2
+ 544 0035 05       		.byte	0x5
+ 545 0036 53020000 		.4byte	.LASF2
+ 546 003a 02       		.uleb128 0x2
+ 547 003b 02       		.byte	0x2
+ 548 003c 07       		.byte	0x7
+ 549 003d 32000000 		.4byte	.LASF3
+ 550 0041 02       		.uleb128 0x2
+ 551 0042 04       		.byte	0x4
+ 552 0043 05       		.byte	0x5
+ 553 0044 6E020000 		.4byte	.LASF4
+ 554 0048 02       		.uleb128 0x2
+ 555 0049 04       		.byte	0x4
+ 556 004a 07       		.byte	0x7
+ 557 004b 90000000 		.4byte	.LASF5
+ 558 004f 02       		.uleb128 0x2
+ 559 0050 08       		.byte	0x8
+ 560 0051 05       		.byte	0x5
+ 561 0052 33020000 		.4byte	.LASF6
+ 562 0056 02       		.uleb128 0x2
+ 563 0057 08       		.byte	0x8
+ 564 0058 07       		.byte	0x7
+ 565 0059 5C000000 		.4byte	.LASF7
+ 566 005d 03       		.uleb128 0x3
+ 567 005e 04       		.byte	0x4
+ 568 005f 05       		.byte	0x5
+ 569 0060 696E7400 		.ascii	"int\000"
+ 570 0064 02       		.uleb128 0x2
+ 571 0065 04       		.byte	0x4
+ 572 0066 07       		.byte	0x7
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciQJMM3.s 			page 18
+
+
+ 573 0067 3C010000 		.4byte	.LASF8
+ 574 006b 04       		.uleb128 0x4
+ 575 006c A2000000 		.4byte	.LASF9
+ 576 0070 02       		.byte	0x2
+ 577 0071 9801     		.2byte	0x198
+ 578 0073 2C000000 		.4byte	0x2c
+ 579 0077 04       		.uleb128 0x4
+ 580 0078 17010000 		.4byte	.LASF10
+ 581 007c 02       		.byte	0x2
+ 582 007d 9901     		.2byte	0x199
+ 583 007f 3A000000 		.4byte	0x3a
+ 584 0083 04       		.uleb128 0x4
+ 585 0084 1E010000 		.4byte	.LASF11
+ 586 0088 02       		.byte	0x2
+ 587 0089 9A01     		.2byte	0x19a
+ 588 008b 48000000 		.4byte	0x48
+ 589 008f 02       		.uleb128 0x2
+ 590 0090 04       		.byte	0x4
+ 591 0091 04       		.byte	0x4
+ 592 0092 56000000 		.4byte	.LASF12
+ 593 0096 02       		.uleb128 0x2
+ 594 0097 08       		.byte	0x8
+ 595 0098 04       		.byte	0x4
+ 596 0099 FE000000 		.4byte	.LASF13
+ 597 009d 02       		.uleb128 0x2
+ 598 009e 01       		.byte	0x1
+ 599 009f 08       		.byte	0x8
+ 600 00a0 41020000 		.4byte	.LASF14
+ 601 00a4 04       		.uleb128 0x4
+ 602 00a5 00000000 		.4byte	.LASF15
+ 603 00a9 02       		.byte	0x2
+ 604 00aa 4302     		.2byte	0x243
+ 605 00ac B0000000 		.4byte	0xb0
+ 606 00b0 05       		.uleb128 0x5
+ 607 00b1 77000000 		.4byte	0x77
+ 608 00b5 04       		.uleb128 0x4
+ 609 00b6 06000000 		.4byte	.LASF16
+ 610 00ba 02       		.byte	0x2
+ 611 00bb 4402     		.2byte	0x244
+ 612 00bd C1000000 		.4byte	0xc1
+ 613 00c1 05       		.uleb128 0x5
+ 614 00c2 83000000 		.4byte	0x83
+ 615 00c6 02       		.uleb128 0x2
+ 616 00c7 08       		.byte	0x8
+ 617 00c8 04       		.byte	0x4
+ 618 00c9 95020000 		.4byte	.LASF17
+ 619 00cd 02       		.uleb128 0x2
+ 620 00ce 04       		.byte	0x4
+ 621 00cf 07       		.byte	0x7
+ 622 00d0 2A020000 		.4byte	.LASF18
+ 623 00d4 06       		.uleb128 0x6
+ 624 00d5 25000000 		.4byte	.LASF19
+ 625 00d9 01       		.byte	0x1
+ 626 00da 20       		.byte	0x20
+ 627 00db 00000000 		.4byte	.LFB0
+ 628 00df 1C000000 		.4byte	.LFE0-.LFB0
+ 629 00e3 01       		.uleb128 0x1
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciQJMM3.s 			page 19
+
+
+ 630 00e4 9C       		.byte	0x9c
+ 631 00e5 0B010000 		.4byte	0x10b
+ 632 00e9 07       		.uleb128 0x7
+ 633 00ea 81000000 		.4byte	.LASF21
+ 634 00ee 01       		.byte	0x1
+ 635 00ef 22       		.byte	0x22
+ 636 00f0 6B000000 		.4byte	0x6b
+ 637 00f4 00000000 		.4byte	.LLST0
+ 638 00f8 08       		.uleb128 0x8
+ 639 00f9 06000000 		.4byte	.LVL0
+ 640 00fd AD020000 		.4byte	0x2ad
+ 641 0101 08       		.uleb128 0x8
+ 642 0102 16000000 		.4byte	.LVL1
+ 643 0106 B8020000 		.4byte	0x2b8
+ 644 010a 00       		.byte	0
+ 645 010b 06       		.uleb128 0x6
+ 646 010c 5D020000 		.4byte	.LASF20
+ 647 0110 01       		.byte	0x1
+ 648 0111 3F       		.byte	0x3f
+ 649 0112 00000000 		.4byte	.LFB1
+ 650 0116 6C000000 		.4byte	.LFE1-.LFB1
+ 651 011a 01       		.uleb128 0x1
+ 652 011b 9C       		.byte	0x9c
+ 653 011c 6B010000 		.4byte	0x16b
+ 654 0120 07       		.uleb128 0x7
+ 655 0121 81000000 		.4byte	.LASF21
+ 656 0125 01       		.byte	0x1
+ 657 0126 41       		.byte	0x41
+ 658 0127 6B000000 		.4byte	0x6b
+ 659 012b 13000000 		.4byte	.LLST1
+ 660 012f 09       		.uleb128 0x9
+ 661 0130 46020000 		.4byte	.LASF22
+ 662 0134 01       		.byte	0x1
+ 663 0135 43       		.byte	0x43
+ 664 0136 C1000000 		.4byte	0xc1
+ 665 013a 02       		.uleb128 0x2
+ 666 013b 91       		.byte	0x91
+ 667 013c 64       		.sleb128 -28
+ 668 013d 08       		.uleb128 0x8
+ 669 013e 08000000 		.4byte	.LVL2
+ 670 0142 AD020000 		.4byte	0x2ad
+ 671 0146 0A       		.uleb128 0xa
+ 672 0147 40000000 		.4byte	.LVL4
+ 673 014b C3020000 		.4byte	0x2c3
+ 674 014f 5A010000 		.4byte	0x15a
+ 675 0153 0B       		.uleb128 0xb
+ 676 0154 01       		.uleb128 0x1
+ 677 0155 50       		.byte	0x50
+ 678 0156 02       		.uleb128 0x2
+ 679 0157 76       		.byte	0x76
+ 680 0158 00       		.sleb128 0
+ 681 0159 00       		.byte	0
+ 682 015a 0C       		.uleb128 0xc
+ 683 015b 52000000 		.4byte	.LVL5
+ 684 015f B8020000 		.4byte	0x2b8
+ 685 0163 0B       		.uleb128 0xb
+ 686 0164 01       		.uleb128 0x1
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciQJMM3.s 			page 20
+
+
+ 687 0165 50       		.byte	0x50
+ 688 0166 02       		.uleb128 0x2
+ 689 0167 74       		.byte	0x74
+ 690 0168 00       		.sleb128 0
+ 691 0169 00       		.byte	0
+ 692 016a 00       		.byte	0
+ 693 016b 06       		.uleb128 0x6
+ 694 016c 45000000 		.4byte	.LASF23
+ 695 0170 01       		.byte	0x1
+ 696 0171 8A       		.byte	0x8a
+ 697 0172 00000000 		.4byte	.LFB2
+ 698 0176 50000000 		.4byte	.LFE2-.LFB2
+ 699 017a 01       		.uleb128 0x1
+ 700 017b 9C       		.byte	0x9c
+ 701 017c A2010000 		.4byte	0x1a2
+ 702 0180 07       		.uleb128 0x7
+ 703 0181 81000000 		.4byte	.LASF21
+ 704 0185 01       		.byte	0x1
+ 705 0186 8C       		.byte	0x8c
+ 706 0187 6B000000 		.4byte	0x6b
+ 707 018b 26000000 		.4byte	.LLST2
+ 708 018f 08       		.uleb128 0x8
+ 709 0190 06000000 		.4byte	.LVL7
+ 710 0194 AD020000 		.4byte	0x2ad
+ 711 0198 08       		.uleb128 0x8
+ 712 0199 3A000000 		.4byte	.LVL8
+ 713 019d B8020000 		.4byte	0x2b8
+ 714 01a1 00       		.byte	0
+ 715 01a2 06       		.uleb128 0x6
+ 716 01a3 0C000000 		.4byte	.LASF24
+ 717 01a7 01       		.byte	0x1
+ 718 01a8 F2       		.byte	0xf2
+ 719 01a9 00000000 		.4byte	.LFB4
+ 720 01ad 34000000 		.4byte	.LFE4-.LFB4
+ 721 01b1 01       		.uleb128 0x1
+ 722 01b2 9C       		.byte	0x9c
+ 723 01b3 E8010000 		.4byte	0x1e8
+ 724 01b7 0D       		.uleb128 0xd
+ 725 01b8 7D010000 		.4byte	.LASF35
+ 726 01bc 01       		.byte	0x1
+ 727 01bd F2       		.byte	0xf2
+ 728 01be 83000000 		.4byte	0x83
+ 729 01c2 39000000 		.4byte	.LLST3
+ 730 01c6 07       		.uleb128 0x7
+ 731 01c7 81000000 		.4byte	.LASF21
+ 732 01cb 01       		.byte	0x1
+ 733 01cc F4       		.byte	0xf4
+ 734 01cd 6B000000 		.4byte	0x6b
+ 735 01d1 65000000 		.4byte	.LLST4
+ 736 01d5 08       		.uleb128 0x8
+ 737 01d6 08000000 		.4byte	.LVL10
+ 738 01da AD020000 		.4byte	0x2ad
+ 739 01de 08       		.uleb128 0x8
+ 740 01df 28000000 		.4byte	.LVL11
+ 741 01e3 B8020000 		.4byte	0x2b8
+ 742 01e7 00       		.byte	0
+ 743 01e8 0E       		.uleb128 0xe
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciQJMM3.s 			page 21
+
+
+ 744 01e9 86010000 		.4byte	.LASF36
+ 745 01ed 01       		.byte	0x1
+ 746 01ee 0E01     		.2byte	0x10e
+ 747 01f0 83000000 		.4byte	0x83
+ 748 01f4 00000000 		.4byte	.LFB5
+ 749 01f8 28000000 		.4byte	.LFE5-.LFB5
+ 750 01fc 01       		.uleb128 0x1
+ 751 01fd 9C       		.byte	0x9c
+ 752 01fe 13020000 		.4byte	0x213
+ 753 0202 0F       		.uleb128 0xf
+ 754 0203 76010000 		.4byte	.LASF25
+ 755 0207 01       		.byte	0x1
+ 756 0208 1001     		.2byte	0x110
+ 757 020a 83000000 		.4byte	0x83
+ 758 020e 78000000 		.4byte	.LLST5
+ 759 0212 00       		.byte	0
+ 760 0213 10       		.uleb128 0x10
+ 761 0214 AD020000 		.4byte	.LASF26
+ 762 0218 01       		.byte	0x1
+ 763 0219 3801     		.2byte	0x138
+ 764 021b 00000000 		.4byte	.LFB6
+ 765 021f 38000000 		.4byte	.LFE6-.LFB6
+ 766 0223 01       		.uleb128 0x1
+ 767 0224 9C       		.byte	0x9c
+ 768 0225 4C020000 		.4byte	0x24c
+ 769 0229 0F       		.uleb128 0xf
+ 770 022a 81000000 		.4byte	.LASF21
+ 771 022e 01       		.byte	0x1
+ 772 022f 3A01     		.2byte	0x13a
+ 773 0231 6B000000 		.4byte	0x6b
+ 774 0235 BB000000 		.4byte	.LLST6
+ 775 0239 08       		.uleb128 0x8
+ 776 023a 06000000 		.4byte	.LVL18
+ 777 023e AD020000 		.4byte	0x2ad
+ 778 0242 08       		.uleb128 0x8
+ 779 0243 28000000 		.4byte	.LVL19
+ 780 0247 B8020000 		.4byte	0x2b8
+ 781 024b 00       		.byte	0
+ 782 024c 06       		.uleb128 0x6
+ 783 024d F2000000 		.4byte	.LASF27
+ 784 0251 01       		.byte	0x1
+ 785 0252 C5       		.byte	0xc5
+ 786 0253 00000000 		.4byte	.LFB3
+ 787 0257 30000000 		.4byte	.LFE3-.LFB3
+ 788 025b 01       		.uleb128 0x1
+ 789 025c 9C       		.byte	0x9c
+ 790 025d 74020000 		.4byte	0x274
+ 791 0261 08       		.uleb128 0x8
+ 792 0262 06000000 		.4byte	.LVL20
+ 793 0266 AD020000 		.4byte	0x2ad
+ 794 026a 08       		.uleb128 0x8
+ 795 026b 1A000000 		.4byte	.LVL21
+ 796 026f 13020000 		.4byte	0x213
+ 797 0273 00       		.byte	0
+ 798 0274 10       		.uleb128 0x10
+ 799 0275 05010000 		.4byte	.LASF28
+ 800 0279 01       		.byte	0x1
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciQJMM3.s 			page 22
+
+
+ 801 027a 6801     		.2byte	0x168
+ 802 027c 00000000 		.4byte	.LFB7
+ 803 0280 30000000 		.4byte	.LFE7-.LFB7
+ 804 0284 01       		.uleb128 0x1
+ 805 0285 9C       		.byte	0x9c
+ 806 0286 AD020000 		.4byte	0x2ad
+ 807 028a 0F       		.uleb128 0xf
+ 808 028b 81000000 		.4byte	.LASF21
+ 809 028f 01       		.byte	0x1
+ 810 0290 6A01     		.2byte	0x16a
+ 811 0292 6B000000 		.4byte	0x6b
+ 812 0296 CE000000 		.4byte	.LLST7
+ 813 029a 08       		.uleb128 0x8
+ 814 029b 06000000 		.4byte	.LVL22
+ 815 029f AD020000 		.4byte	0x2ad
+ 816 02a3 08       		.uleb128 0x8
+ 817 02a4 24000000 		.4byte	.LVL23
+ 818 02a8 B8020000 		.4byte	0x2b8
+ 819 02ac 00       		.byte	0
+ 820 02ad 11       		.uleb128 0x11
+ 821 02ae 25010000 		.4byte	.LASF29
+ 822 02b2 25010000 		.4byte	.LASF29
+ 823 02b6 03       		.byte	0x3
+ 824 02b7 E3       		.byte	0xe3
+ 825 02b8 11       		.uleb128 0x11
+ 826 02b9 49010000 		.4byte	.LASF30
+ 827 02bd 49010000 		.4byte	.LASF30
+ 828 02c1 03       		.byte	0x3
+ 829 02c2 E4       		.byte	0xe4
+ 830 02c3 11       		.uleb128 0x11
+ 831 02c4 5F010000 		.4byte	.LASF31
+ 832 02c8 5F010000 		.4byte	.LASF31
+ 833 02cc 03       		.byte	0x3
+ 834 02cd 6B       		.byte	0x6b
+ 835 02ce 00       		.byte	0
+ 836              		.section	.debug_abbrev,"",%progbits
+ 837              	.Ldebug_abbrev0:
+ 838 0000 01       		.uleb128 0x1
+ 839 0001 11       		.uleb128 0x11
+ 840 0002 01       		.byte	0x1
+ 841 0003 25       		.uleb128 0x25
+ 842 0004 0E       		.uleb128 0xe
+ 843 0005 13       		.uleb128 0x13
+ 844 0006 0B       		.uleb128 0xb
+ 845 0007 03       		.uleb128 0x3
+ 846 0008 0E       		.uleb128 0xe
+ 847 0009 1B       		.uleb128 0x1b
+ 848 000a 0E       		.uleb128 0xe
+ 849 000b 55       		.uleb128 0x55
+ 850 000c 17       		.uleb128 0x17
+ 851 000d 11       		.uleb128 0x11
+ 852 000e 01       		.uleb128 0x1
+ 853 000f 10       		.uleb128 0x10
+ 854 0010 17       		.uleb128 0x17
+ 855 0011 00       		.byte	0
+ 856 0012 00       		.byte	0
+ 857 0013 02       		.uleb128 0x2
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciQJMM3.s 			page 23
+
+
+ 858 0014 24       		.uleb128 0x24
+ 859 0015 00       		.byte	0
+ 860 0016 0B       		.uleb128 0xb
+ 861 0017 0B       		.uleb128 0xb
+ 862 0018 3E       		.uleb128 0x3e
+ 863 0019 0B       		.uleb128 0xb
+ 864 001a 03       		.uleb128 0x3
+ 865 001b 0E       		.uleb128 0xe
+ 866 001c 00       		.byte	0
+ 867 001d 00       		.byte	0
+ 868 001e 03       		.uleb128 0x3
+ 869 001f 24       		.uleb128 0x24
+ 870 0020 00       		.byte	0
+ 871 0021 0B       		.uleb128 0xb
+ 872 0022 0B       		.uleb128 0xb
+ 873 0023 3E       		.uleb128 0x3e
+ 874 0024 0B       		.uleb128 0xb
+ 875 0025 03       		.uleb128 0x3
+ 876 0026 08       		.uleb128 0x8
+ 877 0027 00       		.byte	0
+ 878 0028 00       		.byte	0
+ 879 0029 04       		.uleb128 0x4
+ 880 002a 16       		.uleb128 0x16
+ 881 002b 00       		.byte	0
+ 882 002c 03       		.uleb128 0x3
+ 883 002d 0E       		.uleb128 0xe
+ 884 002e 3A       		.uleb128 0x3a
+ 885 002f 0B       		.uleb128 0xb
+ 886 0030 3B       		.uleb128 0x3b
+ 887 0031 05       		.uleb128 0x5
+ 888 0032 49       		.uleb128 0x49
+ 889 0033 13       		.uleb128 0x13
+ 890 0034 00       		.byte	0
+ 891 0035 00       		.byte	0
+ 892 0036 05       		.uleb128 0x5
+ 893 0037 35       		.uleb128 0x35
+ 894 0038 00       		.byte	0
+ 895 0039 49       		.uleb128 0x49
+ 896 003a 13       		.uleb128 0x13
+ 897 003b 00       		.byte	0
+ 898 003c 00       		.byte	0
+ 899 003d 06       		.uleb128 0x6
+ 900 003e 2E       		.uleb128 0x2e
+ 901 003f 01       		.byte	0x1
+ 902 0040 3F       		.uleb128 0x3f
+ 903 0041 19       		.uleb128 0x19
+ 904 0042 03       		.uleb128 0x3
+ 905 0043 0E       		.uleb128 0xe
+ 906 0044 3A       		.uleb128 0x3a
+ 907 0045 0B       		.uleb128 0xb
+ 908 0046 3B       		.uleb128 0x3b
+ 909 0047 0B       		.uleb128 0xb
+ 910 0048 27       		.uleb128 0x27
+ 911 0049 19       		.uleb128 0x19
+ 912 004a 11       		.uleb128 0x11
+ 913 004b 01       		.uleb128 0x1
+ 914 004c 12       		.uleb128 0x12
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciQJMM3.s 			page 24
+
+
+ 915 004d 06       		.uleb128 0x6
+ 916 004e 40       		.uleb128 0x40
+ 917 004f 18       		.uleb128 0x18
+ 918 0050 9742     		.uleb128 0x2117
+ 919 0052 19       		.uleb128 0x19
+ 920 0053 01       		.uleb128 0x1
+ 921 0054 13       		.uleb128 0x13
+ 922 0055 00       		.byte	0
+ 923 0056 00       		.byte	0
+ 924 0057 07       		.uleb128 0x7
+ 925 0058 34       		.uleb128 0x34
+ 926 0059 00       		.byte	0
+ 927 005a 03       		.uleb128 0x3
+ 928 005b 0E       		.uleb128 0xe
+ 929 005c 3A       		.uleb128 0x3a
+ 930 005d 0B       		.uleb128 0xb
+ 931 005e 3B       		.uleb128 0x3b
+ 932 005f 0B       		.uleb128 0xb
+ 933 0060 49       		.uleb128 0x49
+ 934 0061 13       		.uleb128 0x13
+ 935 0062 02       		.uleb128 0x2
+ 936 0063 17       		.uleb128 0x17
+ 937 0064 00       		.byte	0
+ 938 0065 00       		.byte	0
+ 939 0066 08       		.uleb128 0x8
+ 940 0067 898201   		.uleb128 0x4109
+ 941 006a 00       		.byte	0
+ 942 006b 11       		.uleb128 0x11
+ 943 006c 01       		.uleb128 0x1
+ 944 006d 31       		.uleb128 0x31
+ 945 006e 13       		.uleb128 0x13
+ 946 006f 00       		.byte	0
+ 947 0070 00       		.byte	0
+ 948 0071 09       		.uleb128 0x9
+ 949 0072 34       		.uleb128 0x34
+ 950 0073 00       		.byte	0
+ 951 0074 03       		.uleb128 0x3
+ 952 0075 0E       		.uleb128 0xe
+ 953 0076 3A       		.uleb128 0x3a
+ 954 0077 0B       		.uleb128 0xb
+ 955 0078 3B       		.uleb128 0x3b
+ 956 0079 0B       		.uleb128 0xb
+ 957 007a 49       		.uleb128 0x49
+ 958 007b 13       		.uleb128 0x13
+ 959 007c 02       		.uleb128 0x2
+ 960 007d 18       		.uleb128 0x18
+ 961 007e 00       		.byte	0
+ 962 007f 00       		.byte	0
+ 963 0080 0A       		.uleb128 0xa
+ 964 0081 898201   		.uleb128 0x4109
+ 965 0084 01       		.byte	0x1
+ 966 0085 11       		.uleb128 0x11
+ 967 0086 01       		.uleb128 0x1
+ 968 0087 31       		.uleb128 0x31
+ 969 0088 13       		.uleb128 0x13
+ 970 0089 01       		.uleb128 0x1
+ 971 008a 13       		.uleb128 0x13
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciQJMM3.s 			page 25
+
+
+ 972 008b 00       		.byte	0
+ 973 008c 00       		.byte	0
+ 974 008d 0B       		.uleb128 0xb
+ 975 008e 8A8201   		.uleb128 0x410a
+ 976 0091 00       		.byte	0
+ 977 0092 02       		.uleb128 0x2
+ 978 0093 18       		.uleb128 0x18
+ 979 0094 9142     		.uleb128 0x2111
+ 980 0096 18       		.uleb128 0x18
+ 981 0097 00       		.byte	0
+ 982 0098 00       		.byte	0
+ 983 0099 0C       		.uleb128 0xc
+ 984 009a 898201   		.uleb128 0x4109
+ 985 009d 01       		.byte	0x1
+ 986 009e 11       		.uleb128 0x11
+ 987 009f 01       		.uleb128 0x1
+ 988 00a0 31       		.uleb128 0x31
+ 989 00a1 13       		.uleb128 0x13
+ 990 00a2 00       		.byte	0
+ 991 00a3 00       		.byte	0
+ 992 00a4 0D       		.uleb128 0xd
+ 993 00a5 05       		.uleb128 0x5
+ 994 00a6 00       		.byte	0
+ 995 00a7 03       		.uleb128 0x3
+ 996 00a8 0E       		.uleb128 0xe
+ 997 00a9 3A       		.uleb128 0x3a
+ 998 00aa 0B       		.uleb128 0xb
+ 999 00ab 3B       		.uleb128 0x3b
+ 1000 00ac 0B       		.uleb128 0xb
+ 1001 00ad 49       		.uleb128 0x49
+ 1002 00ae 13       		.uleb128 0x13
+ 1003 00af 02       		.uleb128 0x2
+ 1004 00b0 17       		.uleb128 0x17
+ 1005 00b1 00       		.byte	0
+ 1006 00b2 00       		.byte	0
+ 1007 00b3 0E       		.uleb128 0xe
+ 1008 00b4 2E       		.uleb128 0x2e
+ 1009 00b5 01       		.byte	0x1
+ 1010 00b6 3F       		.uleb128 0x3f
+ 1011 00b7 19       		.uleb128 0x19
+ 1012 00b8 03       		.uleb128 0x3
+ 1013 00b9 0E       		.uleb128 0xe
+ 1014 00ba 3A       		.uleb128 0x3a
+ 1015 00bb 0B       		.uleb128 0xb
+ 1016 00bc 3B       		.uleb128 0x3b
+ 1017 00bd 05       		.uleb128 0x5
+ 1018 00be 27       		.uleb128 0x27
+ 1019 00bf 19       		.uleb128 0x19
+ 1020 00c0 49       		.uleb128 0x49
+ 1021 00c1 13       		.uleb128 0x13
+ 1022 00c2 11       		.uleb128 0x11
+ 1023 00c3 01       		.uleb128 0x1
+ 1024 00c4 12       		.uleb128 0x12
+ 1025 00c5 06       		.uleb128 0x6
+ 1026 00c6 40       		.uleb128 0x40
+ 1027 00c7 18       		.uleb128 0x18
+ 1028 00c8 9742     		.uleb128 0x2117
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciQJMM3.s 			page 26
+
+
+ 1029 00ca 19       		.uleb128 0x19
+ 1030 00cb 01       		.uleb128 0x1
+ 1031 00cc 13       		.uleb128 0x13
+ 1032 00cd 00       		.byte	0
+ 1033 00ce 00       		.byte	0
+ 1034 00cf 0F       		.uleb128 0xf
+ 1035 00d0 34       		.uleb128 0x34
+ 1036 00d1 00       		.byte	0
+ 1037 00d2 03       		.uleb128 0x3
+ 1038 00d3 0E       		.uleb128 0xe
+ 1039 00d4 3A       		.uleb128 0x3a
+ 1040 00d5 0B       		.uleb128 0xb
+ 1041 00d6 3B       		.uleb128 0x3b
+ 1042 00d7 05       		.uleb128 0x5
+ 1043 00d8 49       		.uleb128 0x49
+ 1044 00d9 13       		.uleb128 0x13
+ 1045 00da 02       		.uleb128 0x2
+ 1046 00db 17       		.uleb128 0x17
+ 1047 00dc 00       		.byte	0
+ 1048 00dd 00       		.byte	0
+ 1049 00de 10       		.uleb128 0x10
+ 1050 00df 2E       		.uleb128 0x2e
+ 1051 00e0 01       		.byte	0x1
+ 1052 00e1 3F       		.uleb128 0x3f
+ 1053 00e2 19       		.uleb128 0x19
+ 1054 00e3 03       		.uleb128 0x3
+ 1055 00e4 0E       		.uleb128 0xe
+ 1056 00e5 3A       		.uleb128 0x3a
+ 1057 00e6 0B       		.uleb128 0xb
+ 1058 00e7 3B       		.uleb128 0x3b
+ 1059 00e8 05       		.uleb128 0x5
+ 1060 00e9 27       		.uleb128 0x27
+ 1061 00ea 19       		.uleb128 0x19
+ 1062 00eb 11       		.uleb128 0x11
+ 1063 00ec 01       		.uleb128 0x1
+ 1064 00ed 12       		.uleb128 0x12
+ 1065 00ee 06       		.uleb128 0x6
+ 1066 00ef 40       		.uleb128 0x40
+ 1067 00f0 18       		.uleb128 0x18
+ 1068 00f1 9742     		.uleb128 0x2117
+ 1069 00f3 19       		.uleb128 0x19
+ 1070 00f4 01       		.uleb128 0x1
+ 1071 00f5 13       		.uleb128 0x13
+ 1072 00f6 00       		.byte	0
+ 1073 00f7 00       		.byte	0
+ 1074 00f8 11       		.uleb128 0x11
+ 1075 00f9 2E       		.uleb128 0x2e
+ 1076 00fa 00       		.byte	0
+ 1077 00fb 3F       		.uleb128 0x3f
+ 1078 00fc 19       		.uleb128 0x19
+ 1079 00fd 3C       		.uleb128 0x3c
+ 1080 00fe 19       		.uleb128 0x19
+ 1081 00ff 6E       		.uleb128 0x6e
+ 1082 0100 0E       		.uleb128 0xe
+ 1083 0101 03       		.uleb128 0x3
+ 1084 0102 0E       		.uleb128 0xe
+ 1085 0103 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciQJMM3.s 			page 27
+
+
+ 1086 0104 0B       		.uleb128 0xb
+ 1087 0105 3B       		.uleb128 0x3b
+ 1088 0106 0B       		.uleb128 0xb
+ 1089 0107 00       		.byte	0
+ 1090 0108 00       		.byte	0
+ 1091 0109 00       		.byte	0
+ 1092              		.section	.debug_loc,"",%progbits
+ 1093              	.Ldebug_loc0:
+ 1094              	.LLST0:
+ 1095 0000 06000000 		.4byte	.LVL0
+ 1096 0004 15000000 		.4byte	.LVL1-1
+ 1097 0008 0100     		.2byte	0x1
+ 1098 000a 50       		.byte	0x50
+ 1099 000b 00000000 		.4byte	0
+ 1100 000f 00000000 		.4byte	0
+ 1101              	.LLST1:
+ 1102 0013 0A000000 		.4byte	.LVL3
+ 1103 0017 54000000 		.4byte	.LVL6
+ 1104 001b 0100     		.2byte	0x1
+ 1105 001d 54       		.byte	0x54
+ 1106 001e 00000000 		.4byte	0
+ 1107 0022 00000000 		.4byte	0
+ 1108              	.LLST2:
+ 1109 0026 06000000 		.4byte	.LVL7
+ 1110 002a 39000000 		.4byte	.LVL8-1
+ 1111 002e 0100     		.2byte	0x1
+ 1112 0030 50       		.byte	0x50
+ 1113 0031 00000000 		.4byte	0
+ 1114 0035 00000000 		.4byte	0
+ 1115              	.LLST3:
+ 1116 0039 00000000 		.4byte	.LVL9
+ 1117 003d 07000000 		.4byte	.LVL10-1
+ 1118 0041 0100     		.2byte	0x1
+ 1119 0043 50       		.byte	0x50
+ 1120 0044 07000000 		.4byte	.LVL10-1
+ 1121 0048 28000000 		.4byte	.LVL12
+ 1122 004c 0100     		.2byte	0x1
+ 1123 004e 54       		.byte	0x54
+ 1124 004f 28000000 		.4byte	.LVL12
+ 1125 0053 34000000 		.4byte	.LFE4
+ 1126 0057 0400     		.2byte	0x4
+ 1127 0059 F3       		.byte	0xf3
+ 1128 005a 01       		.uleb128 0x1
+ 1129 005b 50       		.byte	0x50
+ 1130 005c 9F       		.byte	0x9f
+ 1131 005d 00000000 		.4byte	0
+ 1132 0061 00000000 		.4byte	0
+ 1133              	.LLST4:
+ 1134 0065 08000000 		.4byte	.LVL10
+ 1135 0069 27000000 		.4byte	.LVL11-1
+ 1136 006d 0100     		.2byte	0x1
+ 1137 006f 50       		.byte	0x50
+ 1138 0070 00000000 		.4byte	0
+ 1139 0074 00000000 		.4byte	0
+ 1140              	.LLST5:
+ 1141 0078 00000000 		.4byte	.LVL13
+ 1142 007c 18000000 		.4byte	.LVL14
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciQJMM3.s 			page 28
+
+
+ 1143 0080 0200     		.2byte	0x2
+ 1144 0082 30       		.byte	0x30
+ 1145 0083 9F       		.byte	0x9f
+ 1146 0084 18000000 		.4byte	.LVL14
+ 1147 0088 1C000000 		.4byte	.LVL15
+ 1148 008c 0200     		.2byte	0x2
+ 1149 008e 32       		.byte	0x32
+ 1150 008f 9F       		.byte	0x9f
+ 1151 0090 1C000000 		.4byte	.LVL15
+ 1152 0094 20000000 		.4byte	.LVL16
+ 1153 0098 0200     		.2byte	0x2
+ 1154 009a 33       		.byte	0x33
+ 1155 009b 9F       		.byte	0x9f
+ 1156 009c 20000000 		.4byte	.LVL16
+ 1157 00a0 22000000 		.4byte	.LVL17
+ 1158 00a4 0200     		.2byte	0x2
+ 1159 00a6 30       		.byte	0x30
+ 1160 00a7 9F       		.byte	0x9f
+ 1161 00a8 22000000 		.4byte	.LVL17
+ 1162 00ac 28000000 		.4byte	.LFE5
+ 1163 00b0 0100     		.2byte	0x1
+ 1164 00b2 50       		.byte	0x50
+ 1165 00b3 00000000 		.4byte	0
+ 1166 00b7 00000000 		.4byte	0
+ 1167              	.LLST6:
+ 1168 00bb 06000000 		.4byte	.LVL18
+ 1169 00bf 27000000 		.4byte	.LVL19-1
+ 1170 00c3 0100     		.2byte	0x1
+ 1171 00c5 50       		.byte	0x50
+ 1172 00c6 00000000 		.4byte	0
+ 1173 00ca 00000000 		.4byte	0
+ 1174              	.LLST7:
+ 1175 00ce 06000000 		.4byte	.LVL22
+ 1176 00d2 23000000 		.4byte	.LVL23-1
+ 1177 00d6 0100     		.2byte	0x1
+ 1178 00d8 50       		.byte	0x50
+ 1179 00d9 00000000 		.4byte	0
+ 1180 00dd 00000000 		.4byte	0
+ 1181              		.section	.debug_aranges,"",%progbits
+ 1182 0000 54000000 		.4byte	0x54
+ 1183 0004 0200     		.2byte	0x2
+ 1184 0006 00000000 		.4byte	.Ldebug_info0
+ 1185 000a 04       		.byte	0x4
+ 1186 000b 00       		.byte	0
+ 1187 000c 0000     		.2byte	0
+ 1188 000e 0000     		.2byte	0
+ 1189 0010 00000000 		.4byte	.LFB0
+ 1190 0014 1C000000 		.4byte	.LFE0-.LFB0
+ 1191 0018 00000000 		.4byte	.LFB1
+ 1192 001c 6C000000 		.4byte	.LFE1-.LFB1
+ 1193 0020 00000000 		.4byte	.LFB2
+ 1194 0024 50000000 		.4byte	.LFE2-.LFB2
+ 1195 0028 00000000 		.4byte	.LFB4
+ 1196 002c 34000000 		.4byte	.LFE4-.LFB4
+ 1197 0030 00000000 		.4byte	.LFB5
+ 1198 0034 28000000 		.4byte	.LFE5-.LFB5
+ 1199 0038 00000000 		.4byte	.LFB6
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciQJMM3.s 			page 29
+
+
+ 1200 003c 38000000 		.4byte	.LFE6-.LFB6
+ 1201 0040 00000000 		.4byte	.LFB3
+ 1202 0044 30000000 		.4byte	.LFE3-.LFB3
+ 1203 0048 00000000 		.4byte	.LFB7
+ 1204 004c 30000000 		.4byte	.LFE7-.LFB7
+ 1205 0050 00000000 		.4byte	0
+ 1206 0054 00000000 		.4byte	0
+ 1207              		.section	.debug_ranges,"",%progbits
+ 1208              	.Ldebug_ranges0:
+ 1209 0000 00000000 		.4byte	.LFB0
+ 1210 0004 1C000000 		.4byte	.LFE0
+ 1211 0008 00000000 		.4byte	.LFB1
+ 1212 000c 6C000000 		.4byte	.LFE1
+ 1213 0010 00000000 		.4byte	.LFB2
+ 1214 0014 50000000 		.4byte	.LFE2
+ 1215 0018 00000000 		.4byte	.LFB4
+ 1216 001c 34000000 		.4byte	.LFE4
+ 1217 0020 00000000 		.4byte	.LFB5
+ 1218 0024 28000000 		.4byte	.LFE5
+ 1219 0028 00000000 		.4byte	.LFB6
+ 1220 002c 38000000 		.4byte	.LFE6
+ 1221 0030 00000000 		.4byte	.LFB3
+ 1222 0034 30000000 		.4byte	.LFE3
+ 1223 0038 00000000 		.4byte	.LFB7
+ 1224 003c 30000000 		.4byte	.LFE7
+ 1225 0040 00000000 		.4byte	0
+ 1226 0044 00000000 		.4byte	0
+ 1227              		.section	.debug_line,"",%progbits
+ 1228              	.Ldebug_line0:
+ 1229 0000 26010000 		.section	.debug_str,"MS",%progbits,1
+ 1229      02004C00 
+ 1229      00000201 
+ 1229      FB0E0D00 
+ 1229      01010101 
+ 1230              	.LASF15:
+ 1231 0000 72656731 		.ascii	"reg16\000"
+ 1231      3600
+ 1232              	.LASF16:
+ 1233 0006 72656733 		.ascii	"reg32\000"
+ 1233      3200
+ 1234              	.LASF24:
+ 1235 000c 43795379 		.ascii	"CySysPmSetWakeupPolarity\000"
+ 1235      73506D53 
+ 1235      65745761 
+ 1235      6B657570 
+ 1235      506F6C61 
+ 1236              	.LASF19:
+ 1237 0025 43795379 		.ascii	"CySysPmSleep\000"
+ 1237      73506D53 
+ 1237      6C656570 
+ 1237      00
+ 1238              	.LASF3:
+ 1239 0032 73686F72 		.ascii	"short unsigned int\000"
+ 1239      7420756E 
+ 1239      7369676E 
+ 1239      65642069 
+ 1239      6E7400
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciQJMM3.s 			page 30
+
+
+ 1240              	.LASF23:
+ 1241 0045 43795379 		.ascii	"CySysPmHibernate\000"
+ 1241      73506D48 
+ 1241      69626572 
+ 1241      6E617465 
+ 1241      00
+ 1242              	.LASF12:
+ 1243 0056 666C6F61 		.ascii	"float\000"
+ 1243      7400
+ 1244              	.LASF7:
+ 1245 005c 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1245      206C6F6E 
+ 1245      6720756E 
+ 1245      7369676E 
+ 1245      65642069 
+ 1246              	.LASF1:
+ 1247 0073 756E7369 		.ascii	"unsigned char\000"
+ 1247      676E6564 
+ 1247      20636861 
+ 1247      7200
+ 1248              	.LASF21:
+ 1249 0081 696E7465 		.ascii	"interruptState\000"
+ 1249      72727570 
+ 1249      74537461 
+ 1249      746500
+ 1250              	.LASF5:
+ 1251 0090 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1251      20756E73 
+ 1251      69676E65 
+ 1251      6420696E 
+ 1251      7400
+ 1252              	.LASF9:
+ 1253 00a2 75696E74 		.ascii	"uint8\000"
+ 1253      3800
+ 1254              	.LASF34:
+ 1255 00a8 443A5C72 		.ascii	"D:\\repositories\\Tarocco\\Bootloader\\cncboot_no_o"
+ 1255      65706F73 
+ 1255      69746F72 
+ 1255      6965735C 
+ 1255      5461726F 
+ 1256 00d7 7074696D 		.ascii	"ptimizations\\cncboot.cydsn\000"
+ 1256      697A6174 
+ 1256      696F6E73 
+ 1256      5C636E63 
+ 1256      626F6F74 
+ 1257              	.LASF27:
+ 1258 00f2 43795379 		.ascii	"CySysPmStop\000"
+ 1258      73506D53 
+ 1258      746F7000 
+ 1259              	.LASF13:
+ 1260 00fe 646F7562 		.ascii	"double\000"
+ 1260      6C6500
+ 1261              	.LASF28:
+ 1262 0105 43795379 		.ascii	"CySysPmUnfreezeIo\000"
+ 1262      73506D55 
+ 1262      6E667265 
+ 1262      657A6549 
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciQJMM3.s 			page 31
+
+
+ 1262      6F00
+ 1263              	.LASF10:
+ 1264 0117 75696E74 		.ascii	"uint16\000"
+ 1264      313600
+ 1265              	.LASF11:
+ 1266 011e 75696E74 		.ascii	"uint32\000"
+ 1266      333200
+ 1267              	.LASF29:
+ 1268 0125 4379456E 		.ascii	"CyEnterCriticalSection\000"
+ 1268      74657243 
+ 1268      72697469 
+ 1268      63616C53 
+ 1268      65637469 
+ 1269              	.LASF8:
+ 1270 013c 756E7369 		.ascii	"unsigned int\000"
+ 1270      676E6564 
+ 1270      20696E74 
+ 1270      00
+ 1271              	.LASF30:
+ 1272 0149 43794578 		.ascii	"CyExitCriticalSection\000"
+ 1272      69744372 
+ 1272      69746963 
+ 1272      616C5365 
+ 1272      6374696F 
+ 1273              	.LASF31:
+ 1274 015f 43795379 		.ascii	"CySysClkWriteSysclkDiv\000"
+ 1274      73436C6B 
+ 1274      57726974 
+ 1274      65537973 
+ 1274      636C6B44 
+ 1275              	.LASF25:
+ 1276 0176 72656173 		.ascii	"reason\000"
+ 1276      6F6E00
+ 1277              	.LASF35:
+ 1278 017d 706F6C61 		.ascii	"polarity\000"
+ 1278      72697479 
+ 1278      00
+ 1279              	.LASF36:
+ 1280 0186 43795379 		.ascii	"CySysPmGetResetReason\000"
+ 1280      73506D47 
+ 1280      65745265 
+ 1280      73657452 
+ 1280      6561736F 
+ 1281              	.LASF32:
+ 1282 019c 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1282      43313120 
+ 1282      352E342E 
+ 1282      31203230 
+ 1282      31363036 
+ 1283 01cf 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 1283      20726576 
+ 1283      6973696F 
+ 1283      6E203233 
+ 1283      37373135 
+ 1284 0202 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1284      66756E63 
+ 1284      74696F6E 
+ARM GAS  C:\Users\ottor\AppData\Local\Temp\cciQJMM3.s 			page 32
+
+
+ 1284      2D736563 
+ 1284      74696F6E 
+ 1285              	.LASF18:
+ 1286 022a 73697A65 		.ascii	"sizetype\000"
+ 1286      74797065 
+ 1286      00
+ 1287              	.LASF6:
+ 1288 0233 6C6F6E67 		.ascii	"long long int\000"
+ 1288      206C6F6E 
+ 1288      6720696E 
+ 1288      7400
+ 1289              	.LASF14:
+ 1290 0241 63686172 		.ascii	"char\000"
+ 1290      00
+ 1291              	.LASF22:
+ 1292 0246 636C6B53 		.ascii	"clkSelectReg\000"
+ 1292      656C6563 
+ 1292      74526567 
+ 1292      00
+ 1293              	.LASF2:
+ 1294 0253 73686F72 		.ascii	"short int\000"
+ 1294      7420696E 
+ 1294      7400
+ 1295              	.LASF20:
+ 1296 025d 43795379 		.ascii	"CySysPmDeepSleep\000"
+ 1296      73506D44 
+ 1296      65657053 
+ 1296      6C656570 
+ 1296      00
+ 1297              	.LASF4:
+ 1298 026e 6C6F6E67 		.ascii	"long int\000"
+ 1298      20696E74 
+ 1298      00
+ 1299              	.LASF33:
+ 1300 0277 47656E65 		.ascii	"Generated_Source\\PSoC4\\cyPm.c\000"
+ 1300      72617465 
+ 1300      645F536F 
+ 1300      75726365 
+ 1300      5C50536F 
+ 1301              	.LASF17:
+ 1302 0295 6C6F6E67 		.ascii	"long double\000"
+ 1302      20646F75 
+ 1302      626C6500 
+ 1303              	.LASF0:
+ 1304 02a1 7369676E 		.ascii	"signed char\000"
+ 1304      65642063 
+ 1304      68617200 
+ 1305              	.LASF26:
+ 1306 02ad 43795379 		.ascii	"CySysPmFreezeIo\000"
+ 1306      73506D46 
+ 1306      7265657A 
+ 1306      65496F00 
+ 1307              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

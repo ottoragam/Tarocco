@@ -25,8 +25,8 @@ static UART_tx_BACKUP_STRUCT  UART_tx_backup = {0u, 0u, 0u};
 ****************************************************************************//**
 *
 * \brief Stores the pin configuration and prepares the pin for entering chip 
-*  deep-sleep/hibernate modes. This function must be called for SIO and USBIO
-*  pins. It is not essential if using GPIO or GPIO_OVT pins.
+*  deep-sleep/hibernate modes. This function applies only to SIO and USBIO pins.
+*  It should not be called for GPIO or GPIO_OVT pins.
 *
 * <b>Note</b> This function is available in PSoC 4 only.
 *
@@ -65,7 +65,9 @@ void UART_tx_Sleep(void)
 * Function Name: UART_tx_Wakeup
 ****************************************************************************//**
 *
-* \brief Restores the pin configuration that was saved during Pin_Sleep().
+* \brief Restores the pin configuration that was saved during Pin_Sleep(). This 
+* function applies only to SIO and USBIO pins. It should not be called for
+* GPIO or GPIO_OVT pins.
 *
 * For USBIO pins, the wakeup is only triggered for falling edge interrupts.
 *
